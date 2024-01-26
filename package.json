@@ -1,0 +1,7 @@
+{
+  "name": "api-generator-test",
+  "version": "1.0.0",
+  "dependencies": {
+    "quicktype-core": "^23.0.81"
+  }
+}

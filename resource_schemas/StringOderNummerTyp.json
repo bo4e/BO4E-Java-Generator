@@ -1,0 +1,23 @@
+{
+  "additionalProperties": true,
+  "description": "String oder Nummer",
+  "properties": {
+    "stringOderNummer": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "StringOderNummer"
+    }
+  },
+  "title": "StringOderNummerTyp",
+  "type": "object"
+}

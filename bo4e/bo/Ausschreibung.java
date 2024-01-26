@@ -22,7 +22,7 @@ import java.time.OffsetDateTime;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/bo/Ausschreibung.json>`_
  */
 public class Ausschreibung extends Geschaeftsobjekt {
-    private final Typ typ = Typ.AUSSCHREIBUNG;
+    private final Typ typ = Typ.AUSSCHREIUNG;
     private Zeitraum abgabefrist;
     private Geschaeftspartner ausschreibender;
     private Ausschreibungsportal ausschreibungportal;

@@ -172,8 +172,16 @@ function cleanUp(files, source, target, root, dirname, fileMap) {
                         const type = words[1].replace("[]", "");
                         if (type !== "ZusatzAttribut" || (classAndDir !== undefined && fileName === classAndDir.class + ".java")) {
                             if (type === "Typ") {
-                                const types = fs.readFileSync(sourceDirName + "/enum/typ.json")
-                                lines[index] = line.replace("private", "private final").replace(";", " = Typ." + fileName.substring(0, fileName.length - 5).toUpperCase() + ";")
+                                const fileContent = fs
+                                    .readFileSync(sourcePath, "utf-8")
+                                    .replaceAll(" ", "")
+                                    .split("\n");
+                                const fileTyp = fileContent
+                                    .slice(fileContent.findIndex(value => value.includes("_typ")))
+                                    .find(value => value.includes("default"))
+                                    .replaceAll("\"", "")
+                                    .replace("default:", "");
+                                lines[index] = line.replace("private", "private final").replace(";", " = Typ." + fileTyp + ";")
                             }
                             const typeFile = type + ".json";
                             if (!files.includes(typeFile)) {

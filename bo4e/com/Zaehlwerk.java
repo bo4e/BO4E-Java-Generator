@@ -34,7 +34,7 @@ public class Zaehlwerk extends COM {
     private Long vorkommastelle;
     private Waermenutzung waermenutzung;
     private StringOderNummer wandlerfaktor;
-    private String zaehlwerkID;
+    private String zaehlwerkId;
     private Zaehlzeitregister zaehlzeitregister;
 
     public Long getAnzahlAblesungen() { return anzahlAblesungen; }
@@ -85,8 +85,8 @@ public class Zaehlwerk extends COM {
     public StringOderNummer getWandlerfaktor() { return wandlerfaktor; }
     public void setWandlerfaktor(StringOderNummer value) { this.wandlerfaktor = value; }
 
-    public String getZaehlwerkID() { return zaehlwerkID; }
-    public void setZaehlwerkID(String value) { this.zaehlwerkID = value; }
+    public String getZaehlwerkId() { return zaehlwerkId; }
+    public void setZaehlwerkId(String value) { this.zaehlwerkId = value; }
 
     public Zaehlzeitregister getZaehlzeitregister() { return zaehlzeitregister; }
     public void setZaehlzeitregister(Zaehlzeitregister value) { this.zaehlzeitregister = value; }

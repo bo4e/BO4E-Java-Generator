@@ -27,7 +27,7 @@ public class Preisposition extends COM {
     private Mengeneinheit bezugsgroesse;
     private StringOderNummer freimengeBlindarbeit;
     private StringOderNummer freimengeLeistungsfaktor;
-    private String gruppenartikelID;
+    private String gruppenartikelId;
     private String leistungsbezeichnung;
     private Leistungstyp leistungstyp;
     private Waehrungseinheit preiseinheit;
@@ -51,8 +51,8 @@ public class Preisposition extends COM {
     public StringOderNummer getFreimengeLeistungsfaktor() { return freimengeLeistungsfaktor; }
     public void setFreimengeLeistungsfaktor(StringOderNummer value) { this.freimengeLeistungsfaktor = value; }
 
-    public String getGruppenartikelID() { return gruppenartikelID; }
-    public void setGruppenartikelID(String value) { this.gruppenartikelID = value; }
+    public String getGruppenartikelId() { return gruppenartikelId; }
+    public void setGruppenartikelId(String value) { this.gruppenartikelId = value; }
 
     public String getLeistungsbezeichnung() { return leistungsbezeichnung; }
     public void setLeistungsbezeichnung(String value) { this.leistungsbezeichnung = value; }

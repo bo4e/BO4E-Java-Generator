@@ -23,13 +23,13 @@ public class Messlokation extends Geschaeftsobjekt {
     private final Typ typ = Typ.MESSLOKATION;
     private Geokoordinaten geoadresse;
     private Geraet[] geraete;
-    private String grundzustaendigerMSBCodenr;
+    private String grundzustaendigerMsbCodenr;
     private String grundzustaendigerMsbimCodenr;
     private Katasteradresse katasterinformation;
     private Adresse messadresse;
     private Dienstleistung[] messdienstleistung;
     private String messgebietnr;
-    private String messlokationsID;
+    private String messlokationsId;
     private Zaehler[] messlokationszaehler;
     private Netzebene netzebeneMessung;
     private Sparte sparte;
@@ -42,8 +42,8 @@ public class Messlokation extends Geschaeftsobjekt {
     public Geraet[] getGeraete() { return geraete; }
     public void setGeraete(Geraet[] value) { this.geraete = value; }
 
-    public String getGrundzustaendigerMSBCodenr() { return grundzustaendigerMSBCodenr; }
-    public void setGrundzustaendigerMSBCodenr(String value) { this.grundzustaendigerMSBCodenr = value; }
+    public String getGrundzustaendigerMsbCodenr() { return grundzustaendigerMsbCodenr; }
+    public void setGrundzustaendigerMsbCodenr(String value) { this.grundzustaendigerMsbCodenr = value; }
 
     public String getGrundzustaendigerMsbimCodenr() { return grundzustaendigerMsbimCodenr; }
     public void setGrundzustaendigerMsbimCodenr(String value) { this.grundzustaendigerMsbimCodenr = value; }
@@ -60,8 +60,8 @@ public class Messlokation extends Geschaeftsobjekt {
     public String getMessgebietnr() { return messgebietnr; }
     public void setMessgebietnr(String value) { this.messgebietnr = value; }
 
-    public String getMesslokationsID() { return messlokationsID; }
-    public void setMesslokationsID(String value) { this.messlokationsID = value; }
+    public String getMesslokationsId() { return messlokationsId; }
+    public void setMesslokationsId(String value) { this.messlokationsId = value; }
 
     public Zaehler[] getMesslokationszaehler() { return messlokationszaehler; }
     public void setMesslokationszaehler(Zaehler[] value) { this.messlokationszaehler = value; }

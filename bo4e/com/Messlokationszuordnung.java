@@ -22,7 +22,7 @@ public class Messlokationszuordnung extends COM {
     private ArithmetischeOperation arithmetik;
     private OffsetDateTime gueltigBis;
     private OffsetDateTime gueltigSeit;
-    private String messlokationsID;
+    private String messlokationsId;
 
     public ArithmetischeOperation getArithmetik() { return arithmetik; }
     public void setArithmetik(ArithmetischeOperation value) { this.arithmetik = value; }
@@ -33,7 +33,7 @@ public class Messlokationszuordnung extends COM {
     public OffsetDateTime getGueltigSeit() { return gueltigSeit; }
     public void setGueltigSeit(OffsetDateTime value) { this.gueltigSeit = value; }
 
-    public String getMesslokationsID() { return messlokationsID; }
-    public void setMesslokationsID(String value) { this.messlokationsID = value; }
+    public String getMesslokationsId() { return messlokationsId; }
+    public void setMesslokationsId(String value) { this.messlokationsId = value; }
 
 }

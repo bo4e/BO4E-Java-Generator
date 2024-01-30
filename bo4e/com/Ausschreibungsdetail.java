@@ -22,7 +22,7 @@ public class Ausschreibungsdetail extends COM {
     private Zeitraum lieferzeitraum;
     private Adresse marktlokationsadresse;
     private String marktlokationsbezeichnung;
-    private String marktlokationsID;
+    private String marktlokationsId;
     private String netzbetreiber;
     private String netzebeneLieferung;
     private String netzebeneMessung;
@@ -48,8 +48,8 @@ public class Ausschreibungsdetail extends COM {
     public String getMarktlokationsbezeichnung() { return marktlokationsbezeichnung; }
     public void setMarktlokationsbezeichnung(String value) { this.marktlokationsbezeichnung = value; }
 
-    public String getMarktlokationsID() { return marktlokationsID; }
-    public void setMarktlokationsID(String value) { this.marktlokationsID = value; }
+    public String getMarktlokationsId() { return marktlokationsId; }
+    public void setMarktlokationsId(String value) { this.marktlokationsId = value; }
 
     public String getNetzbetreiber() { return netzbetreiber; }
     public void setNetzbetreiber(String value) { this.netzbetreiber = value; }

@@ -18,12 +18,12 @@ import java.time.OffsetDateTime;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/Rechnungsposition.json>`_
  */
 public class Rechnungsposition extends COM {
-    private String artikelID;
+    private String artikelId;
     private BDEWArtikelnummer artikelnummer;
     private Preis einzelpreis;
     private OffsetDateTime lieferungBis;
     private OffsetDateTime lieferungVon;
-    private String lokationsID;
+    private String lokationsId;
     private Menge positionsMenge;
     private Long positionsnummer;
     private String positionstext;
@@ -33,8 +33,8 @@ public class Rechnungsposition extends COM {
     private Menge zeitbezogeneMenge;
     private Mengeneinheit zeiteinheit;
 
-    public String getArtikelID() { return artikelID; }
-    public void setArtikelID(String value) { this.artikelID = value; }
+    public String getArtikelId() { return artikelId; }
+    public void setArtikelId(String value) { this.artikelId = value; }
 
     public BDEWArtikelnummer getArtikelnummer() { return artikelnummer; }
     public void setArtikelnummer(BDEWArtikelnummer value) { this.artikelnummer = value; }
@@ -48,8 +48,8 @@ public class Rechnungsposition extends COM {
     public OffsetDateTime getLieferungVon() { return lieferungVon; }
     public void setLieferungVon(OffsetDateTime value) { this.lieferungVon = value; }
 
-    public String getLokationsID() { return lokationsID; }
-    public void setLokationsID(String value) { this.lokationsID = value; }
+    public String getLokationsId() { return lokationsId; }
+    public void setLokationsId(String value) { this.lokationsId = value; }
 
     public Menge getPositionsMenge() { return positionsMenge; }
     public void setPositionsMenge(Menge value) { this.positionsMenge = value; }

@@ -27,7 +27,7 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
     private Anrede anrede;
     private String eMailAdresse;
     private Geschaeftspartnerrolle[] geschaeftspartnerrolle;
-    private String glaeubigerID;
+    private String glaeubigerId;
     private String hrnummer;
     private Boolean istGewerbe;
     private Kontaktart[] kontaktweg;
@@ -40,7 +40,7 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
     private String rollencodenummer;
     private Rollencodetyp rollencodetyp;
     private Sparte sparte;
-    private String umsatzsteuerID;
+    private String umsatzsteuerId;
     private String website;
 
     public Typ getTyp() { return typ; }
@@ -57,8 +57,8 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
     public Geschaeftspartnerrolle[] getGeschaeftspartnerrolle() { return geschaeftspartnerrolle; }
     public void setGeschaeftspartnerrolle(Geschaeftspartnerrolle[] value) { this.geschaeftspartnerrolle = value; }
 
-    public String getGlaeubigerID() { return glaeubigerID; }
-    public void setGlaeubigerID(String value) { this.glaeubigerID = value; }
+    public String getGlaeubigerId() { return glaeubigerId; }
+    public void setGlaeubigerId(String value) { this.glaeubigerId = value; }
 
     public String getHrnummer() { return hrnummer; }
     public void setHrnummer(String value) { this.hrnummer = value; }
@@ -96,8 +96,8 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
     public Sparte getSparte() { return sparte; }
     public void setSparte(Sparte value) { this.sparte = value; }
 
-    public String getUmsatzsteuerID() { return umsatzsteuerID; }
-    public void setUmsatzsteuerID(String value) { this.umsatzsteuerID = value; }
+    public String getUmsatzsteuerId() { return umsatzsteuerId; }
+    public void setUmsatzsteuerId(String value) { this.umsatzsteuerId = value; }
 
     public String getWebsite() { return website; }
     public void setWebsite(String value) { this.website = value; }

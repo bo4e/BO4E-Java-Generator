@@ -22,12 +22,12 @@ public abstract class Geschaeftsobjekt {
     private final String _version = "202401.0.0";
     private ZusatzAttribut[] zusatzAttribute;
 
-    public String getID() { return _id; }
-    public void setID(String value) { this._id = value; }
+    public String getid() { return _id; }
+    public void setid(String value) { this._id = value; }
 
     public Typ getTyp() { return typ; }
 
-    public String getStructureVersion() { return _version; }
+    public String getSchemaVersion() { return _version; }
 
     public ZusatzAttribut[] getZusatzAttribute() { return zusatzAttribute; }
     public void setZusatzAttribute(ZusatzAttribut[] value) { this.zusatzAttribute = value; }

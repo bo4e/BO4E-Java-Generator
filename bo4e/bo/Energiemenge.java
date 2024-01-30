@@ -18,7 +18,7 @@ import com.example.bo4e.enums.Lokationstyp;
 public class Energiemenge extends Geschaeftsobjekt {
     private final Typ typ = Typ.ENERGIEMENGE;
     private Verbrauch[] energieverbrauch;
-    private String lokationsID;
+    private String lokationsId;
     private Lokationstyp lokationstyp;
 
     public Typ getTyp() { return typ; }
@@ -26,8 +26,8 @@ public class Energiemenge extends Geschaeftsobjekt {
     public Verbrauch[] getEnergieverbrauch() { return energieverbrauch; }
     public void setEnergieverbrauch(Verbrauch[] value) { this.energieverbrauch = value; }
 
-    public String getLokationsID() { return lokationsID; }
-    public void setLokationsID(String value) { this.lokationsID = value; }
+    public String getLokationsId() { return lokationsId; }
+    public void setLokationsId(String value) { this.lokationsId = value; }
 
     public Lokationstyp getLokationstyp() { return lokationstyp; }
     public void setLokationstyp(Lokationstyp value) { this.lokationstyp = value; }

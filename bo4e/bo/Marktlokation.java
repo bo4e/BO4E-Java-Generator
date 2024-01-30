@@ -40,7 +40,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     private Katasteradresse katasterinformation;
     private Kundentyp[] kundengruppen;
     private Adresse lokationsadresse;
-    private String marktlokationsID;
+    private String marktlokationsId;
     private String netzbetreibercodenr;
     private Netzebene netzebene;
     private String netzgebietsnr;
@@ -86,8 +86,8 @@ public class Marktlokation extends Geschaeftsobjekt {
     public Adresse getLokationsadresse() { return lokationsadresse; }
     public void setLokationsadresse(Adresse value) { this.lokationsadresse = value; }
 
-    public String getMarktlokationsID() { return marktlokationsID; }
-    public void setMarktlokationsID(String value) { this.marktlokationsID = value; }
+    public String getMarktlokationsId() { return marktlokationsId; }
+    public void setMarktlokationsId(String value) { this.marktlokationsId = value; }
 
     public String getNetzbetreibercodenr() { return netzbetreibercodenr; }
     public void setNetzbetreibercodenr(String value) { this.netzbetreibercodenr = value; }

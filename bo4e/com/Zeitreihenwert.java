@@ -19,7 +19,7 @@ import com.example.StringOderNummer;
 public class Zeitreihenwert extends COM {
     private Messwertstatus status;
     private Messwertstatuszusatz statuszusatz;
-    private StringOderNummer wert;
+    private String wert;
     private Zeitspanne zeitspanne;
 
     public Messwertstatus getStatus() { return status; }
@@ -28,8 +28,8 @@ public class Zeitreihenwert extends COM {
     public Messwertstatuszusatz getStatuszusatz() { return statuszusatz; }
     public void setStatuszusatz(Messwertstatuszusatz value) { this.statuszusatz = value; }
 
-    public StringOderNummer getWert() { return wert; }
-    public void setWert(StringOderNummer value) { this.wert = value; }
+    public String getWert() { return wert; }
+    public void setWert(String value) { this.wert = value; }
 
     public Zeitspanne getZeitspanne() { return zeitspanne; }
     public void setZeitspanne(Zeitspanne value) { this.zeitspanne = value; }

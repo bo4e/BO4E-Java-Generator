@@ -37,7 +37,7 @@ public class Zaehler extends Geschaeftsobjekt {
     private Zaehlerauspraegung zaehlerauspraegung;
     private Zaehlergroesse zaehlergroesse;
     private Geschaeftspartner zaehlerhersteller;
-    private StringOderNummer zaehlerkonstante;
+    private String zaehlerkonstante;
     private String zaehlernummer;
     private Zaehlertyp zaehlertyp;
     private ZaehlertypSpezifikation zaehlertypSpezifikation;
@@ -78,8 +78,8 @@ public class Zaehler extends Geschaeftsobjekt {
     public Geschaeftspartner getZaehlerhersteller() { return zaehlerhersteller; }
     public void setZaehlerhersteller(Geschaeftspartner value) { this.zaehlerhersteller = value; }
 
-    public StringOderNummer getZaehlerkonstante() { return zaehlerkonstante; }
-    public void setZaehlerkonstante(StringOderNummer value) { this.zaehlerkonstante = value; }
+    public String getZaehlerkonstante() { return zaehlerkonstante; }
+    public void setZaehlerkonstante(String value) { this.zaehlerkonstante = value; }
 
     public String getZaehlernummer() { return zaehlernummer; }
     public void setZaehlernummer(String value) { this.zaehlernummer = value; }

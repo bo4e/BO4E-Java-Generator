@@ -17,7 +17,7 @@ import com.example.StringOderNummer;
  */
 public class Vertragskonditionen extends COM {
     private Zeitraum abschlagszyklus;
-    private StringOderNummer anzahlAbschlaege;
+    private String anzahlAbschlaege;
     private String beschreibung;
     private Zeitraum kuendigungsfrist;
     private Zeitraum vertragslaufzeit;
@@ -26,8 +26,8 @@ public class Vertragskonditionen extends COM {
     public Zeitraum getAbschlagszyklus() { return abschlagszyklus; }
     public void setAbschlagszyklus(Zeitraum value) { this.abschlagszyklus = value; }
 
-    public StringOderNummer getAnzahlAbschlaege() { return anzahlAbschlaege; }
-    public void setAnzahlAbschlaege(StringOderNummer value) { this.anzahlAbschlaege = value; }
+    public String getAnzahlAbschlaege() { return anzahlAbschlaege; }
+    public void setAnzahlAbschlaege(String value) { this.anzahlAbschlaege = value; }
 
     public String getBeschreibung() { return beschreibung; }
     public void setBeschreibung(String value) { this.beschreibung = value; }

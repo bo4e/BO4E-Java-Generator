@@ -22,8 +22,8 @@ public class Tarifberechnungsparameter extends COM {
     private Preis hoechstpreisNT;
     private Boolean istMesspreisInGrundpreisEnthalten;
     private Boolean istMesspreisZuBeruecksichtigen;
-    private StringOderNummer kwInklusive;
-    private StringOderNummer kwWeitereMengen;
+    private String kwInklusive;
+    private String kwWeitereMengen;
     private Messpreistyp messpreistyp;
     private Preis mindestpreis;
     private Tarifpreis[] zusatzpreise;
@@ -43,11 +43,11 @@ public class Tarifberechnungsparameter extends COM {
     public Boolean getIstMesspreisZuBeruecksichtigen() { return istMesspreisZuBeruecksichtigen; }
     public void setIstMesspreisZuBeruecksichtigen(Boolean value) { this.istMesspreisZuBeruecksichtigen = value; }
 
-    public StringOderNummer getKwInklusive() { return kwInklusive; }
-    public void setKwInklusive(StringOderNummer value) { this.kwInklusive = value; }
+    public String getKwInklusive() { return kwInklusive; }
+    public void setKwInklusive(String value) { this.kwInklusive = value; }
 
-    public StringOderNummer getKwWeitereMengen() { return kwWeitereMengen; }
-    public void setKwWeitereMengen(StringOderNummer value) { this.kwWeitereMengen = value; }
+    public String getKwWeitereMengen() { return kwWeitereMengen; }
+    public void setKwWeitereMengen(String value) { this.kwWeitereMengen = value; }
 
     public Messpreistyp getMesspreistyp() { return messpreistyp; }
     public void setMesspreistyp(Messpreistyp value) { this.messpreistyp = value; }

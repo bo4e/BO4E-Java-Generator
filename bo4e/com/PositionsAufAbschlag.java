@@ -23,7 +23,7 @@ import com.example.StringOderNummer;
 public class PositionsAufAbschlag extends COM {
     private AufAbschlagstyp aufAbschlagstyp;
     private Waehrungseinheit aufAbschlagswaehrung;
-    private StringOderNummer aufAbschlagswert;
+    private String aufAbschlagswert;
     private String beschreibung;
     private String bezeichnung;
 
@@ -33,8 +33,8 @@ public class PositionsAufAbschlag extends COM {
     public Waehrungseinheit getAufAbschlagswaehrung() { return aufAbschlagswaehrung; }
     public void setAufAbschlagswaehrung(Waehrungseinheit value) { this.aufAbschlagswaehrung = value; }
 
-    public StringOderNummer getAufAbschlagswert() { return aufAbschlagswert; }
-    public void setAufAbschlagswert(StringOderNummer value) { this.aufAbschlagswert = value; }
+    public String getAufAbschlagswert() { return aufAbschlagswert; }
+    public void setAufAbschlagswert(String value) { this.aufAbschlagswert = value; }
 
     public String getBeschreibung() { return beschreibung; }
     public void setBeschreibung(String value) { this.beschreibung = value; }

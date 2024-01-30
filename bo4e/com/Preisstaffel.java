@@ -15,21 +15,21 @@ import com.example.StringOderNummer;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/Preisstaffel.json>`_
  */
 public class Preisstaffel extends COM {
-    private StringOderNummer einheitspreis;
+    private String einheitspreis;
     private Sigmoidparameter sigmoidparameter;
-    private StringOderNummer staffelgrenzeBis;
-    private StringOderNummer staffelgrenzeVon;
+    private String staffelgrenzeBis;
+    private String staffelgrenzeVon;
 
-    public StringOderNummer getEinheitspreis() { return einheitspreis; }
-    public void setEinheitspreis(StringOderNummer value) { this.einheitspreis = value; }
+    public String getEinheitspreis() { return einheitspreis; }
+    public void setEinheitspreis(String value) { this.einheitspreis = value; }
 
     public Sigmoidparameter getSigmoidparameter() { return sigmoidparameter; }
     public void setSigmoidparameter(Sigmoidparameter value) { this.sigmoidparameter = value; }
 
-    public StringOderNummer getStaffelgrenzeBis() { return staffelgrenzeBis; }
-    public void setStaffelgrenzeBis(StringOderNummer value) { this.staffelgrenzeBis = value; }
+    public String getStaffelgrenzeBis() { return staffelgrenzeBis; }
+    public void setStaffelgrenzeBis(String value) { this.staffelgrenzeBis = value; }
 
-    public StringOderNummer getStaffelgrenzeVon() { return staffelgrenzeVon; }
-    public void setStaffelgrenzeVon(StringOderNummer value) { this.staffelgrenzeVon = value; }
+    public String getStaffelgrenzeVon() { return staffelgrenzeVon; }
+    public void setStaffelgrenzeVon(String value) { this.staffelgrenzeVon = value; }
 
 }

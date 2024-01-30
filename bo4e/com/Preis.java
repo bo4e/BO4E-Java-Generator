@@ -20,7 +20,7 @@ public class Preis extends COM {
     private Mengeneinheit bezugswert;
     private Waehrungseinheit einheit;
     private Preisstatus status;
-    private StringOderNummer wert;
+    private String wert;
 
     public Mengeneinheit getBezugswert() { return bezugswert; }
     public void setBezugswert(Mengeneinheit value) { this.bezugswert = value; }
@@ -31,7 +31,7 @@ public class Preis extends COM {
     public Preisstatus getStatus() { return status; }
     public void setStatus(Preisstatus value) { this.status = value; }
 
-    public StringOderNummer getWert() { return wert; }
-    public void setWert(StringOderNummer value) { this.wert = value; }
+    public String getWert() { return wert; }
+    public void setWert(String value) { this.wert = value; }
 
 }

@@ -33,7 +33,7 @@ public class Zaehlwerk extends COM {
     private VerwendungszweckProMarktrolle[] verwendungszwecke;
     private Long vorkommastelle;
     private Waermenutzung waermenutzung;
-    private StringOderNummer wandlerfaktor;
+    private String wandlerfaktor;
     private String zaehlwerkId;
     private Zaehlzeitregister zaehlzeitregister;
 
@@ -82,8 +82,8 @@ public class Zaehlwerk extends COM {
     public Waermenutzung getWaermenutzung() { return waermenutzung; }
     public void setWaermenutzung(Waermenutzung value) { this.waermenutzung = value; }
 
-    public StringOderNummer getWandlerfaktor() { return wandlerfaktor; }
-    public void setWandlerfaktor(StringOderNummer value) { this.wandlerfaktor = value; }
+    public String getWandlerfaktor() { return wandlerfaktor; }
+    public void setWandlerfaktor(String value) { this.wandlerfaktor = value; }
 
     public String getZaehlwerkId() { return zaehlwerkId; }
     public void setZaehlwerkId(String value) { this.zaehlwerkId = value; }

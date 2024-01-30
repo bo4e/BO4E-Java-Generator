@@ -25,8 +25,8 @@ public class Preisposition extends COM {
     private BDEWArtikelnummer bdewArtikelnummer;
     private Kalkulationsmethode berechnungsmethode;
     private Mengeneinheit bezugsgroesse;
-    private StringOderNummer freimengeBlindarbeit;
-    private StringOderNummer freimengeLeistungsfaktor;
+    private String freimengeBlindarbeit;
+    private String freimengeLeistungsfaktor;
     private String gruppenartikelId;
     private String leistungsbezeichnung;
     private Leistungstyp leistungstyp;
@@ -45,11 +45,11 @@ public class Preisposition extends COM {
     public Mengeneinheit getBezugsgroesse() { return bezugsgroesse; }
     public void setBezugsgroesse(Mengeneinheit value) { this.bezugsgroesse = value; }
 
-    public StringOderNummer getFreimengeBlindarbeit() { return freimengeBlindarbeit; }
-    public void setFreimengeBlindarbeit(StringOderNummer value) { this.freimengeBlindarbeit = value; }
+    public String getFreimengeBlindarbeit() { return freimengeBlindarbeit; }
+    public void setFreimengeBlindarbeit(String value) { this.freimengeBlindarbeit = value; }
 
-    public StringOderNummer getFreimengeLeistungsfaktor() { return freimengeLeistungsfaktor; }
-    public void setFreimengeLeistungsfaktor(StringOderNummer value) { this.freimengeLeistungsfaktor = value; }
+    public String getFreimengeLeistungsfaktor() { return freimengeLeistungsfaktor; }
+    public void setFreimengeLeistungsfaktor(String value) { this.freimengeLeistungsfaktor = value; }
 
     public String getGruppenartikelId() { return gruppenartikelId; }
     public void setGruppenartikelId(String value) { this.gruppenartikelId = value; }

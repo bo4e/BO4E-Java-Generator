@@ -16,12 +16,12 @@ import com.example.StringOderNummer;
  */
 public class Menge extends COM {
     private Mengeneinheit einheit;
-    private StringOderNummer wert;
+    private String wert;
 
     public Mengeneinheit getEinheit() { return einheit; }
     public void setEinheit(Mengeneinheit value) { this.einheit = value; }
 
-    public StringOderNummer getWert() { return wert; }
-    public void setWert(StringOderNummer value) { this.wert = value; }
+    public String getWert() { return wert; }
+    public void setWert(String value) { this.wert = value; }
 
 }

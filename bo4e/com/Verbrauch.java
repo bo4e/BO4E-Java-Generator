@@ -23,7 +23,7 @@ public class Verbrauch extends COM {
     private Messwertstatus messwertstatus;
     private String obisKennzahl;
     private OffsetDateTime startdatum;
-    private StringOderNummer wert;
+    private String wert;
     private Wertermittlungsverfahren wertermittlungsverfahren;
 
     public Mengeneinheit getEinheit() { return einheit; }
@@ -41,8 +41,8 @@ public class Verbrauch extends COM {
     public OffsetDateTime getStartdatum() { return startdatum; }
     public void setStartdatum(OffsetDateTime value) { this.startdatum = value; }
 
-    public StringOderNummer getWert() { return wert; }
-    public void setWert(StringOderNummer value) { this.wert = value; }
+    public String getWert() { return wert; }
+    public void setWert(String value) { this.wert = value; }
 
     public Wertermittlungsverfahren getWertermittlungsverfahren() { return wertermittlungsverfahren; }
     public void setWertermittlungsverfahren(Wertermittlungsverfahren value) { this.wertermittlungsverfahren = value; }

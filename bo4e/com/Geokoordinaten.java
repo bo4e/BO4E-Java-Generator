@@ -15,13 +15,13 @@ import com.example.StringOderNummer;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/Geokoordinaten.json>`_
  */
 public class Geokoordinaten extends COM {
-    private StringOderNummer breitengrad;
-    private StringOderNummer laengengrad;
+    private String breitengrad;
+    private String laengengrad;
 
-    public StringOderNummer getBreitengrad() { return breitengrad; }
-    public void setBreitengrad(StringOderNummer value) { this.breitengrad = value; }
+    public String getBreitengrad() { return breitengrad; }
+    public void setBreitengrad(String value) { this.breitengrad = value; }
 
-    public StringOderNummer getLaengengrad() { return laengengrad; }
-    public void setLaengengrad(StringOderNummer value) { this.laengengrad = value; }
+    public String getLaengengrad() { return laengengrad; }
+    public void setLaengengrad(String value) { this.laengengrad = value; }
 
 }

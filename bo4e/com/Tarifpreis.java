@@ -23,7 +23,7 @@ public class Tarifpreis extends COM {
     private Waehrungseinheit einheit;
     private Preistyp preistyp;
     private Preisstatus status;
-    private StringOderNummer wert;
+    private String wert;
 
     public String getBeschreibung() { return beschreibung; }
     public void setBeschreibung(String value) { this.beschreibung = value; }
@@ -40,7 +40,7 @@ public class Tarifpreis extends COM {
     public Preisstatus getStatus() { return status; }
     public void setStatus(Preisstatus value) { this.status = value; }
 
-    public StringOderNummer getWert() { return wert; }
-    public void setWert(StringOderNummer value) { this.wert = value; }
+    public String getWert() { return wert; }
+    public void setWert(String value) { this.wert = value; }
 
 }

@@ -18,12 +18,12 @@ import com.example.StringOderNummer;
  */
 public class Betrag extends COM {
     private Waehrungscode waehrung;
-    private StringOderNummer wert;
+    private String wert;
 
     public Waehrungscode getWaehrung() { return waehrung; }
     public void setWaehrung(Waehrungscode value) { this.waehrung = value; }
 
-    public StringOderNummer getWert() { return wert; }
-    public void setWert(StringOderNummer value) { this.wert = value; }
+    public String getWert() { return wert; }
+    public void setWert(String value) { this.wert = value; }
 
 }

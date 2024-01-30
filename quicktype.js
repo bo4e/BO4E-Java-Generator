@@ -210,7 +210,7 @@ function cleanUp(source, target, fileMap, root = target, dirname = source) {
                         if (line.includes("setVersion")) {
                             lines.splice(index, 1, "#");
                         } else {
-                            lines[index] = line
+                            lines[index] = lines[index]
                                 .replace(" version", " _version")
                                 .replace("private String _version;", "private final String _version = \"" + currentVersion + "\";")
                                 .replace(" id", " _id")
@@ -218,6 +218,9 @@ function cleanUp(source, target, fileMap, root = target, dirname = source) {
                                 .replace("public class", "public abstract class")
                                 .replace("getVersion", "getSchemaVersion");
                         }
+                    }
+                    if (line.includes("StringOderNummer")) {
+                        lines[index] = lines[index].replace("StringOderNummer", "String");
                     }
                     if (line.includes("setTyp")) {
                         lines.splice(index, 1, "#");
@@ -229,7 +232,7 @@ function cleanUp(source, target, fileMap, root = target, dirname = source) {
                         if (lines[index] !== "#" && property !== "id" && property !== "version") {
                             // change property names to fit schema
                             const propertyName = getPropertyName(property, file, fileMap.get(fileName.toLowerCase()).replace(targetDirName, sourceDirName));
-                            lines[index] = line.replace(` ${property};`, ` ${propertyName};`);
+                            lines[index] = lines[index].replace(` ${property};`, ` ${propertyName};`);
                             const getterIndex = lines.findIndex(value => value.toLowerCase().includes(`get${property.toLowerCase()}`));
                             lines[getterIndex] = lines[getterIndex].replace(`return ${property};`, `return ${propertyName};`);
                             lines[getterIndex + 1] = lines[getterIndex + 1].replace(`this.${property} = value;`, `this.${propertyName} = value;`);
@@ -246,7 +249,7 @@ function cleanUp(source, target, fileMap, root = target, dirname = source) {
                                     .find(value => value.includes("default"))
                                     .replaceAll("\"", "")
                                     .replace("default:", "");
-                                lines[index] = line.replace("private", "private final").replace(";", " = Typ." + fileTyp + ";")
+                                lines[index] = lines[index].replace("private", "private final").replace(";", " = Typ." + fileTyp + ";")
                             }
                             // add import statements
                             const typeFile = type + ".json";
@@ -344,6 +347,19 @@ function result(counter, source, target) {
     console.log("Bo: " + boCountG + "/" + boCount);
     console.log("Com: " + comCountG + "/" + comCount);
     console.log("Enum: " + enumCountG + "/" + enumCount);
+}
+
+function test() {
+    const schemaInput = new JSONSchemaInput(new FetchingJSONSchemaStore());
+    schemaInput.addSourceSync({name: "Sigmoidparameter", schema: fs.readFileSync("testDir/Sigmoidparameter.json", "utf-8")});
+    const inputData = new InputData();
+    inputData.addInput(schemaInput);
+    quicktypeMultiFile({
+        inputData,
+        lang: new NewJavaTargetLanguage()
+    }).then(value => value.forEach((value1, key) => {
+        fs.writeFileSync("testDir/" + key, value1.lines.join("\n"));
+    }))
 }
 
 main();

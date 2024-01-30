@@ -17,14 +17,14 @@ import com.example.bo4e.enums.AbgabeArt;
  */
 public class Konzessionsabgabe extends COM {
     private String kategorie;
-    private StringOderNummer kosten;
+    private String kosten;
     private AbgabeArt satz;
 
     public String getKategorie() { return kategorie; }
     public void setKategorie(String value) { this.kategorie = value; }
 
-    public StringOderNummer getKosten() { return kosten; }
-    public void setKosten(StringOderNummer value) { this.kosten = value; }
+    public String getKosten() { return kosten; }
+    public void setKosten(String value) { this.kosten = value; }
 
     public AbgabeArt getSatz() { return satz; }
     public void setSatz(AbgabeArt value) { this.satz = value; }

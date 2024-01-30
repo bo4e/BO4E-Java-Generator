@@ -16,11 +16,11 @@ import com.example.bo4e.enums.Erzeugungsart;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/Energieherkunft.json>`_
  */
 public class Energieherkunft extends COM {
-    private StringOderNummer anteilProzent;
+    private String anteilProzent;
     private Erzeugungsart erzeugungsart;
 
-    public StringOderNummer getAnteilProzent() { return anteilProzent; }
-    public void setAnteilProzent(StringOderNummer value) { this.anteilProzent = value; }
+    public String getAnteilProzent() { return anteilProzent; }
+    public void setAnteilProzent(String value) { this.anteilProzent = value; }
 
     public Erzeugungsart getErzeugungsart() { return erzeugungsart; }
     public void setErzeugungsart(Erzeugungsart value) { this.erzeugungsart = value; }

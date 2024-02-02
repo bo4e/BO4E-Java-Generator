@@ -8,7 +8,7 @@ const {BooleanOption, StringOption} = require("quicktype-core/dist/RendererOptio
 const {JacksonRenderer} = require("quicktype-core/dist/language/Java");
 const {acronymOption, AcronymStyleOptions} = require("quicktype-core/dist/support/Acronyms");
 
-const packageName = "com.example";
+const packageName = "com.example.";
 const targetDirName = "bo4e";
 const sourceDirName = "bo4e_schemas";
 const currentVersion = "202401.0.0";
@@ -17,7 +17,7 @@ const newJavaOptions = {
     justTypes: new BooleanOption("just-types", "Plain types only", true),
     dateTimeProvider: javaOptions.dateTimeProvider,
     acronymStyle: acronymOption(AcronymStyleOptions.Original),
-    packageName: new StringOption("package", "Generated package name", "NAME", packageName + "." + targetDirName),
+    packageName: new StringOption("package", "Generated package name", "NAME", "placeholder"),
     lombok: javaOptions.lombok,
     lombokCopyAnnotations: javaOptions.lombokCopyAnnotations
 }
@@ -177,7 +177,7 @@ function cleanUp(source, target, fileMap, root = target, dirname = source) {
                 fs.renameSync(root + '/' + javaFile, target + '/' + javaFile);
                 let newFile = fs.readFileSync(target + '/' + javaFile, "utf-8");
                 // change package to fit directory structure
-                newFile = newFile.replace("package " + packageName + "." + root,"package " + target.replace("/", "."));
+                newFile = newFile.replace("package placeholder",`package ${packageName}${target.replaceAll("/", ".")}`);
                 const lines = newFile.split("\n");
                 const importLines = [];
                 lines.forEach((line, index) => {
@@ -257,7 +257,7 @@ function cleanUp(source, target, fileMap, root = target, dirname = source) {
                             const typeFile = type + ".json";
                             if (!files.includes(typeFile)) {
                                 if (fileMap.has(type.toLowerCase())) {
-                                    const importLine = `import ${packageName}.${fileMap.get(type.toLowerCase()).replaceAll("/", ".")}${type};`;
+                                    const importLine = `import ${packageName}${fileMap.get(type.toLowerCase()).replaceAll("/", ".")}${type};`;
                                     if (!importLines.includes(importLine)) {
                                         importLines.push(importLine);
                                     }
@@ -319,6 +319,9 @@ function main(source = sourceDirName, target = targetDirName) {
         console.log("Starting output");
         javaClasses.forEach((javaClass, className) => {
             if (className !== "AllKnowing.java" && className !== "StringOderNummerTyp.java" && className !== "StringOderNummer.java") {
+                if (!fs.existsSync(target)) {
+                    fs.mkdirSync(target, {recursive: true});
+                }
                 fs.writeFileSync(target + "/" + className, javaClass.lines.join("\n"));
             }
         });

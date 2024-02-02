@@ -1,4 +1,4 @@
-package bo4e.enums;
+package com.example.bo4e.enums;
 
 import java.io.IOException;
 

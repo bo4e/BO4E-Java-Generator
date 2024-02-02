@@ -1,4 +1,4 @@
-package bo4e.com;
+package com.example.bo4e.com;
 
 /**
  * Mit dieser Komponente können Auf- und Abschläge verschiedener Typen im Zusammenhang

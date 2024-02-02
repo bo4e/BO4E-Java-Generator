@@ -1,4 +1,4 @@
-package bo4e.bo;
+package com.example.bo4e.bo;
 
 import com.example.bo4e.enums.Typ;
 import com.example.bo4e.com.Adresse;

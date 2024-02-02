@@ -1,4 +1,4 @@
-package bo4e.com;
+package com.example.bo4e.com;
 
 import com.example.bo4e.bo.Geraet;
 import com.example.bo4e.enums.Voraussetzungen;

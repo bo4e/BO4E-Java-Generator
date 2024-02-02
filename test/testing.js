@@ -5,7 +5,7 @@ const {BooleanOption, StringOption} = require("quicktype-core/dist/RendererOptio
 const {JacksonRenderer} = require("quicktype-core/dist/language/Java");
 const {acronymOption, AcronymStyleOptions} = require("quicktype-core/dist/support/Acronyms");
 
-const packageName = "com.example";
+const packageName = "";
 const targetDirName = "bo4e";
 const sourceDirName = "bo4e_schemas";
 const currentVersion = "202401.0.0";
@@ -14,7 +14,7 @@ const newJavaOptions = {
     justTypes: new BooleanOption("just-types", "Plain types only", true),
     dateTimeProvider: javaOptions.dateTimeProvider,
     acronymStyle: acronymOption(AcronymStyleOptions.Original),
-    packageName: new StringOption("package", "Generated package name", "NAME", packageName + "." + targetDirName),
+    packageName: new StringOption("package", "Generated package name", "NAME", "placeholder"),
     lombok: javaOptions.lombok,
     lombokCopyAnnotations: javaOptions.lombokCopyAnnotations
 }
@@ -55,7 +55,11 @@ class GenerationFile {
         this.content = [];
     }
 
-    cleanUpContent() {
+    /**
+     *
+     * @param fileMap {Map<string, GenerationFile>}
+     */
+    cleanUpContent(fileMap) {
         let lines = this.content;
         if (dirToClass.has(this.dirname)) {
             if (dirToClass.get(this.dirname) === this.name) {
@@ -64,18 +68,95 @@ class GenerationFile {
                 lines = this.cleanUpClass();
             }
         }
+        const importLines = [];
         for (let i = 0; i < lines.length; i++) {
             if (lines[i].startsWith("package ")) {
-                lines[i] = `package ${packageName}.${this.targetDirPath.replace("/", ".")};`;
+                lines[i] = `package ${packageName}${this.targetDirPath.replace("/", ".")};`;
                 continue;
             }
+            if (lines[i].includes("setTyp")) {
+                lines.splice(i, 1, "#");
+                continue;
+            }
+            if (lines[i].includes("StringOderNummer")) {
+                lines[i] = lines[i].replace("StringOderNummer", "String");
+            }
+            if (lines[i].includes("private ")) {
+                const words = lines[i].trim().split(" ").filter(value => value !== "");
+                const type = words[1].replace("[]", "");
+                const property = words[2].replace(";", "");
+                if (lines[i] !== "#" && property !== "_id" && property !== "String" && property !== "typ") {
+                    // change property names to fit schema
+                    const propertyName = this.getPropertyName(property);
+                    lines[i] = lines[i].replace(` ${property};`, ` ${propertyName};`);
+                    const getterIndex = lines.findIndex(value => value.toLowerCase().includes(`get${property.toLowerCase()}`));
+                    if (getterIndex >= 0) {
+                        lines[getterIndex] = lines[getterIndex].replace(`return ${property};`, `return ${propertyName};`);
+                        lines[getterIndex + 1] = lines[getterIndex + 1].replace(`this.${property} = value;`, `this.${propertyName} = value;`);
+                    } else {
+                        console.error(`could not find get${property.toLowerCase()}`);
+                    }
+                }
+                if (type !== "ZusatzAttribut" || (dirToClass.has(this.dirname) && dirToClass.get(this.dirname) === this.name)) {
+                    if (type === "Typ") {
+                        // add default value to property Typ
+                        const fileContent = fs
+                            .readFileSync(this.sourceFilePath, "utf-8")
+                            .replaceAll(" ", "")
+                            .split("\n");
+                        const fileTyp = fileContent
+                            .slice(fileContent.findIndex(value => value.includes("_typ")))
+                            .find(value => value.includes("default"))
+                            .replaceAll("\"", "")
+                            .replace("default:", "");
+                        lines[i] = lines[i].replace("private", "private final").replace(";", " = Typ." + fileTyp + ";")
+                    }
+                    // add import statements
+                    const typeFile = fileMap.get(type.toLowerCase());
+                    if (typeFile) {
+                        const importLine = `import ${packageName}${typeFile.targetDirPath.replaceAll("/", ".")}.${type};`;
+                        if (!importLines.includes(importLine)) {
+                            importLines.push(importLine);
+                        }
+                    }
+                }
+            }
         }
+        const newLines = lines.filter(value => value !== "#");
+        if (importLines.length > 0) {
+            if (!lines[2].startsWith("import ")) {
+                newLines.splice(2, 0, importLines.join("\n"), "");
+            } else {
+                newLines.splice(2, 0, importLines.join("\n"));
+            }
+        }
+        this.content = newLines;
     }
 
     cleanUpClass() {
         const lines = this.content;
         for (let i = 0; i < lines.length; i++) {
-
+            if (lines[i].startsWith("public class")) {
+                const parent = dirToClass.get(this.dirname);
+                const ownVersionProperty = lines.slice(i, i + 4).findIndex(value => value.includes("private String version")) === -1;
+                if (!ownVersionProperty) {
+                    lines[lines.findIndex(value => value.includes("private String version"))] = "#";
+                    const lineIndex = lines.findIndex(value => value.includes("getVersion"));
+                    lines.splice(lineIndex, 2, "#", "#");
+                    if (lines[lineIndex + 2] === "") {
+                        lines[lineIndex + 2] = "#";
+                    }
+                }
+                lines[i] = lines[i].substring(0, lines[i].length - 1) + "extends " + parent + " {";
+            } else if (lines[i].includes("getid") || lines[i].includes("getZusatzAttribute")) {
+                lines.splice(i, 2, "#", "#");
+                if (lines[i + 2] === "") {
+                    lines[i + 2] = "#";
+                }
+            } else if (lines[i].includes("private ZusatzAttribut")
+                || lines[i].includes("private String id")) {
+                lines.splice(i, 1, "#");
+            }
         }
         return lines;
     }
@@ -98,6 +179,17 @@ class GenerationFile {
                 .replace("getVersion", "getSchemaVersion");
         }
         return lines;
+    }
+
+    getPropertyName(property) {
+        const content = fs.readFileSync(this.sourceFilePath, "utf-8").replaceAll(" ", "").split("\n");
+        const line = content.find(value => value.toLowerCase() === `\"${property.toLowerCase()}\":{`);
+        if (line) {
+            return line.substring(1, line.length - 3);
+        } else {
+            console.error("property " + property + " not found");
+            return property;
+        }
     }
 }
 
@@ -127,25 +219,6 @@ class NewJavaTargetLanguage extends JavaTargetLanguage {
     }
 }
 
-function generateConverter(target) {
-    const schemaInput = new JSONSchemaInput(new FetchingJSONSchemaStore());
-    schemaInput.addSourceSync({name: "StringOderNummer", schema: fs.readFileSync("resource_schemas/StringOderNummerTyp.json", "utf-8")});
-    const inputData = new InputData();
-    inputData.addInput(schemaInput);
-
-    quicktypeMultiFile({
-        inputData,
-        lang: new NewJavaTargetLanguage(),
-        allPropertiesOptional: true
-    }).then(javaClasses => {
-        javaClasses.forEach((javaClass, className) => {
-            if (className !== "StringOderNummer.java") {
-                fs.writeFileSync(target + "/" + className, javaClass.lines.join("\n"));
-            }
-        });
-    });
-}
-
 /**
  *
  * @param generationFile {GenerationFile}
@@ -169,16 +242,26 @@ async function generateClasses(generationFile) {
  * @returns {Promise<void>}
  */
 async function generateFromFileMap(fileMap) {
+    let counter = 0;
     for (const generationFile of fileMap.values()) {
         const classMap = await generateClasses(generationFile);
         const javaClass = classMap.get(generationFile.javaFile);
         if (javaClass) {
             generationFile.content = javaClass.lines;
+            generationFile.cleanUpContent(fileMap);
+            if (!fs.existsSync(generationFile.targetDirPath)) {
+                fs.mkdirSync(generationFile.targetDirPath, {recursive: true});
+            }
+            fs.writeFileSync(generationFile.targetFilePath, generationFile.content.join("\n"));
             console.log(generationFile.name + " generated");
+            counter++;
         } else {
             console.error("Could not find " + generationFile.name);
         }
     }
+    const output = `Generated ${counter}/${fileMap.size} files`;
+    const separator = output.replaceAll(RegExp(".", "g"), "-");
+    console.log(`\n${separator}\n${output}\n${separator}`);
 }
 
 /**
@@ -209,26 +292,7 @@ function generateFileMap(source, target, fileMap = new Map) {
 
 function main(source = sourceDirName, target = targetDirName) {
     const fileMap = generateFileMap(source, target);
-    generateFromFileMap(fileMap).then(() => {
-        fileMap.forEach(generationFile => {
-
-        });
-    });
-}
-
-function output(counter, source, target) {
-    const boCount = fs.readdirSync(source + "/bo").length;
-    const comCount = fs.readdirSync(source + "/com").length;
-    const enumCount = fs.readdirSync(source + "/enum").length;
-    const boCountG = fs.readdirSync(target + "/bo").length;
-    const comCountG = fs.readdirSync(target + "/com").length;
-    const enumCountG = fs.readdirSync(target + "/enums").length;
-    console.log("\nEinzulesende Dateien: " + (fs.readdirSync(source).length - 3 + boCount + comCount + enumCount));
-    console.log("Eingelesene Dateien: " + counter);
-    console.log("Erstellte Dateien: " + (fs.readdirSync(target).length - 3 + boCountG + comCountG + enumCountG));
-    console.log("Bo: " + boCountG + "/" + boCount);
-    console.log("Com: " + comCountG + "/" + comCount);
-    console.log("Enum: " + enumCountG + "/" + enumCount);
+    generateFromFileMap(fileMap).then();
 }
 
 main("bo4e_schemas", "bo4e");

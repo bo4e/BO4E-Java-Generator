@@ -166,116 +166,114 @@ function cleanUp(source, target, fileMap, root = target, dirname = source) {
     for (const file of files) {
         const sourcePath = source + '/' + file;
         if (fs.statSync(sourcePath).isFile()) {
-            if (root !== target) {
-                let javaFile = file.replace(".json", ".java");
-                if (!fs.existsSync(root + '/' + javaFile)) {
-                    const targetFiles = fs.readdirSync(root);
-                    javaFile = targetFiles.find(value => value.substring(0, value.length - 5).toLowerCase() === file.substring(0, file.length - 5).toLowerCase());
-                }
-                const fileName = javaFile.replace(".java", "");
-                // restore directory structure
-                fs.renameSync(root + '/' + javaFile, target + '/' + javaFile);
-                let newFile = fs.readFileSync(target + '/' + javaFile, "utf-8");
-                // change package to fit directory structure
-                newFile = newFile.replace("package placeholder",`package ${packageName}${target.replaceAll("/", ".")}`);
-                const lines = newFile.split("\n");
-                const importLines = [];
-                lines.forEach((line, index) => {
-                    const classAndDir = baseclassForDir.find(value => value.dir === dirname);
-                    if (classAndDir !== undefined && fileName !== classAndDir.className) {
-                        // add parent to child and remove overwritten properties
-                        if (line.startsWith("public class")) {
-                            const parent = classAndDir.className;
-                            const ownVersionProperty = lines.slice(index, index + 4).findIndex(value => value.includes("private String version")) === -1;
-                            if (!ownVersionProperty) {
-                                lines[lines.findIndex(value => value.includes("private String version"))] = "#";
-                                const lineIndex = lines.findIndex(value => value.includes("getVersion"));
-                                lines.splice(lineIndex, 2, "#", "#");
-                                if (lines[lineIndex + 2] === "") {
-                                    lines[lineIndex + 2] = "#";
-                                }
+            let javaFile = file.replace(".json", ".java");
+            if (!fs.existsSync(root + '/' + javaFile)) {
+                const targetFiles = fs.readdirSync(root);
+                javaFile = targetFiles.find(value => value.substring(0, value.length - 5).toLowerCase() === file.substring(0, file.length - 5).toLowerCase());
+            }
+            const fileName = javaFile.replace(".java", "");
+            // restore directory structure
+            fs.renameSync(root + '/' + javaFile, target + '/' + javaFile);
+            let newFile = fs.readFileSync(target + '/' + javaFile, "utf-8");
+            // change package to fit directory structure
+            newFile = newFile.replace("package placeholder",`package ${packageName}${target.replaceAll("/", ".")}`);
+            const lines = newFile.split("\n");
+            const importLines = [];
+            lines.forEach((line, index) => {
+                const classAndDir = baseclassForDir.find(value => value.dir === dirname);
+                if (classAndDir !== undefined && fileName !== classAndDir.className) {
+                    // add parent to child and remove overwritten properties
+                    if (line.startsWith("public class")) {
+                        const parent = classAndDir.className;
+                        const ownVersionProperty = lines.slice(index, index + 4).findIndex(value => value.includes("private String version")) === -1;
+                        if (!ownVersionProperty) {
+                            lines[lines.findIndex(value => value.includes("private String version"))] = "#";
+                            const lineIndex = lines.findIndex(value => value.includes("getVersion"));
+                            lines.splice(lineIndex, 2, "#", "#");
+                            if (lines[lineIndex + 2] === "") {
+                                lines[lineIndex + 2] = "#";
                             }
-                            lines[index] = line.substring(0, line.length - 1) + "extends " + parent + " {";
-                        } else if (line.includes("getid") || line.includes("getZusatzAttribute")) {
-                            lines.splice(index, 2, "#", "#");
-                            if (lines[index + 2] === "") {
-                                lines[index + 2] = "#";
-                            }
-                        } else if (line.includes("private ZusatzAttribut")
-                            || line.includes("private String id")) {
-                            lines.splice(index, 1, "#");
                         }
-                    } else if (classAndDir !== undefined && fileName === classAndDir.className) {
-                        // change parent properties and values to fit schema
-                        if (line.includes("setVersion")) {
-                            lines.splice(index, 1, "#");
-                        } else {
-                            lines[index] = lines[index]
-                                .replace(" version", " _version")
-                                .replace("private String _version;", "private final String _version = \"" + currentVersion + "\";")
-                                .replace(" id", " _id")
-                                .replace("this.id", "this._id")
-                                .replace("public class", "public abstract class")
-                                .replace("getVersion", "getSchemaVersion")
-                                .replace("getid", "getId")
-                                .replace("setid", "setId");
+                        lines[index] = line.substring(0, line.length - 1) + "extends " + parent + " {";
+                    } else if (line.includes("getid") || line.includes("getZusatzAttribute")) {
+                        lines.splice(index, 2, "#", "#");
+                        if (lines[index + 2] === "") {
+                            lines[index + 2] = "#";
                         }
-                    }
-                    if (line.includes("StringOderNummer")) {
-                        lines[index] = lines[index].replace("StringOderNummer", "String");
-                    }
-                    if (line.includes("setTyp")) {
+                    } else if (line.includes("private ZusatzAttribut")
+                        || line.includes("private String id")) {
                         lines.splice(index, 1, "#");
                     }
-                    if (line.includes("private ")) {
-                        const words = line.trim().split(" ").filter(value => value !== "");
-                        const type = words[1].replace("[]", "");
-                        const property = words[2].replace(";", "");
-                        if (lines[index] !== "#" && property !== "id" && property !== "version") {
-                            // change property names to fit schema
-                            const propertyName = getPropertyName(property, file, fileMap.get(fileName.toLowerCase()).replace(targetDirName, sourceDirName));
-                            lines[index] = lines[index].replace(` ${property};`, ` ${propertyName};`);
-                            const getterIndex = lines.findIndex(value => value.toLowerCase().includes(`get${property.toLowerCase()}`));
-                            lines[getterIndex] = lines[getterIndex].replace(`return ${property};`, `return ${propertyName};`);
-                            lines[getterIndex + 1] = lines[getterIndex + 1].replace(`this.${property} = value;`, `this.${propertyName} = value;`);
+                } else if (classAndDir !== undefined && fileName === classAndDir.className) {
+                    // change parent properties and values to fit schema
+                    if (line.includes("setVersion")) {
+                        lines.splice(index, 1, "#");
+                    } else {
+                        lines[index] = lines[index]
+                            .replace(" version", " _version")
+                            .replace("private String _version;", "private final String _version = \"" + currentVersion + "\";")
+                            .replace(" id", " _id")
+                            .replace("this.id", "this._id")
+                            .replace("public class", "public abstract class")
+                            .replace("getVersion", "getSchemaVersion")
+                            .replace("getid", "getId")
+                            .replace("setid", "setId");
+                    }
+                }
+                if (line.includes("StringOderNummer")) {
+                    lines[index] = lines[index].replace("StringOderNummer", "String");
+                }
+                if (line.includes("setTyp")) {
+                    lines.splice(index, 1, "#");
+                }
+                if (line.includes("private ")) {
+                    const words = line.trim().split(" ").filter(value => value !== "");
+                    const type = words[1].replace("[]", "");
+                    const property = words[2].replace(";", "");
+                    if (lines[index] !== "#" && property !== "id" && property !== "version") {
+                        // change property names to fit schema
+                        const propertyName = getPropertyName(property, file, fileMap.get(fileName.toLowerCase()).replace(targetDirName, sourceDirName));
+                        lines[index] = lines[index].replace(` ${property};`, ` ${propertyName};`);
+                        const getterIndex = lines.findIndex(value => value.toLowerCase().includes(`get${property.toLowerCase()}`));
+                        lines[getterIndex] = lines[getterIndex].replace(`return ${property};`, `return ${propertyName};`);
+                        lines[getterIndex + 1] = lines[getterIndex + 1].replace(`this.${property} = value;`, `this.${propertyName} = value;`);
+                    }
+                    if (type !== "ZusatzAttribut" || (classAndDir !== undefined && fileName === classAndDir.className)) {
+                        if (type === "Typ") {
+                            // add default value to property Typ
+                            const fileContent = fs
+                                .readFileSync(sourcePath, "utf-8")
+                                .replaceAll(" ", "")
+                                .split("\n");
+                            const fileTyp = fileContent
+                                .slice(fileContent.findIndex(value => value.includes("_typ")))
+                                .find(value => value.includes("default"))
+                                .replaceAll("\"", "")
+                                .replace("default:", "");
+                            lines[index] = lines[index].replace("private", "private final").replace(";", " = Typ." + fileTyp + ";")
                         }
-                        if (type !== "ZusatzAttribut" || (classAndDir !== undefined && fileName === classAndDir.className)) {
-                            if (type === "Typ") {
-                                // add default value to property Typ
-                                const fileContent = fs
-                                    .readFileSync(sourcePath, "utf-8")
-                                    .replaceAll(" ", "")
-                                    .split("\n");
-                                const fileTyp = fileContent
-                                    .slice(fileContent.findIndex(value => value.includes("_typ")))
-                                    .find(value => value.includes("default"))
-                                    .replaceAll("\"", "")
-                                    .replace("default:", "");
-                                lines[index] = lines[index].replace("private", "private final").replace(";", " = Typ." + fileTyp + ";")
-                            }
-                            // add import statements
-                            const typeFile = type + ".json";
-                            if (!files.includes(typeFile)) {
-                                if (fileMap.has(type.toLowerCase())) {
-                                    const importLine = `import ${packageName}${fileMap.get(type.toLowerCase()).replaceAll("/", ".")}${type};`;
-                                    if (!importLines.includes(importLine)) {
-                                        importLines.push(importLine);
-                                    }
+                        // add import statements
+                        const typeFile = type + ".json";
+                        if (type !== "StringOderNummer" && !files.includes(typeFile)) {
+                            if (fileMap.has(type.toLowerCase())) {
+                                const importLine = `import ${packageName}${fileMap.get(type.toLowerCase()).replaceAll("/", ".")}${type};`;
+                                if (!importLines.includes(importLine)) {
+                                    importLines.push(importLine);
                                 }
                             }
                         }
                     }
-                });
-                const newLines = lines.filter(value => value !== "#");
-                if (importLines.length > 0) {
-                    if (!lines[2].startsWith("import ")) {
-                        newLines.splice(2, 0, importLines.join("\n"), "");
-                    } else {
-                        newLines.splice(2, 0, importLines.join("\n"));
-                    }
                 }
-                fs.writeFileSync(target + '/' + javaFile, newLines.join("\n"));
+            });
+            const newLines = lines.filter(value => value !== "#");
+            if (importLines.length > 0) {
+                if (!lines[2].startsWith("import ")) {
+                    newLines.splice(2, 0, importLines.join("\n"), "");
+                } else {
+                    newLines.splice(2, 0, importLines.join("\n"));
+                }
             }
+            fs.writeFileSync(target + '/' + javaFile, newLines.join("\n"));
         } else {
             dirname = file;
             if (file === "enum") {

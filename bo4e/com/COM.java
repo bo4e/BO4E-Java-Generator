@@ -18,8 +18,8 @@ public abstract class COM {
     private final String _version = "202401.0.0";
     private ZusatzAttribut[] zusatzAttribute;
 
-    public String getid() { return _id; }
-    public void setid(String value) { this._id = value; }
+    public String getId() { return _id; }
+    public void setId(String value) { this._id = value; }
 
     public String getSchemaVersion() { return _version; }
 

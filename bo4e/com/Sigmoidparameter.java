@@ -16,21 +16,21 @@ import com.example.StringOderNummer;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/Sigmoidparameter.json>`_
  */
 public class Sigmoidparameter extends COM {
-    private StringOderNummer A;
-    private StringOderNummer B;
-    private StringOderNummer C;
-    private StringOderNummer D;
+    private String A;
+    private String B;
+    private String C;
+    private String D;
 
-    public StringOderNummer getA() { return A; }
-    public void setA(StringOderNummer value) { this.A = value; }
+    public String getA() { return A; }
+    public void setA(String value) { this.A = value; }
 
-    public StringOderNummer getB() { return B; }
-    public void setB(StringOderNummer value) { this.B = value; }
+    public String getB() { return B; }
+    public void setB(String value) { this.B = value; }
 
-    public StringOderNummer getC() { return C; }
-    public void setC(StringOderNummer value) { this.C = value; }
+    public String getC() { return C; }
+    public void setC(String value) { this.C = value; }
 
-    public StringOderNummer getD() { return D; }
-    public void setD(StringOderNummer value) { this.D = value; }
+    public String getD() { return D; }
+    public void setD(String value) { this.D = value; }
 
 }

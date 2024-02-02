@@ -216,7 +216,9 @@ function cleanUp(source, target, fileMap, root = target, dirname = source) {
                                 .replace(" id", " _id")
                                 .replace("this.id", "this._id")
                                 .replace("public class", "public abstract class")
-                                .replace("getVersion", "getSchemaVersion");
+                                .replace("getVersion", "getSchemaVersion")
+                                .replace("getid", "getId")
+                                .replace("setid", "setId");
                         }
                     }
                     if (line.includes("StringOderNummer")) {
@@ -347,19 +349,6 @@ function result(counter, source, target) {
     console.log("Bo: " + boCountG + "/" + boCount);
     console.log("Com: " + comCountG + "/" + comCount);
     console.log("Enum: " + enumCountG + "/" + enumCount);
-}
-
-function test() {
-    const schemaInput = new JSONSchemaInput(new FetchingJSONSchemaStore());
-    schemaInput.addSourceSync({name: "Sigmoidparameter", schema: fs.readFileSync("testDir/Sigmoidparameter.json", "utf-8")});
-    const inputData = new InputData();
-    inputData.addInput(schemaInput);
-    quicktypeMultiFile({
-        inputData,
-        lang: new NewJavaTargetLanguage()
-    }).then(value => value.forEach((value1, key) => {
-        fs.writeFileSync("testDir/" + key, value1.lines.join("\n"));
-    }))
 }
 
 main();

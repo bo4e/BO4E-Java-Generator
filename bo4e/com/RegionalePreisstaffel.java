@@ -1,7 +1,5 @@
 package com.example.bo4e.com;
 
-import com.example.StringOderNummer;
-
 /**
  * Abbildung einer Preisstaffel mit regionaler Abgrenzung
  *

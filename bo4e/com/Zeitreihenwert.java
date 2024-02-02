@@ -2,7 +2,6 @@ package com.example.bo4e.com;
 
 import com.example.bo4e.enums.Messwertstatus;
 import com.example.bo4e.enums.Messwertstatuszusatz;
-import com.example.StringOderNummer;
 
 /**
  * Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.

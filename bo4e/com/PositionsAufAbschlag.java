@@ -2,7 +2,6 @@ package com.example.bo4e.com;
 
 import com.example.bo4e.enums.AufAbschlagstyp;
 import com.example.bo4e.enums.Waehrungseinheit;
-import com.example.StringOderNummer;
 
 /**
  * Differenzierung der zu betrachtenden Produkte anhand der preiserhöhenden (Aufschlag)

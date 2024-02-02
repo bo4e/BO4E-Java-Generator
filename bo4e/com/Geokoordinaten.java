@@ -1,7 +1,5 @@
 package com.example.bo4e.com;
 
-import com.example.StringOderNummer;
-
 /**
  * This component provides the geo-coordinates for a location.
  *

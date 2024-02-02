@@ -7,7 +7,6 @@ import com.example.bo4e.enums.Registeranzahl;
 import com.example.bo4e.enums.Sparte;
 import com.example.bo4e.enums.Zaehlerauspraegung;
 import com.example.bo4e.enums.Zaehlergroesse;
-import com.example.StringOderNummer;
 import com.example.bo4e.enums.Zaehlertyp;
 import com.example.bo4e.enums.ZaehlertypSpezifikation;
 import com.example.bo4e.com.Zaehlwerk;

@@ -1,7 +1,6 @@
 package com.example.bo4e.com;
 
 import com.example.bo4e.enums.Mengeneinheit;
-import com.example.StringOderNummer;
 
 /**
  * Abbildung einer Menge mit Wert und Einheit.

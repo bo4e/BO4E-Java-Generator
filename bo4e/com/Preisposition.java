@@ -3,7 +3,6 @@ package com.example.bo4e.com;
 import com.example.bo4e.enums.BDEWArtikelnummer;
 import com.example.bo4e.enums.Kalkulationsmethode;
 import com.example.bo4e.enums.Mengeneinheit;
-import com.example.StringOderNummer;
 import com.example.bo4e.enums.Leistungstyp;
 import com.example.bo4e.enums.Waehrungseinheit;
 import com.example.bo4e.enums.Tarifzeit;

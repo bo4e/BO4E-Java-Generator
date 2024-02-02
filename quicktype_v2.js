@@ -5,7 +5,7 @@ const {BooleanOption, StringOption} = require("quicktype-core/dist/RendererOptio
 const {JacksonRenderer} = require("quicktype-core/dist/language/Java");
 const {acronymOption, AcronymStyleOptions} = require("quicktype-core/dist/support/Acronyms");
 
-const packageName = "";
+const packageName = "com.example.";
 const targetDirName = "bo4e";
 const sourceDirName = "bo4e_schemas";
 const currentVersion = "202401.0.0";
@@ -113,7 +113,7 @@ class GenerationFile {
                     }
                     // add import statements
                     const typeFile = fileMap.get(type.toLowerCase());
-                    if (typeFile) {
+                    if (typeFile && typeFile.dirname !== this.dirname) {
                         const importLine = `import ${packageName}${typeFile.targetDirPath.replaceAll("/", ".")}.${type};`;
                         if (!importLines.includes(importLine)) {
                             importLines.push(importLine);
@@ -242,6 +242,7 @@ async function generateClasses(generationFile) {
  * @returns {Promise<void>}
  */
 async function generateFromFileMap(fileMap) {
+    console.log("Starting generation:");
     let counter = 0;
     for (const generationFile of fileMap.values()) {
         const classMap = await generateClasses(generationFile);
@@ -253,13 +254,13 @@ async function generateFromFileMap(fileMap) {
                 fs.mkdirSync(generationFile.targetDirPath, {recursive: true});
             }
             fs.writeFileSync(generationFile.targetFilePath, generationFile.content.join("\n"));
-            console.log(generationFile.name + " generated");
+            console.log("+ " + generationFile.name);
             counter++;
         } else {
             console.error("Could not find " + generationFile.name);
         }
     }
-    const output = `Generated ${counter}/${fileMap.size} files`;
+    const output = `Finished: ${counter}/${fileMap.size} created`;
     const separator = output.replaceAll(RegExp(".", "g"), "-");
     console.log(`\n${separator}\n${output}\n${separator}`);
 }

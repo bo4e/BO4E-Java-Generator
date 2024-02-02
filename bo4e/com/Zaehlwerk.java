@@ -4,7 +4,6 @@ import com.example.bo4e.enums.Mengeneinheit;
 import com.example.bo4e.enums.Energierichtung;
 import com.example.bo4e.enums.Verbrauchsart;
 import com.example.bo4e.enums.Waermenutzung;
-import com.example.StringOderNummer;
 
 /**
  * Mit dieser Komponente werden Zählwerke modelliert.

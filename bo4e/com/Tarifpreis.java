@@ -4,7 +4,6 @@ import com.example.bo4e.enums.Mengeneinheit;
 import com.example.bo4e.enums.Waehrungseinheit;
 import com.example.bo4e.enums.Preistyp;
 import com.example.bo4e.enums.Preisstatus;
-import com.example.StringOderNummer;
 
 /**
  * Abbildung eines Tarifpreises mit Preistyp und Beschreibung abgeleitet von COM Preis.

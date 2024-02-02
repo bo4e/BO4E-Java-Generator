@@ -1,7 +1,5 @@
 package com.example.bo4e.com;
 
-import com.example.StringOderNummer;
-
 /**
  * Abbildung für Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im
  * Tarif verwendet.

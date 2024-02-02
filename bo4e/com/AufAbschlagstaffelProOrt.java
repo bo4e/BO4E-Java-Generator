@@ -1,7 +1,5 @@
 package com.example.bo4e.com;
 
-import com.example.StringOderNummer;
-
 /**
  * Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an
  *

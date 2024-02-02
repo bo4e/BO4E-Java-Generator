@@ -1,4 +1,4 @@
-package placeholder;
+package com.example.bo4e;
 
 /**
  * Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer,

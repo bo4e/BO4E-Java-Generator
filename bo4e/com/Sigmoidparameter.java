@@ -1,7 +1,5 @@
 package com.example.bo4e.com;
 
-import com.example.StringOderNummer;
-
 /**
  * Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:
  * LP=A/(1+(P/B)^C)+D

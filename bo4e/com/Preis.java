@@ -3,7 +3,6 @@ package com.example.bo4e.com;
 import com.example.bo4e.enums.Mengeneinheit;
 import com.example.bo4e.enums.Waehrungseinheit;
 import com.example.bo4e.enums.Preisstatus;
-import com.example.StringOderNummer;
 
 /**
  * Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.

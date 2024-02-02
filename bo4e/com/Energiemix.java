@@ -1,6 +1,5 @@
 package com.example.bo4e.com;
 
-import com.example.StringOderNummer;
 import com.example.bo4e.enums.Sparte;
 import com.example.bo4e.enums.Oekolabel;
 import com.example.bo4e.enums.Oekozertifikat;

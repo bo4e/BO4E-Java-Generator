@@ -1,0 +1,4 @@
+generate:
+    script:
+        - npm install
+        - node ./quicktype.js

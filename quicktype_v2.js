@@ -71,7 +71,7 @@ class GenerationFile {
         const importLines = [];
         for (let i = 0; i < lines.length; i++) {
             if (lines[i].startsWith("package ")) {
-                lines[i] = `package ${packageName}${this.targetDirPath.replace("/", ".")};`;
+                lines[i] = `package ${packageName}${this.targetDirPath.replace("generatedCode/", "").replace("/", ".")};`;
                 continue;
             }
             if (lines[i].includes("setTyp")) {
@@ -114,7 +114,7 @@ class GenerationFile {
                     // add import statements
                     const typeFile = fileMap.get(type.toLowerCase());
                     if (typeFile && typeFile.dirname !== this.dirname) {
-                        const importLine = `import ${packageName}${typeFile.targetDirPath.replaceAll("/", ".")}.${type};`;
+                        const importLine = `import ${packageName}${typeFile.targetDirPath.replace("generatedCode/","").replaceAll("/", ".")}.${type};`;
                         if (!importLines.includes(importLine)) {
                             importLines.push(importLine);
                         }
@@ -291,9 +291,9 @@ function generateFileMap(source, target, fileMap = new Map) {
     return fileMap;
 }
 
-function main(source = sourceDirName, target = targetDirName) {
+function main(source = sourceDirName, target = "generatedCode/" + targetDirName) {
     const fileMap = generateFileMap(source, target);
     generateFromFileMap(fileMap).then();
 }
 
-main("bo4e_schemas", "bo4e");
+main();

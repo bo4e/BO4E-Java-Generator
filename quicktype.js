@@ -176,7 +176,7 @@ function cleanUp(source, target, fileMap, root = target, dirname = source) {
             fs.renameSync(root + '/' + javaFile, target + '/' + javaFile);
             let newFile = fs.readFileSync(target + '/' + javaFile, "utf-8");
             // change package to fit directory structure
-            newFile = newFile.replace("package placeholder",`package ${packageName}${target.replaceAll("/", ".")}`);
+            newFile = newFile.replace("package placeholder",`package ${packageName}${target.replace("generatedCode/","").replaceAll("/", ".")}`);
             const lines = newFile.split("\n");
             const importLines = [];
             lines.forEach((line, index) => {
@@ -256,7 +256,7 @@ function cleanUp(source, target, fileMap, root = target, dirname = source) {
                         const typeFile = type + ".json";
                         if (type !== "StringOderNummer" && !files.includes(typeFile)) {
                             if (fileMap.has(type.toLowerCase())) {
-                                const importLine = `import ${packageName}${fileMap.get(type.toLowerCase()).replaceAll("/", ".")}${type};`;
+                                const importLine = `import ${packageName}${fileMap.get(type.toLowerCase()).replace("generatedCode/","").replaceAll("/", ".")}${type};`;
                                 if (!importLines.includes(importLine)) {
                                     importLines.push(importLine);
                                 }
@@ -289,7 +289,7 @@ function cleanUp(source, target, fileMap, root = target, dirname = source) {
 
 }
 
-function main(source = sourceDirName, target = targetDirName) {
+function main(source = sourceDirName, target = "generatedCode/" + targetDirName) {
     console.log("Preparing generation");
     const allKnowingSchema = generateAllKnowingSchema();
     console.log("Creating generation_schema");

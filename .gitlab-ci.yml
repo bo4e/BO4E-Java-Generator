@@ -2,6 +2,7 @@ generate:
     script:
         - npm install
         - node ./quicktype.js
+        - cd generatedCode
         - git init
         - git add ./bo4e
         - git commit -m "updated bo4e"

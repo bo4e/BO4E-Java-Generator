@@ -1,0 +1,11 @@
+generate:
+    script:
+        - npm install
+        - node ./quicktype.js
+        - git init
+        - git add ./bo4e
+        - git commit -m "updated bo4e"
+        - git remote add origin https://gitlab.enet.local/Timo.Molls/java-api-code.git
+        - git branch -M master
+        - git push -uf origin master
+

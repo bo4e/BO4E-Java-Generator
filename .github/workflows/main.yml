@@ -27,4 +27,5 @@ jobs:
           git commit -m "update bo4e"
           git remote add origin https://github.com/TimoMolls/java-api-code.git
           git push -u origin master
+          TimoMolls
         working-directory: ./generatedCode

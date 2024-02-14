@@ -242,7 +242,7 @@ async function generateClasses(generationFile) {
  * @returns {Promise<void>}
  */
 async function generateFromFileMap(fileMap) {
-    console.log("Starting generation:");
+    console.log("Generating:");
     let counter = 0;
     for (const generationFile of fileMap.values()) {
         const classMap = await generateClasses(generationFile);
@@ -254,13 +254,13 @@ async function generateFromFileMap(fileMap) {
                 fs.mkdirSync(generationFile.targetDirPath, {recursive: true});
             }
             fs.writeFileSync(generationFile.targetFilePath, generationFile.content.join("\n"));
-            console.log("+ " + generationFile.name);
             counter++;
+            console.log("# " + counter + ":\t" + generationFile.name);
         } else {
             console.error("Could not find " + generationFile.name);
         }
     }
-    const output = `Finished: ${counter}/${fileMap.size} created`;
+    const output = `Finished: ${counter}/${fileMap.size}`;
     const separator = output.replaceAll(RegExp(".", "g"), "-");
     console.log(`\n${separator}\n${output}\n${separator}`);
 }

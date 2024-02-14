@@ -294,7 +294,7 @@ function main(source = sourceDirName, target = "generatedCode/" + targetDirName)
     const allKnowingSchema = generateAllKnowingSchema();
     console.log("Creating generation_schema");
     const fileMap = addToSchema(allKnowingSchema, source);
-    const counter = fileMap.size;
+    const readFiles = fileMap.size;
     fileMap.set("stringodernummer", "");
     let schema = allKnowingSchema[0];
     for (let i = 2; i < allKnowingSchema.length; i++) {
@@ -314,6 +314,7 @@ function main(source = sourceDirName, target = "generatedCode/" + targetDirName)
         allPropertiesOptional: false
     }).then(javaClasses => {
         console.log("Generation complete");
+        const writtenFiles = javaClasses.size;
         console.log("Starting output");
         javaClasses.forEach((javaClass, className) => {
             if (className !== "AllKnowing.java" && className !== "StringOderNummerTyp.java" && className !== "StringOderNummer.java") {
@@ -327,29 +328,8 @@ function main(source = sourceDirName, target = "generatedCode/" + targetDirName)
         console.log("Starting cleanup");
         cleanUp(source, target, fileMap);
         console.log("Cleanup complete");
-        result(counter, source, target);
+        console.log(`Finished: ${writtenFiles}/${readFiles}`)
     });
-}
-
-/**
- * logs information about the finished prozess to the console
- * @param counter the number of generated files
- * @param source the path to the directory that contains the schemas
- * @param target the path to the directory that contains the generated classes
- */
-function result(counter, source, target) {
-    const boCount = fs.readdirSync(source + "/bo").length;
-    const comCount = fs.readdirSync(source + "/com").length;
-    const enumCount = fs.readdirSync(source + "/enum").length;
-    const boCountG = fs.readdirSync(target + "/bo").length;
-    const comCountG = fs.readdirSync(target + "/com").length;
-    const enumCountG = fs.readdirSync(target + "/enums").length;
-    console.log("\nEinzulesende Dateien: " + (fs.readdirSync(source).length - 3 + boCount + comCount + enumCount));
-    console.log("Eingelesene Dateien: " + counter);
-    console.log("Erstellte Dateien: " + (fs.readdirSync(target).length - 3 + boCountG + comCountG + enumCountG));
-    console.log("Bo: " + boCountG + "/" + boCount);
-    console.log("Com: " + comCountG + "/" + comCount);
-    console.log("Enum: " + enumCountG + "/" + enumCount);
 }
 
 main();

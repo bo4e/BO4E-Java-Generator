@@ -19,13 +19,14 @@ jobs:
       - name: Generate
         run: node ./quicktype.js
       - name: Push changes
-        run: |
-          git init
-          git add bo4e
-          git config --global user.email "timo.molls@enet.eu"
-          git config --global user.name "TimoMolls"
-          git commit -m "update bo4e"
-          git remote add origin https://github.com/TimoMolls/java-api-code.git
-          git push -u origin master
-          TimoMolls
-        working-directory: ./generatedCode
+        uses: cpina/github-action-push-to-another-repository@v1.7.2
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN_JAVA_API }}
+        with:
+          source-directory: "generatedCode/bo4e"
+          target-directory: "bo4e"
+          destination-github-username: "TimoMolls"
+          destination-repository-name: "java-api-code"
+          user-email: timo.molls@enet.eu
+          target-branch: master
+          commit-message: "Update bo4e"

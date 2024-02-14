@@ -22,5 +22,7 @@ jobs:
         run: |
           git init
           git add bo4e
+          git config --global user.email "timo.molls@enet.eu"
+          git config --global user.name "TimoMolls"
           git commit -m "update bo4e"
         working-directory: ./generatedCode

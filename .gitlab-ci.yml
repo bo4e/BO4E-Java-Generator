@@ -8,4 +8,4 @@ generate:
         - git commit -m "updated bo4e"
         - git remote add origin https://gitlab.enet.local/Timo.Molls/java-api-code.git
         - git push --set-upstream origin master
-
+        - "timo.molls"

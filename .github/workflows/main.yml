@@ -25,4 +25,6 @@ jobs:
           git config --global user.email "timo.molls@enet.eu"
           git config --global user.name "TimoMolls"
           git commit -m "update bo4e"
+          git remote add origin https://github.com/TimoMolls/java-api-code.git
+          git push -u origin master
         working-directory: ./generatedCode

@@ -23,7 +23,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN_JAVA_API }}
         with:
-          source-directory: "generatedCode/bo4e"
+          source-directory: "bo4e"
           target-directory: "bo4e"
           destination-github-username: "TimoMolls"
           destination-repository-name: "java-api-code"

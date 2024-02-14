@@ -5,7 +5,7 @@ const {BooleanOption, StringOption} = require("quicktype-core/dist/RendererOptio
 const {JacksonRenderer} = require("quicktype-core/dist/language/Java");
 const {acronymOption, AcronymStyleOptions} = require("quicktype-core/dist/support/Acronyms");
 
-const packageName = "com.example.";
+const packageName = "";
 const targetDirName = "bo4e";
 const sourceDirName = "bo4e_schemas";
 const currentVersion = "202401.0.0";
@@ -71,7 +71,7 @@ class GenerationFile {
         const importLines = [];
         for (let i = 0; i < lines.length; i++) {
             if (lines[i].startsWith("package ")) {
-                lines[i] = `package ${packageName}${this.targetDirPath.replace("generatedCode/", "").replace("/", ".")};`;
+                lines[i] = `package ${packageName}${this.targetDirPath.replace("/", ".")};`;
                 continue;
             }
             if (lines[i].includes("setTyp")) {
@@ -114,7 +114,7 @@ class GenerationFile {
                     // add import statements
                     const typeFile = fileMap.get(type.toLowerCase());
                     if (typeFile && typeFile.dirname !== this.dirname) {
-                        const importLine = `import ${packageName}${typeFile.targetDirPath.replace("generatedCode/","").replaceAll("/", ".")}.${type};`;
+                        const importLine = `import ${packageName}${typeFile.targetDirPath.replaceAll("/", ".")}.${type};`;
                         if (!importLines.includes(importLine)) {
                             importLines.push(importLine);
                         }
@@ -291,7 +291,7 @@ function generateFileMap(source, target, fileMap = new Map) {
     return fileMap;
 }
 
-function main(source = sourceDirName, target = "generatedCode/" + targetDirName) {
+function main(source = sourceDirName, target = targetDirName) {
     const fileMap = generateFileMap(source, target);
     generateFromFileMap(fileMap).then();
 }

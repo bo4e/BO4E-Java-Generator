@@ -19,5 +19,8 @@ jobs:
       - name: Generate
         run: node ./quicktype.js
       - name: Push changes
-        run: git init
+        run: |
+          git init
+          git add bo4e
+          git status
         working-directory: ./generatedCode

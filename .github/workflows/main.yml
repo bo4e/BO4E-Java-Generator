@@ -29,4 +29,4 @@ jobs:
           destination-repository-name: "java-api-code"
           user-email: timo.molls@enet.eu
           target-branch: master
-          commit-message: "Update bo4e java classes"
+          commit-message: "Update bo4e"

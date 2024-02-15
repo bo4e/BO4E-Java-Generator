@@ -4,7 +4,6 @@ generate:
         - node ./quicktype.js
         - mkdir temp
         - cd temp
-        - echo ${API_GENERATOR_TOKEN}
         - git clone https://Timo.Molls:${API_GENERATOR_TOKEN}@gitlab.enet.local/Timo.Molls/java-api-code.git
         - rm -r java-api-code/bo4e
         - mv ../bo4e java-api-code

@@ -5,7 +5,4 @@ generate:
         - mkdir temp
         - cd temp
         - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.enet.local/Timo.Molls/java-api-code.git
-        - rm -r bo4e
-        - mv ../bo4e .
-        - git commit -m "Update bo4e"
-        - git push origin master
+        - ls

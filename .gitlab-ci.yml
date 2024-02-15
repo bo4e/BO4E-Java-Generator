@@ -2,10 +2,9 @@ generate:
     script:
         - npm install
         - node ./quicktype.js
-        - cd generatedCode
-        - git init
-        - git add ./bo4e
-        - git commit -m "updated bo4e"
-        - git remote add origin https://gitlab.enet.local/Timo.Molls/java-api-code.git
-        - git push --set-upstream origin master
-        - "timo.molls"
+        - mkdir temp
+        - cd temp
+        - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.enet.local/Timo.Molls/java-api-code.git
+        - rm -r java-api-code/bo4e
+        - mv ../bo4e java-api-code
+        - git commit -m "Update bo4e"

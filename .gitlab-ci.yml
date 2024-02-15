@@ -7,4 +7,5 @@ generate:
         - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.enet.local/Timo.Molls/java-api-code.git
         - rm -r java-api-code/bo4e
         - mv ../bo4e java-api-code
-        - git commit -m "Update bo4e"
+        - cd java-api-code
+        - git status

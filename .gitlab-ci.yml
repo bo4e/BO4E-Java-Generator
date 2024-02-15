@@ -8,4 +8,6 @@ generate:
         - rm -r java-api-code/bo4e
         - mv ../bo4e java-api-code
         - cd java-api-code
-        - git status
+        - git add .
+        - git commit -m "Update bo4e"
+        - git push origin master

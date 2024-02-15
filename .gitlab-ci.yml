@@ -40,4 +40,4 @@ commit:
         - cd java-api-code
         - git add .
         - git commit -m "Update bo4e" || exit_code=$?
-        - if [ $exit_code -eq 0 ]; then git push origin master
+        - if [ $exit_code -ne 0 ]; then echo "nothing to commit"; else git push origin master; fi;

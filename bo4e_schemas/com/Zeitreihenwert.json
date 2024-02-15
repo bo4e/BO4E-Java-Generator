@@ -1,6 +1,6 @@
 {
     "additionalProperties": true,
-    "description": "Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitreihenwert.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitreihenwert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/Zeitreihenwert.json>`_",
+    "description": "Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitreihenwert.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitreihenwert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/com/Zeitreihenwert.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -23,13 +23,13 @@
                     "type": "null"
                 }
             ],
-            "default": "202401.0.0",
+            "default": "202401.0.1",
             "title": " Version"
         },
         "status": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Messwertstatus.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Messwertstatus.json"
                 },
                 {
                     "type": "null"
@@ -40,7 +40,7 @@
         "statuszusatz": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Messwertstatuszusatz.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Messwertstatuszusatz.json"
                 },
                 {
                     "type": "null"
@@ -51,9 +51,7 @@
         "wert": {
             "anyOf": [
                 {
-                    "type": "number"
-                },
-                {
+                    "format": "decimal",
                     "type": "string"
                 },
                 {
@@ -66,7 +64,7 @@
         "zeitspanne": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Zeitspanne.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Zeitspanne.json"
                 },
                 {
                     "type": "null"
@@ -78,7 +76,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },

@@ -1,6 +1,6 @@
 {
     "additionalProperties": true,
-    "description": "Modell für die Abbildung von Vertragsbeziehungen;\nDas Objekt dient dazu, alle Arten von Verträgen, die in der Energiewirtschaft Verwendung finden, abzubilden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Vertrag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Vertrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/bo/Vertrag.json>`_",
+    "description": "Modell für die Abbildung von Vertragsbeziehungen;\nDas Objekt dient dazu, alle Arten von Verträgen, die in der Energiewirtschaft Verwendung finden, abzubilden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Vertrag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Vertrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/bo/Vertrag.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -17,7 +17,7 @@
         "_typ": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Typ.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Typ.json"
                 },
                 {
                     "type": "null"
@@ -34,7 +34,7 @@
                     "type": "null"
                 }
             ],
-            "default": "202401.0.0",
+            "default": "202401.0.1",
             "title": " Version"
         },
         "beschreibung": {
@@ -52,7 +52,7 @@
         "sparte": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Sparte.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Sparte.json"
                 },
                 {
                     "type": "null"
@@ -64,7 +64,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Unterschrift.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Unterschrift.json"
                     },
                     "type": "array"
                 },
@@ -79,7 +79,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Unterschrift.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Unterschrift.json"
                     },
                     "type": "array"
                 },
@@ -93,7 +93,7 @@
         "vertragsart": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Vertragsart.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Vertragsart.json"
                 },
                 {
                     "type": "null"
@@ -130,7 +130,7 @@
         "vertragskonditionen": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Vertragskonditionen.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Vertragskonditionen.json"
                 },
                 {
                     "type": "null"
@@ -153,7 +153,7 @@
         "vertragspartner1": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/bo/Geschaeftspartner.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/bo/Geschaeftspartner.json"
                 },
                 {
                     "type": "null"
@@ -164,7 +164,7 @@
         "vertragspartner2": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/bo/Geschaeftspartner.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/bo/Geschaeftspartner.json"
                 },
                 {
                     "type": "null"
@@ -175,7 +175,7 @@
         "vertragsstatus": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Vertragsstatus.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Vertragsstatus.json"
                 },
                 {
                     "type": "null"
@@ -187,7 +187,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Vertragsteil.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Vertragsteil.json"
                     },
                     "type": "array"
                 },
@@ -202,7 +202,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },

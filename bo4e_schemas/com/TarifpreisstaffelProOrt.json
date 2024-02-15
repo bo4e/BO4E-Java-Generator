@@ -1,6 +1,6 @@
 {
     "additionalProperties": true,
-    "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/TarifpreisstaffelProOrt.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `TarifpreisstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/TarifpreisstaffelProOrt.json>`_",
+    "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/TarifpreisstaffelProOrt.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `TarifpreisstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/com/TarifpreisstaffelProOrt.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -23,15 +23,13 @@
                     "type": "null"
                 }
             ],
-            "default": "202401.0.0",
+            "default": "202401.0.1",
             "title": " Version"
         },
         "arbeitspreis": {
             "anyOf": [
                 {
-                    "type": "number"
-                },
-                {
+                    "format": "decimal",
                     "type": "string"
                 },
                 {
@@ -44,9 +42,7 @@
         "arbeitspreisNT": {
             "anyOf": [
                 {
-                    "type": "number"
-                },
-                {
+                    "format": "decimal",
                     "type": "string"
                 },
                 {
@@ -59,9 +55,7 @@
         "grundpreis": {
             "anyOf": [
                 {
-                    "type": "number"
-                },
-                {
+                    "format": "decimal",
                     "type": "string"
                 },
                 {
@@ -74,9 +68,7 @@
         "staffelgrenzeBis": {
             "anyOf": [
                 {
-                    "type": "number"
-                },
-                {
+                    "format": "decimal",
                     "type": "string"
                 },
                 {
@@ -89,9 +81,7 @@
         "staffelgrenzeVon": {
             "anyOf": [
                 {
-                    "type": "number"
-                },
-                {
+                    "format": "decimal",
                     "type": "string"
                 },
                 {
@@ -105,7 +95,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },

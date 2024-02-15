@@ -1,6 +1,6 @@
 {
     "additionalProperties": true,
-    "description": "In dieser Komponente sind die Berechnungsparameter für die Ermittlung der Tarifkosten zusammengefasst.\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Tarifberechnungsparameter.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Tarifberechnungsparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/Tarifberechnungsparameter.json>`_",
+    "description": "In dieser Komponente sind die Berechnungsparameter für die Ermittlung der Tarifkosten zusammengefasst.\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Tarifberechnungsparameter.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Tarifberechnungsparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/com/Tarifberechnungsparameter.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -23,13 +23,13 @@
                     "type": "null"
                 }
             ],
-            "default": "202401.0.0",
+            "default": "202401.0.1",
             "title": " Version"
         },
         "berechnungsmethode": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Tarifkalkulationsmethode.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Tarifkalkulationsmethode.json"
                 },
                 {
                     "type": "null"
@@ -40,7 +40,7 @@
         "hoechstpreisHT": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Preis.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Preis.json"
                 },
                 {
                     "type": "null"
@@ -51,7 +51,7 @@
         "hoechstpreisNT": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Preis.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Preis.json"
                 },
                 {
                     "type": "null"
@@ -86,9 +86,7 @@
         "kwInklusive": {
             "anyOf": [
                 {
-                    "type": "number"
-                },
-                {
+                    "format": "decimal",
                     "type": "string"
                 },
                 {
@@ -101,9 +99,7 @@
         "kwWeitereMengen": {
             "anyOf": [
                 {
-                    "type": "number"
-                },
-                {
+                    "format": "decimal",
                     "type": "string"
                 },
                 {
@@ -116,7 +112,7 @@
         "messpreistyp": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Messpreistyp.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Messpreistyp.json"
                 },
                 {
                     "type": "null"
@@ -127,7 +123,7 @@
         "mindestpreis": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Preis.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Preis.json"
                 },
                 {
                     "type": "null"
@@ -139,7 +135,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },
@@ -154,7 +150,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Tarifpreis.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Tarifpreis.json"
                     },
                     "type": "array"
                 },

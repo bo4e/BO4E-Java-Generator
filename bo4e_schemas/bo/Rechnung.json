@@ -1,6 +1,6 @@
 {
     "additionalProperties": true,
-    "description": "Modell für die Abbildung von Rechnungen und Netznutzungsrechnungen im Kontext der Energiewirtschaft;\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Rechnung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Rechnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/bo/Rechnung.json>`_",
+    "description": "Modell für die Abbildung von Rechnungen und Netznutzungsrechnungen im Kontext der Energiewirtschaft;\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Rechnung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Rechnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/bo/Rechnung.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -17,7 +17,7 @@
         "_typ": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Typ.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Typ.json"
                 },
                 {
                     "type": "null"
@@ -34,7 +34,7 @@
                     "type": "null"
                 }
             ],
-            "default": "202401.0.0",
+            "default": "202401.0.1",
             "title": " Version"
         },
         "faelligkeitsdatum": {
@@ -53,7 +53,7 @@
         "gesamtbrutto": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Betrag.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Betrag.json"
                 },
                 {
                     "type": "null"
@@ -64,7 +64,7 @@
         "gesamtnetto": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Betrag.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Betrag.json"
                 },
                 {
                     "type": "null"
@@ -75,7 +75,7 @@
         "gesamtsteuer": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Betrag.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Betrag.json"
                 },
                 {
                     "type": "null"
@@ -122,7 +122,7 @@
         "marktlokation": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/bo/Marktlokation.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/bo/Marktlokation.json"
                 },
                 {
                     "type": "null"
@@ -133,7 +133,7 @@
         "messlokation": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/bo/Messlokation.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/bo/Messlokation.json"
                 },
                 {
                     "type": "null"
@@ -144,7 +144,7 @@
         "netznutzungrechnungsart": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/NetznutzungRechnungsart.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/NetznutzungRechnungsart.json"
                 },
                 {
                     "type": "null"
@@ -155,7 +155,7 @@
         "netznutzungrechnungstyp": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/NetznutzungRechnungstyp.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/NetznutzungRechnungstyp.json"
                 },
                 {
                     "type": "null"
@@ -178,7 +178,7 @@
         "rabattBrutto": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Betrag.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Betrag.json"
                 },
                 {
                     "type": "null"
@@ -202,7 +202,7 @@
         "rechnungsempfaenger": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/bo/Geschaeftspartner.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/bo/Geschaeftspartner.json"
                 },
                 {
                     "type": "null"
@@ -213,7 +213,7 @@
         "rechnungsersteller": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/bo/Geschaeftspartner.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/bo/Geschaeftspartner.json"
                 },
                 {
                     "type": "null"
@@ -236,7 +236,7 @@
         "rechnungsperiode": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Zeitraum.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Zeitraum.json"
                 },
                 {
                     "type": "null"
@@ -248,7 +248,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Rechnungsposition.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Rechnungsposition.json"
                     },
                     "type": "array"
                 },
@@ -262,7 +262,7 @@
         "rechnungsstatus": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Rechnungsstatus.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Rechnungsstatus.json"
                 },
                 {
                     "type": "null"
@@ -285,7 +285,7 @@
         "rechnungstyp": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Rechnungstyp.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Rechnungstyp.json"
                 },
                 {
                     "type": "null"
@@ -296,7 +296,7 @@
         "sparte": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Sparte.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Sparte.json"
                 },
                 {
                     "type": "null"
@@ -308,7 +308,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Steuerbetrag.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Steuerbetrag.json"
                     },
                     "type": "array"
                 },
@@ -322,7 +322,7 @@
         "vorausgezahlt": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Betrag.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Betrag.json"
                 },
                 {
                     "type": "null"
@@ -333,7 +333,7 @@
         "zuZahlen": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Betrag.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Betrag.json"
                 },
                 {
                     "type": "null"
@@ -345,7 +345,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },

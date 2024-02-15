@@ -1,6 +1,6 @@
 {
     "additionalProperties": true,
-    "description": "Variante des Preisblattmodells zur Abbildung der Preise für zusätzliche Hardware\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/PreisblattHardware.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `PreisblattHardware JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/bo/PreisblattHardware.json>`_",
+    "description": "Variante des Preisblattmodells zur Abbildung der Preise für zusätzliche Hardware\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/PreisblattHardware.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `PreisblattHardware JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/bo/PreisblattHardware.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -17,7 +17,7 @@
         "_typ": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Typ.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Typ.json"
                 },
                 {
                     "type": "null"
@@ -34,13 +34,13 @@
                     "type": "null"
                 }
             ],
-            "default": "202401.0.0",
+            "default": "202401.0.1",
             "title": " Version"
         },
         "basisgeraet": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/bo/Geraet.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/bo/Geraet.json"
                 },
                 {
                     "type": "null"
@@ -63,7 +63,7 @@
         "bilanzierungsmethode": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Bilanzierungsmethode.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Bilanzierungsmethode.json"
                 },
                 {
                     "type": "null"
@@ -74,7 +74,7 @@
         "gueltigkeit": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Zeitraum.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Zeitraum.json"
                 },
                 {
                     "type": "null"
@@ -85,7 +85,7 @@
         "herausgeber": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/bo/Marktteilnehmer.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/bo/Marktteilnehmer.json"
                 },
                 {
                     "type": "null"
@@ -97,7 +97,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Dienstleistungstyp.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Dienstleistungstyp.json"
                     },
                     "type": "array"
                 },
@@ -112,7 +112,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/bo/Geraet.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/bo/Geraet.json"
                     },
                     "type": "array"
                 },
@@ -126,7 +126,7 @@
         "messebene": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Netzebene.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Netzebene.json"
                 },
                 {
                     "type": "null"
@@ -138,7 +138,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Preisposition.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Preisposition.json"
                     },
                     "type": "array"
                 },
@@ -152,7 +152,7 @@
         "preisstatus": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Preisstatus.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Preisstatus.json"
                 },
                 {
                     "type": "null"
@@ -163,7 +163,7 @@
         "sparte": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Sparte.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Sparte.json"
                 },
                 {
                     "type": "null"
@@ -175,7 +175,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },

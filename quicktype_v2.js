@@ -5,10 +5,37 @@ const {BooleanOption, StringOption} = require("quicktype-core/dist/RendererOptio
 const {JacksonRenderer} = require("quicktype-core/dist/language/Java");
 const {acronymOption, AcronymStyleOptions} = require("quicktype-core/dist/support/Acronyms");
 
-const packageName = "";
-const targetDirName = "bo4e";
-const sourceDirName = "bo4e_schemas";
-const currentVersion = "202401.0.0";
+const flags = (process.argv[2] && process.argv[2].length > 1) ? process.argv[2].substring(1).split("") : [];
+let currentVersion = "202401.0.1";
+let packageName = "";
+let targetDirName = "bo4e";
+let sourceDirName = "bo4e_schemas";
+for (let i = 0; i < flags.length; i++) {
+    if (process.argv[3 + i]) {
+        switch (flags[i]) {
+            case 'v': {
+                currentVersion = process.argv[3 + i]
+                console.log("Using version: " + currentVersion);
+                break;
+            }
+            case 'p': {
+                packageName = process.argv[3 + i]
+                console.log("Using Package" + packageName);
+                break;
+            }
+            case 't': {
+                targetDirName = process.argv[3 + i]
+                console.log("Using target directory: " + targetDirName);
+                break;
+            }
+            case 's': {
+                sourceDirName = process.argv[3 + i]
+                console.log("Using source directory: " + sourceDirName);
+                break;
+            }
+        }
+    }
+}
 const newJavaOptions = {
     useList: javaOptions.useList,
     justTypes: new BooleanOption("just-types", "Plain types only", true),

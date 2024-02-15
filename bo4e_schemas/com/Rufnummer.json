@@ -1,6 +1,6 @@
 {
     "additionalProperties": true,
-    "description": "Contains information to call or fax someone\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Rufnummer.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Rufnummer JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/Rufnummer.json>`_",
+    "description": "Contains information to call or fax someone\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Rufnummer.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Rufnummer JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/com/Rufnummer.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -23,13 +23,13 @@
                     "type": "null"
                 }
             ],
-            "default": "202401.0.0",
+            "default": "202401.0.1",
             "title": " Version"
         },
         "nummerntyp": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Rufnummernart.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Rufnummernart.json"
                 },
                 {
                     "type": "null"
@@ -53,7 +53,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },

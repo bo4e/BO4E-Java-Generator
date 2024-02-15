@@ -1,6 +1,6 @@
 {
     "additionalProperties": true,
-    "description": "Mit dieser Komponente können Auf- und Abschläge verschiedener Typen im Zusammenhang mit regionalen Gültigkeiten\nabgebildet werden.\nHier sind auch die Auswirkungen auf verschiedene Tarifparameter modelliert, die sich durch die Auswahl eines Auf-\noder Abschlags ergeben.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionalerAufAbschlag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionalerAufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/RegionalerAufAbschlag.json>`_",
+    "description": "Mit dieser Komponente können Auf- und Abschläge verschiedener Typen im Zusammenhang mit regionalen Gültigkeiten\nabgebildet werden.\nHier sind auch die Auswirkungen auf verschiedene Tarifparameter modelliert, die sich durch die Auswahl eines Auf-\noder Abschlags ergeben.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionalerAufAbschlag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionalerAufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/com/RegionalerAufAbschlag.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -23,13 +23,13 @@
                     "type": "null"
                 }
             ],
-            "default": "202401.0.0",
+            "default": "202401.0.1",
             "title": " Version"
         },
         "aufAbschlagstyp": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/AufAbschlagstyp.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/AufAbschlagstyp.json"
                 },
                 {
                     "type": "null"
@@ -40,7 +40,7 @@
         "aufAbschlagsziel": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/AufAbschlagsziel.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/AufAbschlagsziel.json"
                 },
                 {
                     "type": "null"
@@ -75,7 +75,7 @@
         "einheit": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Waehrungseinheit.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Waehrungseinheit.json"
                 },
                 {
                     "type": "null"
@@ -86,7 +86,7 @@
         "einschraenkungsaenderung": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Tarifeinschraenkung.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Tarifeinschraenkung.json"
                 },
                 {
                     "type": "null"
@@ -97,7 +97,7 @@
         "energiemixaenderung": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Energiemix.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Energiemix.json"
                 },
                 {
                     "type": "null"
@@ -108,7 +108,7 @@
         "garantieaenderung": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Preisgarantie.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Preisgarantie.json"
                 },
                 {
                     "type": "null"
@@ -119,7 +119,7 @@
         "gueltigkeitszeitraum": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Zeitraum.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Zeitraum.json"
                 },
                 {
                     "type": "null"
@@ -131,7 +131,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/RegionalePreisstaffel.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/RegionalePreisstaffel.json"
                     },
                     "type": "array"
                 },
@@ -157,7 +157,7 @@
         "vertagskonditionsaenderung": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Vertragskonditionen.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Vertragskonditionen.json"
                 },
                 {
                     "type": "null"
@@ -196,7 +196,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },

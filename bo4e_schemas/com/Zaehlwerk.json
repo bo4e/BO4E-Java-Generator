@@ -1,6 +1,6 @@
 {
     "additionalProperties": true,
-    "description": "Mit dieser Komponente werden Zählwerke modelliert.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zaehlwerk.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zaehlwerk JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/Zaehlwerk.json>`_",
+    "description": "Mit dieser Komponente werden Zählwerke modelliert.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zaehlwerk.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zaehlwerk JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/com/Zaehlwerk.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -23,7 +23,7 @@
                     "type": "null"
                 }
             ],
-            "default": "202401.0.0",
+            "default": "202401.0.1",
             "title": " Version"
         },
         "anzahlAblesungen": {
@@ -53,7 +53,7 @@
         "einheit": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Mengeneinheit.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Mengeneinheit.json"
                 },
                 {
                     "type": "null"
@@ -112,7 +112,7 @@
         "konzessionsabgabe": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Konzessionsabgabe.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Konzessionsabgabe.json"
                 },
                 {
                     "type": "null"
@@ -147,7 +147,7 @@
         "richtung": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Energierichtung.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Energierichtung.json"
                 },
                 {
                     "type": "null"
@@ -158,7 +158,7 @@
         "verbrauchsart": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Verbrauchsart.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Verbrauchsart.json"
                 },
                 {
                     "type": "null"
@@ -170,7 +170,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/VerwendungszweckProMarktrolle.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/VerwendungszweckProMarktrolle.json"
                     },
                     "type": "array"
                 },
@@ -196,7 +196,7 @@
         "waermenutzung": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Waermenutzung.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Waermenutzung.json"
                 },
                 {
                     "type": "null"
@@ -207,9 +207,7 @@
         "wandlerfaktor": {
             "anyOf": [
                 {
-                    "type": "number"
-                },
-                {
+                    "format": "decimal",
                     "type": "string"
                 },
                 {
@@ -234,7 +232,7 @@
         "zaehlzeitregister": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Zaehlzeitregister.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Zaehlzeitregister.json"
                 },
                 {
                     "type": "null"
@@ -246,7 +244,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },

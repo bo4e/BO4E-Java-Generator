@@ -1,6 +1,6 @@
 {
     "additionalProperties": true,
-    "description": "Abbildung für Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Vertragskonditionen.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Vertragskonditionen JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/Vertragskonditionen.json>`_",
+    "description": "Abbildung für Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Vertragskonditionen.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Vertragskonditionen JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/com/Vertragskonditionen.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -23,13 +23,13 @@
                     "type": "null"
                 }
             ],
-            "default": "202401.0.0",
+            "default": "202401.0.1",
             "title": " Version"
         },
         "abschlagszyklus": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Zeitraum.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Zeitraum.json"
                 },
                 {
                     "type": "null"
@@ -40,9 +40,7 @@
         "anzahlAbschlaege": {
             "anyOf": [
                 {
-                    "type": "number"
-                },
-                {
+                    "format": "decimal",
                     "type": "string"
                 },
                 {
@@ -67,7 +65,7 @@
         "kuendigungsfrist": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Zeitraum.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Zeitraum.json"
                 },
                 {
                     "type": "null"
@@ -78,7 +76,7 @@
         "vertragslaufzeit": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Zeitraum.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Zeitraum.json"
                 },
                 {
                     "type": "null"
@@ -89,7 +87,7 @@
         "vertragsverlaengerung": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Zeitraum.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Zeitraum.json"
                 },
                 {
                     "type": "null"
@@ -101,7 +99,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },

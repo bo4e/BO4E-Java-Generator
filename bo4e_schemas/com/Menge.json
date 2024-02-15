@@ -1,6 +1,6 @@
 {
     "additionalProperties": true,
-    "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/Menge.json>`_",
+    "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/com/Menge.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -23,13 +23,13 @@
                     "type": "null"
                 }
             ],
-            "default": "202401.0.0",
+            "default": "202401.0.1",
             "title": " Version"
         },
         "einheit": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Mengeneinheit.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Mengeneinheit.json"
                 },
                 {
                     "type": "null"
@@ -40,9 +40,7 @@
         "wert": {
             "anyOf": [
                 {
-                    "type": "number"
-                },
-                {
+                    "format": "decimal",
                     "type": "string"
                 },
                 {
@@ -56,7 +54,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },

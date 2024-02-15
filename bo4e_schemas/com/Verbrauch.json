@@ -1,6 +1,6 @@
 {
     "additionalProperties": true,
-    "description": "Abbildung eines zeitlich abgegrenzten Verbrauchs\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Verbrauch.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Verbrauch JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/Verbrauch.json>`_",
+    "description": "Abbildung eines zeitlich abgegrenzten Verbrauchs\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Verbrauch.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Verbrauch JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/com/Verbrauch.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -23,13 +23,13 @@
                     "type": "null"
                 }
             ],
-            "default": "202401.0.0",
+            "default": "202401.0.1",
             "title": " Version"
         },
         "einheit": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Mengeneinheit.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Mengeneinheit.json"
                 },
                 {
                     "type": "null"
@@ -53,7 +53,7 @@
         "messwertstatus": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Messwertstatus.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Messwertstatus.json"
                 },
                 {
                     "type": "null"
@@ -89,9 +89,7 @@
         "wert": {
             "anyOf": [
                 {
-                    "type": "number"
-                },
-                {
+                    "format": "decimal",
                     "type": "string"
                 },
                 {
@@ -104,7 +102,7 @@
         "wertermittlungsverfahren": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Wertermittlungsverfahren.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Wertermittlungsverfahren.json"
                 },
                 {
                     "type": "null"
@@ -116,7 +114,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },

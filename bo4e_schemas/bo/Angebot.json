@@ -1,9 +1,9 @@
 {
     "additionalProperties": true,
-    "description": "Mit diesem BO kann ein Versorgungsangebot zur Strom- oder Gasversorgung oder die Teilnahme an einer Ausschreibung\nübertragen werden. Es können verschiedene Varianten enthalten sein (z.B. ein- und mehrjährige Laufzeit).\nInnerhalb jeder Variante können Teile enthalten sein, die jeweils für eine oder mehrere Marktlokationen erstellt\nwerden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Angebot.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Angebot JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/bo/Angebot.json>`_",
+    "description": "Mit diesem BO kann ein Versorgungsangebot zur Strom- oder Gasversorgung oder die Teilnahme an einer Ausschreibung\nübertragen werden. Es können verschiedene Varianten enthalten sein (z.B. ein- und mehrjährige Laufzeit).\nInnerhalb jeder Variante können Teile enthalten sein, die jeweils für eine oder mehrere Marktlokationen erstellt\nwerden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Angebot.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Angebot JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/bo/Angebot.json>`_",
     "properties": {
         "_id": {
-            "oneOf": [
+            "anyOf": [
                 {
                     "type": "string"
                 },
@@ -15,9 +15,9 @@
             "title": " Id"
         },
         "_typ": {
-            "oneOf": [
+            "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Typ.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Typ.json"
                 },
                 {
                     "type": "null"
@@ -26,7 +26,7 @@
             "default": "ANGEBOT"
         },
         "_version": {
-            "oneOf": [
+            "anyOf": [
                 {
                     "type": "string"
                 },
@@ -34,11 +34,11 @@
                     "type": "null"
                 }
             ],
-            "default": "202401.0.0",
+            "default": "202401.0.1",
             "title": " Version"
         },
         "anfragereferenz": {
-            "oneOf": [
+            "anyOf": [
                 {
                     "type": "string"
                 },
@@ -50,7 +50,7 @@
             "title": "Anfragereferenz"
         },
         "angebotsdatum": {
-            "oneOf": [
+            "anyOf": [
                 {
                     "format": "date-time",
                     "type": "string"
@@ -63,9 +63,9 @@
             "title": "Angebotsdatum"
         },
         "angebotsgeber": {
-            "oneOf": [
+            "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/bo/Geschaeftspartner.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/bo/Geschaeftspartner.json"
                 },
                 {
                     "type": "null"
@@ -74,9 +74,9 @@
             "default": null
         },
         "angebotsnehmer": {
-            "oneOf": [
+            "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/bo/Geschaeftspartner.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/bo/Geschaeftspartner.json"
                 },
                 {
                     "type": "null"
@@ -85,7 +85,7 @@
             "default": null
         },
         "angebotsnummer": {
-            "oneOf": [
+            "anyOf": [
                 {
                     "type": "string"
                 },
@@ -97,7 +97,7 @@
             "title": "Angebotsnummer"
         },
         "bindefrist": {
-            "oneOf": [
+            "anyOf": [
                 {
                     "format": "date-time",
                     "type": "string"
@@ -110,9 +110,9 @@
             "title": "Bindefrist"
         },
         "sparte": {
-            "oneOf": [
+            "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Sparte.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Sparte.json"
                 },
                 {
                     "type": "null"
@@ -121,9 +121,9 @@
             "default": null
         },
         "unterzeichnerAngebotsgeber": {
-            "oneOf": [
+            "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/bo/Ansprechpartner.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/bo/Ansprechpartner.json"
                 },
                 {
                     "type": "null"
@@ -132,9 +132,9 @@
             "default": null
         },
         "unterzeichnerAngebotsnehmer": {
-            "oneOf": [
+            "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/bo/Ansprechpartner.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/bo/Ansprechpartner.json"
                 },
                 {
                     "type": "null"
@@ -143,10 +143,10 @@
             "default": null
         },
         "varianten": {
-            "oneOf": [
+            "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Angebotsvariante.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Angebotsvariante.json"
                     },
                     "type": "array"
                 },
@@ -158,10 +158,10 @@
             "title": "Varianten"
         },
         "zusatzAttribute": {
-            "oneOf": [
+            "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },

@@ -1,6 +1,6 @@
 {
     "additionalProperties": true,
-    "description": "Mit dieser Komponente werden Einschränkungen für die Anwendung von Tarifen modelliert.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Tarifeinschraenkung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Tarifeinschraenkung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/Tarifeinschraenkung.json>`_",
+    "description": "Mit dieser Komponente werden Einschränkungen für die Anwendung von Tarifen modelliert.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Tarifeinschraenkung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Tarifeinschraenkung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/com/Tarifeinschraenkung.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -23,14 +23,14 @@
                     "type": "null"
                 }
             ],
-            "default": "202401.0.0",
+            "default": "202401.0.1",
             "title": " Version"
         },
         "einschraenkungleistung": {
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Menge.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Menge.json"
                     },
                     "type": "array"
                 },
@@ -45,7 +45,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/bo/Geraet.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/bo/Geraet.json"
                     },
                     "type": "array"
                 },
@@ -60,7 +60,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Voraussetzungen.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Voraussetzungen.json"
                     },
                     "type": "array"
                 },
@@ -75,7 +75,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },

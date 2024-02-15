@@ -1,6 +1,6 @@
 {
     "additionalProperties": true,
-    "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/Zeitraum.json>`_",
+    "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/com/Zeitraum.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -23,15 +23,13 @@
                     "type": "null"
                 }
             ],
-            "default": "202401.0.0",
+            "default": "202401.0.1",
             "title": " Version"
         },
         "dauer": {
             "anyOf": [
                 {
-                    "type": "number"
-                },
-                {
+                    "format": "decimal",
                     "type": "string"
                 },
                 {
@@ -44,7 +42,7 @@
         "einheit": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Mengeneinheit.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Mengeneinheit.json"
                 },
                 {
                     "type": "null"
@@ -108,7 +106,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },

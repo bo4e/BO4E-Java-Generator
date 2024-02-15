@@ -1,6 +1,6 @@
 {
     "additionalProperties": true,
-    "description": "Abbildung einer allgemeinen Zeitreihe mit einem Wertvektor.\nDie Werte können mit wahlfreier zeitlicher Distanz im Vektor abgelegt sein.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Zeitreihe.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitreihe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/bo/Zeitreihe.json>`_",
+    "description": "Abbildung einer allgemeinen Zeitreihe mit einem Wertvektor.\nDie Werte können mit wahlfreier zeitlicher Distanz im Vektor abgelegt sein.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Zeitreihe.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitreihe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/bo/Zeitreihe.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -17,7 +17,7 @@
         "_typ": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Typ.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Typ.json"
                 },
                 {
                     "type": "null"
@@ -52,7 +52,7 @@
         "einheit": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Mengeneinheit.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Mengeneinheit.json"
                 },
                 {
                     "type": "null"
@@ -63,7 +63,7 @@
         "medium": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Medium.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Medium.json"
                 },
                 {
                     "type": "null"
@@ -74,7 +74,7 @@
         "messart": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Messart.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Messart.json"
                 },
                 {
                     "type": "null"
@@ -85,7 +85,7 @@
         "messgroesse": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Messgroesse.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Messgroesse.json"
                 },
                 {
                     "type": "null"
@@ -109,7 +109,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Zeitreihenwert.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Zeitreihenwert.json"
                     },
                     "type": "array"
                 },
@@ -123,7 +123,7 @@
         "wertherkunft": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Wertermittlungsverfahren.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Wertermittlungsverfahren.json"
                 },
                 {
                     "type": "null"
@@ -135,7 +135,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },

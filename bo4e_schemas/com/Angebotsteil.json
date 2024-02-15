@@ -1,6 +1,6 @@
 {
     "additionalProperties": true,
-    "description": "Mit dieser Komponente wird ein Teil einer Angebotsvariante abgebildet.\nHier werden alle Angebotspositionen aggregiert.\nAngebotsteile werden im einfachsten Fall für eine Marktlokation oder Lieferstellenadresse erzeugt.\nHier werden die Mengen und Gesamtkosten aller Angebotspositionen zusammengefasst.\nEine Variante besteht mindestens aus einem Angebotsteil.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Angebotsteil.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Angebotsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/Angebotsteil.json>`_",
+    "description": "Mit dieser Komponente wird ein Teil einer Angebotsvariante abgebildet.\nHier werden alle Angebotspositionen aggregiert.\nAngebotsteile werden im einfachsten Fall für eine Marktlokation oder Lieferstellenadresse erzeugt.\nHier werden die Mengen und Gesamtkosten aller Angebotspositionen zusammengefasst.\nEine Variante besteht mindestens aus einem Angebotsteil.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Angebotsteil.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Angebotsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/com/Angebotsteil.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -23,7 +23,7 @@
                     "type": "null"
                 }
             ],
-            "default": "202401.0.0",
+            "default": "202401.0.1",
             "title": " Version"
         },
         "anfrageSubreferenz": {
@@ -41,7 +41,7 @@
         "gesamtkostenangebotsteil": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Betrag.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Betrag.json"
                 },
                 {
                     "type": "null"
@@ -52,7 +52,7 @@
         "gesamtmengeangebotsteil": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Menge.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Menge.json"
                 },
                 {
                     "type": "null"
@@ -64,7 +64,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/bo/Marktlokation.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/bo/Marktlokation.json"
                     },
                     "type": "array"
                 },
@@ -78,7 +78,7 @@
         "lieferzeitraum": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Zeitraum.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Zeitraum.json"
                 },
                 {
                     "type": "null"
@@ -90,7 +90,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Angebotsposition.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Angebotsposition.json"
                     },
                     "type": "array"
                 },
@@ -105,7 +105,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },

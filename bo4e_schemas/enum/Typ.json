@@ -3,7 +3,7 @@
     "enum": [
         "ANGEBOT",
         "ANSPRECHPARTNER",
-        "AUSSCHREIUNG",
+        "AUSSCHREIBUNG",
         "BUENDELVERTRAG",
         "ENERGIEMENGE",
         "FREMDKOSTEN",

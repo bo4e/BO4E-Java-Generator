@@ -1,6 +1,6 @@
 {
     "additionalProperties": true,
-    "description": "Abbildung einer Preisstaffel mit regionaler Abgrenzung\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionalePreisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionalePreisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/RegionalePreisstaffel.json>`_",
+    "description": "Abbildung einer Preisstaffel mit regionaler Abgrenzung\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionalePreisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionalePreisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/com/RegionalePreisstaffel.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -23,15 +23,13 @@
                     "type": "null"
                 }
             ],
-            "default": "202401.0.0",
+            "default": "202401.0.1",
             "title": " Version"
         },
         "einheitspreis": {
             "anyOf": [
                 {
-                    "type": "number"
-                },
-                {
+                    "format": "decimal",
                     "type": "string"
                 },
                 {
@@ -44,7 +42,7 @@
         "regionaleGueltigkeit": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/RegionaleGueltigkeit.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/RegionaleGueltigkeit.json"
                 },
                 {
                     "type": "null"
@@ -55,7 +53,7 @@
         "sigmoidparameter": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/com/Sigmoidparameter.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/com/Sigmoidparameter.json"
                 },
                 {
                     "type": "null"
@@ -66,9 +64,7 @@
         "staffelgrenzeBis": {
             "anyOf": [
                 {
-                    "type": "number"
-                },
-                {
+                    "format": "decimal",
                     "type": "string"
                 },
                 {
@@ -81,9 +77,7 @@
         "staffelgrenzeVon": {
             "anyOf": [
                 {
-                    "type": "number"
-                },
-                {
+                    "format": "decimal",
                     "type": "string"
                 },
                 {
@@ -97,7 +91,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },

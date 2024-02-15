@@ -1,6 +1,6 @@
 {
     "additionalProperties": true,
-    "description": "Enthält die zeitliche Zuordnung eines Ansprechpartners zu Abteilungen und Zuständigkeiten.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zustaendigkeit.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zustaendigkeit JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0-/src/bo4e_schemas/com/Zustaendigkeit.json>`_",
+    "description": "Enthält die zeitliche Zuordnung eines Ansprechpartners zu Abteilungen und Zuständigkeiten.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zustaendigkeit.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zustaendigkeit JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/com/Zustaendigkeit.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -23,7 +23,7 @@
                     "type": "null"
                 }
             ],
-            "default": "202401.0.0",
+            "default": "202401.0.1",
             "title": " Version"
         },
         "abteilung": {
@@ -53,7 +53,7 @@
         "themengebiet": {
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/enum/Themengebiet.json"
+                    "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/enum/Themengebiet.json"
                 },
                 {
                     "type": "null"
@@ -65,7 +65,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.0/src/bo4e_schemas/ZusatzAttribut.json"
+                        "$ref": "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/bo4e_schemas/ZusatzAttribut.json"
                     },
                     "type": "array"
                 },

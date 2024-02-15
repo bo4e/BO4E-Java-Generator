@@ -37,8 +37,8 @@ commit:
     dependencies:
         - "clone"
     script:
-        - ls
-#        - git add .
-#        - git commit -m "Update bo4e"
-#        - git push origin master
+        - cd java-api-code
+        - git add .
+        - git commit -m "Update bo4e"
+        - git push origin master
     allow_failure: true

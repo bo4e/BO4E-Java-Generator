@@ -5,4 +5,5 @@ generate:
         - mkdir temp
         - cd temp
         - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.enet.local/Timo.Molls/java-api-code.git
+        - cd java-api-code
         - ls

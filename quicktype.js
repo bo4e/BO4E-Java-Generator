@@ -314,7 +314,7 @@ function main(source = sourceDirName, target = targetDirName) {
         allPropertiesOptional: false
     }).then(javaClasses => {
         console.log("Generation complete");
-        const writtenFiles = javaClasses.size;
+        const writtenFiles = javaClasses.size - 3;
         console.log("Starting output");
         javaClasses.forEach((javaClass, className) => {
             if (className !== "AllKnowing.java" && className !== "StringOderNummerTyp.java" && className !== "StringOderNummer.java") {

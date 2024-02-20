@@ -1,0 +1,19 @@
+# This is a basic workflow that is manually triggered
+
+name: Manual workflow
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch
+jobs:
+  generation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - name: Get Schemas
+        run: |
+          git clone https://github.com/bo4e/BO4E-Schemas.git
+          cd BO4E-Schemas
+          ls

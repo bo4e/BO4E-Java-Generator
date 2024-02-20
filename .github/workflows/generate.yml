@@ -1,8 +1,10 @@
-name: 'Testing generation'
+name: 'Generate Java Classes'
 on:
-  push:
-    branches:
-      - master
+  workflow_call:
+    inputs:
+      version:
+        type: string
+        required: true
 jobs:
   generation:
     runs-on: ubuntu-latest
@@ -16,8 +18,13 @@ jobs:
           cache: npm
       - name: Install
         run: npm install
+      - name: Get Schemas
+        run: |
+          git clone https://github.com/bo4e/BO4E-Schemas.git
+          cd BO4E-Schemas
+          ls
       - name: Generate
-        run: node ./quicktype.js
+        run: node ./quicktype_v2.js
       - name: Push changes
         uses: cpina/github-action-push-to-another-repository@v1.7.2
         env:

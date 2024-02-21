@@ -16,5 +16,5 @@ jobs:
         run: |
           git clone https://github.com/bo4e/BO4E-Schemas.git
           rm -r bo4e_schemas
-          mv BO4E-Schemas/src/ .
+          mv BO4E-Schemas/src/bo4e_schemas .
           ls

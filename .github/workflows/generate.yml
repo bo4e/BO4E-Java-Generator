@@ -1,5 +1,10 @@
 name: 'Generate Java Classes'
 on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        required: true
   workflow_call:
     inputs:
       version:
@@ -24,7 +29,7 @@ jobs:
           cd BO4E-Schemas
           ls
       - name: Generate
-        run: node ./quicktype_v2.js
+        run: node ./quicktype.js
       - name: Push changes
         uses: cpina/github-action-push-to-another-repository@v1.7.2
         env:

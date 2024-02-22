@@ -21,4 +21,7 @@ jobs:
         env: 
           VERSION: ${{ inputs.version }}
         run: |
-          echo $VERSION
+          if [[ $VERSION -eq "latest" ]]
+          then echo "Using latest"
+          else echo "Fetching version: $VERSION"
+          fi

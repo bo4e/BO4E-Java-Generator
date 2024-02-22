@@ -26,8 +26,7 @@ jobs:
       - name: Get Schemas
         run: |
           git clone https://github.com/bo4e/BO4E-Schemas.git
-          cd BO4E-Schemas
-          ls
+          mv BO4E-Schemas/src/bo4e_schemas .
       - name: Generate
         run: node ./quicktype.js
       - name: Push changes

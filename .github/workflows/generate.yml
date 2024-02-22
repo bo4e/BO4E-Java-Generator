@@ -4,12 +4,14 @@ on:
     inputs:
       version:
         type: string
+        default: latest
         required: true
   workflow_call:
     inputs:
       version:
         type: string
-        required: true
+        default: latest
+        required: false
 jobs:
   generation:
     runs-on: ubuntu-latest
@@ -24,9 +26,17 @@ jobs:
       - name: Install
         run: npm install
       - name: Get Schemas
+        env:
+          VERSION: ${{ inputs.version }}
         run: |
-          git clone https://github.com/bo4e/BO4E-Schemas.git
-          mv BO4E-Schemas/src/bo4e_schemas .
+          RELEASE="tags/${VERSION}"
+          if [[ $VERSION -eq "latest" ]]
+          then RELEASE="latest"
+          fi
+          curl -s https://api.github.com/repos/bo4e/BO4E-Schemas/releases/${RELEASE} | grep "tarball_url" | cut -d : -f 2,3 | tr -d \", | wget -qi - --output-document=temp
+          tar -xf temp
+          TARDIR=$(tar -tf temp | grep -i "^[a-z|0-9|-]*/$")
+          mv "${TARDIR}/src/bo4e_schemas ."
       - name: Generate
         run: node ./quicktype.js
       - name: Push changes

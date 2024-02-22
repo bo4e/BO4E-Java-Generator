@@ -21,7 +21,12 @@ jobs:
         env: 
           VERSION: ${{ inputs.version }}
         run: |
+          RELEASE="tags/${VERSION}"
           if [[ $VERSION -eq "latest" ]]
-          then echo "Using latest"
-          else echo "Fetching version: $VERSION"
+          then RELEASE="latest"
           fi
+          curl -s https://api.github.com/repos/bo4e/BO4E-Schemas/releases/${RELEASE} | grep "tarball_url" | cut -d : -f 2,3 | tr -d \", | wget -qi - --output-document=temp
+          tar -xf temp
+          TARDIR=$(tar -tf temp | grep -i "^[a-z|0-9|-]*/$")
+          mv "${TARDIR}/src/bo4e_schemas ."
+          ls

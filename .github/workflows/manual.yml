@@ -5,7 +5,12 @@ name: Manual workflow
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
 on:
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        required: true
+        default: latest
 jobs:
   generation:
     runs-on: ubuntu-latest
@@ -13,8 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.1
       - name: Get Schemas
+        env: 
+          VERSION: ${{ inputs.version }}
         run: |
-          git clone https://github.com/bo4e/BO4E-Schemas.git
-          rm -r bo4e_schemas
-          mv BO4E-Schemas/src/bo4e_schemas .
-          ls
+          echo $VERSION

@@ -9,18 +9,14 @@ const {JacksonRenderer} = require("quicktype-core/dist/language/Java");
 const {acronymOption, AcronymStyleOptions} = require("quicktype-core/dist/support/Acronyms");
 
 const flags = (process.argv[2] && process.argv[2].length > 1) ? process.argv[2].substring(1).split("") : [];
-let currentVersion = "202401.0.1";
+let currentVersion = "";
 let packageName = "";
 let targetDirName = "bo4e";
 let sourceDirName = "bo4e_schemas";
+let urlTemplate = "";
 for (let i = 0; i < flags.length; i++) {
     if (process.argv[3 + i]) {
         switch (flags[i]) {
-            case 'v': {
-                currentVersion = process.argv[3 + i]
-                console.log("Using version: " + currentVersion);
-                break;
-            }
             case 'p': {
                 packageName = process.argv[3 + i]
                 console.log("Using Package: " + packageName);
@@ -95,20 +91,63 @@ class NewJavaTargetLanguage extends JavaTargetLanguage {
  * @param path {string} the path to the file
  */
 function addProperty(allKnowingSchema, file, path) {
+    let url = retrieveSchemaUrl(path);
+    if (url) {
+        if (currentVersion === "") {
+            currentVersion = getVersion(url);
+            console.log("Using version: " + currentVersion);
+        }
+        if (urlTemplate === "") {
+            urlTemplate = getUrlTemplate(url);
+            console.log("Using template: " + urlTemplate);
+        }
+    }
+    if (urlTemplate === "") {
+        console.log("Could not find template, using default")
+        url = "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/" + path;
+    } else {
+        url = urlTemplate + path;
+    }
+
     const newProperty =
-            "        },\n"+
-            "        \"" + file.charAt(0).toLowerCase() + file.substring(1, file.length - 5) + "\": {\n" +
-            "            \"anyOf\": [\n" +
-            "                {\n" +
-            "                    \"$ref\": \"https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v" + currentVersion + "/src/" + path + "\"\n" +
-            "                },\n" +
-            "                {\n" +
-            "                    \"type\": \"null\"\n" +
-            "                }\n" +
-            "            ],\n" +
-            "            \"default\": null\n";
+        "        },\n"+
+        "        \"" + file.toLowerCase().replace(".json","") + "\": {\n" +
+        "            \"anyOf\": [\n" +
+        "                {\n" +
+        "                    \"$ref\": \"" + url + "\"\n" +
+        "                },\n" +
+        "                {\n" +
+        "                    \"type\": \"null\"\n" +
+        "                }\n" +
+        "            ],\n" +
+        "            \"default\": null\n";
     allKnowingSchema.push(newProperty);
-    console.log("Property " + file + " added");
+    console.log("Property " + file.replace(".json","") + " added");
+}
+
+function retrieveSchemaUrl(path) {
+    const line = fs.readFileSync(path, "utf-8")
+        .split("\n")
+        .find(line => line.trim().startsWith("\"description\":") && line.includes("https://raw.githubusercontent"));
+    if (line) {
+        return line.match(RegExp("https://raw\.githubusercontent.*\.json"))["0"];
+    } else {
+        return undefined;
+    }
+}
+
+function getUrlTemplate(url) {
+    const beginning = url.substring(0, url.indexOf("BO4E-Schemas/")) + "BO4E-Schemas/v"
+    const end = url.substring(url.indexOf("/src/"), url.indexOf("bo4e_schemas/"));
+    return beginning + currentVersion + end
+}
+
+function getVersion(url) {
+    try {
+        return url.match(RegExp("/v[0-9]*\.[0-9]*\.[0-9]*.*/src"))["0"].replace("/v", "").replace("/src", "").replace("-", "");
+    } catch (err) {
+        return "";
+    }
 }
 
 /**
@@ -198,6 +237,10 @@ function cleanUp(source, target, fileMap, root = target, dirname = source) {
             if (!fs.existsSync(root + '/' + javaFile)) {
                 const targetFiles = fs.readdirSync(root);
                 javaFile = targetFiles.find(value => value.substring(0, value.length - 5).toLowerCase() === file.substring(0, file.length - 5).toLowerCase());
+                if (!javaFile) {
+                    console.log("Cannot find:" + file.replace(".json", ".java"))
+                    continue;
+                }
             }
             const fileName = javaFile.replace(".java", "");
             // restore directory structure
@@ -212,17 +255,36 @@ function cleanUp(source, target, fileMap, root = target, dirname = source) {
                 if (classAndDir !== undefined && fileName !== classAndDir.className) {
                     // add parent to child and remove overwritten properties
                     if (line.startsWith("public class")) {
-                        const parent = classAndDir.className;
                         const ownVersionProperty = lines.slice(index, index + 4).findIndex(value => value.includes("private String version")) === -1;
-                        if (!ownVersionProperty) {
-                            lines[lines.findIndex(value => value.includes("private String version"))] = "#";
-                            const lineIndex = lines.findIndex(value => value.includes("getVersion"));
-                            lines.splice(lineIndex, 2, "#", "#");
-                            if (lines[lineIndex + 2] === "") {
-                                lines[lineIndex + 2] = "#";
+                        if (fileMap.has(classAndDir.className.toLowerCase())) {
+                            const parent = classAndDir.className;
+                            if (!ownVersionProperty) {
+                                lines[lines.findIndex(value => value.includes("private String version"))] = "#";
+                                const lineIndex = lines.findIndex(value => value.includes("getVersion"));
+                                lines.splice(lineIndex, 2, "#", "#");
+                                if (lines[lineIndex + 2] === "") {
+                                    lines[lineIndex + 2] = "#";
+                                }
+                            }
+                            lines[index] = line.substring(0, line.length - 1) + "extends " + parent + " {";
+                        } else {
+                            if (!ownVersionProperty) {
+                                let i = lines.findIndex(value => value.includes("private String version"));
+                                lines[i] = lines[i].replace("private String version", "private final String _version = \"" + currentVersion + "\"");
+                                i = lines.findIndex(value => value.includes("getVersion"));
+                                lines[i] = lines[i].replace("return version","return _version")
+                                i = lines.findIndex(value => value.includes("setVersion"));
+                                lines[i] = "#";
                             }
                         }
-                        lines[index] = line.substring(0, line.length - 1) + "extends " + parent + " {";
+                    } else if (!fileMap.has(classAndDir.className.toLowerCase())) {
+                        lines[index] = lines[index]
+                            .replace(" id", " _id")
+                            .replace(" typ", " _typ")
+                            .replace("this.id", "this._id")
+                            .replace("this.typ", "this._typ")
+                            .replace("getid", "getId")
+                            .replace("setid", "setId");
                     } else if (line.includes("getid") || line.includes("getZusatzAttribute")) {
                         lines.splice(index, 2, "#", "#");
                         if (lines[index + 2] === "") {
@@ -254,6 +316,9 @@ function cleanUp(source, target, fileMap, root = target, dirname = source) {
                 if (line.includes("setTyp")) {
                     lines.splice(index, 1, "#");
                 }
+                if (line.includes("getTyp")) {
+                    lines[index] = lines[index].replace("return typ", "return _typ");
+                }
                 if (line.includes("private ")) {
                     const words = line.trim().split(" ").filter(value => value !== "");
                     const type = words[1].replace("[]", "");
@@ -278,7 +343,9 @@ function cleanUp(source, target, fileMap, root = target, dirname = source) {
                                 .find(value => value.includes("default"))
                                 .replaceAll("\"", "")
                                 .replace("default:", "");
-                            lines[index] = lines[index].replace("private", "private final").replace(";", " = Typ." + fileTyp + ";")
+                            lines[index] = lines[index]
+                                .replace("private Typ typ", "private final Typ _typ")
+                                .replace(";", " = Typ." + fileTyp + ";")
                         }
                         // add import statements
                         const typeFile = type + ".json";
@@ -322,6 +389,12 @@ function main(source = sourceDirName, target = targetDirName) {
     const allKnowingSchema = generateAllKnowingSchema();
     console.log("Creating generation_schema");
     const fileMap = addToSchema(allKnowingSchema, source);
+    for (const classAndDir of baseclassForDir) {
+        if (!fileMap.has(classAndDir.className.toLowerCase())) {
+            addProperty(allKnowingSchema, classAndDir.className, `resource_schemas/${classAndDir.className}.json`);
+            fileMap.set(classAndDir.className.toLowerCase(), `${targetDirName}/${classAndDir.dir}/`);
+        }
+    }
     const readFiles = fileMap.size;
     fileMap.set("stringodernummer", "");
     let schema = allKnowingSchema[0];

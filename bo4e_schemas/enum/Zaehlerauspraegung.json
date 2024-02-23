@@ -1,9 +1,0 @@
-{
-    "description": "Gibt an, ob es sich um einen Einrichtungs- oder Zweirichtungszähler handelt.",
-    "enum": [
-        "EINRICHTUNGSZAEHLER",
-        "ZWEIRICHTUNGSZAEHLER"
-    ],
-    "title": "Zaehlerauspraegung",
-    "type": "string"
-}

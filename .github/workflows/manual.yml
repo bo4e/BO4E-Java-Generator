@@ -28,4 +28,5 @@ jobs:
           curl -s https://api.github.com/repos/bo4e/BO4E-Schemas/releases/${RELEASE} | grep "tarball_url" | cut -d : -f 2,3 | tr -d \", | wget -qi - --output-document=temp
           tar -xf temp
           TARDIR=$(tar -tf temp | grep -i "^[a-z|0-9|-]*/$")
+          date
           rm -r ./bo4e_schemas && mv "${TARDIR}src/bo4e_schemas" . && cd bo4e_schemas && ls -l

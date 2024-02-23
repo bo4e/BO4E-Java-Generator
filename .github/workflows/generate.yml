@@ -29,14 +29,24 @@ jobs:
         env:
           VERSION: ${{ inputs.version }}
         run: |
-          RELEASE="tags/${VERSION}"
-          if [[ $VERSION -eq "latest" ]]
-          then RELEASE="latest"
+          RELEASE="tags/v${VERSION}"
+          [[ "vlatest" -eq "v${VERSION}" ]] 2>/dev/null && RELEASE="latest"
+          curl -s "https://api.github.com/repos/bo4e/BO4E-Schemas/releases/${RELEASE}" > releasedata
+          if [[ `grep -c "" releasedata` -gt 0 ]]
+          then
+            grep "tarball_url" releasedata | cut -d : -f 2,3 | tr -d \", | wget -qi - --output-document=temp
+            if tar -xf temp
+            then
+              TARDIR=$(tar -tf temp | grep -i "^[a-z|0-9|-]*/$")
+              rm -rf ./bo4e_schemas && mv "${TARDIR}src/bo4e_schemas" .
+            else
+              echo "Could not unpack archive"
+              exit 1
+            fi
+          else
+            echo "Could not find tarball_url"
+            exit 1
           fi
-          curl -s https://api.github.com/repos/bo4e/BO4E-Schemas/releases/${RELEASE} | grep "tarball_url" | cut -d : -f 2,3 | tr -d \", | wget -qi - --output-document=temp
-          tar -xf temp
-          TARDIR=$(tar -tf temp | grep -i "^[a-z|0-9|-]*/$")
-          mv "${TARDIR}/src/bo4e_schemas ."
       - name: Generate
         run: node ./quicktype.js
       - name: Push changes

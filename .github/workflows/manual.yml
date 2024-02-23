@@ -22,7 +22,7 @@ jobs:
           VERSION: ${{ inputs.version }}
         run: |
           RELEASE="tags/v${VERSION}"
-          ([[ "vlatest" -eq "v${VERSION}" ]] && RELEASE="latest") 2>/dev/null
+          [[ "vlatest" -eq "v${VERSION}" ]] 2>/dev/null && RELEASE="latest"
           curl -s "https://api.github.com/repos/bo4e/BO4E-Schemas/releases/${RELEASE}" > releasedata
           if [[ `grep -c "" releasedata` -gt 0 ]]
           then
@@ -33,9 +33,9 @@ jobs:
               rm -rf ./bo4e_schemas && mv "${TARDIR}src/bo4e_schemas" . && cd bo4e_schemas && ls -l
             else
               echo "Could not unpack archive"
-              exit 1
+              exit 5
             fi
           else
             echo "Could not find tarball_url"
-            exit 1
+            exit 5
           fi

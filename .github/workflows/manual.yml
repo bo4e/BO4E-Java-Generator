@@ -21,11 +21,12 @@ jobs:
         env: 
           VERSION: ${{ inputs.version }}
         run: |
+          set -x
           RELEASE="tags/${VERSION}"
-          if [[ $VERSION -eq "latest" ]]
+          if [[ "$VERSION" -eq "latest" ]]
           then RELEASE="latest"
           fi
-          curl -s https://api.github.com/repos/bo4e/BO4E-Schemas/releases/${RELEASE} | grep "tarball_url" | cut -d : -f 2,3 | tr -d \", | wget -qi - --output-document=temp
+          curl -s "https://api.github.com/repos/bo4e/BO4E-Schemas/releases/${RELEASE}" | grep "tarball_url" | cut -d : -f 2,3 | tr -d \", | wget -qi - --output-document=temp
           if [[ $? -eq 0 ]]
           then
             tar -xf temp

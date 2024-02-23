@@ -27,11 +27,16 @@ jobs:
           RELEASEDATA=`curl -s "https://api.github.com/repos/bo4e/BO4E-Schemas/releases/${RELEASE}"`
           if [[ `grep -c "" $RELEASEDATA` -gt 0 ]]
           then
-            grep "tarball_url" $RELEASEDATA | cut -d : -f 2,3 | tr -d \", | wget -qi - --output-document=temp)
-            tar -xf temp
-            TARDIR=$(tar -tf temp | grep -i "^[a-z|0-9|-]*/$")
-            date
-            rm -r ./bo4e_schemas && mv "${TARDIR}src/bo4e_schemas" . && cd bo4e_schemas && ls -l
+            grep "tarball_url" $RELEASEDATA | cut -d : -f 2,3 | tr -d \", | wget -qi - --output-document=temp
+            if tar -xf temp
+            then
+              TARDIR=$(tar -tf temp | grep -i "^[a-z|0-9|-]*/$")
+              rm -rf ./bo4e_schemas && mv "${TARDIR}src/bo4e_schemas" . && cd bo4e_schemas && ls -l
+            else
+              echo "Could not unpack archive"
+              exit 1
+            fi
           else
-            echo "Something went wrong"
+            echo "Could not find tarball_url"
+            exit 1
           fi

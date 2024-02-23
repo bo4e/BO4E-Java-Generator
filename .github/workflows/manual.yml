@@ -22,7 +22,7 @@ jobs:
           VERSION: ${{ inputs.version }}
         run: |
           RELEASE="tags/v${VERSION}"
-          [[ "vlatest" -eq "v${VERSION}" ]] && RELEASE="latest"
+          ([[ "vlatest" -eq "v${VERSION}" ]] && RELEASE="latest") 2>/dev/null
           curl -s "https://api.github.com/repos/bo4e/BO4E-Schemas/releases/${RELEASE}" > releasedata
           if [[ `grep -c "" releasedata` -gt 0 ]]
           then

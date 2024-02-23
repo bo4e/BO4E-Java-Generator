@@ -22,13 +22,12 @@ jobs:
           VERSION: ${{ inputs.version }}
         run: |
           set -x
-          RELEASE="tags/${VERSION}"
-          if [[ "latest" -eq "$VERSION" ]]
-          then RELEASE="latest"
-          fi
-          (curl -s "https://api.github.com/repos/bo4e/BO4E-Schemas/releases/${RELEASE}" | grep "tarball_url" | cut -d : -f 2,3 | tr -d \", | wget -qi - --output-document=temp)
-          if [[ $? -eq 0 ]]
+          RELEASE="tags/v${VERSION}"
+          [[ "vlatest" -eq "v${VERSION}" ]] && RELEASE="latest"
+          RELEASEDATA=`curl -s "https://api.github.com/repos/bo4e/BO4E-Schemas/releases/${RELEASE}"`
+          if [[ `grep -c "" $RELEASEDATA` -gt 0 ]]
           then
+            grep "tarball_url" $RELEASEDATA | cut -d : -f 2,3 | tr -d \", | wget -qi - --output-document=temp)
             tar -xf temp
             TARDIR=$(tar -tf temp | grep -i "^[a-z|0-9|-]*/$")
             date

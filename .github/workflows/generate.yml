@@ -29,7 +29,7 @@ jobs:
         env:
           VERSION: ${{ inputs.version }}
         run: |
-          [[ `echo $VERSION | grep -c "rc"` -gt 0 ]] && echo "Kein offizieller Release" && exit 0
+          [[ `echo $VERSION | grep -c "rc"` -gt 0 || `echo $VERSION | grep -oE "^[0-9]{4}"` -lt 2024 ]] && echo "Kein offizieller Release" && exit 0
           RELEASE="tags/v${VERSION}"
           [[ "vlatest" -eq "v${VERSION}" ]] 2>/dev/null && RELEASE="latest"
           curl -s "https://api.github.com/repos/bo4e/BO4E-Schemas/releases/${RELEASE}" > releasedata

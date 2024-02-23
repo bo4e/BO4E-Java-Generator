@@ -1,0 +1,64 @@
+name: 'Generate Java Classes'
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        default: latest
+        required: true
+  workflow_call:
+    inputs:
+      version:
+        type: string
+        default: latest
+        required: false
+jobs:
+  generation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - name: Setup node
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: 16.20.x
+          cache: npm
+      - name: Install
+        run: npm install
+      - name: Get Schemas
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          [[ `echo $VERSION | grep -c "rc"` -gt 0 || `echo $VERSION | grep -oE "^[0-9]{4}"` -lt 2024 ]] && echo "Kein offizieller Release" && exit 0
+          RELEASE="tags/v${VERSION}"
+          [[ "vlatest" -eq "v${VERSION}" ]] 2>/dev/null && RELEASE="latest"
+          curl -s "https://api.github.com/repos/bo4e/BO4E-Schemas/releases/${RELEASE}" > releasedata
+          if [[ `grep -c "" releasedata` -gt 0 ]]
+          then
+            grep "tarball_url" releasedata | cut -d : -f 2,3 | tr -d \", | wget -qi - --output-document=temp
+            if tar -xf temp
+            then
+              TARDIR=$(tar -tf temp | grep -i "^[a-z|0-9|-]*/$")
+              rm -rf ./bo4e_schemas && mv "${TARDIR}src/bo4e_schemas" .
+            else
+              echo "Could not unpack archive"
+              exit 1
+            fi
+          else
+            echo "Could not find tarball_url"
+            exit 1
+          fi
+      - name: Generate
+        run: node ./quicktype.js
+      - name: Push changes
+        uses: cpina/github-action-push-to-another-repository@v1.7.2
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN_JAVA_API }}
+        with:
+          source-directory: "bo4e"
+          target-directory: "bo4e"
+          destination-github-username: "TimoMolls"
+          destination-repository-name: "java-api-code"
+          user-email: timo.molls@enet.eu
+          target-branch: master
+          commit-message: "Update bo4e"

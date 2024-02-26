@@ -22,10 +22,10 @@ async function get_release_infos(version) {
     const response =  await octokit.request('GET /repos/{owner}/{repo}/releases/tags/{tag}', {
         owner: 'bo4e',
         repo: 'BO4E-Schemas',
-        tag: version
+        tag:version
     });
     ensure_status_code(response);
-    return response;
+    return response.data;
 }
 
 async function get_latest_release_tag() {
@@ -57,13 +57,12 @@ async function create_release(version, release_infos, is_latest) {
         make_latest: is_latest
     });
     ensure_status_code(response);
-    return response.data;
 }
 
-function main(version) {
-    const release_infos = get_release_infos(version);
-    const is_latest = version === get_latest_release_tag();
-    create_release(version, release_infos, is_latest).then(console.log);
+async function main(version) {
+    const release_infos = await get_release_infos(version);
+    const is_latest = version === await get_latest_release_tag();
+    await create_release(version, release_infos, is_latest);
 }
 
-main(process.argv[3]);
+main(process.argv[3]).then();

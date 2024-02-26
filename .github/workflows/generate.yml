@@ -38,7 +38,7 @@ jobs:
           then
             RELEASETAG=`grep "\"tag_name\":" releasedata | cut -d : -f2 | tr -d \",v`
             echo "TAGNAME=$RELEASETAG" >> "$GITHUB_OUTPUT"
-            [[ $VERSION = latest ]] && [[ `echo $RELEASETAG | grep -c "rc"` -gt 0 || `echo $RELEASETAG | grep -oE "^[0-9]{4}"` -lt 2024 ]] && echo "Kein offizieller Release" && exit 0
+            [[ $VERSION = latest ]] && [[ `echo $RELEASETAG | grep -c "rc"` -gt 0 || `echo $RELEASETAG | grep -oE "^[0-9]{4}"` -lt 2024 ]] && echo "Kein offizieller Release" && exit 1
             grep "tarball_url" releasedata | cut -d : -f 2,3 | tr -d \", | wget -qi - --output-document=temp
             if tar -xf temp
             then

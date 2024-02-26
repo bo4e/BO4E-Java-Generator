@@ -26,15 +26,19 @@ jobs:
       - name: Install
         run: npm install
       - name: Get Schemas
+        id: schemas
         env:
           VERSION: ${{ inputs.version }}
         run: |
-          [[ `echo $VERSION | grep -c "rc"` -gt 0 || `echo $VERSION | grep -oE "^[0-9]{4}"` -lt 2024 ]] && echo "Kein offizieller Release" && exit 0
+          [[ `echo $VERSION | grep -c "rc"` -gt 0 || `echo $VERSION | grep -oE "^[0-9]{4}"` -lt 2024 ]] && echo "Achtung: kein offizieller Release"
           RELEASE="tags/v${VERSION}"
-          [[ "vlatest" -eq "v${VERSION}" ]] 2>/dev/null && RELEASE="latest"
+          [[ "latest" = "${VERSION}" ]] 2>/dev/null && RELEASE="latest"
           curl -s "https://api.github.com/repos/bo4e/BO4E-Schemas/releases/${RELEASE}" > releasedata
-          if [[ `grep -c "" releasedata` -gt 0 ]]
+          if [[ `grep -c "tarball_url" releasedata` -gt 0 ]]
           then
+            RELEASETAG=`grep "\"tag_name\":" releasedata | cut -d : -f2 | tr -d \",v`
+            echo "TAGNAME=$RELEASETAG" >> "$GITHUB_OUTPUT"
+            [[ $VERSION = latest ]] && [[ `echo $RELEASETAG | grep -c "rc"` -gt 0 || `echo $RELEASETAG | grep -oE "^[0-9]{4}"` -lt 2024 ]] && echo "Kein offizieller Release" && exit 1
             grep "tarball_url" releasedata | cut -d : -f 2,3 | tr -d \", | wget -qi - --output-document=temp
             if tar -xf temp
             then
@@ -49,7 +53,7 @@ jobs:
             exit 1
           fi
       - name: Generate
-        run: node ./quicktype.js
+        run:  node ./quicktype.js
       - name: Push changes
         uses: cpina/github-action-push-to-another-repository@v1.7.2
         env:
@@ -61,4 +65,4 @@ jobs:
           destination-repository-name: "java-api-code"
           user-email: timo.molls@enet.eu
           target-branch: master
-          commit-message: "Update bo4e"
+          commit-message: "Update JAVA-Classes - BO4E ${{ steps.schemas.outputs.TAGNAME }}"

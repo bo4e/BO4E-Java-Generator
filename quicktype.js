@@ -125,6 +125,11 @@ function addProperty(allKnowingSchema, file, path) {
     console.log("Property " + file.replace(".json","") + " added");
 }
 
+/**
+ *
+ * @param path {string}
+ * @returns {undefined|string}
+ */
 function retrieveSchemaUrl(path) {
     const line = fs.readFileSync(path, "utf-8")
         .split("\n")
@@ -136,15 +141,30 @@ function retrieveSchemaUrl(path) {
     }
 }
 
+/**
+ *
+ * @param url {string}
+ * @returns {string}
+ */
 function getUrlTemplate(url) {
     const beginning = url.substring(0, url.indexOf("BO4E-Schemas/")) + "BO4E-Schemas/v"
     const end = url.substring(url.indexOf("/src/"), url.indexOf("bo4e_schemas/"));
     return beginning + currentVersion + end
 }
 
+/**
+ *
+ * @param url {string}
+ * @returns {string}
+ */
 function getVersion(url) {
     try {
-        return url.match(RegExp("/v[0-9]*\.[0-9]*\.[0-9]*.*/src"))["0"].replace("/v", "").replace("/src", "").replace("-", "");
+        const tmp = url.match(RegExp("/v[0-9]*\.[0-9]*\.[0-9]*.*/src"))["0"].replace("/v", "").replace("/src", "");
+        if (tmp.endsWith("-")) {
+            return tmp.substring(0, tmp.length - 1);
+        } else {
+            return tmp;
+        }
     } catch (err) {
         return "";
     }
@@ -389,13 +409,17 @@ function main(source = sourceDirName, target = targetDirName) {
     const allKnowingSchema = generateAllKnowingSchema();
     console.log("Creating generation_schema");
     const fileMap = addToSchema(allKnowingSchema, source);
+    const readFiles = fileMap.size;
     for (const classAndDir of baseclassForDir) {
         if (!fileMap.has(classAndDir.className.toLowerCase())) {
-            addProperty(allKnowingSchema, classAndDir.className, `resource_schemas/${classAndDir.className}.json`);
+            if (!fs.existsSync(target)) {
+                fs.mkdirSync(target, {recursive: true});
+            }
+            fs.writeFileSync(`${source}/${classAndDir.dir}/${classAndDir.className}.json`, "default:" + classAndDir.className.toUpperCase());
+            fs.copyFileSync(`resource_schemas/${classAndDir.className}.java`, `${target}/${classAndDir.className}.java`);
             fileMap.set(classAndDir.className.toLowerCase(), `${targetDirName}/${classAndDir.dir}/`);
         }
     }
-    const readFiles = fileMap.size;
     fileMap.set("stringodernummer", "");
     let schema = allKnowingSchema[0];
     for (let i = 2; i < allKnowingSchema.length; i++) {
@@ -416,19 +440,23 @@ function main(source = sourceDirName, target = targetDirName) {
     }).then(javaClasses => {
         console.log("Generation complete");
         const writtenFiles = javaClasses.size - 3;
-        console.log("Starting output");
-        javaClasses.forEach((javaClass, className) => {
-            if (className !== "AllKnowing.java" && className !== "StringOderNummerTyp.java" && className !== "StringOderNummer.java") {
-                if (!fs.existsSync(target)) {
-                    fs.mkdirSync(target, {recursive: true});
+        if (javaClasses.size <= 5) {
+            console.log("Not enough files: " + javaClasses.size)
+        } else {
+            console.log("Starting output");
+            javaClasses.forEach((javaClass, className) => {
+                if (className !== "AllKnowing.java" && className !== "StringOderNummerTyp.java" && className !== "StringOderNummer.java") {
+                    if (!fs.existsSync(target)) {
+                        fs.mkdirSync(target, {recursive: true});
+                    }
+                    fs.writeFileSync(target + "/" + className, javaClass.lines.join("\n"));
                 }
-                fs.writeFileSync(target + "/" + className, javaClass.lines.join("\n"));
-            }
-        });
-        console.log("Output complete");
-        console.log("Starting cleanup");
-        cleanUp(source, target, fileMap);
-        console.log("Cleanup complete");
+            });
+            console.log("Output complete");
+            console.log("Starting cleanup");
+            cleanUp(source, target, fileMap);
+            console.log("Cleanup complete");
+        }
         console.log(`Finished: ${writtenFiles}/${readFiles}`)
     });
 }

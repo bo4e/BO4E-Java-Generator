@@ -36,7 +36,7 @@ jobs:
           curl -s "https://api.github.com/repos/bo4e/BO4E-Schemas/releases/${RELEASE}" > releasedata
           if [[ `grep -c "tarball_url" releasedata` -gt 0 ]]
           then
-            RELEASETAG=`grep "\"tag_name\":" releasedata | cut -d : -f2 | tr -d "\",` "
+            RELEASETAG=`grep "\"tag_name\":" releasedata | cut -d : -f2 | tr -d "\", "`
             [[ $VERSION = latest ]] && [[ `echo $RELEASETAG | grep -c "rc"` -gt 0 || `echo $RELEASETAG | grep -oE "^v[0-9]{4}"` -lt 2024 ]] && RELEASETAG='invalid'
             echo "TAGNAME=$RELEASETAG" >> "$GITHUB_OUTPUT"
             [[ $RELEASETAG = invalid ]] && echo "Kein offizieller Release" && exit 0

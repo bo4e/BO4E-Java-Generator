@@ -26,6 +26,7 @@ jobs:
       - name: Install
         run: npm install
       - name: Get Schemas
+        id: schemas
         env:
           VERSION: ${{ inputs.version }}
         run: |
@@ -36,6 +37,7 @@ jobs:
           if [[ `grep -c "tarball_url" releasedata` -gt 0 ]]
           then
             RELEASETAG=`grep "\"tag_name\":" releasedata | cut -d : -f2 | tr -d \",v`
+            echo "TAGNAME=$RELEASETAG" >> "$GITHUB_OUTPUT"
             [[ `echo $RELEASE | grep -c "rc"` -gt 0 || `echo $RELEASETAG | grep -oE "^[0-9]{4}"` -lt 2024 ]] && echo "Kein offizieller Release" && exit 1
             grep "tarball_url" releasedata | cut -d : -f 2,3 | tr -d \", | wget -qi - --output-document=temp
             if tar -xf temp
@@ -63,4 +65,4 @@ jobs:
           destination-repository-name: "java-api-code"
           user-email: timo.molls@enet.eu
           target-branch: master
-          commit-message: "Update JAVA-Classes - BO4E v${{ inputs.version }}"
+          commit-message: "Update JAVA-Classes - BO4E ${{ steps.schemas.outputs.TAGNAME }}"

@@ -66,4 +66,4 @@ jobs:
           destination-repository-name: "java-api-code"
           user-email: timo.molls@enet.eu
           target-branch: master
-          commit-message: "Update JAVA-Classes - BO4E ${{ steps.schemas.outputs.TAGNAME }}"
+          commit-message: "Update JAVA-Classes - BO4E v${{ steps.schemas.outputs.TAGNAME }}"

@@ -2,6 +2,7 @@
   "name": "api-generator-test",
   "version": "1.0.0",
   "dependencies": {
+    "octokit": "^3.1.2",
     "quicktype-core": "^23.0.81"
   }
 }

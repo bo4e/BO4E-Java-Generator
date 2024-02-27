@@ -40,6 +40,7 @@ async function main() {
             }
         }
     }
+    console.log("none")
 }
 
 main().then();

@@ -4,6 +4,8 @@ on:
 jobs:
   synchronisation:
     runs-on: ubuntu-latest
+    outputs:
+      tagname: ${{ steps.release.outputs.TAGNAME }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
@@ -15,8 +17,20 @@ jobs:
       - name: Install
         run: npm install
       - name: Sync
+        id: release
         env:
           TOKEN: ${{ secrets.CREATE_RELEASE_TOKEN }}
         run: |
-          TAG=`node ./sync_releases.js $TOKEN`
+          TAG=`node ./sync_releases.js $TOKEN | tr -d "v"`
           echo $TAG
+          echo "TAGNAME=$TAG" >> "$GITHUB_OUTPUT"
+  call_workflow:
+    needs: synchronisation
+    if: ${{ needs.synchronisation.outputs.tagname != 'none' }}
+    uses: ./.github/workflows/generate.yml
+    with:
+      version: ${{ needs.synchronisation.outputs.tagname }}
+    secrets:
+      ACCESS_TOKEN_JAVA_API: ${{ secrets.ACCESS_TOKEN_JAVA_API }}
+      CREATE_RELEASE_TOKEN: ${{ secrets.CREATE_RELEASE_TOKEN }}
+          

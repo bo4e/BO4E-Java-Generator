@@ -37,7 +37,7 @@ jobs:
           if [[ `grep -c "tarball_url" releasedata` -gt 0 ]]
           then
             RELEASETAG=`grep "\"tag_name\":" releasedata | cut -d : -f2 | tr -d "\", "`
-            [[ $VERSION = latest ]] && [[ `echo $RELEASETAG | grep -c "rc"` -gt 0 || `echo $RELEASETAG | grep -oE "^v[0-9]{4}"` -lt 2024 ]] && RELEASETAG='invalid'
+            [[ $VERSION = latest ]] && [[ `echo $RELEASETAG | grep -c "rc"` -gt 0 || `echo $RELEASETAG | tr -d "v" | grep -oE "^[0-9]{4}"` -lt 2024 ]] && RELEASETAG='invalid'
             echo "TAGNAME=$RELEASETAG" >> "$GITHUB_OUTPUT"
             [[ $RELEASETAG = invalid ]] && echo "Kein offizieller Release" && exit 0
             grep "tarball_url" releasedata | cut -d : -f 2,3 | tr -d \", | wget -qi - --output-document=temp
@@ -66,7 +66,7 @@ jobs:
           source-directory: "bo4e"
           target-directory: "bo4e"
           destination-github-username: "TimoMolls"
-          destination-repository-name: "java-api-code"
+          destination-repository-name: "BO4E-Java"
           user-email: timo.molls@enet.eu
           target-branch: master
           commit-message: "Update JAVA-Classes - BO4E ${{ steps.schemas.outputs.TAGNAME }}"

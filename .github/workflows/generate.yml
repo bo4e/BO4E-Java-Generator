@@ -12,6 +12,11 @@ on:
         type: string
         default: latest
         required: false
+    secrets:
+      ACCESS_TOKEN_JAVA_API:
+        required: true
+      CREATE_RELEASE_TOKEN:
+        required: true
 jobs:
   generation:
     runs-on: ubuntu-latest

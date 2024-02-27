@@ -22,9 +22,9 @@ jobs:
           TAG=`node ./sync_releases.js $TOKEN | tr -d "v"`
           echo $TAG
           echo "TAGNAME=$TAG" >> "$GITHUB_OUTPUT"
-      - name: Call
-        if: ${{ steps.release.outputs.TAGNAME != 'none' }}
-        uses: ./.github/workflows/generate.yml
-        with:
-          version: ${{ steps.release.outputs.TAGNAME }}
+  call_workflow:
+    if: ${{ steps.release.outputs.TAGNAME != 'none' }}
+    uses: ./.github/workflows/generate.yml
+    with:
+      version: ${{ steps.release.outputs.TAGNAME }}
           

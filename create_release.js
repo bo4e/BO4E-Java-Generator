@@ -3,10 +3,10 @@ const {Octokit} = require("octokit");
 if (!process.argv[2] || !process.argv[3]) {
     throw new Error("Argument required")
 }
-const octokit = new Octokit()
 const auth_octokit = new Octokit({
     auth: process.argv[2]
 });
+const octokit = new Octokit()
 
 /**
  *
@@ -43,10 +43,11 @@ async function get_latest_release_tag() {
  *
  * @param version {string}
  * @param release_infos {string[]}
+ * @param is_prerelease {boolean}
  * @param is_latest {boolean}
  * @returns {Promise<void>}
  */
-async function create_release(version, release_infos, is_latest) {
+async function create_release(version, release_infos, is_prerelease, is_latest) {
     const response = await auth_octokit.request('POST /repos/{owner}/{repo}/releases', {
         owner: 'TimoMolls',
         repo: 'BO4E-Java',
@@ -55,7 +56,7 @@ async function create_release(version, release_infos, is_latest) {
         name: release_infos['name'],
         body: release_infos['body'],
         draft: false,
-        prerelease: release_infos['prerelease'],
+        prerelease: is_prerelease,
         make_latest: is_latest.toString()
     });
     ensure_status_code(response, 201);
@@ -63,8 +64,9 @@ async function create_release(version, release_infos, is_latest) {
 
 async function main(version) {
     const release_infos = await get_release_infos(version);
-    const is_latest = version === await get_latest_release_tag();
-    await create_release(version, release_infos, is_latest);
+    const is_prerelease = (release_infos['prerelease'] || version.includes("-rc"))
+    const is_latest = (!is_prerelease && version === await get_latest_release_tag());
+    await create_release(version, release_infos, is_prerelease, is_latest);
 }
 
 main(process.argv[3]).then();

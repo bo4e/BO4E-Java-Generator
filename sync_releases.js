@@ -3,10 +3,10 @@ const {Octokit} = require("octokit");
 if (!process.argv[2]) {
     throw new Error("Argument required")
 }
-const octokit = new Octokit()
 const auth_octokit = new Octokit({
     auth: process.argv[2]
 });
+const octokit = new Octokit()
 
 /**
  *
@@ -32,7 +32,7 @@ async function main() {
     const java_releases = await getReleases(auth_octokit, "TimoMolls", "BO4E-Java");
     const date = new Date()
     for (const release of schema_releases) {
-        if (release['tag_name'].startsWith("v" + date.getFullYear()) && !release['tag_name'].includes("-rc")) {
+        if (release['tag_name'].startsWith("v" + date.getFullYear())) {
             const index = java_releases.findIndex(java_release => java_release['tag_name'] === release['tag_name']);
             if (index < 0) {
                 console.log(release['tag_name']);

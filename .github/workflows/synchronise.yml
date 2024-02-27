@@ -4,6 +4,8 @@ on:
 jobs:
   synchronisation:
     runs-on: ubuntu-latest
+    outputs:
+      tagname: ${{ steps.schemas.outputs.TAGNAME }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
@@ -23,8 +25,9 @@ jobs:
           echo $TAG
           echo "TAGNAME=$TAG" >> "$GITHUB_OUTPUT"
   call_workflow:
-    if: ${{ steps.release.outputs.TAGNAME != 'none' }}
+    needs: synchronisation
+    if: ${{ needs.synchronisation.outputs.tagname != 'none' }}
     uses: ./.github/workflows/generate.yml
     with:
-      version: ${{ steps.release.outputs.TAGNAME }}
+      version: ${{ needs.synchronisation.outputs.tagname }}
           

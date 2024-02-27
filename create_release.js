@@ -11,10 +11,12 @@ const auth_octokit = new Octokit({
 /**
  *
  * @param response{OctokitResponse}
+ * @param statuscode {number}
  */
-function ensure_status_code(response) {
-    if (response.status !== 200) {
-        throw new Error("Request failed");
+function ensure_status_code(response, statuscode = 200) {
+    if (response.status !== statuscode) {
+        console.log(response.data)
+        throw new Error("Request failed: got " + response.status);
     }
 }
 
@@ -56,7 +58,7 @@ async function create_release(version, release_infos, is_latest) {
         prerelease: release_infos['prerelease'],
         make_latest: is_latest.toString()
     });
-    ensure_status_code(response);
+    ensure_status_code(response, 201);
 }
 
 async function main(version) {

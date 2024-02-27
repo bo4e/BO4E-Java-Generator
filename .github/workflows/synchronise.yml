@@ -1,6 +1,8 @@
 name: 'Synchronise Releases'
 on: 
-  workflow_dispatch
+  schedule:
+    - cron: '0 12 13,28 * *'
+  workflow_dispatch:
 jobs:
   synchronisation:
     runs-on: ubuntu-latest

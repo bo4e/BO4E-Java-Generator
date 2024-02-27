@@ -30,14 +30,17 @@ jobs:
         env:
           VERSION: ${{ inputs.version }}
         run: |
+          echo $VERSION
           [[ `echo $VERSION | grep -c "rc"` -gt 0 || `echo $VERSION | grep -oE "^[0-9]{4}"` -lt 2024 ]] && echo "Achtung: kein offizieller Release"
           RELEASE="tags/v${VERSION}"
           [[ "latest" = "${VERSION}" ]] 2>/dev/null && RELEASE="latest"
+          echo $RELEASE
           curl -s "https://api.github.com/repos/bo4e/BO4E-Schemas/releases/${RELEASE}" > releasedata
           if [[ `grep -c "tarball_url" releasedata` -gt 0 ]]
           then
             RELEASETAG=`grep "\"tag_name\":" releasedata | cut -d : -f2 | tr -d "\", "`
             [[ $VERSION = latest ]] && [[ `echo $RELEASETAG | grep -c "rc"` -gt 0 || `echo $RELEASETAG | tr -d "v" | grep -oE "^[0-9]{4}"` -lt 2024 ]] && RELEASETAG='invalid'
+            echo $RELEASETAG
             echo "TAGNAME=$RELEASETAG" >> "$GITHUB_OUTPUT"
             [[ $RELEASETAG = invalid ]] && echo "Kein offizieller Release" && exit 0
             grep "tarball_url" releasedata | cut -d : -f 2,3 | tr -d \", | wget -qi - --output-document=temp

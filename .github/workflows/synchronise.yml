@@ -30,4 +30,7 @@ jobs:
     uses: ./.github/workflows/generate.yml
     with:
       version: ${{ needs.synchronisation.outputs.tagname }}
+    secrets:
+      ACCESS_TOKEN_JAVA_API: ${{ secrets.ACCESS_TOKEN_JAVA_API }}
+      CREATE_RELEASE_TOKEN: ${{ secrets.CREATE_RELEASE_TOKEN }}
           

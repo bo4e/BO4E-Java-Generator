@@ -14,9 +14,9 @@ jobs:
           cache: npm
       - name: Install
         run: npm install
-      - name: Synch
+      - name: Sync
         env:
           TOKEN: ${{ secrets.CREATE_RELEASE_TOKEN }}
         run: |
-          TAG=`node ./synch_releases.js $TOKEN`
+          TAG=`node ./sync_releases.js $TOKEN`
           echo $TAG

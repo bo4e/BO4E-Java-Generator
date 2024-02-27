@@ -15,8 +15,16 @@ jobs:
       - name: Install
         run: npm install
       - name: Sync
+        id: release
         env:
           TOKEN: ${{ secrets.CREATE_RELEASE_TOKEN }}
         run: |
-          TAG=`node ./sync_releases.js $TOKEN`
+          TAG=`node ./sync_releases.js $TOKEN | tr -d "v"`
           echo $TAG
+          echo "TAGNAME=$TAG" >> "$GITHUB_OUTPUT"
+      - name: Call
+        if: ${{ steps.release.outputs.TAGNAME != 'none' }}
+        uses: ./.github/workflows/generate.yml
+        with:
+          version: ${{ steps.release.outputs.TAGNAME }}
+          

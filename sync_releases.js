@@ -31,16 +31,20 @@ async function main() {
     const schema_releases = await getReleases(octokit, "bo4e", "BO4E-Schemas");
     const java_releases = await getReleases(auth_octokit, "TimoMolls", "BO4E-Java");
     const date = new Date()
+    const tags = [];
     for (const release of schema_releases) {
-        if (release['tag_name'].startsWith("v" + date.getFullYear())) {
+        if (release['tag_name'].startsWith("v" + date.getFullYear()) || release['tag_name'].startsWith("v" + (date.getFullYear() - 1))) {
             const index = java_releases.findIndex(java_release => java_release['tag_name'] === release['tag_name']);
             if (index < 0) {
-                console.log(release['tag_name']);
-                return;
+                tags.push(release['tag_name']);
             }
         }
     }
-    console.log("none")
+    if (tags.length > 0) {
+        console.log(tags[tags.length - 1])
+    } else {
+        console.log("none")
+    }
 }
 
 main().then();

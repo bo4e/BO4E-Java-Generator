@@ -64,8 +64,10 @@ async function create_release(version, release_infos, is_prerelease, is_latest) 
 
 async function main(version) {
     const release_infos = await get_release_infos(version);
-    const is_prerelease = (release_infos['prerelease'] || version.includes("-rc"))
-    const is_latest = (!is_prerelease && version === await get_latest_release_tag());
+    const is_prerelease = (release_infos['prerelease'] || version.includes('-rc'))
+    const latest_release_tag = await get_latest_release_tag();
+    const latest_is_prerelease = latest_release_tag.includes('-rc')
+    const is_latest = !is_prerelease && (latest_is_prerelease || version === latest_release_tag);
     await create_release(version, release_infos, is_prerelease, is_latest);
 }
 

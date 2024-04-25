@@ -362,6 +362,7 @@ function cleanUp(source, target, fileMap, root = target, dirname = source) {
                                 .slice(fileContent.findIndex(value => value.includes("_typ")))
                                 .find(value => value.includes("default"))
                                 .replaceAll("\"", "")
+                                .replace(",", "")
                                 .replace("default:", "");
                             lines[index] = lines[index]
                                 .replace("private Typ typ", "private final Typ _typ")

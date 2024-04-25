@@ -84,6 +84,3 @@ jobs:
           TOKEN: ${{ secrets.CREATE_RELEASE_TOKEN }}
           VERSION: ${{ steps.schemas.outputs.TAGNAME }}
         run: node ./create_release.js "$TOKEN" "$VERSION"
-  sync:
-    needs: generation
-    uses: ./.github/workflows/synchronise.yml

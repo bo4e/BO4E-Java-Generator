@@ -1,49 +1,69 @@
-const {InputData, JSONSchemaInput, FetchingJSONSchemaStore, quicktypeMultiFile, javaOptions,
+const {InputData, JSONSchemaInput, FetchingJSONSchemaStore, quicktypeMultiFile,
     JavaTargetLanguage,
     getOptionValues,
     JavaRenderer
 } = require("quicktype-core");
 const fs = require("node:fs");
-const {BooleanOption, StringOption} = require("quicktype-core/dist/RendererOptions");
-const {JacksonRenderer} = require("quicktype-core/dist/language/Java");
+const {BooleanOption, StringOption, EnumOption} = require("quicktype-core/dist/RendererOptions");
 const {acronymOption, AcronymStyleOptions} = require("quicktype-core/dist/support/Acronyms");
+const {JacksonRenderer} = require("quicktype-core/dist/language/Java");
 
-const flags = (process.argv[2] && process.argv[2].length > 1) ? process.argv[2].substring(1).split("") : [];
 let currentVersion = "";
 let packageName = "";
 let targetDirName = "bo4e";
 let sourceDirName = "bo4e_schemas";
 let urlTemplate = "";
-for (let i = 0; i < flags.length; i++) {
-    if (process.argv[3 + i]) {
-        switch (flags[i]) {
-            case 'p': {
-                packageName = process.argv[3 + i]
-                console.log("Using Package: " + packageName);
-                packageName += '.';
-                break;
-            }
-            case 't': {
-                targetDirName = process.argv[3 + i]
-                console.log("Using target directory: " + targetDirName);
-                break;
-            }
-            case 's': {
-                sourceDirName = process.argv[3 + i]
-                console.log("Using source directory: " + sourceDirName);
-                break;
+
+const newJavaOptions = {
+    useList: new EnumOption(
+        "array-type",
+        "Use T[] or List<T>",
+        [
+            ["array", false],
+            ["list", true]
+        ],
+        "list"
+    ),
+    justTypes: new BooleanOption("just-types", "Plain types only", true),
+    dateTimeProvider: new EnumOption(
+        "datetime-provider",
+        "Date time provider type",
+        [
+            ["java8", "java8"],
+            ["legacy", "legacy"]
+        ],
+        "java8"
+    ),
+    acronymStyle: acronymOption(AcronymStyleOptions.Original),
+    packageName: new StringOption("package", "Generated package name", "NAME", "placeholder"),
+    lombok: new BooleanOption("lombok", "Use lombok", false, "primary"),
+    lombokCopyAnnotations: new BooleanOption("lombok-copy-annotations", "Copy accessor annotations", false, "secondary")
+};
+
+function processCommandLineArguments() {
+    const flags = (process.argv[2] && process.argv[2].length > 1) ? process.argv[2].substring(1).split("") : [];
+    for (let i = 0; i < flags.length; i++) {
+        if (process.argv[3 + i]) {
+            switch (flags[i]) {
+                case 'p': {
+                    packageName = process.argv[3 + i]
+                    console.log("Using Package: " + packageName);
+                    packageName += '.';
+                    break;
+                }
+                case 't': {
+                    targetDirName = process.argv[3 + i]
+                    console.log("Using target directory: " + targetDirName);
+                    break;
+                }
+                case 's': {
+                    sourceDirName = process.argv[3 + i]
+                    console.log("Using source directory: " + sourceDirName);
+                    break;
+                }
             }
         }
     }
-}
-const newJavaOptions = {
-    useList: javaOptions.useList,
-    justTypes: new BooleanOption("just-types", "Plain types only", true),
-    dateTimeProvider: javaOptions.dateTimeProvider,
-    acronymStyle: acronymOption(AcronymStyleOptions.Original),
-    packageName: new StringOption("package", "Generated package name", "NAME", "placeholder"),
-    lombok: javaOptions.lombok,
-    lombokCopyAnnotations: javaOptions.lombokCopyAnnotations
 }
 
 /**
@@ -108,21 +128,24 @@ function addProperty(allKnowingSchema, file, path) {
     } else {
         url = urlTemplate + path;
     }
+    const propertyName = file.replace(".json","");
+    const newProperty = createProperty(propertyName.toLowerCase(), url);
+    allKnowingSchema.push(newProperty);
+    console.log("Property " + propertyName + " added");
+}
 
-    const newProperty =
-        "        },\n"+
-        "        \"" + file.toLowerCase().replace(".json","") + "\": {\n" +
+function createProperty(propertyName, propertyUrl) {
+    return "        },\n"+
+        "        \"" + propertyName + "\": {\n" +
         "            \"anyOf\": [\n" +
         "                {\n" +
-        "                    \"$ref\": \"" + url + "\"\n" +
+        "                    \"$ref\": \"" + propertyUrl + "\"\n" +
         "                },\n" +
         "                {\n" +
         "                    \"type\": \"null\"\n" +
         "                }\n" +
         "            ],\n" +
         "            \"default\": null\n";
-    allKnowingSchema.push(newProperty);
-    console.log("Property " + file.replace(".json","") + " added");
 }
 
 /**
@@ -159,7 +182,9 @@ function getUrlTemplate(url) {
  */
 function getVersion(url) {
     try {
-        const tmp = url.match(RegExp("/v[0-9]*\.[0-9]*\.[0-9]*.*/src"))["0"].replace("/v", "").replace("/src", "");
+        const tmp = url.match(RegExp("/v[0-9]*\.[0-9]*\.[0-9]*.*/src"))["0"]
+            .replace("/v", "")
+            .replace("/src", "");
         if (tmp.endsWith("-")) {
             return tmp.substring(0, tmp.length - 1);
         } else {
@@ -184,7 +209,7 @@ function addToSchema(allKnowingSchema, source, fileMap = new Map) {
         if (fs.statSync(path).isFile()) {
             addProperty(allKnowingSchema, file, path);
             const dirLocation = source.replace(sourceDirName, targetDirName);
-            fileMap.set(file.substring(0, file.length - 5).toLowerCase(), dirLocation.replace("enum", "enums") + "/");
+            fileMap.set(file.replace(".json", "").toLowerCase(), dirLocation.replace("enum", "enums") + "/");
         } else {
             fileMap = addToSchema(allKnowingSchema, path, fileMap);
         }
@@ -239,6 +264,21 @@ function getPropertyName(property, jsonFile, filePath) {
     }
 }
 
+function findFile(fileName, searchDirectory) {
+    const searchFiles = fs.readdirSync(searchDirectory);
+    const javaFile = searchFiles.find(value => {
+        return value.replace(".json", "").toLowerCase() === fileName.toLowerCase();
+    });
+    if (!javaFile) {
+        throw Error("Cannot find: " + fileName);
+    }
+    return javaFile;
+}
+
+function restoreFileStructure() {
+
+}
+
 /**
  * iterates through all files in the given directory and all subdirectories and restores original data structure,
  * adds parent classes, import statements and default values, removes duplicated properties
@@ -255,12 +295,7 @@ function cleanUp(source, target, fileMap, root = target, dirname = source) {
         if (fs.statSync(sourcePath).isFile()) {
             let javaFile = file.replace(".json", ".java");
             if (!fs.existsSync(root + '/' + javaFile)) {
-                const targetFiles = fs.readdirSync(root);
-                javaFile = targetFiles.find(value => value.substring(0, value.length - 5).toLowerCase() === file.substring(0, file.length - 5).toLowerCase());
-                if (!javaFile) {
-                    console.log("Cannot find:" + file.replace(".json", ".java"))
-                    continue;
-                }
+                javaFile = findFile(file.replace(".json", ""), root);
             }
             const fileName = javaFile.replace(".java", "");
             // restore directory structure
@@ -407,6 +442,7 @@ function cleanUp(source, target, fileMap, root = target, dirname = source) {
 
 function main(source = sourceDirName, target = targetDirName) {
     console.log("Preparing generation");
+    processCommandLineArguments();
     const allKnowingSchema = generateAllKnowingSchema();
     console.log("Creating generation_schema");
     const fileMap = addToSchema(allKnowingSchema, source);
@@ -455,7 +491,7 @@ function main(source = sourceDirName, target = targetDirName) {
             });
             console.log("Output complete");
             console.log("Starting cleanup");
-            cleanUp(source, target, fileMap);
+            // cleanUp(source, target, fileMap);
             console.log("Cleanup complete");
         }
         console.log(`Finished: ${writtenFiles}/${readFiles}`)

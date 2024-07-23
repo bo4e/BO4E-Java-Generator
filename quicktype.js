@@ -462,7 +462,7 @@ function restoreMissingFiles(fileMap) {
                 .replace("packagePlaceholder",classPackage)
                 .replace("zaImportPlaceholder", zaImport)
                 .replace("typImportPlaceholder", typImport)
-                .replace("versionPlaceholder", currentVersion);
+                .replace("versionPlaceholder", `"${currentVersion}"`);
             fs.writeFileSync(targetDirName + "/" + pathToFile + javaFileName, fileContent);
         }
     });

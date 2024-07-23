@@ -30,7 +30,7 @@ public abstract class Geschaeftsobjekt {
     /**
      * Version der BO-Struktur aka "fachliche Versionierung"
      */
-    private final String boVersion = 202401.2.1;
+    private final String boVersion = "202401.2.1";
     private List<ZusatzAttribut> zusatzAttribute;
 
     public String getId() {

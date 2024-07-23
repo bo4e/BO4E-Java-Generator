@@ -40,8 +40,11 @@ public class Tarifeinschraenkung extends COM {
      */
     private List<String> zusatzprodukte;
 
-    public Tarifeinschraenkung() {}
+    public Tarifeinschraenkung() {
+    }
+
     private Tarifeinschraenkung(TarifeinschraenkungBuilder builder) {
+        super(builder);
         this.einschraenkungleistung = builder.einschraenkungleistung;
         this.einschraenkungzaehler = builder.einschraenkungzaehler;
         this.voraussetzungen = builder.voraussetzungen;
@@ -51,6 +54,7 @@ public class Tarifeinschraenkung extends COM {
     public List<Menge> getEinschraenkungleistung() {
         return einschraenkungleistung;
     }
+
     public void setEinschraenkungleistung(List<Menge> einschraenkungleistung) {
         this.einschraenkungleistung = einschraenkungleistung;
     }
@@ -58,6 +62,7 @@ public class Tarifeinschraenkung extends COM {
     public List<Geraet> getEinschraenkungzaehler() {
         return einschraenkungzaehler;
     }
+
     public void setEinschraenkungzaehler(List<Geraet> einschraenkungzaehler) {
         this.einschraenkungzaehler = einschraenkungzaehler;
     }
@@ -65,6 +70,7 @@ public class Tarifeinschraenkung extends COM {
     public List<Voraussetzungen> getVoraussetzungen() {
         return voraussetzungen;
     }
+
     public void setVoraussetzungen(List<Voraussetzungen> voraussetzungen) {
         this.voraussetzungen = voraussetzungen;
     }
@@ -72,6 +78,7 @@ public class Tarifeinschraenkung extends COM {
     public List<String> getZusatzprodukte() {
         return zusatzprodukte;
     }
+
     public void setZusatzprodukte(List<String> zusatzprodukte) {
         this.zusatzprodukte = zusatzprodukte;
     }
@@ -102,6 +109,7 @@ public class Tarifeinschraenkung extends COM {
         public List<Menge> getEinschraenkungleistung() {
             return einschraenkungleistung;
         }
+    
         public TarifeinschraenkungBuilder setEinschraenkungleistung(List<Menge> einschraenkungleistung) {
             this.einschraenkungleistung = einschraenkungleistung;
             return this;
@@ -110,6 +118,7 @@ public class Tarifeinschraenkung extends COM {
         public List<Geraet> getEinschraenkungzaehler() {
             return einschraenkungzaehler;
         }
+    
         public TarifeinschraenkungBuilder setEinschraenkungzaehler(List<Geraet> einschraenkungzaehler) {
             this.einschraenkungzaehler = einschraenkungzaehler;
             return this;
@@ -118,6 +127,7 @@ public class Tarifeinschraenkung extends COM {
         public List<Voraussetzungen> getVoraussetzungen() {
             return voraussetzungen;
         }
+    
         public TarifeinschraenkungBuilder setVoraussetzungen(List<Voraussetzungen> voraussetzungen) {
             this.voraussetzungen = voraussetzungen;
             return this;
@@ -126,6 +136,7 @@ public class Tarifeinschraenkung extends COM {
         public List<String> getZusatzprodukte() {
             return zusatzprodukte;
         }
+    
         public TarifeinschraenkungBuilder setZusatzprodukte(List<String> zusatzprodukte) {
             this.zusatzprodukte = zusatzprodukte;
             return this;

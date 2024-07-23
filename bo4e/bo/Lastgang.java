@@ -58,8 +58,11 @@ public class Lastgang extends Geschaeftsobjekt {
     private List<Zeitreihenwert> werte;
     private Menge zeitIntervallLaenge;
 
-    public Lastgang() {}
+    public Lastgang() {
+    }
+
     private Lastgang(LastgangBuilder builder) {
+        super(builder);
         this.marktlokation = builder.marktlokation;
         this.messgroesse = builder.messgroesse;
         this.messlokation = builder.messlokation;
@@ -77,6 +80,7 @@ public class Lastgang extends Geschaeftsobjekt {
     public Marktlokation getMarktlokation() {
         return marktlokation;
     }
+
     public void setMarktlokation(Marktlokation marktlokation) {
         this.marktlokation = marktlokation;
     }
@@ -84,6 +88,7 @@ public class Lastgang extends Geschaeftsobjekt {
     public Mengeneinheit getMessgroesse() {
         return messgroesse;
     }
+
     public void setMessgroesse(Mengeneinheit messgroesse) {
         this.messgroesse = messgroesse;
     }
@@ -91,6 +96,7 @@ public class Lastgang extends Geschaeftsobjekt {
     public Messlokation getMesslokation() {
         return messlokation;
     }
+
     public void setMesslokation(Messlokation messlokation) {
         this.messlokation = messlokation;
     }
@@ -98,6 +104,7 @@ public class Lastgang extends Geschaeftsobjekt {
     public String getObisKennzahl() {
         return obisKennzahl;
     }
+
     public void setObisKennzahl(String obisKennzahl) {
         this.obisKennzahl = obisKennzahl;
     }
@@ -105,6 +112,7 @@ public class Lastgang extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -112,6 +120,7 @@ public class Lastgang extends Geschaeftsobjekt {
     public String getVersion() {
         return version;
     }
+
     public void setVersion(String version) {
         this.version = version;
     }
@@ -119,6 +128,7 @@ public class Lastgang extends Geschaeftsobjekt {
     public List<Zeitreihenwert> getWerte() {
         return werte;
     }
+
     public void setWerte(List<Zeitreihenwert> werte) {
         this.werte = werte;
     }
@@ -126,6 +136,7 @@ public class Lastgang extends Geschaeftsobjekt {
     public Menge getZeitIntervallLaenge() {
         return zeitIntervallLaenge;
     }
+
     public void setZeitIntervallLaenge(Menge zeitIntervallLaenge) {
         this.zeitIntervallLaenge = zeitIntervallLaenge;
     }
@@ -165,6 +176,7 @@ public class Lastgang extends Geschaeftsobjekt {
         public Marktlokation getMarktlokation() {
             return marktlokation;
         }
+    
         public LastgangBuilder setMarktlokation(Marktlokation marktlokation) {
             this.marktlokation = marktlokation;
             return this;
@@ -173,6 +185,7 @@ public class Lastgang extends Geschaeftsobjekt {
         public Mengeneinheit getMessgroesse() {
             return messgroesse;
         }
+    
         public LastgangBuilder setMessgroesse(Mengeneinheit messgroesse) {
             this.messgroesse = messgroesse;
             return this;
@@ -181,6 +194,7 @@ public class Lastgang extends Geschaeftsobjekt {
         public Messlokation getMesslokation() {
             return messlokation;
         }
+    
         public LastgangBuilder setMesslokation(Messlokation messlokation) {
             this.messlokation = messlokation;
             return this;
@@ -189,6 +203,7 @@ public class Lastgang extends Geschaeftsobjekt {
         public String getObisKennzahl() {
             return obisKennzahl;
         }
+    
         public LastgangBuilder setObisKennzahl(String obisKennzahl) {
             this.obisKennzahl = obisKennzahl;
             return this;
@@ -197,6 +212,7 @@ public class Lastgang extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public LastgangBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;
@@ -205,6 +221,7 @@ public class Lastgang extends Geschaeftsobjekt {
         public String getVersion() {
             return version;
         }
+    
         public LastgangBuilder setVersion(String version) {
             this.version = version;
             return this;
@@ -213,6 +230,7 @@ public class Lastgang extends Geschaeftsobjekt {
         public List<Zeitreihenwert> getWerte() {
             return werte;
         }
+    
         public LastgangBuilder setWerte(List<Zeitreihenwert> werte) {
             this.werte = werte;
             return this;
@@ -221,6 +239,7 @@ public class Lastgang extends Geschaeftsobjekt {
         public Menge getZeitIntervallLaenge() {
             return zeitIntervallLaenge;
         }
+    
         public LastgangBuilder setZeitIntervallLaenge(Menge zeitIntervallLaenge) {
             this.zeitIntervallLaenge = zeitIntervallLaenge;
             return this;

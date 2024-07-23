@@ -34,8 +34,11 @@ public class Region extends Geschaeftsobjekt {
      */
     private List<Regionskriterium> positivListe;
 
-    public Region() {}
+    public Region() {
+    }
+
     private Region(RegionBuilder builder) {
+        super(builder);
         this.bezeichnung = builder.bezeichnung;
         this.negativListe = builder.negativListe;
         this.positivListe = builder.positivListe;
@@ -48,6 +51,7 @@ public class Region extends Geschaeftsobjekt {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -55,6 +59,7 @@ public class Region extends Geschaeftsobjekt {
     public List<Regionskriterium> getNegativListe() {
         return negativListe;
     }
+
     public void setNegativListe(List<Regionskriterium> negativListe) {
         this.negativListe = negativListe;
     }
@@ -62,6 +67,7 @@ public class Region extends Geschaeftsobjekt {
     public List<Regionskriterium> getPositivListe() {
         return positivListe;
     }
+
     public void setPositivListe(List<Regionskriterium> positivListe) {
         this.positivListe = positivListe;
     }
@@ -83,6 +89,7 @@ public class Region extends Geschaeftsobjekt {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public RegionBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;
@@ -91,6 +98,7 @@ public class Region extends Geschaeftsobjekt {
         public List<Regionskriterium> getNegativListe() {
             return negativListe;
         }
+    
         public RegionBuilder setNegativListe(List<Regionskriterium> negativListe) {
             this.negativListe = negativListe;
             return this;
@@ -99,6 +107,7 @@ public class Region extends Geschaeftsobjekt {
         public List<Regionskriterium> getPositivListe() {
             return positivListe;
         }
+    
         public RegionBuilder setPositivListe(List<Regionskriterium> positivListe) {
             this.positivListe = positivListe;
             return this;

@@ -23,7 +23,7 @@ const missingParentClasses = [
     {fileName: "COM", pathToFile: "com/"}
 ];
 
-const parentFields = ["id", "typ", "version", "zusatzAttribute"];
+const parentFields = [{name: "id", type: "String"}, {name: "typ", type: "Typ"}, {name: "version", type: "String"}, {name: "zusatzAttribute", type: "List<ZusatzAttribut>"}];
 
 const newJavaOptions = {
     useList: new EnumOption(
@@ -305,9 +305,9 @@ function getClassFields(classBody) {
  */
 function removeParentClassFields(fieldList) {
     const hasOwnVersionProperty = fieldList.slice(0, parentFields.length).findIndex(value => value.name === "version") < 0;
-    let fieldFilter = parentFields;
+    let fieldFilter = parentFields.map(value => value.name);
     if (hasOwnVersionProperty) {
-        fieldFilter = parentFields.filter(value => value !== "version")
+        fieldFilter = fieldFilter.filter(value => value !== "version")
     }
     return fieldList.filter(value => !fieldFilter.includes(value.name));
 }
@@ -352,6 +352,7 @@ function getJavaMethod(field, addSetter = false, builderName = undefined) {
     lines.push(`        return ${field.name};`);
     lines.push(`    }`);
     if (addSetter) {
+        lines.push("");
         if (builderName !== undefined) {
             lines.push(`    public ${builderName} set${fieldName}(${field.type} ${field.name}) {`);
             lines.push(`        this.${field.name} = ${field.name};`);
@@ -362,6 +363,16 @@ function getJavaMethod(field, addSetter = false, builderName = undefined) {
         }
         lines.push(`    }`);
     }
+    return lines.join("\n");
+}
+
+function overwriteParentSetter(field, builderName) {
+    const fieldName = field.name.charAt(0).toUpperCase() + field.name.slice(1);
+    const lines = []
+    lines.push(`    public ${builderName} set${fieldName}(${field.type} ${field.name}) {`);
+    lines.push(`        super.set${fieldName};`);
+    lines.push(`        return this;`);
+    lines.push(`    }`);
     return lines.join("\n");
 }
 
@@ -379,26 +390,37 @@ function getJavaMethods(fieldList, builderName = undefined) {
     return methodList;
 }
 
+function addImports(fieldType, fileMap, importList, classPath) {
+    if (fieldType.startsWith("List<") && fieldType.endsWith(">")) {
+        fieldType = fieldType.substring("List<".length, fieldType.length - 1);
+    }
+    const importData = fileMap.get(fieldType.toLowerCase());
+    if (importData !== undefined && importData.javaFilePath !== classPath) {
+        const importPackage = packageName + importData.javaFilePath.replaceAll("/", ".");
+        const importString = `import ${importPackage}.${importData.javaFileName};`;
+        if (!importList.includes(importString)) {
+            importList.push(importString);
+        }
+    }
+}
+
 /**
  *
  * @param fieldList {{name: string, type: string, description: string}[]}
  * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}}
  * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} maps lowercase fileName to fileData
+ * @param hasParent {boolean}
  */
-function getImports(fieldList, fileData, fileMap) {
+function getImports(fieldList, fileData, fileMap, hasParent) {
     const classPath = fileData.javaFilePath;
     const importList = [];
     for (const field of fieldList) {
-        let fieldType = field.type;
-        if (fieldType.startsWith("List<") && fieldType.endsWith(">")) {
-            fieldType = fieldType.substring("List<".length, fieldType.length - 1);
-        }
-        const importData = fileMap.get(fieldType.toLowerCase());
-        if (importData !== undefined && importData.javaFilePath !== classPath) {
-            const importPackage = packageName + importData.javaFilePath.replaceAll("/", ".");
-            const importString = `import ${importPackage}.${importData.javaFileName};`;
-            if (!importList.includes(importString)) {
-                importList.push(importString);
+        addImports(field.type, fileMap, importList, classPath);
+    }
+    if (hasParent) {
+        for (const parentField of parentFields) {
+            if (parentField.name !== "typ" && parentField.name !== "version") {
+                addImports(parentField.type, fileMap, importList, classPath);
             }
         }
     }
@@ -440,14 +462,25 @@ function addTypeToFieldsAndMethods(fieldList, javaMethodList, fileData) {
  * @param classHead {string}
  * @param fieldList {{name: string, type: string, description: string}[]}
  * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}}
+ * @param hasParent {boolean}
  */
-function getBuilderClass(classHead, fieldList, fileData) {
+function getBuilderClass(classHead, fieldList, fileData, hasParent) {
     const builderName = fileData.javaFileName + "Builder";
-    const builderHead = classHead.replace("public", "public static")
+    let builderHead = classHead.replace("public", "public static")
         .replace(fileData.javaFileName, builderName)
-        .replace(" {", "Builder {");
+    for (const {fileName} of missingParentClasses) {
+        builderHead = builderHead.replace(`${fileName} {`, `${fileName}Builder {`);
+    }
     const builderFieldList = turnFieldListToJava(fieldList);
     const builderMethods = getJavaMethods(fieldList, builderName);
+    if (hasParent) {
+        for (const parentField of parentFields) {
+            if (parentField.name !== "typ" && parentField.name !== "version") {
+                builderMethods.push("");
+                builderMethods.push(overwriteParentSetter(parentField, builderName));
+            }
+        }
+    }
     builderMethods.push("");
     builderMethods.push(`    public ${fileData.javaFileName} build() {`);
     builderMethods.push(`        return new ${fileData.javaFileName}(this);`);
@@ -459,13 +492,16 @@ function getBuilderClass(classHead, fieldList, fileData) {
  *
  * @param fieldList {{name: string, type: string, description: string}[]}
  * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}}
+ * @param hasParent {boolean}
  */
-function getJavaConstructor(fieldList, fileData) {
+function getJavaConstructor(fieldList, fileData, hasParent) {
     const constructor = [""]
     constructor.push(`public ${fileData.javaFileName}() {`);
     constructor.push("}\n");
     constructor.push(`private ${fileData.javaFileName}(${fileData.javaFileName}Builder builder) {`);
-    constructor.push("    super(builder)");
+    if (hasParent) {
+        constructor.push("    super(builder);");
+    }
     for (const field of fieldList) {
         constructor.push(`    this.${field.name} = builder.${field.name};`);
     }
@@ -490,19 +526,20 @@ function completeJavaFile(contentList, fileData, fileMap) {
     }
     const header = contentList.slice(1, classIndex);
     const classHead = addParentToClass(contentList[classIndex], fileData.javaFilePath);
+    const hasParent = classHead.includes("extends");
     const classBody = contentList.slice(classIndex + 1, contentList.length - 1);
     let fieldList = getClassFields(classBody);
     if (fieldList.length > parentFields.length) {
         fieldList = removeParentClassFields(fieldList);
     }
     const javaMethodList = getJavaMethods(fieldList);
-    const javaConstructor = getJavaConstructor(fieldList, fileData);
-    const builderClass = getBuilderClass(classHead, fieldList, fileData);
+    const javaConstructor = getJavaConstructor(fieldList, fileData, hasParent);
+    const builderClass = getBuilderClass(classHead, fieldList, fileData, hasParent);
     if (fileData.javaFilePath.endsWith("/bo")) {
         addTypeToFieldsAndMethods(fieldList, javaMethodList, fileData);
     }
     const javaFieldList = turnFieldListToJava(fieldList);
-    const importList = getImports(fieldList, fileData, fileMap);
+    const importList = getImports(fieldList, fileData, fileMap, hasParent);
     const newClass = [newPackage].concat(importList, header, classHead, javaFieldList, javaConstructor, javaMethodList, builderClass, classFoot);
     return newClass.join("\n");
 }

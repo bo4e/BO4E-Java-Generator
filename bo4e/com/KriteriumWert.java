@@ -26,8 +26,11 @@ public class KriteriumWert extends COM {
      */
     private String wert;
 
-    public KriteriumWert() {}
+    public KriteriumWert() {
+    }
+
     private KriteriumWert(KriteriumWertBuilder builder) {
+        super(builder);
         this.kriterium = builder.kriterium;
         this.wert = builder.wert;
     }
@@ -35,6 +38,7 @@ public class KriteriumWert extends COM {
     public Tarifregionskriterium getKriterium() {
         return kriterium;
     }
+
     public void setKriterium(Tarifregionskriterium kriterium) {
         this.kriterium = kriterium;
     }
@@ -42,6 +46,7 @@ public class KriteriumWert extends COM {
     public String getWert() {
         return wert;
     }
+
     public void setWert(String wert) {
         this.wert = wert;
     }
@@ -59,6 +64,7 @@ public class KriteriumWert extends COM {
         public Tarifregionskriterium getKriterium() {
             return kriterium;
         }
+    
         public KriteriumWertBuilder setKriterium(Tarifregionskriterium kriterium) {
             this.kriterium = kriterium;
             return this;
@@ -67,6 +73,7 @@ public class KriteriumWert extends COM {
         public String getWert() {
             return wert;
         }
+    
         public KriteriumWertBuilder setWert(String wert) {
             this.wert = wert;
             return this;

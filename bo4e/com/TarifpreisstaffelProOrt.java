@@ -36,8 +36,11 @@ public class TarifpreisstaffelProOrt extends COM {
      */
     private Double staffelgrenzeVon;
 
-    public TarifpreisstaffelProOrt() {}
+    public TarifpreisstaffelProOrt() {
+    }
+
     private TarifpreisstaffelProOrt(TarifpreisstaffelProOrtBuilder builder) {
+        super(builder);
         this.arbeitspreis = builder.arbeitspreis;
         this.arbeitspreisNT = builder.arbeitspreisNT;
         this.grundpreis = builder.grundpreis;
@@ -48,6 +51,7 @@ public class TarifpreisstaffelProOrt extends COM {
     public Double getArbeitspreis() {
         return arbeitspreis;
     }
+
     public void setArbeitspreis(Double arbeitspreis) {
         this.arbeitspreis = arbeitspreis;
     }
@@ -55,6 +59,7 @@ public class TarifpreisstaffelProOrt extends COM {
     public Double getArbeitspreisNT() {
         return arbeitspreisNT;
     }
+
     public void setArbeitspreisNT(Double arbeitspreisNT) {
         this.arbeitspreisNT = arbeitspreisNT;
     }
@@ -62,6 +67,7 @@ public class TarifpreisstaffelProOrt extends COM {
     public Double getGrundpreis() {
         return grundpreis;
     }
+
     public void setGrundpreis(Double grundpreis) {
         this.grundpreis = grundpreis;
     }
@@ -69,6 +75,7 @@ public class TarifpreisstaffelProOrt extends COM {
     public Double getStaffelgrenzeBis() {
         return staffelgrenzeBis;
     }
+
     public void setStaffelgrenzeBis(Double staffelgrenzeBis) {
         this.staffelgrenzeBis = staffelgrenzeBis;
     }
@@ -76,6 +83,7 @@ public class TarifpreisstaffelProOrt extends COM {
     public Double getStaffelgrenzeVon() {
         return staffelgrenzeVon;
     }
+
     public void setStaffelgrenzeVon(Double staffelgrenzeVon) {
         this.staffelgrenzeVon = staffelgrenzeVon;
     }
@@ -105,6 +113,7 @@ public class TarifpreisstaffelProOrt extends COM {
         public Double getArbeitspreis() {
             return arbeitspreis;
         }
+    
         public TarifpreisstaffelProOrtBuilder setArbeitspreis(Double arbeitspreis) {
             this.arbeitspreis = arbeitspreis;
             return this;
@@ -113,6 +122,7 @@ public class TarifpreisstaffelProOrt extends COM {
         public Double getArbeitspreisNT() {
             return arbeitspreisNT;
         }
+    
         public TarifpreisstaffelProOrtBuilder setArbeitspreisNT(Double arbeitspreisNT) {
             this.arbeitspreisNT = arbeitspreisNT;
             return this;
@@ -121,6 +131,7 @@ public class TarifpreisstaffelProOrt extends COM {
         public Double getGrundpreis() {
             return grundpreis;
         }
+    
         public TarifpreisstaffelProOrtBuilder setGrundpreis(Double grundpreis) {
             this.grundpreis = grundpreis;
             return this;
@@ -129,6 +140,7 @@ public class TarifpreisstaffelProOrt extends COM {
         public Double getStaffelgrenzeBis() {
             return staffelgrenzeBis;
         }
+    
         public TarifpreisstaffelProOrtBuilder setStaffelgrenzeBis(Double staffelgrenzeBis) {
             this.staffelgrenzeBis = staffelgrenzeBis;
             return this;
@@ -137,6 +149,7 @@ public class TarifpreisstaffelProOrt extends COM {
         public Double getStaffelgrenzeVon() {
             return staffelgrenzeVon;
         }
+    
         public TarifpreisstaffelProOrtBuilder setStaffelgrenzeVon(Double staffelgrenzeVon) {
             this.staffelgrenzeVon = staffelgrenzeVon;
             return this;

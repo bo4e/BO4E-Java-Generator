@@ -54,8 +54,11 @@ public class AufAbschlag extends COM {
      */
     private String website;
 
-    public AufAbschlag() {}
+    public AufAbschlag() {
+    }
+
     private AufAbschlag(AufAbschlagBuilder builder) {
+        super(builder);
         this.aufAbschlagstyp = builder.aufAbschlagstyp;
         this.aufAbschlagsziel = builder.aufAbschlagsziel;
         this.beschreibung = builder.beschreibung;
@@ -69,6 +72,7 @@ public class AufAbschlag extends COM {
     public AufAbschlagstyp getAufAbschlagstyp() {
         return aufAbschlagstyp;
     }
+
     public void setAufAbschlagstyp(AufAbschlagstyp aufAbschlagstyp) {
         this.aufAbschlagstyp = aufAbschlagstyp;
     }
@@ -76,6 +80,7 @@ public class AufAbschlag extends COM {
     public AufAbschlagsziel getAufAbschlagsziel() {
         return aufAbschlagsziel;
     }
+
     public void setAufAbschlagsziel(AufAbschlagsziel aufAbschlagsziel) {
         this.aufAbschlagsziel = aufAbschlagsziel;
     }
@@ -83,6 +88,7 @@ public class AufAbschlag extends COM {
     public String getBeschreibung() {
         return beschreibung;
     }
+
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
@@ -90,6 +96,7 @@ public class AufAbschlag extends COM {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -97,6 +104,7 @@ public class AufAbschlag extends COM {
     public Waehrungseinheit getEinheit() {
         return einheit;
     }
+
     public void setEinheit(Waehrungseinheit einheit) {
         this.einheit = einheit;
     }
@@ -104,6 +112,7 @@ public class AufAbschlag extends COM {
     public Zeitraum getGueltigkeitszeitraum() {
         return gueltigkeitszeitraum;
     }
+
     public void setGueltigkeitszeitraum(Zeitraum gueltigkeitszeitraum) {
         this.gueltigkeitszeitraum = gueltigkeitszeitraum;
     }
@@ -111,6 +120,7 @@ public class AufAbschlag extends COM {
     public List<Preisstaffel> getStaffeln() {
         return staffeln;
     }
+
     public void setStaffeln(List<Preisstaffel> staffeln) {
         this.staffeln = staffeln;
     }
@@ -118,6 +128,7 @@ public class AufAbschlag extends COM {
     public String getWebsite() {
         return website;
     }
+
     public void setWebsite(String website) {
         this.website = website;
     }
@@ -160,6 +171,7 @@ public class AufAbschlag extends COM {
         public AufAbschlagstyp getAufAbschlagstyp() {
             return aufAbschlagstyp;
         }
+    
         public AufAbschlagBuilder setAufAbschlagstyp(AufAbschlagstyp aufAbschlagstyp) {
             this.aufAbschlagstyp = aufAbschlagstyp;
             return this;
@@ -168,6 +180,7 @@ public class AufAbschlag extends COM {
         public AufAbschlagsziel getAufAbschlagsziel() {
             return aufAbschlagsziel;
         }
+    
         public AufAbschlagBuilder setAufAbschlagsziel(AufAbschlagsziel aufAbschlagsziel) {
             this.aufAbschlagsziel = aufAbschlagsziel;
             return this;
@@ -176,6 +189,7 @@ public class AufAbschlag extends COM {
         public String getBeschreibung() {
             return beschreibung;
         }
+    
         public AufAbschlagBuilder setBeschreibung(String beschreibung) {
             this.beschreibung = beschreibung;
             return this;
@@ -184,6 +198,7 @@ public class AufAbschlag extends COM {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public AufAbschlagBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;
@@ -192,6 +207,7 @@ public class AufAbschlag extends COM {
         public Waehrungseinheit getEinheit() {
             return einheit;
         }
+    
         public AufAbschlagBuilder setEinheit(Waehrungseinheit einheit) {
             this.einheit = einheit;
             return this;
@@ -200,6 +216,7 @@ public class AufAbschlag extends COM {
         public Zeitraum getGueltigkeitszeitraum() {
             return gueltigkeitszeitraum;
         }
+    
         public AufAbschlagBuilder setGueltigkeitszeitraum(Zeitraum gueltigkeitszeitraum) {
             this.gueltigkeitszeitraum = gueltigkeitszeitraum;
             return this;
@@ -208,6 +225,7 @@ public class AufAbschlag extends COM {
         public List<Preisstaffel> getStaffeln() {
             return staffeln;
         }
+    
         public AufAbschlagBuilder setStaffeln(List<Preisstaffel> staffeln) {
             this.staffeln = staffeln;
             return this;
@@ -216,6 +234,7 @@ public class AufAbschlag extends COM {
         public String getWebsite() {
             return website;
         }
+    
         public AufAbschlagBuilder setWebsite(String website) {
             this.website = website;
             return this;

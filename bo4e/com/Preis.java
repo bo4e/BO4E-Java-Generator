@@ -35,8 +35,11 @@ public class Preis extends COM {
      */
     private Double wert;
 
-    public Preis() {}
+    public Preis() {
+    }
+
     private Preis(PreisBuilder builder) {
+        super(builder);
         this.bezugswert = builder.bezugswert;
         this.einheit = builder.einheit;
         this.status = builder.status;
@@ -46,6 +49,7 @@ public class Preis extends COM {
     public Mengeneinheit getBezugswert() {
         return bezugswert;
     }
+
     public void setBezugswert(Mengeneinheit bezugswert) {
         this.bezugswert = bezugswert;
     }
@@ -53,6 +57,7 @@ public class Preis extends COM {
     public Waehrungseinheit getEinheit() {
         return einheit;
     }
+
     public void setEinheit(Waehrungseinheit einheit) {
         this.einheit = einheit;
     }
@@ -60,6 +65,7 @@ public class Preis extends COM {
     public Preisstatus getStatus() {
         return status;
     }
+
     public void setStatus(Preisstatus status) {
         this.status = status;
     }
@@ -67,6 +73,7 @@ public class Preis extends COM {
     public Double getWert() {
         return wert;
     }
+
     public void setWert(Double wert) {
         this.wert = wert;
     }
@@ -92,6 +99,7 @@ public class Preis extends COM {
         public Mengeneinheit getBezugswert() {
             return bezugswert;
         }
+    
         public PreisBuilder setBezugswert(Mengeneinheit bezugswert) {
             this.bezugswert = bezugswert;
             return this;
@@ -100,6 +108,7 @@ public class Preis extends COM {
         public Waehrungseinheit getEinheit() {
             return einheit;
         }
+    
         public PreisBuilder setEinheit(Waehrungseinheit einheit) {
             this.einheit = einheit;
             return this;
@@ -108,6 +117,7 @@ public class Preis extends COM {
         public Preisstatus getStatus() {
             return status;
         }
+    
         public PreisBuilder setStatus(Preisstatus status) {
             this.status = status;
             return this;
@@ -116,6 +126,7 @@ public class Preis extends COM {
         public Double getWert() {
             return wert;
         }
+    
         public PreisBuilder setWert(Double wert) {
             this.wert = wert;
             return this;

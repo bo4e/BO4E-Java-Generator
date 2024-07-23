@@ -33,8 +33,11 @@ public class AufAbschlagProOrt extends COM {
      */
     private List<AufAbschlagstaffelProOrt> staffeln;
 
-    public AufAbschlagProOrt() {}
+    public AufAbschlagProOrt() {
+    }
+
     private AufAbschlagProOrt(AufAbschlagProOrtBuilder builder) {
+        super(builder);
         this.netznr = builder.netznr;
         this.ort = builder.ort;
         this.postleitzahl = builder.postleitzahl;
@@ -44,6 +47,7 @@ public class AufAbschlagProOrt extends COM {
     public String getNetznr() {
         return netznr;
     }
+
     public void setNetznr(String netznr) {
         this.netznr = netznr;
     }
@@ -51,6 +55,7 @@ public class AufAbschlagProOrt extends COM {
     public String getOrt() {
         return ort;
     }
+
     public void setOrt(String ort) {
         this.ort = ort;
     }
@@ -58,6 +63,7 @@ public class AufAbschlagProOrt extends COM {
     public String getPostleitzahl() {
         return postleitzahl;
     }
+
     public void setPostleitzahl(String postleitzahl) {
         this.postleitzahl = postleitzahl;
     }
@@ -65,6 +71,7 @@ public class AufAbschlagProOrt extends COM {
     public List<AufAbschlagstaffelProOrt> getStaffeln() {
         return staffeln;
     }
+
     public void setStaffeln(List<AufAbschlagstaffelProOrt> staffeln) {
         this.staffeln = staffeln;
     }
@@ -90,6 +97,7 @@ public class AufAbschlagProOrt extends COM {
         public String getNetznr() {
             return netznr;
         }
+    
         public AufAbschlagProOrtBuilder setNetznr(String netznr) {
             this.netznr = netznr;
             return this;
@@ -98,6 +106,7 @@ public class AufAbschlagProOrt extends COM {
         public String getOrt() {
             return ort;
         }
+    
         public AufAbschlagProOrtBuilder setOrt(String ort) {
             this.ort = ort;
             return this;
@@ -106,6 +115,7 @@ public class AufAbschlagProOrt extends COM {
         public String getPostleitzahl() {
             return postleitzahl;
         }
+    
         public AufAbschlagProOrtBuilder setPostleitzahl(String postleitzahl) {
             this.postleitzahl = postleitzahl;
             return this;
@@ -114,6 +124,7 @@ public class AufAbschlagProOrt extends COM {
         public List<AufAbschlagstaffelProOrt> getStaffeln() {
             return staffeln;
         }
+    
         public AufAbschlagProOrtBuilder setStaffeln(List<AufAbschlagstaffelProOrt> staffeln) {
             this.staffeln = staffeln;
             return this;

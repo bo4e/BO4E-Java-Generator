@@ -41,8 +41,11 @@ public class Tarifpreisposition extends COM {
      */
     private Preistyp preistyp;
 
-    public Tarifpreisposition() {}
+    public Tarifpreisposition() {
+    }
+
     private Tarifpreisposition(TarifpreispositionBuilder builder) {
+        super(builder);
         this.bezugseinheit = builder.bezugseinheit;
         this.einheit = builder.einheit;
         this.mengeneinheitstaffel = builder.mengeneinheitstaffel;
@@ -53,6 +56,7 @@ public class Tarifpreisposition extends COM {
     public Mengeneinheit getBezugseinheit() {
         return bezugseinheit;
     }
+
     public void setBezugseinheit(Mengeneinheit bezugseinheit) {
         this.bezugseinheit = bezugseinheit;
     }
@@ -60,6 +64,7 @@ public class Tarifpreisposition extends COM {
     public Waehrungseinheit getEinheit() {
         return einheit;
     }
+
     public void setEinheit(Waehrungseinheit einheit) {
         this.einheit = einheit;
     }
@@ -67,6 +72,7 @@ public class Tarifpreisposition extends COM {
     public Mengeneinheit getMengeneinheitstaffel() {
         return mengeneinheitstaffel;
     }
+
     public void setMengeneinheitstaffel(Mengeneinheit mengeneinheitstaffel) {
         this.mengeneinheitstaffel = mengeneinheitstaffel;
     }
@@ -74,6 +80,7 @@ public class Tarifpreisposition extends COM {
     public List<Preisstaffel> getPreisstaffeln() {
         return preisstaffeln;
     }
+
     public void setPreisstaffeln(List<Preisstaffel> preisstaffeln) {
         this.preisstaffeln = preisstaffeln;
     }
@@ -81,6 +88,7 @@ public class Tarifpreisposition extends COM {
     public Preistyp getPreistyp() {
         return preistyp;
     }
+
     public void setPreistyp(Preistyp preistyp) {
         this.preistyp = preistyp;
     }
@@ -111,6 +119,7 @@ public class Tarifpreisposition extends COM {
         public Mengeneinheit getBezugseinheit() {
             return bezugseinheit;
         }
+    
         public TarifpreispositionBuilder setBezugseinheit(Mengeneinheit bezugseinheit) {
             this.bezugseinheit = bezugseinheit;
             return this;
@@ -119,6 +128,7 @@ public class Tarifpreisposition extends COM {
         public Waehrungseinheit getEinheit() {
             return einheit;
         }
+    
         public TarifpreispositionBuilder setEinheit(Waehrungseinheit einheit) {
             this.einheit = einheit;
             return this;
@@ -127,6 +137,7 @@ public class Tarifpreisposition extends COM {
         public Mengeneinheit getMengeneinheitstaffel() {
             return mengeneinheitstaffel;
         }
+    
         public TarifpreispositionBuilder setMengeneinheitstaffel(Mengeneinheit mengeneinheitstaffel) {
             this.mengeneinheitstaffel = mengeneinheitstaffel;
             return this;
@@ -135,6 +146,7 @@ public class Tarifpreisposition extends COM {
         public List<Preisstaffel> getPreisstaffeln() {
             return preisstaffeln;
         }
+    
         public TarifpreispositionBuilder setPreisstaffeln(List<Preisstaffel> preisstaffeln) {
             this.preisstaffeln = preisstaffeln;
             return this;
@@ -143,6 +155,7 @@ public class Tarifpreisposition extends COM {
         public Preistyp getPreistyp() {
             return preistyp;
         }
+    
         public TarifpreispositionBuilder setPreistyp(Preistyp preistyp) {
             this.preistyp = preistyp;
             return this;

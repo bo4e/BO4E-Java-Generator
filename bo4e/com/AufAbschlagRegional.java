@@ -90,8 +90,11 @@ public class AufAbschlagRegional extends COM {
      */
     private List<String> zusatzprodukte;
 
-    public AufAbschlagRegional() {}
+    public AufAbschlagRegional() {
+    }
+
     private AufAbschlagRegional(AufAbschlagRegionalBuilder builder) {
+        super(builder);
         this.aufAbschlagstyp = builder.aufAbschlagstyp;
         this.aufAbschlagsziel = builder.aufAbschlagsziel;
         this.beschreibung = builder.beschreibung;
@@ -112,6 +115,7 @@ public class AufAbschlagRegional extends COM {
     public AufAbschlagstyp getAufAbschlagstyp() {
         return aufAbschlagstyp;
     }
+
     public void setAufAbschlagstyp(AufAbschlagstyp aufAbschlagstyp) {
         this.aufAbschlagstyp = aufAbschlagstyp;
     }
@@ -119,6 +123,7 @@ public class AufAbschlagRegional extends COM {
     public AufAbschlagsziel getAufAbschlagsziel() {
         return aufAbschlagsziel;
     }
+
     public void setAufAbschlagsziel(AufAbschlagsziel aufAbschlagsziel) {
         this.aufAbschlagsziel = aufAbschlagsziel;
     }
@@ -126,6 +131,7 @@ public class AufAbschlagRegional extends COM {
     public String getBeschreibung() {
         return beschreibung;
     }
+
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
@@ -133,6 +139,7 @@ public class AufAbschlagRegional extends COM {
     public List<AufAbschlagProOrt> getBetraege() {
         return betraege;
     }
+
     public void setBetraege(List<AufAbschlagProOrt> betraege) {
         this.betraege = betraege;
     }
@@ -140,6 +147,7 @@ public class AufAbschlagRegional extends COM {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -147,6 +155,7 @@ public class AufAbschlagRegional extends COM {
     public Waehrungseinheit getEinheit() {
         return einheit;
     }
+
     public void setEinheit(Waehrungseinheit einheit) {
         this.einheit = einheit;
     }
@@ -154,6 +163,7 @@ public class AufAbschlagRegional extends COM {
     public Tarifeinschraenkung getEinschraenkungsaenderung() {
         return einschraenkungsaenderung;
     }
+
     public void setEinschraenkungsaenderung(Tarifeinschraenkung einschraenkungsaenderung) {
         this.einschraenkungsaenderung = einschraenkungsaenderung;
     }
@@ -161,6 +171,7 @@ public class AufAbschlagRegional extends COM {
     public Energiemix getEnergiemixaenderung() {
         return energiemixaenderung;
     }
+
     public void setEnergiemixaenderung(Energiemix energiemixaenderung) {
         this.energiemixaenderung = energiemixaenderung;
     }
@@ -168,6 +179,7 @@ public class AufAbschlagRegional extends COM {
     public Preisgarantie getGarantieaenderung() {
         return garantieaenderung;
     }
+
     public void setGarantieaenderung(Preisgarantie garantieaenderung) {
         this.garantieaenderung = garantieaenderung;
     }
@@ -175,6 +187,7 @@ public class AufAbschlagRegional extends COM {
     public Zeitraum getGueltigkeitszeitraum() {
         return gueltigkeitszeitraum;
     }
+
     public void setGueltigkeitszeitraum(Zeitraum gueltigkeitszeitraum) {
         this.gueltigkeitszeitraum = gueltigkeitszeitraum;
     }
@@ -182,6 +195,7 @@ public class AufAbschlagRegional extends COM {
     public String getTarifnamensaenderungen() {
         return tarifnamensaenderungen;
     }
+
     public void setTarifnamensaenderungen(String tarifnamensaenderungen) {
         this.tarifnamensaenderungen = tarifnamensaenderungen;
     }
@@ -189,6 +203,7 @@ public class AufAbschlagRegional extends COM {
     public Vertragskonditionen getVertagskonditionsaenderung() {
         return vertagskonditionsaenderung;
     }
+
     public void setVertagskonditionsaenderung(Vertragskonditionen vertagskonditionsaenderung) {
         this.vertagskonditionsaenderung = vertagskonditionsaenderung;
     }
@@ -196,6 +211,7 @@ public class AufAbschlagRegional extends COM {
     public List<String> getVoraussetzungen() {
         return voraussetzungen;
     }
+
     public void setVoraussetzungen(List<String> voraussetzungen) {
         this.voraussetzungen = voraussetzungen;
     }
@@ -203,6 +219,7 @@ public class AufAbschlagRegional extends COM {
     public String getWebsite() {
         return website;
     }
+
     public void setWebsite(String website) {
         this.website = website;
     }
@@ -210,6 +227,7 @@ public class AufAbschlagRegional extends COM {
     public List<String> getZusatzprodukte() {
         return zusatzprodukte;
     }
+
     public void setZusatzprodukte(List<String> zusatzprodukte) {
         this.zusatzprodukte = zusatzprodukte;
     }
@@ -286,6 +304,7 @@ public class AufAbschlagRegional extends COM {
         public AufAbschlagstyp getAufAbschlagstyp() {
             return aufAbschlagstyp;
         }
+    
         public AufAbschlagRegionalBuilder setAufAbschlagstyp(AufAbschlagstyp aufAbschlagstyp) {
             this.aufAbschlagstyp = aufAbschlagstyp;
             return this;
@@ -294,6 +313,7 @@ public class AufAbschlagRegional extends COM {
         public AufAbschlagsziel getAufAbschlagsziel() {
             return aufAbschlagsziel;
         }
+    
         public AufAbschlagRegionalBuilder setAufAbschlagsziel(AufAbschlagsziel aufAbschlagsziel) {
             this.aufAbschlagsziel = aufAbschlagsziel;
             return this;
@@ -302,6 +322,7 @@ public class AufAbschlagRegional extends COM {
         public String getBeschreibung() {
             return beschreibung;
         }
+    
         public AufAbschlagRegionalBuilder setBeschreibung(String beschreibung) {
             this.beschreibung = beschreibung;
             return this;
@@ -310,6 +331,7 @@ public class AufAbschlagRegional extends COM {
         public List<AufAbschlagProOrt> getBetraege() {
             return betraege;
         }
+    
         public AufAbschlagRegionalBuilder setBetraege(List<AufAbschlagProOrt> betraege) {
             this.betraege = betraege;
             return this;
@@ -318,6 +340,7 @@ public class AufAbschlagRegional extends COM {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public AufAbschlagRegionalBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;
@@ -326,6 +349,7 @@ public class AufAbschlagRegional extends COM {
         public Waehrungseinheit getEinheit() {
             return einheit;
         }
+    
         public AufAbschlagRegionalBuilder setEinheit(Waehrungseinheit einheit) {
             this.einheit = einheit;
             return this;
@@ -334,6 +358,7 @@ public class AufAbschlagRegional extends COM {
         public Tarifeinschraenkung getEinschraenkungsaenderung() {
             return einschraenkungsaenderung;
         }
+    
         public AufAbschlagRegionalBuilder setEinschraenkungsaenderung(Tarifeinschraenkung einschraenkungsaenderung) {
             this.einschraenkungsaenderung = einschraenkungsaenderung;
             return this;
@@ -342,6 +367,7 @@ public class AufAbschlagRegional extends COM {
         public Energiemix getEnergiemixaenderung() {
             return energiemixaenderung;
         }
+    
         public AufAbschlagRegionalBuilder setEnergiemixaenderung(Energiemix energiemixaenderung) {
             this.energiemixaenderung = energiemixaenderung;
             return this;
@@ -350,6 +376,7 @@ public class AufAbschlagRegional extends COM {
         public Preisgarantie getGarantieaenderung() {
             return garantieaenderung;
         }
+    
         public AufAbschlagRegionalBuilder setGarantieaenderung(Preisgarantie garantieaenderung) {
             this.garantieaenderung = garantieaenderung;
             return this;
@@ -358,6 +385,7 @@ public class AufAbschlagRegional extends COM {
         public Zeitraum getGueltigkeitszeitraum() {
             return gueltigkeitszeitraum;
         }
+    
         public AufAbschlagRegionalBuilder setGueltigkeitszeitraum(Zeitraum gueltigkeitszeitraum) {
             this.gueltigkeitszeitraum = gueltigkeitszeitraum;
             return this;
@@ -366,6 +394,7 @@ public class AufAbschlagRegional extends COM {
         public String getTarifnamensaenderungen() {
             return tarifnamensaenderungen;
         }
+    
         public AufAbschlagRegionalBuilder setTarifnamensaenderungen(String tarifnamensaenderungen) {
             this.tarifnamensaenderungen = tarifnamensaenderungen;
             return this;
@@ -374,6 +403,7 @@ public class AufAbschlagRegional extends COM {
         public Vertragskonditionen getVertagskonditionsaenderung() {
             return vertagskonditionsaenderung;
         }
+    
         public AufAbschlagRegionalBuilder setVertagskonditionsaenderung(Vertragskonditionen vertagskonditionsaenderung) {
             this.vertagskonditionsaenderung = vertagskonditionsaenderung;
             return this;
@@ -382,6 +412,7 @@ public class AufAbschlagRegional extends COM {
         public List<String> getVoraussetzungen() {
             return voraussetzungen;
         }
+    
         public AufAbschlagRegionalBuilder setVoraussetzungen(List<String> voraussetzungen) {
             this.voraussetzungen = voraussetzungen;
             return this;
@@ -390,6 +421,7 @@ public class AufAbschlagRegional extends COM {
         public String getWebsite() {
             return website;
         }
+    
         public AufAbschlagRegionalBuilder setWebsite(String website) {
             this.website = website;
             return this;
@@ -398,6 +430,7 @@ public class AufAbschlagRegional extends COM {
         public List<String> getZusatzprodukte() {
             return zusatzprodukte;
         }
+    
         public AufAbschlagRegionalBuilder setZusatzprodukte(List<String> zusatzprodukte) {
             this.zusatzprodukte = zusatzprodukte;
             return this;

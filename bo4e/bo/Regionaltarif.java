@@ -98,8 +98,11 @@ public class Regionaltarif extends Geschaeftsobjekt {
      */
     private Zeitraum zeitlicheGueltigkeit;
 
-    public Regionaltarif() {}
+    public Regionaltarif() {
+    }
+
     private Regionaltarif(RegionaltarifBuilder builder) {
+        super(builder);
         this.anbieter = builder.anbieter;
         this.anbietername = builder.anbietername;
         this.anwendungVon = builder.anwendungVon;
@@ -129,6 +132,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public Marktteilnehmer getAnbieter() {
         return anbieter;
     }
+
     public void setAnbieter(Marktteilnehmer anbieter) {
         this.anbieter = anbieter;
     }
@@ -136,6 +140,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public String getAnbietername() {
         return anbietername;
     }
+
     public void setAnbietername(String anbietername) {
         this.anbietername = anbietername;
     }
@@ -143,6 +148,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public OffsetDateTime getAnwendungVon() {
         return anwendungVon;
     }
+
     public void setAnwendungVon(OffsetDateTime anwendungVon) {
         this.anwendungVon = anwendungVon;
     }
@@ -150,6 +156,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public String getBemerkung() {
         return bemerkung;
     }
+
     public void setBemerkung(String bemerkung) {
         this.bemerkung = bemerkung;
     }
@@ -157,6 +164,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public Tarifberechnungsparameter getBerechnungsparameter() {
         return berechnungsparameter;
     }
+
     public void setBerechnungsparameter(Tarifberechnungsparameter berechnungsparameter) {
         this.berechnungsparameter = berechnungsparameter;
     }
@@ -164,6 +172,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -171,6 +180,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public Energiemix getEnergiemix() {
         return energiemix;
     }
+
     public void setEnergiemix(Energiemix energiemix) {
         this.energiemix = energiemix;
     }
@@ -178,6 +188,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public List<Kundentyp> getKundentypen() {
         return kundentypen;
     }
+
     public void setKundentypen(List<Kundentyp> kundentypen) {
         this.kundentypen = kundentypen;
     }
@@ -185,6 +196,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public List<RegionalePreisgarantie> getPreisgarantien() {
         return preisgarantien;
     }
+
     public void setPreisgarantien(List<RegionalePreisgarantie> preisgarantien) {
         this.preisgarantien = preisgarantien;
     }
@@ -192,6 +204,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public OffsetDateTime getPreisstand() {
         return preisstand;
     }
+
     public void setPreisstand(OffsetDateTime preisstand) {
         this.preisstand = preisstand;
     }
@@ -199,6 +212,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public Registeranzahl getRegisteranzahl() {
         return registeranzahl;
     }
+
     public void setRegisteranzahl(Registeranzahl registeranzahl) {
         this.registeranzahl = registeranzahl;
     }
@@ -206,6 +220,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -213,6 +228,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public List<RegionalerAufAbschlag> getTarifAufAbschlaege() {
         return tarifAufAbschlaege;
     }
+
     public void setTarifAufAbschlaege(List<RegionalerAufAbschlag> tarifAufAbschlaege) {
         this.tarifAufAbschlaege = tarifAufAbschlaege;
     }
@@ -220,6 +236,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public Tarifeinschraenkung getTarifeinschraenkung() {
         return tarifeinschraenkung;
     }
+
     public void setTarifeinschraenkung(Tarifeinschraenkung tarifeinschraenkung) {
         this.tarifeinschraenkung = tarifeinschraenkung;
     }
@@ -227,6 +244,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public List<Tarifmerkmal> getTarifmerkmale() {
         return tarifmerkmale;
     }
+
     public void setTarifmerkmale(List<Tarifmerkmal> tarifmerkmale) {
         this.tarifmerkmale = tarifmerkmale;
     }
@@ -234,6 +252,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public List<RegionaleTarifpreisposition> getTarifpreise() {
         return tarifpreise;
     }
+
     public void setTarifpreise(List<RegionaleTarifpreisposition> tarifpreise) {
         this.tarifpreise = tarifpreise;
     }
@@ -241,6 +260,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public Tariftyp getTariftyp() {
         return tariftyp;
     }
+
     public void setTariftyp(Tariftyp tariftyp) {
         this.tariftyp = tariftyp;
     }
@@ -248,6 +268,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public Vertragskonditionen getVertragskonditionen() {
         return vertragskonditionen;
     }
+
     public void setVertragskonditionen(Vertragskonditionen vertragskonditionen) {
         this.vertragskonditionen = vertragskonditionen;
     }
@@ -255,6 +276,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public String getWebsite() {
         return website;
     }
+
     public void setWebsite(String website) {
         this.website = website;
     }
@@ -262,6 +284,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     public Zeitraum getZeitlicheGueltigkeit() {
         return zeitlicheGueltigkeit;
     }
+
     public void setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
         this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
     }
@@ -335,6 +358,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public Marktteilnehmer getAnbieter() {
             return anbieter;
         }
+    
         public RegionaltarifBuilder setAnbieter(Marktteilnehmer anbieter) {
             this.anbieter = anbieter;
             return this;
@@ -343,6 +367,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public String getAnbietername() {
             return anbietername;
         }
+    
         public RegionaltarifBuilder setAnbietername(String anbietername) {
             this.anbietername = anbietername;
             return this;
@@ -351,6 +376,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public OffsetDateTime getAnwendungVon() {
             return anwendungVon;
         }
+    
         public RegionaltarifBuilder setAnwendungVon(OffsetDateTime anwendungVon) {
             this.anwendungVon = anwendungVon;
             return this;
@@ -359,6 +385,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public String getBemerkung() {
             return bemerkung;
         }
+    
         public RegionaltarifBuilder setBemerkung(String bemerkung) {
             this.bemerkung = bemerkung;
             return this;
@@ -367,6 +394,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public Tarifberechnungsparameter getBerechnungsparameter() {
             return berechnungsparameter;
         }
+    
         public RegionaltarifBuilder setBerechnungsparameter(Tarifberechnungsparameter berechnungsparameter) {
             this.berechnungsparameter = berechnungsparameter;
             return this;
@@ -375,6 +403,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public RegionaltarifBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;
@@ -383,6 +412,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public Energiemix getEnergiemix() {
             return energiemix;
         }
+    
         public RegionaltarifBuilder setEnergiemix(Energiemix energiemix) {
             this.energiemix = energiemix;
             return this;
@@ -391,6 +421,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public List<Kundentyp> getKundentypen() {
             return kundentypen;
         }
+    
         public RegionaltarifBuilder setKundentypen(List<Kundentyp> kundentypen) {
             this.kundentypen = kundentypen;
             return this;
@@ -399,6 +430,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public List<RegionalePreisgarantie> getPreisgarantien() {
             return preisgarantien;
         }
+    
         public RegionaltarifBuilder setPreisgarantien(List<RegionalePreisgarantie> preisgarantien) {
             this.preisgarantien = preisgarantien;
             return this;
@@ -407,6 +439,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public OffsetDateTime getPreisstand() {
             return preisstand;
         }
+    
         public RegionaltarifBuilder setPreisstand(OffsetDateTime preisstand) {
             this.preisstand = preisstand;
             return this;
@@ -415,6 +448,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public Registeranzahl getRegisteranzahl() {
             return registeranzahl;
         }
+    
         public RegionaltarifBuilder setRegisteranzahl(Registeranzahl registeranzahl) {
             this.registeranzahl = registeranzahl;
             return this;
@@ -423,6 +457,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public RegionaltarifBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;
@@ -431,6 +466,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public List<RegionalerAufAbschlag> getTarifAufAbschlaege() {
             return tarifAufAbschlaege;
         }
+    
         public RegionaltarifBuilder setTarifAufAbschlaege(List<RegionalerAufAbschlag> tarifAufAbschlaege) {
             this.tarifAufAbschlaege = tarifAufAbschlaege;
             return this;
@@ -439,6 +475,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public Tarifeinschraenkung getTarifeinschraenkung() {
             return tarifeinschraenkung;
         }
+    
         public RegionaltarifBuilder setTarifeinschraenkung(Tarifeinschraenkung tarifeinschraenkung) {
             this.tarifeinschraenkung = tarifeinschraenkung;
             return this;
@@ -447,6 +484,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public List<Tarifmerkmal> getTarifmerkmale() {
             return tarifmerkmale;
         }
+    
         public RegionaltarifBuilder setTarifmerkmale(List<Tarifmerkmal> tarifmerkmale) {
             this.tarifmerkmale = tarifmerkmale;
             return this;
@@ -455,6 +493,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public List<RegionaleTarifpreisposition> getTarifpreise() {
             return tarifpreise;
         }
+    
         public RegionaltarifBuilder setTarifpreise(List<RegionaleTarifpreisposition> tarifpreise) {
             this.tarifpreise = tarifpreise;
             return this;
@@ -463,6 +502,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public Tariftyp getTariftyp() {
             return tariftyp;
         }
+    
         public RegionaltarifBuilder setTariftyp(Tariftyp tariftyp) {
             this.tariftyp = tariftyp;
             return this;
@@ -471,6 +511,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public Vertragskonditionen getVertragskonditionen() {
             return vertragskonditionen;
         }
+    
         public RegionaltarifBuilder setVertragskonditionen(Vertragskonditionen vertragskonditionen) {
             this.vertragskonditionen = vertragskonditionen;
             return this;
@@ -479,6 +520,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public String getWebsite() {
             return website;
         }
+    
         public RegionaltarifBuilder setWebsite(String website) {
             this.website = website;
             return this;
@@ -487,6 +529,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
         public Zeitraum getZeitlicheGueltigkeit() {
             return zeitlicheGueltigkeit;
         }
+    
         public RegionaltarifBuilder setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
             this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
             return this;

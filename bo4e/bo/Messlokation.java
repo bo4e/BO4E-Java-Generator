@@ -78,8 +78,11 @@ public class Messlokation extends Geschaeftsobjekt {
      */
     private Sparte sparte;
 
-    public Messlokation() {}
+    public Messlokation() {
+    }
+
     private Messlokation(MesslokationBuilder builder) {
+        super(builder);
         this.geoadresse = builder.geoadresse;
         this.geraete = builder.geraete;
         this.grundzustaendigerMsbCodenr = builder.grundzustaendigerMsbCodenr;
@@ -101,6 +104,7 @@ public class Messlokation extends Geschaeftsobjekt {
     public Geokoordinaten getGeoadresse() {
         return geoadresse;
     }
+
     public void setGeoadresse(Geokoordinaten geoadresse) {
         this.geoadresse = geoadresse;
     }
@@ -108,6 +112,7 @@ public class Messlokation extends Geschaeftsobjekt {
     public List<Geraet> getGeraete() {
         return geraete;
     }
+
     public void setGeraete(List<Geraet> geraete) {
         this.geraete = geraete;
     }
@@ -115,6 +120,7 @@ public class Messlokation extends Geschaeftsobjekt {
     public String getGrundzustaendigerMsbCodenr() {
         return grundzustaendigerMsbCodenr;
     }
+
     public void setGrundzustaendigerMsbCodenr(String grundzustaendigerMsbCodenr) {
         this.grundzustaendigerMsbCodenr = grundzustaendigerMsbCodenr;
     }
@@ -122,6 +128,7 @@ public class Messlokation extends Geschaeftsobjekt {
     public String getGrundzustaendigerMsbimCodenr() {
         return grundzustaendigerMsbimCodenr;
     }
+
     public void setGrundzustaendigerMsbimCodenr(String grundzustaendigerMsbimCodenr) {
         this.grundzustaendigerMsbimCodenr = grundzustaendigerMsbimCodenr;
     }
@@ -129,6 +136,7 @@ public class Messlokation extends Geschaeftsobjekt {
     public Katasteradresse getKatasterinformation() {
         return katasterinformation;
     }
+
     public void setKatasterinformation(Katasteradresse katasterinformation) {
         this.katasterinformation = katasterinformation;
     }
@@ -136,6 +144,7 @@ public class Messlokation extends Geschaeftsobjekt {
     public Adresse getMessadresse() {
         return messadresse;
     }
+
     public void setMessadresse(Adresse messadresse) {
         this.messadresse = messadresse;
     }
@@ -143,6 +152,7 @@ public class Messlokation extends Geschaeftsobjekt {
     public List<Dienstleistung> getMessdienstleistung() {
         return messdienstleistung;
     }
+
     public void setMessdienstleistung(List<Dienstleistung> messdienstleistung) {
         this.messdienstleistung = messdienstleistung;
     }
@@ -150,6 +160,7 @@ public class Messlokation extends Geschaeftsobjekt {
     public String getMessgebietnr() {
         return messgebietnr;
     }
+
     public void setMessgebietnr(String messgebietnr) {
         this.messgebietnr = messgebietnr;
     }
@@ -157,6 +168,7 @@ public class Messlokation extends Geschaeftsobjekt {
     public String getMesslokationsId() {
         return messlokationsId;
     }
+
     public void setMesslokationsId(String messlokationsId) {
         this.messlokationsId = messlokationsId;
     }
@@ -164,6 +176,7 @@ public class Messlokation extends Geschaeftsobjekt {
     public List<Zaehler> getMesslokationszaehler() {
         return messlokationszaehler;
     }
+
     public void setMesslokationszaehler(List<Zaehler> messlokationszaehler) {
         this.messlokationszaehler = messlokationszaehler;
     }
@@ -171,6 +184,7 @@ public class Messlokation extends Geschaeftsobjekt {
     public Netzebene getNetzebeneMessung() {
         return netzebeneMessung;
     }
+
     public void setNetzebeneMessung(Netzebene netzebeneMessung) {
         this.netzebeneMessung = netzebeneMessung;
     }
@@ -178,6 +192,7 @@ public class Messlokation extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -238,6 +253,7 @@ public class Messlokation extends Geschaeftsobjekt {
         public Geokoordinaten getGeoadresse() {
             return geoadresse;
         }
+    
         public MesslokationBuilder setGeoadresse(Geokoordinaten geoadresse) {
             this.geoadresse = geoadresse;
             return this;
@@ -246,6 +262,7 @@ public class Messlokation extends Geschaeftsobjekt {
         public List<Geraet> getGeraete() {
             return geraete;
         }
+    
         public MesslokationBuilder setGeraete(List<Geraet> geraete) {
             this.geraete = geraete;
             return this;
@@ -254,6 +271,7 @@ public class Messlokation extends Geschaeftsobjekt {
         public String getGrundzustaendigerMsbCodenr() {
             return grundzustaendigerMsbCodenr;
         }
+    
         public MesslokationBuilder setGrundzustaendigerMsbCodenr(String grundzustaendigerMsbCodenr) {
             this.grundzustaendigerMsbCodenr = grundzustaendigerMsbCodenr;
             return this;
@@ -262,6 +280,7 @@ public class Messlokation extends Geschaeftsobjekt {
         public String getGrundzustaendigerMsbimCodenr() {
             return grundzustaendigerMsbimCodenr;
         }
+    
         public MesslokationBuilder setGrundzustaendigerMsbimCodenr(String grundzustaendigerMsbimCodenr) {
             this.grundzustaendigerMsbimCodenr = grundzustaendigerMsbimCodenr;
             return this;
@@ -270,6 +289,7 @@ public class Messlokation extends Geschaeftsobjekt {
         public Katasteradresse getKatasterinformation() {
             return katasterinformation;
         }
+    
         public MesslokationBuilder setKatasterinformation(Katasteradresse katasterinformation) {
             this.katasterinformation = katasterinformation;
             return this;
@@ -278,6 +298,7 @@ public class Messlokation extends Geschaeftsobjekt {
         public Adresse getMessadresse() {
             return messadresse;
         }
+    
         public MesslokationBuilder setMessadresse(Adresse messadresse) {
             this.messadresse = messadresse;
             return this;
@@ -286,6 +307,7 @@ public class Messlokation extends Geschaeftsobjekt {
         public List<Dienstleistung> getMessdienstleistung() {
             return messdienstleistung;
         }
+    
         public MesslokationBuilder setMessdienstleistung(List<Dienstleistung> messdienstleistung) {
             this.messdienstleistung = messdienstleistung;
             return this;
@@ -294,6 +316,7 @@ public class Messlokation extends Geschaeftsobjekt {
         public String getMessgebietnr() {
             return messgebietnr;
         }
+    
         public MesslokationBuilder setMessgebietnr(String messgebietnr) {
             this.messgebietnr = messgebietnr;
             return this;
@@ -302,6 +325,7 @@ public class Messlokation extends Geschaeftsobjekt {
         public String getMesslokationsId() {
             return messlokationsId;
         }
+    
         public MesslokationBuilder setMesslokationsId(String messlokationsId) {
             this.messlokationsId = messlokationsId;
             return this;
@@ -310,6 +334,7 @@ public class Messlokation extends Geschaeftsobjekt {
         public List<Zaehler> getMesslokationszaehler() {
             return messlokationszaehler;
         }
+    
         public MesslokationBuilder setMesslokationszaehler(List<Zaehler> messlokationszaehler) {
             this.messlokationszaehler = messlokationszaehler;
             return this;
@@ -318,6 +343,7 @@ public class Messlokation extends Geschaeftsobjekt {
         public Netzebene getNetzebeneMessung() {
             return netzebeneMessung;
         }
+    
         public MesslokationBuilder setNetzebeneMessung(Netzebene netzebeneMessung) {
             this.netzebeneMessung = netzebeneMessung;
             return this;
@@ -326,6 +352,7 @@ public class Messlokation extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public MesslokationBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;

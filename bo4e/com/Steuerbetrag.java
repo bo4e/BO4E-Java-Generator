@@ -35,8 +35,11 @@ public class Steuerbetrag extends COM {
      */
     private Waehrungscode waehrung;
 
-    public Steuerbetrag() {}
+    public Steuerbetrag() {
+    }
+
     private Steuerbetrag(SteuerbetragBuilder builder) {
+        super(builder);
         this.basiswert = builder.basiswert;
         this.steuerkennzeichen = builder.steuerkennzeichen;
         this.steuerwert = builder.steuerwert;
@@ -46,6 +49,7 @@ public class Steuerbetrag extends COM {
     public Double getBasiswert() {
         return basiswert;
     }
+
     public void setBasiswert(Double basiswert) {
         this.basiswert = basiswert;
     }
@@ -53,6 +57,7 @@ public class Steuerbetrag extends COM {
     public Steuerkennzeichen getSteuerkennzeichen() {
         return steuerkennzeichen;
     }
+
     public void setSteuerkennzeichen(Steuerkennzeichen steuerkennzeichen) {
         this.steuerkennzeichen = steuerkennzeichen;
     }
@@ -60,6 +65,7 @@ public class Steuerbetrag extends COM {
     public Double getSteuerwert() {
         return steuerwert;
     }
+
     public void setSteuerwert(Double steuerwert) {
         this.steuerwert = steuerwert;
     }
@@ -67,6 +73,7 @@ public class Steuerbetrag extends COM {
     public Waehrungscode getWaehrung() {
         return waehrung;
     }
+
     public void setWaehrung(Waehrungscode waehrung) {
         this.waehrung = waehrung;
     }
@@ -92,6 +99,7 @@ public class Steuerbetrag extends COM {
         public Double getBasiswert() {
             return basiswert;
         }
+    
         public SteuerbetragBuilder setBasiswert(Double basiswert) {
             this.basiswert = basiswert;
             return this;
@@ -100,6 +108,7 @@ public class Steuerbetrag extends COM {
         public Steuerkennzeichen getSteuerkennzeichen() {
             return steuerkennzeichen;
         }
+    
         public SteuerbetragBuilder setSteuerkennzeichen(Steuerkennzeichen steuerkennzeichen) {
             this.steuerkennzeichen = steuerkennzeichen;
             return this;
@@ -108,6 +117,7 @@ public class Steuerbetrag extends COM {
         public Double getSteuerwert() {
             return steuerwert;
         }
+    
         public SteuerbetragBuilder setSteuerwert(Double steuerwert) {
             this.steuerwert = steuerwert;
             return this;
@@ -116,6 +126,7 @@ public class Steuerbetrag extends COM {
         public Waehrungscode getWaehrung() {
             return waehrung;
         }
+    
         public SteuerbetragBuilder setWaehrung(Waehrungscode waehrung) {
             this.waehrung = waehrung;
             return this;

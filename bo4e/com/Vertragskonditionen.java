@@ -43,8 +43,11 @@ public class Vertragskonditionen extends COM {
      */
     private Zeitraum vertragsverlaengerung;
 
-    public Vertragskonditionen() {}
+    public Vertragskonditionen() {
+    }
+
     private Vertragskonditionen(VertragskonditionenBuilder builder) {
+        super(builder);
         this.abschlagszyklus = builder.abschlagszyklus;
         this.anzahlAbschlaege = builder.anzahlAbschlaege;
         this.beschreibung = builder.beschreibung;
@@ -56,6 +59,7 @@ public class Vertragskonditionen extends COM {
     public Zeitraum getAbschlagszyklus() {
         return abschlagszyklus;
     }
+
     public void setAbschlagszyklus(Zeitraum abschlagszyklus) {
         this.abschlagszyklus = abschlagszyklus;
     }
@@ -63,6 +67,7 @@ public class Vertragskonditionen extends COM {
     public Double getAnzahlAbschlaege() {
         return anzahlAbschlaege;
     }
+
     public void setAnzahlAbschlaege(Double anzahlAbschlaege) {
         this.anzahlAbschlaege = anzahlAbschlaege;
     }
@@ -70,6 +75,7 @@ public class Vertragskonditionen extends COM {
     public String getBeschreibung() {
         return beschreibung;
     }
+
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
@@ -77,6 +83,7 @@ public class Vertragskonditionen extends COM {
     public Zeitraum getKuendigungsfrist() {
         return kuendigungsfrist;
     }
+
     public void setKuendigungsfrist(Zeitraum kuendigungsfrist) {
         this.kuendigungsfrist = kuendigungsfrist;
     }
@@ -84,6 +91,7 @@ public class Vertragskonditionen extends COM {
     public Zeitraum getVertragslaufzeit() {
         return vertragslaufzeit;
     }
+
     public void setVertragslaufzeit(Zeitraum vertragslaufzeit) {
         this.vertragslaufzeit = vertragslaufzeit;
     }
@@ -91,6 +99,7 @@ public class Vertragskonditionen extends COM {
     public Zeitraum getVertragsverlaengerung() {
         return vertragsverlaengerung;
     }
+
     public void setVertragsverlaengerung(Zeitraum vertragsverlaengerung) {
         this.vertragsverlaengerung = vertragsverlaengerung;
     }
@@ -126,6 +135,7 @@ public class Vertragskonditionen extends COM {
         public Zeitraum getAbschlagszyklus() {
             return abschlagszyklus;
         }
+    
         public VertragskonditionenBuilder setAbschlagszyklus(Zeitraum abschlagszyklus) {
             this.abschlagszyklus = abschlagszyklus;
             return this;
@@ -134,6 +144,7 @@ public class Vertragskonditionen extends COM {
         public Double getAnzahlAbschlaege() {
             return anzahlAbschlaege;
         }
+    
         public VertragskonditionenBuilder setAnzahlAbschlaege(Double anzahlAbschlaege) {
             this.anzahlAbschlaege = anzahlAbschlaege;
             return this;
@@ -142,6 +153,7 @@ public class Vertragskonditionen extends COM {
         public String getBeschreibung() {
             return beschreibung;
         }
+    
         public VertragskonditionenBuilder setBeschreibung(String beschreibung) {
             this.beschreibung = beschreibung;
             return this;
@@ -150,6 +162,7 @@ public class Vertragskonditionen extends COM {
         public Zeitraum getKuendigungsfrist() {
             return kuendigungsfrist;
         }
+    
         public VertragskonditionenBuilder setKuendigungsfrist(Zeitraum kuendigungsfrist) {
             this.kuendigungsfrist = kuendigungsfrist;
             return this;
@@ -158,6 +171,7 @@ public class Vertragskonditionen extends COM {
         public Zeitraum getVertragslaufzeit() {
             return vertragslaufzeit;
         }
+    
         public VertragskonditionenBuilder setVertragslaufzeit(Zeitraum vertragslaufzeit) {
             this.vertragslaufzeit = vertragslaufzeit;
             return this;
@@ -166,6 +180,7 @@ public class Vertragskonditionen extends COM {
         public Zeitraum getVertragsverlaengerung() {
             return vertragsverlaengerung;
         }
+    
         public VertragskonditionenBuilder setVertragsverlaengerung(Zeitraum vertragsverlaengerung) {
             this.vertragsverlaengerung = vertragsverlaengerung;
             return this;

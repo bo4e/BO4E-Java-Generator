@@ -27,8 +27,11 @@ public class RegionaleGueltigkeit extends COM {
      */
     private List<KriteriumWert> kriteriumsWerte;
 
-    public RegionaleGueltigkeit() {}
+    public RegionaleGueltigkeit() {
+    }
+
     private RegionaleGueltigkeit(RegionaleGueltigkeitBuilder builder) {
+        super(builder);
         this.gueltigkeitstyp = builder.gueltigkeitstyp;
         this.kriteriumsWerte = builder.kriteriumsWerte;
     }
@@ -36,6 +39,7 @@ public class RegionaleGueltigkeit extends COM {
     public Gueltigkeitstyp getGueltigkeitstyp() {
         return gueltigkeitstyp;
     }
+
     public void setGueltigkeitstyp(Gueltigkeitstyp gueltigkeitstyp) {
         this.gueltigkeitstyp = gueltigkeitstyp;
     }
@@ -43,6 +47,7 @@ public class RegionaleGueltigkeit extends COM {
     public List<KriteriumWert> getKriteriumsWerte() {
         return kriteriumsWerte;
     }
+
     public void setKriteriumsWerte(List<KriteriumWert> kriteriumsWerte) {
         this.kriteriumsWerte = kriteriumsWerte;
     }
@@ -60,6 +65,7 @@ public class RegionaleGueltigkeit extends COM {
         public Gueltigkeitstyp getGueltigkeitstyp() {
             return gueltigkeitstyp;
         }
+    
         public RegionaleGueltigkeitBuilder setGueltigkeitstyp(Gueltigkeitstyp gueltigkeitstyp) {
             this.gueltigkeitstyp = gueltigkeitstyp;
             return this;
@@ -68,6 +74,7 @@ public class RegionaleGueltigkeit extends COM {
         public List<KriteriumWert> getKriteriumsWerte() {
             return kriteriumsWerte;
         }
+    
         public RegionaleGueltigkeitBuilder setKriteriumsWerte(List<KriteriumWert> kriteriumsWerte) {
             this.kriteriumsWerte = kriteriumsWerte;
             return this;

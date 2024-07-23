@@ -33,8 +33,11 @@ public class Preisstaffel extends COM {
      */
     private Double staffelgrenzeVon;
 
-    public Preisstaffel() {}
+    public Preisstaffel() {
+    }
+
     private Preisstaffel(PreisstaffelBuilder builder) {
+        super(builder);
         this.einheitspreis = builder.einheitspreis;
         this.sigmoidparameter = builder.sigmoidparameter;
         this.staffelgrenzeBis = builder.staffelgrenzeBis;
@@ -44,6 +47,7 @@ public class Preisstaffel extends COM {
     public Double getEinheitspreis() {
         return einheitspreis;
     }
+
     public void setEinheitspreis(Double einheitspreis) {
         this.einheitspreis = einheitspreis;
     }
@@ -51,6 +55,7 @@ public class Preisstaffel extends COM {
     public Sigmoidparameter getSigmoidparameter() {
         return sigmoidparameter;
     }
+
     public void setSigmoidparameter(Sigmoidparameter sigmoidparameter) {
         this.sigmoidparameter = sigmoidparameter;
     }
@@ -58,6 +63,7 @@ public class Preisstaffel extends COM {
     public Double getStaffelgrenzeBis() {
         return staffelgrenzeBis;
     }
+
     public void setStaffelgrenzeBis(Double staffelgrenzeBis) {
         this.staffelgrenzeBis = staffelgrenzeBis;
     }
@@ -65,6 +71,7 @@ public class Preisstaffel extends COM {
     public Double getStaffelgrenzeVon() {
         return staffelgrenzeVon;
     }
+
     public void setStaffelgrenzeVon(Double staffelgrenzeVon) {
         this.staffelgrenzeVon = staffelgrenzeVon;
     }
@@ -91,6 +98,7 @@ public class Preisstaffel extends COM {
         public Double getEinheitspreis() {
             return einheitspreis;
         }
+    
         public PreisstaffelBuilder setEinheitspreis(Double einheitspreis) {
             this.einheitspreis = einheitspreis;
             return this;
@@ -99,6 +107,7 @@ public class Preisstaffel extends COM {
         public Sigmoidparameter getSigmoidparameter() {
             return sigmoidparameter;
         }
+    
         public PreisstaffelBuilder setSigmoidparameter(Sigmoidparameter sigmoidparameter) {
             this.sigmoidparameter = sigmoidparameter;
             return this;
@@ -107,6 +116,7 @@ public class Preisstaffel extends COM {
         public Double getStaffelgrenzeBis() {
             return staffelgrenzeBis;
         }
+    
         public PreisstaffelBuilder setStaffelgrenzeBis(Double staffelgrenzeBis) {
             this.staffelgrenzeBis = staffelgrenzeBis;
             return this;
@@ -115,6 +125,7 @@ public class Preisstaffel extends COM {
         public Double getStaffelgrenzeVon() {
             return staffelgrenzeVon;
         }
+    
         public PreisstaffelBuilder setStaffelgrenzeVon(Double staffelgrenzeVon) {
             this.staffelgrenzeVon = staffelgrenzeVon;
             return this;

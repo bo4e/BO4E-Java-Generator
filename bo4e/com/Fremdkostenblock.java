@@ -30,8 +30,11 @@ public class Fremdkostenblock extends COM {
      */
     private Betrag summeKostenblock;
 
-    public Fremdkostenblock() {}
+    public Fremdkostenblock() {
+    }
+
     private Fremdkostenblock(FremdkostenblockBuilder builder) {
+        super(builder);
         this.kostenblockbezeichnung = builder.kostenblockbezeichnung;
         this.kostenpositionen = builder.kostenpositionen;
         this.summeKostenblock = builder.summeKostenblock;
@@ -40,6 +43,7 @@ public class Fremdkostenblock extends COM {
     public String getKostenblockbezeichnung() {
         return kostenblockbezeichnung;
     }
+
     public void setKostenblockbezeichnung(String kostenblockbezeichnung) {
         this.kostenblockbezeichnung = kostenblockbezeichnung;
     }
@@ -47,6 +51,7 @@ public class Fremdkostenblock extends COM {
     public List<Fremdkostenposition> getKostenpositionen() {
         return kostenpositionen;
     }
+
     public void setKostenpositionen(List<Fremdkostenposition> kostenpositionen) {
         this.kostenpositionen = kostenpositionen;
     }
@@ -54,6 +59,7 @@ public class Fremdkostenblock extends COM {
     public Betrag getSummeKostenblock() {
         return summeKostenblock;
     }
+
     public void setSummeKostenblock(Betrag summeKostenblock) {
         this.summeKostenblock = summeKostenblock;
     }
@@ -77,6 +83,7 @@ public class Fremdkostenblock extends COM {
         public String getKostenblockbezeichnung() {
             return kostenblockbezeichnung;
         }
+    
         public FremdkostenblockBuilder setKostenblockbezeichnung(String kostenblockbezeichnung) {
             this.kostenblockbezeichnung = kostenblockbezeichnung;
             return this;
@@ -85,6 +92,7 @@ public class Fremdkostenblock extends COM {
         public List<Fremdkostenposition> getKostenpositionen() {
             return kostenpositionen;
         }
+    
         public FremdkostenblockBuilder setKostenpositionen(List<Fremdkostenposition> kostenpositionen) {
             this.kostenpositionen = kostenpositionen;
             return this;
@@ -93,6 +101,7 @@ public class Fremdkostenblock extends COM {
         public Betrag getSummeKostenblock() {
             return summeKostenblock;
         }
+    
         public FremdkostenblockBuilder setSummeKostenblock(Betrag summeKostenblock) {
             this.summeKostenblock = summeKostenblock;
             return this;

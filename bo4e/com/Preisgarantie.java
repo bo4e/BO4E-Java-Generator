@@ -30,8 +30,11 @@ public class Preisgarantie extends COM {
      */
     private Zeitraum zeitlicheGueltigkeit;
 
-    public Preisgarantie() {}
+    public Preisgarantie() {
+    }
+
     private Preisgarantie(PreisgarantieBuilder builder) {
+        super(builder);
         this.beschreibung = builder.beschreibung;
         this.preisgarantietyp = builder.preisgarantietyp;
         this.zeitlicheGueltigkeit = builder.zeitlicheGueltigkeit;
@@ -40,6 +43,7 @@ public class Preisgarantie extends COM {
     public String getBeschreibung() {
         return beschreibung;
     }
+
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
@@ -47,6 +51,7 @@ public class Preisgarantie extends COM {
     public Preisgarantietyp getPreisgarantietyp() {
         return preisgarantietyp;
     }
+
     public void setPreisgarantietyp(Preisgarantietyp preisgarantietyp) {
         this.preisgarantietyp = preisgarantietyp;
     }
@@ -54,6 +59,7 @@ public class Preisgarantie extends COM {
     public Zeitraum getZeitlicheGueltigkeit() {
         return zeitlicheGueltigkeit;
     }
+
     public void setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
         this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
     }
@@ -75,6 +81,7 @@ public class Preisgarantie extends COM {
         public String getBeschreibung() {
             return beschreibung;
         }
+    
         public PreisgarantieBuilder setBeschreibung(String beschreibung) {
             this.beschreibung = beschreibung;
             return this;
@@ -83,6 +90,7 @@ public class Preisgarantie extends COM {
         public Preisgarantietyp getPreisgarantietyp() {
             return preisgarantietyp;
         }
+    
         public PreisgarantieBuilder setPreisgarantietyp(Preisgarantietyp preisgarantietyp) {
             this.preisgarantietyp = preisgarantietyp;
             return this;
@@ -91,6 +99,7 @@ public class Preisgarantie extends COM {
         public Zeitraum getZeitlicheGueltigkeit() {
             return zeitlicheGueltigkeit;
         }
+    
         public PreisgarantieBuilder setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
             this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
             return this;

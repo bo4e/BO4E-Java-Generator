@@ -57,8 +57,11 @@ public class Preisblatt extends Geschaeftsobjekt {
      */
     private Sparte sparte;
 
-    public Preisblatt() {}
+    public Preisblatt() {
+    }
+
     private Preisblatt(PreisblattBuilder builder) {
+        super(builder);
         this.bezeichnung = builder.bezeichnung;
         this.gueltigkeit = builder.gueltigkeit;
         this.herausgeber = builder.herausgeber;
@@ -74,6 +77,7 @@ public class Preisblatt extends Geschaeftsobjekt {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -81,6 +85,7 @@ public class Preisblatt extends Geschaeftsobjekt {
     public Zeitraum getGueltigkeit() {
         return gueltigkeit;
     }
+
     public void setGueltigkeit(Zeitraum gueltigkeit) {
         this.gueltigkeit = gueltigkeit;
     }
@@ -88,6 +93,7 @@ public class Preisblatt extends Geschaeftsobjekt {
     public Marktteilnehmer getHerausgeber() {
         return herausgeber;
     }
+
     public void setHerausgeber(Marktteilnehmer herausgeber) {
         this.herausgeber = herausgeber;
     }
@@ -95,6 +101,7 @@ public class Preisblatt extends Geschaeftsobjekt {
     public List<Preisposition> getPreispositionen() {
         return preispositionen;
     }
+
     public void setPreispositionen(List<Preisposition> preispositionen) {
         this.preispositionen = preispositionen;
     }
@@ -102,6 +109,7 @@ public class Preisblatt extends Geschaeftsobjekt {
     public Preisstatus getPreisstatus() {
         return preisstatus;
     }
+
     public void setPreisstatus(Preisstatus preisstatus) {
         this.preisstatus = preisstatus;
     }
@@ -109,6 +117,7 @@ public class Preisblatt extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -143,6 +152,7 @@ public class Preisblatt extends Geschaeftsobjekt {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public PreisblattBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;
@@ -151,6 +161,7 @@ public class Preisblatt extends Geschaeftsobjekt {
         public Zeitraum getGueltigkeit() {
             return gueltigkeit;
         }
+    
         public PreisblattBuilder setGueltigkeit(Zeitraum gueltigkeit) {
             this.gueltigkeit = gueltigkeit;
             return this;
@@ -159,6 +170,7 @@ public class Preisblatt extends Geschaeftsobjekt {
         public Marktteilnehmer getHerausgeber() {
             return herausgeber;
         }
+    
         public PreisblattBuilder setHerausgeber(Marktteilnehmer herausgeber) {
             this.herausgeber = herausgeber;
             return this;
@@ -167,6 +179,7 @@ public class Preisblatt extends Geschaeftsobjekt {
         public List<Preisposition> getPreispositionen() {
             return preispositionen;
         }
+    
         public PreisblattBuilder setPreispositionen(List<Preisposition> preispositionen) {
             this.preispositionen = preispositionen;
             return this;
@@ -175,6 +188,7 @@ public class Preisblatt extends Geschaeftsobjekt {
         public Preisstatus getPreisstatus() {
             return preisstatus;
         }
+    
         public PreisblattBuilder setPreisstatus(Preisstatus preisstatus) {
             this.preisstatus = preisstatus;
             return this;
@@ -183,6 +197,7 @@ public class Preisblatt extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public PreisblattBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;

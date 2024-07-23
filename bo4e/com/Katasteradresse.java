@@ -18,8 +18,11 @@ public class Katasteradresse extends COM {
     private String flurstueck;
     private String gemarkungFlur;
 
-    public Katasteradresse() {}
+    public Katasteradresse() {
+    }
+
     private Katasteradresse(KatasteradresseBuilder builder) {
+        super(builder);
         this.flurstueck = builder.flurstueck;
         this.gemarkungFlur = builder.gemarkungFlur;
     }
@@ -27,6 +30,7 @@ public class Katasteradresse extends COM {
     public String getFlurstueck() {
         return flurstueck;
     }
+
     public void setFlurstueck(String flurstueck) {
         this.flurstueck = flurstueck;
     }
@@ -34,6 +38,7 @@ public class Katasteradresse extends COM {
     public String getGemarkungFlur() {
         return gemarkungFlur;
     }
+
     public void setGemarkungFlur(String gemarkungFlur) {
         this.gemarkungFlur = gemarkungFlur;
     }
@@ -45,6 +50,7 @@ public class Katasteradresse extends COM {
         public String getFlurstueck() {
             return flurstueck;
         }
+    
         public KatasteradresseBuilder setFlurstueck(String flurstueck) {
             this.flurstueck = flurstueck;
             return this;
@@ -53,6 +59,7 @@ public class Katasteradresse extends COM {
         public String getGemarkungFlur() {
             return gemarkungFlur;
         }
+    
         public KatasteradresseBuilder setGemarkungFlur(String gemarkungFlur) {
             this.gemarkungFlur = gemarkungFlur;
             return this;

@@ -94,8 +94,11 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
      */
     private String website;
 
-    public Geschaeftspartner() {}
+    public Geschaeftspartner() {
+    }
+
     private Geschaeftspartner(GeschaeftspartnerBuilder builder) {
+        super(builder);
         this.adresse = builder.adresse;
         this.amtsgericht = builder.amtsgericht;
         this.anrede = builder.anrede;
@@ -121,6 +124,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
     public Adresse getAdresse() {
         return adresse;
     }
+
     public void setAdresse(Adresse adresse) {
         this.adresse = adresse;
     }
@@ -128,6 +132,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
     public String getAmtsgericht() {
         return amtsgericht;
     }
+
     public void setAmtsgericht(String amtsgericht) {
         this.amtsgericht = amtsgericht;
     }
@@ -135,6 +140,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
     public Anrede getAnrede() {
         return anrede;
     }
+
     public void setAnrede(Anrede anrede) {
         this.anrede = anrede;
     }
@@ -142,6 +148,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
     public List<Person> getAnsprechpartner() {
         return ansprechpartner;
     }
+
     public void setAnsprechpartner(List<Person> ansprechpartner) {
         this.ansprechpartner = ansprechpartner;
     }
@@ -149,6 +156,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
     public List<Geschaeftspartnerrolle> getGeschaeftspartnerrollen() {
         return geschaeftspartnerrollen;
     }
+
     public void setGeschaeftspartnerrollen(List<Geschaeftspartnerrolle> geschaeftspartnerrollen) {
         this.geschaeftspartnerrollen = geschaeftspartnerrollen;
     }
@@ -156,6 +164,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
     public String getGlaeubigerId() {
         return glaeubigerId;
     }
+
     public void setGlaeubigerId(String glaeubigerId) {
         this.glaeubigerId = glaeubigerId;
     }
@@ -163,6 +172,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
     public String getHandelsregisternummer() {
         return handelsregisternummer;
     }
+
     public void setHandelsregisternummer(String handelsregisternummer) {
         this.handelsregisternummer = handelsregisternummer;
     }
@@ -170,6 +180,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
     public String getIndividuelleAnrede() {
         return individuelleAnrede;
     }
+
     public void setIndividuelleAnrede(String individuelleAnrede) {
         this.individuelleAnrede = individuelleAnrede;
     }
@@ -177,6 +188,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
     public List<Kontaktweg> getKontaktwege() {
         return kontaktwege;
     }
+
     public void setKontaktwege(List<Kontaktweg> kontaktwege) {
         this.kontaktwege = kontaktwege;
     }
@@ -184,6 +196,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
     public String getNachname() {
         return nachname;
     }
+
     public void setNachname(String nachname) {
         this.nachname = nachname;
     }
@@ -191,6 +204,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
     public String getOrganisationsname() {
         return organisationsname;
     }
+
     public void setOrganisationsname(String organisationsname) {
         this.organisationsname = organisationsname;
     }
@@ -198,6 +212,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
     public Organisationstyp getOrganisationstyp() {
         return organisationstyp;
     }
+
     public void setOrganisationstyp(Organisationstyp organisationstyp) {
         this.organisationstyp = organisationstyp;
     }
@@ -205,6 +220,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
     public Titel getTitel() {
         return titel;
     }
+
     public void setTitel(Titel titel) {
         this.titel = titel;
     }
@@ -212,6 +228,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
     public String getUmsatzsteuerId() {
         return umsatzsteuerId;
     }
+
     public void setUmsatzsteuerId(String umsatzsteuerId) {
         this.umsatzsteuerId = umsatzsteuerId;
     }
@@ -219,6 +236,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
     public String getVorname() {
         return vorname;
     }
+
     public void setVorname(String vorname) {
         this.vorname = vorname;
     }
@@ -226,6 +244,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
     public String getWebsite() {
         return website;
     }
+
     public void setWebsite(String website) {
         this.website = website;
     }
@@ -298,6 +317,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
         public Adresse getAdresse() {
             return adresse;
         }
+    
         public GeschaeftspartnerBuilder setAdresse(Adresse adresse) {
             this.adresse = adresse;
             return this;
@@ -306,6 +326,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
         public String getAmtsgericht() {
             return amtsgericht;
         }
+    
         public GeschaeftspartnerBuilder setAmtsgericht(String amtsgericht) {
             this.amtsgericht = amtsgericht;
             return this;
@@ -314,6 +335,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
         public Anrede getAnrede() {
             return anrede;
         }
+    
         public GeschaeftspartnerBuilder setAnrede(Anrede anrede) {
             this.anrede = anrede;
             return this;
@@ -322,6 +344,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
         public List<Person> getAnsprechpartner() {
             return ansprechpartner;
         }
+    
         public GeschaeftspartnerBuilder setAnsprechpartner(List<Person> ansprechpartner) {
             this.ansprechpartner = ansprechpartner;
             return this;
@@ -330,6 +353,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
         public List<Geschaeftspartnerrolle> getGeschaeftspartnerrollen() {
             return geschaeftspartnerrollen;
         }
+    
         public GeschaeftspartnerBuilder setGeschaeftspartnerrollen(List<Geschaeftspartnerrolle> geschaeftspartnerrollen) {
             this.geschaeftspartnerrollen = geschaeftspartnerrollen;
             return this;
@@ -338,6 +362,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
         public String getGlaeubigerId() {
             return glaeubigerId;
         }
+    
         public GeschaeftspartnerBuilder setGlaeubigerId(String glaeubigerId) {
             this.glaeubigerId = glaeubigerId;
             return this;
@@ -346,6 +371,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
         public String getHandelsregisternummer() {
             return handelsregisternummer;
         }
+    
         public GeschaeftspartnerBuilder setHandelsregisternummer(String handelsregisternummer) {
             this.handelsregisternummer = handelsregisternummer;
             return this;
@@ -354,6 +380,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
         public String getIndividuelleAnrede() {
             return individuelleAnrede;
         }
+    
         public GeschaeftspartnerBuilder setIndividuelleAnrede(String individuelleAnrede) {
             this.individuelleAnrede = individuelleAnrede;
             return this;
@@ -362,6 +389,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
         public List<Kontaktweg> getKontaktwege() {
             return kontaktwege;
         }
+    
         public GeschaeftspartnerBuilder setKontaktwege(List<Kontaktweg> kontaktwege) {
             this.kontaktwege = kontaktwege;
             return this;
@@ -370,6 +398,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
         public String getNachname() {
             return nachname;
         }
+    
         public GeschaeftspartnerBuilder setNachname(String nachname) {
             this.nachname = nachname;
             return this;
@@ -378,6 +407,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
         public String getOrganisationsname() {
             return organisationsname;
         }
+    
         public GeschaeftspartnerBuilder setOrganisationsname(String organisationsname) {
             this.organisationsname = organisationsname;
             return this;
@@ -386,6 +416,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
         public Organisationstyp getOrganisationstyp() {
             return organisationstyp;
         }
+    
         public GeschaeftspartnerBuilder setOrganisationstyp(Organisationstyp organisationstyp) {
             this.organisationstyp = organisationstyp;
             return this;
@@ -394,6 +425,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
         public Titel getTitel() {
             return titel;
         }
+    
         public GeschaeftspartnerBuilder setTitel(Titel titel) {
             this.titel = titel;
             return this;
@@ -402,6 +434,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
         public String getUmsatzsteuerId() {
             return umsatzsteuerId;
         }
+    
         public GeschaeftspartnerBuilder setUmsatzsteuerId(String umsatzsteuerId) {
             this.umsatzsteuerId = umsatzsteuerId;
             return this;
@@ -410,6 +443,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
         public String getVorname() {
             return vorname;
         }
+    
         public GeschaeftspartnerBuilder setVorname(String vorname) {
             this.vorname = vorname;
             return this;
@@ -418,6 +452,7 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
         public String getWebsite() {
             return website;
         }
+    
         public GeschaeftspartnerBuilder setWebsite(String website) {
             this.website = website;
             return this;

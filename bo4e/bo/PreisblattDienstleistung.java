@@ -69,8 +69,11 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
      */
     private Sparte sparte;
 
-    public PreisblattDienstleistung() {}
+    public PreisblattDienstleistung() {
+    }
+
     private PreisblattDienstleistung(PreisblattDienstleistungBuilder builder) {
+        super(builder);
         this.basisdienstleistung = builder.basisdienstleistung;
         this.bezeichnung = builder.bezeichnung;
         this.bilanzierungsmethode = builder.bilanzierungsmethode;
@@ -90,6 +93,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
     public Dienstleistungstyp getBasisdienstleistung() {
         return basisdienstleistung;
     }
+
     public void setBasisdienstleistung(Dienstleistungstyp basisdienstleistung) {
         this.basisdienstleistung = basisdienstleistung;
     }
@@ -97,6 +101,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -104,6 +109,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
     public Bilanzierungsmethode getBilanzierungsmethode() {
         return bilanzierungsmethode;
     }
+
     public void setBilanzierungsmethode(Bilanzierungsmethode bilanzierungsmethode) {
         this.bilanzierungsmethode = bilanzierungsmethode;
     }
@@ -111,6 +117,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
     public Geraet getGeraetedetails() {
         return geraetedetails;
     }
+
     public void setGeraetedetails(Geraet geraetedetails) {
         this.geraetedetails = geraetedetails;
     }
@@ -118,6 +125,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
     public Zeitraum getGueltigkeit() {
         return gueltigkeit;
     }
+
     public void setGueltigkeit(Zeitraum gueltigkeit) {
         this.gueltigkeit = gueltigkeit;
     }
@@ -125,6 +133,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
     public Marktteilnehmer getHerausgeber() {
         return herausgeber;
     }
+
     public void setHerausgeber(Marktteilnehmer herausgeber) {
         this.herausgeber = herausgeber;
     }
@@ -132,6 +141,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
     public List<Dienstleistungstyp> getInklusiveDienstleistungen() {
         return inklusiveDienstleistungen;
     }
+
     public void setInklusiveDienstleistungen(List<Dienstleistungstyp> inklusiveDienstleistungen) {
         this.inklusiveDienstleistungen = inklusiveDienstleistungen;
     }
@@ -139,6 +149,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
     public List<Preisposition> getPreispositionen() {
         return preispositionen;
     }
+
     public void setPreispositionen(List<Preisposition> preispositionen) {
         this.preispositionen = preispositionen;
     }
@@ -146,6 +157,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
     public Preisstatus getPreisstatus() {
         return preisstatus;
     }
+
     public void setPreisstatus(Preisstatus preisstatus) {
         this.preisstatus = preisstatus;
     }
@@ -153,6 +165,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -203,6 +216,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
         public Dienstleistungstyp getBasisdienstleistung() {
             return basisdienstleistung;
         }
+    
         public PreisblattDienstleistungBuilder setBasisdienstleistung(Dienstleistungstyp basisdienstleistung) {
             this.basisdienstleistung = basisdienstleistung;
             return this;
@@ -211,6 +225,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public PreisblattDienstleistungBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;
@@ -219,6 +234,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
         public Bilanzierungsmethode getBilanzierungsmethode() {
             return bilanzierungsmethode;
         }
+    
         public PreisblattDienstleistungBuilder setBilanzierungsmethode(Bilanzierungsmethode bilanzierungsmethode) {
             this.bilanzierungsmethode = bilanzierungsmethode;
             return this;
@@ -227,6 +243,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
         public Geraet getGeraetedetails() {
             return geraetedetails;
         }
+    
         public PreisblattDienstleistungBuilder setGeraetedetails(Geraet geraetedetails) {
             this.geraetedetails = geraetedetails;
             return this;
@@ -235,6 +252,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
         public Zeitraum getGueltigkeit() {
             return gueltigkeit;
         }
+    
         public PreisblattDienstleistungBuilder setGueltigkeit(Zeitraum gueltigkeit) {
             this.gueltigkeit = gueltigkeit;
             return this;
@@ -243,6 +261,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
         public Marktteilnehmer getHerausgeber() {
             return herausgeber;
         }
+    
         public PreisblattDienstleistungBuilder setHerausgeber(Marktteilnehmer herausgeber) {
             this.herausgeber = herausgeber;
             return this;
@@ -251,6 +270,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
         public List<Dienstleistungstyp> getInklusiveDienstleistungen() {
             return inklusiveDienstleistungen;
         }
+    
         public PreisblattDienstleistungBuilder setInklusiveDienstleistungen(List<Dienstleistungstyp> inklusiveDienstleistungen) {
             this.inklusiveDienstleistungen = inklusiveDienstleistungen;
             return this;
@@ -259,6 +279,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
         public List<Preisposition> getPreispositionen() {
             return preispositionen;
         }
+    
         public PreisblattDienstleistungBuilder setPreispositionen(List<Preisposition> preispositionen) {
             this.preispositionen = preispositionen;
             return this;
@@ -267,6 +288,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
         public Preisstatus getPreisstatus() {
             return preisstatus;
         }
+    
         public PreisblattDienstleistungBuilder setPreisstatus(Preisstatus preisstatus) {
             this.preisstatus = preisstatus;
             return this;
@@ -275,6 +297,7 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public PreisblattDienstleistungBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;

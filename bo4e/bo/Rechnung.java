@@ -139,8 +139,11 @@ public class Rechnung extends Geschaeftsobjekt {
      */
     private Betrag zuZahlen;
 
-    public Rechnung() {}
+    public Rechnung() {
+    }
+
     private Rechnung(RechnungBuilder builder) {
+        super(builder);
         this.faelligkeitsdatum = builder.faelligkeitsdatum;
         this.gesamtbrutto = builder.gesamtbrutto;
         this.gesamtnetto = builder.gesamtnetto;
@@ -176,6 +179,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public OffsetDateTime getFaelligkeitsdatum() {
         return faelligkeitsdatum;
     }
+
     public void setFaelligkeitsdatum(OffsetDateTime faelligkeitsdatum) {
         this.faelligkeitsdatum = faelligkeitsdatum;
     }
@@ -183,6 +187,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public Betrag getGesamtbrutto() {
         return gesamtbrutto;
     }
+
     public void setGesamtbrutto(Betrag gesamtbrutto) {
         this.gesamtbrutto = gesamtbrutto;
     }
@@ -190,6 +195,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public Betrag getGesamtnetto() {
         return gesamtnetto;
     }
+
     public void setGesamtnetto(Betrag gesamtnetto) {
         this.gesamtnetto = gesamtnetto;
     }
@@ -197,6 +203,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public Betrag getGesamtsteuer() {
         return gesamtsteuer;
     }
+
     public void setGesamtsteuer(Betrag gesamtsteuer) {
         this.gesamtsteuer = gesamtsteuer;
     }
@@ -204,6 +211,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public Boolean getIstOriginal() {
         return istOriginal;
     }
+
     public void setIstOriginal(Boolean istOriginal) {
         this.istOriginal = istOriginal;
     }
@@ -211,6 +219,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public Boolean getIstSimuliert() {
         return istSimuliert;
     }
+
     public void setIstSimuliert(Boolean istSimuliert) {
         this.istSimuliert = istSimuliert;
     }
@@ -218,6 +227,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public Boolean getIstStorno() {
         return istStorno;
     }
+
     public void setIstStorno(Boolean istStorno) {
         this.istStorno = istStorno;
     }
@@ -225,6 +235,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public Marktlokation getMarktlokation() {
         return marktlokation;
     }
+
     public void setMarktlokation(Marktlokation marktlokation) {
         this.marktlokation = marktlokation;
     }
@@ -232,6 +243,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public Messlokation getMesslokation() {
         return messlokation;
     }
+
     public void setMesslokation(Messlokation messlokation) {
         this.messlokation = messlokation;
     }
@@ -239,6 +251,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public NetznutzungRechnungsart getNetznutzungrechnungsart() {
         return netznutzungrechnungsart;
     }
+
     public void setNetznutzungrechnungsart(NetznutzungRechnungsart netznutzungrechnungsart) {
         this.netznutzungrechnungsart = netznutzungrechnungsart;
     }
@@ -246,6 +259,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public NetznutzungRechnungstyp getNetznutzungrechnungstyp() {
         return netznutzungrechnungstyp;
     }
+
     public void setNetznutzungrechnungstyp(NetznutzungRechnungstyp netznutzungrechnungstyp) {
         this.netznutzungrechnungstyp = netznutzungrechnungstyp;
     }
@@ -253,6 +267,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public String getOriginalRechnungsnummer() {
         return originalRechnungsnummer;
     }
+
     public void setOriginalRechnungsnummer(String originalRechnungsnummer) {
         this.originalRechnungsnummer = originalRechnungsnummer;
     }
@@ -260,6 +275,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public Betrag getRabattBrutto() {
         return rabattBrutto;
     }
+
     public void setRabattBrutto(Betrag rabattBrutto) {
         this.rabattBrutto = rabattBrutto;
     }
@@ -267,6 +283,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public OffsetDateTime getRechnungsdatum() {
         return rechnungsdatum;
     }
+
     public void setRechnungsdatum(OffsetDateTime rechnungsdatum) {
         this.rechnungsdatum = rechnungsdatum;
     }
@@ -274,6 +291,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public Geschaeftspartner getRechnungsempfaenger() {
         return rechnungsempfaenger;
     }
+
     public void setRechnungsempfaenger(Geschaeftspartner rechnungsempfaenger) {
         this.rechnungsempfaenger = rechnungsempfaenger;
     }
@@ -281,6 +299,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public Geschaeftspartner getRechnungsersteller() {
         return rechnungsersteller;
     }
+
     public void setRechnungsersteller(Geschaeftspartner rechnungsersteller) {
         this.rechnungsersteller = rechnungsersteller;
     }
@@ -288,6 +307,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public String getRechnungsnummer() {
         return rechnungsnummer;
     }
+
     public void setRechnungsnummer(String rechnungsnummer) {
         this.rechnungsnummer = rechnungsnummer;
     }
@@ -295,6 +315,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public Zeitraum getRechnungsperiode() {
         return rechnungsperiode;
     }
+
     public void setRechnungsperiode(Zeitraum rechnungsperiode) {
         this.rechnungsperiode = rechnungsperiode;
     }
@@ -302,6 +323,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public List<Rechnungsposition> getRechnungspositionen() {
         return rechnungspositionen;
     }
+
     public void setRechnungspositionen(List<Rechnungsposition> rechnungspositionen) {
         this.rechnungspositionen = rechnungspositionen;
     }
@@ -309,6 +331,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public Rechnungsstatus getRechnungsstatus() {
         return rechnungsstatus;
     }
+
     public void setRechnungsstatus(Rechnungsstatus rechnungsstatus) {
         this.rechnungsstatus = rechnungsstatus;
     }
@@ -316,6 +339,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public String getRechnungstitel() {
         return rechnungstitel;
     }
+
     public void setRechnungstitel(String rechnungstitel) {
         this.rechnungstitel = rechnungstitel;
     }
@@ -323,6 +347,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public Rechnungstyp getRechnungstyp() {
         return rechnungstyp;
     }
+
     public void setRechnungstyp(Rechnungstyp rechnungstyp) {
         this.rechnungstyp = rechnungstyp;
     }
@@ -330,6 +355,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -337,6 +363,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public List<Steuerbetrag> getSteuerbetraege() {
         return steuerbetraege;
     }
+
     public void setSteuerbetraege(List<Steuerbetrag> steuerbetraege) {
         this.steuerbetraege = steuerbetraege;
     }
@@ -344,6 +371,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public Betrag getVorausgezahlt() {
         return vorausgezahlt;
     }
+
     public void setVorausgezahlt(Betrag vorausgezahlt) {
         this.vorausgezahlt = vorausgezahlt;
     }
@@ -351,6 +379,7 @@ public class Rechnung extends Geschaeftsobjekt {
     public Betrag getZuZahlen() {
         return zuZahlen;
     }
+
     public void setZuZahlen(Betrag zuZahlen) {
         this.zuZahlen = zuZahlen;
     }
@@ -467,6 +496,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public OffsetDateTime getFaelligkeitsdatum() {
             return faelligkeitsdatum;
         }
+    
         public RechnungBuilder setFaelligkeitsdatum(OffsetDateTime faelligkeitsdatum) {
             this.faelligkeitsdatum = faelligkeitsdatum;
             return this;
@@ -475,6 +505,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public Betrag getGesamtbrutto() {
             return gesamtbrutto;
         }
+    
         public RechnungBuilder setGesamtbrutto(Betrag gesamtbrutto) {
             this.gesamtbrutto = gesamtbrutto;
             return this;
@@ -483,6 +514,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public Betrag getGesamtnetto() {
             return gesamtnetto;
         }
+    
         public RechnungBuilder setGesamtnetto(Betrag gesamtnetto) {
             this.gesamtnetto = gesamtnetto;
             return this;
@@ -491,6 +523,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public Betrag getGesamtsteuer() {
             return gesamtsteuer;
         }
+    
         public RechnungBuilder setGesamtsteuer(Betrag gesamtsteuer) {
             this.gesamtsteuer = gesamtsteuer;
             return this;
@@ -499,6 +532,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public Boolean getIstOriginal() {
             return istOriginal;
         }
+    
         public RechnungBuilder setIstOriginal(Boolean istOriginal) {
             this.istOriginal = istOriginal;
             return this;
@@ -507,6 +541,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public Boolean getIstSimuliert() {
             return istSimuliert;
         }
+    
         public RechnungBuilder setIstSimuliert(Boolean istSimuliert) {
             this.istSimuliert = istSimuliert;
             return this;
@@ -515,6 +550,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public Boolean getIstStorno() {
             return istStorno;
         }
+    
         public RechnungBuilder setIstStorno(Boolean istStorno) {
             this.istStorno = istStorno;
             return this;
@@ -523,6 +559,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public Marktlokation getMarktlokation() {
             return marktlokation;
         }
+    
         public RechnungBuilder setMarktlokation(Marktlokation marktlokation) {
             this.marktlokation = marktlokation;
             return this;
@@ -531,6 +568,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public Messlokation getMesslokation() {
             return messlokation;
         }
+    
         public RechnungBuilder setMesslokation(Messlokation messlokation) {
             this.messlokation = messlokation;
             return this;
@@ -539,6 +577,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public NetznutzungRechnungsart getNetznutzungrechnungsart() {
             return netznutzungrechnungsart;
         }
+    
         public RechnungBuilder setNetznutzungrechnungsart(NetznutzungRechnungsart netznutzungrechnungsart) {
             this.netznutzungrechnungsart = netznutzungrechnungsart;
             return this;
@@ -547,6 +586,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public NetznutzungRechnungstyp getNetznutzungrechnungstyp() {
             return netznutzungrechnungstyp;
         }
+    
         public RechnungBuilder setNetznutzungrechnungstyp(NetznutzungRechnungstyp netznutzungrechnungstyp) {
             this.netznutzungrechnungstyp = netznutzungrechnungstyp;
             return this;
@@ -555,6 +595,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public String getOriginalRechnungsnummer() {
             return originalRechnungsnummer;
         }
+    
         public RechnungBuilder setOriginalRechnungsnummer(String originalRechnungsnummer) {
             this.originalRechnungsnummer = originalRechnungsnummer;
             return this;
@@ -563,6 +604,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public Betrag getRabattBrutto() {
             return rabattBrutto;
         }
+    
         public RechnungBuilder setRabattBrutto(Betrag rabattBrutto) {
             this.rabattBrutto = rabattBrutto;
             return this;
@@ -571,6 +613,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public OffsetDateTime getRechnungsdatum() {
             return rechnungsdatum;
         }
+    
         public RechnungBuilder setRechnungsdatum(OffsetDateTime rechnungsdatum) {
             this.rechnungsdatum = rechnungsdatum;
             return this;
@@ -579,6 +622,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public Geschaeftspartner getRechnungsempfaenger() {
             return rechnungsempfaenger;
         }
+    
         public RechnungBuilder setRechnungsempfaenger(Geschaeftspartner rechnungsempfaenger) {
             this.rechnungsempfaenger = rechnungsempfaenger;
             return this;
@@ -587,6 +631,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public Geschaeftspartner getRechnungsersteller() {
             return rechnungsersteller;
         }
+    
         public RechnungBuilder setRechnungsersteller(Geschaeftspartner rechnungsersteller) {
             this.rechnungsersteller = rechnungsersteller;
             return this;
@@ -595,6 +640,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public String getRechnungsnummer() {
             return rechnungsnummer;
         }
+    
         public RechnungBuilder setRechnungsnummer(String rechnungsnummer) {
             this.rechnungsnummer = rechnungsnummer;
             return this;
@@ -603,6 +649,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public Zeitraum getRechnungsperiode() {
             return rechnungsperiode;
         }
+    
         public RechnungBuilder setRechnungsperiode(Zeitraum rechnungsperiode) {
             this.rechnungsperiode = rechnungsperiode;
             return this;
@@ -611,6 +658,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public List<Rechnungsposition> getRechnungspositionen() {
             return rechnungspositionen;
         }
+    
         public RechnungBuilder setRechnungspositionen(List<Rechnungsposition> rechnungspositionen) {
             this.rechnungspositionen = rechnungspositionen;
             return this;
@@ -619,6 +667,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public Rechnungsstatus getRechnungsstatus() {
             return rechnungsstatus;
         }
+    
         public RechnungBuilder setRechnungsstatus(Rechnungsstatus rechnungsstatus) {
             this.rechnungsstatus = rechnungsstatus;
             return this;
@@ -627,6 +676,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public String getRechnungstitel() {
             return rechnungstitel;
         }
+    
         public RechnungBuilder setRechnungstitel(String rechnungstitel) {
             this.rechnungstitel = rechnungstitel;
             return this;
@@ -635,6 +685,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public Rechnungstyp getRechnungstyp() {
             return rechnungstyp;
         }
+    
         public RechnungBuilder setRechnungstyp(Rechnungstyp rechnungstyp) {
             this.rechnungstyp = rechnungstyp;
             return this;
@@ -643,6 +694,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public RechnungBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;
@@ -651,6 +703,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public List<Steuerbetrag> getSteuerbetraege() {
             return steuerbetraege;
         }
+    
         public RechnungBuilder setSteuerbetraege(List<Steuerbetrag> steuerbetraege) {
             this.steuerbetraege = steuerbetraege;
             return this;
@@ -659,6 +712,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public Betrag getVorausgezahlt() {
             return vorausgezahlt;
         }
+    
         public RechnungBuilder setVorausgezahlt(Betrag vorausgezahlt) {
             this.vorausgezahlt = vorausgezahlt;
             return this;
@@ -667,6 +721,7 @@ public class Rechnung extends Geschaeftsobjekt {
         public Betrag getZuZahlen() {
             return zuZahlen;
         }
+    
         public RechnungBuilder setZuZahlen(Betrag zuZahlen) {
             this.zuZahlen = zuZahlen;
             return this;

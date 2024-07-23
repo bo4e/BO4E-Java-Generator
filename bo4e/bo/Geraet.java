@@ -39,8 +39,11 @@ public class Geraet extends Geschaeftsobjekt {
      */
     private Geraetetyp geraetetyp;
 
-    public Geraet() {}
+    public Geraet() {
+    }
+
     private Geraet(GeraetBuilder builder) {
+        super(builder);
         this.bezeichnung = builder.bezeichnung;
         this.geraeteklasse = builder.geraeteklasse;
         this.geraetenummer = builder.geraetenummer;
@@ -54,6 +57,7 @@ public class Geraet extends Geschaeftsobjekt {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -61,6 +65,7 @@ public class Geraet extends Geschaeftsobjekt {
     public Geraeteklasse getGeraeteklasse() {
         return geraeteklasse;
     }
+
     public void setGeraeteklasse(Geraeteklasse geraeteklasse) {
         this.geraeteklasse = geraeteklasse;
     }
@@ -68,6 +73,7 @@ public class Geraet extends Geschaeftsobjekt {
     public String getGeraetenummer() {
         return geraetenummer;
     }
+
     public void setGeraetenummer(String geraetenummer) {
         this.geraetenummer = geraetenummer;
     }
@@ -75,6 +81,7 @@ public class Geraet extends Geschaeftsobjekt {
     public Geraetetyp getGeraetetyp() {
         return geraetetyp;
     }
+
     public void setGeraetetyp(Geraetetyp geraetetyp) {
         this.geraetetyp = geraetetyp;
     }
@@ -100,6 +107,7 @@ public class Geraet extends Geschaeftsobjekt {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public GeraetBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;
@@ -108,6 +116,7 @@ public class Geraet extends Geschaeftsobjekt {
         public Geraeteklasse getGeraeteklasse() {
             return geraeteklasse;
         }
+    
         public GeraetBuilder setGeraeteklasse(Geraeteklasse geraeteklasse) {
             this.geraeteklasse = geraeteklasse;
             return this;
@@ -116,6 +125,7 @@ public class Geraet extends Geschaeftsobjekt {
         public String getGeraetenummer() {
             return geraetenummer;
         }
+    
         public GeraetBuilder setGeraetenummer(String geraetenummer) {
             this.geraetenummer = geraetenummer;
             return this;
@@ -124,6 +134,7 @@ public class Geraet extends Geschaeftsobjekt {
         public Geraetetyp getGeraetetyp() {
             return geraetetyp;
         }
+    
         public GeraetBuilder setGeraetetyp(Geraetetyp geraetetyp) {
             this.geraetetyp = geraetetyp;
             return this;

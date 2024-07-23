@@ -128,8 +128,11 @@ public class Marktlokation extends Geschaeftsobjekt {
     private List<Zaehlwerk> zaehlwerkeDerBeteiligtenMarktrolle;
     private Messlokationszuordnung zugehoerigeMesslokation;
 
-    public Marktlokation() {}
+    public Marktlokation() {
+    }
+
     private Marktlokation(MarktlokationBuilder builder) {
+        super(builder);
         this.bilanzierungsgebiet = builder.bilanzierungsgebiet;
         this.bilanzierungsmethode = builder.bilanzierungsmethode;
         this.endkunde = builder.endkunde;
@@ -163,6 +166,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public String getBilanzierungsgebiet() {
         return bilanzierungsgebiet;
     }
+
     public void setBilanzierungsgebiet(String bilanzierungsgebiet) {
         this.bilanzierungsgebiet = bilanzierungsgebiet;
     }
@@ -170,6 +174,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public Bilanzierungsmethode getBilanzierungsmethode() {
         return bilanzierungsmethode;
     }
+
     public void setBilanzierungsmethode(Bilanzierungsmethode bilanzierungsmethode) {
         this.bilanzierungsmethode = bilanzierungsmethode;
     }
@@ -177,6 +182,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public Geschaeftspartner getEndkunde() {
         return endkunde;
     }
+
     public void setEndkunde(Geschaeftspartner endkunde) {
         this.endkunde = endkunde;
     }
@@ -184,6 +190,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public Energierichtung getEnergierichtung() {
         return energierichtung;
     }
+
     public void setEnergierichtung(Energierichtung energierichtung) {
         this.energierichtung = energierichtung;
     }
@@ -191,6 +198,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public Gasqualitaet getGasqualitaet() {
         return gasqualitaet;
     }
+
     public void setGasqualitaet(Gasqualitaet gasqualitaet) {
         this.gasqualitaet = gasqualitaet;
     }
@@ -198,6 +206,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public Gebiettyp getGebietstyp() {
         return gebietstyp;
     }
+
     public void setGebietstyp(Gebiettyp gebietstyp) {
         this.gebietstyp = gebietstyp;
     }
@@ -205,6 +214,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public Geokoordinaten getGeoadresse() {
         return geoadresse;
     }
+
     public void setGeoadresse(Geokoordinaten geoadresse) {
         this.geoadresse = geoadresse;
     }
@@ -212,6 +222,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public String getGrundversorgercodenr() {
         return grundversorgercodenr;
     }
+
     public void setGrundversorgercodenr(String grundversorgercodenr) {
         this.grundversorgercodenr = grundversorgercodenr;
     }
@@ -219,6 +230,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public Boolean getIstUnterbrechbar() {
         return istUnterbrechbar;
     }
+
     public void setIstUnterbrechbar(Boolean istUnterbrechbar) {
         this.istUnterbrechbar = istUnterbrechbar;
     }
@@ -226,6 +238,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public Katasteradresse getKatasterinformation() {
         return katasterinformation;
     }
+
     public void setKatasterinformation(Katasteradresse katasterinformation) {
         this.katasterinformation = katasterinformation;
     }
@@ -233,6 +246,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public List<Kundentyp> getKundengruppen() {
         return kundengruppen;
     }
+
     public void setKundengruppen(List<Kundentyp> kundengruppen) {
         this.kundengruppen = kundengruppen;
     }
@@ -240,6 +254,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public Adresse getLokationsadresse() {
         return lokationsadresse;
     }
+
     public void setLokationsadresse(Adresse lokationsadresse) {
         this.lokationsadresse = lokationsadresse;
     }
@@ -247,6 +262,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public String getMarktgebiet() {
         return marktgebiet;
     }
+
     public void setMarktgebiet(String marktgebiet) {
         this.marktgebiet = marktgebiet;
     }
@@ -254,6 +270,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public String getMarktlokationsId() {
         return marktlokationsId;
     }
+
     public void setMarktlokationsId(String marktlokationsId) {
         this.marktlokationsId = marktlokationsId;
     }
@@ -261,6 +278,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public String getNetzbetreibercodenr() {
         return netzbetreibercodenr;
     }
+
     public void setNetzbetreibercodenr(String netzbetreibercodenr) {
         this.netzbetreibercodenr = netzbetreibercodenr;
     }
@@ -268,6 +286,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public Netzebene getNetzebene() {
         return netzebene;
     }
+
     public void setNetzebene(Netzebene netzebene) {
         this.netzebene = netzebene;
     }
@@ -275,6 +294,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public String getNetzgebietsnr() {
         return netzgebietsnr;
     }
+
     public void setNetzgebietsnr(String netzgebietsnr) {
         this.netzgebietsnr = netzgebietsnr;
     }
@@ -282,6 +302,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public String getRegelzone() {
         return regelzone;
     }
+
     public void setRegelzone(String regelzone) {
         this.regelzone = regelzone;
     }
@@ -289,6 +310,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -296,6 +318,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public Verbrauchsart getVerbrauchsart() {
         return verbrauchsart;
     }
+
     public void setVerbrauchsart(Verbrauchsart verbrauchsart) {
         this.verbrauchsart = verbrauchsart;
     }
@@ -303,6 +326,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public List<Verbrauch> getVerbrauchsmengen() {
         return verbrauchsmengen;
     }
+
     public void setVerbrauchsmengen(List<Verbrauch> verbrauchsmengen) {
         this.verbrauchsmengen = verbrauchsmengen;
     }
@@ -310,6 +334,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public List<Zaehlwerk> getZaehlwerke() {
         return zaehlwerke;
     }
+
     public void setZaehlwerke(List<Zaehlwerk> zaehlwerke) {
         this.zaehlwerke = zaehlwerke;
     }
@@ -317,6 +342,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public List<Zaehlwerk> getZaehlwerkeDerBeteiligtenMarktrolle() {
         return zaehlwerkeDerBeteiligtenMarktrolle;
     }
+
     public void setZaehlwerkeDerBeteiligtenMarktrolle(List<Zaehlwerk> zaehlwerkeDerBeteiligtenMarktrolle) {
         this.zaehlwerkeDerBeteiligtenMarktrolle = zaehlwerkeDerBeteiligtenMarktrolle;
     }
@@ -324,6 +350,7 @@ public class Marktlokation extends Geschaeftsobjekt {
     public Messlokationszuordnung getZugehoerigeMesslokation() {
         return zugehoerigeMesslokation;
     }
+
     public void setZugehoerigeMesslokation(Messlokationszuordnung zugehoerigeMesslokation) {
         this.zugehoerigeMesslokation = zugehoerigeMesslokation;
     }
@@ -425,6 +452,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public String getBilanzierungsgebiet() {
             return bilanzierungsgebiet;
         }
+    
         public MarktlokationBuilder setBilanzierungsgebiet(String bilanzierungsgebiet) {
             this.bilanzierungsgebiet = bilanzierungsgebiet;
             return this;
@@ -433,6 +461,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public Bilanzierungsmethode getBilanzierungsmethode() {
             return bilanzierungsmethode;
         }
+    
         public MarktlokationBuilder setBilanzierungsmethode(Bilanzierungsmethode bilanzierungsmethode) {
             this.bilanzierungsmethode = bilanzierungsmethode;
             return this;
@@ -441,6 +470,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public Geschaeftspartner getEndkunde() {
             return endkunde;
         }
+    
         public MarktlokationBuilder setEndkunde(Geschaeftspartner endkunde) {
             this.endkunde = endkunde;
             return this;
@@ -449,6 +479,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public Energierichtung getEnergierichtung() {
             return energierichtung;
         }
+    
         public MarktlokationBuilder setEnergierichtung(Energierichtung energierichtung) {
             this.energierichtung = energierichtung;
             return this;
@@ -457,6 +488,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public Gasqualitaet getGasqualitaet() {
             return gasqualitaet;
         }
+    
         public MarktlokationBuilder setGasqualitaet(Gasqualitaet gasqualitaet) {
             this.gasqualitaet = gasqualitaet;
             return this;
@@ -465,6 +497,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public Gebiettyp getGebietstyp() {
             return gebietstyp;
         }
+    
         public MarktlokationBuilder setGebietstyp(Gebiettyp gebietstyp) {
             this.gebietstyp = gebietstyp;
             return this;
@@ -473,6 +506,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public Geokoordinaten getGeoadresse() {
             return geoadresse;
         }
+    
         public MarktlokationBuilder setGeoadresse(Geokoordinaten geoadresse) {
             this.geoadresse = geoadresse;
             return this;
@@ -481,6 +515,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public String getGrundversorgercodenr() {
             return grundversorgercodenr;
         }
+    
         public MarktlokationBuilder setGrundversorgercodenr(String grundversorgercodenr) {
             this.grundversorgercodenr = grundversorgercodenr;
             return this;
@@ -489,6 +524,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public Boolean getIstUnterbrechbar() {
             return istUnterbrechbar;
         }
+    
         public MarktlokationBuilder setIstUnterbrechbar(Boolean istUnterbrechbar) {
             this.istUnterbrechbar = istUnterbrechbar;
             return this;
@@ -497,6 +533,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public Katasteradresse getKatasterinformation() {
             return katasterinformation;
         }
+    
         public MarktlokationBuilder setKatasterinformation(Katasteradresse katasterinformation) {
             this.katasterinformation = katasterinformation;
             return this;
@@ -505,6 +542,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public List<Kundentyp> getKundengruppen() {
             return kundengruppen;
         }
+    
         public MarktlokationBuilder setKundengruppen(List<Kundentyp> kundengruppen) {
             this.kundengruppen = kundengruppen;
             return this;
@@ -513,6 +551,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public Adresse getLokationsadresse() {
             return lokationsadresse;
         }
+    
         public MarktlokationBuilder setLokationsadresse(Adresse lokationsadresse) {
             this.lokationsadresse = lokationsadresse;
             return this;
@@ -521,6 +560,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public String getMarktgebiet() {
             return marktgebiet;
         }
+    
         public MarktlokationBuilder setMarktgebiet(String marktgebiet) {
             this.marktgebiet = marktgebiet;
             return this;
@@ -529,6 +569,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public String getMarktlokationsId() {
             return marktlokationsId;
         }
+    
         public MarktlokationBuilder setMarktlokationsId(String marktlokationsId) {
             this.marktlokationsId = marktlokationsId;
             return this;
@@ -537,6 +578,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public String getNetzbetreibercodenr() {
             return netzbetreibercodenr;
         }
+    
         public MarktlokationBuilder setNetzbetreibercodenr(String netzbetreibercodenr) {
             this.netzbetreibercodenr = netzbetreibercodenr;
             return this;
@@ -545,6 +587,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public Netzebene getNetzebene() {
             return netzebene;
         }
+    
         public MarktlokationBuilder setNetzebene(Netzebene netzebene) {
             this.netzebene = netzebene;
             return this;
@@ -553,6 +596,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public String getNetzgebietsnr() {
             return netzgebietsnr;
         }
+    
         public MarktlokationBuilder setNetzgebietsnr(String netzgebietsnr) {
             this.netzgebietsnr = netzgebietsnr;
             return this;
@@ -561,6 +605,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public String getRegelzone() {
             return regelzone;
         }
+    
         public MarktlokationBuilder setRegelzone(String regelzone) {
             this.regelzone = regelzone;
             return this;
@@ -569,6 +614,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public MarktlokationBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;
@@ -577,6 +623,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public Verbrauchsart getVerbrauchsart() {
             return verbrauchsart;
         }
+    
         public MarktlokationBuilder setVerbrauchsart(Verbrauchsart verbrauchsart) {
             this.verbrauchsart = verbrauchsart;
             return this;
@@ -585,6 +632,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public List<Verbrauch> getVerbrauchsmengen() {
             return verbrauchsmengen;
         }
+    
         public MarktlokationBuilder setVerbrauchsmengen(List<Verbrauch> verbrauchsmengen) {
             this.verbrauchsmengen = verbrauchsmengen;
             return this;
@@ -593,6 +641,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public List<Zaehlwerk> getZaehlwerke() {
             return zaehlwerke;
         }
+    
         public MarktlokationBuilder setZaehlwerke(List<Zaehlwerk> zaehlwerke) {
             this.zaehlwerke = zaehlwerke;
             return this;
@@ -601,6 +650,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public List<Zaehlwerk> getZaehlwerkeDerBeteiligtenMarktrolle() {
             return zaehlwerkeDerBeteiligtenMarktrolle;
         }
+    
         public MarktlokationBuilder setZaehlwerkeDerBeteiligtenMarktrolle(List<Zaehlwerk> zaehlwerkeDerBeteiligtenMarktrolle) {
             this.zaehlwerkeDerBeteiligtenMarktrolle = zaehlwerkeDerBeteiligtenMarktrolle;
             return this;
@@ -609,6 +659,7 @@ public class Marktlokation extends Geschaeftsobjekt {
         public Messlokationszuordnung getZugehoerigeMesslokation() {
             return zugehoerigeMesslokation;
         }
+    
         public MarktlokationBuilder setZugehoerigeMesslokation(Messlokationszuordnung zugehoerigeMesslokation) {
             this.zugehoerigeMesslokation = zugehoerigeMesslokation;
             return this;

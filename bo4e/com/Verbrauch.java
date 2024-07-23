@@ -49,8 +49,11 @@ public class Verbrauch extends COM {
      */
     private Wertermittlungsverfahren wertermittlungsverfahren;
 
-    public Verbrauch() {}
+    public Verbrauch() {
+    }
+
     private Verbrauch(VerbrauchBuilder builder) {
+        super(builder);
         this.einheit = builder.einheit;
         this.enddatum = builder.enddatum;
         this.messwertstatus = builder.messwertstatus;
@@ -63,6 +66,7 @@ public class Verbrauch extends COM {
     public Mengeneinheit getEinheit() {
         return einheit;
     }
+
     public void setEinheit(Mengeneinheit einheit) {
         this.einheit = einheit;
     }
@@ -70,6 +74,7 @@ public class Verbrauch extends COM {
     public OffsetDateTime getEnddatum() {
         return enddatum;
     }
+
     public void setEnddatum(OffsetDateTime enddatum) {
         this.enddatum = enddatum;
     }
@@ -77,6 +82,7 @@ public class Verbrauch extends COM {
     public Messwertstatus getMesswertstatus() {
         return messwertstatus;
     }
+
     public void setMesswertstatus(Messwertstatus messwertstatus) {
         this.messwertstatus = messwertstatus;
     }
@@ -84,6 +90,7 @@ public class Verbrauch extends COM {
     public String getObisKennzahl() {
         return obisKennzahl;
     }
+
     public void setObisKennzahl(String obisKennzahl) {
         this.obisKennzahl = obisKennzahl;
     }
@@ -91,6 +98,7 @@ public class Verbrauch extends COM {
     public OffsetDateTime getStartdatum() {
         return startdatum;
     }
+
     public void setStartdatum(OffsetDateTime startdatum) {
         this.startdatum = startdatum;
     }
@@ -98,6 +106,7 @@ public class Verbrauch extends COM {
     public Double getWert() {
         return wert;
     }
+
     public void setWert(Double wert) {
         this.wert = wert;
     }
@@ -105,6 +114,7 @@ public class Verbrauch extends COM {
     public Wertermittlungsverfahren getWertermittlungsverfahren() {
         return wertermittlungsverfahren;
     }
+
     public void setWertermittlungsverfahren(Wertermittlungsverfahren wertermittlungsverfahren) {
         this.wertermittlungsverfahren = wertermittlungsverfahren;
     }
@@ -143,6 +153,7 @@ public class Verbrauch extends COM {
         public Mengeneinheit getEinheit() {
             return einheit;
         }
+    
         public VerbrauchBuilder setEinheit(Mengeneinheit einheit) {
             this.einheit = einheit;
             return this;
@@ -151,6 +162,7 @@ public class Verbrauch extends COM {
         public OffsetDateTime getEnddatum() {
             return enddatum;
         }
+    
         public VerbrauchBuilder setEnddatum(OffsetDateTime enddatum) {
             this.enddatum = enddatum;
             return this;
@@ -159,6 +171,7 @@ public class Verbrauch extends COM {
         public Messwertstatus getMesswertstatus() {
             return messwertstatus;
         }
+    
         public VerbrauchBuilder setMesswertstatus(Messwertstatus messwertstatus) {
             this.messwertstatus = messwertstatus;
             return this;
@@ -167,6 +180,7 @@ public class Verbrauch extends COM {
         public String getObisKennzahl() {
             return obisKennzahl;
         }
+    
         public VerbrauchBuilder setObisKennzahl(String obisKennzahl) {
             this.obisKennzahl = obisKennzahl;
             return this;
@@ -175,6 +189,7 @@ public class Verbrauch extends COM {
         public OffsetDateTime getStartdatum() {
             return startdatum;
         }
+    
         public VerbrauchBuilder setStartdatum(OffsetDateTime startdatum) {
             this.startdatum = startdatum;
             return this;
@@ -183,6 +198,7 @@ public class Verbrauch extends COM {
         public Double getWert() {
             return wert;
         }
+    
         public VerbrauchBuilder setWert(Double wert) {
             this.wert = wert;
             return this;
@@ -191,6 +207,7 @@ public class Verbrauch extends COM {
         public Wertermittlungsverfahren getWertermittlungsverfahren() {
             return wertermittlungsverfahren;
         }
+    
         public VerbrauchBuilder setWertermittlungsverfahren(Wertermittlungsverfahren wertermittlungsverfahren) {
             this.wertermittlungsverfahren = wertermittlungsverfahren;
             return this;

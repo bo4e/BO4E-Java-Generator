@@ -44,8 +44,11 @@ public class Kosten extends Geschaeftsobjekt {
      */
     private List<Betrag> summeKosten;
 
-    public Kosten() {}
+    public Kosten() {
+    }
+
     private Kosten(KostenBuilder builder) {
+        super(builder);
         this.gueltigkeit = builder.gueltigkeit;
         this.kostenbloecke = builder.kostenbloecke;
         this.kostenklasse = builder.kostenklasse;
@@ -59,6 +62,7 @@ public class Kosten extends Geschaeftsobjekt {
     public Zeitraum getGueltigkeit() {
         return gueltigkeit;
     }
+
     public void setGueltigkeit(Zeitraum gueltigkeit) {
         this.gueltigkeit = gueltigkeit;
     }
@@ -66,6 +70,7 @@ public class Kosten extends Geschaeftsobjekt {
     public List<Kostenblock> getKostenbloecke() {
         return kostenbloecke;
     }
+
     public void setKostenbloecke(List<Kostenblock> kostenbloecke) {
         this.kostenbloecke = kostenbloecke;
     }
@@ -73,6 +78,7 @@ public class Kosten extends Geschaeftsobjekt {
     public Kostenklasse getKostenklasse() {
         return kostenklasse;
     }
+
     public void setKostenklasse(Kostenklasse kostenklasse) {
         this.kostenklasse = kostenklasse;
     }
@@ -80,6 +86,7 @@ public class Kosten extends Geschaeftsobjekt {
     public List<Betrag> getSummeKosten() {
         return summeKosten;
     }
+
     public void setSummeKosten(List<Betrag> summeKosten) {
         this.summeKosten = summeKosten;
     }
@@ -106,6 +113,7 @@ public class Kosten extends Geschaeftsobjekt {
         public Zeitraum getGueltigkeit() {
             return gueltigkeit;
         }
+    
         public KostenBuilder setGueltigkeit(Zeitraum gueltigkeit) {
             this.gueltigkeit = gueltigkeit;
             return this;
@@ -114,6 +122,7 @@ public class Kosten extends Geschaeftsobjekt {
         public List<Kostenblock> getKostenbloecke() {
             return kostenbloecke;
         }
+    
         public KostenBuilder setKostenbloecke(List<Kostenblock> kostenbloecke) {
             this.kostenbloecke = kostenbloecke;
             return this;
@@ -122,6 +131,7 @@ public class Kosten extends Geschaeftsobjekt {
         public Kostenklasse getKostenklasse() {
             return kostenklasse;
         }
+    
         public KostenBuilder setKostenklasse(Kostenklasse kostenklasse) {
             this.kostenklasse = kostenklasse;
             return this;
@@ -130,6 +140,7 @@ public class Kosten extends Geschaeftsobjekt {
         public List<Betrag> getSummeKosten() {
             return summeKosten;
         }
+    
         public KostenBuilder setSummeKosten(List<Betrag> summeKosten) {
             this.summeKosten = summeKosten;
             return this;

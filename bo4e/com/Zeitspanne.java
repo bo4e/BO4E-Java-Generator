@@ -28,8 +28,11 @@ public class Zeitspanne extends COM {
      */
     private OffsetDateTime start;
 
-    public Zeitspanne() {}
+    public Zeitspanne() {
+    }
+
     private Zeitspanne(ZeitspanneBuilder builder) {
+        super(builder);
         this.ende = builder.ende;
         this.start = builder.start;
     }
@@ -37,6 +40,7 @@ public class Zeitspanne extends COM {
     public OffsetDateTime getEnde() {
         return ende;
     }
+
     public void setEnde(OffsetDateTime ende) {
         this.ende = ende;
     }
@@ -44,6 +48,7 @@ public class Zeitspanne extends COM {
     public OffsetDateTime getStart() {
         return start;
     }
+
     public void setStart(OffsetDateTime start) {
         this.start = start;
     }
@@ -61,6 +66,7 @@ public class Zeitspanne extends COM {
         public OffsetDateTime getEnde() {
             return ende;
         }
+    
         public ZeitspanneBuilder setEnde(OffsetDateTime ende) {
             this.ende = ende;
             return this;
@@ -69,6 +75,7 @@ public class Zeitspanne extends COM {
         public OffsetDateTime getStart() {
             return start;
         }
+    
         public ZeitspanneBuilder setStart(OffsetDateTime start) {
             this.start = start;
             return this;

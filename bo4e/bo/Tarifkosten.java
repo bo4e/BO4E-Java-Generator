@@ -93,8 +93,11 @@ public class Tarifkosten extends Geschaeftsobjekt {
      */
     private Zeitraum zeitlicheGueltigkeit;
 
-    public Tarifkosten() {}
+    public Tarifkosten() {
+    }
+
     private Tarifkosten(TarifkostenBuilder builder) {
+        super(builder);
         this.anbieter = builder.anbieter;
         this.anbietername = builder.anbietername;
         this.anwendungVon = builder.anwendungVon;
@@ -119,6 +122,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
     public Marktteilnehmer getAnbieter() {
         return anbieter;
     }
+
     public void setAnbieter(Marktteilnehmer anbieter) {
         this.anbieter = anbieter;
     }
@@ -126,6 +130,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
     public String getAnbietername() {
         return anbietername;
     }
+
     public void setAnbietername(String anbietername) {
         this.anbietername = anbietername;
     }
@@ -133,6 +138,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
     public OffsetDateTime getAnwendungVon() {
         return anwendungVon;
     }
+
     public void setAnwendungVon(OffsetDateTime anwendungVon) {
         this.anwendungVon = anwendungVon;
     }
@@ -140,6 +146,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
     public String getBemerkung() {
         return bemerkung;
     }
+
     public void setBemerkung(String bemerkung) {
         this.bemerkung = bemerkung;
     }
@@ -147,6 +154,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -154,6 +162,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
     public Energiemix getEnergiemix() {
         return energiemix;
     }
+
     public void setEnergiemix(Energiemix energiemix) {
         this.energiemix = energiemix;
     }
@@ -161,6 +170,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
     public Kosten getKosten() {
         return kosten;
     }
+
     public void setKosten(Kosten kosten) {
         this.kosten = kosten;
     }
@@ -168,6 +178,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
     public List<Kundentyp> getKundentypen() {
         return kundentypen;
     }
+
     public void setKundentypen(List<Kundentyp> kundentypen) {
         this.kundentypen = kundentypen;
     }
@@ -175,6 +186,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
     public Registeranzahl getRegisteranzahl() {
         return registeranzahl;
     }
+
     public void setRegisteranzahl(Registeranzahl registeranzahl) {
         this.registeranzahl = registeranzahl;
     }
@@ -182,6 +194,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -189,6 +202,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
     public List<Tarifmerkmal> getTarifmerkmale() {
         return tarifmerkmale;
     }
+
     public void setTarifmerkmale(List<Tarifmerkmal> tarifmerkmale) {
         this.tarifmerkmale = tarifmerkmale;
     }
@@ -196,6 +210,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
     public Tariftyp getTariftyp() {
         return tariftyp;
     }
+
     public void setTariftyp(Tariftyp tariftyp) {
         this.tariftyp = tariftyp;
     }
@@ -203,6 +218,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
     public Vertragskonditionen getVertragskonditionen() {
         return vertragskonditionen;
     }
+
     public void setVertragskonditionen(Vertragskonditionen vertragskonditionen) {
         this.vertragskonditionen = vertragskonditionen;
     }
@@ -210,6 +226,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
     public String getWebsite() {
         return website;
     }
+
     public void setWebsite(String website) {
         this.website = website;
     }
@@ -217,6 +234,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
     public Zeitraum getZeitlicheGueltigkeit() {
         return zeitlicheGueltigkeit;
     }
+
     public void setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
         this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
     }
@@ -289,6 +307,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
         public Marktteilnehmer getAnbieter() {
             return anbieter;
         }
+    
         public TarifkostenBuilder setAnbieter(Marktteilnehmer anbieter) {
             this.anbieter = anbieter;
             return this;
@@ -297,6 +316,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
         public String getAnbietername() {
             return anbietername;
         }
+    
         public TarifkostenBuilder setAnbietername(String anbietername) {
             this.anbietername = anbietername;
             return this;
@@ -305,6 +325,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
         public OffsetDateTime getAnwendungVon() {
             return anwendungVon;
         }
+    
         public TarifkostenBuilder setAnwendungVon(OffsetDateTime anwendungVon) {
             this.anwendungVon = anwendungVon;
             return this;
@@ -313,6 +334,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
         public String getBemerkung() {
             return bemerkung;
         }
+    
         public TarifkostenBuilder setBemerkung(String bemerkung) {
             this.bemerkung = bemerkung;
             return this;
@@ -321,6 +343,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public TarifkostenBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;
@@ -329,6 +352,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
         public Energiemix getEnergiemix() {
             return energiemix;
         }
+    
         public TarifkostenBuilder setEnergiemix(Energiemix energiemix) {
             this.energiemix = energiemix;
             return this;
@@ -337,6 +361,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
         public Kosten getKosten() {
             return kosten;
         }
+    
         public TarifkostenBuilder setKosten(Kosten kosten) {
             this.kosten = kosten;
             return this;
@@ -345,6 +370,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
         public List<Kundentyp> getKundentypen() {
             return kundentypen;
         }
+    
         public TarifkostenBuilder setKundentypen(List<Kundentyp> kundentypen) {
             this.kundentypen = kundentypen;
             return this;
@@ -353,6 +379,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
         public Registeranzahl getRegisteranzahl() {
             return registeranzahl;
         }
+    
         public TarifkostenBuilder setRegisteranzahl(Registeranzahl registeranzahl) {
             this.registeranzahl = registeranzahl;
             return this;
@@ -361,6 +388,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public TarifkostenBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;
@@ -369,6 +397,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
         public List<Tarifmerkmal> getTarifmerkmale() {
             return tarifmerkmale;
         }
+    
         public TarifkostenBuilder setTarifmerkmale(List<Tarifmerkmal> tarifmerkmale) {
             this.tarifmerkmale = tarifmerkmale;
             return this;
@@ -377,6 +406,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
         public Tariftyp getTariftyp() {
             return tariftyp;
         }
+    
         public TarifkostenBuilder setTariftyp(Tariftyp tariftyp) {
             this.tariftyp = tariftyp;
             return this;
@@ -385,6 +415,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
         public Vertragskonditionen getVertragskonditionen() {
             return vertragskonditionen;
         }
+    
         public TarifkostenBuilder setVertragskonditionen(Vertragskonditionen vertragskonditionen) {
             this.vertragskonditionen = vertragskonditionen;
             return this;
@@ -393,6 +424,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
         public String getWebsite() {
             return website;
         }
+    
         public TarifkostenBuilder setWebsite(String website) {
             this.website = website;
             return this;
@@ -401,6 +433,7 @@ public class Tarifkosten extends Geschaeftsobjekt {
         public Zeitraum getZeitlicheGueltigkeit() {
             return zeitlicheGueltigkeit;
         }
+    
         public TarifkostenBuilder setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
             this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
             return this;

@@ -28,8 +28,11 @@ public class AufAbschlagstaffelProOrt extends COM {
      */
     private Double wert;
 
-    public AufAbschlagstaffelProOrt() {}
+    public AufAbschlagstaffelProOrt() {
+    }
+
     private AufAbschlagstaffelProOrt(AufAbschlagstaffelProOrtBuilder builder) {
+        super(builder);
         this.staffelgrenzeBis = builder.staffelgrenzeBis;
         this.staffelgrenzeVon = builder.staffelgrenzeVon;
         this.wert = builder.wert;
@@ -38,6 +41,7 @@ public class AufAbschlagstaffelProOrt extends COM {
     public Double getStaffelgrenzeBis() {
         return staffelgrenzeBis;
     }
+
     public void setStaffelgrenzeBis(Double staffelgrenzeBis) {
         this.staffelgrenzeBis = staffelgrenzeBis;
     }
@@ -45,6 +49,7 @@ public class AufAbschlagstaffelProOrt extends COM {
     public Double getStaffelgrenzeVon() {
         return staffelgrenzeVon;
     }
+
     public void setStaffelgrenzeVon(Double staffelgrenzeVon) {
         this.staffelgrenzeVon = staffelgrenzeVon;
     }
@@ -52,6 +57,7 @@ public class AufAbschlagstaffelProOrt extends COM {
     public Double getWert() {
         return wert;
     }
+
     public void setWert(Double wert) {
         this.wert = wert;
     }
@@ -73,6 +79,7 @@ public class AufAbschlagstaffelProOrt extends COM {
         public Double getStaffelgrenzeBis() {
             return staffelgrenzeBis;
         }
+    
         public AufAbschlagstaffelProOrtBuilder setStaffelgrenzeBis(Double staffelgrenzeBis) {
             this.staffelgrenzeBis = staffelgrenzeBis;
             return this;
@@ -81,6 +88,7 @@ public class AufAbschlagstaffelProOrt extends COM {
         public Double getStaffelgrenzeVon() {
             return staffelgrenzeVon;
         }
+    
         public AufAbschlagstaffelProOrtBuilder setStaffelgrenzeVon(Double staffelgrenzeVon) {
             this.staffelgrenzeVon = staffelgrenzeVon;
             return this;
@@ -89,6 +97,7 @@ public class AufAbschlagstaffelProOrt extends COM {
         public Double getWert() {
             return wert;
         }
+    
         public AufAbschlagstaffelProOrtBuilder setWert(Double wert) {
             this.wert = wert;
             return this;

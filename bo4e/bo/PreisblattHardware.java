@@ -74,8 +74,11 @@ public class PreisblattHardware extends Geschaeftsobjekt {
      */
     private Sparte sparte;
 
-    public PreisblattHardware() {}
+    public PreisblattHardware() {
+    }
+
     private PreisblattHardware(PreisblattHardwareBuilder builder) {
+        super(builder);
         this.basisgeraet = builder.basisgeraet;
         this.bezeichnung = builder.bezeichnung;
         this.bilanzierungsmethode = builder.bilanzierungsmethode;
@@ -96,6 +99,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
     public Geraet getBasisgeraet() {
         return basisgeraet;
     }
+
     public void setBasisgeraet(Geraet basisgeraet) {
         this.basisgeraet = basisgeraet;
     }
@@ -103,6 +107,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -110,6 +115,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
     public Bilanzierungsmethode getBilanzierungsmethode() {
         return bilanzierungsmethode;
     }
+
     public void setBilanzierungsmethode(Bilanzierungsmethode bilanzierungsmethode) {
         this.bilanzierungsmethode = bilanzierungsmethode;
     }
@@ -117,6 +123,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
     public Zeitraum getGueltigkeit() {
         return gueltigkeit;
     }
+
     public void setGueltigkeit(Zeitraum gueltigkeit) {
         this.gueltigkeit = gueltigkeit;
     }
@@ -124,6 +131,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
     public Marktteilnehmer getHerausgeber() {
         return herausgeber;
     }
+
     public void setHerausgeber(Marktteilnehmer herausgeber) {
         this.herausgeber = herausgeber;
     }
@@ -131,6 +139,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
     public List<Dienstleistungstyp> getInklusiveDienstleistungen() {
         return inklusiveDienstleistungen;
     }
+
     public void setInklusiveDienstleistungen(List<Dienstleistungstyp> inklusiveDienstleistungen) {
         this.inklusiveDienstleistungen = inklusiveDienstleistungen;
     }
@@ -138,6 +147,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
     public List<Geraet> getInklusiveGeraete() {
         return inklusiveGeraete;
     }
+
     public void setInklusiveGeraete(List<Geraet> inklusiveGeraete) {
         this.inklusiveGeraete = inklusiveGeraete;
     }
@@ -145,6 +155,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
     public Netzebene getMessebene() {
         return messebene;
     }
+
     public void setMessebene(Netzebene messebene) {
         this.messebene = messebene;
     }
@@ -152,6 +163,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
     public List<Preisposition> getPreispositionen() {
         return preispositionen;
     }
+
     public void setPreispositionen(List<Preisposition> preispositionen) {
         this.preispositionen = preispositionen;
     }
@@ -159,6 +171,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
     public Preisstatus getPreisstatus() {
         return preisstatus;
     }
+
     public void setPreisstatus(Preisstatus preisstatus) {
         this.preisstatus = preisstatus;
     }
@@ -166,6 +179,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -220,6 +234,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
         public Geraet getBasisgeraet() {
             return basisgeraet;
         }
+    
         public PreisblattHardwareBuilder setBasisgeraet(Geraet basisgeraet) {
             this.basisgeraet = basisgeraet;
             return this;
@@ -228,6 +243,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public PreisblattHardwareBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;
@@ -236,6 +252,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
         public Bilanzierungsmethode getBilanzierungsmethode() {
             return bilanzierungsmethode;
         }
+    
         public PreisblattHardwareBuilder setBilanzierungsmethode(Bilanzierungsmethode bilanzierungsmethode) {
             this.bilanzierungsmethode = bilanzierungsmethode;
             return this;
@@ -244,6 +261,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
         public Zeitraum getGueltigkeit() {
             return gueltigkeit;
         }
+    
         public PreisblattHardwareBuilder setGueltigkeit(Zeitraum gueltigkeit) {
             this.gueltigkeit = gueltigkeit;
             return this;
@@ -252,6 +270,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
         public Marktteilnehmer getHerausgeber() {
             return herausgeber;
         }
+    
         public PreisblattHardwareBuilder setHerausgeber(Marktteilnehmer herausgeber) {
             this.herausgeber = herausgeber;
             return this;
@@ -260,6 +279,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
         public List<Dienstleistungstyp> getInklusiveDienstleistungen() {
             return inklusiveDienstleistungen;
         }
+    
         public PreisblattHardwareBuilder setInklusiveDienstleistungen(List<Dienstleistungstyp> inklusiveDienstleistungen) {
             this.inklusiveDienstleistungen = inklusiveDienstleistungen;
             return this;
@@ -268,6 +288,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
         public List<Geraet> getInklusiveGeraete() {
             return inklusiveGeraete;
         }
+    
         public PreisblattHardwareBuilder setInklusiveGeraete(List<Geraet> inklusiveGeraete) {
             this.inklusiveGeraete = inklusiveGeraete;
             return this;
@@ -276,6 +297,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
         public Netzebene getMessebene() {
             return messebene;
         }
+    
         public PreisblattHardwareBuilder setMessebene(Netzebene messebene) {
             this.messebene = messebene;
             return this;
@@ -284,6 +306,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
         public List<Preisposition> getPreispositionen() {
             return preispositionen;
         }
+    
         public PreisblattHardwareBuilder setPreispositionen(List<Preisposition> preispositionen) {
             this.preispositionen = preispositionen;
             return this;
@@ -292,6 +315,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
         public Preisstatus getPreisstatus() {
             return preisstatus;
         }
+    
         public PreisblattHardwareBuilder setPreisstatus(Preisstatus preisstatus) {
             this.preisstatus = preisstatus;
             return this;
@@ -300,6 +324,7 @@ public class PreisblattHardware extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public PreisblattHardwareBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;

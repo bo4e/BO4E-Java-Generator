@@ -50,8 +50,11 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
      */
     private Sparte sparte;
 
-    public Marktteilnehmer() {}
+    public Marktteilnehmer() {
+    }
+
     private Marktteilnehmer(MarktteilnehmerBuilder builder) {
+        super(builder);
         this.geschaeftspartner = builder.geschaeftspartner;
         this.makoadresse = builder.makoadresse;
         this.marktrolle = builder.marktrolle;
@@ -67,6 +70,7 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
     public Geschaeftspartner getGeschaeftspartner() {
         return geschaeftspartner;
     }
+
     public void setGeschaeftspartner(Geschaeftspartner geschaeftspartner) {
         this.geschaeftspartner = geschaeftspartner;
     }
@@ -74,6 +78,7 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
     public List<String> getMakoadresse() {
         return makoadresse;
     }
+
     public void setMakoadresse(List<String> makoadresse) {
         this.makoadresse = makoadresse;
     }
@@ -81,6 +86,7 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
     public Marktrolle getMarktrolle() {
         return marktrolle;
     }
+
     public void setMarktrolle(Marktrolle marktrolle) {
         this.marktrolle = marktrolle;
     }
@@ -88,6 +94,7 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
     public String getRollencodenummer() {
         return rollencodenummer;
     }
+
     public void setRollencodenummer(String rollencodenummer) {
         this.rollencodenummer = rollencodenummer;
     }
@@ -95,6 +102,7 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
     public Rollencodetyp getRollencodetyp() {
         return rollencodetyp;
     }
+
     public void setRollencodetyp(Rollencodetyp rollencodetyp) {
         this.rollencodetyp = rollencodetyp;
     }
@@ -102,6 +110,7 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -136,6 +145,7 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
         public Geschaeftspartner getGeschaeftspartner() {
             return geschaeftspartner;
         }
+    
         public MarktteilnehmerBuilder setGeschaeftspartner(Geschaeftspartner geschaeftspartner) {
             this.geschaeftspartner = geschaeftspartner;
             return this;
@@ -144,6 +154,7 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
         public List<String> getMakoadresse() {
             return makoadresse;
         }
+    
         public MarktteilnehmerBuilder setMakoadresse(List<String> makoadresse) {
             this.makoadresse = makoadresse;
             return this;
@@ -152,6 +163,7 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
         public Marktrolle getMarktrolle() {
             return marktrolle;
         }
+    
         public MarktteilnehmerBuilder setMarktrolle(Marktrolle marktrolle) {
             this.marktrolle = marktrolle;
             return this;
@@ -160,6 +172,7 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
         public String getRollencodenummer() {
             return rollencodenummer;
         }
+    
         public MarktteilnehmerBuilder setRollencodenummer(String rollencodenummer) {
             this.rollencodenummer = rollencodenummer;
             return this;
@@ -168,6 +181,7 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
         public Rollencodetyp getRollencodetyp() {
             return rollencodetyp;
         }
+    
         public MarktteilnehmerBuilder setRollencodetyp(Rollencodetyp rollencodetyp) {
             this.rollencodetyp = rollencodetyp;
             return this;
@@ -176,6 +190,7 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public MarktteilnehmerBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;

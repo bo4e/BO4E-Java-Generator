@@ -30,8 +30,11 @@ public class Konzessionsabgabe extends COM {
      */
     private AbgabeArt satz;
 
-    public Konzessionsabgabe() {}
+    public Konzessionsabgabe() {
+    }
+
     private Konzessionsabgabe(KonzessionsabgabeBuilder builder) {
+        super(builder);
         this.kategorie = builder.kategorie;
         this.kosten = builder.kosten;
         this.satz = builder.satz;
@@ -40,6 +43,7 @@ public class Konzessionsabgabe extends COM {
     public String getKategorie() {
         return kategorie;
     }
+
     public void setKategorie(String kategorie) {
         this.kategorie = kategorie;
     }
@@ -47,6 +51,7 @@ public class Konzessionsabgabe extends COM {
     public Double getKosten() {
         return kosten;
     }
+
     public void setKosten(Double kosten) {
         this.kosten = kosten;
     }
@@ -54,6 +59,7 @@ public class Konzessionsabgabe extends COM {
     public AbgabeArt getSatz() {
         return satz;
     }
+
     public void setSatz(AbgabeArt satz) {
         this.satz = satz;
     }
@@ -75,6 +81,7 @@ public class Konzessionsabgabe extends COM {
         public String getKategorie() {
             return kategorie;
         }
+    
         public KonzessionsabgabeBuilder setKategorie(String kategorie) {
             this.kategorie = kategorie;
             return this;
@@ -83,6 +90,7 @@ public class Konzessionsabgabe extends COM {
         public Double getKosten() {
             return kosten;
         }
+    
         public KonzessionsabgabeBuilder setKosten(Double kosten) {
             this.kosten = kosten;
             return this;
@@ -91,6 +99,7 @@ public class Konzessionsabgabe extends COM {
         public AbgabeArt getSatz() {
             return satz;
         }
+    
         public KonzessionsabgabeBuilder setSatz(AbgabeArt satz) {
             this.satz = satz;
             return this;

@@ -41,8 +41,11 @@ public class Fremdkosten extends Geschaeftsobjekt {
      */
     private Betrag summeKosten;
 
-    public Fremdkosten() {}
+    public Fremdkosten() {
+    }
+
     private Fremdkosten(FremdkostenBuilder builder) {
+        super(builder);
         this.gueltigkeit = builder.gueltigkeit;
         this.kostenbloecke = builder.kostenbloecke;
         this.summeKosten = builder.summeKosten;
@@ -55,6 +58,7 @@ public class Fremdkosten extends Geschaeftsobjekt {
     public Zeitraum getGueltigkeit() {
         return gueltigkeit;
     }
+
     public void setGueltigkeit(Zeitraum gueltigkeit) {
         this.gueltigkeit = gueltigkeit;
     }
@@ -62,6 +66,7 @@ public class Fremdkosten extends Geschaeftsobjekt {
     public List<Fremdkostenblock> getKostenbloecke() {
         return kostenbloecke;
     }
+
     public void setKostenbloecke(List<Fremdkostenblock> kostenbloecke) {
         this.kostenbloecke = kostenbloecke;
     }
@@ -69,6 +74,7 @@ public class Fremdkosten extends Geschaeftsobjekt {
     public Betrag getSummeKosten() {
         return summeKosten;
     }
+
     public void setSummeKosten(Betrag summeKosten) {
         this.summeKosten = summeKosten;
     }
@@ -91,6 +97,7 @@ public class Fremdkosten extends Geschaeftsobjekt {
         public Zeitraum getGueltigkeit() {
             return gueltigkeit;
         }
+    
         public FremdkostenBuilder setGueltigkeit(Zeitraum gueltigkeit) {
             this.gueltigkeit = gueltigkeit;
             return this;
@@ -99,6 +106,7 @@ public class Fremdkosten extends Geschaeftsobjekt {
         public List<Fremdkostenblock> getKostenbloecke() {
             return kostenbloecke;
         }
+    
         public FremdkostenBuilder setKostenbloecke(List<Fremdkostenblock> kostenbloecke) {
             this.kostenbloecke = kostenbloecke;
             return this;
@@ -107,6 +115,7 @@ public class Fremdkosten extends Geschaeftsobjekt {
         public Betrag getSummeKosten() {
             return summeKosten;
         }
+    
         public FremdkostenBuilder setSummeKosten(Betrag summeKosten) {
             this.summeKosten = summeKosten;
             return this;

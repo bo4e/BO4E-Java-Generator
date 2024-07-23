@@ -71,8 +71,11 @@ public class Angebot extends Geschaeftsobjekt {
      */
     private List<Angebotsvariante> varianten;
 
-    public Angebot() {}
+    public Angebot() {
+    }
+
     private Angebot(AngebotBuilder builder) {
+        super(builder);
         this.anfragereferenz = builder.anfragereferenz;
         this.angebotsdatum = builder.angebotsdatum;
         this.angebotsgeber = builder.angebotsgeber;
@@ -92,6 +95,7 @@ public class Angebot extends Geschaeftsobjekt {
     public String getAnfragereferenz() {
         return anfragereferenz;
     }
+
     public void setAnfragereferenz(String anfragereferenz) {
         this.anfragereferenz = anfragereferenz;
     }
@@ -99,6 +103,7 @@ public class Angebot extends Geschaeftsobjekt {
     public OffsetDateTime getAngebotsdatum() {
         return angebotsdatum;
     }
+
     public void setAngebotsdatum(OffsetDateTime angebotsdatum) {
         this.angebotsdatum = angebotsdatum;
     }
@@ -106,6 +111,7 @@ public class Angebot extends Geschaeftsobjekt {
     public Geschaeftspartner getAngebotsgeber() {
         return angebotsgeber;
     }
+
     public void setAngebotsgeber(Geschaeftspartner angebotsgeber) {
         this.angebotsgeber = angebotsgeber;
     }
@@ -113,6 +119,7 @@ public class Angebot extends Geschaeftsobjekt {
     public Geschaeftspartner getAngebotsnehmer() {
         return angebotsnehmer;
     }
+
     public void setAngebotsnehmer(Geschaeftspartner angebotsnehmer) {
         this.angebotsnehmer = angebotsnehmer;
     }
@@ -120,6 +127,7 @@ public class Angebot extends Geschaeftsobjekt {
     public String getAngebotsnummer() {
         return angebotsnummer;
     }
+
     public void setAngebotsnummer(String angebotsnummer) {
         this.angebotsnummer = angebotsnummer;
     }
@@ -127,6 +135,7 @@ public class Angebot extends Geschaeftsobjekt {
     public OffsetDateTime getBindefrist() {
         return bindefrist;
     }
+
     public void setBindefrist(OffsetDateTime bindefrist) {
         this.bindefrist = bindefrist;
     }
@@ -134,6 +143,7 @@ public class Angebot extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -141,6 +151,7 @@ public class Angebot extends Geschaeftsobjekt {
     public Person getUnterzeichnerAngebotsgeber() {
         return unterzeichnerAngebotsgeber;
     }
+
     public void setUnterzeichnerAngebotsgeber(Person unterzeichnerAngebotsgeber) {
         this.unterzeichnerAngebotsgeber = unterzeichnerAngebotsgeber;
     }
@@ -148,6 +159,7 @@ public class Angebot extends Geschaeftsobjekt {
     public Person getUnterzeichnerAngebotsnehmer() {
         return unterzeichnerAngebotsnehmer;
     }
+
     public void setUnterzeichnerAngebotsnehmer(Person unterzeichnerAngebotsnehmer) {
         this.unterzeichnerAngebotsnehmer = unterzeichnerAngebotsnehmer;
     }
@@ -155,6 +167,7 @@ public class Angebot extends Geschaeftsobjekt {
     public List<Angebotsvariante> getVarianten() {
         return varianten;
     }
+
     public void setVarianten(List<Angebotsvariante> varianten) {
         this.varianten = varianten;
     }
@@ -205,6 +218,7 @@ public class Angebot extends Geschaeftsobjekt {
         public String getAnfragereferenz() {
             return anfragereferenz;
         }
+    
         public AngebotBuilder setAnfragereferenz(String anfragereferenz) {
             this.anfragereferenz = anfragereferenz;
             return this;
@@ -213,6 +227,7 @@ public class Angebot extends Geschaeftsobjekt {
         public OffsetDateTime getAngebotsdatum() {
             return angebotsdatum;
         }
+    
         public AngebotBuilder setAngebotsdatum(OffsetDateTime angebotsdatum) {
             this.angebotsdatum = angebotsdatum;
             return this;
@@ -221,6 +236,7 @@ public class Angebot extends Geschaeftsobjekt {
         public Geschaeftspartner getAngebotsgeber() {
             return angebotsgeber;
         }
+    
         public AngebotBuilder setAngebotsgeber(Geschaeftspartner angebotsgeber) {
             this.angebotsgeber = angebotsgeber;
             return this;
@@ -229,6 +245,7 @@ public class Angebot extends Geschaeftsobjekt {
         public Geschaeftspartner getAngebotsnehmer() {
             return angebotsnehmer;
         }
+    
         public AngebotBuilder setAngebotsnehmer(Geschaeftspartner angebotsnehmer) {
             this.angebotsnehmer = angebotsnehmer;
             return this;
@@ -237,6 +254,7 @@ public class Angebot extends Geschaeftsobjekt {
         public String getAngebotsnummer() {
             return angebotsnummer;
         }
+    
         public AngebotBuilder setAngebotsnummer(String angebotsnummer) {
             this.angebotsnummer = angebotsnummer;
             return this;
@@ -245,6 +263,7 @@ public class Angebot extends Geschaeftsobjekt {
         public OffsetDateTime getBindefrist() {
             return bindefrist;
         }
+    
         public AngebotBuilder setBindefrist(OffsetDateTime bindefrist) {
             this.bindefrist = bindefrist;
             return this;
@@ -253,6 +272,7 @@ public class Angebot extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public AngebotBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;
@@ -261,6 +281,7 @@ public class Angebot extends Geschaeftsobjekt {
         public Person getUnterzeichnerAngebotsgeber() {
             return unterzeichnerAngebotsgeber;
         }
+    
         public AngebotBuilder setUnterzeichnerAngebotsgeber(Person unterzeichnerAngebotsgeber) {
             this.unterzeichnerAngebotsgeber = unterzeichnerAngebotsgeber;
             return this;
@@ -269,6 +290,7 @@ public class Angebot extends Geschaeftsobjekt {
         public Person getUnterzeichnerAngebotsnehmer() {
             return unterzeichnerAngebotsnehmer;
         }
+    
         public AngebotBuilder setUnterzeichnerAngebotsnehmer(Person unterzeichnerAngebotsnehmer) {
             this.unterzeichnerAngebotsnehmer = unterzeichnerAngebotsnehmer;
             return this;
@@ -277,6 +299,7 @@ public class Angebot extends Geschaeftsobjekt {
         public List<Angebotsvariante> getVarianten() {
             return varianten;
         }
+    
         public AngebotBuilder setVarianten(List<Angebotsvariante> varianten) {
             this.varianten = varianten;
             return this;

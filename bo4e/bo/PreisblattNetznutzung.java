@@ -63,8 +63,11 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
      */
     private Sparte sparte;
 
-    public PreisblattNetznutzung() {}
+    public PreisblattNetznutzung() {
+    }
+
     private PreisblattNetznutzung(PreisblattNetznutzungBuilder builder) {
+        super(builder);
         this.bezeichnung = builder.bezeichnung;
         this.bilanzierungsmethode = builder.bilanzierungsmethode;
         this.gueltigkeit = builder.gueltigkeit;
@@ -83,6 +86,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -90,6 +94,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
     public Bilanzierungsmethode getBilanzierungsmethode() {
         return bilanzierungsmethode;
     }
+
     public void setBilanzierungsmethode(Bilanzierungsmethode bilanzierungsmethode) {
         this.bilanzierungsmethode = bilanzierungsmethode;
     }
@@ -97,6 +102,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
     public Zeitraum getGueltigkeit() {
         return gueltigkeit;
     }
+
     public void setGueltigkeit(Zeitraum gueltigkeit) {
         this.gueltigkeit = gueltigkeit;
     }
@@ -104,6 +110,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
     public Marktteilnehmer getHerausgeber() {
         return herausgeber;
     }
+
     public void setHerausgeber(Marktteilnehmer herausgeber) {
         this.herausgeber = herausgeber;
     }
@@ -111,6 +118,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
     public Kundengruppe getKundengruppe() {
         return kundengruppe;
     }
+
     public void setKundengruppe(Kundengruppe kundengruppe) {
         this.kundengruppe = kundengruppe;
     }
@@ -118,6 +126,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
     public Netzebene getNetzebene() {
         return netzebene;
     }
+
     public void setNetzebene(Netzebene netzebene) {
         this.netzebene = netzebene;
     }
@@ -125,6 +134,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
     public List<Preisposition> getPreispositionen() {
         return preispositionen;
     }
+
     public void setPreispositionen(List<Preisposition> preispositionen) {
         this.preispositionen = preispositionen;
     }
@@ -132,6 +142,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
     public Preisstatus getPreisstatus() {
         return preisstatus;
     }
+
     public void setPreisstatus(Preisstatus preisstatus) {
         this.preisstatus = preisstatus;
     }
@@ -139,6 +150,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -182,6 +194,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public PreisblattNetznutzungBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;
@@ -190,6 +203,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
         public Bilanzierungsmethode getBilanzierungsmethode() {
             return bilanzierungsmethode;
         }
+    
         public PreisblattNetznutzungBuilder setBilanzierungsmethode(Bilanzierungsmethode bilanzierungsmethode) {
             this.bilanzierungsmethode = bilanzierungsmethode;
             return this;
@@ -198,6 +212,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
         public Zeitraum getGueltigkeit() {
             return gueltigkeit;
         }
+    
         public PreisblattNetznutzungBuilder setGueltigkeit(Zeitraum gueltigkeit) {
             this.gueltigkeit = gueltigkeit;
             return this;
@@ -206,6 +221,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
         public Marktteilnehmer getHerausgeber() {
             return herausgeber;
         }
+    
         public PreisblattNetznutzungBuilder setHerausgeber(Marktteilnehmer herausgeber) {
             this.herausgeber = herausgeber;
             return this;
@@ -214,6 +230,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
         public Kundengruppe getKundengruppe() {
             return kundengruppe;
         }
+    
         public PreisblattNetznutzungBuilder setKundengruppe(Kundengruppe kundengruppe) {
             this.kundengruppe = kundengruppe;
             return this;
@@ -222,6 +239,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
         public Netzebene getNetzebene() {
             return netzebene;
         }
+    
         public PreisblattNetznutzungBuilder setNetzebene(Netzebene netzebene) {
             this.netzebene = netzebene;
             return this;
@@ -230,6 +248,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
         public List<Preisposition> getPreispositionen() {
             return preispositionen;
         }
+    
         public PreisblattNetznutzungBuilder setPreispositionen(List<Preisposition> preispositionen) {
             this.preispositionen = preispositionen;
             return this;
@@ -238,6 +257,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
         public Preisstatus getPreisstatus() {
             return preisstatus;
         }
+    
         public PreisblattNetznutzungBuilder setPreisstatus(Preisstatus preisstatus) {
             this.preisstatus = preisstatus;
             return this;
@@ -246,6 +266,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public PreisblattNetznutzungBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;

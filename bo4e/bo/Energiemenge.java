@@ -35,8 +35,11 @@ public class Energiemenge extends Geschaeftsobjekt {
      */
     private Lokationstyp lokationstyp;
 
-    public Energiemenge() {}
+    public Energiemenge() {
+    }
+
     private Energiemenge(EnergiemengeBuilder builder) {
+        super(builder);
         this.energieverbrauch = builder.energieverbrauch;
         this.lokationsId = builder.lokationsId;
         this.lokationstyp = builder.lokationstyp;
@@ -49,6 +52,7 @@ public class Energiemenge extends Geschaeftsobjekt {
     public List<Verbrauch> getEnergieverbrauch() {
         return energieverbrauch;
     }
+
     public void setEnergieverbrauch(List<Verbrauch> energieverbrauch) {
         this.energieverbrauch = energieverbrauch;
     }
@@ -56,6 +60,7 @@ public class Energiemenge extends Geschaeftsobjekt {
     public String getLokationsId() {
         return lokationsId;
     }
+
     public void setLokationsId(String lokationsId) {
         this.lokationsId = lokationsId;
     }
@@ -63,6 +68,7 @@ public class Energiemenge extends Geschaeftsobjekt {
     public Lokationstyp getLokationstyp() {
         return lokationstyp;
     }
+
     public void setLokationstyp(Lokationstyp lokationstyp) {
         this.lokationstyp = lokationstyp;
     }
@@ -84,6 +90,7 @@ public class Energiemenge extends Geschaeftsobjekt {
         public List<Verbrauch> getEnergieverbrauch() {
             return energieverbrauch;
         }
+    
         public EnergiemengeBuilder setEnergieverbrauch(List<Verbrauch> energieverbrauch) {
             this.energieverbrauch = energieverbrauch;
             return this;
@@ -92,6 +99,7 @@ public class Energiemenge extends Geschaeftsobjekt {
         public String getLokationsId() {
             return lokationsId;
         }
+    
         public EnergiemengeBuilder setLokationsId(String lokationsId) {
             this.lokationsId = lokationsId;
             return this;
@@ -100,6 +108,7 @@ public class Energiemenge extends Geschaeftsobjekt {
         public Lokationstyp getLokationstyp() {
             return lokationstyp;
         }
+    
         public EnergiemengeBuilder setLokationstyp(Lokationstyp lokationstyp) {
             this.lokationstyp = lokationstyp;
             return this;

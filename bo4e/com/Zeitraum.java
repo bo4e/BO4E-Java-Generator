@@ -29,8 +29,11 @@ public class Zeitraum extends COM {
     private OffsetDateTime startdatum;
     private OffsetDateTime startzeitpunkt;
 
-    public Zeitraum() {}
+    public Zeitraum() {
+    }
+
     private Zeitraum(ZeitraumBuilder builder) {
+        super(builder);
         this.dauer = builder.dauer;
         this.einheit = builder.einheit;
         this.enddatum = builder.enddatum;
@@ -42,6 +45,7 @@ public class Zeitraum extends COM {
     public Double getDauer() {
         return dauer;
     }
+
     public void setDauer(Double dauer) {
         this.dauer = dauer;
     }
@@ -49,6 +53,7 @@ public class Zeitraum extends COM {
     public Mengeneinheit getEinheit() {
         return einheit;
     }
+
     public void setEinheit(Mengeneinheit einheit) {
         this.einheit = einheit;
     }
@@ -56,6 +61,7 @@ public class Zeitraum extends COM {
     public OffsetDateTime getEnddatum() {
         return enddatum;
     }
+
     public void setEnddatum(OffsetDateTime enddatum) {
         this.enddatum = enddatum;
     }
@@ -63,6 +69,7 @@ public class Zeitraum extends COM {
     public OffsetDateTime getEndzeitpunkt() {
         return endzeitpunkt;
     }
+
     public void setEndzeitpunkt(OffsetDateTime endzeitpunkt) {
         this.endzeitpunkt = endzeitpunkt;
     }
@@ -70,6 +77,7 @@ public class Zeitraum extends COM {
     public OffsetDateTime getStartdatum() {
         return startdatum;
     }
+
     public void setStartdatum(OffsetDateTime startdatum) {
         this.startdatum = startdatum;
     }
@@ -77,6 +85,7 @@ public class Zeitraum extends COM {
     public OffsetDateTime getStartzeitpunkt() {
         return startzeitpunkt;
     }
+
     public void setStartzeitpunkt(OffsetDateTime startzeitpunkt) {
         this.startzeitpunkt = startzeitpunkt;
     }
@@ -92,6 +101,7 @@ public class Zeitraum extends COM {
         public Double getDauer() {
             return dauer;
         }
+    
         public ZeitraumBuilder setDauer(Double dauer) {
             this.dauer = dauer;
             return this;
@@ -100,6 +110,7 @@ public class Zeitraum extends COM {
         public Mengeneinheit getEinheit() {
             return einheit;
         }
+    
         public ZeitraumBuilder setEinheit(Mengeneinheit einheit) {
             this.einheit = einheit;
             return this;
@@ -108,6 +119,7 @@ public class Zeitraum extends COM {
         public OffsetDateTime getEnddatum() {
             return enddatum;
         }
+    
         public ZeitraumBuilder setEnddatum(OffsetDateTime enddatum) {
             this.enddatum = enddatum;
             return this;
@@ -116,6 +128,7 @@ public class Zeitraum extends COM {
         public OffsetDateTime getEndzeitpunkt() {
             return endzeitpunkt;
         }
+    
         public ZeitraumBuilder setEndzeitpunkt(OffsetDateTime endzeitpunkt) {
             this.endzeitpunkt = endzeitpunkt;
             return this;
@@ -124,6 +137,7 @@ public class Zeitraum extends COM {
         public OffsetDateTime getStartdatum() {
             return startdatum;
         }
+    
         public ZeitraumBuilder setStartdatum(OffsetDateTime startdatum) {
             this.startdatum = startdatum;
             return this;
@@ -132,6 +146,7 @@ public class Zeitraum extends COM {
         public OffsetDateTime getStartzeitpunkt() {
             return startzeitpunkt;
         }
+    
         public ZeitraumBuilder setStartzeitpunkt(OffsetDateTime startzeitpunkt) {
             this.startzeitpunkt = startzeitpunkt;
             return this;

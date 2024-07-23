@@ -93,8 +93,11 @@ public class Rechnungsposition extends COM {
      */
     private Mengeneinheit zeiteinheit;
 
-    public Rechnungsposition() {}
+    public Rechnungsposition() {
+    }
+
     private Rechnungsposition(RechnungspositionBuilder builder) {
+        super(builder);
         this.artikelId = builder.artikelId;
         this.artikelnummer = builder.artikelnummer;
         this.einzelpreis = builder.einzelpreis;
@@ -114,6 +117,7 @@ public class Rechnungsposition extends COM {
     public String getArtikelId() {
         return artikelId;
     }
+
     public void setArtikelId(String artikelId) {
         this.artikelId = artikelId;
     }
@@ -121,6 +125,7 @@ public class Rechnungsposition extends COM {
     public BDEWArtikelnummer getArtikelnummer() {
         return artikelnummer;
     }
+
     public void setArtikelnummer(BDEWArtikelnummer artikelnummer) {
         this.artikelnummer = artikelnummer;
     }
@@ -128,6 +133,7 @@ public class Rechnungsposition extends COM {
     public Preis getEinzelpreis() {
         return einzelpreis;
     }
+
     public void setEinzelpreis(Preis einzelpreis) {
         this.einzelpreis = einzelpreis;
     }
@@ -135,6 +141,7 @@ public class Rechnungsposition extends COM {
     public OffsetDateTime getLieferungBis() {
         return lieferungBis;
     }
+
     public void setLieferungBis(OffsetDateTime lieferungBis) {
         this.lieferungBis = lieferungBis;
     }
@@ -142,6 +149,7 @@ public class Rechnungsposition extends COM {
     public OffsetDateTime getLieferungVon() {
         return lieferungVon;
     }
+
     public void setLieferungVon(OffsetDateTime lieferungVon) {
         this.lieferungVon = lieferungVon;
     }
@@ -149,6 +157,7 @@ public class Rechnungsposition extends COM {
     public String getLokationsId() {
         return lokationsId;
     }
+
     public void setLokationsId(String lokationsId) {
         this.lokationsId = lokationsId;
     }
@@ -156,6 +165,7 @@ public class Rechnungsposition extends COM {
     public Menge getPositionsMenge() {
         return positionsMenge;
     }
+
     public void setPositionsMenge(Menge positionsMenge) {
         this.positionsMenge = positionsMenge;
     }
@@ -163,6 +173,7 @@ public class Rechnungsposition extends COM {
     public Long getPositionsnummer() {
         return positionsnummer;
     }
+
     public void setPositionsnummer(Long positionsnummer) {
         this.positionsnummer = positionsnummer;
     }
@@ -170,6 +181,7 @@ public class Rechnungsposition extends COM {
     public String getPositionstext() {
         return positionstext;
     }
+
     public void setPositionstext(String positionstext) {
         this.positionstext = positionstext;
     }
@@ -177,6 +189,7 @@ public class Rechnungsposition extends COM {
     public Betrag getTeilrabattNetto() {
         return teilrabattNetto;
     }
+
     public void setTeilrabattNetto(Betrag teilrabattNetto) {
         this.teilrabattNetto = teilrabattNetto;
     }
@@ -184,6 +197,7 @@ public class Rechnungsposition extends COM {
     public Betrag getTeilsummeNetto() {
         return teilsummeNetto;
     }
+
     public void setTeilsummeNetto(Betrag teilsummeNetto) {
         this.teilsummeNetto = teilsummeNetto;
     }
@@ -191,6 +205,7 @@ public class Rechnungsposition extends COM {
     public Steuerbetrag getTeilsummeSteuer() {
         return teilsummeSteuer;
     }
+
     public void setTeilsummeSteuer(Steuerbetrag teilsummeSteuer) {
         this.teilsummeSteuer = teilsummeSteuer;
     }
@@ -198,6 +213,7 @@ public class Rechnungsposition extends COM {
     public Menge getZeitbezogeneMenge() {
         return zeitbezogeneMenge;
     }
+
     public void setZeitbezogeneMenge(Menge zeitbezogeneMenge) {
         this.zeitbezogeneMenge = zeitbezogeneMenge;
     }
@@ -205,6 +221,7 @@ public class Rechnungsposition extends COM {
     public Mengeneinheit getZeiteinheit() {
         return zeiteinheit;
     }
+
     public void setZeiteinheit(Mengeneinheit zeiteinheit) {
         this.zeiteinheit = zeiteinheit;
     }
@@ -286,6 +303,7 @@ public class Rechnungsposition extends COM {
         public String getArtikelId() {
             return artikelId;
         }
+    
         public RechnungspositionBuilder setArtikelId(String artikelId) {
             this.artikelId = artikelId;
             return this;
@@ -294,6 +312,7 @@ public class Rechnungsposition extends COM {
         public BDEWArtikelnummer getArtikelnummer() {
             return artikelnummer;
         }
+    
         public RechnungspositionBuilder setArtikelnummer(BDEWArtikelnummer artikelnummer) {
             this.artikelnummer = artikelnummer;
             return this;
@@ -302,6 +321,7 @@ public class Rechnungsposition extends COM {
         public Preis getEinzelpreis() {
             return einzelpreis;
         }
+    
         public RechnungspositionBuilder setEinzelpreis(Preis einzelpreis) {
             this.einzelpreis = einzelpreis;
             return this;
@@ -310,6 +330,7 @@ public class Rechnungsposition extends COM {
         public OffsetDateTime getLieferungBis() {
             return lieferungBis;
         }
+    
         public RechnungspositionBuilder setLieferungBis(OffsetDateTime lieferungBis) {
             this.lieferungBis = lieferungBis;
             return this;
@@ -318,6 +339,7 @@ public class Rechnungsposition extends COM {
         public OffsetDateTime getLieferungVon() {
             return lieferungVon;
         }
+    
         public RechnungspositionBuilder setLieferungVon(OffsetDateTime lieferungVon) {
             this.lieferungVon = lieferungVon;
             return this;
@@ -326,6 +348,7 @@ public class Rechnungsposition extends COM {
         public String getLokationsId() {
             return lokationsId;
         }
+    
         public RechnungspositionBuilder setLokationsId(String lokationsId) {
             this.lokationsId = lokationsId;
             return this;
@@ -334,6 +357,7 @@ public class Rechnungsposition extends COM {
         public Menge getPositionsMenge() {
             return positionsMenge;
         }
+    
         public RechnungspositionBuilder setPositionsMenge(Menge positionsMenge) {
             this.positionsMenge = positionsMenge;
             return this;
@@ -342,6 +366,7 @@ public class Rechnungsposition extends COM {
         public Long getPositionsnummer() {
             return positionsnummer;
         }
+    
         public RechnungspositionBuilder setPositionsnummer(Long positionsnummer) {
             this.positionsnummer = positionsnummer;
             return this;
@@ -350,6 +375,7 @@ public class Rechnungsposition extends COM {
         public String getPositionstext() {
             return positionstext;
         }
+    
         public RechnungspositionBuilder setPositionstext(String positionstext) {
             this.positionstext = positionstext;
             return this;
@@ -358,6 +384,7 @@ public class Rechnungsposition extends COM {
         public Betrag getTeilrabattNetto() {
             return teilrabattNetto;
         }
+    
         public RechnungspositionBuilder setTeilrabattNetto(Betrag teilrabattNetto) {
             this.teilrabattNetto = teilrabattNetto;
             return this;
@@ -366,6 +393,7 @@ public class Rechnungsposition extends COM {
         public Betrag getTeilsummeNetto() {
             return teilsummeNetto;
         }
+    
         public RechnungspositionBuilder setTeilsummeNetto(Betrag teilsummeNetto) {
             this.teilsummeNetto = teilsummeNetto;
             return this;
@@ -374,6 +402,7 @@ public class Rechnungsposition extends COM {
         public Steuerbetrag getTeilsummeSteuer() {
             return teilsummeSteuer;
         }
+    
         public RechnungspositionBuilder setTeilsummeSteuer(Steuerbetrag teilsummeSteuer) {
             this.teilsummeSteuer = teilsummeSteuer;
             return this;
@@ -382,6 +411,7 @@ public class Rechnungsposition extends COM {
         public Menge getZeitbezogeneMenge() {
             return zeitbezogeneMenge;
         }
+    
         public RechnungspositionBuilder setZeitbezogeneMenge(Menge zeitbezogeneMenge) {
             this.zeitbezogeneMenge = zeitbezogeneMenge;
             return this;
@@ -390,6 +420,7 @@ public class Rechnungsposition extends COM {
         public Mengeneinheit getZeiteinheit() {
             return zeiteinheit;
         }
+    
         public RechnungspositionBuilder setZeiteinheit(Mengeneinheit zeiteinheit) {
             this.zeiteinheit = zeiteinheit;
             return this;

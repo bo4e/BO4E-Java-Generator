@@ -56,8 +56,11 @@ public class Kostenposition extends COM {
      */
     private Menge zeitmenge;
 
-    public Kostenposition() {}
+    public Kostenposition() {
+    }
+
     private Kostenposition(KostenpositionBuilder builder) {
+        super(builder);
         this.artikelbezeichnung = builder.artikelbezeichnung;
         this.artikeldetail = builder.artikeldetail;
         this.betragKostenposition = builder.betragKostenposition;
@@ -72,6 +75,7 @@ public class Kostenposition extends COM {
     public String getArtikelbezeichnung() {
         return artikelbezeichnung;
     }
+
     public void setArtikelbezeichnung(String artikelbezeichnung) {
         this.artikelbezeichnung = artikelbezeichnung;
     }
@@ -79,6 +83,7 @@ public class Kostenposition extends COM {
     public String getArtikeldetail() {
         return artikeldetail;
     }
+
     public void setArtikeldetail(String artikeldetail) {
         this.artikeldetail = artikeldetail;
     }
@@ -86,6 +91,7 @@ public class Kostenposition extends COM {
     public Betrag getBetragKostenposition() {
         return betragKostenposition;
     }
+
     public void setBetragKostenposition(Betrag betragKostenposition) {
         this.betragKostenposition = betragKostenposition;
     }
@@ -93,6 +99,7 @@ public class Kostenposition extends COM {
     public OffsetDateTime getBis() {
         return bis;
     }
+
     public void setBis(OffsetDateTime bis) {
         this.bis = bis;
     }
@@ -100,6 +107,7 @@ public class Kostenposition extends COM {
     public Preis getEinzelpreis() {
         return einzelpreis;
     }
+
     public void setEinzelpreis(Preis einzelpreis) {
         this.einzelpreis = einzelpreis;
     }
@@ -107,6 +115,7 @@ public class Kostenposition extends COM {
     public Menge getMenge() {
         return menge;
     }
+
     public void setMenge(Menge menge) {
         this.menge = menge;
     }
@@ -114,6 +123,7 @@ public class Kostenposition extends COM {
     public String getPositionstitel() {
         return positionstitel;
     }
+
     public void setPositionstitel(String positionstitel) {
         this.positionstitel = positionstitel;
     }
@@ -121,6 +131,7 @@ public class Kostenposition extends COM {
     public OffsetDateTime getVon() {
         return von;
     }
+
     public void setVon(OffsetDateTime von) {
         this.von = von;
     }
@@ -128,6 +139,7 @@ public class Kostenposition extends COM {
     public Menge getZeitmenge() {
         return zeitmenge;
     }
+
     public void setZeitmenge(Menge zeitmenge) {
         this.zeitmenge = zeitmenge;
     }
@@ -176,6 +188,7 @@ public class Kostenposition extends COM {
         public String getArtikelbezeichnung() {
             return artikelbezeichnung;
         }
+    
         public KostenpositionBuilder setArtikelbezeichnung(String artikelbezeichnung) {
             this.artikelbezeichnung = artikelbezeichnung;
             return this;
@@ -184,6 +197,7 @@ public class Kostenposition extends COM {
         public String getArtikeldetail() {
             return artikeldetail;
         }
+    
         public KostenpositionBuilder setArtikeldetail(String artikeldetail) {
             this.artikeldetail = artikeldetail;
             return this;
@@ -192,6 +206,7 @@ public class Kostenposition extends COM {
         public Betrag getBetragKostenposition() {
             return betragKostenposition;
         }
+    
         public KostenpositionBuilder setBetragKostenposition(Betrag betragKostenposition) {
             this.betragKostenposition = betragKostenposition;
             return this;
@@ -200,6 +215,7 @@ public class Kostenposition extends COM {
         public OffsetDateTime getBis() {
             return bis;
         }
+    
         public KostenpositionBuilder setBis(OffsetDateTime bis) {
             this.bis = bis;
             return this;
@@ -208,6 +224,7 @@ public class Kostenposition extends COM {
         public Preis getEinzelpreis() {
             return einzelpreis;
         }
+    
         public KostenpositionBuilder setEinzelpreis(Preis einzelpreis) {
             this.einzelpreis = einzelpreis;
             return this;
@@ -216,6 +233,7 @@ public class Kostenposition extends COM {
         public Menge getMenge() {
             return menge;
         }
+    
         public KostenpositionBuilder setMenge(Menge menge) {
             this.menge = menge;
             return this;
@@ -224,6 +242,7 @@ public class Kostenposition extends COM {
         public String getPositionstitel() {
             return positionstitel;
         }
+    
         public KostenpositionBuilder setPositionstitel(String positionstitel) {
             this.positionstitel = positionstitel;
             return this;
@@ -232,6 +251,7 @@ public class Kostenposition extends COM {
         public OffsetDateTime getVon() {
             return von;
         }
+    
         public KostenpositionBuilder setVon(OffsetDateTime von) {
             this.von = von;
             return this;
@@ -240,6 +260,7 @@ public class Kostenposition extends COM {
         public Menge getZeitmenge() {
             return zeitmenge;
         }
+    
         public KostenpositionBuilder setZeitmenge(Menge zeitmenge) {
             this.zeitmenge = zeitmenge;
             return this;

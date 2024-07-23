@@ -89,8 +89,11 @@ public class Tarifinfo extends Geschaeftsobjekt {
      */
     private Zeitraum zeitlicheGueltigkeit;
 
-    public Tarifinfo() {}
+    public Tarifinfo() {
+    }
+
     private Tarifinfo(TarifinfoBuilder builder) {
+        super(builder);
         this.anbieter = builder.anbieter;
         this.anbietername = builder.anbietername;
         this.anwendungVon = builder.anwendungVon;
@@ -114,6 +117,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
     public Marktteilnehmer getAnbieter() {
         return anbieter;
     }
+
     public void setAnbieter(Marktteilnehmer anbieter) {
         this.anbieter = anbieter;
     }
@@ -121,6 +125,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
     public String getAnbietername() {
         return anbietername;
     }
+
     public void setAnbietername(String anbietername) {
         this.anbietername = anbietername;
     }
@@ -128,6 +133,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
     public OffsetDateTime getAnwendungVon() {
         return anwendungVon;
     }
+
     public void setAnwendungVon(OffsetDateTime anwendungVon) {
         this.anwendungVon = anwendungVon;
     }
@@ -135,6 +141,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
     public String getBemerkung() {
         return bemerkung;
     }
+
     public void setBemerkung(String bemerkung) {
         this.bemerkung = bemerkung;
     }
@@ -142,6 +149,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -149,6 +157,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
     public Energiemix getEnergiemix() {
         return energiemix;
     }
+
     public void setEnergiemix(Energiemix energiemix) {
         this.energiemix = energiemix;
     }
@@ -156,6 +165,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
     public List<Kundentyp> getKundentypen() {
         return kundentypen;
     }
+
     public void setKundentypen(List<Kundentyp> kundentypen) {
         this.kundentypen = kundentypen;
     }
@@ -163,6 +173,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
     public Registeranzahl getRegisteranzahl() {
         return registeranzahl;
     }
+
     public void setRegisteranzahl(Registeranzahl registeranzahl) {
         this.registeranzahl = registeranzahl;
     }
@@ -170,6 +181,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -177,6 +189,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
     public List<Tarifmerkmal> getTarifmerkmale() {
         return tarifmerkmale;
     }
+
     public void setTarifmerkmale(List<Tarifmerkmal> tarifmerkmale) {
         this.tarifmerkmale = tarifmerkmale;
     }
@@ -184,6 +197,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
     public Tariftyp getTariftyp() {
         return tariftyp;
     }
+
     public void setTariftyp(Tariftyp tariftyp) {
         this.tariftyp = tariftyp;
     }
@@ -191,6 +205,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
     public Vertragskonditionen getVertragskonditionen() {
         return vertragskonditionen;
     }
+
     public void setVertragskonditionen(Vertragskonditionen vertragskonditionen) {
         this.vertragskonditionen = vertragskonditionen;
     }
@@ -198,6 +213,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
     public String getWebsite() {
         return website;
     }
+
     public void setWebsite(String website) {
         this.website = website;
     }
@@ -205,6 +221,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
     public Zeitraum getZeitlicheGueltigkeit() {
         return zeitlicheGueltigkeit;
     }
+
     public void setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
         this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
     }
@@ -272,6 +289,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
         public Marktteilnehmer getAnbieter() {
             return anbieter;
         }
+    
         public TarifinfoBuilder setAnbieter(Marktteilnehmer anbieter) {
             this.anbieter = anbieter;
             return this;
@@ -280,6 +298,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
         public String getAnbietername() {
             return anbietername;
         }
+    
         public TarifinfoBuilder setAnbietername(String anbietername) {
             this.anbietername = anbietername;
             return this;
@@ -288,6 +307,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
         public OffsetDateTime getAnwendungVon() {
             return anwendungVon;
         }
+    
         public TarifinfoBuilder setAnwendungVon(OffsetDateTime anwendungVon) {
             this.anwendungVon = anwendungVon;
             return this;
@@ -296,6 +316,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
         public String getBemerkung() {
             return bemerkung;
         }
+    
         public TarifinfoBuilder setBemerkung(String bemerkung) {
             this.bemerkung = bemerkung;
             return this;
@@ -304,6 +325,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public TarifinfoBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;
@@ -312,6 +334,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
         public Energiemix getEnergiemix() {
             return energiemix;
         }
+    
         public TarifinfoBuilder setEnergiemix(Energiemix energiemix) {
             this.energiemix = energiemix;
             return this;
@@ -320,6 +343,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
         public List<Kundentyp> getKundentypen() {
             return kundentypen;
         }
+    
         public TarifinfoBuilder setKundentypen(List<Kundentyp> kundentypen) {
             this.kundentypen = kundentypen;
             return this;
@@ -328,6 +352,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
         public Registeranzahl getRegisteranzahl() {
             return registeranzahl;
         }
+    
         public TarifinfoBuilder setRegisteranzahl(Registeranzahl registeranzahl) {
             this.registeranzahl = registeranzahl;
             return this;
@@ -336,6 +361,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public TarifinfoBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;
@@ -344,6 +370,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
         public List<Tarifmerkmal> getTarifmerkmale() {
             return tarifmerkmale;
         }
+    
         public TarifinfoBuilder setTarifmerkmale(List<Tarifmerkmal> tarifmerkmale) {
             this.tarifmerkmale = tarifmerkmale;
             return this;
@@ -352,6 +379,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
         public Tariftyp getTariftyp() {
             return tariftyp;
         }
+    
         public TarifinfoBuilder setTariftyp(Tariftyp tariftyp) {
             this.tariftyp = tariftyp;
             return this;
@@ -360,6 +388,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
         public Vertragskonditionen getVertragskonditionen() {
             return vertragskonditionen;
         }
+    
         public TarifinfoBuilder setVertragskonditionen(Vertragskonditionen vertragskonditionen) {
             this.vertragskonditionen = vertragskonditionen;
             return this;
@@ -368,6 +397,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
         public String getWebsite() {
             return website;
         }
+    
         public TarifinfoBuilder setWebsite(String website) {
             this.website = website;
             return this;
@@ -376,6 +406,7 @@ public class Tarifinfo extends Geschaeftsobjekt {
         public Zeitraum getZeitlicheGueltigkeit() {
             return zeitlicheGueltigkeit;
         }
+    
         public TarifinfoBuilder setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
             this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
             return this;

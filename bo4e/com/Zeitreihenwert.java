@@ -35,8 +35,11 @@ public class Zeitreihenwert extends COM {
      */
     private Zeitspanne zeitspanne;
 
-    public Zeitreihenwert() {}
+    public Zeitreihenwert() {
+    }
+
     private Zeitreihenwert(ZeitreihenwertBuilder builder) {
+        super(builder);
         this.status = builder.status;
         this.statuszusatz = builder.statuszusatz;
         this.wert = builder.wert;
@@ -46,6 +49,7 @@ public class Zeitreihenwert extends COM {
     public Messwertstatus getStatus() {
         return status;
     }
+
     public void setStatus(Messwertstatus status) {
         this.status = status;
     }
@@ -53,6 +57,7 @@ public class Zeitreihenwert extends COM {
     public Messwertstatuszusatz getStatuszusatz() {
         return statuszusatz;
     }
+
     public void setStatuszusatz(Messwertstatuszusatz statuszusatz) {
         this.statuszusatz = statuszusatz;
     }
@@ -60,6 +65,7 @@ public class Zeitreihenwert extends COM {
     public Double getWert() {
         return wert;
     }
+
     public void setWert(Double wert) {
         this.wert = wert;
     }
@@ -67,6 +73,7 @@ public class Zeitreihenwert extends COM {
     public Zeitspanne getZeitspanne() {
         return zeitspanne;
     }
+
     public void setZeitspanne(Zeitspanne zeitspanne) {
         this.zeitspanne = zeitspanne;
     }
@@ -92,6 +99,7 @@ public class Zeitreihenwert extends COM {
         public Messwertstatus getStatus() {
             return status;
         }
+    
         public ZeitreihenwertBuilder setStatus(Messwertstatus status) {
             this.status = status;
             return this;
@@ -100,6 +108,7 @@ public class Zeitreihenwert extends COM {
         public Messwertstatuszusatz getStatuszusatz() {
             return statuszusatz;
         }
+    
         public ZeitreihenwertBuilder setStatuszusatz(Messwertstatuszusatz statuszusatz) {
             this.statuszusatz = statuszusatz;
             return this;
@@ -108,6 +117,7 @@ public class Zeitreihenwert extends COM {
         public Double getWert() {
             return wert;
         }
+    
         public ZeitreihenwertBuilder setWert(Double wert) {
             this.wert = wert;
             return this;
@@ -116,6 +126,7 @@ public class Zeitreihenwert extends COM {
         public Zeitspanne getZeitspanne() {
             return zeitspanne;
         }
+    
         public ZeitreihenwertBuilder setZeitspanne(Zeitspanne zeitspanne) {
             this.zeitspanne = zeitspanne;
             return this;

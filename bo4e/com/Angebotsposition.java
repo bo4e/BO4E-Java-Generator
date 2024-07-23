@@ -36,8 +36,11 @@ public class Angebotsposition extends COM {
      */
     private Preis positionspreis;
 
-    public Angebotsposition() {}
+    public Angebotsposition() {
+    }
+
     private Angebotsposition(AngebotspositionBuilder builder) {
+        super(builder);
         this.positionsbezeichnung = builder.positionsbezeichnung;
         this.positionskosten = builder.positionskosten;
         this.positionsmenge = builder.positionsmenge;
@@ -47,6 +50,7 @@ public class Angebotsposition extends COM {
     public String getPositionsbezeichnung() {
         return positionsbezeichnung;
     }
+
     public void setPositionsbezeichnung(String positionsbezeichnung) {
         this.positionsbezeichnung = positionsbezeichnung;
     }
@@ -54,6 +58,7 @@ public class Angebotsposition extends COM {
     public Betrag getPositionskosten() {
         return positionskosten;
     }
+
     public void setPositionskosten(Betrag positionskosten) {
         this.positionskosten = positionskosten;
     }
@@ -61,6 +66,7 @@ public class Angebotsposition extends COM {
     public Menge getPositionsmenge() {
         return positionsmenge;
     }
+
     public void setPositionsmenge(Menge positionsmenge) {
         this.positionsmenge = positionsmenge;
     }
@@ -68,6 +74,7 @@ public class Angebotsposition extends COM {
     public Preis getPositionspreis() {
         return positionspreis;
     }
+
     public void setPositionspreis(Preis positionspreis) {
         this.positionspreis = positionspreis;
     }
@@ -93,6 +100,7 @@ public class Angebotsposition extends COM {
         public String getPositionsbezeichnung() {
             return positionsbezeichnung;
         }
+    
         public AngebotspositionBuilder setPositionsbezeichnung(String positionsbezeichnung) {
             this.positionsbezeichnung = positionsbezeichnung;
             return this;
@@ -101,6 +109,7 @@ public class Angebotsposition extends COM {
         public Betrag getPositionskosten() {
             return positionskosten;
         }
+    
         public AngebotspositionBuilder setPositionskosten(Betrag positionskosten) {
             this.positionskosten = positionskosten;
             return this;
@@ -109,6 +118,7 @@ public class Angebotsposition extends COM {
         public Menge getPositionsmenge() {
             return positionsmenge;
         }
+    
         public AngebotspositionBuilder setPositionsmenge(Menge positionsmenge) {
             this.positionsmenge = positionsmenge;
             return this;
@@ -117,6 +127,7 @@ public class Angebotsposition extends COM {
         public Preis getPositionspreis() {
             return positionspreis;
         }
+    
         public AngebotspositionBuilder setPositionspreis(Preis positionspreis) {
             this.positionspreis = positionspreis;
             return this;

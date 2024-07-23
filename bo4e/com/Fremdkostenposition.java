@@ -74,8 +74,11 @@ public class Fremdkostenposition extends COM {
      */
     private Menge zeitmenge;
 
-    public Fremdkostenposition() {}
+    public Fremdkostenposition() {
+    }
+
     private Fremdkostenposition(FremdkostenpositionBuilder builder) {
+        super(builder);
         this.artikelbezeichnung = builder.artikelbezeichnung;
         this.artikeldetail = builder.artikeldetail;
         this.betragKostenposition = builder.betragKostenposition;
@@ -94,6 +97,7 @@ public class Fremdkostenposition extends COM {
     public String getArtikelbezeichnung() {
         return artikelbezeichnung;
     }
+
     public void setArtikelbezeichnung(String artikelbezeichnung) {
         this.artikelbezeichnung = artikelbezeichnung;
     }
@@ -101,6 +105,7 @@ public class Fremdkostenposition extends COM {
     public String getArtikeldetail() {
         return artikeldetail;
     }
+
     public void setArtikeldetail(String artikeldetail) {
         this.artikeldetail = artikeldetail;
     }
@@ -108,6 +113,7 @@ public class Fremdkostenposition extends COM {
     public Betrag getBetragKostenposition() {
         return betragKostenposition;
     }
+
     public void setBetragKostenposition(Betrag betragKostenposition) {
         this.betragKostenposition = betragKostenposition;
     }
@@ -115,6 +121,7 @@ public class Fremdkostenposition extends COM {
     public OffsetDateTime getBis() {
         return bis;
     }
+
     public void setBis(OffsetDateTime bis) {
         this.bis = bis;
     }
@@ -122,6 +129,7 @@ public class Fremdkostenposition extends COM {
     public Preis getEinzelpreis() {
         return einzelpreis;
     }
+
     public void setEinzelpreis(Preis einzelpreis) {
         this.einzelpreis = einzelpreis;
     }
@@ -129,6 +137,7 @@ public class Fremdkostenposition extends COM {
     public String getGebietcodeEic() {
         return gebietcodeEic;
     }
+
     public void setGebietcodeEic(String gebietcodeEic) {
         this.gebietcodeEic = gebietcodeEic;
     }
@@ -136,6 +145,7 @@ public class Fremdkostenposition extends COM {
     public String getLinkPreisblatt() {
         return linkPreisblatt;
     }
+
     public void setLinkPreisblatt(String linkPreisblatt) {
         this.linkPreisblatt = linkPreisblatt;
     }
@@ -143,6 +153,7 @@ public class Fremdkostenposition extends COM {
     public String getMarktpartnercode() {
         return marktpartnercode;
     }
+
     public void setMarktpartnercode(String marktpartnercode) {
         this.marktpartnercode = marktpartnercode;
     }
@@ -150,6 +161,7 @@ public class Fremdkostenposition extends COM {
     public String getMarktpartnername() {
         return marktpartnername;
     }
+
     public void setMarktpartnername(String marktpartnername) {
         this.marktpartnername = marktpartnername;
     }
@@ -157,6 +169,7 @@ public class Fremdkostenposition extends COM {
     public Menge getMenge() {
         return menge;
     }
+
     public void setMenge(Menge menge) {
         this.menge = menge;
     }
@@ -164,6 +177,7 @@ public class Fremdkostenposition extends COM {
     public String getPositionstitel() {
         return positionstitel;
     }
+
     public void setPositionstitel(String positionstitel) {
         this.positionstitel = positionstitel;
     }
@@ -171,6 +185,7 @@ public class Fremdkostenposition extends COM {
     public OffsetDateTime getVon() {
         return von;
     }
+
     public void setVon(OffsetDateTime von) {
         this.von = von;
     }
@@ -178,6 +193,7 @@ public class Fremdkostenposition extends COM {
     public Menge getZeitmenge() {
         return zeitmenge;
     }
+
     public void setZeitmenge(Menge zeitmenge) {
         this.zeitmenge = zeitmenge;
     }
@@ -244,6 +260,7 @@ public class Fremdkostenposition extends COM {
         public String getArtikelbezeichnung() {
             return artikelbezeichnung;
         }
+    
         public FremdkostenpositionBuilder setArtikelbezeichnung(String artikelbezeichnung) {
             this.artikelbezeichnung = artikelbezeichnung;
             return this;
@@ -252,6 +269,7 @@ public class Fremdkostenposition extends COM {
         public String getArtikeldetail() {
             return artikeldetail;
         }
+    
         public FremdkostenpositionBuilder setArtikeldetail(String artikeldetail) {
             this.artikeldetail = artikeldetail;
             return this;
@@ -260,6 +278,7 @@ public class Fremdkostenposition extends COM {
         public Betrag getBetragKostenposition() {
             return betragKostenposition;
         }
+    
         public FremdkostenpositionBuilder setBetragKostenposition(Betrag betragKostenposition) {
             this.betragKostenposition = betragKostenposition;
             return this;
@@ -268,6 +287,7 @@ public class Fremdkostenposition extends COM {
         public OffsetDateTime getBis() {
             return bis;
         }
+    
         public FremdkostenpositionBuilder setBis(OffsetDateTime bis) {
             this.bis = bis;
             return this;
@@ -276,6 +296,7 @@ public class Fremdkostenposition extends COM {
         public Preis getEinzelpreis() {
             return einzelpreis;
         }
+    
         public FremdkostenpositionBuilder setEinzelpreis(Preis einzelpreis) {
             this.einzelpreis = einzelpreis;
             return this;
@@ -284,6 +305,7 @@ public class Fremdkostenposition extends COM {
         public String getGebietcodeEic() {
             return gebietcodeEic;
         }
+    
         public FremdkostenpositionBuilder setGebietcodeEic(String gebietcodeEic) {
             this.gebietcodeEic = gebietcodeEic;
             return this;
@@ -292,6 +314,7 @@ public class Fremdkostenposition extends COM {
         public String getLinkPreisblatt() {
             return linkPreisblatt;
         }
+    
         public FremdkostenpositionBuilder setLinkPreisblatt(String linkPreisblatt) {
             this.linkPreisblatt = linkPreisblatt;
             return this;
@@ -300,6 +323,7 @@ public class Fremdkostenposition extends COM {
         public String getMarktpartnercode() {
             return marktpartnercode;
         }
+    
         public FremdkostenpositionBuilder setMarktpartnercode(String marktpartnercode) {
             this.marktpartnercode = marktpartnercode;
             return this;
@@ -308,6 +332,7 @@ public class Fremdkostenposition extends COM {
         public String getMarktpartnername() {
             return marktpartnername;
         }
+    
         public FremdkostenpositionBuilder setMarktpartnername(String marktpartnername) {
             this.marktpartnername = marktpartnername;
             return this;
@@ -316,6 +341,7 @@ public class Fremdkostenposition extends COM {
         public Menge getMenge() {
             return menge;
         }
+    
         public FremdkostenpositionBuilder setMenge(Menge menge) {
             this.menge = menge;
             return this;
@@ -324,6 +350,7 @@ public class Fremdkostenposition extends COM {
         public String getPositionstitel() {
             return positionstitel;
         }
+    
         public FremdkostenpositionBuilder setPositionstitel(String positionstitel) {
             this.positionstitel = positionstitel;
             return this;
@@ -332,6 +359,7 @@ public class Fremdkostenposition extends COM {
         public OffsetDateTime getVon() {
             return von;
         }
+    
         public FremdkostenpositionBuilder setVon(OffsetDateTime von) {
             this.von = von;
             return this;
@@ -340,6 +368,7 @@ public class Fremdkostenposition extends COM {
         public Menge getZeitmenge() {
             return zeitmenge;
         }
+    
         public FremdkostenpositionBuilder setZeitmenge(Menge zeitmenge) {
             this.zeitmenge = zeitmenge;
             return this;

@@ -28,8 +28,11 @@ public class VerwendungszweckProMarktrolle extends COM {
      */
     private List<Verwendungszweck> zwecke;
 
-    public VerwendungszweckProMarktrolle() {}
+    public VerwendungszweckProMarktrolle() {
+    }
+
     private VerwendungszweckProMarktrolle(VerwendungszweckProMarktrolleBuilder builder) {
+        super(builder);
         this.marktrolle = builder.marktrolle;
         this.zwecke = builder.zwecke;
     }
@@ -37,6 +40,7 @@ public class VerwendungszweckProMarktrolle extends COM {
     public Marktrolle getMarktrolle() {
         return marktrolle;
     }
+
     public void setMarktrolle(Marktrolle marktrolle) {
         this.marktrolle = marktrolle;
     }
@@ -44,6 +48,7 @@ public class VerwendungszweckProMarktrolle extends COM {
     public List<Verwendungszweck> getZwecke() {
         return zwecke;
     }
+
     public void setZwecke(List<Verwendungszweck> zwecke) {
         this.zwecke = zwecke;
     }
@@ -61,6 +66,7 @@ public class VerwendungszweckProMarktrolle extends COM {
         public Marktrolle getMarktrolle() {
             return marktrolle;
         }
+    
         public VerwendungszweckProMarktrolleBuilder setMarktrolle(Marktrolle marktrolle) {
             this.marktrolle = marktrolle;
             return this;
@@ -69,6 +75,7 @@ public class VerwendungszweckProMarktrolle extends COM {
         public List<Verwendungszweck> getZwecke() {
             return zwecke;
         }
+    
         public VerwendungszweckProMarktrolleBuilder setZwecke(List<Verwendungszweck> zwecke) {
             this.zwecke = zwecke;
             return this;

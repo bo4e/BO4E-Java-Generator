@@ -29,8 +29,11 @@ public class Unterschrift extends COM {
      */
     private String ort;
 
-    public Unterschrift() {}
+    public Unterschrift() {
+    }
+
     private Unterschrift(UnterschriftBuilder builder) {
+        super(builder);
         this.datum = builder.datum;
         this.name = builder.name;
         this.ort = builder.ort;
@@ -39,6 +42,7 @@ public class Unterschrift extends COM {
     public OffsetDateTime getDatum() {
         return datum;
     }
+
     public void setDatum(OffsetDateTime datum) {
         this.datum = datum;
     }
@@ -46,6 +50,7 @@ public class Unterschrift extends COM {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -53,6 +58,7 @@ public class Unterschrift extends COM {
     public String getOrt() {
         return ort;
     }
+
     public void setOrt(String ort) {
         this.ort = ort;
     }
@@ -74,6 +80,7 @@ public class Unterschrift extends COM {
         public OffsetDateTime getDatum() {
             return datum;
         }
+    
         public UnterschriftBuilder setDatum(OffsetDateTime datum) {
             this.datum = datum;
             return this;
@@ -82,6 +89,7 @@ public class Unterschrift extends COM {
         public String getName() {
             return name;
         }
+    
         public UnterschriftBuilder setName(String name) {
             this.name = name;
             return this;
@@ -90,6 +98,7 @@ public class Unterschrift extends COM {
         public String getOrt() {
             return ort;
         }
+    
         public UnterschriftBuilder setOrt(String ort) {
             this.ort = ort;
             return this;

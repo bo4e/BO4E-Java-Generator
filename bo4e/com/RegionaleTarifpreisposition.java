@@ -43,8 +43,11 @@ public class RegionaleTarifpreisposition extends COM {
      */
     private Preistyp preistyp;
 
-    public RegionaleTarifpreisposition() {}
+    public RegionaleTarifpreisposition() {
+    }
+
     private RegionaleTarifpreisposition(RegionaleTarifpreispositionBuilder builder) {
+        super(builder);
         this.bezugseinheit = builder.bezugseinheit;
         this.einheit = builder.einheit;
         this.mengeneinheitstaffel = builder.mengeneinheitstaffel;
@@ -55,6 +58,7 @@ public class RegionaleTarifpreisposition extends COM {
     public Mengeneinheit getBezugseinheit() {
         return bezugseinheit;
     }
+
     public void setBezugseinheit(Mengeneinheit bezugseinheit) {
         this.bezugseinheit = bezugseinheit;
     }
@@ -62,6 +66,7 @@ public class RegionaleTarifpreisposition extends COM {
     public Waehrungseinheit getEinheit() {
         return einheit;
     }
+
     public void setEinheit(Waehrungseinheit einheit) {
         this.einheit = einheit;
     }
@@ -69,6 +74,7 @@ public class RegionaleTarifpreisposition extends COM {
     public Mengeneinheit getMengeneinheitstaffel() {
         return mengeneinheitstaffel;
     }
+
     public void setMengeneinheitstaffel(Mengeneinheit mengeneinheitstaffel) {
         this.mengeneinheitstaffel = mengeneinheitstaffel;
     }
@@ -76,6 +82,7 @@ public class RegionaleTarifpreisposition extends COM {
     public List<RegionalePreisstaffel> getPreisstaffeln() {
         return preisstaffeln;
     }
+
     public void setPreisstaffeln(List<RegionalePreisstaffel> preisstaffeln) {
         this.preisstaffeln = preisstaffeln;
     }
@@ -83,6 +90,7 @@ public class RegionaleTarifpreisposition extends COM {
     public Preistyp getPreistyp() {
         return preistyp;
     }
+
     public void setPreistyp(Preistyp preistyp) {
         this.preistyp = preistyp;
     }
@@ -113,6 +121,7 @@ public class RegionaleTarifpreisposition extends COM {
         public Mengeneinheit getBezugseinheit() {
             return bezugseinheit;
         }
+    
         public RegionaleTarifpreispositionBuilder setBezugseinheit(Mengeneinheit bezugseinheit) {
             this.bezugseinheit = bezugseinheit;
             return this;
@@ -121,6 +130,7 @@ public class RegionaleTarifpreisposition extends COM {
         public Waehrungseinheit getEinheit() {
             return einheit;
         }
+    
         public RegionaleTarifpreispositionBuilder setEinheit(Waehrungseinheit einheit) {
             this.einheit = einheit;
             return this;
@@ -129,6 +139,7 @@ public class RegionaleTarifpreisposition extends COM {
         public Mengeneinheit getMengeneinheitstaffel() {
             return mengeneinheitstaffel;
         }
+    
         public RegionaleTarifpreispositionBuilder setMengeneinheitstaffel(Mengeneinheit mengeneinheitstaffel) {
             this.mengeneinheitstaffel = mengeneinheitstaffel;
             return this;
@@ -137,6 +148,7 @@ public class RegionaleTarifpreisposition extends COM {
         public List<RegionalePreisstaffel> getPreisstaffeln() {
             return preisstaffeln;
         }
+    
         public RegionaleTarifpreispositionBuilder setPreisstaffeln(List<RegionalePreisstaffel> preisstaffeln) {
             this.preisstaffeln = preisstaffeln;
             return this;
@@ -145,6 +157,7 @@ public class RegionaleTarifpreisposition extends COM {
         public Preistyp getPreistyp() {
             return preistyp;
         }
+    
         public RegionaleTarifpreispositionBuilder setPreistyp(Preistyp preistyp) {
             this.preistyp = preistyp;
             return this;

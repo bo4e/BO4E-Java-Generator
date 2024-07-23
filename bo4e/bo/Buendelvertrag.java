@@ -82,8 +82,11 @@ public class Buendelvertrag extends Geschaeftsobjekt {
      */
     private Vertragsstatus vertragsstatus;
 
-    public Buendelvertrag() {}
+    public Buendelvertrag() {
+    }
+
     private Buendelvertrag(BuendelvertragBuilder builder) {
+        super(builder);
         this.beschreibung = builder.beschreibung;
         this.einzelvertraege = builder.einzelvertraege;
         this.sparte = builder.sparte;
@@ -106,6 +109,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
     public String getBeschreibung() {
         return beschreibung;
     }
+
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
@@ -113,6 +117,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
     public List<Vertrag> getEinzelvertraege() {
         return einzelvertraege;
     }
+
     public void setEinzelvertraege(List<Vertrag> einzelvertraege) {
         this.einzelvertraege = einzelvertraege;
     }
@@ -120,6 +125,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -127,6 +133,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
     public List<Unterschrift> getUnterzeichnervp1() {
         return unterzeichnervp1;
     }
+
     public void setUnterzeichnervp1(List<Unterschrift> unterzeichnervp1) {
         this.unterzeichnervp1 = unterzeichnervp1;
     }
@@ -134,6 +141,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
     public List<Unterschrift> getUnterzeichnervp2() {
         return unterzeichnervp2;
     }
+
     public void setUnterzeichnervp2(List<Unterschrift> unterzeichnervp2) {
         this.unterzeichnervp2 = unterzeichnervp2;
     }
@@ -141,6 +149,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
     public Vertragsart getVertragsart() {
         return vertragsart;
     }
+
     public void setVertragsart(Vertragsart vertragsart) {
         this.vertragsart = vertragsart;
     }
@@ -148,6 +157,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
     public OffsetDateTime getVertragsbeginn() {
         return vertragsbeginn;
     }
+
     public void setVertragsbeginn(OffsetDateTime vertragsbeginn) {
         this.vertragsbeginn = vertragsbeginn;
     }
@@ -155,6 +165,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
     public OffsetDateTime getVertragsende() {
         return vertragsende;
     }
+
     public void setVertragsende(OffsetDateTime vertragsende) {
         this.vertragsende = vertragsende;
     }
@@ -162,6 +173,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
     public List<Vertragskonditionen> getVertragskonditionen() {
         return vertragskonditionen;
     }
+
     public void setVertragskonditionen(List<Vertragskonditionen> vertragskonditionen) {
         this.vertragskonditionen = vertragskonditionen;
     }
@@ -169,6 +181,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
     public String getVertragsnummer() {
         return vertragsnummer;
     }
+
     public void setVertragsnummer(String vertragsnummer) {
         this.vertragsnummer = vertragsnummer;
     }
@@ -176,6 +189,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
     public Geschaeftspartner getVertragspartner1() {
         return vertragspartner1;
     }
+
     public void setVertragspartner1(Geschaeftspartner vertragspartner1) {
         this.vertragspartner1 = vertragspartner1;
     }
@@ -183,6 +197,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
     public Geschaeftspartner getVertragspartner2() {
         return vertragspartner2;
     }
+
     public void setVertragspartner2(Geschaeftspartner vertragspartner2) {
         this.vertragspartner2 = vertragspartner2;
     }
@@ -190,6 +205,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
     public Vertragsstatus getVertragsstatus() {
         return vertragsstatus;
     }
+
     public void setVertragsstatus(Vertragsstatus vertragsstatus) {
         this.vertragsstatus = vertragsstatus;
     }
@@ -251,6 +267,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
         public String getBeschreibung() {
             return beschreibung;
         }
+    
         public BuendelvertragBuilder setBeschreibung(String beschreibung) {
             this.beschreibung = beschreibung;
             return this;
@@ -259,6 +276,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
         public List<Vertrag> getEinzelvertraege() {
             return einzelvertraege;
         }
+    
         public BuendelvertragBuilder setEinzelvertraege(List<Vertrag> einzelvertraege) {
             this.einzelvertraege = einzelvertraege;
             return this;
@@ -267,6 +285,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public BuendelvertragBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;
@@ -275,6 +294,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
         public List<Unterschrift> getUnterzeichnervp1() {
             return unterzeichnervp1;
         }
+    
         public BuendelvertragBuilder setUnterzeichnervp1(List<Unterschrift> unterzeichnervp1) {
             this.unterzeichnervp1 = unterzeichnervp1;
             return this;
@@ -283,6 +303,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
         public List<Unterschrift> getUnterzeichnervp2() {
             return unterzeichnervp2;
         }
+    
         public BuendelvertragBuilder setUnterzeichnervp2(List<Unterschrift> unterzeichnervp2) {
             this.unterzeichnervp2 = unterzeichnervp2;
             return this;
@@ -291,6 +312,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
         public Vertragsart getVertragsart() {
             return vertragsart;
         }
+    
         public BuendelvertragBuilder setVertragsart(Vertragsart vertragsart) {
             this.vertragsart = vertragsart;
             return this;
@@ -299,6 +321,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
         public OffsetDateTime getVertragsbeginn() {
             return vertragsbeginn;
         }
+    
         public BuendelvertragBuilder setVertragsbeginn(OffsetDateTime vertragsbeginn) {
             this.vertragsbeginn = vertragsbeginn;
             return this;
@@ -307,6 +330,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
         public OffsetDateTime getVertragsende() {
             return vertragsende;
         }
+    
         public BuendelvertragBuilder setVertragsende(OffsetDateTime vertragsende) {
             this.vertragsende = vertragsende;
             return this;
@@ -315,6 +339,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
         public List<Vertragskonditionen> getVertragskonditionen() {
             return vertragskonditionen;
         }
+    
         public BuendelvertragBuilder setVertragskonditionen(List<Vertragskonditionen> vertragskonditionen) {
             this.vertragskonditionen = vertragskonditionen;
             return this;
@@ -323,6 +348,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
         public String getVertragsnummer() {
             return vertragsnummer;
         }
+    
         public BuendelvertragBuilder setVertragsnummer(String vertragsnummer) {
             this.vertragsnummer = vertragsnummer;
             return this;
@@ -331,6 +357,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
         public Geschaeftspartner getVertragspartner1() {
             return vertragspartner1;
         }
+    
         public BuendelvertragBuilder setVertragspartner1(Geschaeftspartner vertragspartner1) {
             this.vertragspartner1 = vertragspartner1;
             return this;
@@ -339,6 +366,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
         public Geschaeftspartner getVertragspartner2() {
             return vertragspartner2;
         }
+    
         public BuendelvertragBuilder setVertragspartner2(Geschaeftspartner vertragspartner2) {
             this.vertragspartner2 = vertragspartner2;
             return this;
@@ -347,6 +375,7 @@ public class Buendelvertrag extends Geschaeftsobjekt {
         public Vertragsstatus getVertragsstatus() {
             return vertragsstatus;
         }
+    
         public BuendelvertragBuilder setVertragsstatus(Vertragsstatus vertragsstatus) {
             this.vertragsstatus = vertragsstatus;
             return this;

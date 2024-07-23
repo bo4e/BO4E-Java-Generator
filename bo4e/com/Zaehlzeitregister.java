@@ -30,8 +30,11 @@ public class Zaehlzeitregister extends COM {
      */
     private String zaehlzeitRegister;
 
-    public Zaehlzeitregister() {}
+    public Zaehlzeitregister() {
+    }
+
     private Zaehlzeitregister(ZaehlzeitregisterBuilder builder) {
+        super(builder);
         this.istSchwachlastfaehig = builder.istSchwachlastfaehig;
         this.zaehlzeitDefinition = builder.zaehlzeitDefinition;
         this.zaehlzeitRegister = builder.zaehlzeitRegister;
@@ -40,6 +43,7 @@ public class Zaehlzeitregister extends COM {
     public Boolean getIstSchwachlastfaehig() {
         return istSchwachlastfaehig;
     }
+
     public void setIstSchwachlastfaehig(Boolean istSchwachlastfaehig) {
         this.istSchwachlastfaehig = istSchwachlastfaehig;
     }
@@ -47,6 +51,7 @@ public class Zaehlzeitregister extends COM {
     public String getZaehlzeitDefinition() {
         return zaehlzeitDefinition;
     }
+
     public void setZaehlzeitDefinition(String zaehlzeitDefinition) {
         this.zaehlzeitDefinition = zaehlzeitDefinition;
     }
@@ -54,6 +59,7 @@ public class Zaehlzeitregister extends COM {
     public String getZaehlzeitRegister() {
         return zaehlzeitRegister;
     }
+
     public void setZaehlzeitRegister(String zaehlzeitRegister) {
         this.zaehlzeitRegister = zaehlzeitRegister;
     }
@@ -75,6 +81,7 @@ public class Zaehlzeitregister extends COM {
         public Boolean getIstSchwachlastfaehig() {
             return istSchwachlastfaehig;
         }
+    
         public ZaehlzeitregisterBuilder setIstSchwachlastfaehig(Boolean istSchwachlastfaehig) {
             this.istSchwachlastfaehig = istSchwachlastfaehig;
             return this;
@@ -83,6 +90,7 @@ public class Zaehlzeitregister extends COM {
         public String getZaehlzeitDefinition() {
             return zaehlzeitDefinition;
         }
+    
         public ZaehlzeitregisterBuilder setZaehlzeitDefinition(String zaehlzeitDefinition) {
             this.zaehlzeitDefinition = zaehlzeitDefinition;
             return this;
@@ -91,6 +99,7 @@ public class Zaehlzeitregister extends COM {
         public String getZaehlzeitRegister() {
             return zaehlzeitRegister;
         }
+    
         public ZaehlzeitregisterBuilder setZaehlzeitRegister(String zaehlzeitRegister) {
             this.zaehlzeitRegister = zaehlzeitRegister;
             return this;

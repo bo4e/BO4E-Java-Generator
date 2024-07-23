@@ -29,8 +29,11 @@ public class TarifpreispositionProOrt extends COM {
     private String postleitzahl;
     private List<TarifpreisstaffelProOrt> preisstaffeln;
 
-    public TarifpreispositionProOrt() {}
+    public TarifpreispositionProOrt() {
+    }
+
     private TarifpreispositionProOrt(TarifpreispositionProOrtBuilder builder) {
+        super(builder);
         this.netznr = builder.netznr;
         this.ort = builder.ort;
         this.postleitzahl = builder.postleitzahl;
@@ -40,6 +43,7 @@ public class TarifpreispositionProOrt extends COM {
     public String getNetznr() {
         return netznr;
     }
+
     public void setNetznr(String netznr) {
         this.netznr = netznr;
     }
@@ -47,6 +51,7 @@ public class TarifpreispositionProOrt extends COM {
     public String getOrt() {
         return ort;
     }
+
     public void setOrt(String ort) {
         this.ort = ort;
     }
@@ -54,6 +59,7 @@ public class TarifpreispositionProOrt extends COM {
     public String getPostleitzahl() {
         return postleitzahl;
     }
+
     public void setPostleitzahl(String postleitzahl) {
         this.postleitzahl = postleitzahl;
     }
@@ -61,6 +67,7 @@ public class TarifpreispositionProOrt extends COM {
     public List<TarifpreisstaffelProOrt> getPreisstaffeln() {
         return preisstaffeln;
     }
+
     public void setPreisstaffeln(List<TarifpreisstaffelProOrt> preisstaffeln) {
         this.preisstaffeln = preisstaffeln;
     }
@@ -83,6 +90,7 @@ public class TarifpreispositionProOrt extends COM {
         public String getNetznr() {
             return netznr;
         }
+    
         public TarifpreispositionProOrtBuilder setNetznr(String netznr) {
             this.netznr = netznr;
             return this;
@@ -91,6 +99,7 @@ public class TarifpreispositionProOrt extends COM {
         public String getOrt() {
             return ort;
         }
+    
         public TarifpreispositionProOrtBuilder setOrt(String ort) {
             this.ort = ort;
             return this;
@@ -99,6 +108,7 @@ public class TarifpreispositionProOrt extends COM {
         public String getPostleitzahl() {
             return postleitzahl;
         }
+    
         public TarifpreispositionProOrtBuilder setPostleitzahl(String postleitzahl) {
             this.postleitzahl = postleitzahl;
             return this;
@@ -107,6 +117,7 @@ public class TarifpreispositionProOrt extends COM {
         public List<TarifpreisstaffelProOrt> getPreisstaffeln() {
             return preisstaffeln;
         }
+    
         public TarifpreispositionProOrtBuilder setPreisstaffeln(List<TarifpreisstaffelProOrt> preisstaffeln) {
             this.preisstaffeln = preisstaffeln;
             return this;

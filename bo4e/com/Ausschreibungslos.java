@@ -90,8 +90,11 @@ public class Ausschreibungslos extends COM {
      */
     private Zeitraum wunschZahlungsziel;
 
-    public Ausschreibungslos() {}
+    public Ausschreibungslos() {
+    }
+
     private Ausschreibungslos(AusschreibungslosBuilder builder) {
+        super(builder);
         this.anzahlLieferstellen = builder.anzahlLieferstellen;
         this.bemerkung = builder.bemerkung;
         this.betreutDurch = builder.betreutDurch;
@@ -114,6 +117,7 @@ public class Ausschreibungslos extends COM {
     public Long getAnzahlLieferstellen() {
         return anzahlLieferstellen;
     }
+
     public void setAnzahlLieferstellen(Long anzahlLieferstellen) {
         this.anzahlLieferstellen = anzahlLieferstellen;
     }
@@ -121,6 +125,7 @@ public class Ausschreibungslos extends COM {
     public String getBemerkung() {
         return bemerkung;
     }
+
     public void setBemerkung(String bemerkung) {
         this.bemerkung = bemerkung;
     }
@@ -128,6 +133,7 @@ public class Ausschreibungslos extends COM {
     public String getBetreutDurch() {
         return betreutDurch;
     }
+
     public void setBetreutDurch(String betreutDurch) {
         this.betreutDurch = betreutDurch;
     }
@@ -135,6 +141,7 @@ public class Ausschreibungslos extends COM {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -142,6 +149,7 @@ public class Ausschreibungslos extends COM {
     public Sparte getEnergieart() {
         return energieart;
     }
+
     public void setEnergieart(Sparte energieart) {
         this.energieart = energieart;
     }
@@ -149,6 +157,7 @@ public class Ausschreibungslos extends COM {
     public Menge getGesamtMenge() {
         return gesamtMenge;
     }
+
     public void setGesamtMenge(Menge gesamtMenge) {
         this.gesamtMenge = gesamtMenge;
     }
@@ -156,6 +165,7 @@ public class Ausschreibungslos extends COM {
     public List<Ausschreibungsdetail> getLieferstellen() {
         return lieferstellen;
     }
+
     public void setLieferstellen(List<Ausschreibungsdetail> lieferstellen) {
         this.lieferstellen = lieferstellen;
     }
@@ -163,6 +173,7 @@ public class Ausschreibungslos extends COM {
     public Zeitraum getLieferzeitraum() {
         return lieferzeitraum;
     }
+
     public void setLieferzeitraum(Zeitraum lieferzeitraum) {
         this.lieferzeitraum = lieferzeitraum;
     }
@@ -170,6 +181,7 @@ public class Ausschreibungslos extends COM {
     public String getLosnummer() {
         return losnummer;
     }
+
     public void setLosnummer(String losnummer) {
         this.losnummer = losnummer;
     }
@@ -177,6 +189,7 @@ public class Ausschreibungslos extends COM {
     public Preismodell getPreismodell() {
         return preismodell;
     }
+
     public void setPreismodell(Preismodell preismodell) {
         this.preismodell = preismodell;
     }
@@ -184,6 +197,7 @@ public class Ausschreibungslos extends COM {
     public Zeitraum getWiederholungsintervall() {
         return wiederholungsintervall;
     }
+
     public void setWiederholungsintervall(Zeitraum wiederholungsintervall) {
         this.wiederholungsintervall = wiederholungsintervall;
     }
@@ -191,6 +205,7 @@ public class Ausschreibungslos extends COM {
     public Zeitraum getWunschKuendingungsfrist() {
         return wunschKuendingungsfrist;
     }
+
     public void setWunschKuendingungsfrist(Zeitraum wunschKuendingungsfrist) {
         this.wunschKuendingungsfrist = wunschKuendingungsfrist;
     }
@@ -198,6 +213,7 @@ public class Ausschreibungslos extends COM {
     public Menge getWunschMaximalmenge() {
         return wunschMaximalmenge;
     }
+
     public void setWunschMaximalmenge(Menge wunschMaximalmenge) {
         this.wunschMaximalmenge = wunschMaximalmenge;
     }
@@ -205,6 +221,7 @@ public class Ausschreibungslos extends COM {
     public Menge getWunschMindestmenge() {
         return wunschMindestmenge;
     }
+
     public void setWunschMindestmenge(Menge wunschMindestmenge) {
         this.wunschMindestmenge = wunschMindestmenge;
     }
@@ -212,6 +229,7 @@ public class Ausschreibungslos extends COM {
     public Rechnungslegung getWunschRechnungslegung() {
         return wunschRechnungslegung;
     }
+
     public void setWunschRechnungslegung(Rechnungslegung wunschRechnungslegung) {
         this.wunschRechnungslegung = wunschRechnungslegung;
     }
@@ -219,6 +237,7 @@ public class Ausschreibungslos extends COM {
     public Vertragsform getWunschVertragsform() {
         return wunschVertragsform;
     }
+
     public void setWunschVertragsform(Vertragsform wunschVertragsform) {
         this.wunschVertragsform = wunschVertragsform;
     }
@@ -226,6 +245,7 @@ public class Ausschreibungslos extends COM {
     public Zeitraum getWunschZahlungsziel() {
         return wunschZahlungsziel;
     }
+
     public void setWunschZahlungsziel(Zeitraum wunschZahlungsziel) {
         this.wunschZahlungsziel = wunschZahlungsziel;
     }
@@ -304,6 +324,7 @@ public class Ausschreibungslos extends COM {
         public Long getAnzahlLieferstellen() {
             return anzahlLieferstellen;
         }
+    
         public AusschreibungslosBuilder setAnzahlLieferstellen(Long anzahlLieferstellen) {
             this.anzahlLieferstellen = anzahlLieferstellen;
             return this;
@@ -312,6 +333,7 @@ public class Ausschreibungslos extends COM {
         public String getBemerkung() {
             return bemerkung;
         }
+    
         public AusschreibungslosBuilder setBemerkung(String bemerkung) {
             this.bemerkung = bemerkung;
             return this;
@@ -320,6 +342,7 @@ public class Ausschreibungslos extends COM {
         public String getBetreutDurch() {
             return betreutDurch;
         }
+    
         public AusschreibungslosBuilder setBetreutDurch(String betreutDurch) {
             this.betreutDurch = betreutDurch;
             return this;
@@ -328,6 +351,7 @@ public class Ausschreibungslos extends COM {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public AusschreibungslosBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;
@@ -336,6 +360,7 @@ public class Ausschreibungslos extends COM {
         public Sparte getEnergieart() {
             return energieart;
         }
+    
         public AusschreibungslosBuilder setEnergieart(Sparte energieart) {
             this.energieart = energieart;
             return this;
@@ -344,6 +369,7 @@ public class Ausschreibungslos extends COM {
         public Menge getGesamtMenge() {
             return gesamtMenge;
         }
+    
         public AusschreibungslosBuilder setGesamtMenge(Menge gesamtMenge) {
             this.gesamtMenge = gesamtMenge;
             return this;
@@ -352,6 +378,7 @@ public class Ausschreibungslos extends COM {
         public List<Ausschreibungsdetail> getLieferstellen() {
             return lieferstellen;
         }
+    
         public AusschreibungslosBuilder setLieferstellen(List<Ausschreibungsdetail> lieferstellen) {
             this.lieferstellen = lieferstellen;
             return this;
@@ -360,6 +387,7 @@ public class Ausschreibungslos extends COM {
         public Zeitraum getLieferzeitraum() {
             return lieferzeitraum;
         }
+    
         public AusschreibungslosBuilder setLieferzeitraum(Zeitraum lieferzeitraum) {
             this.lieferzeitraum = lieferzeitraum;
             return this;
@@ -368,6 +396,7 @@ public class Ausschreibungslos extends COM {
         public String getLosnummer() {
             return losnummer;
         }
+    
         public AusschreibungslosBuilder setLosnummer(String losnummer) {
             this.losnummer = losnummer;
             return this;
@@ -376,6 +405,7 @@ public class Ausschreibungslos extends COM {
         public Preismodell getPreismodell() {
             return preismodell;
         }
+    
         public AusschreibungslosBuilder setPreismodell(Preismodell preismodell) {
             this.preismodell = preismodell;
             return this;
@@ -384,6 +414,7 @@ public class Ausschreibungslos extends COM {
         public Zeitraum getWiederholungsintervall() {
             return wiederholungsintervall;
         }
+    
         public AusschreibungslosBuilder setWiederholungsintervall(Zeitraum wiederholungsintervall) {
             this.wiederholungsintervall = wiederholungsintervall;
             return this;
@@ -392,6 +423,7 @@ public class Ausschreibungslos extends COM {
         public Zeitraum getWunschKuendingungsfrist() {
             return wunschKuendingungsfrist;
         }
+    
         public AusschreibungslosBuilder setWunschKuendingungsfrist(Zeitraum wunschKuendingungsfrist) {
             this.wunschKuendingungsfrist = wunschKuendingungsfrist;
             return this;
@@ -400,6 +432,7 @@ public class Ausschreibungslos extends COM {
         public Menge getWunschMaximalmenge() {
             return wunschMaximalmenge;
         }
+    
         public AusschreibungslosBuilder setWunschMaximalmenge(Menge wunschMaximalmenge) {
             this.wunschMaximalmenge = wunschMaximalmenge;
             return this;
@@ -408,6 +441,7 @@ public class Ausschreibungslos extends COM {
         public Menge getWunschMindestmenge() {
             return wunschMindestmenge;
         }
+    
         public AusschreibungslosBuilder setWunschMindestmenge(Menge wunschMindestmenge) {
             this.wunschMindestmenge = wunschMindestmenge;
             return this;
@@ -416,6 +450,7 @@ public class Ausschreibungslos extends COM {
         public Rechnungslegung getWunschRechnungslegung() {
             return wunschRechnungslegung;
         }
+    
         public AusschreibungslosBuilder setWunschRechnungslegung(Rechnungslegung wunschRechnungslegung) {
             this.wunschRechnungslegung = wunschRechnungslegung;
             return this;
@@ -424,6 +459,7 @@ public class Ausschreibungslos extends COM {
         public Vertragsform getWunschVertragsform() {
             return wunschVertragsform;
         }
+    
         public AusschreibungslosBuilder setWunschVertragsform(Vertragsform wunschVertragsform) {
             this.wunschVertragsform = wunschVertragsform;
             return this;
@@ -432,6 +468,7 @@ public class Ausschreibungslos extends COM {
         public Zeitraum getWunschZahlungsziel() {
             return wunschZahlungsziel;
         }
+    
         public AusschreibungslosBuilder setWunschZahlungsziel(Zeitraum wunschZahlungsziel) {
             this.wunschZahlungsziel = wunschZahlungsziel;
             return this;

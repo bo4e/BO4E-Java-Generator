@@ -75,8 +75,11 @@ public class PreisblattMessung extends Geschaeftsobjekt {
      */
     private Zaehler zaehler;
 
-    public PreisblattMessung() {}
+    public PreisblattMessung() {
+    }
+
     private PreisblattMessung(PreisblattMessungBuilder builder) {
+        super(builder);
         this.bezeichnung = builder.bezeichnung;
         this.bilanzierungsmethode = builder.bilanzierungsmethode;
         this.gueltigkeit = builder.gueltigkeit;
@@ -97,6 +100,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -104,6 +108,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
     public Bilanzierungsmethode getBilanzierungsmethode() {
         return bilanzierungsmethode;
     }
+
     public void setBilanzierungsmethode(Bilanzierungsmethode bilanzierungsmethode) {
         this.bilanzierungsmethode = bilanzierungsmethode;
     }
@@ -111,6 +116,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
     public Zeitraum getGueltigkeit() {
         return gueltigkeit;
     }
+
     public void setGueltigkeit(Zeitraum gueltigkeit) {
         this.gueltigkeit = gueltigkeit;
     }
@@ -118,6 +124,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
     public Marktteilnehmer getHerausgeber() {
         return herausgeber;
     }
+
     public void setHerausgeber(Marktteilnehmer herausgeber) {
         this.herausgeber = herausgeber;
     }
@@ -125,6 +132,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
     public List<Dienstleistungstyp> getInklusiveDienstleistungen() {
         return inklusiveDienstleistungen;
     }
+
     public void setInklusiveDienstleistungen(List<Dienstleistungstyp> inklusiveDienstleistungen) {
         this.inklusiveDienstleistungen = inklusiveDienstleistungen;
     }
@@ -132,6 +140,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
     public List<Geraet> getInklusiveGeraete() {
         return inklusiveGeraete;
     }
+
     public void setInklusiveGeraete(List<Geraet> inklusiveGeraete) {
         this.inklusiveGeraete = inklusiveGeraete;
     }
@@ -139,6 +148,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
     public Netzebene getMessebene() {
         return messebene;
     }
+
     public void setMessebene(Netzebene messebene) {
         this.messebene = messebene;
     }
@@ -146,6 +156,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
     public List<Preisposition> getPreispositionen() {
         return preispositionen;
     }
+
     public void setPreispositionen(List<Preisposition> preispositionen) {
         this.preispositionen = preispositionen;
     }
@@ -153,6 +164,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
     public Preisstatus getPreisstatus() {
         return preisstatus;
     }
+
     public void setPreisstatus(Preisstatus preisstatus) {
         this.preisstatus = preisstatus;
     }
@@ -160,6 +172,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -167,6 +180,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
     public Zaehler getZaehler() {
         return zaehler;
     }
+
     public void setZaehler(Zaehler zaehler) {
         this.zaehler = zaehler;
     }
@@ -221,6 +235,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public PreisblattMessungBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;
@@ -229,6 +244,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
         public Bilanzierungsmethode getBilanzierungsmethode() {
             return bilanzierungsmethode;
         }
+    
         public PreisblattMessungBuilder setBilanzierungsmethode(Bilanzierungsmethode bilanzierungsmethode) {
             this.bilanzierungsmethode = bilanzierungsmethode;
             return this;
@@ -237,6 +253,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
         public Zeitraum getGueltigkeit() {
             return gueltigkeit;
         }
+    
         public PreisblattMessungBuilder setGueltigkeit(Zeitraum gueltigkeit) {
             this.gueltigkeit = gueltigkeit;
             return this;
@@ -245,6 +262,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
         public Marktteilnehmer getHerausgeber() {
             return herausgeber;
         }
+    
         public PreisblattMessungBuilder setHerausgeber(Marktteilnehmer herausgeber) {
             this.herausgeber = herausgeber;
             return this;
@@ -253,6 +271,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
         public List<Dienstleistungstyp> getInklusiveDienstleistungen() {
             return inklusiveDienstleistungen;
         }
+    
         public PreisblattMessungBuilder setInklusiveDienstleistungen(List<Dienstleistungstyp> inklusiveDienstleistungen) {
             this.inklusiveDienstleistungen = inklusiveDienstleistungen;
             return this;
@@ -261,6 +280,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
         public List<Geraet> getInklusiveGeraete() {
             return inklusiveGeraete;
         }
+    
         public PreisblattMessungBuilder setInklusiveGeraete(List<Geraet> inklusiveGeraete) {
             this.inklusiveGeraete = inklusiveGeraete;
             return this;
@@ -269,6 +289,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
         public Netzebene getMessebene() {
             return messebene;
         }
+    
         public PreisblattMessungBuilder setMessebene(Netzebene messebene) {
             this.messebene = messebene;
             return this;
@@ -277,6 +298,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
         public List<Preisposition> getPreispositionen() {
             return preispositionen;
         }
+    
         public PreisblattMessungBuilder setPreispositionen(List<Preisposition> preispositionen) {
             this.preispositionen = preispositionen;
             return this;
@@ -285,6 +307,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
         public Preisstatus getPreisstatus() {
             return preisstatus;
         }
+    
         public PreisblattMessungBuilder setPreisstatus(Preisstatus preisstatus) {
             this.preisstatus = preisstatus;
             return this;
@@ -293,6 +316,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public PreisblattMessungBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;
@@ -301,6 +325,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
         public Zaehler getZaehler() {
             return zaehler;
         }
+    
         public PreisblattMessungBuilder setZaehler(Zaehler zaehler) {
             this.zaehler = zaehler;
             return this;

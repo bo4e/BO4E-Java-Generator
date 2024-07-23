@@ -32,8 +32,11 @@ public class Standorteigenschaften extends Geschaeftsobjekt {
      */
     private List<StandorteigenschaftenStrom> eigenschaftenStrom;
 
-    public Standorteigenschaften() {}
+    public Standorteigenschaften() {
+    }
+
     private Standorteigenschaften(StandorteigenschaftenBuilder builder) {
+        super(builder);
         this.eigenschaftenGas = builder.eigenschaftenGas;
         this.eigenschaftenStrom = builder.eigenschaftenStrom;
     }
@@ -45,6 +48,7 @@ public class Standorteigenschaften extends Geschaeftsobjekt {
     public StandorteigenschaftenGas getEigenschaftenGas() {
         return eigenschaftenGas;
     }
+
     public void setEigenschaftenGas(StandorteigenschaftenGas eigenschaftenGas) {
         this.eigenschaftenGas = eigenschaftenGas;
     }
@@ -52,6 +56,7 @@ public class Standorteigenschaften extends Geschaeftsobjekt {
     public List<StandorteigenschaftenStrom> getEigenschaftenStrom() {
         return eigenschaftenStrom;
     }
+
     public void setEigenschaftenStrom(List<StandorteigenschaftenStrom> eigenschaftenStrom) {
         this.eigenschaftenStrom = eigenschaftenStrom;
     }
@@ -69,6 +74,7 @@ public class Standorteigenschaften extends Geschaeftsobjekt {
         public StandorteigenschaftenGas getEigenschaftenGas() {
             return eigenschaftenGas;
         }
+    
         public StandorteigenschaftenBuilder setEigenschaftenGas(StandorteigenschaftenGas eigenschaftenGas) {
             this.eigenschaftenGas = eigenschaftenGas;
             return this;
@@ -77,6 +83,7 @@ public class Standorteigenschaften extends Geschaeftsobjekt {
         public List<StandorteigenschaftenStrom> getEigenschaftenStrom() {
             return eigenschaftenStrom;
         }
+    
         public StandorteigenschaftenBuilder setEigenschaftenStrom(List<StandorteigenschaftenStrom> eigenschaftenStrom) {
             this.eigenschaftenStrom = eigenschaftenStrom;
             return this;

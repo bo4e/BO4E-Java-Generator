@@ -79,8 +79,11 @@ public class Preisposition extends COM {
      */
     private Bemessungsgroesse zonungsgroesse;
 
-    public Preisposition() {}
+    public Preisposition() {
+    }
+
     private Preisposition(PreispositionBuilder builder) {
+        super(builder);
         this.bdewArtikelnummer = builder.bdewArtikelnummer;
         this.berechnungsmethode = builder.berechnungsmethode;
         this.bezugsgroesse = builder.bezugsgroesse;
@@ -99,6 +102,7 @@ public class Preisposition extends COM {
     public BDEWArtikelnummer getBdewArtikelnummer() {
         return bdewArtikelnummer;
     }
+
     public void setBdewArtikelnummer(BDEWArtikelnummer bdewArtikelnummer) {
         this.bdewArtikelnummer = bdewArtikelnummer;
     }
@@ -106,6 +110,7 @@ public class Preisposition extends COM {
     public Kalkulationsmethode getBerechnungsmethode() {
         return berechnungsmethode;
     }
+
     public void setBerechnungsmethode(Kalkulationsmethode berechnungsmethode) {
         this.berechnungsmethode = berechnungsmethode;
     }
@@ -113,6 +118,7 @@ public class Preisposition extends COM {
     public Mengeneinheit getBezugsgroesse() {
         return bezugsgroesse;
     }
+
     public void setBezugsgroesse(Mengeneinheit bezugsgroesse) {
         this.bezugsgroesse = bezugsgroesse;
     }
@@ -120,6 +126,7 @@ public class Preisposition extends COM {
     public Double getFreimengeBlindarbeit() {
         return freimengeBlindarbeit;
     }
+
     public void setFreimengeBlindarbeit(Double freimengeBlindarbeit) {
         this.freimengeBlindarbeit = freimengeBlindarbeit;
     }
@@ -127,6 +134,7 @@ public class Preisposition extends COM {
     public Double getFreimengeLeistungsfaktor() {
         return freimengeLeistungsfaktor;
     }
+
     public void setFreimengeLeistungsfaktor(Double freimengeLeistungsfaktor) {
         this.freimengeLeistungsfaktor = freimengeLeistungsfaktor;
     }
@@ -134,6 +142,7 @@ public class Preisposition extends COM {
     public String getGruppenartikelId() {
         return gruppenartikelId;
     }
+
     public void setGruppenartikelId(String gruppenartikelId) {
         this.gruppenartikelId = gruppenartikelId;
     }
@@ -141,6 +150,7 @@ public class Preisposition extends COM {
     public String getLeistungsbezeichnung() {
         return leistungsbezeichnung;
     }
+
     public void setLeistungsbezeichnung(String leistungsbezeichnung) {
         this.leistungsbezeichnung = leistungsbezeichnung;
     }
@@ -148,6 +158,7 @@ public class Preisposition extends COM {
     public Leistungstyp getLeistungstyp() {
         return leistungstyp;
     }
+
     public void setLeistungstyp(Leistungstyp leistungstyp) {
         this.leistungstyp = leistungstyp;
     }
@@ -155,6 +166,7 @@ public class Preisposition extends COM {
     public Waehrungseinheit getPreiseinheit() {
         return preiseinheit;
     }
+
     public void setPreiseinheit(Waehrungseinheit preiseinheit) {
         this.preiseinheit = preiseinheit;
     }
@@ -162,6 +174,7 @@ public class Preisposition extends COM {
     public List<Preisstaffel> getPreisstaffeln() {
         return preisstaffeln;
     }
+
     public void setPreisstaffeln(List<Preisstaffel> preisstaffeln) {
         this.preisstaffeln = preisstaffeln;
     }
@@ -169,6 +182,7 @@ public class Preisposition extends COM {
     public Tarifzeit getTarifzeit() {
         return tarifzeit;
     }
+
     public void setTarifzeit(Tarifzeit tarifzeit) {
         this.tarifzeit = tarifzeit;
     }
@@ -176,6 +190,7 @@ public class Preisposition extends COM {
     public Mengeneinheit getZeitbasis() {
         return zeitbasis;
     }
+
     public void setZeitbasis(Mengeneinheit zeitbasis) {
         this.zeitbasis = zeitbasis;
     }
@@ -183,6 +198,7 @@ public class Preisposition extends COM {
     public Bemessungsgroesse getZonungsgroesse() {
         return zonungsgroesse;
     }
+
     public void setZonungsgroesse(Bemessungsgroesse zonungsgroesse) {
         this.zonungsgroesse = zonungsgroesse;
     }
@@ -247,6 +263,7 @@ public class Preisposition extends COM {
         public BDEWArtikelnummer getBdewArtikelnummer() {
             return bdewArtikelnummer;
         }
+    
         public PreispositionBuilder setBdewArtikelnummer(BDEWArtikelnummer bdewArtikelnummer) {
             this.bdewArtikelnummer = bdewArtikelnummer;
             return this;
@@ -255,6 +272,7 @@ public class Preisposition extends COM {
         public Kalkulationsmethode getBerechnungsmethode() {
             return berechnungsmethode;
         }
+    
         public PreispositionBuilder setBerechnungsmethode(Kalkulationsmethode berechnungsmethode) {
             this.berechnungsmethode = berechnungsmethode;
             return this;
@@ -263,6 +281,7 @@ public class Preisposition extends COM {
         public Mengeneinheit getBezugsgroesse() {
             return bezugsgroesse;
         }
+    
         public PreispositionBuilder setBezugsgroesse(Mengeneinheit bezugsgroesse) {
             this.bezugsgroesse = bezugsgroesse;
             return this;
@@ -271,6 +290,7 @@ public class Preisposition extends COM {
         public Double getFreimengeBlindarbeit() {
             return freimengeBlindarbeit;
         }
+    
         public PreispositionBuilder setFreimengeBlindarbeit(Double freimengeBlindarbeit) {
             this.freimengeBlindarbeit = freimengeBlindarbeit;
             return this;
@@ -279,6 +299,7 @@ public class Preisposition extends COM {
         public Double getFreimengeLeistungsfaktor() {
             return freimengeLeistungsfaktor;
         }
+    
         public PreispositionBuilder setFreimengeLeistungsfaktor(Double freimengeLeistungsfaktor) {
             this.freimengeLeistungsfaktor = freimengeLeistungsfaktor;
             return this;
@@ -287,6 +308,7 @@ public class Preisposition extends COM {
         public String getGruppenartikelId() {
             return gruppenartikelId;
         }
+    
         public PreispositionBuilder setGruppenartikelId(String gruppenartikelId) {
             this.gruppenartikelId = gruppenartikelId;
             return this;
@@ -295,6 +317,7 @@ public class Preisposition extends COM {
         public String getLeistungsbezeichnung() {
             return leistungsbezeichnung;
         }
+    
         public PreispositionBuilder setLeistungsbezeichnung(String leistungsbezeichnung) {
             this.leistungsbezeichnung = leistungsbezeichnung;
             return this;
@@ -303,6 +326,7 @@ public class Preisposition extends COM {
         public Leistungstyp getLeistungstyp() {
             return leistungstyp;
         }
+    
         public PreispositionBuilder setLeistungstyp(Leistungstyp leistungstyp) {
             this.leistungstyp = leistungstyp;
             return this;
@@ -311,6 +335,7 @@ public class Preisposition extends COM {
         public Waehrungseinheit getPreiseinheit() {
             return preiseinheit;
         }
+    
         public PreispositionBuilder setPreiseinheit(Waehrungseinheit preiseinheit) {
             this.preiseinheit = preiseinheit;
             return this;
@@ -319,6 +344,7 @@ public class Preisposition extends COM {
         public List<Preisstaffel> getPreisstaffeln() {
             return preisstaffeln;
         }
+    
         public PreispositionBuilder setPreisstaffeln(List<Preisstaffel> preisstaffeln) {
             this.preisstaffeln = preisstaffeln;
             return this;
@@ -327,6 +353,7 @@ public class Preisposition extends COM {
         public Tarifzeit getTarifzeit() {
             return tarifzeit;
         }
+    
         public PreispositionBuilder setTarifzeit(Tarifzeit tarifzeit) {
             this.tarifzeit = tarifzeit;
             return this;
@@ -335,6 +362,7 @@ public class Preisposition extends COM {
         public Mengeneinheit getZeitbasis() {
             return zeitbasis;
         }
+    
         public PreispositionBuilder setZeitbasis(Mengeneinheit zeitbasis) {
             this.zeitbasis = zeitbasis;
             return this;
@@ -343,6 +371,7 @@ public class Preisposition extends COM {
         public Bemessungsgroesse getZonungsgroesse() {
             return zonungsgroesse;
         }
+    
         public PreispositionBuilder setZonungsgroesse(Bemessungsgroesse zonungsgroesse) {
             this.zonungsgroesse = zonungsgroesse;
             return this;

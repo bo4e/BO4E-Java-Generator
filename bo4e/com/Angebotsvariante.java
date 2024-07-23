@@ -43,8 +43,11 @@ public class Angebotsvariante extends COM {
      */
     private List<Angebotsteil> teile;
 
-    public Angebotsvariante() {}
+    public Angebotsvariante() {
+    }
+
     private Angebotsvariante(AngebotsvarianteBuilder builder) {
+        super(builder);
         this.angebotsstatus = builder.angebotsstatus;
         this.bindefrist = builder.bindefrist;
         this.erstellungsdatum = builder.erstellungsdatum;
@@ -56,6 +59,7 @@ public class Angebotsvariante extends COM {
     public Angebotsstatus getAngebotsstatus() {
         return angebotsstatus;
     }
+
     public void setAngebotsstatus(Angebotsstatus angebotsstatus) {
         this.angebotsstatus = angebotsstatus;
     }
@@ -63,6 +67,7 @@ public class Angebotsvariante extends COM {
     public OffsetDateTime getBindefrist() {
         return bindefrist;
     }
+
     public void setBindefrist(OffsetDateTime bindefrist) {
         this.bindefrist = bindefrist;
     }
@@ -70,6 +75,7 @@ public class Angebotsvariante extends COM {
     public OffsetDateTime getErstellungsdatum() {
         return erstellungsdatum;
     }
+
     public void setErstellungsdatum(OffsetDateTime erstellungsdatum) {
         this.erstellungsdatum = erstellungsdatum;
     }
@@ -77,6 +83,7 @@ public class Angebotsvariante extends COM {
     public Betrag getGesamtkosten() {
         return gesamtkosten;
     }
+
     public void setGesamtkosten(Betrag gesamtkosten) {
         this.gesamtkosten = gesamtkosten;
     }
@@ -84,6 +91,7 @@ public class Angebotsvariante extends COM {
     public Menge getGesamtmenge() {
         return gesamtmenge;
     }
+
     public void setGesamtmenge(Menge gesamtmenge) {
         this.gesamtmenge = gesamtmenge;
     }
@@ -91,6 +99,7 @@ public class Angebotsvariante extends COM {
     public List<Angebotsteil> getTeile() {
         return teile;
     }
+
     public void setTeile(List<Angebotsteil> teile) {
         this.teile = teile;
     }
@@ -124,6 +133,7 @@ public class Angebotsvariante extends COM {
         public Angebotsstatus getAngebotsstatus() {
             return angebotsstatus;
         }
+    
         public AngebotsvarianteBuilder setAngebotsstatus(Angebotsstatus angebotsstatus) {
             this.angebotsstatus = angebotsstatus;
             return this;
@@ -132,6 +142,7 @@ public class Angebotsvariante extends COM {
         public OffsetDateTime getBindefrist() {
             return bindefrist;
         }
+    
         public AngebotsvarianteBuilder setBindefrist(OffsetDateTime bindefrist) {
             this.bindefrist = bindefrist;
             return this;
@@ -140,6 +151,7 @@ public class Angebotsvariante extends COM {
         public OffsetDateTime getErstellungsdatum() {
             return erstellungsdatum;
         }
+    
         public AngebotsvarianteBuilder setErstellungsdatum(OffsetDateTime erstellungsdatum) {
             this.erstellungsdatum = erstellungsdatum;
             return this;
@@ -148,6 +160,7 @@ public class Angebotsvariante extends COM {
         public Betrag getGesamtkosten() {
             return gesamtkosten;
         }
+    
         public AngebotsvarianteBuilder setGesamtkosten(Betrag gesamtkosten) {
             this.gesamtkosten = gesamtkosten;
             return this;
@@ -156,6 +169,7 @@ public class Angebotsvariante extends COM {
         public Menge getGesamtmenge() {
             return gesamtmenge;
         }
+    
         public AngebotsvarianteBuilder setGesamtmenge(Menge gesamtmenge) {
             this.gesamtmenge = gesamtmenge;
             return this;
@@ -164,6 +178,7 @@ public class Angebotsvariante extends COM {
         public List<Angebotsteil> getTeile() {
             return teile;
         }
+    
         public AngebotsvarianteBuilder setTeile(List<Angebotsteil> teile) {
             this.teile = teile;
             return this;

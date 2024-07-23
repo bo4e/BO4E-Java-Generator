@@ -34,8 +34,11 @@ public class Kontaktweg extends COM {
      */
     private String kontaktwert;
 
-    public Kontaktweg() {}
+    public Kontaktweg() {
+    }
+
     private Kontaktweg(KontaktwegBuilder builder) {
+        super(builder);
         this.beschreibung = builder.beschreibung;
         this.istBevorzugterKontaktweg = builder.istBevorzugterKontaktweg;
         this.kontaktart = builder.kontaktart;
@@ -45,6 +48,7 @@ public class Kontaktweg extends COM {
     public String getBeschreibung() {
         return beschreibung;
     }
+
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
@@ -52,6 +56,7 @@ public class Kontaktweg extends COM {
     public Boolean getIstBevorzugterKontaktweg() {
         return istBevorzugterKontaktweg;
     }
+
     public void setIstBevorzugterKontaktweg(Boolean istBevorzugterKontaktweg) {
         this.istBevorzugterKontaktweg = istBevorzugterKontaktweg;
     }
@@ -59,6 +64,7 @@ public class Kontaktweg extends COM {
     public Kontaktart getKontaktart() {
         return kontaktart;
     }
+
     public void setKontaktart(Kontaktart kontaktart) {
         this.kontaktart = kontaktart;
     }
@@ -66,6 +72,7 @@ public class Kontaktweg extends COM {
     public String getKontaktwert() {
         return kontaktwert;
     }
+
     public void setKontaktwert(String kontaktwert) {
         this.kontaktwert = kontaktwert;
     }
@@ -91,6 +98,7 @@ public class Kontaktweg extends COM {
         public String getBeschreibung() {
             return beschreibung;
         }
+    
         public KontaktwegBuilder setBeschreibung(String beschreibung) {
             this.beschreibung = beschreibung;
             return this;
@@ -99,6 +107,7 @@ public class Kontaktweg extends COM {
         public Boolean getIstBevorzugterKontaktweg() {
             return istBevorzugterKontaktweg;
         }
+    
         public KontaktwegBuilder setIstBevorzugterKontaktweg(Boolean istBevorzugterKontaktweg) {
             this.istBevorzugterKontaktweg = istBevorzugterKontaktweg;
             return this;
@@ -107,6 +116,7 @@ public class Kontaktweg extends COM {
         public Kontaktart getKontaktart() {
             return kontaktart;
         }
+    
         public KontaktwegBuilder setKontaktart(Kontaktart kontaktart) {
             this.kontaktart = kontaktart;
             return this;
@@ -115,6 +125,7 @@ public class Kontaktweg extends COM {
         public String getKontaktwert() {
             return kontaktwert;
         }
+    
         public KontaktwegBuilder setKontaktwert(String kontaktwert) {
             this.kontaktwert = kontaktwert;
             return this;

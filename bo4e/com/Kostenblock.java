@@ -29,8 +29,11 @@ public class Kostenblock extends COM {
      */
     private Betrag summeKostenblock;
 
-    public Kostenblock() {}
+    public Kostenblock() {
+    }
+
     private Kostenblock(KostenblockBuilder builder) {
+        super(builder);
         this.kostenblockbezeichnung = builder.kostenblockbezeichnung;
         this.kostenpositionen = builder.kostenpositionen;
         this.summeKostenblock = builder.summeKostenblock;
@@ -39,6 +42,7 @@ public class Kostenblock extends COM {
     public String getKostenblockbezeichnung() {
         return kostenblockbezeichnung;
     }
+
     public void setKostenblockbezeichnung(String kostenblockbezeichnung) {
         this.kostenblockbezeichnung = kostenblockbezeichnung;
     }
@@ -46,6 +50,7 @@ public class Kostenblock extends COM {
     public List<Kostenposition> getKostenpositionen() {
         return kostenpositionen;
     }
+
     public void setKostenpositionen(List<Kostenposition> kostenpositionen) {
         this.kostenpositionen = kostenpositionen;
     }
@@ -53,6 +58,7 @@ public class Kostenblock extends COM {
     public Betrag getSummeKostenblock() {
         return summeKostenblock;
     }
+
     public void setSummeKostenblock(Betrag summeKostenblock) {
         this.summeKostenblock = summeKostenblock;
     }
@@ -76,6 +82,7 @@ public class Kostenblock extends COM {
         public String getKostenblockbezeichnung() {
             return kostenblockbezeichnung;
         }
+    
         public KostenblockBuilder setKostenblockbezeichnung(String kostenblockbezeichnung) {
             this.kostenblockbezeichnung = kostenblockbezeichnung;
             return this;
@@ -84,6 +91,7 @@ public class Kostenblock extends COM {
         public List<Kostenposition> getKostenpositionen() {
             return kostenpositionen;
         }
+    
         public KostenblockBuilder setKostenpositionen(List<Kostenposition> kostenpositionen) {
             this.kostenpositionen = kostenpositionen;
             return this;
@@ -92,6 +100,7 @@ public class Kostenblock extends COM {
         public Betrag getSummeKostenblock() {
             return summeKostenblock;
         }
+    
         public KostenblockBuilder setSummeKostenblock(Betrag summeKostenblock) {
             this.summeKostenblock = summeKostenblock;
             return this;

@@ -33,8 +33,11 @@ public class Regionskriterium extends COM {
      */
     private String wert;
 
-    public Regionskriterium() {}
+    public Regionskriterium() {
+    }
+
     private Regionskriterium(RegionskriteriumBuilder builder) {
+        super(builder);
         this.gueltigkeitstyp = builder.gueltigkeitstyp;
         this.regionskriteriumtyp = builder.regionskriteriumtyp;
         this.wert = builder.wert;
@@ -43,6 +46,7 @@ public class Regionskriterium extends COM {
     public Gueltigkeitstyp getGueltigkeitstyp() {
         return gueltigkeitstyp;
     }
+
     public void setGueltigkeitstyp(Gueltigkeitstyp gueltigkeitstyp) {
         this.gueltigkeitstyp = gueltigkeitstyp;
     }
@@ -50,6 +54,7 @@ public class Regionskriterium extends COM {
     public Regionskriteriumtyp getRegionskriteriumtyp() {
         return regionskriteriumtyp;
     }
+
     public void setRegionskriteriumtyp(Regionskriteriumtyp regionskriteriumtyp) {
         this.regionskriteriumtyp = regionskriteriumtyp;
     }
@@ -57,6 +62,7 @@ public class Regionskriterium extends COM {
     public String getWert() {
         return wert;
     }
+
     public void setWert(String wert) {
         this.wert = wert;
     }
@@ -80,6 +86,7 @@ public class Regionskriterium extends COM {
         public Gueltigkeitstyp getGueltigkeitstyp() {
             return gueltigkeitstyp;
         }
+    
         public RegionskriteriumBuilder setGueltigkeitstyp(Gueltigkeitstyp gueltigkeitstyp) {
             this.gueltigkeitstyp = gueltigkeitstyp;
             return this;
@@ -88,6 +95,7 @@ public class Regionskriterium extends COM {
         public Regionskriteriumtyp getRegionskriteriumtyp() {
             return regionskriteriumtyp;
         }
+    
         public RegionskriteriumBuilder setRegionskriteriumtyp(Regionskriteriumtyp regionskriteriumtyp) {
             this.regionskriteriumtyp = regionskriteriumtyp;
             return this;
@@ -96,6 +104,7 @@ public class Regionskriterium extends COM {
         public String getWert() {
             return wert;
         }
+    
         public RegionskriteriumBuilder setWert(String wert) {
             this.wert = wert;
             return this;

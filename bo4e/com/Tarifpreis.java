@@ -45,8 +45,11 @@ public class Tarifpreis extends COM {
      */
     private Double wert;
 
-    public Tarifpreis() {}
+    public Tarifpreis() {
+    }
+
     private Tarifpreis(TarifpreisBuilder builder) {
+        super(builder);
         this.beschreibung = builder.beschreibung;
         this.bezugswert = builder.bezugswert;
         this.einheit = builder.einheit;
@@ -58,6 +61,7 @@ public class Tarifpreis extends COM {
     public String getBeschreibung() {
         return beschreibung;
     }
+
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
@@ -65,6 +69,7 @@ public class Tarifpreis extends COM {
     public Mengeneinheit getBezugswert() {
         return bezugswert;
     }
+
     public void setBezugswert(Mengeneinheit bezugswert) {
         this.bezugswert = bezugswert;
     }
@@ -72,6 +77,7 @@ public class Tarifpreis extends COM {
     public Waehrungseinheit getEinheit() {
         return einheit;
     }
+
     public void setEinheit(Waehrungseinheit einheit) {
         this.einheit = einheit;
     }
@@ -79,6 +85,7 @@ public class Tarifpreis extends COM {
     public Preistyp getPreistyp() {
         return preistyp;
     }
+
     public void setPreistyp(Preistyp preistyp) {
         this.preistyp = preistyp;
     }
@@ -86,6 +93,7 @@ public class Tarifpreis extends COM {
     public Preisstatus getStatus() {
         return status;
     }
+
     public void setStatus(Preisstatus status) {
         this.status = status;
     }
@@ -93,6 +101,7 @@ public class Tarifpreis extends COM {
     public Double getWert() {
         return wert;
     }
+
     public void setWert(Double wert) {
         this.wert = wert;
     }
@@ -127,6 +136,7 @@ public class Tarifpreis extends COM {
         public String getBeschreibung() {
             return beschreibung;
         }
+    
         public TarifpreisBuilder setBeschreibung(String beschreibung) {
             this.beschreibung = beschreibung;
             return this;
@@ -135,6 +145,7 @@ public class Tarifpreis extends COM {
         public Mengeneinheit getBezugswert() {
             return bezugswert;
         }
+    
         public TarifpreisBuilder setBezugswert(Mengeneinheit bezugswert) {
             this.bezugswert = bezugswert;
             return this;
@@ -143,6 +154,7 @@ public class Tarifpreis extends COM {
         public Waehrungseinheit getEinheit() {
             return einheit;
         }
+    
         public TarifpreisBuilder setEinheit(Waehrungseinheit einheit) {
             this.einheit = einheit;
             return this;
@@ -151,6 +163,7 @@ public class Tarifpreis extends COM {
         public Preistyp getPreistyp() {
             return preistyp;
         }
+    
         public TarifpreisBuilder setPreistyp(Preistyp preistyp) {
             this.preistyp = preistyp;
             return this;
@@ -159,6 +172,7 @@ public class Tarifpreis extends COM {
         public Preisstatus getStatus() {
             return status;
         }
+    
         public TarifpreisBuilder setStatus(Preisstatus status) {
             this.status = status;
             return this;
@@ -167,6 +181,7 @@ public class Tarifpreis extends COM {
         public Double getWert() {
             return wert;
         }
+    
         public TarifpreisBuilder setWert(Double wert) {
             this.wert = wert;
             return this;

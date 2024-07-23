@@ -69,8 +69,11 @@ public class Person extends Geschaeftsobjekt {
      */
     private List<Zustaendigkeit> zustaendigkeiten;
 
-    public Person() {}
+    public Person() {
+    }
+
     private Person(PersonBuilder builder) {
+        super(builder);
         this.adresse = builder.adresse;
         this.anrede = builder.anrede;
         this.geburtsdatum = builder.geburtsdatum;
@@ -90,6 +93,7 @@ public class Person extends Geschaeftsobjekt {
     public Adresse getAdresse() {
         return adresse;
     }
+
     public void setAdresse(Adresse adresse) {
         this.adresse = adresse;
     }
@@ -97,6 +101,7 @@ public class Person extends Geschaeftsobjekt {
     public Anrede getAnrede() {
         return anrede;
     }
+
     public void setAnrede(Anrede anrede) {
         this.anrede = anrede;
     }
@@ -104,6 +109,7 @@ public class Person extends Geschaeftsobjekt {
     public OffsetDateTime getGeburtsdatum() {
         return geburtsdatum;
     }
+
     public void setGeburtsdatum(OffsetDateTime geburtsdatum) {
         this.geburtsdatum = geburtsdatum;
     }
@@ -111,6 +117,7 @@ public class Person extends Geschaeftsobjekt {
     public String getIndividuelleAnrede() {
         return individuelleAnrede;
     }
+
     public void setIndividuelleAnrede(String individuelleAnrede) {
         this.individuelleAnrede = individuelleAnrede;
     }
@@ -118,6 +125,7 @@ public class Person extends Geschaeftsobjekt {
     public String getKommentar() {
         return kommentar;
     }
+
     public void setKommentar(String kommentar) {
         this.kommentar = kommentar;
     }
@@ -125,6 +133,7 @@ public class Person extends Geschaeftsobjekt {
     public List<Kontaktweg> getKontaktwege() {
         return kontaktwege;
     }
+
     public void setKontaktwege(List<Kontaktweg> kontaktwege) {
         this.kontaktwege = kontaktwege;
     }
@@ -132,6 +141,7 @@ public class Person extends Geschaeftsobjekt {
     public String getNachname() {
         return nachname;
     }
+
     public void setNachname(String nachname) {
         this.nachname = nachname;
     }
@@ -139,6 +149,7 @@ public class Person extends Geschaeftsobjekt {
     public Titel getTitel() {
         return titel;
     }
+
     public void setTitel(Titel titel) {
         this.titel = titel;
     }
@@ -146,6 +157,7 @@ public class Person extends Geschaeftsobjekt {
     public String getVorname() {
         return vorname;
     }
+
     public void setVorname(String vorname) {
         this.vorname = vorname;
     }
@@ -153,6 +165,7 @@ public class Person extends Geschaeftsobjekt {
     public List<Zustaendigkeit> getZustaendigkeiten() {
         return zustaendigkeiten;
     }
+
     public void setZustaendigkeiten(List<Zustaendigkeit> zustaendigkeiten) {
         this.zustaendigkeiten = zustaendigkeiten;
     }
@@ -204,6 +217,7 @@ public class Person extends Geschaeftsobjekt {
         public Adresse getAdresse() {
             return adresse;
         }
+    
         public PersonBuilder setAdresse(Adresse adresse) {
             this.adresse = adresse;
             return this;
@@ -212,6 +226,7 @@ public class Person extends Geschaeftsobjekt {
         public Anrede getAnrede() {
             return anrede;
         }
+    
         public PersonBuilder setAnrede(Anrede anrede) {
             this.anrede = anrede;
             return this;
@@ -220,6 +235,7 @@ public class Person extends Geschaeftsobjekt {
         public OffsetDateTime getGeburtsdatum() {
             return geburtsdatum;
         }
+    
         public PersonBuilder setGeburtsdatum(OffsetDateTime geburtsdatum) {
             this.geburtsdatum = geburtsdatum;
             return this;
@@ -228,6 +244,7 @@ public class Person extends Geschaeftsobjekt {
         public String getIndividuelleAnrede() {
             return individuelleAnrede;
         }
+    
         public PersonBuilder setIndividuelleAnrede(String individuelleAnrede) {
             this.individuelleAnrede = individuelleAnrede;
             return this;
@@ -236,6 +253,7 @@ public class Person extends Geschaeftsobjekt {
         public String getKommentar() {
             return kommentar;
         }
+    
         public PersonBuilder setKommentar(String kommentar) {
             this.kommentar = kommentar;
             return this;
@@ -244,6 +262,7 @@ public class Person extends Geschaeftsobjekt {
         public List<Kontaktweg> getKontaktwege() {
             return kontaktwege;
         }
+    
         public PersonBuilder setKontaktwege(List<Kontaktweg> kontaktwege) {
             this.kontaktwege = kontaktwege;
             return this;
@@ -252,6 +271,7 @@ public class Person extends Geschaeftsobjekt {
         public String getNachname() {
             return nachname;
         }
+    
         public PersonBuilder setNachname(String nachname) {
             this.nachname = nachname;
             return this;
@@ -260,6 +280,7 @@ public class Person extends Geschaeftsobjekt {
         public Titel getTitel() {
             return titel;
         }
+    
         public PersonBuilder setTitel(Titel titel) {
             this.titel = titel;
             return this;
@@ -268,6 +289,7 @@ public class Person extends Geschaeftsobjekt {
         public String getVorname() {
             return vorname;
         }
+    
         public PersonBuilder setVorname(String vorname) {
             this.vorname = vorname;
             return this;
@@ -276,6 +298,7 @@ public class Person extends Geschaeftsobjekt {
         public List<Zustaendigkeit> getZustaendigkeiten() {
             return zustaendigkeiten;
         }
+    
         public PersonBuilder setZustaendigkeiten(List<Zustaendigkeit> zustaendigkeiten) {
             this.zustaendigkeiten = zustaendigkeiten;
             return this;

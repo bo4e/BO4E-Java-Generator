@@ -43,8 +43,11 @@ public class PositionsAufAbschlag extends COM {
      */
     private String bezeichnung;
 
-    public PositionsAufAbschlag() {}
+    public PositionsAufAbschlag() {
+    }
+
     private PositionsAufAbschlag(PositionsAufAbschlagBuilder builder) {
+        super(builder);
         this.aufAbschlagstyp = builder.aufAbschlagstyp;
         this.aufAbschlagswaehrung = builder.aufAbschlagswaehrung;
         this.aufAbschlagswert = builder.aufAbschlagswert;
@@ -55,6 +58,7 @@ public class PositionsAufAbschlag extends COM {
     public AufAbschlagstyp getAufAbschlagstyp() {
         return aufAbschlagstyp;
     }
+
     public void setAufAbschlagstyp(AufAbschlagstyp aufAbschlagstyp) {
         this.aufAbschlagstyp = aufAbschlagstyp;
     }
@@ -62,6 +66,7 @@ public class PositionsAufAbschlag extends COM {
     public Waehrungseinheit getAufAbschlagswaehrung() {
         return aufAbschlagswaehrung;
     }
+
     public void setAufAbschlagswaehrung(Waehrungseinheit aufAbschlagswaehrung) {
         this.aufAbschlagswaehrung = aufAbschlagswaehrung;
     }
@@ -69,6 +74,7 @@ public class PositionsAufAbschlag extends COM {
     public Double getAufAbschlagswert() {
         return aufAbschlagswert;
     }
+
     public void setAufAbschlagswert(Double aufAbschlagswert) {
         this.aufAbschlagswert = aufAbschlagswert;
     }
@@ -76,6 +82,7 @@ public class PositionsAufAbschlag extends COM {
     public String getBeschreibung() {
         return beschreibung;
     }
+
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
@@ -83,6 +90,7 @@ public class PositionsAufAbschlag extends COM {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -112,6 +120,7 @@ public class PositionsAufAbschlag extends COM {
         public AufAbschlagstyp getAufAbschlagstyp() {
             return aufAbschlagstyp;
         }
+    
         public PositionsAufAbschlagBuilder setAufAbschlagstyp(AufAbschlagstyp aufAbschlagstyp) {
             this.aufAbschlagstyp = aufAbschlagstyp;
             return this;
@@ -120,6 +129,7 @@ public class PositionsAufAbschlag extends COM {
         public Waehrungseinheit getAufAbschlagswaehrung() {
             return aufAbschlagswaehrung;
         }
+    
         public PositionsAufAbschlagBuilder setAufAbschlagswaehrung(Waehrungseinheit aufAbschlagswaehrung) {
             this.aufAbschlagswaehrung = aufAbschlagswaehrung;
             return this;
@@ -128,6 +138,7 @@ public class PositionsAufAbschlag extends COM {
         public Double getAufAbschlagswert() {
             return aufAbschlagswert;
         }
+    
         public PositionsAufAbschlagBuilder setAufAbschlagswert(Double aufAbschlagswert) {
             this.aufAbschlagswert = aufAbschlagswert;
             return this;
@@ -136,6 +147,7 @@ public class PositionsAufAbschlag extends COM {
         public String getBeschreibung() {
             return beschreibung;
         }
+    
         public PositionsAufAbschlagBuilder setBeschreibung(String beschreibung) {
             this.beschreibung = beschreibung;
             return this;
@@ -144,6 +156,7 @@ public class PositionsAufAbschlag extends COM {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public PositionsAufAbschlagBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;

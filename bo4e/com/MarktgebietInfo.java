@@ -24,8 +24,11 @@ public class MarktgebietInfo extends COM {
      */
     private String marktgebietcode;
 
-    public MarktgebietInfo() {}
+    public MarktgebietInfo() {
+    }
+
     private MarktgebietInfo(MarktgebietInfoBuilder builder) {
+        super(builder);
         this.marktgebiet = builder.marktgebiet;
         this.marktgebietcode = builder.marktgebietcode;
     }
@@ -33,6 +36,7 @@ public class MarktgebietInfo extends COM {
     public String getMarktgebiet() {
         return marktgebiet;
     }
+
     public void setMarktgebiet(String marktgebiet) {
         this.marktgebiet = marktgebiet;
     }
@@ -40,6 +44,7 @@ public class MarktgebietInfo extends COM {
     public String getMarktgebietcode() {
         return marktgebietcode;
     }
+
     public void setMarktgebietcode(String marktgebietcode) {
         this.marktgebietcode = marktgebietcode;
     }
@@ -57,6 +62,7 @@ public class MarktgebietInfo extends COM {
         public String getMarktgebiet() {
             return marktgebiet;
         }
+    
         public MarktgebietInfoBuilder setMarktgebiet(String marktgebiet) {
             this.marktgebiet = marktgebiet;
             return this;
@@ -65,6 +71,7 @@ public class MarktgebietInfo extends COM {
         public String getMarktgebietcode() {
             return marktgebietcode;
         }
+    
         public MarktgebietInfoBuilder setMarktgebietcode(String marktgebietcode) {
             this.marktgebietcode = marktgebietcode;
             return this;

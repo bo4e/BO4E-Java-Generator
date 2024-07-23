@@ -37,8 +37,11 @@ public class Messlokationszuordnung extends COM {
      */
     private String messlokationsId;
 
-    public Messlokationszuordnung() {}
+    public Messlokationszuordnung() {
+    }
+
     private Messlokationszuordnung(MesslokationszuordnungBuilder builder) {
+        super(builder);
         this.arithmetik = builder.arithmetik;
         this.gueltigBis = builder.gueltigBis;
         this.gueltigSeit = builder.gueltigSeit;
@@ -48,6 +51,7 @@ public class Messlokationszuordnung extends COM {
     public ArithmetischeOperation getArithmetik() {
         return arithmetik;
     }
+
     public void setArithmetik(ArithmetischeOperation arithmetik) {
         this.arithmetik = arithmetik;
     }
@@ -55,6 +59,7 @@ public class Messlokationszuordnung extends COM {
     public OffsetDateTime getGueltigBis() {
         return gueltigBis;
     }
+
     public void setGueltigBis(OffsetDateTime gueltigBis) {
         this.gueltigBis = gueltigBis;
     }
@@ -62,6 +67,7 @@ public class Messlokationszuordnung extends COM {
     public OffsetDateTime getGueltigSeit() {
         return gueltigSeit;
     }
+
     public void setGueltigSeit(OffsetDateTime gueltigSeit) {
         this.gueltigSeit = gueltigSeit;
     }
@@ -69,6 +75,7 @@ public class Messlokationszuordnung extends COM {
     public String getMesslokationsId() {
         return messlokationsId;
     }
+
     public void setMesslokationsId(String messlokationsId) {
         this.messlokationsId = messlokationsId;
     }
@@ -93,6 +100,7 @@ public class Messlokationszuordnung extends COM {
         public ArithmetischeOperation getArithmetik() {
             return arithmetik;
         }
+    
         public MesslokationszuordnungBuilder setArithmetik(ArithmetischeOperation arithmetik) {
             this.arithmetik = arithmetik;
             return this;
@@ -101,6 +109,7 @@ public class Messlokationszuordnung extends COM {
         public OffsetDateTime getGueltigBis() {
             return gueltigBis;
         }
+    
         public MesslokationszuordnungBuilder setGueltigBis(OffsetDateTime gueltigBis) {
             this.gueltigBis = gueltigBis;
             return this;
@@ -109,6 +118,7 @@ public class Messlokationszuordnung extends COM {
         public OffsetDateTime getGueltigSeit() {
             return gueltigSeit;
         }
+    
         public MesslokationszuordnungBuilder setGueltigSeit(OffsetDateTime gueltigSeit) {
             this.gueltigSeit = gueltigSeit;
             return this;
@@ -117,6 +127,7 @@ public class Messlokationszuordnung extends COM {
         public String getMesslokationsId() {
             return messlokationsId;
         }
+    
         public MesslokationszuordnungBuilder setMesslokationsId(String messlokationsId) {
             this.messlokationsId = messlokationsId;
             return this;

@@ -117,8 +117,11 @@ public class Tarif extends Geschaeftsobjekt {
      */
     private Zeitraum zeitlicheGueltigkeit;
 
-    public Tarif() {}
+    public Tarif() {
+    }
+
     private Tarif(TarifBuilder builder) {
+        super(builder);
         this.anbieter = builder.anbieter;
         this.anbietername = builder.anbietername;
         this.anwendungVon = builder.anwendungVon;
@@ -148,6 +151,7 @@ public class Tarif extends Geschaeftsobjekt {
     public Marktteilnehmer getAnbieter() {
         return anbieter;
     }
+
     public void setAnbieter(Marktteilnehmer anbieter) {
         this.anbieter = anbieter;
     }
@@ -155,6 +159,7 @@ public class Tarif extends Geschaeftsobjekt {
     public String getAnbietername() {
         return anbietername;
     }
+
     public void setAnbietername(String anbietername) {
         this.anbietername = anbietername;
     }
@@ -162,6 +167,7 @@ public class Tarif extends Geschaeftsobjekt {
     public OffsetDateTime getAnwendungVon() {
         return anwendungVon;
     }
+
     public void setAnwendungVon(OffsetDateTime anwendungVon) {
         this.anwendungVon = anwendungVon;
     }
@@ -169,6 +175,7 @@ public class Tarif extends Geschaeftsobjekt {
     public String getBemerkung() {
         return bemerkung;
     }
+
     public void setBemerkung(String bemerkung) {
         this.bemerkung = bemerkung;
     }
@@ -176,6 +183,7 @@ public class Tarif extends Geschaeftsobjekt {
     public Tarifberechnungsparameter getBerechnungsparameter() {
         return berechnungsparameter;
     }
+
     public void setBerechnungsparameter(Tarifberechnungsparameter berechnungsparameter) {
         this.berechnungsparameter = berechnungsparameter;
     }
@@ -183,6 +191,7 @@ public class Tarif extends Geschaeftsobjekt {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -190,6 +199,7 @@ public class Tarif extends Geschaeftsobjekt {
     public Energiemix getEnergiemix() {
         return energiemix;
     }
+
     public void setEnergiemix(Energiemix energiemix) {
         this.energiemix = energiemix;
     }
@@ -197,6 +207,7 @@ public class Tarif extends Geschaeftsobjekt {
     public List<Kundentyp> getKundentypen() {
         return kundentypen;
     }
+
     public void setKundentypen(List<Kundentyp> kundentypen) {
         this.kundentypen = kundentypen;
     }
@@ -204,6 +215,7 @@ public class Tarif extends Geschaeftsobjekt {
     public Preisgarantie getPreisgarantie() {
         return preisgarantie;
     }
+
     public void setPreisgarantie(Preisgarantie preisgarantie) {
         this.preisgarantie = preisgarantie;
     }
@@ -211,6 +223,7 @@ public class Tarif extends Geschaeftsobjekt {
     public OffsetDateTime getPreisstand() {
         return preisstand;
     }
+
     public void setPreisstand(OffsetDateTime preisstand) {
         this.preisstand = preisstand;
     }
@@ -218,6 +231,7 @@ public class Tarif extends Geschaeftsobjekt {
     public Registeranzahl getRegisteranzahl() {
         return registeranzahl;
     }
+
     public void setRegisteranzahl(Registeranzahl registeranzahl) {
         this.registeranzahl = registeranzahl;
     }
@@ -225,6 +239,7 @@ public class Tarif extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -232,6 +247,7 @@ public class Tarif extends Geschaeftsobjekt {
     public List<AufAbschlagRegional> getTarifAufAbschlaege() {
         return tarifAufAbschlaege;
     }
+
     public void setTarifAufAbschlaege(List<AufAbschlagRegional> tarifAufAbschlaege) {
         this.tarifAufAbschlaege = tarifAufAbschlaege;
     }
@@ -239,6 +255,7 @@ public class Tarif extends Geschaeftsobjekt {
     public Tarifeinschraenkung getTarifeinschraenkung() {
         return tarifeinschraenkung;
     }
+
     public void setTarifeinschraenkung(Tarifeinschraenkung tarifeinschraenkung) {
         this.tarifeinschraenkung = tarifeinschraenkung;
     }
@@ -246,6 +263,7 @@ public class Tarif extends Geschaeftsobjekt {
     public List<Tarifmerkmal> getTarifmerkmale() {
         return tarifmerkmale;
     }
+
     public void setTarifmerkmale(List<Tarifmerkmal> tarifmerkmale) {
         this.tarifmerkmale = tarifmerkmale;
     }
@@ -253,6 +271,7 @@ public class Tarif extends Geschaeftsobjekt {
     public List<TarifpreispositionProOrt> getTarifpreise() {
         return tarifpreise;
     }
+
     public void setTarifpreise(List<TarifpreispositionProOrt> tarifpreise) {
         this.tarifpreise = tarifpreise;
     }
@@ -260,6 +279,7 @@ public class Tarif extends Geschaeftsobjekt {
     public Tariftyp getTariftyp() {
         return tariftyp;
     }
+
     public void setTariftyp(Tariftyp tariftyp) {
         this.tariftyp = tariftyp;
     }
@@ -267,6 +287,7 @@ public class Tarif extends Geschaeftsobjekt {
     public Vertragskonditionen getVertragskonditionen() {
         return vertragskonditionen;
     }
+
     public void setVertragskonditionen(Vertragskonditionen vertragskonditionen) {
         this.vertragskonditionen = vertragskonditionen;
     }
@@ -274,6 +295,7 @@ public class Tarif extends Geschaeftsobjekt {
     public String getWebsite() {
         return website;
     }
+
     public void setWebsite(String website) {
         this.website = website;
     }
@@ -281,6 +303,7 @@ public class Tarif extends Geschaeftsobjekt {
     public Zeitraum getZeitlicheGueltigkeit() {
         return zeitlicheGueltigkeit;
     }
+
     public void setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
         this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
     }
@@ -372,6 +395,7 @@ public class Tarif extends Geschaeftsobjekt {
         public Marktteilnehmer getAnbieter() {
             return anbieter;
         }
+    
         public TarifBuilder setAnbieter(Marktteilnehmer anbieter) {
             this.anbieter = anbieter;
             return this;
@@ -380,6 +404,7 @@ public class Tarif extends Geschaeftsobjekt {
         public String getAnbietername() {
             return anbietername;
         }
+    
         public TarifBuilder setAnbietername(String anbietername) {
             this.anbietername = anbietername;
             return this;
@@ -388,6 +413,7 @@ public class Tarif extends Geschaeftsobjekt {
         public OffsetDateTime getAnwendungVon() {
             return anwendungVon;
         }
+    
         public TarifBuilder setAnwendungVon(OffsetDateTime anwendungVon) {
             this.anwendungVon = anwendungVon;
             return this;
@@ -396,6 +422,7 @@ public class Tarif extends Geschaeftsobjekt {
         public String getBemerkung() {
             return bemerkung;
         }
+    
         public TarifBuilder setBemerkung(String bemerkung) {
             this.bemerkung = bemerkung;
             return this;
@@ -404,6 +431,7 @@ public class Tarif extends Geschaeftsobjekt {
         public Tarifberechnungsparameter getBerechnungsparameter() {
             return berechnungsparameter;
         }
+    
         public TarifBuilder setBerechnungsparameter(Tarifberechnungsparameter berechnungsparameter) {
             this.berechnungsparameter = berechnungsparameter;
             return this;
@@ -412,6 +440,7 @@ public class Tarif extends Geschaeftsobjekt {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public TarifBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;
@@ -420,6 +449,7 @@ public class Tarif extends Geschaeftsobjekt {
         public Energiemix getEnergiemix() {
             return energiemix;
         }
+    
         public TarifBuilder setEnergiemix(Energiemix energiemix) {
             this.energiemix = energiemix;
             return this;
@@ -428,6 +458,7 @@ public class Tarif extends Geschaeftsobjekt {
         public List<Kundentyp> getKundentypen() {
             return kundentypen;
         }
+    
         public TarifBuilder setKundentypen(List<Kundentyp> kundentypen) {
             this.kundentypen = kundentypen;
             return this;
@@ -436,6 +467,7 @@ public class Tarif extends Geschaeftsobjekt {
         public Preisgarantie getPreisgarantie() {
             return preisgarantie;
         }
+    
         public TarifBuilder setPreisgarantie(Preisgarantie preisgarantie) {
             this.preisgarantie = preisgarantie;
             return this;
@@ -444,6 +476,7 @@ public class Tarif extends Geschaeftsobjekt {
         public OffsetDateTime getPreisstand() {
             return preisstand;
         }
+    
         public TarifBuilder setPreisstand(OffsetDateTime preisstand) {
             this.preisstand = preisstand;
             return this;
@@ -452,6 +485,7 @@ public class Tarif extends Geschaeftsobjekt {
         public Registeranzahl getRegisteranzahl() {
             return registeranzahl;
         }
+    
         public TarifBuilder setRegisteranzahl(Registeranzahl registeranzahl) {
             this.registeranzahl = registeranzahl;
             return this;
@@ -460,6 +494,7 @@ public class Tarif extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public TarifBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;
@@ -468,6 +503,7 @@ public class Tarif extends Geschaeftsobjekt {
         public List<AufAbschlagRegional> getTarifAufAbschlaege() {
             return tarifAufAbschlaege;
         }
+    
         public TarifBuilder setTarifAufAbschlaege(List<AufAbschlagRegional> tarifAufAbschlaege) {
             this.tarifAufAbschlaege = tarifAufAbschlaege;
             return this;
@@ -476,6 +512,7 @@ public class Tarif extends Geschaeftsobjekt {
         public Tarifeinschraenkung getTarifeinschraenkung() {
             return tarifeinschraenkung;
         }
+    
         public TarifBuilder setTarifeinschraenkung(Tarifeinschraenkung tarifeinschraenkung) {
             this.tarifeinschraenkung = tarifeinschraenkung;
             return this;
@@ -484,6 +521,7 @@ public class Tarif extends Geschaeftsobjekt {
         public List<Tarifmerkmal> getTarifmerkmale() {
             return tarifmerkmale;
         }
+    
         public TarifBuilder setTarifmerkmale(List<Tarifmerkmal> tarifmerkmale) {
             this.tarifmerkmale = tarifmerkmale;
             return this;
@@ -492,6 +530,7 @@ public class Tarif extends Geschaeftsobjekt {
         public List<TarifpreispositionProOrt> getTarifpreise() {
             return tarifpreise;
         }
+    
         public TarifBuilder setTarifpreise(List<TarifpreispositionProOrt> tarifpreise) {
             this.tarifpreise = tarifpreise;
             return this;
@@ -500,6 +539,7 @@ public class Tarif extends Geschaeftsobjekt {
         public Tariftyp getTariftyp() {
             return tariftyp;
         }
+    
         public TarifBuilder setTariftyp(Tariftyp tariftyp) {
             this.tariftyp = tariftyp;
             return this;
@@ -508,6 +548,7 @@ public class Tarif extends Geschaeftsobjekt {
         public Vertragskonditionen getVertragskonditionen() {
             return vertragskonditionen;
         }
+    
         public TarifBuilder setVertragskonditionen(Vertragskonditionen vertragskonditionen) {
             this.vertragskonditionen = vertragskonditionen;
             return this;
@@ -516,6 +557,7 @@ public class Tarif extends Geschaeftsobjekt {
         public String getWebsite() {
             return website;
         }
+    
         public TarifBuilder setWebsite(String website) {
             this.website = website;
             return this;
@@ -524,6 +566,7 @@ public class Tarif extends Geschaeftsobjekt {
         public Zeitraum getZeitlicheGueltigkeit() {
             return zeitlicheGueltigkeit;
         }
+    
         public TarifBuilder setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
             this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
             return this;

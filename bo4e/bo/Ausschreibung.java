@@ -73,8 +73,11 @@ public class Ausschreibung extends Geschaeftsobjekt {
      */
     private String webseite;
 
-    public Ausschreibung() {}
+    public Ausschreibung() {
+    }
+
     private Ausschreibung(AusschreibungBuilder builder) {
+        super(builder);
         this.abgabefrist = builder.abgabefrist;
         this.ausschreibender = builder.ausschreibender;
         this.ausschreibungportal = builder.ausschreibungportal;
@@ -95,6 +98,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
     public Zeitraum getAbgabefrist() {
         return abgabefrist;
     }
+
     public void setAbgabefrist(Zeitraum abgabefrist) {
         this.abgabefrist = abgabefrist;
     }
@@ -102,6 +106,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
     public Geschaeftspartner getAusschreibender() {
         return ausschreibender;
     }
+
     public void setAusschreibender(Geschaeftspartner ausschreibender) {
         this.ausschreibender = ausschreibender;
     }
@@ -109,6 +114,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
     public Ausschreibungsportal getAusschreibungportal() {
         return ausschreibungportal;
     }
+
     public void setAusschreibungportal(Ausschreibungsportal ausschreibungportal) {
         this.ausschreibungportal = ausschreibungportal;
     }
@@ -116,6 +122,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
     public String getAusschreibungsnummer() {
         return ausschreibungsnummer;
     }
+
     public void setAusschreibungsnummer(String ausschreibungsnummer) {
         this.ausschreibungsnummer = ausschreibungsnummer;
     }
@@ -123,6 +130,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
     public Ausschreibungsstatus getAusschreibungsstatus() {
         return ausschreibungsstatus;
     }
+
     public void setAusschreibungsstatus(Ausschreibungsstatus ausschreibungsstatus) {
         this.ausschreibungsstatus = ausschreibungsstatus;
     }
@@ -130,6 +138,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
     public Ausschreibungstyp getAusschreibungstyp() {
         return ausschreibungstyp;
     }
+
     public void setAusschreibungstyp(Ausschreibungstyp ausschreibungstyp) {
         this.ausschreibungstyp = ausschreibungstyp;
     }
@@ -137,6 +146,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
     public Zeitraum getBindefrist() {
         return bindefrist;
     }
+
     public void setBindefrist(Zeitraum bindefrist) {
         this.bindefrist = bindefrist;
     }
@@ -144,6 +154,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
     public Boolean getIstKostenpflichtig() {
         return istKostenpflichtig;
     }
+
     public void setIstKostenpflichtig(Boolean istKostenpflichtig) {
         this.istKostenpflichtig = istKostenpflichtig;
     }
@@ -151,6 +162,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
     public List<Ausschreibungslos> getLose() {
         return lose;
     }
+
     public void setLose(List<Ausschreibungslos> lose) {
         this.lose = lose;
     }
@@ -158,6 +170,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
     public OffsetDateTime getVeroeffentlichungszeitpunkt() {
         return veroeffentlichungszeitpunkt;
     }
+
     public void setVeroeffentlichungszeitpunkt(OffsetDateTime veroeffentlichungszeitpunkt) {
         this.veroeffentlichungszeitpunkt = veroeffentlichungszeitpunkt;
     }
@@ -165,6 +178,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
     public String getWebseite() {
         return webseite;
     }
+
     public void setWebseite(String webseite) {
         this.webseite = webseite;
     }
@@ -218,6 +232,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
         public Zeitraum getAbgabefrist() {
             return abgabefrist;
         }
+    
         public AusschreibungBuilder setAbgabefrist(Zeitraum abgabefrist) {
             this.abgabefrist = abgabefrist;
             return this;
@@ -226,6 +241,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
         public Geschaeftspartner getAusschreibender() {
             return ausschreibender;
         }
+    
         public AusschreibungBuilder setAusschreibender(Geschaeftspartner ausschreibender) {
             this.ausschreibender = ausschreibender;
             return this;
@@ -234,6 +250,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
         public Ausschreibungsportal getAusschreibungportal() {
             return ausschreibungportal;
         }
+    
         public AusschreibungBuilder setAusschreibungportal(Ausschreibungsportal ausschreibungportal) {
             this.ausschreibungportal = ausschreibungportal;
             return this;
@@ -242,6 +259,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
         public String getAusschreibungsnummer() {
             return ausschreibungsnummer;
         }
+    
         public AusschreibungBuilder setAusschreibungsnummer(String ausschreibungsnummer) {
             this.ausschreibungsnummer = ausschreibungsnummer;
             return this;
@@ -250,6 +268,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
         public Ausschreibungsstatus getAusschreibungsstatus() {
             return ausschreibungsstatus;
         }
+    
         public AusschreibungBuilder setAusschreibungsstatus(Ausschreibungsstatus ausschreibungsstatus) {
             this.ausschreibungsstatus = ausschreibungsstatus;
             return this;
@@ -258,6 +277,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
         public Ausschreibungstyp getAusschreibungstyp() {
             return ausschreibungstyp;
         }
+    
         public AusschreibungBuilder setAusschreibungstyp(Ausschreibungstyp ausschreibungstyp) {
             this.ausschreibungstyp = ausschreibungstyp;
             return this;
@@ -266,6 +286,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
         public Zeitraum getBindefrist() {
             return bindefrist;
         }
+    
         public AusschreibungBuilder setBindefrist(Zeitraum bindefrist) {
             this.bindefrist = bindefrist;
             return this;
@@ -274,6 +295,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
         public Boolean getIstKostenpflichtig() {
             return istKostenpflichtig;
         }
+    
         public AusschreibungBuilder setIstKostenpflichtig(Boolean istKostenpflichtig) {
             this.istKostenpflichtig = istKostenpflichtig;
             return this;
@@ -282,6 +304,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
         public List<Ausschreibungslos> getLose() {
             return lose;
         }
+    
         public AusschreibungBuilder setLose(List<Ausschreibungslos> lose) {
             this.lose = lose;
             return this;
@@ -290,6 +313,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
         public OffsetDateTime getVeroeffentlichungszeitpunkt() {
             return veroeffentlichungszeitpunkt;
         }
+    
         public AusschreibungBuilder setVeroeffentlichungszeitpunkt(OffsetDateTime veroeffentlichungszeitpunkt) {
             this.veroeffentlichungszeitpunkt = veroeffentlichungszeitpunkt;
             return this;
@@ -298,6 +322,7 @@ public class Ausschreibung extends Geschaeftsobjekt {
         public String getWebseite() {
             return webseite;
         }
+    
         public AusschreibungBuilder setWebseite(String webseite) {
             this.webseite = webseite;
             return this;

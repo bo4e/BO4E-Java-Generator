@@ -74,8 +74,11 @@ public class Zaehlwerk extends COM {
      */
     private Zaehlzeitregister zaehlzeitregister;
 
-    public Zaehlwerk() {}
+    public Zaehlwerk() {
+    }
+
     private Zaehlwerk(ZaehlwerkBuilder builder) {
+        super(builder);
         this.anzahlAblesungen = builder.anzahlAblesungen;
         this.bezeichnung = builder.bezeichnung;
         this.einheit = builder.einheit;
@@ -99,6 +102,7 @@ public class Zaehlwerk extends COM {
     public Long getAnzahlAblesungen() {
         return anzahlAblesungen;
     }
+
     public void setAnzahlAblesungen(Long anzahlAblesungen) {
         this.anzahlAblesungen = anzahlAblesungen;
     }
@@ -106,6 +110,7 @@ public class Zaehlwerk extends COM {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -113,6 +118,7 @@ public class Zaehlwerk extends COM {
     public Mengeneinheit getEinheit() {
         return einheit;
     }
+
     public void setEinheit(Mengeneinheit einheit) {
         this.einheit = einheit;
     }
@@ -120,6 +126,7 @@ public class Zaehlwerk extends COM {
     public Boolean getIstAbrechnungsrelevant() {
         return istAbrechnungsrelevant;
     }
+
     public void setIstAbrechnungsrelevant(Boolean istAbrechnungsrelevant) {
         this.istAbrechnungsrelevant = istAbrechnungsrelevant;
     }
@@ -127,6 +134,7 @@ public class Zaehlwerk extends COM {
     public Boolean getIstSchwachlastfaehig() {
         return istSchwachlastfaehig;
     }
+
     public void setIstSchwachlastfaehig(Boolean istSchwachlastfaehig) {
         this.istSchwachlastfaehig = istSchwachlastfaehig;
     }
@@ -134,6 +142,7 @@ public class Zaehlwerk extends COM {
     public Boolean getIstSteuerbefreit() {
         return istSteuerbefreit;
     }
+
     public void setIstSteuerbefreit(Boolean istSteuerbefreit) {
         this.istSteuerbefreit = istSteuerbefreit;
     }
@@ -141,6 +150,7 @@ public class Zaehlwerk extends COM {
     public Boolean getIstUnterbrechbar() {
         return istUnterbrechbar;
     }
+
     public void setIstUnterbrechbar(Boolean istUnterbrechbar) {
         this.istUnterbrechbar = istUnterbrechbar;
     }
@@ -148,6 +158,7 @@ public class Zaehlwerk extends COM {
     public Konzessionsabgabe getKonzessionsabgabe() {
         return konzessionsabgabe;
     }
+
     public void setKonzessionsabgabe(Konzessionsabgabe konzessionsabgabe) {
         this.konzessionsabgabe = konzessionsabgabe;
     }
@@ -155,6 +166,7 @@ public class Zaehlwerk extends COM {
     public Long getNachkommastelle() {
         return nachkommastelle;
     }
+
     public void setNachkommastelle(Long nachkommastelle) {
         this.nachkommastelle = nachkommastelle;
     }
@@ -162,6 +174,7 @@ public class Zaehlwerk extends COM {
     public String getObisKennzahl() {
         return obisKennzahl;
     }
+
     public void setObisKennzahl(String obisKennzahl) {
         this.obisKennzahl = obisKennzahl;
     }
@@ -169,6 +182,7 @@ public class Zaehlwerk extends COM {
     public Energierichtung getRichtung() {
         return richtung;
     }
+
     public void setRichtung(Energierichtung richtung) {
         this.richtung = richtung;
     }
@@ -176,6 +190,7 @@ public class Zaehlwerk extends COM {
     public Verbrauchsart getVerbrauchsart() {
         return verbrauchsart;
     }
+
     public void setVerbrauchsart(Verbrauchsart verbrauchsart) {
         this.verbrauchsart = verbrauchsart;
     }
@@ -183,6 +198,7 @@ public class Zaehlwerk extends COM {
     public List<VerwendungszweckProMarktrolle> getVerwendungszwecke() {
         return verwendungszwecke;
     }
+
     public void setVerwendungszwecke(List<VerwendungszweckProMarktrolle> verwendungszwecke) {
         this.verwendungszwecke = verwendungszwecke;
     }
@@ -190,6 +206,7 @@ public class Zaehlwerk extends COM {
     public Long getVorkommastelle() {
         return vorkommastelle;
     }
+
     public void setVorkommastelle(Long vorkommastelle) {
         this.vorkommastelle = vorkommastelle;
     }
@@ -197,6 +214,7 @@ public class Zaehlwerk extends COM {
     public Waermenutzung getWaermenutzung() {
         return waermenutzung;
     }
+
     public void setWaermenutzung(Waermenutzung waermenutzung) {
         this.waermenutzung = waermenutzung;
     }
@@ -204,6 +222,7 @@ public class Zaehlwerk extends COM {
     public Double getWandlerfaktor() {
         return wandlerfaktor;
     }
+
     public void setWandlerfaktor(Double wandlerfaktor) {
         this.wandlerfaktor = wandlerfaktor;
     }
@@ -211,6 +230,7 @@ public class Zaehlwerk extends COM {
     public String getZaehlwerkId() {
         return zaehlwerkId;
     }
+
     public void setZaehlwerkId(String zaehlwerkId) {
         this.zaehlwerkId = zaehlwerkId;
     }
@@ -218,6 +238,7 @@ public class Zaehlwerk extends COM {
     public Zaehlzeitregister getZaehlzeitregister() {
         return zaehlzeitregister;
     }
+
     public void setZaehlzeitregister(Zaehlzeitregister zaehlzeitregister) {
         this.zaehlzeitregister = zaehlzeitregister;
     }
@@ -281,6 +302,7 @@ public class Zaehlwerk extends COM {
         public Long getAnzahlAblesungen() {
             return anzahlAblesungen;
         }
+    
         public ZaehlwerkBuilder setAnzahlAblesungen(Long anzahlAblesungen) {
             this.anzahlAblesungen = anzahlAblesungen;
             return this;
@@ -289,6 +311,7 @@ public class Zaehlwerk extends COM {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public ZaehlwerkBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;
@@ -297,6 +320,7 @@ public class Zaehlwerk extends COM {
         public Mengeneinheit getEinheit() {
             return einheit;
         }
+    
         public ZaehlwerkBuilder setEinheit(Mengeneinheit einheit) {
             this.einheit = einheit;
             return this;
@@ -305,6 +329,7 @@ public class Zaehlwerk extends COM {
         public Boolean getIstAbrechnungsrelevant() {
             return istAbrechnungsrelevant;
         }
+    
         public ZaehlwerkBuilder setIstAbrechnungsrelevant(Boolean istAbrechnungsrelevant) {
             this.istAbrechnungsrelevant = istAbrechnungsrelevant;
             return this;
@@ -313,6 +338,7 @@ public class Zaehlwerk extends COM {
         public Boolean getIstSchwachlastfaehig() {
             return istSchwachlastfaehig;
         }
+    
         public ZaehlwerkBuilder setIstSchwachlastfaehig(Boolean istSchwachlastfaehig) {
             this.istSchwachlastfaehig = istSchwachlastfaehig;
             return this;
@@ -321,6 +347,7 @@ public class Zaehlwerk extends COM {
         public Boolean getIstSteuerbefreit() {
             return istSteuerbefreit;
         }
+    
         public ZaehlwerkBuilder setIstSteuerbefreit(Boolean istSteuerbefreit) {
             this.istSteuerbefreit = istSteuerbefreit;
             return this;
@@ -329,6 +356,7 @@ public class Zaehlwerk extends COM {
         public Boolean getIstUnterbrechbar() {
             return istUnterbrechbar;
         }
+    
         public ZaehlwerkBuilder setIstUnterbrechbar(Boolean istUnterbrechbar) {
             this.istUnterbrechbar = istUnterbrechbar;
             return this;
@@ -337,6 +365,7 @@ public class Zaehlwerk extends COM {
         public Konzessionsabgabe getKonzessionsabgabe() {
             return konzessionsabgabe;
         }
+    
         public ZaehlwerkBuilder setKonzessionsabgabe(Konzessionsabgabe konzessionsabgabe) {
             this.konzessionsabgabe = konzessionsabgabe;
             return this;
@@ -345,6 +374,7 @@ public class Zaehlwerk extends COM {
         public Long getNachkommastelle() {
             return nachkommastelle;
         }
+    
         public ZaehlwerkBuilder setNachkommastelle(Long nachkommastelle) {
             this.nachkommastelle = nachkommastelle;
             return this;
@@ -353,6 +383,7 @@ public class Zaehlwerk extends COM {
         public String getObisKennzahl() {
             return obisKennzahl;
         }
+    
         public ZaehlwerkBuilder setObisKennzahl(String obisKennzahl) {
             this.obisKennzahl = obisKennzahl;
             return this;
@@ -361,6 +392,7 @@ public class Zaehlwerk extends COM {
         public Energierichtung getRichtung() {
             return richtung;
         }
+    
         public ZaehlwerkBuilder setRichtung(Energierichtung richtung) {
             this.richtung = richtung;
             return this;
@@ -369,6 +401,7 @@ public class Zaehlwerk extends COM {
         public Verbrauchsart getVerbrauchsart() {
             return verbrauchsart;
         }
+    
         public ZaehlwerkBuilder setVerbrauchsart(Verbrauchsart verbrauchsart) {
             this.verbrauchsart = verbrauchsart;
             return this;
@@ -377,6 +410,7 @@ public class Zaehlwerk extends COM {
         public List<VerwendungszweckProMarktrolle> getVerwendungszwecke() {
             return verwendungszwecke;
         }
+    
         public ZaehlwerkBuilder setVerwendungszwecke(List<VerwendungszweckProMarktrolle> verwendungszwecke) {
             this.verwendungszwecke = verwendungszwecke;
             return this;
@@ -385,6 +419,7 @@ public class Zaehlwerk extends COM {
         public Long getVorkommastelle() {
             return vorkommastelle;
         }
+    
         public ZaehlwerkBuilder setVorkommastelle(Long vorkommastelle) {
             this.vorkommastelle = vorkommastelle;
             return this;
@@ -393,6 +428,7 @@ public class Zaehlwerk extends COM {
         public Waermenutzung getWaermenutzung() {
             return waermenutzung;
         }
+    
         public ZaehlwerkBuilder setWaermenutzung(Waermenutzung waermenutzung) {
             this.waermenutzung = waermenutzung;
             return this;
@@ -401,6 +437,7 @@ public class Zaehlwerk extends COM {
         public Double getWandlerfaktor() {
             return wandlerfaktor;
         }
+    
         public ZaehlwerkBuilder setWandlerfaktor(Double wandlerfaktor) {
             this.wandlerfaktor = wandlerfaktor;
             return this;
@@ -409,6 +446,7 @@ public class Zaehlwerk extends COM {
         public String getZaehlwerkId() {
             return zaehlwerkId;
         }
+    
         public ZaehlwerkBuilder setZaehlwerkId(String zaehlwerkId) {
             this.zaehlwerkId = zaehlwerkId;
             return this;
@@ -417,6 +455,7 @@ public class Zaehlwerk extends COM {
         public Zaehlzeitregister getZaehlzeitregister() {
             return zaehlzeitregister;
         }
+    
         public ZaehlwerkBuilder setZaehlzeitregister(Zaehlzeitregister zaehlzeitregister) {
             this.zaehlzeitregister = zaehlzeitregister;
             return this;

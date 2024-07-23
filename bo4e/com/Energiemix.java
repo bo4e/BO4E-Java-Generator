@@ -67,8 +67,11 @@ public class Energiemix extends COM {
      */
     private String website;
 
-    public Energiemix() {}
+    public Energiemix() {
+    }
+
     private Energiemix(EnergiemixBuilder builder) {
+        super(builder);
         this.anteil = builder.anteil;
         this.atommuell = builder.atommuell;
         this.bemerkung = builder.bemerkung;
@@ -86,6 +89,7 @@ public class Energiemix extends COM {
     public List<Energieherkunft> getAnteil() {
         return anteil;
     }
+
     public void setAnteil(List<Energieherkunft> anteil) {
         this.anteil = anteil;
     }
@@ -93,6 +97,7 @@ public class Energiemix extends COM {
     public Double getAtommuell() {
         return atommuell;
     }
+
     public void setAtommuell(Double atommuell) {
         this.atommuell = atommuell;
     }
@@ -100,6 +105,7 @@ public class Energiemix extends COM {
     public String getBemerkung() {
         return bemerkung;
     }
+
     public void setBemerkung(String bemerkung) {
         this.bemerkung = bemerkung;
     }
@@ -107,6 +113,7 @@ public class Energiemix extends COM {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -114,6 +121,7 @@ public class Energiemix extends COM {
     public Double getCo2Emission() {
         return co2Emission;
     }
+
     public void setCo2Emission(Double co2Emission) {
         this.co2Emission = co2Emission;
     }
@@ -121,6 +129,7 @@ public class Energiemix extends COM {
     public Sparte getEnergieart() {
         return energieart;
     }
+
     public void setEnergieart(Sparte energieart) {
         this.energieart = energieart;
     }
@@ -128,6 +137,7 @@ public class Energiemix extends COM {
     public Long getEnergiemixnummer() {
         return energiemixnummer;
     }
+
     public void setEnergiemixnummer(Long energiemixnummer) {
         this.energiemixnummer = energiemixnummer;
     }
@@ -135,6 +145,7 @@ public class Energiemix extends COM {
     public Long getGueltigkeitsjahr() {
         return gueltigkeitsjahr;
     }
+
     public void setGueltigkeitsjahr(Long gueltigkeitsjahr) {
         this.gueltigkeitsjahr = gueltigkeitsjahr;
     }
@@ -142,6 +153,7 @@ public class Energiemix extends COM {
     public Boolean getIstInOekoTopTen() {
         return istInOekoTopTen;
     }
+
     public void setIstInOekoTopTen(Boolean istInOekoTopTen) {
         this.istInOekoTopTen = istInOekoTopTen;
     }
@@ -149,6 +161,7 @@ public class Energiemix extends COM {
     public List<Oekolabel> getOekolabel() {
         return oekolabel;
     }
+
     public void setOekolabel(List<Oekolabel> oekolabel) {
         this.oekolabel = oekolabel;
     }
@@ -156,6 +169,7 @@ public class Energiemix extends COM {
     public List<Oekozertifikat> getOekozertifikate() {
         return oekozertifikate;
     }
+
     public void setOekozertifikate(List<Oekozertifikat> oekozertifikate) {
         this.oekozertifikate = oekozertifikate;
     }
@@ -163,6 +177,7 @@ public class Energiemix extends COM {
     public String getWebsite() {
         return website;
     }
+
     public void setWebsite(String website) {
         this.website = website;
     }
@@ -220,6 +235,7 @@ public class Energiemix extends COM {
         public List<Energieherkunft> getAnteil() {
             return anteil;
         }
+    
         public EnergiemixBuilder setAnteil(List<Energieherkunft> anteil) {
             this.anteil = anteil;
             return this;
@@ -228,6 +244,7 @@ public class Energiemix extends COM {
         public Double getAtommuell() {
             return atommuell;
         }
+    
         public EnergiemixBuilder setAtommuell(Double atommuell) {
             this.atommuell = atommuell;
             return this;
@@ -236,6 +253,7 @@ public class Energiemix extends COM {
         public String getBemerkung() {
             return bemerkung;
         }
+    
         public EnergiemixBuilder setBemerkung(String bemerkung) {
             this.bemerkung = bemerkung;
             return this;
@@ -244,6 +262,7 @@ public class Energiemix extends COM {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public EnergiemixBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;
@@ -252,6 +271,7 @@ public class Energiemix extends COM {
         public Double getCo2Emission() {
             return co2Emission;
         }
+    
         public EnergiemixBuilder setCo2Emission(Double co2Emission) {
             this.co2Emission = co2Emission;
             return this;
@@ -260,6 +280,7 @@ public class Energiemix extends COM {
         public Sparte getEnergieart() {
             return energieart;
         }
+    
         public EnergiemixBuilder setEnergieart(Sparte energieart) {
             this.energieart = energieart;
             return this;
@@ -268,6 +289,7 @@ public class Energiemix extends COM {
         public Long getEnergiemixnummer() {
             return energiemixnummer;
         }
+    
         public EnergiemixBuilder setEnergiemixnummer(Long energiemixnummer) {
             this.energiemixnummer = energiemixnummer;
             return this;
@@ -276,6 +298,7 @@ public class Energiemix extends COM {
         public Long getGueltigkeitsjahr() {
             return gueltigkeitsjahr;
         }
+    
         public EnergiemixBuilder setGueltigkeitsjahr(Long gueltigkeitsjahr) {
             this.gueltigkeitsjahr = gueltigkeitsjahr;
             return this;
@@ -284,6 +307,7 @@ public class Energiemix extends COM {
         public Boolean getIstInOekoTopTen() {
             return istInOekoTopTen;
         }
+    
         public EnergiemixBuilder setIstInOekoTopTen(Boolean istInOekoTopTen) {
             this.istInOekoTopTen = istInOekoTopTen;
             return this;
@@ -292,6 +316,7 @@ public class Energiemix extends COM {
         public List<Oekolabel> getOekolabel() {
             return oekolabel;
         }
+    
         public EnergiemixBuilder setOekolabel(List<Oekolabel> oekolabel) {
             this.oekolabel = oekolabel;
             return this;
@@ -300,6 +325,7 @@ public class Energiemix extends COM {
         public List<Oekozertifikat> getOekozertifikate() {
             return oekozertifikate;
         }
+    
         public EnergiemixBuilder setOekozertifikate(List<Oekozertifikat> oekozertifikate) {
             this.oekozertifikate = oekozertifikate;
             return this;
@@ -308,6 +334,7 @@ public class Energiemix extends COM {
         public String getWebsite() {
             return website;
         }
+    
         public EnergiemixBuilder setWebsite(String website) {
             this.website = website;
             return this;

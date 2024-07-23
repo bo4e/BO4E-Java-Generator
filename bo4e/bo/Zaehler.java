@@ -95,8 +95,11 @@ public class Zaehler extends Geschaeftsobjekt {
      */
     private List<Zaehlwerk> zaehlwerke;
 
-    public Zaehler() {}
+    public Zaehler() {
+    }
+
     private Zaehler(ZaehlerBuilder builder) {
+        super(builder);
         this.befestigungsart = builder.befestigungsart;
         this.eichungBis = builder.eichungBis;
         this.geraete = builder.geraete;
@@ -122,6 +125,7 @@ public class Zaehler extends Geschaeftsobjekt {
     public Befestigungsart getBefestigungsart() {
         return befestigungsart;
     }
+
     public void setBefestigungsart(Befestigungsart befestigungsart) {
         this.befestigungsart = befestigungsart;
     }
@@ -129,6 +133,7 @@ public class Zaehler extends Geschaeftsobjekt {
     public OffsetDateTime getEichungBis() {
         return eichungBis;
     }
+
     public void setEichungBis(OffsetDateTime eichungBis) {
         this.eichungBis = eichungBis;
     }
@@ -136,6 +141,7 @@ public class Zaehler extends Geschaeftsobjekt {
     public List<Geraet> getGeraete() {
         return geraete;
     }
+
     public void setGeraete(List<Geraet> geraete) {
         this.geraete = geraete;
     }
@@ -143,6 +149,7 @@ public class Zaehler extends Geschaeftsobjekt {
     public Boolean getIstFernschaltbar() {
         return istFernschaltbar;
     }
+
     public void setIstFernschaltbar(Boolean istFernschaltbar) {
         this.istFernschaltbar = istFernschaltbar;
     }
@@ -150,6 +157,7 @@ public class Zaehler extends Geschaeftsobjekt {
     public OffsetDateTime getLetzteEichung() {
         return letzteEichung;
     }
+
     public void setLetzteEichung(OffsetDateTime letzteEichung) {
         this.letzteEichung = letzteEichung;
     }
@@ -157,6 +165,7 @@ public class Zaehler extends Geschaeftsobjekt {
     public Messwerterfassung getMesswerterfassung() {
         return messwerterfassung;
     }
+
     public void setMesswerterfassung(Messwerterfassung messwerterfassung) {
         this.messwerterfassung = messwerterfassung;
     }
@@ -164,6 +173,7 @@ public class Zaehler extends Geschaeftsobjekt {
     public Registeranzahl getRegisteranzahl() {
         return registeranzahl;
     }
+
     public void setRegisteranzahl(Registeranzahl registeranzahl) {
         this.registeranzahl = registeranzahl;
     }
@@ -171,6 +181,7 @@ public class Zaehler extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -178,6 +189,7 @@ public class Zaehler extends Geschaeftsobjekt {
     public Zaehlerauspraegung getZaehlerauspraegung() {
         return zaehlerauspraegung;
     }
+
     public void setZaehlerauspraegung(Zaehlerauspraegung zaehlerauspraegung) {
         this.zaehlerauspraegung = zaehlerauspraegung;
     }
@@ -185,6 +197,7 @@ public class Zaehler extends Geschaeftsobjekt {
     public Zaehlergroesse getZaehlergroesse() {
         return zaehlergroesse;
     }
+
     public void setZaehlergroesse(Zaehlergroesse zaehlergroesse) {
         this.zaehlergroesse = zaehlergroesse;
     }
@@ -192,6 +205,7 @@ public class Zaehler extends Geschaeftsobjekt {
     public Geschaeftspartner getZaehlerhersteller() {
         return zaehlerhersteller;
     }
+
     public void setZaehlerhersteller(Geschaeftspartner zaehlerhersteller) {
         this.zaehlerhersteller = zaehlerhersteller;
     }
@@ -199,6 +213,7 @@ public class Zaehler extends Geschaeftsobjekt {
     public Double getZaehlerkonstante() {
         return zaehlerkonstante;
     }
+
     public void setZaehlerkonstante(Double zaehlerkonstante) {
         this.zaehlerkonstante = zaehlerkonstante;
     }
@@ -206,6 +221,7 @@ public class Zaehler extends Geschaeftsobjekt {
     public String getZaehlernummer() {
         return zaehlernummer;
     }
+
     public void setZaehlernummer(String zaehlernummer) {
         this.zaehlernummer = zaehlernummer;
     }
@@ -213,6 +229,7 @@ public class Zaehler extends Geschaeftsobjekt {
     public Zaehlertyp getZaehlertyp() {
         return zaehlertyp;
     }
+
     public void setZaehlertyp(Zaehlertyp zaehlertyp) {
         this.zaehlertyp = zaehlertyp;
     }
@@ -220,6 +237,7 @@ public class Zaehler extends Geschaeftsobjekt {
     public ZaehlertypSpezifikation getZaehlertypSpezifikation() {
         return zaehlertypSpezifikation;
     }
+
     public void setZaehlertypSpezifikation(ZaehlertypSpezifikation zaehlertypSpezifikation) {
         this.zaehlertypSpezifikation = zaehlertypSpezifikation;
     }
@@ -227,6 +245,7 @@ public class Zaehler extends Geschaeftsobjekt {
     public List<Zaehlwerk> getZaehlwerke() {
         return zaehlwerke;
     }
+
     public void setZaehlwerke(List<Zaehlwerk> zaehlwerke) {
         this.zaehlwerke = zaehlwerke;
     }
@@ -300,6 +319,7 @@ public class Zaehler extends Geschaeftsobjekt {
         public Befestigungsart getBefestigungsart() {
             return befestigungsart;
         }
+    
         public ZaehlerBuilder setBefestigungsart(Befestigungsart befestigungsart) {
             this.befestigungsart = befestigungsart;
             return this;
@@ -308,6 +328,7 @@ public class Zaehler extends Geschaeftsobjekt {
         public OffsetDateTime getEichungBis() {
             return eichungBis;
         }
+    
         public ZaehlerBuilder setEichungBis(OffsetDateTime eichungBis) {
             this.eichungBis = eichungBis;
             return this;
@@ -316,6 +337,7 @@ public class Zaehler extends Geschaeftsobjekt {
         public List<Geraet> getGeraete() {
             return geraete;
         }
+    
         public ZaehlerBuilder setGeraete(List<Geraet> geraete) {
             this.geraete = geraete;
             return this;
@@ -324,6 +346,7 @@ public class Zaehler extends Geschaeftsobjekt {
         public Boolean getIstFernschaltbar() {
             return istFernschaltbar;
         }
+    
         public ZaehlerBuilder setIstFernschaltbar(Boolean istFernschaltbar) {
             this.istFernschaltbar = istFernschaltbar;
             return this;
@@ -332,6 +355,7 @@ public class Zaehler extends Geschaeftsobjekt {
         public OffsetDateTime getLetzteEichung() {
             return letzteEichung;
         }
+    
         public ZaehlerBuilder setLetzteEichung(OffsetDateTime letzteEichung) {
             this.letzteEichung = letzteEichung;
             return this;
@@ -340,6 +364,7 @@ public class Zaehler extends Geschaeftsobjekt {
         public Messwerterfassung getMesswerterfassung() {
             return messwerterfassung;
         }
+    
         public ZaehlerBuilder setMesswerterfassung(Messwerterfassung messwerterfassung) {
             this.messwerterfassung = messwerterfassung;
             return this;
@@ -348,6 +373,7 @@ public class Zaehler extends Geschaeftsobjekt {
         public Registeranzahl getRegisteranzahl() {
             return registeranzahl;
         }
+    
         public ZaehlerBuilder setRegisteranzahl(Registeranzahl registeranzahl) {
             this.registeranzahl = registeranzahl;
             return this;
@@ -356,6 +382,7 @@ public class Zaehler extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public ZaehlerBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;
@@ -364,6 +391,7 @@ public class Zaehler extends Geschaeftsobjekt {
         public Zaehlerauspraegung getZaehlerauspraegung() {
             return zaehlerauspraegung;
         }
+    
         public ZaehlerBuilder setZaehlerauspraegung(Zaehlerauspraegung zaehlerauspraegung) {
             this.zaehlerauspraegung = zaehlerauspraegung;
             return this;
@@ -372,6 +400,7 @@ public class Zaehler extends Geschaeftsobjekt {
         public Zaehlergroesse getZaehlergroesse() {
             return zaehlergroesse;
         }
+    
         public ZaehlerBuilder setZaehlergroesse(Zaehlergroesse zaehlergroesse) {
             this.zaehlergroesse = zaehlergroesse;
             return this;
@@ -380,6 +409,7 @@ public class Zaehler extends Geschaeftsobjekt {
         public Geschaeftspartner getZaehlerhersteller() {
             return zaehlerhersteller;
         }
+    
         public ZaehlerBuilder setZaehlerhersteller(Geschaeftspartner zaehlerhersteller) {
             this.zaehlerhersteller = zaehlerhersteller;
             return this;
@@ -388,6 +418,7 @@ public class Zaehler extends Geschaeftsobjekt {
         public Double getZaehlerkonstante() {
             return zaehlerkonstante;
         }
+    
         public ZaehlerBuilder setZaehlerkonstante(Double zaehlerkonstante) {
             this.zaehlerkonstante = zaehlerkonstante;
             return this;
@@ -396,6 +427,7 @@ public class Zaehler extends Geschaeftsobjekt {
         public String getZaehlernummer() {
             return zaehlernummer;
         }
+    
         public ZaehlerBuilder setZaehlernummer(String zaehlernummer) {
             this.zaehlernummer = zaehlernummer;
             return this;
@@ -404,6 +436,7 @@ public class Zaehler extends Geschaeftsobjekt {
         public Zaehlertyp getZaehlertyp() {
             return zaehlertyp;
         }
+    
         public ZaehlerBuilder setZaehlertyp(Zaehlertyp zaehlertyp) {
             this.zaehlertyp = zaehlertyp;
             return this;
@@ -412,6 +445,7 @@ public class Zaehler extends Geschaeftsobjekt {
         public ZaehlertypSpezifikation getZaehlertypSpezifikation() {
             return zaehlertypSpezifikation;
         }
+    
         public ZaehlerBuilder setZaehlertypSpezifikation(ZaehlertypSpezifikation zaehlertypSpezifikation) {
             this.zaehlertypSpezifikation = zaehlertypSpezifikation;
             return this;
@@ -420,6 +454,7 @@ public class Zaehler extends Geschaeftsobjekt {
         public List<Zaehlwerk> getZaehlwerke() {
             return zaehlwerke;
         }
+    
         public ZaehlerBuilder setZaehlwerke(List<Zaehlwerk> zaehlwerke) {
             this.zaehlwerke = zaehlwerke;
             return this;

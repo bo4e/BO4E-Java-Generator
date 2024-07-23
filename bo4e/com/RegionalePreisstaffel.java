@@ -37,8 +37,11 @@ public class RegionalePreisstaffel extends COM {
      */
     private Double staffelgrenzeVon;
 
-    public RegionalePreisstaffel() {}
+    public RegionalePreisstaffel() {
+    }
+
     private RegionalePreisstaffel(RegionalePreisstaffelBuilder builder) {
+        super(builder);
         this.einheitspreis = builder.einheitspreis;
         this.regionaleGueltigkeit = builder.regionaleGueltigkeit;
         this.sigmoidparameter = builder.sigmoidparameter;
@@ -49,6 +52,7 @@ public class RegionalePreisstaffel extends COM {
     public Double getEinheitspreis() {
         return einheitspreis;
     }
+
     public void setEinheitspreis(Double einheitspreis) {
         this.einheitspreis = einheitspreis;
     }
@@ -56,6 +60,7 @@ public class RegionalePreisstaffel extends COM {
     public RegionaleGueltigkeit getRegionaleGueltigkeit() {
         return regionaleGueltigkeit;
     }
+
     public void setRegionaleGueltigkeit(RegionaleGueltigkeit regionaleGueltigkeit) {
         this.regionaleGueltigkeit = regionaleGueltigkeit;
     }
@@ -63,6 +68,7 @@ public class RegionalePreisstaffel extends COM {
     public Sigmoidparameter getSigmoidparameter() {
         return sigmoidparameter;
     }
+
     public void setSigmoidparameter(Sigmoidparameter sigmoidparameter) {
         this.sigmoidparameter = sigmoidparameter;
     }
@@ -70,6 +76,7 @@ public class RegionalePreisstaffel extends COM {
     public Double getStaffelgrenzeBis() {
         return staffelgrenzeBis;
     }
+
     public void setStaffelgrenzeBis(Double staffelgrenzeBis) {
         this.staffelgrenzeBis = staffelgrenzeBis;
     }
@@ -77,6 +84,7 @@ public class RegionalePreisstaffel extends COM {
     public Double getStaffelgrenzeVon() {
         return staffelgrenzeVon;
     }
+
     public void setStaffelgrenzeVon(Double staffelgrenzeVon) {
         this.staffelgrenzeVon = staffelgrenzeVon;
     }
@@ -107,6 +115,7 @@ public class RegionalePreisstaffel extends COM {
         public Double getEinheitspreis() {
             return einheitspreis;
         }
+    
         public RegionalePreisstaffelBuilder setEinheitspreis(Double einheitspreis) {
             this.einheitspreis = einheitspreis;
             return this;
@@ -115,6 +124,7 @@ public class RegionalePreisstaffel extends COM {
         public RegionaleGueltigkeit getRegionaleGueltigkeit() {
             return regionaleGueltigkeit;
         }
+    
         public RegionalePreisstaffelBuilder setRegionaleGueltigkeit(RegionaleGueltigkeit regionaleGueltigkeit) {
             this.regionaleGueltigkeit = regionaleGueltigkeit;
             return this;
@@ -123,6 +133,7 @@ public class RegionalePreisstaffel extends COM {
         public Sigmoidparameter getSigmoidparameter() {
             return sigmoidparameter;
         }
+    
         public RegionalePreisstaffelBuilder setSigmoidparameter(Sigmoidparameter sigmoidparameter) {
             this.sigmoidparameter = sigmoidparameter;
             return this;
@@ -131,6 +142,7 @@ public class RegionalePreisstaffel extends COM {
         public Double getStaffelgrenzeBis() {
             return staffelgrenzeBis;
         }
+    
         public RegionalePreisstaffelBuilder setStaffelgrenzeBis(Double staffelgrenzeBis) {
             this.staffelgrenzeBis = staffelgrenzeBis;
             return this;
@@ -139,6 +151,7 @@ public class RegionalePreisstaffel extends COM {
         public Double getStaffelgrenzeVon() {
             return staffelgrenzeVon;
         }
+    
         public RegionalePreisstaffelBuilder setStaffelgrenzeVon(Double staffelgrenzeVon) {
             this.staffelgrenzeVon = staffelgrenzeVon;
             return this;

@@ -82,8 +82,11 @@ public class Ausschreibungsdetail extends COM {
      */
     private Zaehlertyp zaehlertechnik;
 
-    public Ausschreibungsdetail() {}
+    public Ausschreibungsdetail() {
+    }
+
     private Ausschreibungsdetail(AusschreibungsdetailBuilder builder) {
+        super(builder);
         this.istLastgangVorhanden = builder.istLastgangVorhanden;
         this.kunde = builder.kunde;
         this.lieferzeitraum = builder.lieferzeitraum;
@@ -104,6 +107,7 @@ public class Ausschreibungsdetail extends COM {
     public Boolean getIstLastgangVorhanden() {
         return istLastgangVorhanden;
     }
+
     public void setIstLastgangVorhanden(Boolean istLastgangVorhanden) {
         this.istLastgangVorhanden = istLastgangVorhanden;
     }
@@ -111,6 +115,7 @@ public class Ausschreibungsdetail extends COM {
     public String getKunde() {
         return kunde;
     }
+
     public void setKunde(String kunde) {
         this.kunde = kunde;
     }
@@ -118,6 +123,7 @@ public class Ausschreibungsdetail extends COM {
     public Zeitraum getLieferzeitraum() {
         return lieferzeitraum;
     }
+
     public void setLieferzeitraum(Zeitraum lieferzeitraum) {
         this.lieferzeitraum = lieferzeitraum;
     }
@@ -125,6 +131,7 @@ public class Ausschreibungsdetail extends COM {
     public Adresse getMarktlokationsadresse() {
         return marktlokationsadresse;
     }
+
     public void setMarktlokationsadresse(Adresse marktlokationsadresse) {
         this.marktlokationsadresse = marktlokationsadresse;
     }
@@ -132,6 +139,7 @@ public class Ausschreibungsdetail extends COM {
     public String getMarktlokationsbezeichnung() {
         return marktlokationsbezeichnung;
     }
+
     public void setMarktlokationsbezeichnung(String marktlokationsbezeichnung) {
         this.marktlokationsbezeichnung = marktlokationsbezeichnung;
     }
@@ -139,6 +147,7 @@ public class Ausschreibungsdetail extends COM {
     public String getMarktlokationsId() {
         return marktlokationsId;
     }
+
     public void setMarktlokationsId(String marktlokationsId) {
         this.marktlokationsId = marktlokationsId;
     }
@@ -146,6 +155,7 @@ public class Ausschreibungsdetail extends COM {
     public String getNetzbetreiber() {
         return netzbetreiber;
     }
+
     public void setNetzbetreiber(String netzbetreiber) {
         this.netzbetreiber = netzbetreiber;
     }
@@ -153,6 +163,7 @@ public class Ausschreibungsdetail extends COM {
     public String getNetzebeneLieferung() {
         return netzebeneLieferung;
     }
+
     public void setNetzebeneLieferung(String netzebeneLieferung) {
         this.netzebeneLieferung = netzebeneLieferung;
     }
@@ -160,6 +171,7 @@ public class Ausschreibungsdetail extends COM {
     public String getNetzebeneMessung() {
         return netzebeneMessung;
     }
+
     public void setNetzebeneMessung(String netzebeneMessung) {
         this.netzebeneMessung = netzebeneMessung;
     }
@@ -167,6 +179,7 @@ public class Ausschreibungsdetail extends COM {
     public Menge getPrognoseArbeitLieferzeitraum() {
         return prognoseArbeitLieferzeitraum;
     }
+
     public void setPrognoseArbeitLieferzeitraum(Menge prognoseArbeitLieferzeitraum) {
         this.prognoseArbeitLieferzeitraum = prognoseArbeitLieferzeitraum;
     }
@@ -174,6 +187,7 @@ public class Ausschreibungsdetail extends COM {
     public Menge getPrognoseJahresarbeit() {
         return prognoseJahresarbeit;
     }
+
     public void setPrognoseJahresarbeit(Menge prognoseJahresarbeit) {
         this.prognoseJahresarbeit = prognoseJahresarbeit;
     }
@@ -181,6 +195,7 @@ public class Ausschreibungsdetail extends COM {
     public Menge getPrognoseLeistung() {
         return prognoseLeistung;
     }
+
     public void setPrognoseLeistung(Menge prognoseLeistung) {
         this.prognoseLeistung = prognoseLeistung;
     }
@@ -188,6 +203,7 @@ public class Ausschreibungsdetail extends COM {
     public Adresse getRechnungsadresse() {
         return rechnungsadresse;
     }
+
     public void setRechnungsadresse(Adresse rechnungsadresse) {
         this.rechnungsadresse = rechnungsadresse;
     }
@@ -195,6 +211,7 @@ public class Ausschreibungsdetail extends COM {
     public String getZaehlernummer() {
         return zaehlernummer;
     }
+
     public void setZaehlernummer(String zaehlernummer) {
         this.zaehlernummer = zaehlernummer;
     }
@@ -202,6 +219,7 @@ public class Ausschreibungsdetail extends COM {
     public Zaehlertyp getZaehlertechnik() {
         return zaehlertechnik;
     }
+
     public void setZaehlertechnik(Zaehlertyp zaehlertechnik) {
         this.zaehlertechnik = zaehlertechnik;
     }
@@ -273,6 +291,7 @@ public class Ausschreibungsdetail extends COM {
         public Boolean getIstLastgangVorhanden() {
             return istLastgangVorhanden;
         }
+    
         public AusschreibungsdetailBuilder setIstLastgangVorhanden(Boolean istLastgangVorhanden) {
             this.istLastgangVorhanden = istLastgangVorhanden;
             return this;
@@ -281,6 +300,7 @@ public class Ausschreibungsdetail extends COM {
         public String getKunde() {
             return kunde;
         }
+    
         public AusschreibungsdetailBuilder setKunde(String kunde) {
             this.kunde = kunde;
             return this;
@@ -289,6 +309,7 @@ public class Ausschreibungsdetail extends COM {
         public Zeitraum getLieferzeitraum() {
             return lieferzeitraum;
         }
+    
         public AusschreibungsdetailBuilder setLieferzeitraum(Zeitraum lieferzeitraum) {
             this.lieferzeitraum = lieferzeitraum;
             return this;
@@ -297,6 +318,7 @@ public class Ausschreibungsdetail extends COM {
         public Adresse getMarktlokationsadresse() {
             return marktlokationsadresse;
         }
+    
         public AusschreibungsdetailBuilder setMarktlokationsadresse(Adresse marktlokationsadresse) {
             this.marktlokationsadresse = marktlokationsadresse;
             return this;
@@ -305,6 +327,7 @@ public class Ausschreibungsdetail extends COM {
         public String getMarktlokationsbezeichnung() {
             return marktlokationsbezeichnung;
         }
+    
         public AusschreibungsdetailBuilder setMarktlokationsbezeichnung(String marktlokationsbezeichnung) {
             this.marktlokationsbezeichnung = marktlokationsbezeichnung;
             return this;
@@ -313,6 +336,7 @@ public class Ausschreibungsdetail extends COM {
         public String getMarktlokationsId() {
             return marktlokationsId;
         }
+    
         public AusschreibungsdetailBuilder setMarktlokationsId(String marktlokationsId) {
             this.marktlokationsId = marktlokationsId;
             return this;
@@ -321,6 +345,7 @@ public class Ausschreibungsdetail extends COM {
         public String getNetzbetreiber() {
             return netzbetreiber;
         }
+    
         public AusschreibungsdetailBuilder setNetzbetreiber(String netzbetreiber) {
             this.netzbetreiber = netzbetreiber;
             return this;
@@ -329,6 +354,7 @@ public class Ausschreibungsdetail extends COM {
         public String getNetzebeneLieferung() {
             return netzebeneLieferung;
         }
+    
         public AusschreibungsdetailBuilder setNetzebeneLieferung(String netzebeneLieferung) {
             this.netzebeneLieferung = netzebeneLieferung;
             return this;
@@ -337,6 +363,7 @@ public class Ausschreibungsdetail extends COM {
         public String getNetzebeneMessung() {
             return netzebeneMessung;
         }
+    
         public AusschreibungsdetailBuilder setNetzebeneMessung(String netzebeneMessung) {
             this.netzebeneMessung = netzebeneMessung;
             return this;
@@ -345,6 +372,7 @@ public class Ausschreibungsdetail extends COM {
         public Menge getPrognoseArbeitLieferzeitraum() {
             return prognoseArbeitLieferzeitraum;
         }
+    
         public AusschreibungsdetailBuilder setPrognoseArbeitLieferzeitraum(Menge prognoseArbeitLieferzeitraum) {
             this.prognoseArbeitLieferzeitraum = prognoseArbeitLieferzeitraum;
             return this;
@@ -353,6 +381,7 @@ public class Ausschreibungsdetail extends COM {
         public Menge getPrognoseJahresarbeit() {
             return prognoseJahresarbeit;
         }
+    
         public AusschreibungsdetailBuilder setPrognoseJahresarbeit(Menge prognoseJahresarbeit) {
             this.prognoseJahresarbeit = prognoseJahresarbeit;
             return this;
@@ -361,6 +390,7 @@ public class Ausschreibungsdetail extends COM {
         public Menge getPrognoseLeistung() {
             return prognoseLeistung;
         }
+    
         public AusschreibungsdetailBuilder setPrognoseLeistung(Menge prognoseLeistung) {
             this.prognoseLeistung = prognoseLeistung;
             return this;
@@ -369,6 +399,7 @@ public class Ausschreibungsdetail extends COM {
         public Adresse getRechnungsadresse() {
             return rechnungsadresse;
         }
+    
         public AusschreibungsdetailBuilder setRechnungsadresse(Adresse rechnungsadresse) {
             this.rechnungsadresse = rechnungsadresse;
             return this;
@@ -377,6 +408,7 @@ public class Ausschreibungsdetail extends COM {
         public String getZaehlernummer() {
             return zaehlernummer;
         }
+    
         public AusschreibungsdetailBuilder setZaehlernummer(String zaehlernummer) {
             this.zaehlernummer = zaehlernummer;
             return this;
@@ -385,6 +417,7 @@ public class Ausschreibungsdetail extends COM {
         public Zaehlertyp getZaehlertechnik() {
             return zaehlertechnik;
         }
+    
         public AusschreibungsdetailBuilder setZaehlertechnik(Zaehlertyp zaehlertechnik) {
             this.zaehlertechnik = zaehlertechnik;
             return this;

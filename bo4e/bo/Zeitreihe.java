@@ -64,8 +64,11 @@ public class Zeitreihe extends Geschaeftsobjekt {
      */
     private Wertermittlungsverfahren wertherkunft;
 
-    public Zeitreihe() {}
+    public Zeitreihe() {
+    }
+
     private Zeitreihe(ZeitreiheBuilder builder) {
+        super(builder);
         this.beschreibung = builder.beschreibung;
         this.bezeichnung = builder.bezeichnung;
         this.einheit = builder.einheit;
@@ -84,6 +87,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
     public String getBeschreibung() {
         return beschreibung;
     }
+
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
@@ -91,6 +95,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -98,6 +103,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
     public Mengeneinheit getEinheit() {
         return einheit;
     }
+
     public void setEinheit(Mengeneinheit einheit) {
         this.einheit = einheit;
     }
@@ -105,6 +111,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
     public Medium getMedium() {
         return medium;
     }
+
     public void setMedium(Medium medium) {
         this.medium = medium;
     }
@@ -112,6 +119,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
     public Messart getMessart() {
         return messart;
     }
+
     public void setMessart(Messart messart) {
         this.messart = messart;
     }
@@ -119,6 +127,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
     public Messgroesse getMessgroesse() {
         return messgroesse;
     }
+
     public void setMessgroesse(Messgroesse messgroesse) {
         this.messgroesse = messgroesse;
     }
@@ -126,6 +135,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
     public String getVersion() {
         return version;
     }
+
     public void setVersion(String version) {
         this.version = version;
     }
@@ -133,6 +143,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
     public List<Zeitreihenwert> getWerte() {
         return werte;
     }
+
     public void setWerte(List<Zeitreihenwert> werte) {
         this.werte = werte;
     }
@@ -140,6 +151,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
     public Wertermittlungsverfahren getWertherkunft() {
         return wertherkunft;
     }
+
     public void setWertherkunft(Wertermittlungsverfahren wertherkunft) {
         this.wertherkunft = wertherkunft;
     }
@@ -185,6 +197,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
         public String getBeschreibung() {
             return beschreibung;
         }
+    
         public ZeitreiheBuilder setBeschreibung(String beschreibung) {
             this.beschreibung = beschreibung;
             return this;
@@ -193,6 +206,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public ZeitreiheBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;
@@ -201,6 +215,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
         public Mengeneinheit getEinheit() {
             return einheit;
         }
+    
         public ZeitreiheBuilder setEinheit(Mengeneinheit einheit) {
             this.einheit = einheit;
             return this;
@@ -209,6 +224,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
         public Medium getMedium() {
             return medium;
         }
+    
         public ZeitreiheBuilder setMedium(Medium medium) {
             this.medium = medium;
             return this;
@@ -217,6 +233,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
         public Messart getMessart() {
             return messart;
         }
+    
         public ZeitreiheBuilder setMessart(Messart messart) {
             this.messart = messart;
             return this;
@@ -225,6 +242,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
         public Messgroesse getMessgroesse() {
             return messgroesse;
         }
+    
         public ZeitreiheBuilder setMessgroesse(Messgroesse messgroesse) {
             this.messgroesse = messgroesse;
             return this;
@@ -233,6 +251,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
         public String getVersion() {
             return version;
         }
+    
         public ZeitreiheBuilder setVersion(String version) {
             this.version = version;
             return this;
@@ -241,6 +260,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
         public List<Zeitreihenwert> getWerte() {
             return werte;
         }
+    
         public ZeitreiheBuilder setWerte(List<Zeitreihenwert> werte) {
             this.werte = werte;
             return this;
@@ -249,6 +269,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
         public Wertermittlungsverfahren getWertherkunft() {
             return wertherkunft;
         }
+    
         public ZeitreiheBuilder setWertherkunft(Wertermittlungsverfahren wertherkunft) {
             this.wertherkunft = wertherkunft;
             return this;

@@ -55,8 +55,11 @@ public class Adresse extends COM {
      */
     private String strasse;
 
-    public Adresse() {}
+    public Adresse() {
+    }
+
     private Adresse(AdresseBuilder builder) {
+        super(builder);
         this.adresszusatz = builder.adresszusatz;
         this.coErgaenzung = builder.coErgaenzung;
         this.hausnummer = builder.hausnummer;
@@ -71,6 +74,7 @@ public class Adresse extends COM {
     public String getAdresszusatz() {
         return adresszusatz;
     }
+
     public void setAdresszusatz(String adresszusatz) {
         this.adresszusatz = adresszusatz;
     }
@@ -78,6 +82,7 @@ public class Adresse extends COM {
     public String getCoErgaenzung() {
         return coErgaenzung;
     }
+
     public void setCoErgaenzung(String coErgaenzung) {
         this.coErgaenzung = coErgaenzung;
     }
@@ -85,6 +90,7 @@ public class Adresse extends COM {
     public String getHausnummer() {
         return hausnummer;
     }
+
     public void setHausnummer(String hausnummer) {
         this.hausnummer = hausnummer;
     }
@@ -92,6 +98,7 @@ public class Adresse extends COM {
     public Landescode getLandescode() {
         return landescode;
     }
+
     public void setLandescode(Landescode landescode) {
         this.landescode = landescode;
     }
@@ -99,6 +106,7 @@ public class Adresse extends COM {
     public String getOrt() {
         return ort;
     }
+
     public void setOrt(String ort) {
         this.ort = ort;
     }
@@ -106,6 +114,7 @@ public class Adresse extends COM {
     public String getOrtsteil() {
         return ortsteil;
     }
+
     public void setOrtsteil(String ortsteil) {
         this.ortsteil = ortsteil;
     }
@@ -113,6 +122,7 @@ public class Adresse extends COM {
     public String getPostfach() {
         return postfach;
     }
+
     public void setPostfach(String postfach) {
         this.postfach = postfach;
     }
@@ -120,6 +130,7 @@ public class Adresse extends COM {
     public String getPostleitzahl() {
         return postleitzahl;
     }
+
     public void setPostleitzahl(String postleitzahl) {
         this.postleitzahl = postleitzahl;
     }
@@ -127,6 +138,7 @@ public class Adresse extends COM {
     public String getStrasse() {
         return strasse;
     }
+
     public void setStrasse(String strasse) {
         this.strasse = strasse;
     }
@@ -174,6 +186,7 @@ public class Adresse extends COM {
         public String getAdresszusatz() {
             return adresszusatz;
         }
+    
         public AdresseBuilder setAdresszusatz(String adresszusatz) {
             this.adresszusatz = adresszusatz;
             return this;
@@ -182,6 +195,7 @@ public class Adresse extends COM {
         public String getCoErgaenzung() {
             return coErgaenzung;
         }
+    
         public AdresseBuilder setCoErgaenzung(String coErgaenzung) {
             this.coErgaenzung = coErgaenzung;
             return this;
@@ -190,6 +204,7 @@ public class Adresse extends COM {
         public String getHausnummer() {
             return hausnummer;
         }
+    
         public AdresseBuilder setHausnummer(String hausnummer) {
             this.hausnummer = hausnummer;
             return this;
@@ -198,6 +213,7 @@ public class Adresse extends COM {
         public Landescode getLandescode() {
             return landescode;
         }
+    
         public AdresseBuilder setLandescode(Landescode landescode) {
             this.landescode = landescode;
             return this;
@@ -206,6 +222,7 @@ public class Adresse extends COM {
         public String getOrt() {
             return ort;
         }
+    
         public AdresseBuilder setOrt(String ort) {
             this.ort = ort;
             return this;
@@ -214,6 +231,7 @@ public class Adresse extends COM {
         public String getOrtsteil() {
             return ortsteil;
         }
+    
         public AdresseBuilder setOrtsteil(String ortsteil) {
             this.ortsteil = ortsteil;
             return this;
@@ -222,6 +240,7 @@ public class Adresse extends COM {
         public String getPostfach() {
             return postfach;
         }
+    
         public AdresseBuilder setPostfach(String postfach) {
             this.postfach = postfach;
             return this;
@@ -230,6 +249,7 @@ public class Adresse extends COM {
         public String getPostleitzahl() {
             return postleitzahl;
         }
+    
         public AdresseBuilder setPostleitzahl(String postleitzahl) {
             this.postleitzahl = postleitzahl;
             return this;
@@ -238,6 +258,7 @@ public class Adresse extends COM {
         public String getStrasse() {
             return strasse;
         }
+    
         public AdresseBuilder setStrasse(String strasse) {
             this.strasse = strasse;
             return this;

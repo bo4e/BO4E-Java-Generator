@@ -34,8 +34,11 @@ public class RegionalePreisgarantie extends COM {
      */
     private Zeitraum zeitlicheGueltigkeit;
 
-    public RegionalePreisgarantie() {}
+    public RegionalePreisgarantie() {
+    }
+
     private RegionalePreisgarantie(RegionalePreisgarantieBuilder builder) {
+        super(builder);
         this.beschreibung = builder.beschreibung;
         this.preisgarantietyp = builder.preisgarantietyp;
         this.regionaleGueltigkeit = builder.regionaleGueltigkeit;
@@ -45,6 +48,7 @@ public class RegionalePreisgarantie extends COM {
     public String getBeschreibung() {
         return beschreibung;
     }
+
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
@@ -52,6 +56,7 @@ public class RegionalePreisgarantie extends COM {
     public Preisgarantietyp getPreisgarantietyp() {
         return preisgarantietyp;
     }
+
     public void setPreisgarantietyp(Preisgarantietyp preisgarantietyp) {
         this.preisgarantietyp = preisgarantietyp;
     }
@@ -59,6 +64,7 @@ public class RegionalePreisgarantie extends COM {
     public RegionaleGueltigkeit getRegionaleGueltigkeit() {
         return regionaleGueltigkeit;
     }
+
     public void setRegionaleGueltigkeit(RegionaleGueltigkeit regionaleGueltigkeit) {
         this.regionaleGueltigkeit = regionaleGueltigkeit;
     }
@@ -66,6 +72,7 @@ public class RegionalePreisgarantie extends COM {
     public Zeitraum getZeitlicheGueltigkeit() {
         return zeitlicheGueltigkeit;
     }
+
     public void setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
         this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
     }
@@ -91,6 +98,7 @@ public class RegionalePreisgarantie extends COM {
         public String getBeschreibung() {
             return beschreibung;
         }
+    
         public RegionalePreisgarantieBuilder setBeschreibung(String beschreibung) {
             this.beschreibung = beschreibung;
             return this;
@@ -99,6 +107,7 @@ public class RegionalePreisgarantie extends COM {
         public Preisgarantietyp getPreisgarantietyp() {
             return preisgarantietyp;
         }
+    
         public RegionalePreisgarantieBuilder setPreisgarantietyp(Preisgarantietyp preisgarantietyp) {
             this.preisgarantietyp = preisgarantietyp;
             return this;
@@ -107,6 +116,7 @@ public class RegionalePreisgarantie extends COM {
         public RegionaleGueltigkeit getRegionaleGueltigkeit() {
             return regionaleGueltigkeit;
         }
+    
         public RegionalePreisgarantieBuilder setRegionaleGueltigkeit(RegionaleGueltigkeit regionaleGueltigkeit) {
             this.regionaleGueltigkeit = regionaleGueltigkeit;
             return this;
@@ -115,6 +125,7 @@ public class RegionalePreisgarantie extends COM {
         public Zeitraum getZeitlicheGueltigkeit() {
             return zeitlicheGueltigkeit;
         }
+    
         public RegionalePreisgarantieBuilder setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
             this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
             return this;

@@ -56,8 +56,11 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
      */
     private Sparte sparte;
 
-    public PreisblattKonzessionsabgabe() {}
+    public PreisblattKonzessionsabgabe() {
+    }
+
     private PreisblattKonzessionsabgabe(PreisblattKonzessionsabgabeBuilder builder) {
+        super(builder);
         this.bezeichnung = builder.bezeichnung;
         this.gueltigkeit = builder.gueltigkeit;
         this.herausgeber = builder.herausgeber;
@@ -74,6 +77,7 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
     public String getBezeichnung() {
         return bezeichnung;
     }
+
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -81,6 +85,7 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
     public Zeitraum getGueltigkeit() {
         return gueltigkeit;
     }
+
     public void setGueltigkeit(Zeitraum gueltigkeit) {
         this.gueltigkeit = gueltigkeit;
     }
@@ -88,6 +93,7 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
     public Marktteilnehmer getHerausgeber() {
         return herausgeber;
     }
+
     public void setHerausgeber(Marktteilnehmer herausgeber) {
         this.herausgeber = herausgeber;
     }
@@ -95,6 +101,7 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
     public KundengruppeKA getKundengruppeKA() {
         return kundengruppeKA;
     }
+
     public void setKundengruppeKA(KundengruppeKA kundengruppeKA) {
         this.kundengruppeKA = kundengruppeKA;
     }
@@ -102,6 +109,7 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
     public List<Preisposition> getPreispositionen() {
         return preispositionen;
     }
+
     public void setPreispositionen(List<Preisposition> preispositionen) {
         this.preispositionen = preispositionen;
     }
@@ -109,6 +117,7 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
     public Preisstatus getPreisstatus() {
         return preisstatus;
     }
+
     public void setPreisstatus(Preisstatus preisstatus) {
         this.preisstatus = preisstatus;
     }
@@ -116,6 +125,7 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -154,6 +164,7 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
         public String getBezeichnung() {
             return bezeichnung;
         }
+    
         public PreisblattKonzessionsabgabeBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
             return this;
@@ -162,6 +173,7 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
         public Zeitraum getGueltigkeit() {
             return gueltigkeit;
         }
+    
         public PreisblattKonzessionsabgabeBuilder setGueltigkeit(Zeitraum gueltigkeit) {
             this.gueltigkeit = gueltigkeit;
             return this;
@@ -170,6 +182,7 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
         public Marktteilnehmer getHerausgeber() {
             return herausgeber;
         }
+    
         public PreisblattKonzessionsabgabeBuilder setHerausgeber(Marktteilnehmer herausgeber) {
             this.herausgeber = herausgeber;
             return this;
@@ -178,6 +191,7 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
         public KundengruppeKA getKundengruppeKA() {
             return kundengruppeKA;
         }
+    
         public PreisblattKonzessionsabgabeBuilder setKundengruppeKA(KundengruppeKA kundengruppeKA) {
             this.kundengruppeKA = kundengruppeKA;
             return this;
@@ -186,6 +200,7 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
         public List<Preisposition> getPreispositionen() {
             return preispositionen;
         }
+    
         public PreisblattKonzessionsabgabeBuilder setPreispositionen(List<Preisposition> preispositionen) {
             this.preispositionen = preispositionen;
             return this;
@@ -194,6 +209,7 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
         public Preisstatus getPreisstatus() {
             return preisstatus;
         }
+    
         public PreisblattKonzessionsabgabeBuilder setPreisstatus(Preisstatus preisstatus) {
             this.preisstatus = preisstatus;
             return this;
@@ -202,6 +218,7 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public PreisblattKonzessionsabgabeBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;

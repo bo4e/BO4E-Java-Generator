@@ -28,8 +28,11 @@ public class StandorteigenschaftenStrom extends COM {
      */
     private String regelzoneEic;
 
-    public StandorteigenschaftenStrom() {}
+    public StandorteigenschaftenStrom() {
+    }
+
     private StandorteigenschaftenStrom(StandorteigenschaftenStromBuilder builder) {
+        super(builder);
         this.bilanzierungsgebietEic = builder.bilanzierungsgebietEic;
         this.regelzone = builder.regelzone;
         this.regelzoneEic = builder.regelzoneEic;
@@ -38,6 +41,7 @@ public class StandorteigenschaftenStrom extends COM {
     public String getBilanzierungsgebietEic() {
         return bilanzierungsgebietEic;
     }
+
     public void setBilanzierungsgebietEic(String bilanzierungsgebietEic) {
         this.bilanzierungsgebietEic = bilanzierungsgebietEic;
     }
@@ -45,6 +49,7 @@ public class StandorteigenschaftenStrom extends COM {
     public String getRegelzone() {
         return regelzone;
     }
+
     public void setRegelzone(String regelzone) {
         this.regelzone = regelzone;
     }
@@ -52,6 +57,7 @@ public class StandorteigenschaftenStrom extends COM {
     public String getRegelzoneEic() {
         return regelzoneEic;
     }
+
     public void setRegelzoneEic(String regelzoneEic) {
         this.regelzoneEic = regelzoneEic;
     }
@@ -73,6 +79,7 @@ public class StandorteigenschaftenStrom extends COM {
         public String getBilanzierungsgebietEic() {
             return bilanzierungsgebietEic;
         }
+    
         public StandorteigenschaftenStromBuilder setBilanzierungsgebietEic(String bilanzierungsgebietEic) {
             this.bilanzierungsgebietEic = bilanzierungsgebietEic;
             return this;
@@ -81,6 +88,7 @@ public class StandorteigenschaftenStrom extends COM {
         public String getRegelzone() {
             return regelzone;
         }
+    
         public StandorteigenschaftenStromBuilder setRegelzone(String regelzone) {
             this.regelzone = regelzone;
             return this;
@@ -89,6 +97,7 @@ public class StandorteigenschaftenStrom extends COM {
         public String getRegelzoneEic() {
             return regelzoneEic;
         }
+    
         public StandorteigenschaftenStromBuilder setRegelzoneEic(String regelzoneEic) {
             this.regelzoneEic = regelzoneEic;
             return this;

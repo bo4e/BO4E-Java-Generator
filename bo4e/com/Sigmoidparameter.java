@@ -33,8 +33,11 @@ public class Sigmoidparameter extends COM {
      */
     private Double d;
 
-    public Sigmoidparameter() {}
+    public Sigmoidparameter() {
+    }
+
     private Sigmoidparameter(SigmoidparameterBuilder builder) {
+        super(builder);
         this.a = builder.a;
         this.b = builder.b;
         this.c = builder.c;
@@ -44,6 +47,7 @@ public class Sigmoidparameter extends COM {
     public Double getA() {
         return a;
     }
+
     public void setA(Double a) {
         this.a = a;
     }
@@ -51,6 +55,7 @@ public class Sigmoidparameter extends COM {
     public Double getB() {
         return b;
     }
+
     public void setB(Double b) {
         this.b = b;
     }
@@ -58,6 +63,7 @@ public class Sigmoidparameter extends COM {
     public Double getC() {
         return c;
     }
+
     public void setC(Double c) {
         this.c = c;
     }
@@ -65,6 +71,7 @@ public class Sigmoidparameter extends COM {
     public Double getD() {
         return d;
     }
+
     public void setD(Double d) {
         this.d = d;
     }
@@ -90,6 +97,7 @@ public class Sigmoidparameter extends COM {
         public Double getA() {
             return a;
         }
+    
         public SigmoidparameterBuilder setA(Double a) {
             this.a = a;
             return this;
@@ -98,6 +106,7 @@ public class Sigmoidparameter extends COM {
         public Double getB() {
             return b;
         }
+    
         public SigmoidparameterBuilder setB(Double b) {
             this.b = b;
             return this;
@@ -106,6 +115,7 @@ public class Sigmoidparameter extends COM {
         public Double getC() {
             return c;
         }
+    
         public SigmoidparameterBuilder setC(Double c) {
             this.c = c;
             return this;
@@ -114,6 +124,7 @@ public class Sigmoidparameter extends COM {
         public Double getD() {
             return d;
         }
+    
         public SigmoidparameterBuilder setD(Double d) {
             this.d = d;
             return this;

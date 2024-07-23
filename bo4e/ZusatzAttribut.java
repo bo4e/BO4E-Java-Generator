@@ -25,7 +25,9 @@ public class ZusatzAttribut {
      */
     private Object wert;
 
-    public ZusatzAttribut() {}
+    public ZusatzAttribut() {
+    }
+
     private ZusatzAttribut(ZusatzAttributBuilder builder) {
         this.name = builder.name;
         this.wert = builder.wert;
@@ -34,6 +36,7 @@ public class ZusatzAttribut {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -41,11 +44,12 @@ public class ZusatzAttribut {
     public Object getWert() {
         return wert;
     }
+
     public void setWert(Object wert) {
         this.wert = wert;
     }
 
-    public static class ZusatzAttributBuilderBuilder {
+    public static class ZusatzAttributBuilder {
         /**
          * Bezeichnung der externen Referenz (z.B. "microservice xyz" oder "SAP CRM GP-Nummer")
          */
@@ -58,6 +62,7 @@ public class ZusatzAttribut {
         public String getName() {
             return name;
         }
+    
         public ZusatzAttributBuilder setName(String name) {
             this.name = name;
             return this;
@@ -66,6 +71,7 @@ public class ZusatzAttribut {
         public Object getWert() {
             return wert;
         }
+    
         public ZusatzAttributBuilder setWert(Object wert) {
             this.wert = wert;
             return this;

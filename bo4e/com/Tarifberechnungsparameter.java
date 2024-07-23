@@ -60,8 +60,11 @@ public class Tarifberechnungsparameter extends COM {
      */
     private List<Tarifpreis> zusatzpreise;
 
-    public Tarifberechnungsparameter() {}
+    public Tarifberechnungsparameter() {
+    }
+
     private Tarifberechnungsparameter(TarifberechnungsparameterBuilder builder) {
+        super(builder);
         this.berechnungsmethode = builder.berechnungsmethode;
         this.hoechstpreisHT = builder.hoechstpreisHT;
         this.hoechstpreisNT = builder.hoechstpreisNT;
@@ -77,6 +80,7 @@ public class Tarifberechnungsparameter extends COM {
     public Tarifkalkulationsmethode getBerechnungsmethode() {
         return berechnungsmethode;
     }
+
     public void setBerechnungsmethode(Tarifkalkulationsmethode berechnungsmethode) {
         this.berechnungsmethode = berechnungsmethode;
     }
@@ -84,6 +88,7 @@ public class Tarifberechnungsparameter extends COM {
     public Preis getHoechstpreisHT() {
         return hoechstpreisHT;
     }
+
     public void setHoechstpreisHT(Preis hoechstpreisHT) {
         this.hoechstpreisHT = hoechstpreisHT;
     }
@@ -91,6 +96,7 @@ public class Tarifberechnungsparameter extends COM {
     public Preis getHoechstpreisNT() {
         return hoechstpreisNT;
     }
+
     public void setHoechstpreisNT(Preis hoechstpreisNT) {
         this.hoechstpreisNT = hoechstpreisNT;
     }
@@ -98,6 +104,7 @@ public class Tarifberechnungsparameter extends COM {
     public Boolean getIstMesspreisInGrundpreisEnthalten() {
         return istMesspreisInGrundpreisEnthalten;
     }
+
     public void setIstMesspreisInGrundpreisEnthalten(Boolean istMesspreisInGrundpreisEnthalten) {
         this.istMesspreisInGrundpreisEnthalten = istMesspreisInGrundpreisEnthalten;
     }
@@ -105,6 +112,7 @@ public class Tarifberechnungsparameter extends COM {
     public Boolean getIstMesspreisZuBeruecksichtigen() {
         return istMesspreisZuBeruecksichtigen;
     }
+
     public void setIstMesspreisZuBeruecksichtigen(Boolean istMesspreisZuBeruecksichtigen) {
         this.istMesspreisZuBeruecksichtigen = istMesspreisZuBeruecksichtigen;
     }
@@ -112,6 +120,7 @@ public class Tarifberechnungsparameter extends COM {
     public Double getKwInklusive() {
         return kwInklusive;
     }
+
     public void setKwInklusive(Double kwInklusive) {
         this.kwInklusive = kwInklusive;
     }
@@ -119,6 +128,7 @@ public class Tarifberechnungsparameter extends COM {
     public Double getKwWeitereMengen() {
         return kwWeitereMengen;
     }
+
     public void setKwWeitereMengen(Double kwWeitereMengen) {
         this.kwWeitereMengen = kwWeitereMengen;
     }
@@ -126,6 +136,7 @@ public class Tarifberechnungsparameter extends COM {
     public Messpreistyp getMesspreistyp() {
         return messpreistyp;
     }
+
     public void setMesspreistyp(Messpreistyp messpreistyp) {
         this.messpreistyp = messpreistyp;
     }
@@ -133,6 +144,7 @@ public class Tarifberechnungsparameter extends COM {
     public Preis getMindestpreis() {
         return mindestpreis;
     }
+
     public void setMindestpreis(Preis mindestpreis) {
         this.mindestpreis = mindestpreis;
     }
@@ -140,6 +152,7 @@ public class Tarifberechnungsparameter extends COM {
     public List<Tarifpreis> getZusatzpreise() {
         return zusatzpreise;
     }
+
     public void setZusatzpreise(List<Tarifpreis> zusatzpreise) {
         this.zusatzpreise = zusatzpreise;
     }
@@ -190,6 +203,7 @@ public class Tarifberechnungsparameter extends COM {
         public Tarifkalkulationsmethode getBerechnungsmethode() {
             return berechnungsmethode;
         }
+    
         public TarifberechnungsparameterBuilder setBerechnungsmethode(Tarifkalkulationsmethode berechnungsmethode) {
             this.berechnungsmethode = berechnungsmethode;
             return this;
@@ -198,6 +212,7 @@ public class Tarifberechnungsparameter extends COM {
         public Preis getHoechstpreisHT() {
             return hoechstpreisHT;
         }
+    
         public TarifberechnungsparameterBuilder setHoechstpreisHT(Preis hoechstpreisHT) {
             this.hoechstpreisHT = hoechstpreisHT;
             return this;
@@ -206,6 +221,7 @@ public class Tarifberechnungsparameter extends COM {
         public Preis getHoechstpreisNT() {
             return hoechstpreisNT;
         }
+    
         public TarifberechnungsparameterBuilder setHoechstpreisNT(Preis hoechstpreisNT) {
             this.hoechstpreisNT = hoechstpreisNT;
             return this;
@@ -214,6 +230,7 @@ public class Tarifberechnungsparameter extends COM {
         public Boolean getIstMesspreisInGrundpreisEnthalten() {
             return istMesspreisInGrundpreisEnthalten;
         }
+    
         public TarifberechnungsparameterBuilder setIstMesspreisInGrundpreisEnthalten(Boolean istMesspreisInGrundpreisEnthalten) {
             this.istMesspreisInGrundpreisEnthalten = istMesspreisInGrundpreisEnthalten;
             return this;
@@ -222,6 +239,7 @@ public class Tarifberechnungsparameter extends COM {
         public Boolean getIstMesspreisZuBeruecksichtigen() {
             return istMesspreisZuBeruecksichtigen;
         }
+    
         public TarifberechnungsparameterBuilder setIstMesspreisZuBeruecksichtigen(Boolean istMesspreisZuBeruecksichtigen) {
             this.istMesspreisZuBeruecksichtigen = istMesspreisZuBeruecksichtigen;
             return this;
@@ -230,6 +248,7 @@ public class Tarifberechnungsparameter extends COM {
         public Double getKwInklusive() {
             return kwInklusive;
         }
+    
         public TarifberechnungsparameterBuilder setKwInklusive(Double kwInklusive) {
             this.kwInklusive = kwInklusive;
             return this;
@@ -238,6 +257,7 @@ public class Tarifberechnungsparameter extends COM {
         public Double getKwWeitereMengen() {
             return kwWeitereMengen;
         }
+    
         public TarifberechnungsparameterBuilder setKwWeitereMengen(Double kwWeitereMengen) {
             this.kwWeitereMengen = kwWeitereMengen;
             return this;
@@ -246,6 +266,7 @@ public class Tarifberechnungsparameter extends COM {
         public Messpreistyp getMesspreistyp() {
             return messpreistyp;
         }
+    
         public TarifberechnungsparameterBuilder setMesspreistyp(Messpreistyp messpreistyp) {
             this.messpreistyp = messpreistyp;
             return this;
@@ -254,6 +275,7 @@ public class Tarifberechnungsparameter extends COM {
         public Preis getMindestpreis() {
             return mindestpreis;
         }
+    
         public TarifberechnungsparameterBuilder setMindestpreis(Preis mindestpreis) {
             this.mindestpreis = mindestpreis;
             return this;
@@ -262,6 +284,7 @@ public class Tarifberechnungsparameter extends COM {
         public List<Tarifpreis> getZusatzpreise() {
             return zusatzpreise;
         }
+    
         public TarifberechnungsparameterBuilder setZusatzpreise(List<Tarifpreis> zusatzpreise) {
             this.zusatzpreise = zusatzpreise;
             return this;

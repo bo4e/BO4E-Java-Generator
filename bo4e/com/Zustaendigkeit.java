@@ -31,8 +31,11 @@ public class Zustaendigkeit extends COM {
      */
     private Themengebiet themengebiet;
 
-    public Zustaendigkeit() {}
+    public Zustaendigkeit() {
+    }
+
     private Zustaendigkeit(ZustaendigkeitBuilder builder) {
+        super(builder);
         this.abteilung = builder.abteilung;
         this.position = builder.position;
         this.themengebiet = builder.themengebiet;
@@ -41,6 +44,7 @@ public class Zustaendigkeit extends COM {
     public String getAbteilung() {
         return abteilung;
     }
+
     public void setAbteilung(String abteilung) {
         this.abteilung = abteilung;
     }
@@ -48,6 +52,7 @@ public class Zustaendigkeit extends COM {
     public String getPosition() {
         return position;
     }
+
     public void setPosition(String position) {
         this.position = position;
     }
@@ -55,6 +60,7 @@ public class Zustaendigkeit extends COM {
     public Themengebiet getThemengebiet() {
         return themengebiet;
     }
+
     public void setThemengebiet(Themengebiet themengebiet) {
         this.themengebiet = themengebiet;
     }
@@ -76,6 +82,7 @@ public class Zustaendigkeit extends COM {
         public String getAbteilung() {
             return abteilung;
         }
+    
         public ZustaendigkeitBuilder setAbteilung(String abteilung) {
             this.abteilung = abteilung;
             return this;
@@ -84,6 +91,7 @@ public class Zustaendigkeit extends COM {
         public String getPosition() {
             return position;
         }
+    
         public ZustaendigkeitBuilder setPosition(String position) {
             this.position = position;
             return this;
@@ -92,6 +100,7 @@ public class Zustaendigkeit extends COM {
         public Themengebiet getThemengebiet() {
             return themengebiet;
         }
+    
         public ZustaendigkeitBuilder setThemengebiet(Themengebiet themengebiet) {
             this.themengebiet = themengebiet;
             return this;

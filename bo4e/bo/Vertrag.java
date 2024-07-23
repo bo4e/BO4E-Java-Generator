@@ -84,8 +84,11 @@ public class Vertrag extends Geschaeftsobjekt {
      */
     private List<Vertragsteil> vertragsteile;
 
-    public Vertrag() {}
+    public Vertrag() {
+    }
+
     private Vertrag(VertragBuilder builder) {
+        super(builder);
         this.beschreibung = builder.beschreibung;
         this.sparte = builder.sparte;
         this.unterzeichnervp1 = builder.unterzeichnervp1;
@@ -108,6 +111,7 @@ public class Vertrag extends Geschaeftsobjekt {
     public String getBeschreibung() {
         return beschreibung;
     }
+
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
@@ -115,6 +119,7 @@ public class Vertrag extends Geschaeftsobjekt {
     public Sparte getSparte() {
         return sparte;
     }
+
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
@@ -122,6 +127,7 @@ public class Vertrag extends Geschaeftsobjekt {
     public List<Unterschrift> getUnterzeichnervp1() {
         return unterzeichnervp1;
     }
+
     public void setUnterzeichnervp1(List<Unterschrift> unterzeichnervp1) {
         this.unterzeichnervp1 = unterzeichnervp1;
     }
@@ -129,6 +135,7 @@ public class Vertrag extends Geschaeftsobjekt {
     public List<Unterschrift> getUnterzeichnervp2() {
         return unterzeichnervp2;
     }
+
     public void setUnterzeichnervp2(List<Unterschrift> unterzeichnervp2) {
         this.unterzeichnervp2 = unterzeichnervp2;
     }
@@ -136,6 +143,7 @@ public class Vertrag extends Geschaeftsobjekt {
     public Vertragsart getVertragsart() {
         return vertragsart;
     }
+
     public void setVertragsart(Vertragsart vertragsart) {
         this.vertragsart = vertragsart;
     }
@@ -143,6 +151,7 @@ public class Vertrag extends Geschaeftsobjekt {
     public OffsetDateTime getVertragsbeginn() {
         return vertragsbeginn;
     }
+
     public void setVertragsbeginn(OffsetDateTime vertragsbeginn) {
         this.vertragsbeginn = vertragsbeginn;
     }
@@ -150,6 +159,7 @@ public class Vertrag extends Geschaeftsobjekt {
     public OffsetDateTime getVertragsende() {
         return vertragsende;
     }
+
     public void setVertragsende(OffsetDateTime vertragsende) {
         this.vertragsende = vertragsende;
     }
@@ -157,6 +167,7 @@ public class Vertrag extends Geschaeftsobjekt {
     public Vertragskonditionen getVertragskonditionen() {
         return vertragskonditionen;
     }
+
     public void setVertragskonditionen(Vertragskonditionen vertragskonditionen) {
         this.vertragskonditionen = vertragskonditionen;
     }
@@ -164,6 +175,7 @@ public class Vertrag extends Geschaeftsobjekt {
     public String getVertragsnummer() {
         return vertragsnummer;
     }
+
     public void setVertragsnummer(String vertragsnummer) {
         this.vertragsnummer = vertragsnummer;
     }
@@ -171,6 +183,7 @@ public class Vertrag extends Geschaeftsobjekt {
     public Geschaeftspartner getVertragspartner1() {
         return vertragspartner1;
     }
+
     public void setVertragspartner1(Geschaeftspartner vertragspartner1) {
         this.vertragspartner1 = vertragspartner1;
     }
@@ -178,6 +191,7 @@ public class Vertrag extends Geschaeftsobjekt {
     public Geschaeftspartner getVertragspartner2() {
         return vertragspartner2;
     }
+
     public void setVertragspartner2(Geschaeftspartner vertragspartner2) {
         this.vertragspartner2 = vertragspartner2;
     }
@@ -185,6 +199,7 @@ public class Vertrag extends Geschaeftsobjekt {
     public Vertragsstatus getVertragsstatus() {
         return vertragsstatus;
     }
+
     public void setVertragsstatus(Vertragsstatus vertragsstatus) {
         this.vertragsstatus = vertragsstatus;
     }
@@ -192,6 +207,7 @@ public class Vertrag extends Geschaeftsobjekt {
     public List<Vertragsteil> getVertragsteile() {
         return vertragsteile;
     }
+
     public void setVertragsteile(List<Vertragsteil> vertragsteile) {
         this.vertragsteile = vertragsteile;
     }
@@ -255,6 +271,7 @@ public class Vertrag extends Geschaeftsobjekt {
         public String getBeschreibung() {
             return beschreibung;
         }
+    
         public VertragBuilder setBeschreibung(String beschreibung) {
             this.beschreibung = beschreibung;
             return this;
@@ -263,6 +280,7 @@ public class Vertrag extends Geschaeftsobjekt {
         public Sparte getSparte() {
             return sparte;
         }
+    
         public VertragBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
             return this;
@@ -271,6 +289,7 @@ public class Vertrag extends Geschaeftsobjekt {
         public List<Unterschrift> getUnterzeichnervp1() {
             return unterzeichnervp1;
         }
+    
         public VertragBuilder setUnterzeichnervp1(List<Unterschrift> unterzeichnervp1) {
             this.unterzeichnervp1 = unterzeichnervp1;
             return this;
@@ -279,6 +298,7 @@ public class Vertrag extends Geschaeftsobjekt {
         public List<Unterschrift> getUnterzeichnervp2() {
             return unterzeichnervp2;
         }
+    
         public VertragBuilder setUnterzeichnervp2(List<Unterschrift> unterzeichnervp2) {
             this.unterzeichnervp2 = unterzeichnervp2;
             return this;
@@ -287,6 +307,7 @@ public class Vertrag extends Geschaeftsobjekt {
         public Vertragsart getVertragsart() {
             return vertragsart;
         }
+    
         public VertragBuilder setVertragsart(Vertragsart vertragsart) {
             this.vertragsart = vertragsart;
             return this;
@@ -295,6 +316,7 @@ public class Vertrag extends Geschaeftsobjekt {
         public OffsetDateTime getVertragsbeginn() {
             return vertragsbeginn;
         }
+    
         public VertragBuilder setVertragsbeginn(OffsetDateTime vertragsbeginn) {
             this.vertragsbeginn = vertragsbeginn;
             return this;
@@ -303,6 +325,7 @@ public class Vertrag extends Geschaeftsobjekt {
         public OffsetDateTime getVertragsende() {
             return vertragsende;
         }
+    
         public VertragBuilder setVertragsende(OffsetDateTime vertragsende) {
             this.vertragsende = vertragsende;
             return this;
@@ -311,6 +334,7 @@ public class Vertrag extends Geschaeftsobjekt {
         public Vertragskonditionen getVertragskonditionen() {
             return vertragskonditionen;
         }
+    
         public VertragBuilder setVertragskonditionen(Vertragskonditionen vertragskonditionen) {
             this.vertragskonditionen = vertragskonditionen;
             return this;
@@ -319,6 +343,7 @@ public class Vertrag extends Geschaeftsobjekt {
         public String getVertragsnummer() {
             return vertragsnummer;
         }
+    
         public VertragBuilder setVertragsnummer(String vertragsnummer) {
             this.vertragsnummer = vertragsnummer;
             return this;
@@ -327,6 +352,7 @@ public class Vertrag extends Geschaeftsobjekt {
         public Geschaeftspartner getVertragspartner1() {
             return vertragspartner1;
         }
+    
         public VertragBuilder setVertragspartner1(Geschaeftspartner vertragspartner1) {
             this.vertragspartner1 = vertragspartner1;
             return this;
@@ -335,6 +361,7 @@ public class Vertrag extends Geschaeftsobjekt {
         public Geschaeftspartner getVertragspartner2() {
             return vertragspartner2;
         }
+    
         public VertragBuilder setVertragspartner2(Geschaeftspartner vertragspartner2) {
             this.vertragspartner2 = vertragspartner2;
             return this;
@@ -343,6 +370,7 @@ public class Vertrag extends Geschaeftsobjekt {
         public Vertragsstatus getVertragsstatus() {
             return vertragsstatus;
         }
+    
         public VertragBuilder setVertragsstatus(Vertragsstatus vertragsstatus) {
             this.vertragsstatus = vertragsstatus;
             return this;
@@ -351,6 +379,7 @@ public class Vertrag extends Geschaeftsobjekt {
         public List<Vertragsteil> getVertragsteile() {
             return vertragsteile;
         }
+    
         public VertragBuilder setVertragsteile(List<Vertragsteil> vertragsteile) {
             this.vertragsteile = vertragsteile;
             return this;

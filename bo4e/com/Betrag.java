@@ -27,8 +27,11 @@ public class Betrag extends COM {
      */
     private Double wert;
 
-    public Betrag() {}
+    public Betrag() {
+    }
+
     private Betrag(BetragBuilder builder) {
+        super(builder);
         this.waehrung = builder.waehrung;
         this.wert = builder.wert;
     }
@@ -36,6 +39,7 @@ public class Betrag extends COM {
     public Waehrungscode getWaehrung() {
         return waehrung;
     }
+
     public void setWaehrung(Waehrungscode waehrung) {
         this.waehrung = waehrung;
     }
@@ -43,6 +47,7 @@ public class Betrag extends COM {
     public Double getWert() {
         return wert;
     }
+
     public void setWert(Double wert) {
         this.wert = wert;
     }
@@ -60,6 +65,7 @@ public class Betrag extends COM {
         public Waehrungscode getWaehrung() {
             return waehrung;
         }
+    
         public BetragBuilder setWaehrung(Waehrungscode waehrung) {
             this.waehrung = waehrung;
             return this;
@@ -68,6 +74,7 @@ public class Betrag extends COM {
         public Double getWert() {
             return wert;
         }
+    
         public BetragBuilder setWert(Double wert) {
             this.wert = wert;
             return this;

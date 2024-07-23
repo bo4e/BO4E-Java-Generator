@@ -5,7 +5,6 @@ import bo4e.com.Zeitraum;
 import bo4e.enums.Ausschreibungsportal;
 import bo4e.enums.Ausschreibungsstatus;
 import bo4e.enums.Ausschreibungstyp;
-import bo4e.com.Zeitraum;
 import bo4e.com.Ausschreibungslos;
 
 import java.time.OffsetDateTime;

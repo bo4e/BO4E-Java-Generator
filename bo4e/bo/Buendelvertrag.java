@@ -3,7 +3,6 @@ package bo4e.bo;
 import bo4e.enums.Typ;
 import bo4e.enums.Sparte;
 import bo4e.com.Unterschrift;
-import bo4e.com.Unterschrift;
 import bo4e.enums.Vertragsart;
 import bo4e.com.Vertragskonditionen;
 import bo4e.enums.Vertragsstatus;

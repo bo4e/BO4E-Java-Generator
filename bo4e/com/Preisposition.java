@@ -6,7 +6,6 @@ import bo4e.enums.Mengeneinheit;
 import bo4e.enums.Leistungstyp;
 import bo4e.enums.Waehrungseinheit;
 import bo4e.enums.Tarifzeit;
-import bo4e.enums.Mengeneinheit;
 import bo4e.enums.Bemessungsgroesse;
 
 import java.util.List;

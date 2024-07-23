@@ -2,7 +2,6 @@ package bo4e.com;
 
 import bo4e.enums.Mengeneinheit;
 import bo4e.enums.Waehrungseinheit;
-import bo4e.enums.Mengeneinheit;
 import bo4e.enums.Preistyp;
 
 import java.util.List;

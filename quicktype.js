@@ -384,7 +384,10 @@ function getImports(fieldList, fileData, fileMap) {
         const importData = fileMap.get(fieldType.toLowerCase());
         if (importData !== undefined && importData.javaFilePath !== classPath) {
             const importPackage = packageName + importData.javaFilePath.replaceAll("/", ".");
-            importList.push(`import ${importPackage}.${importData.javaFileName};`);
+            const importString = `import ${importPackage}.${importData.javaFileName};`;
+            if (!importList.includes(importString)) {
+                importList.push(importString);
+            }
         }
     }
     if (importList.length > 0) {

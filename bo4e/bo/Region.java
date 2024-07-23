@@ -2,7 +2,6 @@ package bo4e.bo;
 
 import bo4e.enums.Typ;
 import bo4e.com.Regionskriterium;
-import bo4e.com.Regionskriterium;
 
 import java.util.List;
 

@@ -14,7 +14,6 @@ import bo4e.enums.Sparte;
 import bo4e.enums.Verbrauchsart;
 import bo4e.com.Verbrauch;
 import bo4e.com.Zaehlwerk;
-import bo4e.com.Zaehlwerk;
 import bo4e.com.Messlokationszuordnung;
 
 import java.util.List;

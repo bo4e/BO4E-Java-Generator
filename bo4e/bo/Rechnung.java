@@ -2,19 +2,14 @@ package bo4e.bo;
 
 import bo4e.enums.Typ;
 import bo4e.com.Betrag;
-import bo4e.com.Betrag;
-import bo4e.com.Betrag;
 import bo4e.enums.NetznutzungRechnungsart;
 import bo4e.enums.NetznutzungRechnungstyp;
-import bo4e.com.Betrag;
 import bo4e.com.Zeitraum;
 import bo4e.com.Rechnungsposition;
 import bo4e.enums.Rechnungsstatus;
 import bo4e.enums.Rechnungstyp;
 import bo4e.enums.Sparte;
 import bo4e.com.Steuerbetrag;
-import bo4e.com.Betrag;
-import bo4e.com.Betrag;
 
 import java.time.OffsetDateTime;
 import java.util.List;

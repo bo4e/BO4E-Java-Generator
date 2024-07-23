@@ -27,6 +27,12 @@ public class RegionaleGueltigkeit extends COM {
      */
     private List<KriteriumWert> kriteriumsWerte;
 
+    public RegionaleGueltigkeit() {}
+    private RegionaleGueltigkeit(RegionaleGueltigkeitBuilder builder) {
+        this.gueltigkeitstyp = builder.gueltigkeitstyp;
+        this.kriteriumsWerte = builder.kriteriumsWerte;
+    }
+
     public Gueltigkeitstyp getGueltigkeitstyp() {
         return gueltigkeitstyp;
     }
@@ -39,5 +45,36 @@ public class RegionaleGueltigkeit extends COM {
     }
     public void setKriteriumsWerte(List<KriteriumWert> kriteriumsWerte) {
         this.kriteriumsWerte = kriteriumsWerte;
+    }
+
+    public static class RegionaleGueltigkeitBuilder extends COMBuilder {
+        /**
+         * Unterscheidung ob Positivliste oder Negativliste übertragen wird
+         */
+        private Gueltigkeitstyp gueltigkeitstyp;
+        /**
+         * Hier stehen die Kriterien, die die regionale Gültigkeit festlegen
+         */
+        private List<KriteriumWert> kriteriumsWerte;
+    
+        public Gueltigkeitstyp getGueltigkeitstyp() {
+            return gueltigkeitstyp;
+        }
+        public RegionaleGueltigkeitBuilder setGueltigkeitstyp(Gueltigkeitstyp gueltigkeitstyp) {
+            this.gueltigkeitstyp = gueltigkeitstyp;
+            return this;
+        }
+    
+        public List<KriteriumWert> getKriteriumsWerte() {
+            return kriteriumsWerte;
+        }
+        public RegionaleGueltigkeitBuilder setKriteriumsWerte(List<KriteriumWert> kriteriumsWerte) {
+            this.kriteriumsWerte = kriteriumsWerte;
+            return this;
+        }
+    
+        public RegionaleGueltigkeit build() {
+            return new RegionaleGueltigkeit(this);
+        }
     }
 }

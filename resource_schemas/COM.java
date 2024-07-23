@@ -26,9 +26,18 @@ public abstract class COM {
     private final String boVersion = versionPlaceholder;
     private List<ZusatzAttribut> zusatzAttribute;
 
+    public COM() {
+    }
+
+    protected COM(COMBuilder builder) {
+        this.id = builder.id;
+        this.zusatzAttribute = builder.zusatzAttribute;
+    }
+
     public String getId() {
         return id;
     }
+
     public void setId(String value) {
         this.id = value;
     }
@@ -40,7 +49,34 @@ public abstract class COM {
     public List<ZusatzAttribut> getZusatzAttribute() {
         return zusatzAttribute;
     }
+
     public void setZusatzAttribute(List<ZusatzAttribut> value) {
         this.zusatzAttribute = value;
+    }
+
+    public abstract static class COMBuilder {
+        /**
+         * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+         */
+        private String id;
+        private List<ZusatzAttribut> zusatzAttribute;
+
+        public String getId() {
+            return id;
+        }
+
+        public COMBuilder setId(String value) {
+            this.id = value;
+            return this;
+        }
+
+        public List<ZusatzAttribut> getZusatzAttribute() {
+            return zusatzAttribute;
+        }
+
+        public COMBuilder setZusatzAttribute(List<ZusatzAttribut> value) {
+            this.zusatzAttribute = value;
+            return this;
+        }
     }
 }

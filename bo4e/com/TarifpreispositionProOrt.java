@@ -29,6 +29,14 @@ public class TarifpreispositionProOrt extends COM {
     private String postleitzahl;
     private List<TarifpreisstaffelProOrt> preisstaffeln;
 
+    public TarifpreispositionProOrt() {}
+    private TarifpreispositionProOrt(TarifpreispositionProOrtBuilder builder) {
+        this.netznr = builder.netznr;
+        this.ort = builder.ort;
+        this.postleitzahl = builder.postleitzahl;
+        this.preisstaffeln = builder.preisstaffeln;
+    }
+
     public String getNetznr() {
         return netznr;
     }
@@ -55,5 +63,57 @@ public class TarifpreispositionProOrt extends COM {
     }
     public void setPreisstaffeln(List<TarifpreisstaffelProOrt> preisstaffeln) {
         this.preisstaffeln = preisstaffeln;
+    }
+
+    public static class TarifpreispositionProOrtBuilder extends COMBuilder {
+        /**
+         * ene't-Netznummer des Netzes in dem der Preis gilt
+         */
+        private String netznr;
+        /**
+         * Ort für den der Preis gilt
+         */
+        private String ort;
+        /**
+         * Postleitzahl des Ortes für den der Preis gilt
+         */
+        private String postleitzahl;
+        private List<TarifpreisstaffelProOrt> preisstaffeln;
+    
+        public String getNetznr() {
+            return netznr;
+        }
+        public TarifpreispositionProOrtBuilder setNetznr(String netznr) {
+            this.netznr = netznr;
+            return this;
+        }
+    
+        public String getOrt() {
+            return ort;
+        }
+        public TarifpreispositionProOrtBuilder setOrt(String ort) {
+            this.ort = ort;
+            return this;
+        }
+    
+        public String getPostleitzahl() {
+            return postleitzahl;
+        }
+        public TarifpreispositionProOrtBuilder setPostleitzahl(String postleitzahl) {
+            this.postleitzahl = postleitzahl;
+            return this;
+        }
+    
+        public List<TarifpreisstaffelProOrt> getPreisstaffeln() {
+            return preisstaffeln;
+        }
+        public TarifpreispositionProOrtBuilder setPreisstaffeln(List<TarifpreisstaffelProOrt> preisstaffeln) {
+            this.preisstaffeln = preisstaffeln;
+            return this;
+        }
+    
+        public TarifpreispositionProOrt build() {
+            return new TarifpreispositionProOrt(this);
+        }
     }
 }

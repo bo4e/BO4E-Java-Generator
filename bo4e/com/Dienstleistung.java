@@ -26,6 +26,12 @@ public class Dienstleistung extends COM {
      */
     private Dienstleistungstyp dienstleistungstyp;
 
+    public Dienstleistung() {}
+    private Dienstleistung(DienstleistungBuilder builder) {
+        this.bezeichnung = builder.bezeichnung;
+        this.dienstleistungstyp = builder.dienstleistungstyp;
+    }
+
     public String getBezeichnung() {
         return bezeichnung;
     }
@@ -38,5 +44,36 @@ public class Dienstleistung extends COM {
     }
     public void setDienstleistungstyp(Dienstleistungstyp dienstleistungstyp) {
         this.dienstleistungstyp = dienstleistungstyp;
+    }
+
+    public static class DienstleistungBuilder extends COMBuilder {
+        /**
+         * Bezeichnung der Dienstleistung
+         */
+        private String bezeichnung;
+        /**
+         * Kennzeichnung der Dienstleistung
+         */
+        private Dienstleistungstyp dienstleistungstyp;
+    
+        public String getBezeichnung() {
+            return bezeichnung;
+        }
+        public DienstleistungBuilder setBezeichnung(String bezeichnung) {
+            this.bezeichnung = bezeichnung;
+            return this;
+        }
+    
+        public Dienstleistungstyp getDienstleistungstyp() {
+            return dienstleistungstyp;
+        }
+        public DienstleistungBuilder setDienstleistungstyp(Dienstleistungstyp dienstleistungstyp) {
+            this.dienstleistungstyp = dienstleistungstyp;
+            return this;
+        }
+    
+        public Dienstleistung build() {
+            return new Dienstleistung(this);
+        }
     }
 }

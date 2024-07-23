@@ -21,7 +21,7 @@ public class Geraet extends Geschaeftsobjekt {
     /**
      * Typ des Geschaeftsobjekts
      */
-    private Typ typ = Typ.GERAET;
+    private final Typ typ = Typ.GERAET;
     /**
      * Bezeichnung des Geräts
      */
@@ -38,6 +38,14 @@ public class Geraet extends Geschaeftsobjekt {
      * Der speziellere Typ eines Gerätes, beispielsweise Stromwandler
      */
     private Geraetetyp geraetetyp;
+
+    public Geraet() {}
+    private Geraet(GeraetBuilder builder) {
+        this.bezeichnung = builder.bezeichnung;
+        this.geraeteklasse = builder.geraeteklasse;
+        this.geraetenummer = builder.geraetenummer;
+        this.geraetetyp = builder.geraetetyp;
+    }
 
     public Typ getTyp() {
         return typ;
@@ -69,5 +77,60 @@ public class Geraet extends Geschaeftsobjekt {
     }
     public void setGeraetetyp(Geraetetyp geraetetyp) {
         this.geraetetyp = geraetetyp;
+    }
+
+    public static class GeraetBuilder extends GeschaeftsobjektBuilder {
+        /**
+         * Bezeichnung des Geräts
+         */
+        private String bezeichnung;
+        /**
+         * Die übergreifende Klasse eines Geräts, beispielsweise Wandler
+         */
+        private Geraeteklasse geraeteklasse;
+        /**
+         * Die auf dem Gerät aufgedruckte Nummer, die vom MSB vergeben wird.
+         */
+        private String geraetenummer;
+        /**
+         * Der speziellere Typ eines Gerätes, beispielsweise Stromwandler
+         */
+        private Geraetetyp geraetetyp;
+    
+        public String getBezeichnung() {
+            return bezeichnung;
+        }
+        public GeraetBuilder setBezeichnung(String bezeichnung) {
+            this.bezeichnung = bezeichnung;
+            return this;
+        }
+    
+        public Geraeteklasse getGeraeteklasse() {
+            return geraeteklasse;
+        }
+        public GeraetBuilder setGeraeteklasse(Geraeteklasse geraeteklasse) {
+            this.geraeteklasse = geraeteklasse;
+            return this;
+        }
+    
+        public String getGeraetenummer() {
+            return geraetenummer;
+        }
+        public GeraetBuilder setGeraetenummer(String geraetenummer) {
+            this.geraetenummer = geraetenummer;
+            return this;
+        }
+    
+        public Geraetetyp getGeraetetyp() {
+            return geraetetyp;
+        }
+        public GeraetBuilder setGeraetetyp(Geraetetyp geraetetyp) {
+            this.geraetetyp = geraetetyp;
+            return this;
+        }
+    
+        public Geraet build() {
+            return new Geraet(this);
+        }
     }
 }

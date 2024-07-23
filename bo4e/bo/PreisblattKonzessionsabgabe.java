@@ -25,7 +25,7 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
     /**
      * Typ des Geschaeftsobjekts
      */
-    private Typ typ = Typ.PREISBLATTKONZESSIONSABGABE;
+    private final Typ typ = Typ.PREISBLATTKONZESSIONSABGABE;
     /**
      * Eine Bezeichnung für das Preisblatt
      */
@@ -55,6 +55,17 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
      * Preisblatt gilt für angegebene Sparte
      */
     private Sparte sparte;
+
+    public PreisblattKonzessionsabgabe() {}
+    private PreisblattKonzessionsabgabe(PreisblattKonzessionsabgabeBuilder builder) {
+        this.bezeichnung = builder.bezeichnung;
+        this.gueltigkeit = builder.gueltigkeit;
+        this.herausgeber = builder.herausgeber;
+        this.kundengruppeKA = builder.kundengruppeKA;
+        this.preispositionen = builder.preispositionen;
+        this.preisstatus = builder.preisstatus;
+        this.sparte = builder.sparte;
+    }
 
     public Typ getTyp() {
         return typ;
@@ -107,5 +118,97 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
     }
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
+    }
+
+    public static class PreisblattKonzessionsabgabeBuilder extends GeschaeftsobjektBuilder {
+        /**
+         * Eine Bezeichnung für das Preisblatt
+         */
+        private String bezeichnung;
+        /**
+         * Der Zeitraum für den der Preis festgelegt ist
+         */
+        private Zeitraum gueltigkeit;
+        /**
+         * Der Netzbetreiber, der die Preise veröffentlicht hat
+         */
+        private Marktteilnehmer herausgeber;
+        /**
+         * Kundegruppe anhand derer die Höhe der Konzessionabgabe festgelegt ist
+         */
+        private KundengruppeKA kundengruppeKA;
+        /**
+         * Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B.
+         * Arbeitspreis, Grundpreis etc
+         */
+        private List<Preisposition> preispositionen;
+        /**
+         * Merkmal, das anzeigt, ob es sich um vorläufige oder endgültige Preise handelt
+         */
+        private Preisstatus preisstatus;
+        /**
+         * Preisblatt gilt für angegebene Sparte
+         */
+        private Sparte sparte;
+    
+        public String getBezeichnung() {
+            return bezeichnung;
+        }
+        public PreisblattKonzessionsabgabeBuilder setBezeichnung(String bezeichnung) {
+            this.bezeichnung = bezeichnung;
+            return this;
+        }
+    
+        public Zeitraum getGueltigkeit() {
+            return gueltigkeit;
+        }
+        public PreisblattKonzessionsabgabeBuilder setGueltigkeit(Zeitraum gueltigkeit) {
+            this.gueltigkeit = gueltigkeit;
+            return this;
+        }
+    
+        public Marktteilnehmer getHerausgeber() {
+            return herausgeber;
+        }
+        public PreisblattKonzessionsabgabeBuilder setHerausgeber(Marktteilnehmer herausgeber) {
+            this.herausgeber = herausgeber;
+            return this;
+        }
+    
+        public KundengruppeKA getKundengruppeKA() {
+            return kundengruppeKA;
+        }
+        public PreisblattKonzessionsabgabeBuilder setKundengruppeKA(KundengruppeKA kundengruppeKA) {
+            this.kundengruppeKA = kundengruppeKA;
+            return this;
+        }
+    
+        public List<Preisposition> getPreispositionen() {
+            return preispositionen;
+        }
+        public PreisblattKonzessionsabgabeBuilder setPreispositionen(List<Preisposition> preispositionen) {
+            this.preispositionen = preispositionen;
+            return this;
+        }
+    
+        public Preisstatus getPreisstatus() {
+            return preisstatus;
+        }
+        public PreisblattKonzessionsabgabeBuilder setPreisstatus(Preisstatus preisstatus) {
+            this.preisstatus = preisstatus;
+            return this;
+        }
+    
+        public Sparte getSparte() {
+            return sparte;
+        }
+        public PreisblattKonzessionsabgabeBuilder setSparte(Sparte sparte) {
+            this.sparte = sparte;
+            return this;
+        }
+    
+        public PreisblattKonzessionsabgabe build() {
+            return new PreisblattKonzessionsabgabe(this);
+        }
     }
 }

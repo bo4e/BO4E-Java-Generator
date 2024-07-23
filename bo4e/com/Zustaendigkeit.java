@@ -31,6 +31,13 @@ public class Zustaendigkeit extends COM {
      */
     private Themengebiet themengebiet;
 
+    public Zustaendigkeit() {}
+    private Zustaendigkeit(ZustaendigkeitBuilder builder) {
+        this.abteilung = builder.abteilung;
+        this.position = builder.position;
+        this.themengebiet = builder.themengebiet;
+    }
+
     public String getAbteilung() {
         return abteilung;
     }
@@ -50,5 +57,48 @@ public class Zustaendigkeit extends COM {
     }
     public void setThemengebiet(Themengebiet themengebiet) {
         this.themengebiet = themengebiet;
+    }
+
+    public static class ZustaendigkeitBuilder extends COMBuilder {
+        /**
+         * Berufliche Rolle des Ansprechpartners/ der Person
+         */
+        private String abteilung;
+        /**
+         * Berufliche Rolle des Ansprechpartners/ der Person
+         */
+        private String position;
+        /**
+         * Hier kann eine thematische Zuordnung des Ansprechpartners bzw. der Person angegeben werden
+         */
+        private Themengebiet themengebiet;
+    
+        public String getAbteilung() {
+            return abteilung;
+        }
+        public ZustaendigkeitBuilder setAbteilung(String abteilung) {
+            this.abteilung = abteilung;
+            return this;
+        }
+    
+        public String getPosition() {
+            return position;
+        }
+        public ZustaendigkeitBuilder setPosition(String position) {
+            this.position = position;
+            return this;
+        }
+    
+        public Themengebiet getThemengebiet() {
+            return themengebiet;
+        }
+        public ZustaendigkeitBuilder setThemengebiet(Themengebiet themengebiet) {
+            this.themengebiet = themengebiet;
+            return this;
+        }
+    
+        public Zustaendigkeit build() {
+            return new Zustaendigkeit(this);
+        }
     }
 }

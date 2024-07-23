@@ -18,6 +18,12 @@ public class Geokoordinaten extends COM {
     private Double breitengrad;
     private Double laengengrad;
 
+    public Geokoordinaten() {}
+    private Geokoordinaten(GeokoordinatenBuilder builder) {
+        this.breitengrad = builder.breitengrad;
+        this.laengengrad = builder.laengengrad;
+    }
+
     public Double getBreitengrad() {
         return breitengrad;
     }
@@ -30,5 +36,30 @@ public class Geokoordinaten extends COM {
     }
     public void setLaengengrad(Double laengengrad) {
         this.laengengrad = laengengrad;
+    }
+
+    public static class GeokoordinatenBuilder extends COMBuilder {
+        private Double breitengrad;
+        private Double laengengrad;
+    
+        public Double getBreitengrad() {
+            return breitengrad;
+        }
+        public GeokoordinatenBuilder setBreitengrad(Double breitengrad) {
+            this.breitengrad = breitengrad;
+            return this;
+        }
+    
+        public Double getLaengengrad() {
+            return laengengrad;
+        }
+        public GeokoordinatenBuilder setLaengengrad(Double laengengrad) {
+            this.laengengrad = laengengrad;
+            return this;
+        }
+    
+        public Geokoordinaten build() {
+            return new Geokoordinaten(this);
+        }
     }
 }

@@ -20,7 +20,7 @@ public class Region extends Geschaeftsobjekt {
     /**
      * Typ des Geschaeftsobjekts
      */
-    private Typ typ = Typ.REGION;
+    private final Typ typ = Typ.REGION;
     /**
      * Bezeichnung der Region
      */
@@ -33,6 +33,13 @@ public class Region extends Geschaeftsobjekt {
      * Positivliste der Kriterien zur Definition der Region
      */
     private List<Regionskriterium> positivListe;
+
+    public Region() {}
+    private Region(RegionBuilder builder) {
+        this.bezeichnung = builder.bezeichnung;
+        this.negativListe = builder.negativListe;
+        this.positivListe = builder.positivListe;
+    }
 
     public Typ getTyp() {
         return typ;
@@ -57,5 +64,48 @@ public class Region extends Geschaeftsobjekt {
     }
     public void setPositivListe(List<Regionskriterium> positivListe) {
         this.positivListe = positivListe;
+    }
+
+    public static class RegionBuilder extends GeschaeftsobjektBuilder {
+        /**
+         * Bezeichnung der Region
+         */
+        private String bezeichnung;
+        /**
+         * Negativliste der Kriterien zur Definition der Region
+         */
+        private List<Regionskriterium> negativListe;
+        /**
+         * Positivliste der Kriterien zur Definition der Region
+         */
+        private List<Regionskriterium> positivListe;
+    
+        public String getBezeichnung() {
+            return bezeichnung;
+        }
+        public RegionBuilder setBezeichnung(String bezeichnung) {
+            this.bezeichnung = bezeichnung;
+            return this;
+        }
+    
+        public List<Regionskriterium> getNegativListe() {
+            return negativListe;
+        }
+        public RegionBuilder setNegativListe(List<Regionskriterium> negativListe) {
+            this.negativListe = negativListe;
+            return this;
+        }
+    
+        public List<Regionskriterium> getPositivListe() {
+            return positivListe;
+        }
+        public RegionBuilder setPositivListe(List<Regionskriterium> positivListe) {
+            this.positivListe = positivListe;
+            return this;
+        }
+    
+        public Region build() {
+            return new Region(this);
+        }
     }
 }

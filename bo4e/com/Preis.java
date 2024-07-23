@@ -35,6 +35,14 @@ public class Preis extends COM {
      */
     private Double wert;
 
+    public Preis() {}
+    private Preis(PreisBuilder builder) {
+        this.bezugswert = builder.bezugswert;
+        this.einheit = builder.einheit;
+        this.status = builder.status;
+        this.wert = builder.wert;
+    }
+
     public Mengeneinheit getBezugswert() {
         return bezugswert;
     }
@@ -61,5 +69,60 @@ public class Preis extends COM {
     }
     public void setWert(Double wert) {
         this.wert = wert;
+    }
+
+    public static class PreisBuilder extends COMBuilder {
+        /**
+         * Angabe, für welche Bezugsgröße der Preis gilt. Z.B. kWh.
+         */
+        private Mengeneinheit bezugswert;
+        /**
+         * Währungseinheit für den Preis, z.B. Euro oder Ct.
+         */
+        private Waehrungseinheit einheit;
+        /**
+         * Gibt den Status des veröffentlichten Preises an
+         */
+        private Preisstatus status;
+        /**
+         * Gibt die nominale Höhe des Preises an.
+         */
+        private Double wert;
+    
+        public Mengeneinheit getBezugswert() {
+            return bezugswert;
+        }
+        public PreisBuilder setBezugswert(Mengeneinheit bezugswert) {
+            this.bezugswert = bezugswert;
+            return this;
+        }
+    
+        public Waehrungseinheit getEinheit() {
+            return einheit;
+        }
+        public PreisBuilder setEinheit(Waehrungseinheit einheit) {
+            this.einheit = einheit;
+            return this;
+        }
+    
+        public Preisstatus getStatus() {
+            return status;
+        }
+        public PreisBuilder setStatus(Preisstatus status) {
+            this.status = status;
+            return this;
+        }
+    
+        public Double getWert() {
+            return wert;
+        }
+        public PreisBuilder setWert(Double wert) {
+            this.wert = wert;
+            return this;
+        }
+    
+        public Preis build() {
+            return new Preis(this);
+        }
     }
 }

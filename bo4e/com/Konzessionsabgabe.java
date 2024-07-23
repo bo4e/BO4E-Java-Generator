@@ -30,6 +30,13 @@ public class Konzessionsabgabe extends COM {
      */
     private AbgabeArt satz;
 
+    public Konzessionsabgabe() {}
+    private Konzessionsabgabe(KonzessionsabgabeBuilder builder) {
+        this.kategorie = builder.kategorie;
+        this.kosten = builder.kosten;
+        this.satz = builder.satz;
+    }
+
     public String getKategorie() {
         return kategorie;
     }
@@ -49,5 +56,48 @@ public class Konzessionsabgabe extends COM {
     }
     public void setSatz(AbgabeArt satz) {
         this.satz = satz;
+    }
+
+    public static class KonzessionsabgabeBuilder extends COMBuilder {
+        /**
+         * Gebührenkategorie der Konzessionsabgabe
+         */
+        private String kategorie;
+        /**
+         * Konzessionsabgabe in E/kWh
+         */
+        private Double kosten;
+        /**
+         * Art der Abgabe
+         */
+        private AbgabeArt satz;
+    
+        public String getKategorie() {
+            return kategorie;
+        }
+        public KonzessionsabgabeBuilder setKategorie(String kategorie) {
+            this.kategorie = kategorie;
+            return this;
+        }
+    
+        public Double getKosten() {
+            return kosten;
+        }
+        public KonzessionsabgabeBuilder setKosten(Double kosten) {
+            this.kosten = kosten;
+            return this;
+        }
+    
+        public AbgabeArt getSatz() {
+            return satz;
+        }
+        public KonzessionsabgabeBuilder setSatz(AbgabeArt satz) {
+            this.satz = satz;
+            return this;
+        }
+    
+        public Konzessionsabgabe build() {
+            return new Konzessionsabgabe(this);
+        }
     }
 }

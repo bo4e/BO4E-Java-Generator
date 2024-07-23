@@ -27,7 +27,7 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
     /**
      * Typ des Geschaeftsobjekts
      */
-    private Typ typ = Typ.PREISBLATTNETZNUTZUNG;
+    private final Typ typ = Typ.PREISBLATTNETZNUTZUNG;
     /**
      * Eine Bezeichnung für das Preisblatt
      */
@@ -62,6 +62,19 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
      * Preisblatt gilt für angegebene Sparte
      */
     private Sparte sparte;
+
+    public PreisblattNetznutzung() {}
+    private PreisblattNetznutzung(PreisblattNetznutzungBuilder builder) {
+        this.bezeichnung = builder.bezeichnung;
+        this.bilanzierungsmethode = builder.bilanzierungsmethode;
+        this.gueltigkeit = builder.gueltigkeit;
+        this.herausgeber = builder.herausgeber;
+        this.kundengruppe = builder.kundengruppe;
+        this.netzebene = builder.netzebene;
+        this.preispositionen = builder.preispositionen;
+        this.preisstatus = builder.preisstatus;
+        this.sparte = builder.sparte;
+    }
 
     public Typ getTyp() {
         return typ;
@@ -128,5 +141,118 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
     }
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
+    }
+
+    public static class PreisblattNetznutzungBuilder extends GeschaeftsobjektBuilder {
+        /**
+         * Eine Bezeichnung für das Preisblatt
+         */
+        private String bezeichnung;
+        /**
+         * Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
+         */
+        private Bilanzierungsmethode bilanzierungsmethode;
+        /**
+         * Der Zeitraum für den der Preis festgelegt ist
+         */
+        private Zeitraum gueltigkeit;
+        /**
+         * Der Netzbetreiber, der die Preise veröffentlicht hat
+         */
+        private Marktteilnehmer herausgeber;
+        private Kundengruppe kundengruppe;
+        /**
+         * Die Preise gelten für Marktlokationen in der angebebenen Netzebene
+         */
+        private Netzebene netzebene;
+        /**
+         * Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B.
+         * Arbeitspreis, Grundpreis etc
+         */
+        private List<Preisposition> preispositionen;
+        /**
+         * Merkmal, das anzeigt, ob es sich um vorläufige oder endgültige Preise handelt
+         */
+        private Preisstatus preisstatus;
+        /**
+         * Preisblatt gilt für angegebene Sparte
+         */
+        private Sparte sparte;
+    
+        public String getBezeichnung() {
+            return bezeichnung;
+        }
+        public PreisblattNetznutzungBuilder setBezeichnung(String bezeichnung) {
+            this.bezeichnung = bezeichnung;
+            return this;
+        }
+    
+        public Bilanzierungsmethode getBilanzierungsmethode() {
+            return bilanzierungsmethode;
+        }
+        public PreisblattNetznutzungBuilder setBilanzierungsmethode(Bilanzierungsmethode bilanzierungsmethode) {
+            this.bilanzierungsmethode = bilanzierungsmethode;
+            return this;
+        }
+    
+        public Zeitraum getGueltigkeit() {
+            return gueltigkeit;
+        }
+        public PreisblattNetznutzungBuilder setGueltigkeit(Zeitraum gueltigkeit) {
+            this.gueltigkeit = gueltigkeit;
+            return this;
+        }
+    
+        public Marktteilnehmer getHerausgeber() {
+            return herausgeber;
+        }
+        public PreisblattNetznutzungBuilder setHerausgeber(Marktteilnehmer herausgeber) {
+            this.herausgeber = herausgeber;
+            return this;
+        }
+    
+        public Kundengruppe getKundengruppe() {
+            return kundengruppe;
+        }
+        public PreisblattNetznutzungBuilder setKundengruppe(Kundengruppe kundengruppe) {
+            this.kundengruppe = kundengruppe;
+            return this;
+        }
+    
+        public Netzebene getNetzebene() {
+            return netzebene;
+        }
+        public PreisblattNetznutzungBuilder setNetzebene(Netzebene netzebene) {
+            this.netzebene = netzebene;
+            return this;
+        }
+    
+        public List<Preisposition> getPreispositionen() {
+            return preispositionen;
+        }
+        public PreisblattNetznutzungBuilder setPreispositionen(List<Preisposition> preispositionen) {
+            this.preispositionen = preispositionen;
+            return this;
+        }
+    
+        public Preisstatus getPreisstatus() {
+            return preisstatus;
+        }
+        public PreisblattNetznutzungBuilder setPreisstatus(Preisstatus preisstatus) {
+            this.preisstatus = preisstatus;
+            return this;
+        }
+    
+        public Sparte getSparte() {
+            return sparte;
+        }
+        public PreisblattNetznutzungBuilder setSparte(Sparte sparte) {
+            this.sparte = sparte;
+            return this;
+        }
+    
+        public PreisblattNetznutzung build() {
+            return new PreisblattNetznutzung(this);
+        }
     }
 }

@@ -36,6 +36,15 @@ public class TarifpreisstaffelProOrt extends COM {
      */
     private Double staffelgrenzeVon;
 
+    public TarifpreisstaffelProOrt() {}
+    private TarifpreisstaffelProOrt(TarifpreisstaffelProOrtBuilder builder) {
+        this.arbeitspreis = builder.arbeitspreis;
+        this.arbeitspreisNT = builder.arbeitspreisNT;
+        this.grundpreis = builder.grundpreis;
+        this.staffelgrenzeBis = builder.staffelgrenzeBis;
+        this.staffelgrenzeVon = builder.staffelgrenzeVon;
+    }
+
     public Double getArbeitspreis() {
         return arbeitspreis;
     }
@@ -69,5 +78,72 @@ public class TarifpreisstaffelProOrt extends COM {
     }
     public void setStaffelgrenzeVon(Double staffelgrenzeVon) {
         this.staffelgrenzeVon = staffelgrenzeVon;
+    }
+
+    public static class TarifpreisstaffelProOrtBuilder extends COMBuilder {
+        /**
+         * Der Arbeitspreis in ct/kWh
+         */
+        private Double arbeitspreis;
+        /**
+         * Der Arbeitspreis für Verbräuche in der Niedertarifzeit in ct/kWh
+         */
+        private Double arbeitspreisNT;
+        /**
+         * Der Grundpreis in Euro/Jahr
+         */
+        private Double grundpreis;
+        /**
+         * Oberer Wert, bis zu dem die Staffel gilt (exklusive)
+         */
+        private Double staffelgrenzeBis;
+        /**
+         * Unterer Wert, ab dem die Staffel gilt (inklusive)
+         */
+        private Double staffelgrenzeVon;
+    
+        public Double getArbeitspreis() {
+            return arbeitspreis;
+        }
+        public TarifpreisstaffelProOrtBuilder setArbeitspreis(Double arbeitspreis) {
+            this.arbeitspreis = arbeitspreis;
+            return this;
+        }
+    
+        public Double getArbeitspreisNT() {
+            return arbeitspreisNT;
+        }
+        public TarifpreisstaffelProOrtBuilder setArbeitspreisNT(Double arbeitspreisNT) {
+            this.arbeitspreisNT = arbeitspreisNT;
+            return this;
+        }
+    
+        public Double getGrundpreis() {
+            return grundpreis;
+        }
+        public TarifpreisstaffelProOrtBuilder setGrundpreis(Double grundpreis) {
+            this.grundpreis = grundpreis;
+            return this;
+        }
+    
+        public Double getStaffelgrenzeBis() {
+            return staffelgrenzeBis;
+        }
+        public TarifpreisstaffelProOrtBuilder setStaffelgrenzeBis(Double staffelgrenzeBis) {
+            this.staffelgrenzeBis = staffelgrenzeBis;
+            return this;
+        }
+    
+        public Double getStaffelgrenzeVon() {
+            return staffelgrenzeVon;
+        }
+        public TarifpreisstaffelProOrtBuilder setStaffelgrenzeVon(Double staffelgrenzeVon) {
+            this.staffelgrenzeVon = staffelgrenzeVon;
+            return this;
+        }
+    
+        public TarifpreisstaffelProOrt build() {
+            return new TarifpreisstaffelProOrt(this);
+        }
     }
 }

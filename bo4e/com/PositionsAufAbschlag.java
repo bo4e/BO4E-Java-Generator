@@ -43,6 +43,15 @@ public class PositionsAufAbschlag extends COM {
      */
     private String bezeichnung;
 
+    public PositionsAufAbschlag() {}
+    private PositionsAufAbschlag(PositionsAufAbschlagBuilder builder) {
+        this.aufAbschlagstyp = builder.aufAbschlagstyp;
+        this.aufAbschlagswaehrung = builder.aufAbschlagswaehrung;
+        this.aufAbschlagswert = builder.aufAbschlagswert;
+        this.beschreibung = builder.beschreibung;
+        this.bezeichnung = builder.bezeichnung;
+    }
+
     public AufAbschlagstyp getAufAbschlagstyp() {
         return aufAbschlagstyp;
     }
@@ -76,5 +85,72 @@ public class PositionsAufAbschlag extends COM {
     }
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
+    }
+
+    public static class PositionsAufAbschlagBuilder extends COMBuilder {
+        /**
+         * Typ des AufAbschlages
+         */
+        private AufAbschlagstyp aufAbschlagstyp;
+        /**
+         * Einheit, in der der Auf-/Abschlag angegeben ist (z.B. ct/kWh).
+         */
+        private Waehrungseinheit aufAbschlagswaehrung;
+        /**
+         * Höhe des Auf-/Abschlages
+         */
+        private Double aufAbschlagswert;
+        /**
+         * Beschreibung zum Auf-/Abschlag
+         */
+        private String beschreibung;
+        /**
+         * Bezeichnung des Auf-/Abschlags
+         */
+        private String bezeichnung;
+    
+        public AufAbschlagstyp getAufAbschlagstyp() {
+            return aufAbschlagstyp;
+        }
+        public PositionsAufAbschlagBuilder setAufAbschlagstyp(AufAbschlagstyp aufAbschlagstyp) {
+            this.aufAbschlagstyp = aufAbschlagstyp;
+            return this;
+        }
+    
+        public Waehrungseinheit getAufAbschlagswaehrung() {
+            return aufAbschlagswaehrung;
+        }
+        public PositionsAufAbschlagBuilder setAufAbschlagswaehrung(Waehrungseinheit aufAbschlagswaehrung) {
+            this.aufAbschlagswaehrung = aufAbschlagswaehrung;
+            return this;
+        }
+    
+        public Double getAufAbschlagswert() {
+            return aufAbschlagswert;
+        }
+        public PositionsAufAbschlagBuilder setAufAbschlagswert(Double aufAbschlagswert) {
+            this.aufAbschlagswert = aufAbschlagswert;
+            return this;
+        }
+    
+        public String getBeschreibung() {
+            return beschreibung;
+        }
+        public PositionsAufAbschlagBuilder setBeschreibung(String beschreibung) {
+            this.beschreibung = beschreibung;
+            return this;
+        }
+    
+        public String getBezeichnung() {
+            return bezeichnung;
+        }
+        public PositionsAufAbschlagBuilder setBezeichnung(String bezeichnung) {
+            this.bezeichnung = bezeichnung;
+            return this;
+        }
+    
+        public PositionsAufAbschlag build() {
+            return new PositionsAufAbschlag(this);
+        }
     }
 }

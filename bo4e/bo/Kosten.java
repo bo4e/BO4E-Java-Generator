@@ -25,7 +25,7 @@ public class Kosten extends Geschaeftsobjekt {
     /**
      * Typ des Geschaeftsobjekts
      */
-    private Typ typ = Typ.KOSTEN;
+    private final Typ typ = Typ.KOSTEN;
     /**
      * Für diesen Zeitraum wurden die Kosten ermittelt
      */
@@ -43,6 +43,14 @@ public class Kosten extends Geschaeftsobjekt {
      * Die Gesamtsumme über alle Kostenblöcke und -positionen
      */
     private List<Betrag> summeKosten;
+
+    public Kosten() {}
+    private Kosten(KostenBuilder builder) {
+        this.gueltigkeit = builder.gueltigkeit;
+        this.kostenbloecke = builder.kostenbloecke;
+        this.kostenklasse = builder.kostenklasse;
+        this.summeKosten = builder.summeKosten;
+    }
 
     public Typ getTyp() {
         return typ;
@@ -74,5 +82,61 @@ public class Kosten extends Geschaeftsobjekt {
     }
     public void setSummeKosten(List<Betrag> summeKosten) {
         this.summeKosten = summeKosten;
+    }
+
+    public static class KostenBuilder extends GeschaeftsobjektBuilder {
+        /**
+         * Für diesen Zeitraum wurden die Kosten ermittelt
+         */
+        private Zeitraum gueltigkeit;
+        /**
+         * In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen,
+         * Steuern etc
+         */
+        private List<Kostenblock> kostenbloecke;
+        /**
+         * Klasse der Kosten, beispielsweise Fremdkosten
+         */
+        private Kostenklasse kostenklasse;
+        /**
+         * Die Gesamtsumme über alle Kostenblöcke und -positionen
+         */
+        private List<Betrag> summeKosten;
+    
+        public Zeitraum getGueltigkeit() {
+            return gueltigkeit;
+        }
+        public KostenBuilder setGueltigkeit(Zeitraum gueltigkeit) {
+            this.gueltigkeit = gueltigkeit;
+            return this;
+        }
+    
+        public List<Kostenblock> getKostenbloecke() {
+            return kostenbloecke;
+        }
+        public KostenBuilder setKostenbloecke(List<Kostenblock> kostenbloecke) {
+            this.kostenbloecke = kostenbloecke;
+            return this;
+        }
+    
+        public Kostenklasse getKostenklasse() {
+            return kostenklasse;
+        }
+        public KostenBuilder setKostenklasse(Kostenklasse kostenklasse) {
+            this.kostenklasse = kostenklasse;
+            return this;
+        }
+    
+        public List<Betrag> getSummeKosten() {
+            return summeKosten;
+        }
+        public KostenBuilder setSummeKosten(List<Betrag> summeKosten) {
+            this.summeKosten = summeKosten;
+            return this;
+        }
+    
+        public Kosten build() {
+            return new Kosten(this);
+        }
     }
 }

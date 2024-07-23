@@ -30,6 +30,13 @@ public class Fremdkostenblock extends COM {
      */
     private Betrag summeKostenblock;
 
+    public Fremdkostenblock() {}
+    private Fremdkostenblock(FremdkostenblockBuilder builder) {
+        this.kostenblockbezeichnung = builder.kostenblockbezeichnung;
+        this.kostenpositionen = builder.kostenpositionen;
+        this.summeKostenblock = builder.summeKostenblock;
+    }
+
     public String getKostenblockbezeichnung() {
         return kostenblockbezeichnung;
     }
@@ -49,5 +56,50 @@ public class Fremdkostenblock extends COM {
     }
     public void setSummeKostenblock(Betrag summeKostenblock) {
         this.summeKostenblock = summeKostenblock;
+    }
+
+    public static class FremdkostenblockBuilder extends COMBuilder {
+        /**
+         * Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc.
+         */
+        private String kostenblockbezeichnung;
+        /**
+         * Hier sind die Details zu einer Kostenposition aufgeführt. Z.B.:
+         * Alliander Netz Heinsberg GmbH, 2018-02-01, 2019-01-01, Arbeitspreis HT, 3.660 kWh,
+         * 5,8200 ct/kWh, 213,01 €
+         */
+        private List<Fremdkostenposition> kostenpositionen;
+        /**
+         * Die Summe aller Kostenpositionen dieses Blocks
+         */
+        private Betrag summeKostenblock;
+    
+        public String getKostenblockbezeichnung() {
+            return kostenblockbezeichnung;
+        }
+        public FremdkostenblockBuilder setKostenblockbezeichnung(String kostenblockbezeichnung) {
+            this.kostenblockbezeichnung = kostenblockbezeichnung;
+            return this;
+        }
+    
+        public List<Fremdkostenposition> getKostenpositionen() {
+            return kostenpositionen;
+        }
+        public FremdkostenblockBuilder setKostenpositionen(List<Fremdkostenposition> kostenpositionen) {
+            this.kostenpositionen = kostenpositionen;
+            return this;
+        }
+    
+        public Betrag getSummeKostenblock() {
+            return summeKostenblock;
+        }
+        public FremdkostenblockBuilder setSummeKostenblock(Betrag summeKostenblock) {
+            this.summeKostenblock = summeKostenblock;
+            return this;
+        }
+    
+        public Fremdkostenblock build() {
+            return new Fremdkostenblock(this);
+        }
     }
 }

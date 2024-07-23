@@ -74,6 +74,28 @@ public class Zaehlwerk extends COM {
      */
     private Zaehlzeitregister zaehlzeitregister;
 
+    public Zaehlwerk() {}
+    private Zaehlwerk(ZaehlwerkBuilder builder) {
+        this.anzahlAblesungen = builder.anzahlAblesungen;
+        this.bezeichnung = builder.bezeichnung;
+        this.einheit = builder.einheit;
+        this.istAbrechnungsrelevant = builder.istAbrechnungsrelevant;
+        this.istSchwachlastfaehig = builder.istSchwachlastfaehig;
+        this.istSteuerbefreit = builder.istSteuerbefreit;
+        this.istUnterbrechbar = builder.istUnterbrechbar;
+        this.konzessionsabgabe = builder.konzessionsabgabe;
+        this.nachkommastelle = builder.nachkommastelle;
+        this.obisKennzahl = builder.obisKennzahl;
+        this.richtung = builder.richtung;
+        this.verbrauchsart = builder.verbrauchsart;
+        this.verwendungszwecke = builder.verwendungszwecke;
+        this.vorkommastelle = builder.vorkommastelle;
+        this.waermenutzung = builder.waermenutzung;
+        this.wandlerfaktor = builder.wandlerfaktor;
+        this.zaehlwerkId = builder.zaehlwerkId;
+        this.zaehlzeitregister = builder.zaehlzeitregister;
+    }
+
     public Long getAnzahlAblesungen() {
         return anzahlAblesungen;
     }
@@ -198,5 +220,210 @@ public class Zaehlwerk extends COM {
     }
     public void setZaehlzeitregister(Zaehlzeitregister zaehlzeitregister) {
         this.zaehlzeitregister = zaehlzeitregister;
+    }
+
+    public static class ZaehlwerkBuilder extends COMBuilder {
+        /**
+         * Abrechnungsrelevant
+         */
+        private Long anzahlAblesungen;
+        private String bezeichnung;
+        private Mengeneinheit einheit;
+        /**
+         * Anzahl der Nachkommastellen
+         */
+        private Boolean istAbrechnungsrelevant;
+        /**
+         * Schwachlastfaehigkeit
+         */
+        private Boolean istSchwachlastfaehig;
+        /**
+         * Konzessionsabgabe
+         */
+        private Boolean istSteuerbefreit;
+        /**
+         * Stromverbrauchsart/Verbrauchsart Marktlokation
+         */
+        private Boolean istUnterbrechbar;
+        /**
+         * Wärmenutzung Marktlokation
+         */
+        private Konzessionsabgabe konzessionsabgabe;
+        /**
+         * Anzahl der Vorkommastellen
+         */
+        private Long nachkommastelle;
+        private String obisKennzahl;
+        private Energierichtung richtung;
+        /**
+         * Stromverbrauchsart/Verbrauchsart Marktlokation
+         */
+        private Verbrauchsart verbrauchsart;
+        /**
+         * Schwachlastfaehigkeit
+         */
+        private List<VerwendungszweckProMarktrolle> verwendungszwecke;
+        /**
+         * Steuerbefreiung
+         */
+        private Long vorkommastelle;
+        /**
+         * Unterbrechbarkeit Marktlokation
+         */
+        private Waermenutzung waermenutzung;
+        private Double wandlerfaktor;
+        private String zaehlwerkId;
+        /**
+         * Anzahl Ablesungen pro Jahr
+         */
+        private Zaehlzeitregister zaehlzeitregister;
+    
+        public Long getAnzahlAblesungen() {
+            return anzahlAblesungen;
+        }
+        public ZaehlwerkBuilder setAnzahlAblesungen(Long anzahlAblesungen) {
+            this.anzahlAblesungen = anzahlAblesungen;
+            return this;
+        }
+    
+        public String getBezeichnung() {
+            return bezeichnung;
+        }
+        public ZaehlwerkBuilder setBezeichnung(String bezeichnung) {
+            this.bezeichnung = bezeichnung;
+            return this;
+        }
+    
+        public Mengeneinheit getEinheit() {
+            return einheit;
+        }
+        public ZaehlwerkBuilder setEinheit(Mengeneinheit einheit) {
+            this.einheit = einheit;
+            return this;
+        }
+    
+        public Boolean getIstAbrechnungsrelevant() {
+            return istAbrechnungsrelevant;
+        }
+        public ZaehlwerkBuilder setIstAbrechnungsrelevant(Boolean istAbrechnungsrelevant) {
+            this.istAbrechnungsrelevant = istAbrechnungsrelevant;
+            return this;
+        }
+    
+        public Boolean getIstSchwachlastfaehig() {
+            return istSchwachlastfaehig;
+        }
+        public ZaehlwerkBuilder setIstSchwachlastfaehig(Boolean istSchwachlastfaehig) {
+            this.istSchwachlastfaehig = istSchwachlastfaehig;
+            return this;
+        }
+    
+        public Boolean getIstSteuerbefreit() {
+            return istSteuerbefreit;
+        }
+        public ZaehlwerkBuilder setIstSteuerbefreit(Boolean istSteuerbefreit) {
+            this.istSteuerbefreit = istSteuerbefreit;
+            return this;
+        }
+    
+        public Boolean getIstUnterbrechbar() {
+            return istUnterbrechbar;
+        }
+        public ZaehlwerkBuilder setIstUnterbrechbar(Boolean istUnterbrechbar) {
+            this.istUnterbrechbar = istUnterbrechbar;
+            return this;
+        }
+    
+        public Konzessionsabgabe getKonzessionsabgabe() {
+            return konzessionsabgabe;
+        }
+        public ZaehlwerkBuilder setKonzessionsabgabe(Konzessionsabgabe konzessionsabgabe) {
+            this.konzessionsabgabe = konzessionsabgabe;
+            return this;
+        }
+    
+        public Long getNachkommastelle() {
+            return nachkommastelle;
+        }
+        public ZaehlwerkBuilder setNachkommastelle(Long nachkommastelle) {
+            this.nachkommastelle = nachkommastelle;
+            return this;
+        }
+    
+        public String getObisKennzahl() {
+            return obisKennzahl;
+        }
+        public ZaehlwerkBuilder setObisKennzahl(String obisKennzahl) {
+            this.obisKennzahl = obisKennzahl;
+            return this;
+        }
+    
+        public Energierichtung getRichtung() {
+            return richtung;
+        }
+        public ZaehlwerkBuilder setRichtung(Energierichtung richtung) {
+            this.richtung = richtung;
+            return this;
+        }
+    
+        public Verbrauchsart getVerbrauchsart() {
+            return verbrauchsart;
+        }
+        public ZaehlwerkBuilder setVerbrauchsart(Verbrauchsart verbrauchsart) {
+            this.verbrauchsart = verbrauchsart;
+            return this;
+        }
+    
+        public List<VerwendungszweckProMarktrolle> getVerwendungszwecke() {
+            return verwendungszwecke;
+        }
+        public ZaehlwerkBuilder setVerwendungszwecke(List<VerwendungszweckProMarktrolle> verwendungszwecke) {
+            this.verwendungszwecke = verwendungszwecke;
+            return this;
+        }
+    
+        public Long getVorkommastelle() {
+            return vorkommastelle;
+        }
+        public ZaehlwerkBuilder setVorkommastelle(Long vorkommastelle) {
+            this.vorkommastelle = vorkommastelle;
+            return this;
+        }
+    
+        public Waermenutzung getWaermenutzung() {
+            return waermenutzung;
+        }
+        public ZaehlwerkBuilder setWaermenutzung(Waermenutzung waermenutzung) {
+            this.waermenutzung = waermenutzung;
+            return this;
+        }
+    
+        public Double getWandlerfaktor() {
+            return wandlerfaktor;
+        }
+        public ZaehlwerkBuilder setWandlerfaktor(Double wandlerfaktor) {
+            this.wandlerfaktor = wandlerfaktor;
+            return this;
+        }
+    
+        public String getZaehlwerkId() {
+            return zaehlwerkId;
+        }
+        public ZaehlwerkBuilder setZaehlwerkId(String zaehlwerkId) {
+            this.zaehlwerkId = zaehlwerkId;
+            return this;
+        }
+    
+        public Zaehlzeitregister getZaehlzeitregister() {
+            return zaehlzeitregister;
+        }
+        public ZaehlwerkBuilder setZaehlzeitregister(Zaehlzeitregister zaehlzeitregister) {
+            this.zaehlzeitregister = zaehlzeitregister;
+            return this;
+        }
+    
+        public Zaehlwerk build() {
+            return new Zaehlwerk(this);
+        }
     }
 }

@@ -33,6 +33,14 @@ public class Preisstaffel extends COM {
      */
     private Double staffelgrenzeVon;
 
+    public Preisstaffel() {}
+    private Preisstaffel(PreisstaffelBuilder builder) {
+        this.einheitspreis = builder.einheitspreis;
+        this.sigmoidparameter = builder.sigmoidparameter;
+        this.staffelgrenzeBis = builder.staffelgrenzeBis;
+        this.staffelgrenzeVon = builder.staffelgrenzeVon;
+    }
+
     public Double getEinheitspreis() {
         return einheitspreis;
     }
@@ -59,5 +67,61 @@ public class Preisstaffel extends COM {
     }
     public void setStaffelgrenzeVon(Double staffelgrenzeVon) {
         this.staffelgrenzeVon = staffelgrenzeVon;
+    }
+
+    public static class PreisstaffelBuilder extends COMBuilder {
+        /**
+         * Preis pro abgerechneter Mengeneinheit
+         */
+        private Double einheitspreis;
+        /**
+         * Parameter zur Berechnung des Preises anhand der Jahresmenge und weiterer netzbezogener
+         * Parameter
+         */
+        private Sigmoidparameter sigmoidparameter;
+        /**
+         * Exklusiver oberer Wert, bis zu dem die Staffel gilt
+         */
+        private Double staffelgrenzeBis;
+        /**
+         * Inklusiver unterer Wert, ab dem die Staffel gilt
+         */
+        private Double staffelgrenzeVon;
+    
+        public Double getEinheitspreis() {
+            return einheitspreis;
+        }
+        public PreisstaffelBuilder setEinheitspreis(Double einheitspreis) {
+            this.einheitspreis = einheitspreis;
+            return this;
+        }
+    
+        public Sigmoidparameter getSigmoidparameter() {
+            return sigmoidparameter;
+        }
+        public PreisstaffelBuilder setSigmoidparameter(Sigmoidparameter sigmoidparameter) {
+            this.sigmoidparameter = sigmoidparameter;
+            return this;
+        }
+    
+        public Double getStaffelgrenzeBis() {
+            return staffelgrenzeBis;
+        }
+        public PreisstaffelBuilder setStaffelgrenzeBis(Double staffelgrenzeBis) {
+            this.staffelgrenzeBis = staffelgrenzeBis;
+            return this;
+        }
+    
+        public Double getStaffelgrenzeVon() {
+            return staffelgrenzeVon;
+        }
+        public PreisstaffelBuilder setStaffelgrenzeVon(Double staffelgrenzeVon) {
+            this.staffelgrenzeVon = staffelgrenzeVon;
+            return this;
+        }
+    
+        public Preisstaffel build() {
+            return new Preisstaffel(this);
+        }
     }
 }

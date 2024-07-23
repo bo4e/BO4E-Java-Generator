@@ -54,6 +54,18 @@ public class AufAbschlag extends COM {
      */
     private String website;
 
+    public AufAbschlag() {}
+    private AufAbschlag(AufAbschlagBuilder builder) {
+        this.aufAbschlagstyp = builder.aufAbschlagstyp;
+        this.aufAbschlagsziel = builder.aufAbschlagsziel;
+        this.beschreibung = builder.beschreibung;
+        this.bezeichnung = builder.bezeichnung;
+        this.einheit = builder.einheit;
+        this.gueltigkeitszeitraum = builder.gueltigkeitszeitraum;
+        this.staffeln = builder.staffeln;
+        this.website = builder.website;
+    }
+
     public AufAbschlagstyp getAufAbschlagstyp() {
         return aufAbschlagstyp;
     }
@@ -108,5 +120,109 @@ public class AufAbschlag extends COM {
     }
     public void setWebsite(String website) {
         this.website = website;
+    }
+
+    public static class AufAbschlagBuilder extends COMBuilder {
+        /**
+         * Typ des Aufabschlages (z.B. absolut oder prozentual).
+         */
+        private AufAbschlagstyp aufAbschlagstyp;
+        /**
+         * Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis,
+         * Gesamtpreis etc..
+         */
+        private AufAbschlagsziel aufAbschlagsziel;
+        /**
+         * Beschreibung zum Auf-/Abschlag
+         */
+        private String beschreibung;
+        /**
+         * Bezeichnung des Auf-/Abschlags
+         */
+        private String bezeichnung;
+        /**
+         * Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
+         */
+        private Waehrungseinheit einheit;
+        /**
+         * Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
+         */
+        private Zeitraum gueltigkeitszeitraum;
+        /**
+         * Werte für die gestaffelten Auf/Abschläge.
+         */
+        private List<Preisstaffel> staffeln;
+        /**
+         * Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
+         */
+        private String website;
+    
+        public AufAbschlagstyp getAufAbschlagstyp() {
+            return aufAbschlagstyp;
+        }
+        public AufAbschlagBuilder setAufAbschlagstyp(AufAbschlagstyp aufAbschlagstyp) {
+            this.aufAbschlagstyp = aufAbschlagstyp;
+            return this;
+        }
+    
+        public AufAbschlagsziel getAufAbschlagsziel() {
+            return aufAbschlagsziel;
+        }
+        public AufAbschlagBuilder setAufAbschlagsziel(AufAbschlagsziel aufAbschlagsziel) {
+            this.aufAbschlagsziel = aufAbschlagsziel;
+            return this;
+        }
+    
+        public String getBeschreibung() {
+            return beschreibung;
+        }
+        public AufAbschlagBuilder setBeschreibung(String beschreibung) {
+            this.beschreibung = beschreibung;
+            return this;
+        }
+    
+        public String getBezeichnung() {
+            return bezeichnung;
+        }
+        public AufAbschlagBuilder setBezeichnung(String bezeichnung) {
+            this.bezeichnung = bezeichnung;
+            return this;
+        }
+    
+        public Waehrungseinheit getEinheit() {
+            return einheit;
+        }
+        public AufAbschlagBuilder setEinheit(Waehrungseinheit einheit) {
+            this.einheit = einheit;
+            return this;
+        }
+    
+        public Zeitraum getGueltigkeitszeitraum() {
+            return gueltigkeitszeitraum;
+        }
+        public AufAbschlagBuilder setGueltigkeitszeitraum(Zeitraum gueltigkeitszeitraum) {
+            this.gueltigkeitszeitraum = gueltigkeitszeitraum;
+            return this;
+        }
+    
+        public List<Preisstaffel> getStaffeln() {
+            return staffeln;
+        }
+        public AufAbschlagBuilder setStaffeln(List<Preisstaffel> staffeln) {
+            this.staffeln = staffeln;
+            return this;
+        }
+    
+        public String getWebsite() {
+            return website;
+        }
+        public AufAbschlagBuilder setWebsite(String website) {
+            this.website = website;
+            return this;
+        }
+    
+        public AufAbschlag build() {
+            return new AufAbschlag(this);
+        }
     }
 }

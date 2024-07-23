@@ -30,6 +30,13 @@ public class Preisgarantie extends COM {
      */
     private Zeitraum zeitlicheGueltigkeit;
 
+    public Preisgarantie() {}
+    private Preisgarantie(PreisgarantieBuilder builder) {
+        this.beschreibung = builder.beschreibung;
+        this.preisgarantietyp = builder.preisgarantietyp;
+        this.zeitlicheGueltigkeit = builder.zeitlicheGueltigkeit;
+    }
+
     public String getBeschreibung() {
         return beschreibung;
     }
@@ -49,5 +56,48 @@ public class Preisgarantie extends COM {
     }
     public void setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
         this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
+    }
+
+    public static class PreisgarantieBuilder extends COMBuilder {
+        /**
+         * Freitext zur Beschreibung der Preisgarantie.
+         */
+        private String beschreibung;
+        /**
+         * Festlegung, auf welche Preisbestandteile die Garantie gewährt wird.
+         */
+        private Preisgarantietyp preisgarantietyp;
+        /**
+         * Freitext zur Beschreibung der Preisgarantie.
+         */
+        private Zeitraum zeitlicheGueltigkeit;
+    
+        public String getBeschreibung() {
+            return beschreibung;
+        }
+        public PreisgarantieBuilder setBeschreibung(String beschreibung) {
+            this.beschreibung = beschreibung;
+            return this;
+        }
+    
+        public Preisgarantietyp getPreisgarantietyp() {
+            return preisgarantietyp;
+        }
+        public PreisgarantieBuilder setPreisgarantietyp(Preisgarantietyp preisgarantietyp) {
+            this.preisgarantietyp = preisgarantietyp;
+            return this;
+        }
+    
+        public Zeitraum getZeitlicheGueltigkeit() {
+            return zeitlicheGueltigkeit;
+        }
+        public PreisgarantieBuilder setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
+            this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
+            return this;
+        }
+    
+        public Preisgarantie build() {
+            return new Preisgarantie(this);
+        }
     }
 }

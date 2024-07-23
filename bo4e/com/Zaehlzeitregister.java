@@ -30,6 +30,13 @@ public class Zaehlzeitregister extends COM {
      */
     private String zaehlzeitRegister;
 
+    public Zaehlzeitregister() {}
+    private Zaehlzeitregister(ZaehlzeitregisterBuilder builder) {
+        this.istSchwachlastfaehig = builder.istSchwachlastfaehig;
+        this.zaehlzeitDefinition = builder.zaehlzeitDefinition;
+        this.zaehlzeitRegister = builder.zaehlzeitRegister;
+    }
+
     public Boolean getIstSchwachlastfaehig() {
         return istSchwachlastfaehig;
     }
@@ -49,5 +56,48 @@ public class Zaehlzeitregister extends COM {
     }
     public void setZaehlzeitRegister(String zaehlzeitRegister) {
         this.zaehlzeitRegister = zaehlzeitRegister;
+    }
+
+    public static class ZaehlzeitregisterBuilder extends COMBuilder {
+        /**
+         * Zählzeitregister
+         */
+        private Boolean istSchwachlastfaehig;
+        /**
+         * Zählzeitdefinition
+         */
+        private String zaehlzeitDefinition;
+        /**
+         * Zählzeitdefinition
+         */
+        private String zaehlzeitRegister;
+    
+        public Boolean getIstSchwachlastfaehig() {
+            return istSchwachlastfaehig;
+        }
+        public ZaehlzeitregisterBuilder setIstSchwachlastfaehig(Boolean istSchwachlastfaehig) {
+            this.istSchwachlastfaehig = istSchwachlastfaehig;
+            return this;
+        }
+    
+        public String getZaehlzeitDefinition() {
+            return zaehlzeitDefinition;
+        }
+        public ZaehlzeitregisterBuilder setZaehlzeitDefinition(String zaehlzeitDefinition) {
+            this.zaehlzeitDefinition = zaehlzeitDefinition;
+            return this;
+        }
+    
+        public String getZaehlzeitRegister() {
+            return zaehlzeitRegister;
+        }
+        public ZaehlzeitregisterBuilder setZaehlzeitRegister(String zaehlzeitRegister) {
+            this.zaehlzeitRegister = zaehlzeitRegister;
+            return this;
+        }
+    
+        public Zaehlzeitregister build() {
+            return new Zaehlzeitregister(this);
+        }
     }
 }

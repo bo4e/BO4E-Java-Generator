@@ -22,7 +22,7 @@ public class Standorteigenschaften extends Geschaeftsobjekt {
     /**
      * Typ des Geschaeftsobjekts
      */
-    private Typ typ = Typ.STANDORTEIGENSCHAFTEN;
+    private final Typ typ = Typ.STANDORTEIGENSCHAFTEN;
     /**
      * Eigenschaften zur Sparte Gas
      */
@@ -31,6 +31,12 @@ public class Standorteigenschaften extends Geschaeftsobjekt {
      * Eigenschaften zur Sparte Strom
      */
     private List<StandorteigenschaftenStrom> eigenschaftenStrom;
+
+    public Standorteigenschaften() {}
+    private Standorteigenschaften(StandorteigenschaftenBuilder builder) {
+        this.eigenschaftenGas = builder.eigenschaftenGas;
+        this.eigenschaftenStrom = builder.eigenschaftenStrom;
+    }
 
     public Typ getTyp() {
         return typ;
@@ -48,5 +54,36 @@ public class Standorteigenschaften extends Geschaeftsobjekt {
     }
     public void setEigenschaftenStrom(List<StandorteigenschaftenStrom> eigenschaftenStrom) {
         this.eigenschaftenStrom = eigenschaftenStrom;
+    }
+
+    public static class StandorteigenschaftenBuilder extends GeschaeftsobjektBuilder {
+        /**
+         * Eigenschaften zur Sparte Gas
+         */
+        private StandorteigenschaftenGas eigenschaftenGas;
+        /**
+         * Eigenschaften zur Sparte Strom
+         */
+        private List<StandorteigenschaftenStrom> eigenschaftenStrom;
+    
+        public StandorteigenschaftenGas getEigenschaftenGas() {
+            return eigenschaftenGas;
+        }
+        public StandorteigenschaftenBuilder setEigenschaftenGas(StandorteigenschaftenGas eigenschaftenGas) {
+            this.eigenschaftenGas = eigenschaftenGas;
+            return this;
+        }
+    
+        public List<StandorteigenschaftenStrom> getEigenschaftenStrom() {
+            return eigenschaftenStrom;
+        }
+        public StandorteigenschaftenBuilder setEigenschaftenStrom(List<StandorteigenschaftenStrom> eigenschaftenStrom) {
+            this.eigenschaftenStrom = eigenschaftenStrom;
+            return this;
+        }
+    
+        public Standorteigenschaften build() {
+            return new Standorteigenschaften(this);
+        }
     }
 }

@@ -89,6 +89,25 @@ public class RegionalerAufAbschlag extends COM {
      */
     private List<String> zusatzprodukte;
 
+    public RegionalerAufAbschlag() {}
+    private RegionalerAufAbschlag(RegionalerAufAbschlagBuilder builder) {
+        this.aufAbschlagstyp = builder.aufAbschlagstyp;
+        this.aufAbschlagsziel = builder.aufAbschlagsziel;
+        this.beschreibung = builder.beschreibung;
+        this.bezeichnung = builder.bezeichnung;
+        this.einheit = builder.einheit;
+        this.einschraenkungsaenderung = builder.einschraenkungsaenderung;
+        this.energiemixaenderung = builder.energiemixaenderung;
+        this.garantieaenderung = builder.garantieaenderung;
+        this.gueltigkeitszeitraum = builder.gueltigkeitszeitraum;
+        this.staffeln = builder.staffeln;
+        this.tarifnamensaenderungen = builder.tarifnamensaenderungen;
+        this.vertagskonditionsaenderung = builder.vertagskonditionsaenderung;
+        this.voraussetzungen = builder.voraussetzungen;
+        this.website = builder.website;
+        this.zusatzprodukte = builder.zusatzprodukte;
+    }
+
     public AufAbschlagstyp getAufAbschlagstyp() {
         return aufAbschlagstyp;
     }
@@ -192,5 +211,196 @@ public class RegionalerAufAbschlag extends COM {
     }
     public void setZusatzprodukte(List<String> zusatzprodukte) {
         this.zusatzprodukte = zusatzprodukte;
+    }
+
+    public static class RegionalerAufAbschlagBuilder extends COMBuilder {
+        /**
+         * Typ des Aufabschlages (z.B. absolut oder prozentual)
+         */
+        private AufAbschlagstyp aufAbschlagstyp;
+        /**
+         * Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis,
+         * Gesamtpreis etc.
+         */
+        private AufAbschlagsziel aufAbschlagsziel;
+        /**
+         * Beschreibung des Auf-/Abschlags
+         */
+        private String beschreibung;
+        /**
+         * Bezeichnung des Auf-/Abschlags
+         */
+        private String bezeichnung;
+        /**
+         * Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird (nur im Falle
+         * absoluter Aufschlagstypen).
+         */
+        private Waehrungseinheit einheit;
+        /**
+         * Änderungen in den Einschränkungen zum Tarif;
+         * Falls in dieser Komponenten angegeben, werden die Tarifparameter hiermit überschrieben.
+         */
+        private Tarifeinschraenkung einschraenkungsaenderung;
+        /**
+         * vertagskonditionsaenderung: Optional["Vertragskonditionen"] = None
+         */
+        private Energiemix energiemixaenderung;
+        /**
+         * einschraenkungsaenderung: Optional["Tarifeinschraenkung"] = None
+         */
+        private Preisgarantie garantieaenderung;
+        /**
+         * Zeitraum, in dem der Abschlag zur Anwendung kommen kann
+         */
+        private Zeitraum gueltigkeitszeitraum;
+        /**
+         * Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
+         */
+        private List<RegionalePreisstaffel> staffeln;
+        /**
+         * Durch die Anwendung des Auf/Abschlags kann eine Änderung des Tarifnamens auftreten
+         */
+        private String tarifnamensaenderungen;
+        /**
+         * garantieaenderung: Optional["Preisgarantie"] = None
+         */
+        private Vertragskonditionen vertagskonditionsaenderung;
+        /**
+         * Voraussetzungen, die erfüllt sein müssen, damit dieser AufAbschlag zur Anwendung kommen
+         * kann
+         */
+        private List<String> voraussetzungen;
+        /**
+         * Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind
+         */
+        private String website;
+        /**
+         * Zusatzprodukte, die nur in Kombination mit diesem AufAbschlag erhältlich sind
+         */
+        private List<String> zusatzprodukte;
+    
+        public AufAbschlagstyp getAufAbschlagstyp() {
+            return aufAbschlagstyp;
+        }
+        public RegionalerAufAbschlagBuilder setAufAbschlagstyp(AufAbschlagstyp aufAbschlagstyp) {
+            this.aufAbschlagstyp = aufAbschlagstyp;
+            return this;
+        }
+    
+        public AufAbschlagsziel getAufAbschlagsziel() {
+            return aufAbschlagsziel;
+        }
+        public RegionalerAufAbschlagBuilder setAufAbschlagsziel(AufAbschlagsziel aufAbschlagsziel) {
+            this.aufAbschlagsziel = aufAbschlagsziel;
+            return this;
+        }
+    
+        public String getBeschreibung() {
+            return beschreibung;
+        }
+        public RegionalerAufAbschlagBuilder setBeschreibung(String beschreibung) {
+            this.beschreibung = beschreibung;
+            return this;
+        }
+    
+        public String getBezeichnung() {
+            return bezeichnung;
+        }
+        public RegionalerAufAbschlagBuilder setBezeichnung(String bezeichnung) {
+            this.bezeichnung = bezeichnung;
+            return this;
+        }
+    
+        public Waehrungseinheit getEinheit() {
+            return einheit;
+        }
+        public RegionalerAufAbschlagBuilder setEinheit(Waehrungseinheit einheit) {
+            this.einheit = einheit;
+            return this;
+        }
+    
+        public Tarifeinschraenkung getEinschraenkungsaenderung() {
+            return einschraenkungsaenderung;
+        }
+        public RegionalerAufAbschlagBuilder setEinschraenkungsaenderung(Tarifeinschraenkung einschraenkungsaenderung) {
+            this.einschraenkungsaenderung = einschraenkungsaenderung;
+            return this;
+        }
+    
+        public Energiemix getEnergiemixaenderung() {
+            return energiemixaenderung;
+        }
+        public RegionalerAufAbschlagBuilder setEnergiemixaenderung(Energiemix energiemixaenderung) {
+            this.energiemixaenderung = energiemixaenderung;
+            return this;
+        }
+    
+        public Preisgarantie getGarantieaenderung() {
+            return garantieaenderung;
+        }
+        public RegionalerAufAbschlagBuilder setGarantieaenderung(Preisgarantie garantieaenderung) {
+            this.garantieaenderung = garantieaenderung;
+            return this;
+        }
+    
+        public Zeitraum getGueltigkeitszeitraum() {
+            return gueltigkeitszeitraum;
+        }
+        public RegionalerAufAbschlagBuilder setGueltigkeitszeitraum(Zeitraum gueltigkeitszeitraum) {
+            this.gueltigkeitszeitraum = gueltigkeitszeitraum;
+            return this;
+        }
+    
+        public List<RegionalePreisstaffel> getStaffeln() {
+            return staffeln;
+        }
+        public RegionalerAufAbschlagBuilder setStaffeln(List<RegionalePreisstaffel> staffeln) {
+            this.staffeln = staffeln;
+            return this;
+        }
+    
+        public String getTarifnamensaenderungen() {
+            return tarifnamensaenderungen;
+        }
+        public RegionalerAufAbschlagBuilder setTarifnamensaenderungen(String tarifnamensaenderungen) {
+            this.tarifnamensaenderungen = tarifnamensaenderungen;
+            return this;
+        }
+    
+        public Vertragskonditionen getVertagskonditionsaenderung() {
+            return vertagskonditionsaenderung;
+        }
+        public RegionalerAufAbschlagBuilder setVertagskonditionsaenderung(Vertragskonditionen vertagskonditionsaenderung) {
+            this.vertagskonditionsaenderung = vertagskonditionsaenderung;
+            return this;
+        }
+    
+        public List<String> getVoraussetzungen() {
+            return voraussetzungen;
+        }
+        public RegionalerAufAbschlagBuilder setVoraussetzungen(List<String> voraussetzungen) {
+            this.voraussetzungen = voraussetzungen;
+            return this;
+        }
+    
+        public String getWebsite() {
+            return website;
+        }
+        public RegionalerAufAbschlagBuilder setWebsite(String website) {
+            this.website = website;
+            return this;
+        }
+    
+        public List<String> getZusatzprodukte() {
+            return zusatzprodukte;
+        }
+        public RegionalerAufAbschlagBuilder setZusatzprodukte(List<String> zusatzprodukte) {
+            this.zusatzprodukte = zusatzprodukte;
+            return this;
+        }
+    
+        public RegionalerAufAbschlag build() {
+            return new RegionalerAufAbschlag(this);
+        }
     }
 }

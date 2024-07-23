@@ -45,6 +45,16 @@ public class Tarifpreis extends COM {
      */
     private Double wert;
 
+    public Tarifpreis() {}
+    private Tarifpreis(TarifpreisBuilder builder) {
+        this.beschreibung = builder.beschreibung;
+        this.bezugswert = builder.bezugswert;
+        this.einheit = builder.einheit;
+        this.preistyp = builder.preistyp;
+        this.status = builder.status;
+        this.wert = builder.wert;
+    }
+
     public String getBeschreibung() {
         return beschreibung;
     }
@@ -85,5 +95,85 @@ public class Tarifpreis extends COM {
     }
     public void setWert(Double wert) {
         this.wert = wert;
+    }
+
+    public static class TarifpreisBuilder extends COMBuilder {
+        /**
+         * Beschreibung des Preises. Hier können z.B. Preisdetails angegeben sein, beispielsweise
+         * "Drehstromzähler".
+         */
+        private String beschreibung;
+        /**
+         * Angabe, für welche Bezugsgröße der Preis gilt. Z.B. kWh.
+         */
+        private Mengeneinheit bezugswert;
+        /**
+         * Währungseinheit für den Preis, z.B. Euro oder Ct.
+         */
+        private Waehrungseinheit einheit;
+        /**
+         * Angabe des Preistypes (z.B. Grundpreis)
+         */
+        private Preistyp preistyp;
+        /**
+         * Gibt den Status des veröffentlichten Preises an
+         */
+        private Preisstatus status;
+        /**
+         * Gibt die nominale Höhe des Preises an.
+         */
+        private Double wert;
+    
+        public String getBeschreibung() {
+            return beschreibung;
+        }
+        public TarifpreisBuilder setBeschreibung(String beschreibung) {
+            this.beschreibung = beschreibung;
+            return this;
+        }
+    
+        public Mengeneinheit getBezugswert() {
+            return bezugswert;
+        }
+        public TarifpreisBuilder setBezugswert(Mengeneinheit bezugswert) {
+            this.bezugswert = bezugswert;
+            return this;
+        }
+    
+        public Waehrungseinheit getEinheit() {
+            return einheit;
+        }
+        public TarifpreisBuilder setEinheit(Waehrungseinheit einheit) {
+            this.einheit = einheit;
+            return this;
+        }
+    
+        public Preistyp getPreistyp() {
+            return preistyp;
+        }
+        public TarifpreisBuilder setPreistyp(Preistyp preistyp) {
+            this.preistyp = preistyp;
+            return this;
+        }
+    
+        public Preisstatus getStatus() {
+            return status;
+        }
+        public TarifpreisBuilder setStatus(Preisstatus status) {
+            this.status = status;
+            return this;
+        }
+    
+        public Double getWert() {
+            return wert;
+        }
+        public TarifpreisBuilder setWert(Double wert) {
+            this.wert = wert;
+            return this;
+        }
+    
+        public Tarifpreis build() {
+            return new Tarifpreis(this);
+        }
     }
 }

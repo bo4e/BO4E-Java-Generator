@@ -26,6 +26,12 @@ public class Energieherkunft extends COM {
      */
     private Erzeugungsart erzeugungsart;
 
+    public Energieherkunft() {}
+    private Energieherkunft(EnergieherkunftBuilder builder) {
+        this.anteilProzent = builder.anteilProzent;
+        this.erzeugungsart = builder.erzeugungsart;
+    }
+
     public Double getAnteilProzent() {
         return anteilProzent;
     }
@@ -38,5 +44,36 @@ public class Energieherkunft extends COM {
     }
     public void setErzeugungsart(Erzeugungsart erzeugungsart) {
         this.erzeugungsart = erzeugungsart;
+    }
+
+    public static class EnergieherkunftBuilder extends COMBuilder {
+        /**
+         * Prozentualer Anteil der jeweiligen Erzeugungsart.
+         */
+        private Double anteilProzent;
+        /**
+         * Art der Erzeugung der Energie.
+         */
+        private Erzeugungsart erzeugungsart;
+    
+        public Double getAnteilProzent() {
+            return anteilProzent;
+        }
+        public EnergieherkunftBuilder setAnteilProzent(Double anteilProzent) {
+            this.anteilProzent = anteilProzent;
+            return this;
+        }
+    
+        public Erzeugungsart getErzeugungsart() {
+            return erzeugungsart;
+        }
+        public EnergieherkunftBuilder setErzeugungsart(Erzeugungsart erzeugungsart) {
+            this.erzeugungsart = erzeugungsart;
+            return this;
+        }
+    
+        public Energieherkunft build() {
+            return new Energieherkunft(this);
+        }
     }
 }

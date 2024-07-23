@@ -43,6 +43,16 @@ public class Angebotsvariante extends COM {
      */
     private List<Angebotsteil> teile;
 
+    public Angebotsvariante() {}
+    private Angebotsvariante(AngebotsvarianteBuilder builder) {
+        this.angebotsstatus = builder.angebotsstatus;
+        this.bindefrist = builder.bindefrist;
+        this.erstellungsdatum = builder.erstellungsdatum;
+        this.gesamtkosten = builder.gesamtkosten;
+        this.gesamtmenge = builder.gesamtmenge;
+        this.teile = builder.teile;
+    }
+
     public Angebotsstatus getAngebotsstatus() {
         return angebotsstatus;
     }
@@ -83,5 +93,84 @@ public class Angebotsvariante extends COM {
     }
     public void setTeile(List<Angebotsteil> teile) {
         this.teile = teile;
+    }
+
+    public static class AngebotsvarianteBuilder extends COMBuilder {
+        /**
+         * Gibt den Status eines Angebotes an.
+         */
+        private Angebotsstatus angebotsstatus;
+        /**
+         * Bis zu diesem Zeitpunkt gilt die Angebotsvariante
+         */
+        private OffsetDateTime bindefrist;
+        /**
+         * Datum der Erstellung der Angebotsvariante
+         */
+        private OffsetDateTime erstellungsdatum;
+        /**
+         * Aufsummierte Kosten aller Angebotsteile
+         */
+        private Betrag gesamtkosten;
+        /**
+         * Aufsummierte Wirkarbeitsmenge aller Angebotsteile
+         */
+        private Menge gesamtmenge;
+        /**
+         * Aufsummierte Wirkarbeitsmenge aller Angebotsteile
+         */
+        private List<Angebotsteil> teile;
+    
+        public Angebotsstatus getAngebotsstatus() {
+            return angebotsstatus;
+        }
+        public AngebotsvarianteBuilder setAngebotsstatus(Angebotsstatus angebotsstatus) {
+            this.angebotsstatus = angebotsstatus;
+            return this;
+        }
+    
+        public OffsetDateTime getBindefrist() {
+            return bindefrist;
+        }
+        public AngebotsvarianteBuilder setBindefrist(OffsetDateTime bindefrist) {
+            this.bindefrist = bindefrist;
+            return this;
+        }
+    
+        public OffsetDateTime getErstellungsdatum() {
+            return erstellungsdatum;
+        }
+        public AngebotsvarianteBuilder setErstellungsdatum(OffsetDateTime erstellungsdatum) {
+            this.erstellungsdatum = erstellungsdatum;
+            return this;
+        }
+    
+        public Betrag getGesamtkosten() {
+            return gesamtkosten;
+        }
+        public AngebotsvarianteBuilder setGesamtkosten(Betrag gesamtkosten) {
+            this.gesamtkosten = gesamtkosten;
+            return this;
+        }
+    
+        public Menge getGesamtmenge() {
+            return gesamtmenge;
+        }
+        public AngebotsvarianteBuilder setGesamtmenge(Menge gesamtmenge) {
+            this.gesamtmenge = gesamtmenge;
+            return this;
+        }
+    
+        public List<Angebotsteil> getTeile() {
+            return teile;
+        }
+        public AngebotsvarianteBuilder setTeile(List<Angebotsteil> teile) {
+            this.teile = teile;
+            return this;
+        }
+    
+        public Angebotsvariante build() {
+            return new Angebotsvariante(this);
+        }
     }
 }

@@ -34,6 +34,14 @@ public class Kontaktweg extends COM {
      */
     private String kontaktwert;
 
+    public Kontaktweg() {}
+    private Kontaktweg(KontaktwegBuilder builder) {
+        this.beschreibung = builder.beschreibung;
+        this.istBevorzugterKontaktweg = builder.istBevorzugterKontaktweg;
+        this.kontaktart = builder.kontaktart;
+        this.kontaktwert = builder.kontaktwert;
+    }
+
     public String getBeschreibung() {
         return beschreibung;
     }
@@ -60,5 +68,60 @@ public class Kontaktweg extends COM {
     }
     public void setKontaktwert(String kontaktwert) {
         this.kontaktwert = kontaktwert;
+    }
+
+    public static class KontaktwegBuilder extends COMBuilder {
+        /**
+         * Spezifikation, beispielsweise "Durchwahl", "Sammelnummer" etc.
+         */
+        private String beschreibung;
+        /**
+         * Gibt an, ob es sich um den bevorzugten Kontaktweg handelt.
+         */
+        private Boolean istBevorzugterKontaktweg;
+        /**
+         * Gibt die Kontaktart des Kontaktes an.
+         */
+        private Kontaktart kontaktart;
+        /**
+         * Die Nummer oder E-Mail-Adresse.
+         */
+        private String kontaktwert;
+    
+        public String getBeschreibung() {
+            return beschreibung;
+        }
+        public KontaktwegBuilder setBeschreibung(String beschreibung) {
+            this.beschreibung = beschreibung;
+            return this;
+        }
+    
+        public Boolean getIstBevorzugterKontaktweg() {
+            return istBevorzugterKontaktweg;
+        }
+        public KontaktwegBuilder setIstBevorzugterKontaktweg(Boolean istBevorzugterKontaktweg) {
+            this.istBevorzugterKontaktweg = istBevorzugterKontaktweg;
+            return this;
+        }
+    
+        public Kontaktart getKontaktart() {
+            return kontaktart;
+        }
+        public KontaktwegBuilder setKontaktart(Kontaktart kontaktart) {
+            this.kontaktart = kontaktart;
+            return this;
+        }
+    
+        public String getKontaktwert() {
+            return kontaktwert;
+        }
+        public KontaktwegBuilder setKontaktwert(String kontaktwert) {
+            this.kontaktwert = kontaktwert;
+            return this;
+        }
+    
+        public Kontaktweg build() {
+            return new Kontaktweg(this);
+        }
     }
 }

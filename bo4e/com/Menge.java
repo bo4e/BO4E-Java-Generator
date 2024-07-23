@@ -25,6 +25,12 @@ public class Menge extends COM {
      */
     private Double wert;
 
+    public Menge() {}
+    private Menge(MengeBuilder builder) {
+        this.einheit = builder.einheit;
+        this.wert = builder.wert;
+    }
+
     public Mengeneinheit getEinheit() {
         return einheit;
     }
@@ -37,5 +43,36 @@ public class Menge extends COM {
     }
     public void setWert(Double wert) {
         this.wert = wert;
+    }
+
+    public static class MengeBuilder extends COMBuilder {
+        /**
+         * Gibt die Einheit zum jeweiligen Wert an
+         */
+        private Mengeneinheit einheit;
+        /**
+         * Gibt den absoluten Wert der Menge an
+         */
+        private Double wert;
+    
+        public Mengeneinheit getEinheit() {
+            return einheit;
+        }
+        public MengeBuilder setEinheit(Mengeneinheit einheit) {
+            this.einheit = einheit;
+            return this;
+        }
+    
+        public Double getWert() {
+            return wert;
+        }
+        public MengeBuilder setWert(Double wert) {
+            this.wert = wert;
+            return this;
+        }
+    
+        public Menge build() {
+            return new Menge(this);
+        }
     }
 }

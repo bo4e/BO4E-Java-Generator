@@ -28,6 +28,13 @@ public class AufAbschlagstaffelProOrt extends COM {
      */
     private Double wert;
 
+    public AufAbschlagstaffelProOrt() {}
+    private AufAbschlagstaffelProOrt(AufAbschlagstaffelProOrtBuilder builder) {
+        this.staffelgrenzeBis = builder.staffelgrenzeBis;
+        this.staffelgrenzeVon = builder.staffelgrenzeVon;
+        this.wert = builder.wert;
+    }
+
     public Double getStaffelgrenzeBis() {
         return staffelgrenzeBis;
     }
@@ -47,5 +54,48 @@ public class AufAbschlagstaffelProOrt extends COM {
     }
     public void setWert(Double wert) {
         this.wert = wert;
+    }
+
+    public static class AufAbschlagstaffelProOrtBuilder extends COMBuilder {
+        /**
+         * Oberer Wert, bis zu dem die Staffel gilt.
+         */
+        private Double staffelgrenzeBis;
+        /**
+         * Unterer Wert, ab dem die Staffel gilt.
+         */
+        private Double staffelgrenzeVon;
+        /**
+         * Der Wert für den Auf- oder Abschlag.
+         */
+        private Double wert;
+    
+        public Double getStaffelgrenzeBis() {
+            return staffelgrenzeBis;
+        }
+        public AufAbschlagstaffelProOrtBuilder setStaffelgrenzeBis(Double staffelgrenzeBis) {
+            this.staffelgrenzeBis = staffelgrenzeBis;
+            return this;
+        }
+    
+        public Double getStaffelgrenzeVon() {
+            return staffelgrenzeVon;
+        }
+        public AufAbschlagstaffelProOrtBuilder setStaffelgrenzeVon(Double staffelgrenzeVon) {
+            this.staffelgrenzeVon = staffelgrenzeVon;
+            return this;
+        }
+    
+        public Double getWert() {
+            return wert;
+        }
+        public AufAbschlagstaffelProOrtBuilder setWert(Double wert) {
+            this.wert = wert;
+            return this;
+        }
+    
+        public AufAbschlagstaffelProOrt build() {
+            return new AufAbschlagstaffelProOrt(this);
+        }
     }
 }

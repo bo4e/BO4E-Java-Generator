@@ -35,6 +35,14 @@ public class Zeitreihenwert extends COM {
      */
     private Zeitspanne zeitspanne;
 
+    public Zeitreihenwert() {}
+    private Zeitreihenwert(ZeitreihenwertBuilder builder) {
+        this.status = builder.status;
+        this.statuszusatz = builder.statuszusatz;
+        this.wert = builder.wert;
+        this.zeitspanne = builder.zeitspanne;
+    }
+
     public Messwertstatus getStatus() {
         return status;
     }
@@ -61,5 +69,60 @@ public class Zeitreihenwert extends COM {
     }
     public void setZeitspanne(Zeitspanne zeitspanne) {
         this.zeitspanne = zeitspanne;
+    }
+
+    public static class ZeitreihenwertBuilder extends COMBuilder {
+        /**
+         * Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen.
+         */
+        private Messwertstatus status;
+        /**
+         * Eine Zusatzinformation zum Status, beispielsweise ein Grund für einen fehlenden Wert.
+         */
+        private Messwertstatuszusatz statuszusatz;
+        /**
+         * Zeitespanne für das Messintervall
+         */
+        private Double wert;
+        /**
+         * Zeitespanne für das Messintervall
+         */
+        private Zeitspanne zeitspanne;
+    
+        public Messwertstatus getStatus() {
+            return status;
+        }
+        public ZeitreihenwertBuilder setStatus(Messwertstatus status) {
+            this.status = status;
+            return this;
+        }
+    
+        public Messwertstatuszusatz getStatuszusatz() {
+            return statuszusatz;
+        }
+        public ZeitreihenwertBuilder setStatuszusatz(Messwertstatuszusatz statuszusatz) {
+            this.statuszusatz = statuszusatz;
+            return this;
+        }
+    
+        public Double getWert() {
+            return wert;
+        }
+        public ZeitreihenwertBuilder setWert(Double wert) {
+            this.wert = wert;
+            return this;
+        }
+    
+        public Zeitspanne getZeitspanne() {
+            return zeitspanne;
+        }
+        public ZeitreihenwertBuilder setZeitspanne(Zeitspanne zeitspanne) {
+            this.zeitspanne = zeitspanne;
+            return this;
+        }
+    
+        public Zeitreihenwert build() {
+            return new Zeitreihenwert(this);
+        }
     }
 }

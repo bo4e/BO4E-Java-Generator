@@ -28,7 +28,7 @@ public class PreisblattMessung extends Geschaeftsobjekt {
     /**
      * Typ des Geschaeftsobjekts
      */
-    private Typ typ = Typ.PREISBLATTMESSUNG;
+    private final Typ typ = Typ.PREISBLATTMESSUNG;
     /**
      * Eine Bezeichnung für das Preisblatt
      */
@@ -74,6 +74,21 @@ public class PreisblattMessung extends Geschaeftsobjekt {
      * Der Preis betrifft den hier angegebenen Zähler, z.B. einen Drehstromzähler
      */
     private Zaehler zaehler;
+
+    public PreisblattMessung() {}
+    private PreisblattMessung(PreisblattMessungBuilder builder) {
+        this.bezeichnung = builder.bezeichnung;
+        this.bilanzierungsmethode = builder.bilanzierungsmethode;
+        this.gueltigkeit = builder.gueltigkeit;
+        this.herausgeber = builder.herausgeber;
+        this.inklusiveDienstleistungen = builder.inklusiveDienstleistungen;
+        this.inklusiveGeraete = builder.inklusiveGeraete;
+        this.messebene = builder.messebene;
+        this.preispositionen = builder.preispositionen;
+        this.preisstatus = builder.preisstatus;
+        this.sparte = builder.sparte;
+        this.zaehler = builder.zaehler;
+    }
 
     public Typ getTyp() {
         return typ;
@@ -154,5 +169,145 @@ public class PreisblattMessung extends Geschaeftsobjekt {
     }
     public void setZaehler(Zaehler zaehler) {
         this.zaehler = zaehler;
+    }
+
+    public static class PreisblattMessungBuilder extends GeschaeftsobjektBuilder {
+        /**
+         * Eine Bezeichnung für das Preisblatt
+         */
+        private String bezeichnung;
+        /**
+         * Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
+         */
+        private Bilanzierungsmethode bilanzierungsmethode;
+        /**
+         * Der Zeitraum für den der Preis festgelegt ist
+         */
+        private Zeitraum gueltigkeit;
+        /**
+         * Der Netzbetreiber, der die Preise veröffentlicht hat
+         */
+        private Marktteilnehmer herausgeber;
+        /**
+         * Im Preis sind die hier angegebenen Dienstleistungen enthalten, z.B. Jährliche Ablesung
+         */
+        private List<Dienstleistungstyp> inklusiveDienstleistungen;
+        /**
+         * Im Preis sind die hier angegebenen Geräte mit enthalten, z.B. ein Wandler
+         */
+        private List<Geraet> inklusiveGeraete;
+        /**
+         * Die Preise gelten für Messlokationen in der angebebenen Netzebene
+         */
+        private Netzebene messebene;
+        /**
+         * Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B.
+         * Arbeitspreis, Grundpreis etc
+         */
+        private List<Preisposition> preispositionen;
+        /**
+         * Merkmal, das anzeigt, ob es sich um vorläufige oder endgültige Preise handelt
+         */
+        private Preisstatus preisstatus;
+        /**
+         * Preisblatt gilt für angegebene Sparte
+         */
+        private Sparte sparte;
+        /**
+         * Der Preis betrifft den hier angegebenen Zähler, z.B. einen Drehstromzähler
+         */
+        private Zaehler zaehler;
+    
+        public String getBezeichnung() {
+            return bezeichnung;
+        }
+        public PreisblattMessungBuilder setBezeichnung(String bezeichnung) {
+            this.bezeichnung = bezeichnung;
+            return this;
+        }
+    
+        public Bilanzierungsmethode getBilanzierungsmethode() {
+            return bilanzierungsmethode;
+        }
+        public PreisblattMessungBuilder setBilanzierungsmethode(Bilanzierungsmethode bilanzierungsmethode) {
+            this.bilanzierungsmethode = bilanzierungsmethode;
+            return this;
+        }
+    
+        public Zeitraum getGueltigkeit() {
+            return gueltigkeit;
+        }
+        public PreisblattMessungBuilder setGueltigkeit(Zeitraum gueltigkeit) {
+            this.gueltigkeit = gueltigkeit;
+            return this;
+        }
+    
+        public Marktteilnehmer getHerausgeber() {
+            return herausgeber;
+        }
+        public PreisblattMessungBuilder setHerausgeber(Marktteilnehmer herausgeber) {
+            this.herausgeber = herausgeber;
+            return this;
+        }
+    
+        public List<Dienstleistungstyp> getInklusiveDienstleistungen() {
+            return inklusiveDienstleistungen;
+        }
+        public PreisblattMessungBuilder setInklusiveDienstleistungen(List<Dienstleistungstyp> inklusiveDienstleistungen) {
+            this.inklusiveDienstleistungen = inklusiveDienstleistungen;
+            return this;
+        }
+    
+        public List<Geraet> getInklusiveGeraete() {
+            return inklusiveGeraete;
+        }
+        public PreisblattMessungBuilder setInklusiveGeraete(List<Geraet> inklusiveGeraete) {
+            this.inklusiveGeraete = inklusiveGeraete;
+            return this;
+        }
+    
+        public Netzebene getMessebene() {
+            return messebene;
+        }
+        public PreisblattMessungBuilder setMessebene(Netzebene messebene) {
+            this.messebene = messebene;
+            return this;
+        }
+    
+        public List<Preisposition> getPreispositionen() {
+            return preispositionen;
+        }
+        public PreisblattMessungBuilder setPreispositionen(List<Preisposition> preispositionen) {
+            this.preispositionen = preispositionen;
+            return this;
+        }
+    
+        public Preisstatus getPreisstatus() {
+            return preisstatus;
+        }
+        public PreisblattMessungBuilder setPreisstatus(Preisstatus preisstatus) {
+            this.preisstatus = preisstatus;
+            return this;
+        }
+    
+        public Sparte getSparte() {
+            return sparte;
+        }
+        public PreisblattMessungBuilder setSparte(Sparte sparte) {
+            this.sparte = sparte;
+            return this;
+        }
+    
+        public Zaehler getZaehler() {
+            return zaehler;
+        }
+        public PreisblattMessungBuilder setZaehler(Zaehler zaehler) {
+            this.zaehler = zaehler;
+            return this;
+        }
+    
+        public PreisblattMessung build() {
+            return new PreisblattMessung(this);
+        }
     }
 }

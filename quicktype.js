@@ -322,7 +322,11 @@ function turnFieldListToJava(fieldList) {
         if (field.description !== undefined) {
             javaList.push(field.description);
         }
-        javaList.push(`    private ${field.type} ${field.name};`);
+        if (field.type === "Typ") {
+            javaList.push(`    private final ${field.type} ${field.name};`);
+        } else {
+            javaList.push(`    private ${field.type} ${field.name};`);
+        }
     }
     return javaList;
 }
@@ -339,16 +343,23 @@ function addParentToClass(classHead, classDirPath) {
  *
  * @param field {{name: string, type: string, description: string}}
  * @param addSetter {boolean}
+ * @param builderName {string|undefined}
  */
-function getJavaMethod(field, addSetter = false) {
+function getJavaMethod(field, addSetter = false, builderName = undefined) {
     const fieldName = field.name.charAt(0).toUpperCase() + field.name.slice(1);
     const lines = []
     lines.push(`    public ${field.type} get${fieldName}() {`);
     lines.push(`        return ${field.name};`);
     lines.push(`    }`);
     if (addSetter) {
-        lines.push(`    public void set${fieldName}(${field.type} ${field.name}) {`);
-        lines.push(`        this.${field.name} = ${field.name};`);
+        if (builderName !== undefined) {
+            lines.push(`    public ${builderName} set${fieldName}(${field.type} ${field.name}) {`);
+            lines.push(`        this.${field.name} = ${field.name};`);
+            lines.push(`        return this;`);
+        } else {
+            lines.push(`    public void set${fieldName}(${field.type} ${field.name}) {`);
+            lines.push(`        this.${field.name} = ${field.name};`);
+        }
         lines.push(`    }`);
     }
     return lines.join("\n");
@@ -357,12 +368,13 @@ function getJavaMethod(field, addSetter = false) {
 /**
  *
  * @param fieldList {{name: string, type: string, description: string}[]}
+ * @param builderName {string|undefined}
  */
-function getJavaMethods(fieldList) {
+function getJavaMethods(fieldList, builderName = undefined) {
     const methodList = [];
     for (const field of fieldList) {
         methodList.push("")
-        methodList.push(getJavaMethod(field, true))
+        methodList.push(getJavaMethod(field, true, builderName))
     }
     return methodList;
 }
@@ -425,6 +437,44 @@ function addTypeToFieldsAndMethods(fieldList, javaMethodList, fileData) {
 
 /**
  *
+ * @param classHead {string}
+ * @param fieldList {{name: string, type: string, description: string}[]}
+ * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}}
+ */
+function getBuilderClass(classHead, fieldList, fileData) {
+    const builderName = fileData.javaFileName + "Builder";
+    const builderHead = classHead.replace("public", "public static")
+        .replace(fileData.javaFileName, builderName)
+        .replace(" {", "Builder {");
+    const builderFieldList = turnFieldListToJava(fieldList);
+    const builderMethods = getJavaMethods(fieldList, builderName);
+    builderMethods.push("");
+    builderMethods.push(`    public ${fileData.javaFileName} build() {`);
+    builderMethods.push(`        return new ${fileData.javaFileName}(this);`);
+    builderMethods.push("    }");
+    return ["\n" + builderHead].concat(builderFieldList, builderMethods, "}").join("\n").replaceAll("\n", "\n    ");
+}
+
+/**
+ *
+ * @param fieldList {{name: string, type: string, description: string}[]}
+ * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}}
+ */
+function getJavaConstructor(fieldList, fileData) {
+    const constructor = [""]
+    constructor.push(`public ${fileData.javaFileName}() {`);
+    constructor.push("}\n");
+    constructor.push(`private ${fileData.javaFileName}(${fileData.javaFileName}Builder builder) {`);
+    constructor.push("    super(builder)");
+    for (const field of fieldList) {
+        constructor.push(`    this.${field.name} = builder.${field.name};`);
+    }
+    constructor.push("}")
+    return constructor.join("\n    ");
+}
+
+/**
+ *
  * @param contentList {string[]}
  * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}}
  * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} maps lowercase fileName to fileData
@@ -446,12 +496,14 @@ function completeJavaFile(contentList, fileData, fileMap) {
         fieldList = removeParentClassFields(fieldList);
     }
     const javaMethodList = getJavaMethods(fieldList);
+    const javaConstructor = getJavaConstructor(fieldList, fileData);
+    const builderClass = getBuilderClass(classHead, fieldList, fileData);
     if (fileData.javaFilePath.endsWith("/bo")) {
         addTypeToFieldsAndMethods(fieldList, javaMethodList, fileData);
     }
     const javaFieldList = turnFieldListToJava(fieldList);
     const importList = getImports(fieldList, fileData, fileMap);
-    const newClass = [newPackage].concat(importList, header, classHead, javaFieldList, javaMethodList, classFoot);
+    const newClass = [newPackage].concat(importList, header, classHead, javaFieldList, javaConstructor, javaMethodList, builderClass, classFoot);
     return newClass.join("\n");
 }
 

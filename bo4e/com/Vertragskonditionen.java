@@ -43,6 +43,16 @@ public class Vertragskonditionen extends COM {
      */
     private Zeitraum vertragsverlaengerung;
 
+    public Vertragskonditionen() {}
+    private Vertragskonditionen(VertragskonditionenBuilder builder) {
+        this.abschlagszyklus = builder.abschlagszyklus;
+        this.anzahlAbschlaege = builder.anzahlAbschlaege;
+        this.beschreibung = builder.beschreibung;
+        this.kuendigungsfrist = builder.kuendigungsfrist;
+        this.vertragslaufzeit = builder.vertragslaufzeit;
+        this.vertragsverlaengerung = builder.vertragsverlaengerung;
+    }
+
     public Zeitraum getAbschlagszyklus() {
         return abschlagszyklus;
     }
@@ -83,5 +93,86 @@ public class Vertragskonditionen extends COM {
     }
     public void setVertragsverlaengerung(Zeitraum vertragsverlaengerung) {
         this.vertragsverlaengerung = vertragsverlaengerung;
+    }
+
+    public static class VertragskonditionenBuilder extends COMBuilder {
+        /**
+         * In diesen Zyklen werden Abschläge gestellt. Alternativ kann auch die Anzahl in den
+         * Konditionen angeben werden.
+         */
+        private Zeitraum abschlagszyklus;
+        /**
+         * Anzahl der vereinbarten Abschläge pro Jahr, z.B. 12
+         */
+        private Double anzahlAbschlaege;
+        /**
+         * Freitext zur Beschreibung der Konditionen, z.B. "Standardkonditionen Gas"
+         */
+        private String beschreibung;
+        /**
+         * Innerhalb dieser Frist kann der Vertrag gekündigt werden
+         */
+        private Zeitraum kuendigungsfrist;
+        /**
+         * Über diesen Zeitraum läuft der Vertrag
+         */
+        private Zeitraum vertragslaufzeit;
+        /**
+         * Falls der Vertrag nicht gekündigt wird, verlängert er sich automatisch um die hier
+         * angegebene Zeit
+         */
+        private Zeitraum vertragsverlaengerung;
+    
+        public Zeitraum getAbschlagszyklus() {
+            return abschlagszyklus;
+        }
+        public VertragskonditionenBuilder setAbschlagszyklus(Zeitraum abschlagszyklus) {
+            this.abschlagszyklus = abschlagszyklus;
+            return this;
+        }
+    
+        public Double getAnzahlAbschlaege() {
+            return anzahlAbschlaege;
+        }
+        public VertragskonditionenBuilder setAnzahlAbschlaege(Double anzahlAbschlaege) {
+            this.anzahlAbschlaege = anzahlAbschlaege;
+            return this;
+        }
+    
+        public String getBeschreibung() {
+            return beschreibung;
+        }
+        public VertragskonditionenBuilder setBeschreibung(String beschreibung) {
+            this.beschreibung = beschreibung;
+            return this;
+        }
+    
+        public Zeitraum getKuendigungsfrist() {
+            return kuendigungsfrist;
+        }
+        public VertragskonditionenBuilder setKuendigungsfrist(Zeitraum kuendigungsfrist) {
+            this.kuendigungsfrist = kuendigungsfrist;
+            return this;
+        }
+    
+        public Zeitraum getVertragslaufzeit() {
+            return vertragslaufzeit;
+        }
+        public VertragskonditionenBuilder setVertragslaufzeit(Zeitraum vertragslaufzeit) {
+            this.vertragslaufzeit = vertragslaufzeit;
+            return this;
+        }
+    
+        public Zeitraum getVertragsverlaengerung() {
+            return vertragsverlaengerung;
+        }
+        public VertragskonditionenBuilder setVertragsverlaengerung(Zeitraum vertragsverlaengerung) {
+            this.vertragsverlaengerung = vertragsverlaengerung;
+            return this;
+        }
+    
+        public Vertragskonditionen build() {
+            return new Vertragskonditionen(this);
+        }
     }
 }

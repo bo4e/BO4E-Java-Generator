@@ -28,6 +28,13 @@ public class StandorteigenschaftenStrom extends COM {
      */
     private String regelzoneEic;
 
+    public StandorteigenschaftenStrom() {}
+    private StandorteigenschaftenStrom(StandorteigenschaftenStromBuilder builder) {
+        this.bilanzierungsgebietEic = builder.bilanzierungsgebietEic;
+        this.regelzone = builder.regelzone;
+        this.regelzoneEic = builder.regelzoneEic;
+    }
+
     public String getBilanzierungsgebietEic() {
         return bilanzierungsgebietEic;
     }
@@ -47,5 +54,48 @@ public class StandorteigenschaftenStrom extends COM {
     }
     public void setRegelzoneEic(String regelzoneEic) {
         this.regelzoneEic = regelzoneEic;
+    }
+
+    public static class StandorteigenschaftenStromBuilder extends COMBuilder {
+        /**
+         * Die EIC-Nummer des Bilanzierungsgebietes
+         */
+        private String bilanzierungsgebietEic;
+        /**
+         * Der Name der Regelzone
+         */
+        private String regelzone;
+        /**
+         * De EIC-Nummer der Regelzone
+         */
+        private String regelzoneEic;
+    
+        public String getBilanzierungsgebietEic() {
+            return bilanzierungsgebietEic;
+        }
+        public StandorteigenschaftenStromBuilder setBilanzierungsgebietEic(String bilanzierungsgebietEic) {
+            this.bilanzierungsgebietEic = bilanzierungsgebietEic;
+            return this;
+        }
+    
+        public String getRegelzone() {
+            return regelzone;
+        }
+        public StandorteigenschaftenStromBuilder setRegelzone(String regelzone) {
+            this.regelzone = regelzone;
+            return this;
+        }
+    
+        public String getRegelzoneEic() {
+            return regelzoneEic;
+        }
+        public StandorteigenschaftenStromBuilder setRegelzoneEic(String regelzoneEic) {
+            this.regelzoneEic = regelzoneEic;
+            return this;
+        }
+    
+        public StandorteigenschaftenStrom build() {
+            return new StandorteigenschaftenStrom(this);
+        }
     }
 }

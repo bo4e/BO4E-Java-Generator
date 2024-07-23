@@ -32,7 +32,7 @@ public class Regionaltarif extends Geschaeftsobjekt {
     /**
      * Typ des Geschaeftsobjekts
      */
-    private Typ typ = Typ.REGIONALTARIF;
+    private final Typ typ = Typ.REGIONALTARIF;
     /**
      * Der Marktteilnehmer (Lieferant), der diesen Tarif anbietet
      */
@@ -97,6 +97,30 @@ public class Regionaltarif extends Geschaeftsobjekt {
      * Angabe, in welchem Zeitraum der Tarif gültig ist
      */
     private Zeitraum zeitlicheGueltigkeit;
+
+    public Regionaltarif() {}
+    private Regionaltarif(RegionaltarifBuilder builder) {
+        this.anbieter = builder.anbieter;
+        this.anbietername = builder.anbietername;
+        this.anwendungVon = builder.anwendungVon;
+        this.bemerkung = builder.bemerkung;
+        this.berechnungsparameter = builder.berechnungsparameter;
+        this.bezeichnung = builder.bezeichnung;
+        this.energiemix = builder.energiemix;
+        this.kundentypen = builder.kundentypen;
+        this.preisgarantien = builder.preisgarantien;
+        this.preisstand = builder.preisstand;
+        this.registeranzahl = builder.registeranzahl;
+        this.sparte = builder.sparte;
+        this.tarifAufAbschlaege = builder.tarifAufAbschlaege;
+        this.tarifeinschraenkung = builder.tarifeinschraenkung;
+        this.tarifmerkmale = builder.tarifmerkmale;
+        this.tarifpreise = builder.tarifpreise;
+        this.tariftyp = builder.tariftyp;
+        this.vertragskonditionen = builder.vertragskonditionen;
+        this.website = builder.website;
+        this.zeitlicheGueltigkeit = builder.zeitlicheGueltigkeit;
+    }
 
     public Typ getTyp() {
         return typ;
@@ -240,5 +264,236 @@ public class Regionaltarif extends Geschaeftsobjekt {
     }
     public void setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
         this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
+    }
+
+    public static class RegionaltarifBuilder extends GeschaeftsobjektBuilder {
+        /**
+         * Der Marktteilnehmer (Lieferant), der diesen Tarif anbietet
+         */
+        private Marktteilnehmer anbieter;
+        /**
+         * Der Name des Marktpartners, der den Tarif anbietet
+         */
+        private String anbietername;
+        /**
+         * Angabe des inklusiven Zeitpunkts, ab dem der Tarif bzw. der Preis angewendet und
+         * abgerechnet wird,
+         * z.B. "2021-07-20T18:31:48Z"
+         */
+        private OffsetDateTime anwendungVon;
+        /**
+         * Freitext
+         */
+        private String bemerkung;
+        private Tarifberechnungsparameter berechnungsparameter;
+        /**
+         * Name des Tarifs
+         */
+        private String bezeichnung;
+        /**
+         * Der Energiemix, der für diesen Tarif gilt
+         */
+        private Energiemix energiemix;
+        /**
+         * Kundentypen für den der Tarif gilt, z.B. Privatkunden
+         */
+        private List<Kundentyp> kundentypen;
+        private List<RegionalePreisgarantie> preisgarantien;
+        private OffsetDateTime preisstand;
+        /**
+         * Die Art des Tarifes, z.B. Eintarif oder Mehrtarif
+         */
+        private Registeranzahl registeranzahl;
+        /**
+         * Strom oder Gas, etc.
+         */
+        private Sparte sparte;
+        private List<RegionalerAufAbschlag> tarifAufAbschlaege;
+        private Tarifeinschraenkung tarifeinschraenkung;
+        /**
+         * Weitere Merkmale des Tarifs, z.B. Festpreis oder Vorkasse
+         */
+        private List<Tarifmerkmal> tarifmerkmale;
+        private List<RegionaleTarifpreisposition> tarifpreise;
+        /**
+         * Hinweis auf den Tariftyp, z.B. Grundversorgung oder Sondertarif
+         */
+        private Tariftyp tariftyp;
+        /**
+         * Mindestlaufzeiten und Kündigungsfristen zusammengefasst
+         */
+        private Vertragskonditionen vertragskonditionen;
+        /**
+         * Internetseite auf dem der Tarif zu finden ist
+         */
+        private String website;
+        /**
+         * Angabe, in welchem Zeitraum der Tarif gültig ist
+         */
+        private Zeitraum zeitlicheGueltigkeit;
+    
+        public Marktteilnehmer getAnbieter() {
+            return anbieter;
+        }
+        public RegionaltarifBuilder setAnbieter(Marktteilnehmer anbieter) {
+            this.anbieter = anbieter;
+            return this;
+        }
+    
+        public String getAnbietername() {
+            return anbietername;
+        }
+        public RegionaltarifBuilder setAnbietername(String anbietername) {
+            this.anbietername = anbietername;
+            return this;
+        }
+    
+        public OffsetDateTime getAnwendungVon() {
+            return anwendungVon;
+        }
+        public RegionaltarifBuilder setAnwendungVon(OffsetDateTime anwendungVon) {
+            this.anwendungVon = anwendungVon;
+            return this;
+        }
+    
+        public String getBemerkung() {
+            return bemerkung;
+        }
+        public RegionaltarifBuilder setBemerkung(String bemerkung) {
+            this.bemerkung = bemerkung;
+            return this;
+        }
+    
+        public Tarifberechnungsparameter getBerechnungsparameter() {
+            return berechnungsparameter;
+        }
+        public RegionaltarifBuilder setBerechnungsparameter(Tarifberechnungsparameter berechnungsparameter) {
+            this.berechnungsparameter = berechnungsparameter;
+            return this;
+        }
+    
+        public String getBezeichnung() {
+            return bezeichnung;
+        }
+        public RegionaltarifBuilder setBezeichnung(String bezeichnung) {
+            this.bezeichnung = bezeichnung;
+            return this;
+        }
+    
+        public Energiemix getEnergiemix() {
+            return energiemix;
+        }
+        public RegionaltarifBuilder setEnergiemix(Energiemix energiemix) {
+            this.energiemix = energiemix;
+            return this;
+        }
+    
+        public List<Kundentyp> getKundentypen() {
+            return kundentypen;
+        }
+        public RegionaltarifBuilder setKundentypen(List<Kundentyp> kundentypen) {
+            this.kundentypen = kundentypen;
+            return this;
+        }
+    
+        public List<RegionalePreisgarantie> getPreisgarantien() {
+            return preisgarantien;
+        }
+        public RegionaltarifBuilder setPreisgarantien(List<RegionalePreisgarantie> preisgarantien) {
+            this.preisgarantien = preisgarantien;
+            return this;
+        }
+    
+        public OffsetDateTime getPreisstand() {
+            return preisstand;
+        }
+        public RegionaltarifBuilder setPreisstand(OffsetDateTime preisstand) {
+            this.preisstand = preisstand;
+            return this;
+        }
+    
+        public Registeranzahl getRegisteranzahl() {
+            return registeranzahl;
+        }
+        public RegionaltarifBuilder setRegisteranzahl(Registeranzahl registeranzahl) {
+            this.registeranzahl = registeranzahl;
+            return this;
+        }
+    
+        public Sparte getSparte() {
+            return sparte;
+        }
+        public RegionaltarifBuilder setSparte(Sparte sparte) {
+            this.sparte = sparte;
+            return this;
+        }
+    
+        public List<RegionalerAufAbschlag> getTarifAufAbschlaege() {
+            return tarifAufAbschlaege;
+        }
+        public RegionaltarifBuilder setTarifAufAbschlaege(List<RegionalerAufAbschlag> tarifAufAbschlaege) {
+            this.tarifAufAbschlaege = tarifAufAbschlaege;
+            return this;
+        }
+    
+        public Tarifeinschraenkung getTarifeinschraenkung() {
+            return tarifeinschraenkung;
+        }
+        public RegionaltarifBuilder setTarifeinschraenkung(Tarifeinschraenkung tarifeinschraenkung) {
+            this.tarifeinschraenkung = tarifeinschraenkung;
+            return this;
+        }
+    
+        public List<Tarifmerkmal> getTarifmerkmale() {
+            return tarifmerkmale;
+        }
+        public RegionaltarifBuilder setTarifmerkmale(List<Tarifmerkmal> tarifmerkmale) {
+            this.tarifmerkmale = tarifmerkmale;
+            return this;
+        }
+    
+        public List<RegionaleTarifpreisposition> getTarifpreise() {
+            return tarifpreise;
+        }
+        public RegionaltarifBuilder setTarifpreise(List<RegionaleTarifpreisposition> tarifpreise) {
+            this.tarifpreise = tarifpreise;
+            return this;
+        }
+    
+        public Tariftyp getTariftyp() {
+            return tariftyp;
+        }
+        public RegionaltarifBuilder setTariftyp(Tariftyp tariftyp) {
+            this.tariftyp = tariftyp;
+            return this;
+        }
+    
+        public Vertragskonditionen getVertragskonditionen() {
+            return vertragskonditionen;
+        }
+        public RegionaltarifBuilder setVertragskonditionen(Vertragskonditionen vertragskonditionen) {
+            this.vertragskonditionen = vertragskonditionen;
+            return this;
+        }
+    
+        public String getWebsite() {
+            return website;
+        }
+        public RegionaltarifBuilder setWebsite(String website) {
+            this.website = website;
+            return this;
+        }
+    
+        public Zeitraum getZeitlicheGueltigkeit() {
+            return zeitlicheGueltigkeit;
+        }
+        public RegionaltarifBuilder setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
+            this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
+            return this;
+        }
+    
+        public Regionaltarif build() {
+            return new Regionaltarif(this);
+        }
     }
 }

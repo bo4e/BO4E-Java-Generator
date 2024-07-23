@@ -26,7 +26,7 @@ public class Zeitreihe extends Geschaeftsobjekt {
     /**
      * Typ des Geschaeftsobjekts
      */
-    private Typ typ = Typ.ZEITREIHE;
+    private final Typ typ = Typ.ZEITREIHE;
     /**
      * Beschreibt die Verwendung der Zeitreihe
      */
@@ -63,6 +63,19 @@ public class Zeitreihe extends Geschaeftsobjekt {
      * Kennzeichnung, wie die Werte entstanden sind, z.B. durch Messung
      */
     private Wertermittlungsverfahren wertherkunft;
+
+    public Zeitreihe() {}
+    private Zeitreihe(ZeitreiheBuilder builder) {
+        this.beschreibung = builder.beschreibung;
+        this.bezeichnung = builder.bezeichnung;
+        this.einheit = builder.einheit;
+        this.medium = builder.medium;
+        this.messart = builder.messart;
+        this.messgroesse = builder.messgroesse;
+        this.version = builder.version;
+        this.werte = builder.werte;
+        this.wertherkunft = builder.wertherkunft;
+    }
 
     public Typ getTyp() {
         return typ;
@@ -129,5 +142,120 @@ public class Zeitreihe extends Geschaeftsobjekt {
     }
     public void setWertherkunft(Wertermittlungsverfahren wertherkunft) {
         this.wertherkunft = wertherkunft;
+    }
+
+    public static class ZeitreiheBuilder extends GeschaeftsobjektBuilder {
+        /**
+         * Beschreibt die Verwendung der Zeitreihe
+         */
+        private String beschreibung;
+        /**
+         * Bezeichnung für die Zeitreihe
+         */
+        private String bezeichnung;
+        /**
+         * Alle Werte in der Tabelle haben die Einheit, die hier angegeben ist
+         */
+        private Mengeneinheit einheit;
+        /**
+         * Medium, das gemessen wurde (z.B. Wasser, Dampf, Strom, Gas)
+         */
+        private Medium medium;
+        /**
+         * Beschreibt die Art der Messung (z.B. aktueller Wert, mittlerer Wert, maximaler Wert)
+         */
+        private Messart messart;
+        /**
+         * Beschreibt, was gemessen wurde (z.B. Strom, Spannung, Wirkleistung, Scheinleistung)
+         */
+        private Messgroesse messgroesse;
+        /**
+         * Version der Zeitreihe
+         */
+        private String version;
+        /**
+         * Hier liegen jeweils die Werte
+         */
+        private List<Zeitreihenwert> werte;
+        /**
+         * Kennzeichnung, wie die Werte entstanden sind, z.B. durch Messung
+         */
+        private Wertermittlungsverfahren wertherkunft;
+    
+        public String getBeschreibung() {
+            return beschreibung;
+        }
+        public ZeitreiheBuilder setBeschreibung(String beschreibung) {
+            this.beschreibung = beschreibung;
+            return this;
+        }
+    
+        public String getBezeichnung() {
+            return bezeichnung;
+        }
+        public ZeitreiheBuilder setBezeichnung(String bezeichnung) {
+            this.bezeichnung = bezeichnung;
+            return this;
+        }
+    
+        public Mengeneinheit getEinheit() {
+            return einheit;
+        }
+        public ZeitreiheBuilder setEinheit(Mengeneinheit einheit) {
+            this.einheit = einheit;
+            return this;
+        }
+    
+        public Medium getMedium() {
+            return medium;
+        }
+        public ZeitreiheBuilder setMedium(Medium medium) {
+            this.medium = medium;
+            return this;
+        }
+    
+        public Messart getMessart() {
+            return messart;
+        }
+        public ZeitreiheBuilder setMessart(Messart messart) {
+            this.messart = messart;
+            return this;
+        }
+    
+        public Messgroesse getMessgroesse() {
+            return messgroesse;
+        }
+        public ZeitreiheBuilder setMessgroesse(Messgroesse messgroesse) {
+            this.messgroesse = messgroesse;
+            return this;
+        }
+    
+        public String getVersion() {
+            return version;
+        }
+        public ZeitreiheBuilder setVersion(String version) {
+            this.version = version;
+            return this;
+        }
+    
+        public List<Zeitreihenwert> getWerte() {
+            return werte;
+        }
+        public ZeitreiheBuilder setWerte(List<Zeitreihenwert> werte) {
+            this.werte = werte;
+            return this;
+        }
+    
+        public Wertermittlungsverfahren getWertherkunft() {
+            return wertherkunft;
+        }
+        public ZeitreiheBuilder setWertherkunft(Wertermittlungsverfahren wertherkunft) {
+            this.wertherkunft = wertherkunft;
+            return this;
+        }
+    
+        public Zeitreihe build() {
+            return new Zeitreihe(this);
+        }
     }
 }

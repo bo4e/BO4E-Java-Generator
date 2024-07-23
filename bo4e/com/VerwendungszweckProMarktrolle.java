@@ -28,6 +28,12 @@ public class VerwendungszweckProMarktrolle extends COM {
      */
     private List<Verwendungszweck> zwecke;
 
+    public VerwendungszweckProMarktrolle() {}
+    private VerwendungszweckProMarktrolle(VerwendungszweckProMarktrolleBuilder builder) {
+        this.marktrolle = builder.marktrolle;
+        this.zwecke = builder.zwecke;
+    }
+
     public Marktrolle getMarktrolle() {
         return marktrolle;
     }
@@ -40,5 +46,36 @@ public class VerwendungszweckProMarktrolle extends COM {
     }
     public void setZwecke(List<Verwendungszweck> zwecke) {
         this.zwecke = zwecke;
+    }
+
+    public static class VerwendungszweckProMarktrolleBuilder extends COMBuilder {
+        /**
+         * Zwecke: Optional[list["Verwendungszweck"]] = None
+         */
+        private Marktrolle marktrolle;
+        /**
+         * Verwendungszwecke
+         */
+        private List<Verwendungszweck> zwecke;
+    
+        public Marktrolle getMarktrolle() {
+            return marktrolle;
+        }
+        public VerwendungszweckProMarktrolleBuilder setMarktrolle(Marktrolle marktrolle) {
+            this.marktrolle = marktrolle;
+            return this;
+        }
+    
+        public List<Verwendungszweck> getZwecke() {
+            return zwecke;
+        }
+        public VerwendungszweckProMarktrolleBuilder setZwecke(List<Verwendungszweck> zwecke) {
+            this.zwecke = zwecke;
+            return this;
+        }
+    
+        public VerwendungszweckProMarktrolle build() {
+            return new VerwendungszweckProMarktrolle(this);
+        }
     }
 }

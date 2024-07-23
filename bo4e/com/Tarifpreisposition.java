@@ -41,6 +41,15 @@ public class Tarifpreisposition extends COM {
      */
     private Preistyp preistyp;
 
+    public Tarifpreisposition() {}
+    private Tarifpreisposition(TarifpreispositionBuilder builder) {
+        this.bezugseinheit = builder.bezugseinheit;
+        this.einheit = builder.einheit;
+        this.mengeneinheitstaffel = builder.mengeneinheitstaffel;
+        this.preisstaffeln = builder.preisstaffeln;
+        this.preistyp = builder.preistyp;
+    }
+
     public Mengeneinheit getBezugseinheit() {
         return bezugseinheit;
     }
@@ -74,5 +83,73 @@ public class Tarifpreisposition extends COM {
     }
     public void setPreistyp(Preistyp preistyp) {
         this.preistyp = preistyp;
+    }
+
+    public static class TarifpreispositionBuilder extends COMBuilder {
+        /**
+         * Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr
+         */
+        private Mengeneinheit bezugseinheit;
+        /**
+         * Einheit des Preises (z.B. EURO)
+         */
+        private Waehrungseinheit einheit;
+        /**
+         * Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B.
+         * Jahresstromverbrauch in kWh)
+         */
+        private Mengeneinheit mengeneinheitstaffel;
+        /**
+         * Hier sind die Staffeln mit ihren Preisenangaben definiert
+         */
+        private List<Preisstaffel> preisstaffeln;
+        /**
+         * Angabe des Preistypes (z.B. Grundpreis)
+         */
+        private Preistyp preistyp;
+    
+        public Mengeneinheit getBezugseinheit() {
+            return bezugseinheit;
+        }
+        public TarifpreispositionBuilder setBezugseinheit(Mengeneinheit bezugseinheit) {
+            this.bezugseinheit = bezugseinheit;
+            return this;
+        }
+    
+        public Waehrungseinheit getEinheit() {
+            return einheit;
+        }
+        public TarifpreispositionBuilder setEinheit(Waehrungseinheit einheit) {
+            this.einheit = einheit;
+            return this;
+        }
+    
+        public Mengeneinheit getMengeneinheitstaffel() {
+            return mengeneinheitstaffel;
+        }
+        public TarifpreispositionBuilder setMengeneinheitstaffel(Mengeneinheit mengeneinheitstaffel) {
+            this.mengeneinheitstaffel = mengeneinheitstaffel;
+            return this;
+        }
+    
+        public List<Preisstaffel> getPreisstaffeln() {
+            return preisstaffeln;
+        }
+        public TarifpreispositionBuilder setPreisstaffeln(List<Preisstaffel> preisstaffeln) {
+            this.preisstaffeln = preisstaffeln;
+            return this;
+        }
+    
+        public Preistyp getPreistyp() {
+            return preistyp;
+        }
+        public TarifpreispositionBuilder setPreistyp(Preistyp preistyp) {
+            this.preistyp = preistyp;
+            return this;
+        }
+    
+        public Tarifpreisposition build() {
+            return new Tarifpreisposition(this);
+        }
     }
 }

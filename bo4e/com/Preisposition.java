@@ -79,6 +79,23 @@ public class Preisposition extends COM {
      */
     private Bemessungsgroesse zonungsgroesse;
 
+    public Preisposition() {}
+    private Preisposition(PreispositionBuilder builder) {
+        this.bdewArtikelnummer = builder.bdewArtikelnummer;
+        this.berechnungsmethode = builder.berechnungsmethode;
+        this.bezugsgroesse = builder.bezugsgroesse;
+        this.freimengeBlindarbeit = builder.freimengeBlindarbeit;
+        this.freimengeLeistungsfaktor = builder.freimengeLeistungsfaktor;
+        this.gruppenartikelId = builder.gruppenartikelId;
+        this.leistungsbezeichnung = builder.leistungsbezeichnung;
+        this.leistungstyp = builder.leistungstyp;
+        this.preiseinheit = builder.preiseinheit;
+        this.preisstaffeln = builder.preisstaffeln;
+        this.tarifzeit = builder.tarifzeit;
+        this.zeitbasis = builder.zeitbasis;
+        this.zonungsgroesse = builder.zonungsgroesse;
+    }
+
     public BDEWArtikelnummer getBdewArtikelnummer() {
         return bdewArtikelnummer;
     }
@@ -168,5 +185,171 @@ public class Preisposition extends COM {
     }
     public void setZonungsgroesse(Bemessungsgroesse zonungsgroesse) {
         this.zonungsgroesse = zonungsgroesse;
+    }
+
+    public static class PreispositionBuilder extends COMBuilder {
+        /**
+         * Mit der Menge der hier angegebenen Größe wird die Staffelung/Zonung durchgeführt. Z.B.
+         * Vollbenutzungsstunden
+         */
+        private BDEWArtikelnummer bdewArtikelnummer;
+        /**
+         * Das Modell, das der Preisbildung zugrunde liegt
+         */
+        private Kalkulationsmethode berechnungsmethode;
+        /**
+         * Hier wird festgelegt, auf welche Bezugsgrösse sich der Preis bezieht, z.B. kWh oder Stück
+         */
+        private Mengeneinheit bezugsgroesse;
+        /**
+         * Der Anteil der Menge der Blindarbeit in Prozent von der Wirkarbeit, für die keine
+         * Abrechnung erfolgt
+         */
+        private Double freimengeBlindarbeit;
+        /**
+         * gruppenartikel_id: Optional[str] = None
+         */
+        private Double freimengeLeistungsfaktor;
+        /**
+         * Übergeordnete Gruppen-ID, die sich ggf. auf die Artikel-ID in der Preisstaffel bezieht
+         */
+        private String gruppenartikelId;
+        /**
+         * Bezeichnung für die in der Position abgebildete Leistungserbringung
+         */
+        private String leistungsbezeichnung;
+        /**
+         * Standardisierte Bezeichnung für die abgerechnete Leistungserbringung
+         */
+        private Leistungstyp leistungstyp;
+        /**
+         * Festlegung, mit welcher Preiseinheit abgerechnet wird, z.B. Ct. oder €
+         */
+        private Waehrungseinheit preiseinheit;
+        /**
+         * Preisstaffeln, die zu dieser Preisposition gehören
+         */
+        private List<Preisstaffel> preisstaffeln;
+        /**
+         * Festlegung, für welche Tarifzeit der Preis hier festgelegt ist
+         */
+        private Tarifzeit tarifzeit;
+        /**
+         * Festlegung, für welche Tarifzeit der Preis hier festgelegt ist
+         */
+        private Mengeneinheit zeitbasis;
+        /**
+         * Mit der Menge der hier angegebenen Größe wird die Staffelung/Zonung durchgeführt. Z.B.
+         * Vollbenutzungsstunden
+         */
+        private Bemessungsgroesse zonungsgroesse;
+    
+        public BDEWArtikelnummer getBdewArtikelnummer() {
+            return bdewArtikelnummer;
+        }
+        public PreispositionBuilder setBdewArtikelnummer(BDEWArtikelnummer bdewArtikelnummer) {
+            this.bdewArtikelnummer = bdewArtikelnummer;
+            return this;
+        }
+    
+        public Kalkulationsmethode getBerechnungsmethode() {
+            return berechnungsmethode;
+        }
+        public PreispositionBuilder setBerechnungsmethode(Kalkulationsmethode berechnungsmethode) {
+            this.berechnungsmethode = berechnungsmethode;
+            return this;
+        }
+    
+        public Mengeneinheit getBezugsgroesse() {
+            return bezugsgroesse;
+        }
+        public PreispositionBuilder setBezugsgroesse(Mengeneinheit bezugsgroesse) {
+            this.bezugsgroesse = bezugsgroesse;
+            return this;
+        }
+    
+        public Double getFreimengeBlindarbeit() {
+            return freimengeBlindarbeit;
+        }
+        public PreispositionBuilder setFreimengeBlindarbeit(Double freimengeBlindarbeit) {
+            this.freimengeBlindarbeit = freimengeBlindarbeit;
+            return this;
+        }
+    
+        public Double getFreimengeLeistungsfaktor() {
+            return freimengeLeistungsfaktor;
+        }
+        public PreispositionBuilder setFreimengeLeistungsfaktor(Double freimengeLeistungsfaktor) {
+            this.freimengeLeistungsfaktor = freimengeLeistungsfaktor;
+            return this;
+        }
+    
+        public String getGruppenartikelId() {
+            return gruppenartikelId;
+        }
+        public PreispositionBuilder setGruppenartikelId(String gruppenartikelId) {
+            this.gruppenartikelId = gruppenartikelId;
+            return this;
+        }
+    
+        public String getLeistungsbezeichnung() {
+            return leistungsbezeichnung;
+        }
+        public PreispositionBuilder setLeistungsbezeichnung(String leistungsbezeichnung) {
+            this.leistungsbezeichnung = leistungsbezeichnung;
+            return this;
+        }
+    
+        public Leistungstyp getLeistungstyp() {
+            return leistungstyp;
+        }
+        public PreispositionBuilder setLeistungstyp(Leistungstyp leistungstyp) {
+            this.leistungstyp = leistungstyp;
+            return this;
+        }
+    
+        public Waehrungseinheit getPreiseinheit() {
+            return preiseinheit;
+        }
+        public PreispositionBuilder setPreiseinheit(Waehrungseinheit preiseinheit) {
+            this.preiseinheit = preiseinheit;
+            return this;
+        }
+    
+        public List<Preisstaffel> getPreisstaffeln() {
+            return preisstaffeln;
+        }
+        public PreispositionBuilder setPreisstaffeln(List<Preisstaffel> preisstaffeln) {
+            this.preisstaffeln = preisstaffeln;
+            return this;
+        }
+    
+        public Tarifzeit getTarifzeit() {
+            return tarifzeit;
+        }
+        public PreispositionBuilder setTarifzeit(Tarifzeit tarifzeit) {
+            this.tarifzeit = tarifzeit;
+            return this;
+        }
+    
+        public Mengeneinheit getZeitbasis() {
+            return zeitbasis;
+        }
+        public PreispositionBuilder setZeitbasis(Mengeneinheit zeitbasis) {
+            this.zeitbasis = zeitbasis;
+            return this;
+        }
+    
+        public Bemessungsgroesse getZonungsgroesse() {
+            return zonungsgroesse;
+        }
+        public PreispositionBuilder setZonungsgroesse(Bemessungsgroesse zonungsgroesse) {
+            this.zonungsgroesse = zonungsgroesse;
+            return this;
+        }
+    
+        public Preisposition build() {
+            return new Preisposition(this);
+        }
     }
 }

@@ -33,6 +33,14 @@ public class AufAbschlagProOrt extends COM {
      */
     private List<AufAbschlagstaffelProOrt> staffeln;
 
+    public AufAbschlagProOrt() {}
+    private AufAbschlagProOrt(AufAbschlagProOrtBuilder builder) {
+        this.netznr = builder.netznr;
+        this.ort = builder.ort;
+        this.postleitzahl = builder.postleitzahl;
+        this.staffeln = builder.staffeln;
+    }
+
     public String getNetznr() {
         return netznr;
     }
@@ -59,5 +67,60 @@ public class AufAbschlagProOrt extends COM {
     }
     public void setStaffeln(List<AufAbschlagstaffelProOrt> staffeln) {
         this.staffeln = staffeln;
+    }
+
+    public static class AufAbschlagProOrtBuilder extends COMBuilder {
+        /**
+         * Die ene't-Netznummer des Netzes in dem der Aufschlag gilt.
+         */
+        private String netznr;
+        /**
+         * Der Ort für den der Aufschlag gilt.
+         */
+        private String ort;
+        /**
+         * Die Postleitzahl des Ortes für den der Aufschlag gilt.
+         */
+        private String postleitzahl;
+        /**
+         * Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung.
+         */
+        private List<AufAbschlagstaffelProOrt> staffeln;
+    
+        public String getNetznr() {
+            return netznr;
+        }
+        public AufAbschlagProOrtBuilder setNetznr(String netznr) {
+            this.netznr = netznr;
+            return this;
+        }
+    
+        public String getOrt() {
+            return ort;
+        }
+        public AufAbschlagProOrtBuilder setOrt(String ort) {
+            this.ort = ort;
+            return this;
+        }
+    
+        public String getPostleitzahl() {
+            return postleitzahl;
+        }
+        public AufAbschlagProOrtBuilder setPostleitzahl(String postleitzahl) {
+            this.postleitzahl = postleitzahl;
+            return this;
+        }
+    
+        public List<AufAbschlagstaffelProOrt> getStaffeln() {
+            return staffeln;
+        }
+        public AufAbschlagProOrtBuilder setStaffeln(List<AufAbschlagstaffelProOrt> staffeln) {
+            this.staffeln = staffeln;
+            return this;
+        }
+    
+        public AufAbschlagProOrt build() {
+            return new AufAbschlagProOrt(this);
+        }
     }
 }

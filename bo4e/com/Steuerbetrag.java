@@ -35,6 +35,14 @@ public class Steuerbetrag extends COM {
      */
     private Waehrungscode waehrung;
 
+    public Steuerbetrag() {}
+    private Steuerbetrag(SteuerbetragBuilder builder) {
+        this.basiswert = builder.basiswert;
+        this.steuerkennzeichen = builder.steuerkennzeichen;
+        this.steuerwert = builder.steuerwert;
+        this.waehrung = builder.waehrung;
+    }
+
     public Double getBasiswert() {
         return basiswert;
     }
@@ -61,5 +69,60 @@ public class Steuerbetrag extends COM {
     }
     public void setWaehrung(Waehrungscode waehrung) {
         this.waehrung = waehrung;
+    }
+
+    public static class SteuerbetragBuilder extends COMBuilder {
+        /**
+         * Nettobetrag für den die Steuer berechnet wurde. Z.B. 100
+         */
+        private Double basiswert;
+        /**
+         * Kennzeichnung des Steuersatzes, bzw. Verfahrens.
+         */
+        private Steuerkennzeichen steuerkennzeichen;
+        /**
+         * Aus dem Basiswert berechnete Steuer. Z.B. 19 (bei UST_19)
+         */
+        private Double steuerwert;
+        /**
+         * Währung. Z.B. Euro.
+         */
+        private Waehrungscode waehrung;
+    
+        public Double getBasiswert() {
+            return basiswert;
+        }
+        public SteuerbetragBuilder setBasiswert(Double basiswert) {
+            this.basiswert = basiswert;
+            return this;
+        }
+    
+        public Steuerkennzeichen getSteuerkennzeichen() {
+            return steuerkennzeichen;
+        }
+        public SteuerbetragBuilder setSteuerkennzeichen(Steuerkennzeichen steuerkennzeichen) {
+            this.steuerkennzeichen = steuerkennzeichen;
+            return this;
+        }
+    
+        public Double getSteuerwert() {
+            return steuerwert;
+        }
+        public SteuerbetragBuilder setSteuerwert(Double steuerwert) {
+            this.steuerwert = steuerwert;
+            return this;
+        }
+    
+        public Waehrungscode getWaehrung() {
+            return waehrung;
+        }
+        public SteuerbetragBuilder setWaehrung(Waehrungscode waehrung) {
+            this.waehrung = waehrung;
+            return this;
+        }
+    
+        public Steuerbetrag build() {
+            return new Steuerbetrag(this);
+        }
     }
 }

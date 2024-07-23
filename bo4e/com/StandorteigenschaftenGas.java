@@ -24,6 +24,12 @@ public class StandorteigenschaftenGas extends COM {
      */
     private List<String> netzkontonummern;
 
+    public StandorteigenschaftenGas() {}
+    private StandorteigenschaftenGas(StandorteigenschaftenGasBuilder builder) {
+        this.marktgebiete = builder.marktgebiete;
+        this.netzkontonummern = builder.netzkontonummern;
+    }
+
     public List<MarktgebietInfo> getMarktgebiete() {
         return marktgebiete;
     }
@@ -36,5 +42,36 @@ public class StandorteigenschaftenGas extends COM {
     }
     public void setNetzkontonummern(List<String> netzkontonummern) {
         this.netzkontonummern = netzkontonummern;
+    }
+
+    public static class StandorteigenschaftenGasBuilder extends COMBuilder {
+        /**
+         * Netzkontonummern der Gasnetze
+         */
+        private List<MarktgebietInfo> marktgebiete;
+        /**
+         * Netzkontonummern der Gasnetze
+         */
+        private List<String> netzkontonummern;
+    
+        public List<MarktgebietInfo> getMarktgebiete() {
+            return marktgebiete;
+        }
+        public StandorteigenschaftenGasBuilder setMarktgebiete(List<MarktgebietInfo> marktgebiete) {
+            this.marktgebiete = marktgebiete;
+            return this;
+        }
+    
+        public List<String> getNetzkontonummern() {
+            return netzkontonummern;
+        }
+        public StandorteigenschaftenGasBuilder setNetzkontonummern(List<String> netzkontonummern) {
+            this.netzkontonummern = netzkontonummern;
+            return this;
+        }
+    
+        public StandorteigenschaftenGas build() {
+            return new StandorteigenschaftenGas(this);
+        }
     }
 }

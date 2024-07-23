@@ -29,6 +29,16 @@ public class Zeitraum extends COM {
     private OffsetDateTime startdatum;
     private OffsetDateTime startzeitpunkt;
 
+    public Zeitraum() {}
+    private Zeitraum(ZeitraumBuilder builder) {
+        this.dauer = builder.dauer;
+        this.einheit = builder.einheit;
+        this.enddatum = builder.enddatum;
+        this.endzeitpunkt = builder.endzeitpunkt;
+        this.startdatum = builder.startdatum;
+        this.startzeitpunkt = builder.startzeitpunkt;
+    }
+
     public Double getDauer() {
         return dauer;
     }
@@ -69,5 +79,66 @@ public class Zeitraum extends COM {
     }
     public void setStartzeitpunkt(OffsetDateTime startzeitpunkt) {
         this.startzeitpunkt = startzeitpunkt;
+    }
+
+    public static class ZeitraumBuilder extends COMBuilder {
+        private Double dauer;
+        private Mengeneinheit einheit;
+        private OffsetDateTime enddatum;
+        private OffsetDateTime endzeitpunkt;
+        private OffsetDateTime startdatum;
+        private OffsetDateTime startzeitpunkt;
+    
+        public Double getDauer() {
+            return dauer;
+        }
+        public ZeitraumBuilder setDauer(Double dauer) {
+            this.dauer = dauer;
+            return this;
+        }
+    
+        public Mengeneinheit getEinheit() {
+            return einheit;
+        }
+        public ZeitraumBuilder setEinheit(Mengeneinheit einheit) {
+            this.einheit = einheit;
+            return this;
+        }
+    
+        public OffsetDateTime getEnddatum() {
+            return enddatum;
+        }
+        public ZeitraumBuilder setEnddatum(OffsetDateTime enddatum) {
+            this.enddatum = enddatum;
+            return this;
+        }
+    
+        public OffsetDateTime getEndzeitpunkt() {
+            return endzeitpunkt;
+        }
+        public ZeitraumBuilder setEndzeitpunkt(OffsetDateTime endzeitpunkt) {
+            this.endzeitpunkt = endzeitpunkt;
+            return this;
+        }
+    
+        public OffsetDateTime getStartdatum() {
+            return startdatum;
+        }
+        public ZeitraumBuilder setStartdatum(OffsetDateTime startdatum) {
+            this.startdatum = startdatum;
+            return this;
+        }
+    
+        public OffsetDateTime getStartzeitpunkt() {
+            return startzeitpunkt;
+        }
+        public ZeitraumBuilder setStartzeitpunkt(OffsetDateTime startzeitpunkt) {
+            this.startzeitpunkt = startzeitpunkt;
+            return this;
+        }
+    
+        public Zeitraum build() {
+            return new Zeitraum(this);
+        }
     }
 }

@@ -26,6 +26,12 @@ public class KriteriumWert extends COM {
      */
     private String wert;
 
+    public KriteriumWert() {}
+    private KriteriumWert(KriteriumWertBuilder builder) {
+        this.kriterium = builder.kriterium;
+        this.wert = builder.wert;
+    }
+
     public Tarifregionskriterium getKriterium() {
         return kriterium;
     }
@@ -38,5 +44,36 @@ public class KriteriumWert extends COM {
     }
     public void setWert(String wert) {
         this.wert = wert;
+    }
+
+    public static class KriteriumWertBuilder extends COMBuilder {
+        /**
+         * Hier steht, für welches Kriterium der Wert gilt. Z.B. Postleitzahlen
+         */
+        private Tarifregionskriterium kriterium;
+        /**
+         * Ein Wert, passend zum Kriterium. Z.B. eine Postleitzahl.
+         */
+        private String wert;
+    
+        public Tarifregionskriterium getKriterium() {
+            return kriterium;
+        }
+        public KriteriumWertBuilder setKriterium(Tarifregionskriterium kriterium) {
+            this.kriterium = kriterium;
+            return this;
+        }
+    
+        public String getWert() {
+            return wert;
+        }
+        public KriteriumWertBuilder setWert(String wert) {
+            this.wert = wert;
+            return this;
+        }
+    
+        public KriteriumWert build() {
+            return new KriteriumWert(this);
+        }
     }
 }

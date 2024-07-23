@@ -36,6 +36,14 @@ public class Angebotsposition extends COM {
      */
     private Preis positionspreis;
 
+    public Angebotsposition() {}
+    private Angebotsposition(AngebotspositionBuilder builder) {
+        this.positionsbezeichnung = builder.positionsbezeichnung;
+        this.positionskosten = builder.positionskosten;
+        this.positionsmenge = builder.positionsmenge;
+        this.positionspreis = builder.positionspreis;
+    }
+
     public String getPositionsbezeichnung() {
         return positionsbezeichnung;
     }
@@ -62,5 +70,60 @@ public class Angebotsposition extends COM {
     }
     public void setPositionspreis(Preis positionspreis) {
         this.positionspreis = positionspreis;
+    }
+
+    public static class AngebotspositionBuilder extends COMBuilder {
+        /**
+         * Bezeichnung der jeweiligen Position des Angebotsteils
+         */
+        private String positionsbezeichnung;
+        /**
+         * Kosten (positionspreis * positionsmenge) für diese Angebotsposition
+         */
+        private Betrag positionskosten;
+        /**
+         * Menge des angebotenen Artikels (z.B. Wirkarbeit in kWh), in dieser Angebotsposition
+         */
+        private Menge positionsmenge;
+        /**
+         * Preis pro Einheit/Stückpreis des angebotenen Artikels.
+         */
+        private Preis positionspreis;
+    
+        public String getPositionsbezeichnung() {
+            return positionsbezeichnung;
+        }
+        public AngebotspositionBuilder setPositionsbezeichnung(String positionsbezeichnung) {
+            this.positionsbezeichnung = positionsbezeichnung;
+            return this;
+        }
+    
+        public Betrag getPositionskosten() {
+            return positionskosten;
+        }
+        public AngebotspositionBuilder setPositionskosten(Betrag positionskosten) {
+            this.positionskosten = positionskosten;
+            return this;
+        }
+    
+        public Menge getPositionsmenge() {
+            return positionsmenge;
+        }
+        public AngebotspositionBuilder setPositionsmenge(Menge positionsmenge) {
+            this.positionsmenge = positionsmenge;
+            return this;
+        }
+    
+        public Preis getPositionspreis() {
+            return positionspreis;
+        }
+        public AngebotspositionBuilder setPositionspreis(Preis positionspreis) {
+            this.positionspreis = positionspreis;
+            return this;
+        }
+    
+        public Angebotsposition build() {
+            return new Angebotsposition(this);
+        }
     }
 }

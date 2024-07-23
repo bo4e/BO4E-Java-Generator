@@ -34,6 +34,14 @@ public class RegionalePreisgarantie extends COM {
      */
     private Zeitraum zeitlicheGueltigkeit;
 
+    public RegionalePreisgarantie() {}
+    private RegionalePreisgarantie(RegionalePreisgarantieBuilder builder) {
+        this.beschreibung = builder.beschreibung;
+        this.preisgarantietyp = builder.preisgarantietyp;
+        this.regionaleGueltigkeit = builder.regionaleGueltigkeit;
+        this.zeitlicheGueltigkeit = builder.zeitlicheGueltigkeit;
+    }
+
     public String getBeschreibung() {
         return beschreibung;
     }
@@ -60,5 +68,60 @@ public class RegionalePreisgarantie extends COM {
     }
     public void setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
         this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
+    }
+
+    public static class RegionalePreisgarantieBuilder extends COMBuilder {
+        /**
+         * Freitext zur Beschreibung der Preisgarantie.
+         */
+        private String beschreibung;
+        /**
+         * Festlegung, auf welche Preisbestandteile die Garantie gewährt wird.
+         */
+        private Preisgarantietyp preisgarantietyp;
+        /**
+         * Regionale Eingrenzung der Preisgarantie.
+         */
+        private RegionaleGueltigkeit regionaleGueltigkeit;
+        /**
+         * Freitext zur Beschreibung der Preisgarantie.
+         */
+        private Zeitraum zeitlicheGueltigkeit;
+    
+        public String getBeschreibung() {
+            return beschreibung;
+        }
+        public RegionalePreisgarantieBuilder setBeschreibung(String beschreibung) {
+            this.beschreibung = beschreibung;
+            return this;
+        }
+    
+        public Preisgarantietyp getPreisgarantietyp() {
+            return preisgarantietyp;
+        }
+        public RegionalePreisgarantieBuilder setPreisgarantietyp(Preisgarantietyp preisgarantietyp) {
+            this.preisgarantietyp = preisgarantietyp;
+            return this;
+        }
+    
+        public RegionaleGueltigkeit getRegionaleGueltigkeit() {
+            return regionaleGueltigkeit;
+        }
+        public RegionalePreisgarantieBuilder setRegionaleGueltigkeit(RegionaleGueltigkeit regionaleGueltigkeit) {
+            this.regionaleGueltigkeit = regionaleGueltigkeit;
+            return this;
+        }
+    
+        public Zeitraum getZeitlicheGueltigkeit() {
+            return zeitlicheGueltigkeit;
+        }
+        public RegionalePreisgarantieBuilder setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
+            this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
+            return this;
+        }
+    
+        public RegionalePreisgarantie build() {
+            return new RegionalePreisgarantie(this);
+        }
     }
 }

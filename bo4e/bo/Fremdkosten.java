@@ -26,7 +26,7 @@ public class Fremdkosten extends Geschaeftsobjekt {
     /**
      * Typ des Geschaeftsobjekts
      */
-    private Typ typ = Typ.FREMDKOSTEN;
+    private final Typ typ = Typ.FREMDKOSTEN;
     /**
      * Für diesen Zeitraum wurden die Kosten ermittelt
      */
@@ -40,6 +40,13 @@ public class Fremdkosten extends Geschaeftsobjekt {
      * Die Gesamtsumme über alle Kostenblöcke und -positionen
      */
     private Betrag summeKosten;
+
+    public Fremdkosten() {}
+    private Fremdkosten(FremdkostenBuilder builder) {
+        this.gueltigkeit = builder.gueltigkeit;
+        this.kostenbloecke = builder.kostenbloecke;
+        this.summeKosten = builder.summeKosten;
+    }
 
     public Typ getTyp() {
         return typ;
@@ -64,5 +71,49 @@ public class Fremdkosten extends Geschaeftsobjekt {
     }
     public void setSummeKosten(Betrag summeKosten) {
         this.summeKosten = summeKosten;
+    }
+
+    public static class FremdkostenBuilder extends GeschaeftsobjektBuilder {
+        /**
+         * Für diesen Zeitraum wurden die Kosten ermittelt
+         */
+        private Zeitraum gueltigkeit;
+        /**
+         * In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen,
+         * Steuern etc
+         */
+        private List<Fremdkostenblock> kostenbloecke;
+        /**
+         * Die Gesamtsumme über alle Kostenblöcke und -positionen
+         */
+        private Betrag summeKosten;
+    
+        public Zeitraum getGueltigkeit() {
+            return gueltigkeit;
+        }
+        public FremdkostenBuilder setGueltigkeit(Zeitraum gueltigkeit) {
+            this.gueltigkeit = gueltigkeit;
+            return this;
+        }
+    
+        public List<Fremdkostenblock> getKostenbloecke() {
+            return kostenbloecke;
+        }
+        public FremdkostenBuilder setKostenbloecke(List<Fremdkostenblock> kostenbloecke) {
+            this.kostenbloecke = kostenbloecke;
+            return this;
+        }
+    
+        public Betrag getSummeKosten() {
+            return summeKosten;
+        }
+        public FremdkostenBuilder setSummeKosten(Betrag summeKosten) {
+            this.summeKosten = summeKosten;
+            return this;
+        }
+    
+        public Fremdkosten build() {
+            return new Fremdkosten(this);
+        }
     }
 }

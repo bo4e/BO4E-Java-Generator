@@ -30,7 +30,7 @@ public class Preisblatt extends Geschaeftsobjekt {
     /**
      * Typ des Geschaeftsobjekts
      */
-    private Typ typ = Typ.PREISBLATT;
+    private final Typ typ = Typ.PREISBLATT;
     /**
      * Eine Bezeichnung für das Preisblatt
      */
@@ -56,6 +56,16 @@ public class Preisblatt extends Geschaeftsobjekt {
      * Preisblatt gilt für angegebene Sparte
      */
     private Sparte sparte;
+
+    public Preisblatt() {}
+    private Preisblatt(PreisblattBuilder builder) {
+        this.bezeichnung = builder.bezeichnung;
+        this.gueltigkeit = builder.gueltigkeit;
+        this.herausgeber = builder.herausgeber;
+        this.preispositionen = builder.preispositionen;
+        this.preisstatus = builder.preisstatus;
+        this.sparte = builder.sparte;
+    }
 
     public Typ getTyp() {
         return typ;
@@ -101,5 +111,85 @@ public class Preisblatt extends Geschaeftsobjekt {
     }
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
+    }
+
+    public static class PreisblattBuilder extends GeschaeftsobjektBuilder {
+        /**
+         * Eine Bezeichnung für das Preisblatt
+         */
+        private String bezeichnung;
+        /**
+         * Der Zeitraum für den der Preis festgelegt ist
+         */
+        private Zeitraum gueltigkeit;
+        /**
+         * Der Netzbetreiber, der die Preise veröffentlicht hat
+         */
+        private Marktteilnehmer herausgeber;
+        /**
+         * Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B.
+         * Arbeitspreis, Grundpreis etc
+         */
+        private List<Preisposition> preispositionen;
+        /**
+         * Merkmal, das anzeigt, ob es sich um vorläufige oder endgültige Preise handelt
+         */
+        private Preisstatus preisstatus;
+        /**
+         * Preisblatt gilt für angegebene Sparte
+         */
+        private Sparte sparte;
+    
+        public String getBezeichnung() {
+            return bezeichnung;
+        }
+        public PreisblattBuilder setBezeichnung(String bezeichnung) {
+            this.bezeichnung = bezeichnung;
+            return this;
+        }
+    
+        public Zeitraum getGueltigkeit() {
+            return gueltigkeit;
+        }
+        public PreisblattBuilder setGueltigkeit(Zeitraum gueltigkeit) {
+            this.gueltigkeit = gueltigkeit;
+            return this;
+        }
+    
+        public Marktteilnehmer getHerausgeber() {
+            return herausgeber;
+        }
+        public PreisblattBuilder setHerausgeber(Marktteilnehmer herausgeber) {
+            this.herausgeber = herausgeber;
+            return this;
+        }
+    
+        public List<Preisposition> getPreispositionen() {
+            return preispositionen;
+        }
+        public PreisblattBuilder setPreispositionen(List<Preisposition> preispositionen) {
+            this.preispositionen = preispositionen;
+            return this;
+        }
+    
+        public Preisstatus getPreisstatus() {
+            return preisstatus;
+        }
+        public PreisblattBuilder setPreisstatus(Preisstatus preisstatus) {
+            this.preisstatus = preisstatus;
+            return this;
+        }
+    
+        public Sparte getSparte() {
+            return sparte;
+        }
+        public PreisblattBuilder setSparte(Sparte sparte) {
+            this.sparte = sparte;
+            return this;
+        }
+    
+        public Preisblatt build() {
+            return new Preisblatt(this);
+        }
     }
 }

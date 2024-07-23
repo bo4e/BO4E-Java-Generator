@@ -49,42 +49,42 @@ public class Angebotsteil extends COM {
     private List<Angebotsposition> positionen;
 
     public String getAnfrageSubreferenz() {
-        return AnfrageSubreferenz;
+        return anfrageSubreferenz;
     }
     public void setAnfrageSubreferenz(String anfrageSubreferenz) {
         this.anfrageSubreferenz = anfrageSubreferenz;
     }
 
     public Betrag getGesamtkostenangebotsteil() {
-        return Gesamtkostenangebotsteil;
+        return gesamtkostenangebotsteil;
     }
     public void setGesamtkostenangebotsteil(Betrag gesamtkostenangebotsteil) {
         this.gesamtkostenangebotsteil = gesamtkostenangebotsteil;
     }
 
     public Menge getGesamtmengeangebotsteil() {
-        return Gesamtmengeangebotsteil;
+        return gesamtmengeangebotsteil;
     }
     public void setGesamtmengeangebotsteil(Menge gesamtmengeangebotsteil) {
         this.gesamtmengeangebotsteil = gesamtmengeangebotsteil;
     }
 
     public List<Marktlokation> getLieferstellenangebotsteil() {
-        return Lieferstellenangebotsteil;
+        return lieferstellenangebotsteil;
     }
     public void setLieferstellenangebotsteil(List<Marktlokation> lieferstellenangebotsteil) {
         this.lieferstellenangebotsteil = lieferstellenangebotsteil;
     }
 
     public Zeitraum getLieferzeitraum() {
-        return Lieferzeitraum;
+        return lieferzeitraum;
     }
     public void setLieferzeitraum(Zeitraum lieferzeitraum) {
         this.lieferzeitraum = lieferzeitraum;
     }
 
     public List<Angebotsposition> getPositionen() {
-        return Positionen;
+        return positionen;
     }
     public void setPositionen(List<Angebotsposition> positionen) {
         this.positionen = positionen;

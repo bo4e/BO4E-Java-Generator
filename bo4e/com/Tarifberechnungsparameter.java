@@ -61,70 +61,70 @@ public class Tarifberechnungsparameter extends COM {
     private List<Tarifpreis> zusatzpreise;
 
     public Tarifkalkulationsmethode getBerechnungsmethode() {
-        return Berechnungsmethode;
+        return berechnungsmethode;
     }
     public void setBerechnungsmethode(Tarifkalkulationsmethode berechnungsmethode) {
         this.berechnungsmethode = berechnungsmethode;
     }
 
     public Preis getHoechstpreisHT() {
-        return HoechstpreisHT;
+        return hoechstpreisHT;
     }
     public void setHoechstpreisHT(Preis hoechstpreisHT) {
         this.hoechstpreisHT = hoechstpreisHT;
     }
 
     public Preis getHoechstpreisNT() {
-        return HoechstpreisNT;
+        return hoechstpreisNT;
     }
     public void setHoechstpreisNT(Preis hoechstpreisNT) {
         this.hoechstpreisNT = hoechstpreisNT;
     }
 
     public Boolean getIstMesspreisInGrundpreisEnthalten() {
-        return IstMesspreisInGrundpreisEnthalten;
+        return istMesspreisInGrundpreisEnthalten;
     }
     public void setIstMesspreisInGrundpreisEnthalten(Boolean istMesspreisInGrundpreisEnthalten) {
         this.istMesspreisInGrundpreisEnthalten = istMesspreisInGrundpreisEnthalten;
     }
 
     public Boolean getIstMesspreisZuBeruecksichtigen() {
-        return IstMesspreisZuBeruecksichtigen;
+        return istMesspreisZuBeruecksichtigen;
     }
     public void setIstMesspreisZuBeruecksichtigen(Boolean istMesspreisZuBeruecksichtigen) {
         this.istMesspreisZuBeruecksichtigen = istMesspreisZuBeruecksichtigen;
     }
 
     public Double getKwInklusive() {
-        return KwInklusive;
+        return kwInklusive;
     }
     public void setKwInklusive(Double kwInklusive) {
         this.kwInklusive = kwInklusive;
     }
 
     public Double getKwWeitereMengen() {
-        return KwWeitereMengen;
+        return kwWeitereMengen;
     }
     public void setKwWeitereMengen(Double kwWeitereMengen) {
         this.kwWeitereMengen = kwWeitereMengen;
     }
 
     public Messpreistyp getMesspreistyp() {
-        return Messpreistyp;
+        return messpreistyp;
     }
     public void setMesspreistyp(Messpreistyp messpreistyp) {
         this.messpreistyp = messpreistyp;
     }
 
     public Preis getMindestpreis() {
-        return Mindestpreis;
+        return mindestpreis;
     }
     public void setMindestpreis(Preis mindestpreis) {
         this.mindestpreis = mindestpreis;
     }
 
     public List<Tarifpreis> getZusatzpreise() {
-        return Zusatzpreise;
+        return zusatzpreise;
     }
     public void setZusatzpreise(List<Tarifpreis> zusatzpreise) {
         this.zusatzpreise = zusatzpreise;

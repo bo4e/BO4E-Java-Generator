@@ -36,28 +36,28 @@ public class Zeitreihenwert extends COM {
     private Zeitspanne zeitspanne;
 
     public Messwertstatus getStatus() {
-        return Status;
+        return status;
     }
     public void setStatus(Messwertstatus status) {
         this.status = status;
     }
 
     public Messwertstatuszusatz getStatuszusatz() {
-        return Statuszusatz;
+        return statuszusatz;
     }
     public void setStatuszusatz(Messwertstatuszusatz statuszusatz) {
         this.statuszusatz = statuszusatz;
     }
 
     public Double getWert() {
-        return Wert;
+        return wert;
     }
     public void setWert(Double wert) {
         this.wert = wert;
     }
 
     public Zeitspanne getZeitspanne() {
-        return Zeitspanne;
+        return zeitspanne;
     }
     public void setZeitspanne(Zeitspanne zeitspanne) {
         this.zeitspanne = zeitspanne;

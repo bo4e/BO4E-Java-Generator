@@ -95,112 +95,112 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
     private String website;
 
     public Adresse getAdresse() {
-        return Adresse;
+        return adresse;
     }
     public void setAdresse(Adresse adresse) {
         this.adresse = adresse;
     }
 
     public String getAmtsgericht() {
-        return Amtsgericht;
+        return amtsgericht;
     }
     public void setAmtsgericht(String amtsgericht) {
         this.amtsgericht = amtsgericht;
     }
 
     public Anrede getAnrede() {
-        return Anrede;
+        return anrede;
     }
     public void setAnrede(Anrede anrede) {
         this.anrede = anrede;
     }
 
     public List<Person> getAnsprechpartner() {
-        return Ansprechpartner;
+        return ansprechpartner;
     }
     public void setAnsprechpartner(List<Person> ansprechpartner) {
         this.ansprechpartner = ansprechpartner;
     }
 
     public List<Geschaeftspartnerrolle> getGeschaeftspartnerrollen() {
-        return Geschaeftspartnerrollen;
+        return geschaeftspartnerrollen;
     }
     public void setGeschaeftspartnerrollen(List<Geschaeftspartnerrolle> geschaeftspartnerrollen) {
         this.geschaeftspartnerrollen = geschaeftspartnerrollen;
     }
 
     public String getGlaeubigerId() {
-        return GlaeubigerId;
+        return glaeubigerId;
     }
     public void setGlaeubigerId(String glaeubigerId) {
         this.glaeubigerId = glaeubigerId;
     }
 
     public String getHandelsregisternummer() {
-        return Handelsregisternummer;
+        return handelsregisternummer;
     }
     public void setHandelsregisternummer(String handelsregisternummer) {
         this.handelsregisternummer = handelsregisternummer;
     }
 
     public String getIndividuelleAnrede() {
-        return IndividuelleAnrede;
+        return individuelleAnrede;
     }
     public void setIndividuelleAnrede(String individuelleAnrede) {
         this.individuelleAnrede = individuelleAnrede;
     }
 
     public List<Kontaktweg> getKontaktwege() {
-        return Kontaktwege;
+        return kontaktwege;
     }
     public void setKontaktwege(List<Kontaktweg> kontaktwege) {
         this.kontaktwege = kontaktwege;
     }
 
     public String getNachname() {
-        return Nachname;
+        return nachname;
     }
     public void setNachname(String nachname) {
         this.nachname = nachname;
     }
 
     public String getOrganisationsname() {
-        return Organisationsname;
+        return organisationsname;
     }
     public void setOrganisationsname(String organisationsname) {
         this.organisationsname = organisationsname;
     }
 
     public Organisationstyp getOrganisationstyp() {
-        return Organisationstyp;
+        return organisationstyp;
     }
     public void setOrganisationstyp(Organisationstyp organisationstyp) {
         this.organisationstyp = organisationstyp;
     }
 
     public Titel getTitel() {
-        return Titel;
+        return titel;
     }
     public void setTitel(Titel titel) {
         this.titel = titel;
     }
 
     public String getUmsatzsteuerId() {
-        return UmsatzsteuerId;
+        return umsatzsteuerId;
     }
     public void setUmsatzsteuerId(String umsatzsteuerId) {
         this.umsatzsteuerId = umsatzsteuerId;
     }
 
     public String getVorname() {
-        return Vorname;
+        return vorname;
     }
     public void setVorname(String vorname) {
         this.vorname = vorname;
     }
 
     public String getWebsite() {
-        return Website;
+        return website;
     }
     public void setWebsite(String website) {
         this.website = website;

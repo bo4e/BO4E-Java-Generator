@@ -72,70 +72,70 @@ public class Angebot extends Geschaeftsobjekt {
     private List<Angebotsvariante> varianten;
 
     public String getAnfragereferenz() {
-        return Anfragereferenz;
+        return anfragereferenz;
     }
     public void setAnfragereferenz(String anfragereferenz) {
         this.anfragereferenz = anfragereferenz;
     }
 
     public OffsetDateTime getAngebotsdatum() {
-        return Angebotsdatum;
+        return angebotsdatum;
     }
     public void setAngebotsdatum(OffsetDateTime angebotsdatum) {
         this.angebotsdatum = angebotsdatum;
     }
 
     public Geschaeftspartner getAngebotsgeber() {
-        return Angebotsgeber;
+        return angebotsgeber;
     }
     public void setAngebotsgeber(Geschaeftspartner angebotsgeber) {
         this.angebotsgeber = angebotsgeber;
     }
 
     public Geschaeftspartner getAngebotsnehmer() {
-        return Angebotsnehmer;
+        return angebotsnehmer;
     }
     public void setAngebotsnehmer(Geschaeftspartner angebotsnehmer) {
         this.angebotsnehmer = angebotsnehmer;
     }
 
     public String getAngebotsnummer() {
-        return Angebotsnummer;
+        return angebotsnummer;
     }
     public void setAngebotsnummer(String angebotsnummer) {
         this.angebotsnummer = angebotsnummer;
     }
 
     public OffsetDateTime getBindefrist() {
-        return Bindefrist;
+        return bindefrist;
     }
     public void setBindefrist(OffsetDateTime bindefrist) {
         this.bindefrist = bindefrist;
     }
 
     public Sparte getSparte() {
-        return Sparte;
+        return sparte;
     }
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
 
     public Person getUnterzeichnerAngebotsgeber() {
-        return UnterzeichnerAngebotsgeber;
+        return unterzeichnerAngebotsgeber;
     }
     public void setUnterzeichnerAngebotsgeber(Person unterzeichnerAngebotsgeber) {
         this.unterzeichnerAngebotsgeber = unterzeichnerAngebotsgeber;
     }
 
     public Person getUnterzeichnerAngebotsnehmer() {
-        return UnterzeichnerAngebotsnehmer;
+        return unterzeichnerAngebotsnehmer;
     }
     public void setUnterzeichnerAngebotsnehmer(Person unterzeichnerAngebotsnehmer) {
         this.unterzeichnerAngebotsnehmer = unterzeichnerAngebotsnehmer;
     }
 
     public List<Angebotsvariante> getVarianten() {
-        return Varianten;
+        return varianten;
     }
     public void setVarianten(List<Angebotsvariante> varianten) {
         this.varianten = varianten;

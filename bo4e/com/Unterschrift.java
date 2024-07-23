@@ -30,21 +30,21 @@ public class Unterschrift extends COM {
     private String ort;
 
     public OffsetDateTime getDatum() {
-        return Datum;
+        return datum;
     }
     public void setDatum(OffsetDateTime datum) {
         this.datum = datum;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
     public void setName(String name) {
         this.name = name;
     }
 
     public String getOrt() {
-        return Ort;
+        return ort;
     }
     public void setOrt(String ort) {
         this.ort = ort;

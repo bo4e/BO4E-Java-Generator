@@ -34,28 +34,28 @@ public class AufAbschlagProOrt extends COM {
     private List<AufAbschlagstaffelProOrt> staffeln;
 
     public String getNetznr() {
-        return Netznr;
+        return netznr;
     }
     public void setNetznr(String netznr) {
         this.netznr = netznr;
     }
 
     public String getOrt() {
-        return Ort;
+        return ort;
     }
     public void setOrt(String ort) {
         this.ort = ort;
     }
 
     public String getPostleitzahl() {
-        return Postleitzahl;
+        return postleitzahl;
     }
     public void setPostleitzahl(String postleitzahl) {
         this.postleitzahl = postleitzahl;
     }
 
     public List<AufAbschlagstaffelProOrt> getStaffeln() {
-        return Staffeln;
+        return staffeln;
     }
     public void setStaffeln(List<AufAbschlagstaffelProOrt> staffeln) {
         this.staffeln = staffeln;

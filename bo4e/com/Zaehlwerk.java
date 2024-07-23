@@ -75,126 +75,126 @@ public class Zaehlwerk extends COM {
     private Zaehlzeitregister zaehlzeitregister;
 
     public Long getAnzahlAblesungen() {
-        return AnzahlAblesungen;
+        return anzahlAblesungen;
     }
     public void setAnzahlAblesungen(Long anzahlAblesungen) {
         this.anzahlAblesungen = anzahlAblesungen;
     }
 
     public String getBezeichnung() {
-        return Bezeichnung;
+        return bezeichnung;
     }
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
 
     public Mengeneinheit getEinheit() {
-        return Einheit;
+        return einheit;
     }
     public void setEinheit(Mengeneinheit einheit) {
         this.einheit = einheit;
     }
 
     public Boolean getIstAbrechnungsrelevant() {
-        return IstAbrechnungsrelevant;
+        return istAbrechnungsrelevant;
     }
     public void setIstAbrechnungsrelevant(Boolean istAbrechnungsrelevant) {
         this.istAbrechnungsrelevant = istAbrechnungsrelevant;
     }
 
     public Boolean getIstSchwachlastfaehig() {
-        return IstSchwachlastfaehig;
+        return istSchwachlastfaehig;
     }
     public void setIstSchwachlastfaehig(Boolean istSchwachlastfaehig) {
         this.istSchwachlastfaehig = istSchwachlastfaehig;
     }
 
     public Boolean getIstSteuerbefreit() {
-        return IstSteuerbefreit;
+        return istSteuerbefreit;
     }
     public void setIstSteuerbefreit(Boolean istSteuerbefreit) {
         this.istSteuerbefreit = istSteuerbefreit;
     }
 
     public Boolean getIstUnterbrechbar() {
-        return IstUnterbrechbar;
+        return istUnterbrechbar;
     }
     public void setIstUnterbrechbar(Boolean istUnterbrechbar) {
         this.istUnterbrechbar = istUnterbrechbar;
     }
 
     public Konzessionsabgabe getKonzessionsabgabe() {
-        return Konzessionsabgabe;
+        return konzessionsabgabe;
     }
     public void setKonzessionsabgabe(Konzessionsabgabe konzessionsabgabe) {
         this.konzessionsabgabe = konzessionsabgabe;
     }
 
     public Long getNachkommastelle() {
-        return Nachkommastelle;
+        return nachkommastelle;
     }
     public void setNachkommastelle(Long nachkommastelle) {
         this.nachkommastelle = nachkommastelle;
     }
 
     public String getObisKennzahl() {
-        return ObisKennzahl;
+        return obisKennzahl;
     }
     public void setObisKennzahl(String obisKennzahl) {
         this.obisKennzahl = obisKennzahl;
     }
 
     public Energierichtung getRichtung() {
-        return Richtung;
+        return richtung;
     }
     public void setRichtung(Energierichtung richtung) {
         this.richtung = richtung;
     }
 
     public Verbrauchsart getVerbrauchsart() {
-        return Verbrauchsart;
+        return verbrauchsart;
     }
     public void setVerbrauchsart(Verbrauchsart verbrauchsart) {
         this.verbrauchsart = verbrauchsart;
     }
 
     public List<VerwendungszweckProMarktrolle> getVerwendungszwecke() {
-        return Verwendungszwecke;
+        return verwendungszwecke;
     }
     public void setVerwendungszwecke(List<VerwendungszweckProMarktrolle> verwendungszwecke) {
         this.verwendungszwecke = verwendungszwecke;
     }
 
     public Long getVorkommastelle() {
-        return Vorkommastelle;
+        return vorkommastelle;
     }
     public void setVorkommastelle(Long vorkommastelle) {
         this.vorkommastelle = vorkommastelle;
     }
 
     public Waermenutzung getWaermenutzung() {
-        return Waermenutzung;
+        return waermenutzung;
     }
     public void setWaermenutzung(Waermenutzung waermenutzung) {
         this.waermenutzung = waermenutzung;
     }
 
     public Double getWandlerfaktor() {
-        return Wandlerfaktor;
+        return wandlerfaktor;
     }
     public void setWandlerfaktor(Double wandlerfaktor) {
         this.wandlerfaktor = wandlerfaktor;
     }
 
     public String getZaehlwerkId() {
-        return ZaehlwerkId;
+        return zaehlwerkId;
     }
     public void setZaehlwerkId(String zaehlwerkId) {
         this.zaehlwerkId = zaehlwerkId;
     }
 
     public Zaehlzeitregister getZaehlzeitregister() {
-        return Zaehlzeitregister;
+        return zaehlzeitregister;
     }
     public void setZaehlzeitregister(Zaehlzeitregister zaehlzeitregister) {
         this.zaehlzeitregister = zaehlzeitregister;

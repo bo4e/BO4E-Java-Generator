@@ -94,98 +94,98 @@ public class Rechnungsposition extends COM {
     private Mengeneinheit zeiteinheit;
 
     public String getArtikelId() {
-        return ArtikelId;
+        return artikelId;
     }
     public void setArtikelId(String artikelId) {
         this.artikelId = artikelId;
     }
 
     public BDEWArtikelnummer getArtikelnummer() {
-        return Artikelnummer;
+        return artikelnummer;
     }
     public void setArtikelnummer(BDEWArtikelnummer artikelnummer) {
         this.artikelnummer = artikelnummer;
     }
 
     public Preis getEinzelpreis() {
-        return Einzelpreis;
+        return einzelpreis;
     }
     public void setEinzelpreis(Preis einzelpreis) {
         this.einzelpreis = einzelpreis;
     }
 
     public OffsetDateTime getLieferungBis() {
-        return LieferungBis;
+        return lieferungBis;
     }
     public void setLieferungBis(OffsetDateTime lieferungBis) {
         this.lieferungBis = lieferungBis;
     }
 
     public OffsetDateTime getLieferungVon() {
-        return LieferungVon;
+        return lieferungVon;
     }
     public void setLieferungVon(OffsetDateTime lieferungVon) {
         this.lieferungVon = lieferungVon;
     }
 
     public String getLokationsId() {
-        return LokationsId;
+        return lokationsId;
     }
     public void setLokationsId(String lokationsId) {
         this.lokationsId = lokationsId;
     }
 
     public Menge getPositionsMenge() {
-        return PositionsMenge;
+        return positionsMenge;
     }
     public void setPositionsMenge(Menge positionsMenge) {
         this.positionsMenge = positionsMenge;
     }
 
     public Long getPositionsnummer() {
-        return Positionsnummer;
+        return positionsnummer;
     }
     public void setPositionsnummer(Long positionsnummer) {
         this.positionsnummer = positionsnummer;
     }
 
     public String getPositionstext() {
-        return Positionstext;
+        return positionstext;
     }
     public void setPositionstext(String positionstext) {
         this.positionstext = positionstext;
     }
 
     public Betrag getTeilrabattNetto() {
-        return TeilrabattNetto;
+        return teilrabattNetto;
     }
     public void setTeilrabattNetto(Betrag teilrabattNetto) {
         this.teilrabattNetto = teilrabattNetto;
     }
 
     public Betrag getTeilsummeNetto() {
-        return TeilsummeNetto;
+        return teilsummeNetto;
     }
     public void setTeilsummeNetto(Betrag teilsummeNetto) {
         this.teilsummeNetto = teilsummeNetto;
     }
 
     public Steuerbetrag getTeilsummeSteuer() {
-        return TeilsummeSteuer;
+        return teilsummeSteuer;
     }
     public void setTeilsummeSteuer(Steuerbetrag teilsummeSteuer) {
         this.teilsummeSteuer = teilsummeSteuer;
     }
 
     public Menge getZeitbezogeneMenge() {
-        return ZeitbezogeneMenge;
+        return zeitbezogeneMenge;
     }
     public void setZeitbezogeneMenge(Menge zeitbezogeneMenge) {
         this.zeitbezogeneMenge = zeitbezogeneMenge;
     }
 
     public Mengeneinheit getZeiteinheit() {
-        return Zeiteinheit;
+        return zeiteinheit;
     }
     public void setZeiteinheit(Mengeneinheit zeiteinheit) {
         this.zeiteinheit = zeiteinheit;

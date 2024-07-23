@@ -30,28 +30,28 @@ public class TarifpreispositionProOrt extends COM {
     private List<TarifpreisstaffelProOrt> preisstaffeln;
 
     public String getNetznr() {
-        return Netznr;
+        return netznr;
     }
     public void setNetznr(String netznr) {
         this.netznr = netznr;
     }
 
     public String getOrt() {
-        return Ort;
+        return ort;
     }
     public void setOrt(String ort) {
         this.ort = ort;
     }
 
     public String getPostleitzahl() {
-        return Postleitzahl;
+        return postleitzahl;
     }
     public void setPostleitzahl(String postleitzahl) {
         this.postleitzahl = postleitzahl;
     }
 
     public List<TarifpreisstaffelProOrt> getPreisstaffeln() {
-        return Preisstaffeln;
+        return preisstaffeln;
     }
     public void setPreisstaffeln(List<TarifpreisstaffelProOrt> preisstaffeln) {
         this.preisstaffeln = preisstaffeln;

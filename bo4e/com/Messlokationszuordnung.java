@@ -38,28 +38,28 @@ public class Messlokationszuordnung extends COM {
     private String messlokationsId;
 
     public ArithmetischeOperation getArithmetik() {
-        return Arithmetik;
+        return arithmetik;
     }
     public void setArithmetik(ArithmetischeOperation arithmetik) {
         this.arithmetik = arithmetik;
     }
 
     public OffsetDateTime getGueltigBis() {
-        return GueltigBis;
+        return gueltigBis;
     }
     public void setGueltigBis(OffsetDateTime gueltigBis) {
         this.gueltigBis = gueltigBis;
     }
 
     public OffsetDateTime getGueltigSeit() {
-        return GueltigSeit;
+        return gueltigSeit;
     }
     public void setGueltigSeit(OffsetDateTime gueltigSeit) {
         this.gueltigSeit = gueltigSeit;
     }
 
     public String getMesslokationsId() {
-        return MesslokationsId;
+        return messlokationsId;
     }
     public void setMesslokationsId(String messlokationsId) {
         this.messlokationsId = messlokationsId;

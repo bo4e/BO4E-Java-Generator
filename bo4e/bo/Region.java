@@ -36,21 +36,21 @@ public class Region extends Geschaeftsobjekt {
     private List<Regionskriterium> positivListe;
 
     public String getBezeichnung() {
-        return Bezeichnung;
+        return bezeichnung;
     }
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
 
     public List<Regionskriterium> getNegativListe() {
-        return NegativListe;
+        return negativListe;
     }
     public void setNegativListe(List<Regionskriterium> negativListe) {
         this.negativListe = negativListe;
     }
 
     public List<Regionskriterium> getPositivListe() {
-        return PositivListe;
+        return positivListe;
     }
     public void setPositivListe(List<Regionskriterium> positivListe) {
         this.positivListe = positivListe;

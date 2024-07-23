@@ -44,42 +44,42 @@ public class Angebotsvariante extends COM {
     private List<Angebotsteil> teile;
 
     public Angebotsstatus getAngebotsstatus() {
-        return Angebotsstatus;
+        return angebotsstatus;
     }
     public void setAngebotsstatus(Angebotsstatus angebotsstatus) {
         this.angebotsstatus = angebotsstatus;
     }
 
     public OffsetDateTime getBindefrist() {
-        return Bindefrist;
+        return bindefrist;
     }
     public void setBindefrist(OffsetDateTime bindefrist) {
         this.bindefrist = bindefrist;
     }
 
     public OffsetDateTime getErstellungsdatum() {
-        return Erstellungsdatum;
+        return erstellungsdatum;
     }
     public void setErstellungsdatum(OffsetDateTime erstellungsdatum) {
         this.erstellungsdatum = erstellungsdatum;
     }
 
     public Betrag getGesamtkosten() {
-        return Gesamtkosten;
+        return gesamtkosten;
     }
     public void setGesamtkosten(Betrag gesamtkosten) {
         this.gesamtkosten = gesamtkosten;
     }
 
     public Menge getGesamtmenge() {
-        return Gesamtmenge;
+        return gesamtmenge;
     }
     public void setGesamtmenge(Menge gesamtmenge) {
         this.gesamtmenge = gesamtmenge;
     }
 
     public List<Angebotsteil> getTeile() {
-        return Teile;
+        return teile;
     }
     public void setTeile(List<Angebotsteil> teile) {
         this.teile = teile;

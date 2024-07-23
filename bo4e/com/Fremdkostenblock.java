@@ -31,21 +31,21 @@ public class Fremdkostenblock extends COM {
     private Betrag summeKostenblock;
 
     public String getKostenblockbezeichnung() {
-        return Kostenblockbezeichnung;
+        return kostenblockbezeichnung;
     }
     public void setKostenblockbezeichnung(String kostenblockbezeichnung) {
         this.kostenblockbezeichnung = kostenblockbezeichnung;
     }
 
     public List<Fremdkostenposition> getKostenpositionen() {
-        return Kostenpositionen;
+        return kostenpositionen;
     }
     public void setKostenpositionen(List<Fremdkostenposition> kostenpositionen) {
         this.kostenpositionen = kostenpositionen;
     }
 
     public Betrag getSummeKostenblock() {
-        return SummeKostenblock;
+        return summeKostenblock;
     }
     public void setSummeKostenblock(Betrag summeKostenblock) {
         this.summeKostenblock = summeKostenblock;

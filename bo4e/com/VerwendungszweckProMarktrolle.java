@@ -29,14 +29,14 @@ public class VerwendungszweckProMarktrolle extends COM {
     private List<Verwendungszweck> zwecke;
 
     public Marktrolle getMarktrolle() {
-        return Marktrolle;
+        return marktrolle;
     }
     public void setMarktrolle(Marktrolle marktrolle) {
         this.marktrolle = marktrolle;
     }
 
     public List<Verwendungszweck> getZwecke() {
-        return Zwecke;
+        return zwecke;
     }
     public void setZwecke(List<Verwendungszweck> zwecke) {
         this.zwecke = zwecke;

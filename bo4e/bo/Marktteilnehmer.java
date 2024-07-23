@@ -51,42 +51,42 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
     private Sparte sparte;
 
     public Geschaeftspartner getGeschaeftspartner() {
-        return Geschaeftspartner;
+        return geschaeftspartner;
     }
     public void setGeschaeftspartner(Geschaeftspartner geschaeftspartner) {
         this.geschaeftspartner = geschaeftspartner;
     }
 
     public List<String> getMakoadresse() {
-        return Makoadresse;
+        return makoadresse;
     }
     public void setMakoadresse(List<String> makoadresse) {
         this.makoadresse = makoadresse;
     }
 
     public Marktrolle getMarktrolle() {
-        return Marktrolle;
+        return marktrolle;
     }
     public void setMarktrolle(Marktrolle marktrolle) {
         this.marktrolle = marktrolle;
     }
 
     public String getRollencodenummer() {
-        return Rollencodenummer;
+        return rollencodenummer;
     }
     public void setRollencodenummer(String rollencodenummer) {
         this.rollencodenummer = rollencodenummer;
     }
 
     public Rollencodetyp getRollencodetyp() {
-        return Rollencodetyp;
+        return rollencodetyp;
     }
     public void setRollencodetyp(Rollencodetyp rollencodetyp) {
         this.rollencodetyp = rollencodetyp;
     }
 
     public Sparte getSparte() {
-        return Sparte;
+        return sparte;
     }
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;

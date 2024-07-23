@@ -33,14 +33,14 @@ public class Standorteigenschaften extends Geschaeftsobjekt {
     private List<StandorteigenschaftenStrom> eigenschaftenStrom;
 
     public StandorteigenschaftenGas getEigenschaftenGas() {
-        return EigenschaftenGas;
+        return eigenschaftenGas;
     }
     public void setEigenschaftenGas(StandorteigenschaftenGas eigenschaftenGas) {
         this.eigenschaftenGas = eigenschaftenGas;
     }
 
     public List<StandorteigenschaftenStrom> getEigenschaftenStrom() {
-        return EigenschaftenStrom;
+        return eigenschaftenStrom;
     }
     public void setEigenschaftenStrom(List<StandorteigenschaftenStrom> eigenschaftenStrom) {
         this.eigenschaftenStrom = eigenschaftenStrom;

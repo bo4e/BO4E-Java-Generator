@@ -41,28 +41,28 @@ public class Tarifeinschraenkung extends COM {
     private List<String> zusatzprodukte;
 
     public List<Menge> getEinschraenkungleistung() {
-        return Einschraenkungleistung;
+        return einschraenkungleistung;
     }
     public void setEinschraenkungleistung(List<Menge> einschraenkungleistung) {
         this.einschraenkungleistung = einschraenkungleistung;
     }
 
     public List<Geraet> getEinschraenkungzaehler() {
-        return Einschraenkungzaehler;
+        return einschraenkungzaehler;
     }
     public void setEinschraenkungzaehler(List<Geraet> einschraenkungzaehler) {
         this.einschraenkungzaehler = einschraenkungzaehler;
     }
 
     public List<Voraussetzungen> getVoraussetzungen() {
-        return Voraussetzungen;
+        return voraussetzungen;
     }
     public void setVoraussetzungen(List<Voraussetzungen> voraussetzungen) {
         this.voraussetzungen = voraussetzungen;
     }
 
     public List<String> getZusatzprodukte() {
-        return Zusatzprodukte;
+        return zusatzprodukte;
     }
     public void setZusatzprodukte(List<String> zusatzprodukte) {
         this.zusatzprodukte = zusatzprodukte;

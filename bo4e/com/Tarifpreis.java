@@ -46,42 +46,42 @@ public class Tarifpreis extends COM {
     private Double wert;
 
     public String getBeschreibung() {
-        return Beschreibung;
+        return beschreibung;
     }
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
 
     public Mengeneinheit getBezugswert() {
-        return Bezugswert;
+        return bezugswert;
     }
     public void setBezugswert(Mengeneinheit bezugswert) {
         this.bezugswert = bezugswert;
     }
 
     public Waehrungseinheit getEinheit() {
-        return Einheit;
+        return einheit;
     }
     public void setEinheit(Waehrungseinheit einheit) {
         this.einheit = einheit;
     }
 
     public Preistyp getPreistyp() {
-        return Preistyp;
+        return preistyp;
     }
     public void setPreistyp(Preistyp preistyp) {
         this.preistyp = preistyp;
     }
 
     public Preisstatus getStatus() {
-        return Status;
+        return status;
     }
     public void setStatus(Preisstatus status) {
         this.status = status;
     }
 
     public Double getWert() {
-        return Wert;
+        return wert;
     }
     public void setWert(Double wert) {
         this.wert = wert;

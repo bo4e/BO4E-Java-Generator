@@ -26,14 +26,14 @@ public class ZusatzAttribut {
     private Object wert;
 
     public String getName() {
-        return Name;
+        return name;
     }
     public void setName(String name) {
         this.name = name;
     }
 
     public Object getWert() {
-        return Wert;
+        return wert;
     }
     public void setWert(Object wert) {
         this.wert = wert;

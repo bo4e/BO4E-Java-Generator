@@ -44,35 +44,35 @@ public class PositionsAufAbschlag extends COM {
     private String bezeichnung;
 
     public AufAbschlagstyp getAufAbschlagstyp() {
-        return AufAbschlagstyp;
+        return aufAbschlagstyp;
     }
     public void setAufAbschlagstyp(AufAbschlagstyp aufAbschlagstyp) {
         this.aufAbschlagstyp = aufAbschlagstyp;
     }
 
     public Waehrungseinheit getAufAbschlagswaehrung() {
-        return AufAbschlagswaehrung;
+        return aufAbschlagswaehrung;
     }
     public void setAufAbschlagswaehrung(Waehrungseinheit aufAbschlagswaehrung) {
         this.aufAbschlagswaehrung = aufAbschlagswaehrung;
     }
 
     public Double getAufAbschlagswert() {
-        return AufAbschlagswert;
+        return aufAbschlagswert;
     }
     public void setAufAbschlagswert(Double aufAbschlagswert) {
         this.aufAbschlagswert = aufAbschlagswert;
     }
 
     public String getBeschreibung() {
-        return Beschreibung;
+        return beschreibung;
     }
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
 
     public String getBezeichnung() {
-        return Bezeichnung;
+        return bezeichnung;
     }
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;

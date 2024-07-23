@@ -343,7 +343,7 @@ function getJavaMethod(field) {
     const fieldName = field.name.charAt(0).toUpperCase() + field.name.slice(1);
     const lines = []
     lines.push(`    public ${field.type} get${fieldName}() {`);
-    lines.push(`        return ${fieldName};`);
+    lines.push(`        return ${field.name};`);
     lines.push(`    }`);
     lines.push(`    public void set${fieldName}(${field.type} ${field.name}) {`);
     lines.push(`        this.${field.name} = ${field.name};`);

@@ -36,21 +36,21 @@ public class Energiemenge extends Geschaeftsobjekt {
     private Lokationstyp lokationstyp;
 
     public List<Verbrauch> getEnergieverbrauch() {
-        return Energieverbrauch;
+        return energieverbrauch;
     }
     public void setEnergieverbrauch(List<Verbrauch> energieverbrauch) {
         this.energieverbrauch = energieverbrauch;
     }
 
     public String getLokationsId() {
-        return LokationsId;
+        return lokationsId;
     }
     public void setLokationsId(String lokationsId) {
         this.lokationsId = lokationsId;
     }
 
     public Lokationstyp getLokationstyp() {
-        return Lokationstyp;
+        return lokationstyp;
     }
     public void setLokationstyp(Lokationstyp lokationstyp) {
         this.lokationstyp = lokationstyp;

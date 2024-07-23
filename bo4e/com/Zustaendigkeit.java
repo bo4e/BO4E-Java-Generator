@@ -32,21 +32,21 @@ public class Zustaendigkeit extends COM {
     private Themengebiet themengebiet;
 
     public String getAbteilung() {
-        return Abteilung;
+        return abteilung;
     }
     public void setAbteilung(String abteilung) {
         this.abteilung = abteilung;
     }
 
     public String getPosition() {
-        return Position;
+        return position;
     }
     public void setPosition(String position) {
         this.position = position;
     }
 
     public Themengebiet getThemengebiet() {
-        return Themengebiet;
+        return themengebiet;
     }
     public void setThemengebiet(Themengebiet themengebiet) {
         this.themengebiet = themengebiet;

@@ -40,28 +40,28 @@ public class Geraet extends Geschaeftsobjekt {
     private Geraetetyp geraetetyp;
 
     public String getBezeichnung() {
-        return Bezeichnung;
+        return bezeichnung;
     }
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
 
     public Geraeteklasse getGeraeteklasse() {
-        return Geraeteklasse;
+        return geraeteklasse;
     }
     public void setGeraeteklasse(Geraeteklasse geraeteklasse) {
         this.geraeteklasse = geraeteklasse;
     }
 
     public String getGeraetenummer() {
-        return Geraetenummer;
+        return geraetenummer;
     }
     public void setGeraetenummer(String geraetenummer) {
         this.geraetenummer = geraetenummer;
     }
 
     public Geraetetyp getGeraetetyp() {
-        return Geraetetyp;
+        return geraetetyp;
     }
     public void setGeraetetyp(Geraetetyp geraetetyp) {
         this.geraetetyp = geraetetyp;

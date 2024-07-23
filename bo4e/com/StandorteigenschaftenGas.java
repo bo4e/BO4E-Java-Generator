@@ -25,14 +25,14 @@ public class StandorteigenschaftenGas extends COM {
     private List<String> netzkontonummern;
 
     public List<MarktgebietInfo> getMarktgebiete() {
-        return Marktgebiete;
+        return marktgebiete;
     }
     public void setMarktgebiete(List<MarktgebietInfo> marktgebiete) {
         this.marktgebiete = marktgebiete;
     }
 
     public List<String> getNetzkontonummern() {
-        return Netzkontonummern;
+        return netzkontonummern;
     }
     public void setNetzkontonummern(List<String> netzkontonummern) {
         this.netzkontonummern = netzkontonummern;

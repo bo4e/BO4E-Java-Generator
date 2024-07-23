@@ -83,105 +83,105 @@ public class Ausschreibungsdetail extends COM {
     private Zaehlertyp zaehlertechnik;
 
     public Boolean getIstLastgangVorhanden() {
-        return IstLastgangVorhanden;
+        return istLastgangVorhanden;
     }
     public void setIstLastgangVorhanden(Boolean istLastgangVorhanden) {
         this.istLastgangVorhanden = istLastgangVorhanden;
     }
 
     public String getKunde() {
-        return Kunde;
+        return kunde;
     }
     public void setKunde(String kunde) {
         this.kunde = kunde;
     }
 
     public Zeitraum getLieferzeitraum() {
-        return Lieferzeitraum;
+        return lieferzeitraum;
     }
     public void setLieferzeitraum(Zeitraum lieferzeitraum) {
         this.lieferzeitraum = lieferzeitraum;
     }
 
     public Adresse getMarktlokationsadresse() {
-        return Marktlokationsadresse;
+        return marktlokationsadresse;
     }
     public void setMarktlokationsadresse(Adresse marktlokationsadresse) {
         this.marktlokationsadresse = marktlokationsadresse;
     }
 
     public String getMarktlokationsbezeichnung() {
-        return Marktlokationsbezeichnung;
+        return marktlokationsbezeichnung;
     }
     public void setMarktlokationsbezeichnung(String marktlokationsbezeichnung) {
         this.marktlokationsbezeichnung = marktlokationsbezeichnung;
     }
 
     public String getMarktlokationsId() {
-        return MarktlokationsId;
+        return marktlokationsId;
     }
     public void setMarktlokationsId(String marktlokationsId) {
         this.marktlokationsId = marktlokationsId;
     }
 
     public String getNetzbetreiber() {
-        return Netzbetreiber;
+        return netzbetreiber;
     }
     public void setNetzbetreiber(String netzbetreiber) {
         this.netzbetreiber = netzbetreiber;
     }
 
     public String getNetzebeneLieferung() {
-        return NetzebeneLieferung;
+        return netzebeneLieferung;
     }
     public void setNetzebeneLieferung(String netzebeneLieferung) {
         this.netzebeneLieferung = netzebeneLieferung;
     }
 
     public String getNetzebeneMessung() {
-        return NetzebeneMessung;
+        return netzebeneMessung;
     }
     public void setNetzebeneMessung(String netzebeneMessung) {
         this.netzebeneMessung = netzebeneMessung;
     }
 
     public Menge getPrognoseArbeitLieferzeitraum() {
-        return PrognoseArbeitLieferzeitraum;
+        return prognoseArbeitLieferzeitraum;
     }
     public void setPrognoseArbeitLieferzeitraum(Menge prognoseArbeitLieferzeitraum) {
         this.prognoseArbeitLieferzeitraum = prognoseArbeitLieferzeitraum;
     }
 
     public Menge getPrognoseJahresarbeit() {
-        return PrognoseJahresarbeit;
+        return prognoseJahresarbeit;
     }
     public void setPrognoseJahresarbeit(Menge prognoseJahresarbeit) {
         this.prognoseJahresarbeit = prognoseJahresarbeit;
     }
 
     public Menge getPrognoseLeistung() {
-        return PrognoseLeistung;
+        return prognoseLeistung;
     }
     public void setPrognoseLeistung(Menge prognoseLeistung) {
         this.prognoseLeistung = prognoseLeistung;
     }
 
     public Adresse getRechnungsadresse() {
-        return Rechnungsadresse;
+        return rechnungsadresse;
     }
     public void setRechnungsadresse(Adresse rechnungsadresse) {
         this.rechnungsadresse = rechnungsadresse;
     }
 
     public String getZaehlernummer() {
-        return Zaehlernummer;
+        return zaehlernummer;
     }
     public void setZaehlernummer(String zaehlernummer) {
         this.zaehlernummer = zaehlernummer;
     }
 
     public Zaehlertyp getZaehlertechnik() {
-        return Zaehlertechnik;
+        return zaehlertechnik;
     }
     public void setZaehlertechnik(Zaehlertyp zaehlertechnik) {
         this.zaehlertechnik = zaehlertechnik;

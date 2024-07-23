@@ -75,91 +75,91 @@ public class Fremdkostenposition extends COM {
     private Menge zeitmenge;
 
     public String getArtikelbezeichnung() {
-        return Artikelbezeichnung;
+        return artikelbezeichnung;
     }
     public void setArtikelbezeichnung(String artikelbezeichnung) {
         this.artikelbezeichnung = artikelbezeichnung;
     }
 
     public String getArtikeldetail() {
-        return Artikeldetail;
+        return artikeldetail;
     }
     public void setArtikeldetail(String artikeldetail) {
         this.artikeldetail = artikeldetail;
     }
 
     public Betrag getBetragKostenposition() {
-        return BetragKostenposition;
+        return betragKostenposition;
     }
     public void setBetragKostenposition(Betrag betragKostenposition) {
         this.betragKostenposition = betragKostenposition;
     }
 
     public OffsetDateTime getBis() {
-        return Bis;
+        return bis;
     }
     public void setBis(OffsetDateTime bis) {
         this.bis = bis;
     }
 
     public Preis getEinzelpreis() {
-        return Einzelpreis;
+        return einzelpreis;
     }
     public void setEinzelpreis(Preis einzelpreis) {
         this.einzelpreis = einzelpreis;
     }
 
     public String getGebietcodeEic() {
-        return GebietcodeEic;
+        return gebietcodeEic;
     }
     public void setGebietcodeEic(String gebietcodeEic) {
         this.gebietcodeEic = gebietcodeEic;
     }
 
     public String getLinkPreisblatt() {
-        return LinkPreisblatt;
+        return linkPreisblatt;
     }
     public void setLinkPreisblatt(String linkPreisblatt) {
         this.linkPreisblatt = linkPreisblatt;
     }
 
     public String getMarktpartnercode() {
-        return Marktpartnercode;
+        return marktpartnercode;
     }
     public void setMarktpartnercode(String marktpartnercode) {
         this.marktpartnercode = marktpartnercode;
     }
 
     public String getMarktpartnername() {
-        return Marktpartnername;
+        return marktpartnername;
     }
     public void setMarktpartnername(String marktpartnername) {
         this.marktpartnername = marktpartnername;
     }
 
     public Menge getMenge() {
-        return Menge;
+        return menge;
     }
     public void setMenge(Menge menge) {
         this.menge = menge;
     }
 
     public String getPositionstitel() {
-        return Positionstitel;
+        return positionstitel;
     }
     public void setPositionstitel(String positionstitel) {
         this.positionstitel = positionstitel;
     }
 
     public OffsetDateTime getVon() {
-        return Von;
+        return von;
     }
     public void setVon(OffsetDateTime von) {
         this.von = von;
     }
 
     public Menge getZeitmenge() {
-        return Zeitmenge;
+        return zeitmenge;
     }
     public void setZeitmenge(Menge zeitmenge) {
         this.zeitmenge = zeitmenge;

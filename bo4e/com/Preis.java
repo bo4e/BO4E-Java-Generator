@@ -36,28 +36,28 @@ public class Preis extends COM {
     private Double wert;
 
     public Mengeneinheit getBezugswert() {
-        return Bezugswert;
+        return bezugswert;
     }
     public void setBezugswert(Mengeneinheit bezugswert) {
         this.bezugswert = bezugswert;
     }
 
     public Waehrungseinheit getEinheit() {
-        return Einheit;
+        return einheit;
     }
     public void setEinheit(Waehrungseinheit einheit) {
         this.einheit = einheit;
     }
 
     public Preisstatus getStatus() {
-        return Status;
+        return status;
     }
     public void setStatus(Preisstatus status) {
         this.status = status;
     }
 
     public Double getWert() {
-        return Wert;
+        return wert;
     }
     public void setWert(Double wert) {
         this.wert = wert;

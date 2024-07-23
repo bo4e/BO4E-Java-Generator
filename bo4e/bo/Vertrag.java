@@ -86,91 +86,91 @@ public class Vertrag extends Geschaeftsobjekt {
     private List<Vertragsteil> vertragsteile;
 
     public String getBeschreibung() {
-        return Beschreibung;
+        return beschreibung;
     }
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
 
     public Sparte getSparte() {
-        return Sparte;
+        return sparte;
     }
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
 
     public List<Unterschrift> getUnterzeichnervp1() {
-        return Unterzeichnervp1;
+        return unterzeichnervp1;
     }
     public void setUnterzeichnervp1(List<Unterschrift> unterzeichnervp1) {
         this.unterzeichnervp1 = unterzeichnervp1;
     }
 
     public List<Unterschrift> getUnterzeichnervp2() {
-        return Unterzeichnervp2;
+        return unterzeichnervp2;
     }
     public void setUnterzeichnervp2(List<Unterschrift> unterzeichnervp2) {
         this.unterzeichnervp2 = unterzeichnervp2;
     }
 
     public Vertragsart getVertragsart() {
-        return Vertragsart;
+        return vertragsart;
     }
     public void setVertragsart(Vertragsart vertragsart) {
         this.vertragsart = vertragsart;
     }
 
     public OffsetDateTime getVertragsbeginn() {
-        return Vertragsbeginn;
+        return vertragsbeginn;
     }
     public void setVertragsbeginn(OffsetDateTime vertragsbeginn) {
         this.vertragsbeginn = vertragsbeginn;
     }
 
     public OffsetDateTime getVertragsende() {
-        return Vertragsende;
+        return vertragsende;
     }
     public void setVertragsende(OffsetDateTime vertragsende) {
         this.vertragsende = vertragsende;
     }
 
     public Vertragskonditionen getVertragskonditionen() {
-        return Vertragskonditionen;
+        return vertragskonditionen;
     }
     public void setVertragskonditionen(Vertragskonditionen vertragskonditionen) {
         this.vertragskonditionen = vertragskonditionen;
     }
 
     public String getVertragsnummer() {
-        return Vertragsnummer;
+        return vertragsnummer;
     }
     public void setVertragsnummer(String vertragsnummer) {
         this.vertragsnummer = vertragsnummer;
     }
 
     public Geschaeftspartner getVertragspartner1() {
-        return Vertragspartner1;
+        return vertragspartner1;
     }
     public void setVertragspartner1(Geschaeftspartner vertragspartner1) {
         this.vertragspartner1 = vertragspartner1;
     }
 
     public Geschaeftspartner getVertragspartner2() {
-        return Vertragspartner2;
+        return vertragspartner2;
     }
     public void setVertragspartner2(Geschaeftspartner vertragspartner2) {
         this.vertragspartner2 = vertragspartner2;
     }
 
     public Vertragsstatus getVertragsstatus() {
-        return Vertragsstatus;
+        return vertragsstatus;
     }
     public void setVertragsstatus(Vertragsstatus vertragsstatus) {
         this.vertragsstatus = vertragsstatus;
     }
 
     public List<Vertragsteil> getVertragsteile() {
-        return Vertragsteile;
+        return vertragsteile;
     }
     public void setVertragsteile(List<Vertragsteil> vertragsteile) {
         this.vertragsteile = vertragsteile;

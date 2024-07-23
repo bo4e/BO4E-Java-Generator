@@ -19,14 +19,14 @@ public class Geokoordinaten extends COM {
     private Double laengengrad;
 
     public Double getBreitengrad() {
-        return Breitengrad;
+        return breitengrad;
     }
     public void setBreitengrad(Double breitengrad) {
         this.breitengrad = breitengrad;
     }
 
     public Double getLaengengrad() {
-        return Laengengrad;
+        return laengengrad;
     }
     public void setLaengengrad(Double laengengrad) {
         this.laengengrad = laengengrad;

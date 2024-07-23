@@ -55,56 +55,56 @@ public class AufAbschlag extends COM {
     private String website;
 
     public AufAbschlagstyp getAufAbschlagstyp() {
-        return AufAbschlagstyp;
+        return aufAbschlagstyp;
     }
     public void setAufAbschlagstyp(AufAbschlagstyp aufAbschlagstyp) {
         this.aufAbschlagstyp = aufAbschlagstyp;
     }
 
     public AufAbschlagsziel getAufAbschlagsziel() {
-        return AufAbschlagsziel;
+        return aufAbschlagsziel;
     }
     public void setAufAbschlagsziel(AufAbschlagsziel aufAbschlagsziel) {
         this.aufAbschlagsziel = aufAbschlagsziel;
     }
 
     public String getBeschreibung() {
-        return Beschreibung;
+        return beschreibung;
     }
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
 
     public String getBezeichnung() {
-        return Bezeichnung;
+        return bezeichnung;
     }
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
 
     public Waehrungseinheit getEinheit() {
-        return Einheit;
+        return einheit;
     }
     public void setEinheit(Waehrungseinheit einheit) {
         this.einheit = einheit;
     }
 
     public Zeitraum getGueltigkeitszeitraum() {
-        return Gueltigkeitszeitraum;
+        return gueltigkeitszeitraum;
     }
     public void setGueltigkeitszeitraum(Zeitraum gueltigkeitszeitraum) {
         this.gueltigkeitszeitraum = gueltigkeitszeitraum;
     }
 
     public List<Preisstaffel> getStaffeln() {
-        return Staffeln;
+        return staffeln;
     }
     public void setStaffeln(List<Preisstaffel> staffeln) {
         this.staffeln = staffeln;
     }
 
     public String getWebsite() {
-        return Website;
+        return website;
     }
     public void setWebsite(String website) {
         this.website = website;

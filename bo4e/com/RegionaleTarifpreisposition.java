@@ -45,35 +45,35 @@ public class RegionaleTarifpreisposition extends COM {
     private Preistyp preistyp;
 
     public Mengeneinheit getBezugseinheit() {
-        return Bezugseinheit;
+        return bezugseinheit;
     }
     public void setBezugseinheit(Mengeneinheit bezugseinheit) {
         this.bezugseinheit = bezugseinheit;
     }
 
     public Waehrungseinheit getEinheit() {
-        return Einheit;
+        return einheit;
     }
     public void setEinheit(Waehrungseinheit einheit) {
         this.einheit = einheit;
     }
 
     public Mengeneinheit getMengeneinheitstaffel() {
-        return Mengeneinheitstaffel;
+        return mengeneinheitstaffel;
     }
     public void setMengeneinheitstaffel(Mengeneinheit mengeneinheitstaffel) {
         this.mengeneinheitstaffel = mengeneinheitstaffel;
     }
 
     public List<RegionalePreisstaffel> getPreisstaffeln() {
-        return Preisstaffeln;
+        return preisstaffeln;
     }
     public void setPreisstaffeln(List<RegionalePreisstaffel> preisstaffeln) {
         this.preisstaffeln = preisstaffeln;
     }
 
     public Preistyp getPreistyp() {
-        return Preistyp;
+        return preistyp;
     }
     public void setPreistyp(Preistyp preistyp) {
         this.preistyp = preistyp;

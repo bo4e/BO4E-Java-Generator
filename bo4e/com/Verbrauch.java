@@ -50,49 +50,49 @@ public class Verbrauch extends COM {
     private Wertermittlungsverfahren wertermittlungsverfahren;
 
     public Mengeneinheit getEinheit() {
-        return Einheit;
+        return einheit;
     }
     public void setEinheit(Mengeneinheit einheit) {
         this.einheit = einheit;
     }
 
     public OffsetDateTime getEnddatum() {
-        return Enddatum;
+        return enddatum;
     }
     public void setEnddatum(OffsetDateTime enddatum) {
         this.enddatum = enddatum;
     }
 
     public Messwertstatus getMesswertstatus() {
-        return Messwertstatus;
+        return messwertstatus;
     }
     public void setMesswertstatus(Messwertstatus messwertstatus) {
         this.messwertstatus = messwertstatus;
     }
 
     public String getObisKennzahl() {
-        return ObisKennzahl;
+        return obisKennzahl;
     }
     public void setObisKennzahl(String obisKennzahl) {
         this.obisKennzahl = obisKennzahl;
     }
 
     public OffsetDateTime getStartdatum() {
-        return Startdatum;
+        return startdatum;
     }
     public void setStartdatum(OffsetDateTime startdatum) {
         this.startdatum = startdatum;
     }
 
     public Double getWert() {
-        return Wert;
+        return wert;
     }
     public void setWert(Double wert) {
         this.wert = wert;
     }
 
     public Wertermittlungsverfahren getWertermittlungsverfahren() {
-        return Wertermittlungsverfahren;
+        return wertermittlungsverfahren;
     }
     public void setWertermittlungsverfahren(Wertermittlungsverfahren wertermittlungsverfahren) {
         this.wertermittlungsverfahren = wertermittlungsverfahren;

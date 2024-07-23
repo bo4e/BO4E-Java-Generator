@@ -65,63 +65,63 @@ public class Zeitreihe extends Geschaeftsobjekt {
     private Wertermittlungsverfahren wertherkunft;
 
     public String getBeschreibung() {
-        return Beschreibung;
+        return beschreibung;
     }
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
 
     public String getBezeichnung() {
-        return Bezeichnung;
+        return bezeichnung;
     }
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
 
     public Mengeneinheit getEinheit() {
-        return Einheit;
+        return einheit;
     }
     public void setEinheit(Mengeneinheit einheit) {
         this.einheit = einheit;
     }
 
     public Medium getMedium() {
-        return Medium;
+        return medium;
     }
     public void setMedium(Medium medium) {
         this.medium = medium;
     }
 
     public Messart getMessart() {
-        return Messart;
+        return messart;
     }
     public void setMessart(Messart messart) {
         this.messart = messart;
     }
 
     public Messgroesse getMessgroesse() {
-        return Messgroesse;
+        return messgroesse;
     }
     public void setMessgroesse(Messgroesse messgroesse) {
         this.messgroesse = messgroesse;
     }
 
     public String getVersion() {
-        return Version;
+        return version;
     }
     public void setVersion(String version) {
         this.version = version;
     }
 
     public List<Zeitreihenwert> getWerte() {
-        return Werte;
+        return werte;
     }
     public void setWerte(List<Zeitreihenwert> werte) {
         this.werte = werte;
     }
 
     public Wertermittlungsverfahren getWertherkunft() {
-        return Wertherkunft;
+        return wertherkunft;
     }
     public void setWertherkunft(Wertermittlungsverfahren wertherkunft) {
         this.wertherkunft = wertherkunft;

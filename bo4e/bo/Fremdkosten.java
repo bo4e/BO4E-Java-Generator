@@ -42,21 +42,21 @@ public class Fremdkosten extends Geschaeftsobjekt {
     private Betrag summeKosten;
 
     public Zeitraum getGueltigkeit() {
-        return Gueltigkeit;
+        return gueltigkeit;
     }
     public void setGueltigkeit(Zeitraum gueltigkeit) {
         this.gueltigkeit = gueltigkeit;
     }
 
     public List<Fremdkostenblock> getKostenbloecke() {
-        return Kostenbloecke;
+        return kostenbloecke;
     }
     public void setKostenbloecke(List<Fremdkostenblock> kostenbloecke) {
         this.kostenbloecke = kostenbloecke;
     }
 
     public Betrag getSummeKosten() {
-        return SummeKosten;
+        return summeKosten;
     }
     public void setSummeKosten(Betrag summeKosten) {
         this.summeKosten = summeKosten;

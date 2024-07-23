@@ -91,119 +91,119 @@ public class Ausschreibungslos extends COM {
     private Zeitraum wunschZahlungsziel;
 
     public Long getAnzahlLieferstellen() {
-        return AnzahlLieferstellen;
+        return anzahlLieferstellen;
     }
     public void setAnzahlLieferstellen(Long anzahlLieferstellen) {
         this.anzahlLieferstellen = anzahlLieferstellen;
     }
 
     public String getBemerkung() {
-        return Bemerkung;
+        return bemerkung;
     }
     public void setBemerkung(String bemerkung) {
         this.bemerkung = bemerkung;
     }
 
     public String getBetreutDurch() {
-        return BetreutDurch;
+        return betreutDurch;
     }
     public void setBetreutDurch(String betreutDurch) {
         this.betreutDurch = betreutDurch;
     }
 
     public String getBezeichnung() {
-        return Bezeichnung;
+        return bezeichnung;
     }
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
 
     public Sparte getEnergieart() {
-        return Energieart;
+        return energieart;
     }
     public void setEnergieart(Sparte energieart) {
         this.energieart = energieart;
     }
 
     public Menge getGesamtMenge() {
-        return GesamtMenge;
+        return gesamtMenge;
     }
     public void setGesamtMenge(Menge gesamtMenge) {
         this.gesamtMenge = gesamtMenge;
     }
 
     public List<Ausschreibungsdetail> getLieferstellen() {
-        return Lieferstellen;
+        return lieferstellen;
     }
     public void setLieferstellen(List<Ausschreibungsdetail> lieferstellen) {
         this.lieferstellen = lieferstellen;
     }
 
     public Zeitraum getLieferzeitraum() {
-        return Lieferzeitraum;
+        return lieferzeitraum;
     }
     public void setLieferzeitraum(Zeitraum lieferzeitraum) {
         this.lieferzeitraum = lieferzeitraum;
     }
 
     public String getLosnummer() {
-        return Losnummer;
+        return losnummer;
     }
     public void setLosnummer(String losnummer) {
         this.losnummer = losnummer;
     }
 
     public Preismodell getPreismodell() {
-        return Preismodell;
+        return preismodell;
     }
     public void setPreismodell(Preismodell preismodell) {
         this.preismodell = preismodell;
     }
 
     public Zeitraum getWiederholungsintervall() {
-        return Wiederholungsintervall;
+        return wiederholungsintervall;
     }
     public void setWiederholungsintervall(Zeitraum wiederholungsintervall) {
         this.wiederholungsintervall = wiederholungsintervall;
     }
 
     public Zeitraum getWunschKuendingungsfrist() {
-        return WunschKuendingungsfrist;
+        return wunschKuendingungsfrist;
     }
     public void setWunschKuendingungsfrist(Zeitraum wunschKuendingungsfrist) {
         this.wunschKuendingungsfrist = wunschKuendingungsfrist;
     }
 
     public Menge getWunschMaximalmenge() {
-        return WunschMaximalmenge;
+        return wunschMaximalmenge;
     }
     public void setWunschMaximalmenge(Menge wunschMaximalmenge) {
         this.wunschMaximalmenge = wunschMaximalmenge;
     }
 
     public Menge getWunschMindestmenge() {
-        return WunschMindestmenge;
+        return wunschMindestmenge;
     }
     public void setWunschMindestmenge(Menge wunschMindestmenge) {
         this.wunschMindestmenge = wunschMindestmenge;
     }
 
     public Rechnungslegung getWunschRechnungslegung() {
-        return WunschRechnungslegung;
+        return wunschRechnungslegung;
     }
     public void setWunschRechnungslegung(Rechnungslegung wunschRechnungslegung) {
         this.wunschRechnungslegung = wunschRechnungslegung;
     }
 
     public Vertragsform getWunschVertragsform() {
-        return WunschVertragsform;
+        return wunschVertragsform;
     }
     public void setWunschVertragsform(Vertragsform wunschVertragsform) {
         this.wunschVertragsform = wunschVertragsform;
     }
 
     public Zeitraum getWunschZahlungsziel() {
-        return WunschZahlungsziel;
+        return wunschZahlungsziel;
     }
     public void setWunschZahlungsziel(Zeitraum wunschZahlungsziel) {
         this.wunschZahlungsziel = wunschZahlungsziel;

@@ -35,28 +35,28 @@ public class RegionalePreisgarantie extends COM {
     private Zeitraum zeitlicheGueltigkeit;
 
     public String getBeschreibung() {
-        return Beschreibung;
+        return beschreibung;
     }
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
 
     public Preisgarantietyp getPreisgarantietyp() {
-        return Preisgarantietyp;
+        return preisgarantietyp;
     }
     public void setPreisgarantietyp(Preisgarantietyp preisgarantietyp) {
         this.preisgarantietyp = preisgarantietyp;
     }
 
     public RegionaleGueltigkeit getRegionaleGueltigkeit() {
-        return RegionaleGueltigkeit;
+        return regionaleGueltigkeit;
     }
     public void setRegionaleGueltigkeit(RegionaleGueltigkeit regionaleGueltigkeit) {
         this.regionaleGueltigkeit = regionaleGueltigkeit;
     }
 
     public Zeitraum getZeitlicheGueltigkeit() {
-        return ZeitlicheGueltigkeit;
+        return zeitlicheGueltigkeit;
     }
     public void setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
         this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;

@@ -34,28 +34,28 @@ public class Preisstaffel extends COM {
     private Double staffelgrenzeVon;
 
     public Double getEinheitspreis() {
-        return Einheitspreis;
+        return einheitspreis;
     }
     public void setEinheitspreis(Double einheitspreis) {
         this.einheitspreis = einheitspreis;
     }
 
     public Sigmoidparameter getSigmoidparameter() {
-        return Sigmoidparameter;
+        return sigmoidparameter;
     }
     public void setSigmoidparameter(Sigmoidparameter sigmoidparameter) {
         this.sigmoidparameter = sigmoidparameter;
     }
 
     public Double getStaffelgrenzeBis() {
-        return StaffelgrenzeBis;
+        return staffelgrenzeBis;
     }
     public void setStaffelgrenzeBis(Double staffelgrenzeBis) {
         this.staffelgrenzeBis = staffelgrenzeBis;
     }
 
     public Double getStaffelgrenzeVon() {
-        return StaffelgrenzeVon;
+        return staffelgrenzeVon;
     }
     public void setStaffelgrenzeVon(Double staffelgrenzeVon) {
         this.staffelgrenzeVon = staffelgrenzeVon;

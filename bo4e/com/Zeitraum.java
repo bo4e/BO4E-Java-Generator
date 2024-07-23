@@ -30,42 +30,42 @@ public class Zeitraum extends COM {
     private OffsetDateTime startzeitpunkt;
 
     public Double getDauer() {
-        return Dauer;
+        return dauer;
     }
     public void setDauer(Double dauer) {
         this.dauer = dauer;
     }
 
     public Mengeneinheit getEinheit() {
-        return Einheit;
+        return einheit;
     }
     public void setEinheit(Mengeneinheit einheit) {
         this.einheit = einheit;
     }
 
     public OffsetDateTime getEnddatum() {
-        return Enddatum;
+        return enddatum;
     }
     public void setEnddatum(OffsetDateTime enddatum) {
         this.enddatum = enddatum;
     }
 
     public OffsetDateTime getEndzeitpunkt() {
-        return Endzeitpunkt;
+        return endzeitpunkt;
     }
     public void setEndzeitpunkt(OffsetDateTime endzeitpunkt) {
         this.endzeitpunkt = endzeitpunkt;
     }
 
     public OffsetDateTime getStartdatum() {
-        return Startdatum;
+        return startdatum;
     }
     public void setStartdatum(OffsetDateTime startdatum) {
         this.startdatum = startdatum;
     }
 
     public OffsetDateTime getStartzeitpunkt() {
-        return Startzeitpunkt;
+        return startzeitpunkt;
     }
     public void setStartzeitpunkt(OffsetDateTime startzeitpunkt) {
         this.startzeitpunkt = startzeitpunkt;

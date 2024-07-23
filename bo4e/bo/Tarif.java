@@ -118,140 +118,140 @@ public class Tarif extends Geschaeftsobjekt {
     private Zeitraum zeitlicheGueltigkeit;
 
     public Marktteilnehmer getAnbieter() {
-        return Anbieter;
+        return anbieter;
     }
     public void setAnbieter(Marktteilnehmer anbieter) {
         this.anbieter = anbieter;
     }
 
     public String getAnbietername() {
-        return Anbietername;
+        return anbietername;
     }
     public void setAnbietername(String anbietername) {
         this.anbietername = anbietername;
     }
 
     public OffsetDateTime getAnwendungVon() {
-        return AnwendungVon;
+        return anwendungVon;
     }
     public void setAnwendungVon(OffsetDateTime anwendungVon) {
         this.anwendungVon = anwendungVon;
     }
 
     public String getBemerkung() {
-        return Bemerkung;
+        return bemerkung;
     }
     public void setBemerkung(String bemerkung) {
         this.bemerkung = bemerkung;
     }
 
     public Tarifberechnungsparameter getBerechnungsparameter() {
-        return Berechnungsparameter;
+        return berechnungsparameter;
     }
     public void setBerechnungsparameter(Tarifberechnungsparameter berechnungsparameter) {
         this.berechnungsparameter = berechnungsparameter;
     }
 
     public String getBezeichnung() {
-        return Bezeichnung;
+        return bezeichnung;
     }
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
 
     public Energiemix getEnergiemix() {
-        return Energiemix;
+        return energiemix;
     }
     public void setEnergiemix(Energiemix energiemix) {
         this.energiemix = energiemix;
     }
 
     public List<Kundentyp> getKundentypen() {
-        return Kundentypen;
+        return kundentypen;
     }
     public void setKundentypen(List<Kundentyp> kundentypen) {
         this.kundentypen = kundentypen;
     }
 
     public Preisgarantie getPreisgarantie() {
-        return Preisgarantie;
+        return preisgarantie;
     }
     public void setPreisgarantie(Preisgarantie preisgarantie) {
         this.preisgarantie = preisgarantie;
     }
 
     public OffsetDateTime getPreisstand() {
-        return Preisstand;
+        return preisstand;
     }
     public void setPreisstand(OffsetDateTime preisstand) {
         this.preisstand = preisstand;
     }
 
     public Registeranzahl getRegisteranzahl() {
-        return Registeranzahl;
+        return registeranzahl;
     }
     public void setRegisteranzahl(Registeranzahl registeranzahl) {
         this.registeranzahl = registeranzahl;
     }
 
     public Sparte getSparte() {
-        return Sparte;
+        return sparte;
     }
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
 
     public List<AufAbschlagRegional> getTarifAufAbschlaege() {
-        return TarifAufAbschlaege;
+        return tarifAufAbschlaege;
     }
     public void setTarifAufAbschlaege(List<AufAbschlagRegional> tarifAufAbschlaege) {
         this.tarifAufAbschlaege = tarifAufAbschlaege;
     }
 
     public Tarifeinschraenkung getTarifeinschraenkung() {
-        return Tarifeinschraenkung;
+        return tarifeinschraenkung;
     }
     public void setTarifeinschraenkung(Tarifeinschraenkung tarifeinschraenkung) {
         this.tarifeinschraenkung = tarifeinschraenkung;
     }
 
     public List<Tarifmerkmal> getTarifmerkmale() {
-        return Tarifmerkmale;
+        return tarifmerkmale;
     }
     public void setTarifmerkmale(List<Tarifmerkmal> tarifmerkmale) {
         this.tarifmerkmale = tarifmerkmale;
     }
 
     public List<TarifpreispositionProOrt> getTarifpreise() {
-        return Tarifpreise;
+        return tarifpreise;
     }
     public void setTarifpreise(List<TarifpreispositionProOrt> tarifpreise) {
         this.tarifpreise = tarifpreise;
     }
 
     public Tariftyp getTariftyp() {
-        return Tariftyp;
+        return tariftyp;
     }
     public void setTariftyp(Tariftyp tariftyp) {
         this.tariftyp = tariftyp;
     }
 
     public Vertragskonditionen getVertragskonditionen() {
-        return Vertragskonditionen;
+        return vertragskonditionen;
     }
     public void setVertragskonditionen(Vertragskonditionen vertragskonditionen) {
         this.vertragskonditionen = vertragskonditionen;
     }
 
     public String getWebsite() {
-        return Website;
+        return website;
     }
     public void setWebsite(String website) {
         this.website = website;
     }
 
     public Zeitraum getZeitlicheGueltigkeit() {
-        return ZeitlicheGueltigkeit;
+        return zeitlicheGueltigkeit;
     }
     public void setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
         this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;

@@ -31,21 +31,21 @@ public class Konzessionsabgabe extends COM {
     private AbgabeArt satz;
 
     public String getKategorie() {
-        return Kategorie;
+        return kategorie;
     }
     public void setKategorie(String kategorie) {
         this.kategorie = kategorie;
     }
 
     public Double getKosten() {
-        return Kosten;
+        return kosten;
     }
     public void setKosten(Double kosten) {
         this.kosten = kosten;
     }
 
     public AbgabeArt getSatz() {
-        return Satz;
+        return satz;
     }
     public void setSatz(AbgabeArt satz) {
         this.satz = satz;

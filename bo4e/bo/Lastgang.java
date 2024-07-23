@@ -59,56 +59,56 @@ public class Lastgang extends Geschaeftsobjekt {
     private Menge zeitIntervallLaenge;
 
     public Marktlokation getMarktlokation() {
-        return Marktlokation;
+        return marktlokation;
     }
     public void setMarktlokation(Marktlokation marktlokation) {
         this.marktlokation = marktlokation;
     }
 
     public Mengeneinheit getMessgroesse() {
-        return Messgroesse;
+        return messgroesse;
     }
     public void setMessgroesse(Mengeneinheit messgroesse) {
         this.messgroesse = messgroesse;
     }
 
     public Messlokation getMesslokation() {
-        return Messlokation;
+        return messlokation;
     }
     public void setMesslokation(Messlokation messlokation) {
         this.messlokation = messlokation;
     }
 
     public String getObisKennzahl() {
-        return ObisKennzahl;
+        return obisKennzahl;
     }
     public void setObisKennzahl(String obisKennzahl) {
         this.obisKennzahl = obisKennzahl;
     }
 
     public Sparte getSparte() {
-        return Sparte;
+        return sparte;
     }
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
 
     public String getVersion() {
-        return Version;
+        return version;
     }
     public void setVersion(String version) {
         this.version = version;
     }
 
     public List<Zeitreihenwert> getWerte() {
-        return Werte;
+        return werte;
     }
     public void setWerte(List<Zeitreihenwert> werte) {
         this.werte = werte;
     }
 
     public Menge getZeitIntervallLaenge() {
-        return ZeitIntervallLaenge;
+        return zeitIntervallLaenge;
     }
     public void setZeitIntervallLaenge(Menge zeitIntervallLaenge) {
         this.zeitIntervallLaenge = zeitIntervallLaenge;

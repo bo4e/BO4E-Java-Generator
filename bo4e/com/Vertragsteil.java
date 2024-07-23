@@ -44,42 +44,42 @@ public class Vertragsteil extends COM {
     private OffsetDateTime vertragsteilende;
 
     public String getLokation() {
-        return Lokation;
+        return lokation;
     }
     public void setLokation(String lokation) {
         this.lokation = lokation;
     }
 
     public Menge getMaximaleAbnahmemenge() {
-        return MaximaleAbnahmemenge;
+        return maximaleAbnahmemenge;
     }
     public void setMaximaleAbnahmemenge(Menge maximaleAbnahmemenge) {
         this.maximaleAbnahmemenge = maximaleAbnahmemenge;
     }
 
     public Menge getMinimaleAbnahmemenge() {
-        return MinimaleAbnahmemenge;
+        return minimaleAbnahmemenge;
     }
     public void setMinimaleAbnahmemenge(Menge minimaleAbnahmemenge) {
         this.minimaleAbnahmemenge = minimaleAbnahmemenge;
     }
 
     public Menge getVertraglichFixierteMenge() {
-        return VertraglichFixierteMenge;
+        return vertraglichFixierteMenge;
     }
     public void setVertraglichFixierteMenge(Menge vertraglichFixierteMenge) {
         this.vertraglichFixierteMenge = vertraglichFixierteMenge;
     }
 
     public OffsetDateTime getVertragsteilbeginn() {
-        return Vertragsteilbeginn;
+        return vertragsteilbeginn;
     }
     public void setVertragsteilbeginn(OffsetDateTime vertragsteilbeginn) {
         this.vertragsteilbeginn = vertragsteilbeginn;
     }
 
     public OffsetDateTime getVertragsteilende() {
-        return Vertragsteilende;
+        return vertragsteilende;
     }
     public void setVertragsteilende(OffsetDateTime vertragsteilende) {
         this.vertragsteilende = vertragsteilende;

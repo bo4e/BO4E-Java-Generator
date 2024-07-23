@@ -44,42 +44,42 @@ public class Vertragskonditionen extends COM {
     private Zeitraum vertragsverlaengerung;
 
     public Zeitraum getAbschlagszyklus() {
-        return Abschlagszyklus;
+        return abschlagszyklus;
     }
     public void setAbschlagszyklus(Zeitraum abschlagszyklus) {
         this.abschlagszyklus = abschlagszyklus;
     }
 
     public Double getAnzahlAbschlaege() {
-        return AnzahlAbschlaege;
+        return anzahlAbschlaege;
     }
     public void setAnzahlAbschlaege(Double anzahlAbschlaege) {
         this.anzahlAbschlaege = anzahlAbschlaege;
     }
 
     public String getBeschreibung() {
-        return Beschreibung;
+        return beschreibung;
     }
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
 
     public Zeitraum getKuendigungsfrist() {
-        return Kuendigungsfrist;
+        return kuendigungsfrist;
     }
     public void setKuendigungsfrist(Zeitraum kuendigungsfrist) {
         this.kuendigungsfrist = kuendigungsfrist;
     }
 
     public Zeitraum getVertragslaufzeit() {
-        return Vertragslaufzeit;
+        return vertragslaufzeit;
     }
     public void setVertragslaufzeit(Zeitraum vertragslaufzeit) {
         this.vertragslaufzeit = vertragslaufzeit;
     }
 
     public Zeitraum getVertragsverlaengerung() {
-        return Vertragsverlaengerung;
+        return vertragsverlaengerung;
     }
     public void setVertragsverlaengerung(Zeitraum vertragsverlaengerung) {
         this.vertragsverlaengerung = vertragsverlaengerung;

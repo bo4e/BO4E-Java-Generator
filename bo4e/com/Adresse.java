@@ -56,63 +56,63 @@ public class Adresse extends COM {
     private String strasse;
 
     public String getAdresszusatz() {
-        return Adresszusatz;
+        return adresszusatz;
     }
     public void setAdresszusatz(String adresszusatz) {
         this.adresszusatz = adresszusatz;
     }
 
     public String getCoErgaenzung() {
-        return CoErgaenzung;
+        return coErgaenzung;
     }
     public void setCoErgaenzung(String coErgaenzung) {
         this.coErgaenzung = coErgaenzung;
     }
 
     public String getHausnummer() {
-        return Hausnummer;
+        return hausnummer;
     }
     public void setHausnummer(String hausnummer) {
         this.hausnummer = hausnummer;
     }
 
     public Landescode getLandescode() {
-        return Landescode;
+        return landescode;
     }
     public void setLandescode(Landescode landescode) {
         this.landescode = landescode;
     }
 
     public String getOrt() {
-        return Ort;
+        return ort;
     }
     public void setOrt(String ort) {
         this.ort = ort;
     }
 
     public String getOrtsteil() {
-        return Ortsteil;
+        return ortsteil;
     }
     public void setOrtsteil(String ortsteil) {
         this.ortsteil = ortsteil;
     }
 
     public String getPostfach() {
-        return Postfach;
+        return postfach;
     }
     public void setPostfach(String postfach) {
         this.postfach = postfach;
     }
 
     public String getPostleitzahl() {
-        return Postleitzahl;
+        return postleitzahl;
     }
     public void setPostleitzahl(String postleitzahl) {
         this.postleitzahl = postleitzahl;
     }
 
     public String getStrasse() {
-        return Strasse;
+        return strasse;
     }
     public void setStrasse(String strasse) {
         this.strasse = strasse;

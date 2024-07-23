@@ -36,28 +36,28 @@ public class Steuerbetrag extends COM {
     private Waehrungscode waehrung;
 
     public Double getBasiswert() {
-        return Basiswert;
+        return basiswert;
     }
     public void setBasiswert(Double basiswert) {
         this.basiswert = basiswert;
     }
 
     public Steuerkennzeichen getSteuerkennzeichen() {
-        return Steuerkennzeichen;
+        return steuerkennzeichen;
     }
     public void setSteuerkennzeichen(Steuerkennzeichen steuerkennzeichen) {
         this.steuerkennzeichen = steuerkennzeichen;
     }
 
     public Double getSteuerwert() {
-        return Steuerwert;
+        return steuerwert;
     }
     public void setSteuerwert(Double steuerwert) {
         this.steuerwert = steuerwert;
     }
 
     public Waehrungscode getWaehrung() {
-        return Waehrung;
+        return waehrung;
     }
     public void setWaehrung(Waehrungscode waehrung) {
         this.waehrung = waehrung;

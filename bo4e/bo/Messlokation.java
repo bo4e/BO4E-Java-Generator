@@ -79,84 +79,84 @@ public class Messlokation extends Geschaeftsobjekt {
     private Sparte sparte;
 
     public Geokoordinaten getGeoadresse() {
-        return Geoadresse;
+        return geoadresse;
     }
     public void setGeoadresse(Geokoordinaten geoadresse) {
         this.geoadresse = geoadresse;
     }
 
     public List<Geraet> getGeraete() {
-        return Geraete;
+        return geraete;
     }
     public void setGeraete(List<Geraet> geraete) {
         this.geraete = geraete;
     }
 
     public String getGrundzustaendigerMsbCodenr() {
-        return GrundzustaendigerMsbCodenr;
+        return grundzustaendigerMsbCodenr;
     }
     public void setGrundzustaendigerMsbCodenr(String grundzustaendigerMsbCodenr) {
         this.grundzustaendigerMsbCodenr = grundzustaendigerMsbCodenr;
     }
 
     public String getGrundzustaendigerMsbimCodenr() {
-        return GrundzustaendigerMsbimCodenr;
+        return grundzustaendigerMsbimCodenr;
     }
     public void setGrundzustaendigerMsbimCodenr(String grundzustaendigerMsbimCodenr) {
         this.grundzustaendigerMsbimCodenr = grundzustaendigerMsbimCodenr;
     }
 
     public Katasteradresse getKatasterinformation() {
-        return Katasterinformation;
+        return katasterinformation;
     }
     public void setKatasterinformation(Katasteradresse katasterinformation) {
         this.katasterinformation = katasterinformation;
     }
 
     public Adresse getMessadresse() {
-        return Messadresse;
+        return messadresse;
     }
     public void setMessadresse(Adresse messadresse) {
         this.messadresse = messadresse;
     }
 
     public List<Dienstleistung> getMessdienstleistung() {
-        return Messdienstleistung;
+        return messdienstleistung;
     }
     public void setMessdienstleistung(List<Dienstleistung> messdienstleistung) {
         this.messdienstleistung = messdienstleistung;
     }
 
     public String getMessgebietnr() {
-        return Messgebietnr;
+        return messgebietnr;
     }
     public void setMessgebietnr(String messgebietnr) {
         this.messgebietnr = messgebietnr;
     }
 
     public String getMesslokationsId() {
-        return MesslokationsId;
+        return messlokationsId;
     }
     public void setMesslokationsId(String messlokationsId) {
         this.messlokationsId = messlokationsId;
     }
 
     public List<Zaehler> getMesslokationszaehler() {
-        return Messlokationszaehler;
+        return messlokationszaehler;
     }
     public void setMesslokationszaehler(List<Zaehler> messlokationszaehler) {
         this.messlokationszaehler = messlokationszaehler;
     }
 
     public Netzebene getNetzebeneMessung() {
-        return NetzebeneMessung;
+        return netzebeneMessung;
     }
     public void setNetzebeneMessung(Netzebene netzebeneMessung) {
         this.netzebeneMessung = netzebeneMessung;
     }
 
     public Sparte getSparte() {
-        return Sparte;
+        return sparte;
     }
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;

@@ -28,14 +28,14 @@ public class RegionaleGueltigkeit extends COM {
     private List<KriteriumWert> kriteriumsWerte;
 
     public Gueltigkeitstyp getGueltigkeitstyp() {
-        return Gueltigkeitstyp;
+        return gueltigkeitstyp;
     }
     public void setGueltigkeitstyp(Gueltigkeitstyp gueltigkeitstyp) {
         this.gueltigkeitstyp = gueltigkeitstyp;
     }
 
     public List<KriteriumWert> getKriteriumsWerte() {
-        return KriteriumsWerte;
+        return kriteriumsWerte;
     }
     public void setKriteriumsWerte(List<KriteriumWert> kriteriumsWerte) {
         this.kriteriumsWerte = kriteriumsWerte;

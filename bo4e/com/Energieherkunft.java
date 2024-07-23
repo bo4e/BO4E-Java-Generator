@@ -27,14 +27,14 @@ public class Energieherkunft extends COM {
     private Erzeugungsart erzeugungsart;
 
     public Double getAnteilProzent() {
-        return AnteilProzent;
+        return anteilProzent;
     }
     public void setAnteilProzent(Double anteilProzent) {
         this.anteilProzent = anteilProzent;
     }
 
     public Erzeugungsart getErzeugungsart() {
-        return Erzeugungsart;
+        return erzeugungsart;
     }
     public void setErzeugungsart(Erzeugungsart erzeugungsart) {
         this.erzeugungsart = erzeugungsart;

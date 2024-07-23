@@ -27,14 +27,14 @@ public class Dienstleistung extends COM {
     private Dienstleistungstyp dienstleistungstyp;
 
     public String getBezeichnung() {
-        return Bezeichnung;
+        return bezeichnung;
     }
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
 
     public Dienstleistungstyp getDienstleistungstyp() {
-        return Dienstleistungstyp;
+        return dienstleistungstyp;
     }
     public void setDienstleistungstyp(Dienstleistungstyp dienstleistungstyp) {
         this.dienstleistungstyp = dienstleistungstyp;

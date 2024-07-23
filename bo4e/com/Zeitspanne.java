@@ -29,14 +29,14 @@ public class Zeitspanne extends COM {
     private OffsetDateTime start;
 
     public OffsetDateTime getEnde() {
-        return Ende;
+        return ende;
     }
     public void setEnde(OffsetDateTime ende) {
         this.ende = ende;
     }
 
     public OffsetDateTime getStart() {
-        return Start;
+        return start;
     }
     public void setStart(OffsetDateTime start) {
         this.start = start;

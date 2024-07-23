@@ -37,35 +37,35 @@ public class TarifpreisstaffelProOrt extends COM {
     private Double staffelgrenzeVon;
 
     public Double getArbeitspreis() {
-        return Arbeitspreis;
+        return arbeitspreis;
     }
     public void setArbeitspreis(Double arbeitspreis) {
         this.arbeitspreis = arbeitspreis;
     }
 
     public Double getArbeitspreisNT() {
-        return ArbeitspreisNT;
+        return arbeitspreisNT;
     }
     public void setArbeitspreisNT(Double arbeitspreisNT) {
         this.arbeitspreisNT = arbeitspreisNT;
     }
 
     public Double getGrundpreis() {
-        return Grundpreis;
+        return grundpreis;
     }
     public void setGrundpreis(Double grundpreis) {
         this.grundpreis = grundpreis;
     }
 
     public Double getStaffelgrenzeBis() {
-        return StaffelgrenzeBis;
+        return staffelgrenzeBis;
     }
     public void setStaffelgrenzeBis(Double staffelgrenzeBis) {
         this.staffelgrenzeBis = staffelgrenzeBis;
     }
 
     public Double getStaffelgrenzeVon() {
-        return StaffelgrenzeVon;
+        return staffelgrenzeVon;
     }
     public void setStaffelgrenzeVon(Double staffelgrenzeVon) {
         this.staffelgrenzeVon = staffelgrenzeVon;

@@ -96,112 +96,112 @@ public class Zaehler extends Geschaeftsobjekt {
     private List<Zaehlwerk> zaehlwerke;
 
     public Befestigungsart getBefestigungsart() {
-        return Befestigungsart;
+        return befestigungsart;
     }
     public void setBefestigungsart(Befestigungsart befestigungsart) {
         this.befestigungsart = befestigungsart;
     }
 
     public OffsetDateTime getEichungBis() {
-        return EichungBis;
+        return eichungBis;
     }
     public void setEichungBis(OffsetDateTime eichungBis) {
         this.eichungBis = eichungBis;
     }
 
     public List<Geraet> getGeraete() {
-        return Geraete;
+        return geraete;
     }
     public void setGeraete(List<Geraet> geraete) {
         this.geraete = geraete;
     }
 
     public Boolean getIstFernschaltbar() {
-        return IstFernschaltbar;
+        return istFernschaltbar;
     }
     public void setIstFernschaltbar(Boolean istFernschaltbar) {
         this.istFernschaltbar = istFernschaltbar;
     }
 
     public OffsetDateTime getLetzteEichung() {
-        return LetzteEichung;
+        return letzteEichung;
     }
     public void setLetzteEichung(OffsetDateTime letzteEichung) {
         this.letzteEichung = letzteEichung;
     }
 
     public Messwerterfassung getMesswerterfassung() {
-        return Messwerterfassung;
+        return messwerterfassung;
     }
     public void setMesswerterfassung(Messwerterfassung messwerterfassung) {
         this.messwerterfassung = messwerterfassung;
     }
 
     public Registeranzahl getRegisteranzahl() {
-        return Registeranzahl;
+        return registeranzahl;
     }
     public void setRegisteranzahl(Registeranzahl registeranzahl) {
         this.registeranzahl = registeranzahl;
     }
 
     public Sparte getSparte() {
-        return Sparte;
+        return sparte;
     }
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
 
     public Zaehlerauspraegung getZaehlerauspraegung() {
-        return Zaehlerauspraegung;
+        return zaehlerauspraegung;
     }
     public void setZaehlerauspraegung(Zaehlerauspraegung zaehlerauspraegung) {
         this.zaehlerauspraegung = zaehlerauspraegung;
     }
 
     public Zaehlergroesse getZaehlergroesse() {
-        return Zaehlergroesse;
+        return zaehlergroesse;
     }
     public void setZaehlergroesse(Zaehlergroesse zaehlergroesse) {
         this.zaehlergroesse = zaehlergroesse;
     }
 
     public Geschaeftspartner getZaehlerhersteller() {
-        return Zaehlerhersteller;
+        return zaehlerhersteller;
     }
     public void setZaehlerhersteller(Geschaeftspartner zaehlerhersteller) {
         this.zaehlerhersteller = zaehlerhersteller;
     }
 
     public Double getZaehlerkonstante() {
-        return Zaehlerkonstante;
+        return zaehlerkonstante;
     }
     public void setZaehlerkonstante(Double zaehlerkonstante) {
         this.zaehlerkonstante = zaehlerkonstante;
     }
 
     public String getZaehlernummer() {
-        return Zaehlernummer;
+        return zaehlernummer;
     }
     public void setZaehlernummer(String zaehlernummer) {
         this.zaehlernummer = zaehlernummer;
     }
 
     public Zaehlertyp getZaehlertyp() {
-        return Zaehlertyp;
+        return zaehlertyp;
     }
     public void setZaehlertyp(Zaehlertyp zaehlertyp) {
         this.zaehlertyp = zaehlertyp;
     }
 
     public ZaehlertypSpezifikation getZaehlertypSpezifikation() {
-        return ZaehlertypSpezifikation;
+        return zaehlertypSpezifikation;
     }
     public void setZaehlertypSpezifikation(ZaehlertypSpezifikation zaehlertypSpezifikation) {
         this.zaehlertypSpezifikation = zaehlertypSpezifikation;
     }
 
     public List<Zaehlwerk> getZaehlwerke() {
-        return Zaehlwerke;
+        return zaehlwerke;
     }
     public void setZaehlwerke(List<Zaehlwerk> zaehlwerke) {
         this.zaehlwerke = zaehlwerke;

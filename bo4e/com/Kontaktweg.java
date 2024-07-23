@@ -35,28 +35,28 @@ public class Kontaktweg extends COM {
     private String kontaktwert;
 
     public String getBeschreibung() {
-        return Beschreibung;
+        return beschreibung;
     }
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
 
     public Boolean getIstBevorzugterKontaktweg() {
-        return IstBevorzugterKontaktweg;
+        return istBevorzugterKontaktweg;
     }
     public void setIstBevorzugterKontaktweg(Boolean istBevorzugterKontaktweg) {
         this.istBevorzugterKontaktweg = istBevorzugterKontaktweg;
     }
 
     public Kontaktart getKontaktart() {
-        return Kontaktart;
+        return kontaktart;
     }
     public void setKontaktart(Kontaktart kontaktart) {
         this.kontaktart = kontaktart;
     }
 
     public String getKontaktwert() {
-        return Kontaktwert;
+        return kontaktwert;
     }
     public void setKontaktwert(String kontaktwert) {
         this.kontaktwert = kontaktwert;

@@ -71,70 +71,70 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
     private Sparte sparte;
 
     public Dienstleistungstyp getBasisdienstleistung() {
-        return Basisdienstleistung;
+        return basisdienstleistung;
     }
     public void setBasisdienstleistung(Dienstleistungstyp basisdienstleistung) {
         this.basisdienstleistung = basisdienstleistung;
     }
 
     public String getBezeichnung() {
-        return Bezeichnung;
+        return bezeichnung;
     }
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
 
     public Bilanzierungsmethode getBilanzierungsmethode() {
-        return Bilanzierungsmethode;
+        return bilanzierungsmethode;
     }
     public void setBilanzierungsmethode(Bilanzierungsmethode bilanzierungsmethode) {
         this.bilanzierungsmethode = bilanzierungsmethode;
     }
 
     public Geraet getGeraetedetails() {
-        return Geraetedetails;
+        return geraetedetails;
     }
     public void setGeraetedetails(Geraet geraetedetails) {
         this.geraetedetails = geraetedetails;
     }
 
     public Zeitraum getGueltigkeit() {
-        return Gueltigkeit;
+        return gueltigkeit;
     }
     public void setGueltigkeit(Zeitraum gueltigkeit) {
         this.gueltigkeit = gueltigkeit;
     }
 
     public Marktteilnehmer getHerausgeber() {
-        return Herausgeber;
+        return herausgeber;
     }
     public void setHerausgeber(Marktteilnehmer herausgeber) {
         this.herausgeber = herausgeber;
     }
 
     public List<Dienstleistungstyp> getInklusiveDienstleistungen() {
-        return InklusiveDienstleistungen;
+        return inklusiveDienstleistungen;
     }
     public void setInklusiveDienstleistungen(List<Dienstleistungstyp> inklusiveDienstleistungen) {
         this.inklusiveDienstleistungen = inklusiveDienstleistungen;
     }
 
     public List<Preisposition> getPreispositionen() {
-        return Preispositionen;
+        return preispositionen;
     }
     public void setPreispositionen(List<Preisposition> preispositionen) {
         this.preispositionen = preispositionen;
     }
 
     public Preisstatus getPreisstatus() {
-        return Preisstatus;
+        return preisstatus;
     }
     public void setPreisstatus(Preisstatus preisstatus) {
         this.preisstatus = preisstatus;
     }
 
     public Sparte getSparte() {
-        return Sparte;
+        return sparte;
     }
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;

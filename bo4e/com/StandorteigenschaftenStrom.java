@@ -29,21 +29,21 @@ public class StandorteigenschaftenStrom extends COM {
     private String regelzoneEic;
 
     public String getBilanzierungsgebietEic() {
-        return BilanzierungsgebietEic;
+        return bilanzierungsgebietEic;
     }
     public void setBilanzierungsgebietEic(String bilanzierungsgebietEic) {
         this.bilanzierungsgebietEic = bilanzierungsgebietEic;
     }
 
     public String getRegelzone() {
-        return Regelzone;
+        return regelzone;
     }
     public void setRegelzone(String regelzone) {
         this.regelzone = regelzone;
     }
 
     public String getRegelzoneEic() {
-        return RegelzoneEic;
+        return regelzoneEic;
     }
     public void setRegelzoneEic(String regelzoneEic) {
         this.regelzoneEic = regelzoneEic;

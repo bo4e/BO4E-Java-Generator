@@ -70,70 +70,70 @@ public class Person extends Geschaeftsobjekt {
     private List<Zustaendigkeit> zustaendigkeiten;
 
     public Adresse getAdresse() {
-        return Adresse;
+        return adresse;
     }
     public void setAdresse(Adresse adresse) {
         this.adresse = adresse;
     }
 
     public Anrede getAnrede() {
-        return Anrede;
+        return anrede;
     }
     public void setAnrede(Anrede anrede) {
         this.anrede = anrede;
     }
 
     public OffsetDateTime getGeburtsdatum() {
-        return Geburtsdatum;
+        return geburtsdatum;
     }
     public void setGeburtsdatum(OffsetDateTime geburtsdatum) {
         this.geburtsdatum = geburtsdatum;
     }
 
     public String getIndividuelleAnrede() {
-        return IndividuelleAnrede;
+        return individuelleAnrede;
     }
     public void setIndividuelleAnrede(String individuelleAnrede) {
         this.individuelleAnrede = individuelleAnrede;
     }
 
     public String getKommentar() {
-        return Kommentar;
+        return kommentar;
     }
     public void setKommentar(String kommentar) {
         this.kommentar = kommentar;
     }
 
     public List<Kontaktweg> getKontaktwege() {
-        return Kontaktwege;
+        return kontaktwege;
     }
     public void setKontaktwege(List<Kontaktweg> kontaktwege) {
         this.kontaktwege = kontaktwege;
     }
 
     public String getNachname() {
-        return Nachname;
+        return nachname;
     }
     public void setNachname(String nachname) {
         this.nachname = nachname;
     }
 
     public Titel getTitel() {
-        return Titel;
+        return titel;
     }
     public void setTitel(Titel titel) {
         this.titel = titel;
     }
 
     public String getVorname() {
-        return Vorname;
+        return vorname;
     }
     public void setVorname(String vorname) {
         this.vorname = vorname;
     }
 
     public List<Zustaendigkeit> getZustaendigkeiten() {
-        return Zustaendigkeiten;
+        return zustaendigkeiten;
     }
     public void setZustaendigkeiten(List<Zustaendigkeit> zustaendigkeiten) {
         this.zustaendigkeiten = zustaendigkeiten;

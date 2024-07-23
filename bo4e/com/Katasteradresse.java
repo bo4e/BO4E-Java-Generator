@@ -19,14 +19,14 @@ public class Katasteradresse extends COM {
     private String gemarkungFlur;
 
     public String getFlurstueck() {
-        return Flurstueck;
+        return flurstueck;
     }
     public void setFlurstueck(String flurstueck) {
         this.flurstueck = flurstueck;
     }
 
     public String getGemarkungFlur() {
-        return GemarkungFlur;
+        return gemarkungFlur;
     }
     public void setGemarkungFlur(String gemarkungFlur) {
         this.gemarkungFlur = gemarkungFlur;

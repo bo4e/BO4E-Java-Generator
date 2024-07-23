@@ -68,84 +68,84 @@ public class Energiemix extends COM {
     private String website;
 
     public List<Energieherkunft> getAnteil() {
-        return Anteil;
+        return anteil;
     }
     public void setAnteil(List<Energieherkunft> anteil) {
         this.anteil = anteil;
     }
 
     public Double getAtommuell() {
-        return Atommuell;
+        return atommuell;
     }
     public void setAtommuell(Double atommuell) {
         this.atommuell = atommuell;
     }
 
     public String getBemerkung() {
-        return Bemerkung;
+        return bemerkung;
     }
     public void setBemerkung(String bemerkung) {
         this.bemerkung = bemerkung;
     }
 
     public String getBezeichnung() {
-        return Bezeichnung;
+        return bezeichnung;
     }
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
 
     public Double getCo2Emission() {
-        return Co2Emission;
+        return co2Emission;
     }
     public void setCo2Emission(Double co2Emission) {
         this.co2Emission = co2Emission;
     }
 
     public Sparte getEnergieart() {
-        return Energieart;
+        return energieart;
     }
     public void setEnergieart(Sparte energieart) {
         this.energieart = energieart;
     }
 
     public Long getEnergiemixnummer() {
-        return Energiemixnummer;
+        return energiemixnummer;
     }
     public void setEnergiemixnummer(Long energiemixnummer) {
         this.energiemixnummer = energiemixnummer;
     }
 
     public Long getGueltigkeitsjahr() {
-        return Gueltigkeitsjahr;
+        return gueltigkeitsjahr;
     }
     public void setGueltigkeitsjahr(Long gueltigkeitsjahr) {
         this.gueltigkeitsjahr = gueltigkeitsjahr;
     }
 
     public Boolean getIstInOekoTopTen() {
-        return IstInOekoTopTen;
+        return istInOekoTopTen;
     }
     public void setIstInOekoTopTen(Boolean istInOekoTopTen) {
         this.istInOekoTopTen = istInOekoTopTen;
     }
 
     public List<Oekolabel> getOekolabel() {
-        return Oekolabel;
+        return oekolabel;
     }
     public void setOekolabel(List<Oekolabel> oekolabel) {
         this.oekolabel = oekolabel;
     }
 
     public List<Oekozertifikat> getOekozertifikate() {
-        return Oekozertifikate;
+        return oekozertifikate;
     }
     public void setOekozertifikate(List<Oekozertifikat> oekozertifikate) {
         this.oekozertifikate = oekozertifikate;
     }
 
     public String getWebsite() {
-        return Website;
+        return website;
     }
     public void setWebsite(String website) {
         this.website = website;

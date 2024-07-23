@@ -27,14 +27,14 @@ public class KriteriumWert extends COM {
     private String wert;
 
     public Tarifregionskriterium getKriterium() {
-        return Kriterium;
+        return kriterium;
     }
     public void setKriterium(Tarifregionskriterium kriterium) {
         this.kriterium = kriterium;
     }
 
     public String getWert() {
-        return Wert;
+        return wert;
     }
     public void setWert(String wert) {
         this.wert = wert;

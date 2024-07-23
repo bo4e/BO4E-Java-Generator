@@ -25,14 +25,14 @@ public class MarktgebietInfo extends COM {
     private String marktgebietcode;
 
     public String getMarktgebiet() {
-        return Marktgebiet;
+        return marktgebiet;
     }
     public void setMarktgebiet(String marktgebiet) {
         this.marktgebiet = marktgebiet;
     }
 
     public String getMarktgebietcode() {
-        return Marktgebietcode;
+        return marktgebietcode;
     }
     public void setMarktgebietcode(String marktgebietcode) {
         this.marktgebietcode = marktgebietcode;

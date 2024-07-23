@@ -34,28 +34,28 @@ public class Sigmoidparameter extends COM {
     private Double d;
 
     public Double getA() {
-        return A;
+        return a;
     }
     public void setA(Double a) {
         this.a = a;
     }
 
     public Double getB() {
-        return B;
+        return b;
     }
     public void setB(Double b) {
         this.b = b;
     }
 
     public Double getC() {
-        return C;
+        return c;
     }
     public void setC(Double c) {
         this.c = c;
     }
 
     public Double getD() {
-        return D;
+        return d;
     }
     public void setD(Double d) {
         this.d = d;

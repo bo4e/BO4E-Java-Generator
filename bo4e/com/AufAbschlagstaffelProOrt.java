@@ -29,21 +29,21 @@ public class AufAbschlagstaffelProOrt extends COM {
     private Double wert;
 
     public Double getStaffelgrenzeBis() {
-        return StaffelgrenzeBis;
+        return staffelgrenzeBis;
     }
     public void setStaffelgrenzeBis(Double staffelgrenzeBis) {
         this.staffelgrenzeBis = staffelgrenzeBis;
     }
 
     public Double getStaffelgrenzeVon() {
-        return StaffelgrenzeVon;
+        return staffelgrenzeVon;
     }
     public void setStaffelgrenzeVon(Double staffelgrenzeVon) {
         this.staffelgrenzeVon = staffelgrenzeVon;
     }
 
     public Double getWert() {
-        return Wert;
+        return wert;
     }
     public void setWert(Double wert) {
         this.wert = wert;

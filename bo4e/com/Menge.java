@@ -26,14 +26,14 @@ public class Menge extends COM {
     private Double wert;
 
     public Mengeneinheit getEinheit() {
-        return Einheit;
+        return einheit;
     }
     public void setEinheit(Mengeneinheit einheit) {
         this.einheit = einheit;
     }
 
     public Double getWert() {
-        return Wert;
+        return wert;
     }
     public void setWert(Double wert) {
         this.wert = wert;

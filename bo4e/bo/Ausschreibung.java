@@ -75,77 +75,77 @@ public class Ausschreibung extends Geschaeftsobjekt {
     private String webseite;
 
     public Zeitraum getAbgabefrist() {
-        return Abgabefrist;
+        return abgabefrist;
     }
     public void setAbgabefrist(Zeitraum abgabefrist) {
         this.abgabefrist = abgabefrist;
     }
 
     public Geschaeftspartner getAusschreibender() {
-        return Ausschreibender;
+        return ausschreibender;
     }
     public void setAusschreibender(Geschaeftspartner ausschreibender) {
         this.ausschreibender = ausschreibender;
     }
 
     public Ausschreibungsportal getAusschreibungportal() {
-        return Ausschreibungportal;
+        return ausschreibungportal;
     }
     public void setAusschreibungportal(Ausschreibungsportal ausschreibungportal) {
         this.ausschreibungportal = ausschreibungportal;
     }
 
     public String getAusschreibungsnummer() {
-        return Ausschreibungsnummer;
+        return ausschreibungsnummer;
     }
     public void setAusschreibungsnummer(String ausschreibungsnummer) {
         this.ausschreibungsnummer = ausschreibungsnummer;
     }
 
     public Ausschreibungsstatus getAusschreibungsstatus() {
-        return Ausschreibungsstatus;
+        return ausschreibungsstatus;
     }
     public void setAusschreibungsstatus(Ausschreibungsstatus ausschreibungsstatus) {
         this.ausschreibungsstatus = ausschreibungsstatus;
     }
 
     public Ausschreibungstyp getAusschreibungstyp() {
-        return Ausschreibungstyp;
+        return ausschreibungstyp;
     }
     public void setAusschreibungstyp(Ausschreibungstyp ausschreibungstyp) {
         this.ausschreibungstyp = ausschreibungstyp;
     }
 
     public Zeitraum getBindefrist() {
-        return Bindefrist;
+        return bindefrist;
     }
     public void setBindefrist(Zeitraum bindefrist) {
         this.bindefrist = bindefrist;
     }
 
     public Boolean getIstKostenpflichtig() {
-        return IstKostenpflichtig;
+        return istKostenpflichtig;
     }
     public void setIstKostenpflichtig(Boolean istKostenpflichtig) {
         this.istKostenpflichtig = istKostenpflichtig;
     }
 
     public List<Ausschreibungslos> getLose() {
-        return Lose;
+        return lose;
     }
     public void setLose(List<Ausschreibungslos> lose) {
         this.lose = lose;
     }
 
     public OffsetDateTime getVeroeffentlichungszeitpunkt() {
-        return Veroeffentlichungszeitpunkt;
+        return veroeffentlichungszeitpunkt;
     }
     public void setVeroeffentlichungszeitpunkt(OffsetDateTime veroeffentlichungszeitpunkt) {
         this.veroeffentlichungszeitpunkt = veroeffentlichungszeitpunkt;
     }
 
     public String getWebseite() {
-        return Webseite;
+        return webseite;
     }
     public void setWebseite(String webseite) {
         this.webseite = webseite;

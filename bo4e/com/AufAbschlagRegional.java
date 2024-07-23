@@ -91,105 +91,105 @@ public class AufAbschlagRegional extends COM {
     private List<String> zusatzprodukte;
 
     public AufAbschlagstyp getAufAbschlagstyp() {
-        return AufAbschlagstyp;
+        return aufAbschlagstyp;
     }
     public void setAufAbschlagstyp(AufAbschlagstyp aufAbschlagstyp) {
         this.aufAbschlagstyp = aufAbschlagstyp;
     }
 
     public AufAbschlagsziel getAufAbschlagsziel() {
-        return AufAbschlagsziel;
+        return aufAbschlagsziel;
     }
     public void setAufAbschlagsziel(AufAbschlagsziel aufAbschlagsziel) {
         this.aufAbschlagsziel = aufAbschlagsziel;
     }
 
     public String getBeschreibung() {
-        return Beschreibung;
+        return beschreibung;
     }
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
 
     public List<AufAbschlagProOrt> getBetraege() {
-        return Betraege;
+        return betraege;
     }
     public void setBetraege(List<AufAbschlagProOrt> betraege) {
         this.betraege = betraege;
     }
 
     public String getBezeichnung() {
-        return Bezeichnung;
+        return bezeichnung;
     }
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
 
     public Waehrungseinheit getEinheit() {
-        return Einheit;
+        return einheit;
     }
     public void setEinheit(Waehrungseinheit einheit) {
         this.einheit = einheit;
     }
 
     public Tarifeinschraenkung getEinschraenkungsaenderung() {
-        return Einschraenkungsaenderung;
+        return einschraenkungsaenderung;
     }
     public void setEinschraenkungsaenderung(Tarifeinschraenkung einschraenkungsaenderung) {
         this.einschraenkungsaenderung = einschraenkungsaenderung;
     }
 
     public Energiemix getEnergiemixaenderung() {
-        return Energiemixaenderung;
+        return energiemixaenderung;
     }
     public void setEnergiemixaenderung(Energiemix energiemixaenderung) {
         this.energiemixaenderung = energiemixaenderung;
     }
 
     public Preisgarantie getGarantieaenderung() {
-        return Garantieaenderung;
+        return garantieaenderung;
     }
     public void setGarantieaenderung(Preisgarantie garantieaenderung) {
         this.garantieaenderung = garantieaenderung;
     }
 
     public Zeitraum getGueltigkeitszeitraum() {
-        return Gueltigkeitszeitraum;
+        return gueltigkeitszeitraum;
     }
     public void setGueltigkeitszeitraum(Zeitraum gueltigkeitszeitraum) {
         this.gueltigkeitszeitraum = gueltigkeitszeitraum;
     }
 
     public String getTarifnamensaenderungen() {
-        return Tarifnamensaenderungen;
+        return tarifnamensaenderungen;
     }
     public void setTarifnamensaenderungen(String tarifnamensaenderungen) {
         this.tarifnamensaenderungen = tarifnamensaenderungen;
     }
 
     public Vertragskonditionen getVertagskonditionsaenderung() {
-        return Vertagskonditionsaenderung;
+        return vertagskonditionsaenderung;
     }
     public void setVertagskonditionsaenderung(Vertragskonditionen vertagskonditionsaenderung) {
         this.vertagskonditionsaenderung = vertagskonditionsaenderung;
     }
 
     public List<String> getVoraussetzungen() {
-        return Voraussetzungen;
+        return voraussetzungen;
     }
     public void setVoraussetzungen(List<String> voraussetzungen) {
         this.voraussetzungen = voraussetzungen;
     }
 
     public String getWebsite() {
-        return Website;
+        return website;
     }
     public void setWebsite(String website) {
         this.website = website;
     }
 
     public List<String> getZusatzprodukte() {
-        return Zusatzprodukte;
+        return zusatzprodukte;
     }
     public void setZusatzprodukte(List<String> zusatzprodukte) {
         this.zusatzprodukte = zusatzprodukte;

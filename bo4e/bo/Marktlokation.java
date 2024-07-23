@@ -130,168 +130,168 @@ public class Marktlokation extends Geschaeftsobjekt {
     private Messlokationszuordnung zugehoerigeMesslokation;
 
     public String getBilanzierungsgebiet() {
-        return Bilanzierungsgebiet;
+        return bilanzierungsgebiet;
     }
     public void setBilanzierungsgebiet(String bilanzierungsgebiet) {
         this.bilanzierungsgebiet = bilanzierungsgebiet;
     }
 
     public Bilanzierungsmethode getBilanzierungsmethode() {
-        return Bilanzierungsmethode;
+        return bilanzierungsmethode;
     }
     public void setBilanzierungsmethode(Bilanzierungsmethode bilanzierungsmethode) {
         this.bilanzierungsmethode = bilanzierungsmethode;
     }
 
     public Geschaeftspartner getEndkunde() {
-        return Endkunde;
+        return endkunde;
     }
     public void setEndkunde(Geschaeftspartner endkunde) {
         this.endkunde = endkunde;
     }
 
     public Energierichtung getEnergierichtung() {
-        return Energierichtung;
+        return energierichtung;
     }
     public void setEnergierichtung(Energierichtung energierichtung) {
         this.energierichtung = energierichtung;
     }
 
     public Gasqualitaet getGasqualitaet() {
-        return Gasqualitaet;
+        return gasqualitaet;
     }
     public void setGasqualitaet(Gasqualitaet gasqualitaet) {
         this.gasqualitaet = gasqualitaet;
     }
 
     public Gebiettyp getGebietstyp() {
-        return Gebietstyp;
+        return gebietstyp;
     }
     public void setGebietstyp(Gebiettyp gebietstyp) {
         this.gebietstyp = gebietstyp;
     }
 
     public Geokoordinaten getGeoadresse() {
-        return Geoadresse;
+        return geoadresse;
     }
     public void setGeoadresse(Geokoordinaten geoadresse) {
         this.geoadresse = geoadresse;
     }
 
     public String getGrundversorgercodenr() {
-        return Grundversorgercodenr;
+        return grundversorgercodenr;
     }
     public void setGrundversorgercodenr(String grundversorgercodenr) {
         this.grundversorgercodenr = grundversorgercodenr;
     }
 
     public Boolean getIstUnterbrechbar() {
-        return IstUnterbrechbar;
+        return istUnterbrechbar;
     }
     public void setIstUnterbrechbar(Boolean istUnterbrechbar) {
         this.istUnterbrechbar = istUnterbrechbar;
     }
 
     public Katasteradresse getKatasterinformation() {
-        return Katasterinformation;
+        return katasterinformation;
     }
     public void setKatasterinformation(Katasteradresse katasterinformation) {
         this.katasterinformation = katasterinformation;
     }
 
     public List<Kundentyp> getKundengruppen() {
-        return Kundengruppen;
+        return kundengruppen;
     }
     public void setKundengruppen(List<Kundentyp> kundengruppen) {
         this.kundengruppen = kundengruppen;
     }
 
     public Adresse getLokationsadresse() {
-        return Lokationsadresse;
+        return lokationsadresse;
     }
     public void setLokationsadresse(Adresse lokationsadresse) {
         this.lokationsadresse = lokationsadresse;
     }
 
     public String getMarktgebiet() {
-        return Marktgebiet;
+        return marktgebiet;
     }
     public void setMarktgebiet(String marktgebiet) {
         this.marktgebiet = marktgebiet;
     }
 
     public String getMarktlokationsId() {
-        return MarktlokationsId;
+        return marktlokationsId;
     }
     public void setMarktlokationsId(String marktlokationsId) {
         this.marktlokationsId = marktlokationsId;
     }
 
     public String getNetzbetreibercodenr() {
-        return Netzbetreibercodenr;
+        return netzbetreibercodenr;
     }
     public void setNetzbetreibercodenr(String netzbetreibercodenr) {
         this.netzbetreibercodenr = netzbetreibercodenr;
     }
 
     public Netzebene getNetzebene() {
-        return Netzebene;
+        return netzebene;
     }
     public void setNetzebene(Netzebene netzebene) {
         this.netzebene = netzebene;
     }
 
     public String getNetzgebietsnr() {
-        return Netzgebietsnr;
+        return netzgebietsnr;
     }
     public void setNetzgebietsnr(String netzgebietsnr) {
         this.netzgebietsnr = netzgebietsnr;
     }
 
     public String getRegelzone() {
-        return Regelzone;
+        return regelzone;
     }
     public void setRegelzone(String regelzone) {
         this.regelzone = regelzone;
     }
 
     public Sparte getSparte() {
-        return Sparte;
+        return sparte;
     }
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
 
     public Verbrauchsart getVerbrauchsart() {
-        return Verbrauchsart;
+        return verbrauchsart;
     }
     public void setVerbrauchsart(Verbrauchsart verbrauchsart) {
         this.verbrauchsart = verbrauchsart;
     }
 
     public List<Verbrauch> getVerbrauchsmengen() {
-        return Verbrauchsmengen;
+        return verbrauchsmengen;
     }
     public void setVerbrauchsmengen(List<Verbrauch> verbrauchsmengen) {
         this.verbrauchsmengen = verbrauchsmengen;
     }
 
     public List<Zaehlwerk> getZaehlwerke() {
-        return Zaehlwerke;
+        return zaehlwerke;
     }
     public void setZaehlwerke(List<Zaehlwerk> zaehlwerke) {
         this.zaehlwerke = zaehlwerke;
     }
 
     public List<Zaehlwerk> getZaehlwerkeDerBeteiligtenMarktrolle() {
-        return ZaehlwerkeDerBeteiligtenMarktrolle;
+        return zaehlwerkeDerBeteiligtenMarktrolle;
     }
     public void setZaehlwerkeDerBeteiligtenMarktrolle(List<Zaehlwerk> zaehlwerkeDerBeteiligtenMarktrolle) {
         this.zaehlwerkeDerBeteiligtenMarktrolle = zaehlwerkeDerBeteiligtenMarktrolle;
     }
 
     public Messlokationszuordnung getZugehoerigeMesslokation() {
-        return ZugehoerigeMesslokation;
+        return zugehoerigeMesslokation;
     }
     public void setZugehoerigeMesslokation(Messlokationszuordnung zugehoerigeMesslokation) {
         this.zugehoerigeMesslokation = zugehoerigeMesslokation;

@@ -145,182 +145,182 @@ public class Rechnung extends Geschaeftsobjekt {
     private Betrag zuZahlen;
 
     public OffsetDateTime getFaelligkeitsdatum() {
-        return Faelligkeitsdatum;
+        return faelligkeitsdatum;
     }
     public void setFaelligkeitsdatum(OffsetDateTime faelligkeitsdatum) {
         this.faelligkeitsdatum = faelligkeitsdatum;
     }
 
     public Betrag getGesamtbrutto() {
-        return Gesamtbrutto;
+        return gesamtbrutto;
     }
     public void setGesamtbrutto(Betrag gesamtbrutto) {
         this.gesamtbrutto = gesamtbrutto;
     }
 
     public Betrag getGesamtnetto() {
-        return Gesamtnetto;
+        return gesamtnetto;
     }
     public void setGesamtnetto(Betrag gesamtnetto) {
         this.gesamtnetto = gesamtnetto;
     }
 
     public Betrag getGesamtsteuer() {
-        return Gesamtsteuer;
+        return gesamtsteuer;
     }
     public void setGesamtsteuer(Betrag gesamtsteuer) {
         this.gesamtsteuer = gesamtsteuer;
     }
 
     public Boolean getIstOriginal() {
-        return IstOriginal;
+        return istOriginal;
     }
     public void setIstOriginal(Boolean istOriginal) {
         this.istOriginal = istOriginal;
     }
 
     public Boolean getIstSimuliert() {
-        return IstSimuliert;
+        return istSimuliert;
     }
     public void setIstSimuliert(Boolean istSimuliert) {
         this.istSimuliert = istSimuliert;
     }
 
     public Boolean getIstStorno() {
-        return IstStorno;
+        return istStorno;
     }
     public void setIstStorno(Boolean istStorno) {
         this.istStorno = istStorno;
     }
 
     public Marktlokation getMarktlokation() {
-        return Marktlokation;
+        return marktlokation;
     }
     public void setMarktlokation(Marktlokation marktlokation) {
         this.marktlokation = marktlokation;
     }
 
     public Messlokation getMesslokation() {
-        return Messlokation;
+        return messlokation;
     }
     public void setMesslokation(Messlokation messlokation) {
         this.messlokation = messlokation;
     }
 
     public NetznutzungRechnungsart getNetznutzungrechnungsart() {
-        return Netznutzungrechnungsart;
+        return netznutzungrechnungsart;
     }
     public void setNetznutzungrechnungsart(NetznutzungRechnungsart netznutzungrechnungsart) {
         this.netznutzungrechnungsart = netznutzungrechnungsart;
     }
 
     public NetznutzungRechnungstyp getNetznutzungrechnungstyp() {
-        return Netznutzungrechnungstyp;
+        return netznutzungrechnungstyp;
     }
     public void setNetznutzungrechnungstyp(NetznutzungRechnungstyp netznutzungrechnungstyp) {
         this.netznutzungrechnungstyp = netznutzungrechnungstyp;
     }
 
     public String getOriginalRechnungsnummer() {
-        return OriginalRechnungsnummer;
+        return originalRechnungsnummer;
     }
     public void setOriginalRechnungsnummer(String originalRechnungsnummer) {
         this.originalRechnungsnummer = originalRechnungsnummer;
     }
 
     public Betrag getRabattBrutto() {
-        return RabattBrutto;
+        return rabattBrutto;
     }
     public void setRabattBrutto(Betrag rabattBrutto) {
         this.rabattBrutto = rabattBrutto;
     }
 
     public OffsetDateTime getRechnungsdatum() {
-        return Rechnungsdatum;
+        return rechnungsdatum;
     }
     public void setRechnungsdatum(OffsetDateTime rechnungsdatum) {
         this.rechnungsdatum = rechnungsdatum;
     }
 
     public Geschaeftspartner getRechnungsempfaenger() {
-        return Rechnungsempfaenger;
+        return rechnungsempfaenger;
     }
     public void setRechnungsempfaenger(Geschaeftspartner rechnungsempfaenger) {
         this.rechnungsempfaenger = rechnungsempfaenger;
     }
 
     public Geschaeftspartner getRechnungsersteller() {
-        return Rechnungsersteller;
+        return rechnungsersteller;
     }
     public void setRechnungsersteller(Geschaeftspartner rechnungsersteller) {
         this.rechnungsersteller = rechnungsersteller;
     }
 
     public String getRechnungsnummer() {
-        return Rechnungsnummer;
+        return rechnungsnummer;
     }
     public void setRechnungsnummer(String rechnungsnummer) {
         this.rechnungsnummer = rechnungsnummer;
     }
 
     public Zeitraum getRechnungsperiode() {
-        return Rechnungsperiode;
+        return rechnungsperiode;
     }
     public void setRechnungsperiode(Zeitraum rechnungsperiode) {
         this.rechnungsperiode = rechnungsperiode;
     }
 
     public List<Rechnungsposition> getRechnungspositionen() {
-        return Rechnungspositionen;
+        return rechnungspositionen;
     }
     public void setRechnungspositionen(List<Rechnungsposition> rechnungspositionen) {
         this.rechnungspositionen = rechnungspositionen;
     }
 
     public Rechnungsstatus getRechnungsstatus() {
-        return Rechnungsstatus;
+        return rechnungsstatus;
     }
     public void setRechnungsstatus(Rechnungsstatus rechnungsstatus) {
         this.rechnungsstatus = rechnungsstatus;
     }
 
     public String getRechnungstitel() {
-        return Rechnungstitel;
+        return rechnungstitel;
     }
     public void setRechnungstitel(String rechnungstitel) {
         this.rechnungstitel = rechnungstitel;
     }
 
     public Rechnungstyp getRechnungstyp() {
-        return Rechnungstyp;
+        return rechnungstyp;
     }
     public void setRechnungstyp(Rechnungstyp rechnungstyp) {
         this.rechnungstyp = rechnungstyp;
     }
 
     public Sparte getSparte() {
-        return Sparte;
+        return sparte;
     }
     public void setSparte(Sparte sparte) {
         this.sparte = sparte;
     }
 
     public List<Steuerbetrag> getSteuerbetraege() {
-        return Steuerbetraege;
+        return steuerbetraege;
     }
     public void setSteuerbetraege(List<Steuerbetrag> steuerbetraege) {
         this.steuerbetraege = steuerbetraege;
     }
 
     public Betrag getVorausgezahlt() {
-        return Vorausgezahlt;
+        return vorausgezahlt;
     }
     public void setVorausgezahlt(Betrag vorausgezahlt) {
         this.vorausgezahlt = vorausgezahlt;
     }
 
     public Betrag getZuZahlen() {
-        return ZuZahlen;
+        return zuZahlen;
     }
     public void setZuZahlen(Betrag zuZahlen) {
         this.zuZahlen = zuZahlen;

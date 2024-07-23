@@ -37,28 +37,28 @@ public class Angebotsposition extends COM {
     private Preis positionspreis;
 
     public String getPositionsbezeichnung() {
-        return Positionsbezeichnung;
+        return positionsbezeichnung;
     }
     public void setPositionsbezeichnung(String positionsbezeichnung) {
         this.positionsbezeichnung = positionsbezeichnung;
     }
 
     public Betrag getPositionskosten() {
-        return Positionskosten;
+        return positionskosten;
     }
     public void setPositionskosten(Betrag positionskosten) {
         this.positionskosten = positionskosten;
     }
 
     public Menge getPositionsmenge() {
-        return Positionsmenge;
+        return positionsmenge;
     }
     public void setPositionsmenge(Menge positionsmenge) {
         this.positionsmenge = positionsmenge;
     }
 
     public Preis getPositionspreis() {
-        return Positionspreis;
+        return positionspreis;
     }
     public void setPositionspreis(Preis positionspreis) {
         this.positionspreis = positionspreis;

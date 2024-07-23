@@ -81,91 +81,91 @@ public class Preisposition extends COM {
     private Bemessungsgroesse zonungsgroesse;
 
     public BDEWArtikelnummer getBdewArtikelnummer() {
-        return BdewArtikelnummer;
+        return bdewArtikelnummer;
     }
     public void setBdewArtikelnummer(BDEWArtikelnummer bdewArtikelnummer) {
         this.bdewArtikelnummer = bdewArtikelnummer;
     }
 
     public Kalkulationsmethode getBerechnungsmethode() {
-        return Berechnungsmethode;
+        return berechnungsmethode;
     }
     public void setBerechnungsmethode(Kalkulationsmethode berechnungsmethode) {
         this.berechnungsmethode = berechnungsmethode;
     }
 
     public Mengeneinheit getBezugsgroesse() {
-        return Bezugsgroesse;
+        return bezugsgroesse;
     }
     public void setBezugsgroesse(Mengeneinheit bezugsgroesse) {
         this.bezugsgroesse = bezugsgroesse;
     }
 
     public Double getFreimengeBlindarbeit() {
-        return FreimengeBlindarbeit;
+        return freimengeBlindarbeit;
     }
     public void setFreimengeBlindarbeit(Double freimengeBlindarbeit) {
         this.freimengeBlindarbeit = freimengeBlindarbeit;
     }
 
     public Double getFreimengeLeistungsfaktor() {
-        return FreimengeLeistungsfaktor;
+        return freimengeLeistungsfaktor;
     }
     public void setFreimengeLeistungsfaktor(Double freimengeLeistungsfaktor) {
         this.freimengeLeistungsfaktor = freimengeLeistungsfaktor;
     }
 
     public String getGruppenartikelId() {
-        return GruppenartikelId;
+        return gruppenartikelId;
     }
     public void setGruppenartikelId(String gruppenartikelId) {
         this.gruppenartikelId = gruppenartikelId;
     }
 
     public String getLeistungsbezeichnung() {
-        return Leistungsbezeichnung;
+        return leistungsbezeichnung;
     }
     public void setLeistungsbezeichnung(String leistungsbezeichnung) {
         this.leistungsbezeichnung = leistungsbezeichnung;
     }
 
     public Leistungstyp getLeistungstyp() {
-        return Leistungstyp;
+        return leistungstyp;
     }
     public void setLeistungstyp(Leistungstyp leistungstyp) {
         this.leistungstyp = leistungstyp;
     }
 
     public Waehrungseinheit getPreiseinheit() {
-        return Preiseinheit;
+        return preiseinheit;
     }
     public void setPreiseinheit(Waehrungseinheit preiseinheit) {
         this.preiseinheit = preiseinheit;
     }
 
     public List<Preisstaffel> getPreisstaffeln() {
-        return Preisstaffeln;
+        return preisstaffeln;
     }
     public void setPreisstaffeln(List<Preisstaffel> preisstaffeln) {
         this.preisstaffeln = preisstaffeln;
     }
 
     public Tarifzeit getTarifzeit() {
-        return Tarifzeit;
+        return tarifzeit;
     }
     public void setTarifzeit(Tarifzeit tarifzeit) {
         this.tarifzeit = tarifzeit;
     }
 
     public Mengeneinheit getZeitbasis() {
-        return Zeitbasis;
+        return zeitbasis;
     }
     public void setZeitbasis(Mengeneinheit zeitbasis) {
         this.zeitbasis = zeitbasis;
     }
 
     public Bemessungsgroesse getZonungsgroesse() {
-        return Zonungsgroesse;
+        return zonungsgroesse;
     }
     public void setZonungsgroesse(Bemessungsgroesse zonungsgroesse) {
         this.zonungsgroesse = zonungsgroesse;

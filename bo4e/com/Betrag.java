@@ -28,14 +28,14 @@ public class Betrag extends COM {
     private Double wert;
 
     public Waehrungscode getWaehrung() {
-        return Waehrung;
+        return waehrung;
     }
     public void setWaehrung(Waehrungscode waehrung) {
         this.waehrung = waehrung;
     }
 
     public Double getWert() {
-        return Wert;
+        return wert;
     }
     public void setWert(Double wert) {
         this.wert = wert;

@@ -34,21 +34,21 @@ public class Regionskriterium extends COM {
     private String wert;
 
     public Gueltigkeitstyp getGueltigkeitstyp() {
-        return Gueltigkeitstyp;
+        return gueltigkeitstyp;
     }
     public void setGueltigkeitstyp(Gueltigkeitstyp gueltigkeitstyp) {
         this.gueltigkeitstyp = gueltigkeitstyp;
     }
 
     public Regionskriteriumtyp getRegionskriteriumtyp() {
-        return Regionskriteriumtyp;
+        return regionskriteriumtyp;
     }
     public void setRegionskriteriumtyp(Regionskriteriumtyp regionskriteriumtyp) {
         this.regionskriteriumtyp = regionskriteriumtyp;
     }
 
     public String getWert() {
-        return Wert;
+        return wert;
     }
     public void setWert(String wert) {
         this.wert = wert;

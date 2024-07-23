@@ -31,21 +31,21 @@ public class Zaehlzeitregister extends COM {
     private String zaehlzeitRegister;
 
     public Boolean getIstSchwachlastfaehig() {
-        return IstSchwachlastfaehig;
+        return istSchwachlastfaehig;
     }
     public void setIstSchwachlastfaehig(Boolean istSchwachlastfaehig) {
         this.istSchwachlastfaehig = istSchwachlastfaehig;
     }
 
     public String getZaehlzeitDefinition() {
-        return ZaehlzeitDefinition;
+        return zaehlzeitDefinition;
     }
     public void setZaehlzeitDefinition(String zaehlzeitDefinition) {
         this.zaehlzeitDefinition = zaehlzeitDefinition;
     }
 
     public String getZaehlzeitRegister() {
-        return ZaehlzeitRegister;
+        return zaehlzeitRegister;
     }
     public void setZaehlzeitRegister(String zaehlzeitRegister) {
         this.zaehlzeitRegister = zaehlzeitRegister;

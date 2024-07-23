@@ -45,28 +45,28 @@ public class Kosten extends Geschaeftsobjekt {
     private List<Betrag> summeKosten;
 
     public Zeitraum getGueltigkeit() {
-        return Gueltigkeit;
+        return gueltigkeit;
     }
     public void setGueltigkeit(Zeitraum gueltigkeit) {
         this.gueltigkeit = gueltigkeit;
     }
 
     public List<Kostenblock> getKostenbloecke() {
-        return Kostenbloecke;
+        return kostenbloecke;
     }
     public void setKostenbloecke(List<Kostenblock> kostenbloecke) {
         this.kostenbloecke = kostenbloecke;
     }
 
     public Kostenklasse getKostenklasse() {
-        return Kostenklasse;
+        return kostenklasse;
     }
     public void setKostenklasse(Kostenklasse kostenklasse) {
         this.kostenklasse = kostenklasse;
     }
 
     public List<Betrag> getSummeKosten() {
-        return SummeKosten;
+        return summeKosten;
     }
     public void setSummeKosten(List<Betrag> summeKosten) {
         this.summeKosten = summeKosten;

@@ -2,15 +2,22 @@ package bo4e.bo;
 
 import bo4e.enums.Typ;
 import bo4e.com.Betrag;
+import bo4e.com.Betrag;
+import bo4e.com.Betrag;
 import bo4e.enums.NetznutzungRechnungsart;
 import bo4e.enums.NetznutzungRechnungstyp;
+import bo4e.com.Betrag;
 import bo4e.com.Zeitraum;
 import bo4e.com.Rechnungsposition;
 import bo4e.enums.Rechnungsstatus;
 import bo4e.enums.Rechnungstyp;
 import bo4e.enums.Sparte;
 import bo4e.com.Steuerbetrag;
+import bo4e.com.Betrag;
+import bo4e.com.Betrag;
+
 import java.time.OffsetDateTime;
+import java.util.List;
 
 /**
  * Modell für die Abbildung von Rechnungen und Netznutzungsrechnungen im Kontext der
@@ -25,201 +32,297 @@ import java.time.OffsetDateTime;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/bo/Rechnung.json>`_
  */
 public class Rechnung extends Geschaeftsobjekt {
-    private final Typ _typ = Typ.RECHNUNG;
-    private OffsetDateTime faelligkeitsdatum;
-    private Betrag gesamtbrutto;
-    private Betrag gesamtnetto;
-    private Betrag gesamtsteuer;
-    private Boolean istOriginal;
-    private Boolean istSimuliert;
-    private Boolean istStorno;
-    private Marktlokation marktlokation;
-    private Messlokation messlokation;
-    private NetznutzungRechnungsart netznutzungrechnungsart;
-    private NetznutzungRechnungstyp netznutzungrechnungstyp;
-    private String originalRechnungsnummer;
-    private Betrag rabattBrutto;
-    private OffsetDateTime rechnungsdatum;
-    private Geschaeftspartner rechnungsempfaenger;
-    private Geschaeftspartner rechnungsersteller;
-    private String rechnungsnummer;
-    private Zeitraum rechnungsperiode;
-    private Rechnungsposition[] rechnungspositionen;
-    private Rechnungsstatus rechnungsstatus;
-    private String rechnungstitel;
-    private Rechnungstyp rechnungstyp;
-    private Sparte sparte;
-    private Steuerbetrag[] steuerbetraege;
-    private Betrag vorausgezahlt;
-    private Betrag zuZahlen;
-
     /**
-     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+     * Typ des Geschaeftsobjekts
      */
-    /**
-     * Der Zeitraum der zugrunde liegenden Lieferung zur Rechnung
-     */
-    public Typ getTyp() { return _typ; }
-
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
+    private Typ typ = Typ.RECHNUNG;
     /**
      * Zu diesem Datum ist die Zahlung fällig
      */
-    public OffsetDateTime getFaelligkeitsdatum() { return faelligkeitsdatum; }
-    public void setFaelligkeitsdatum(OffsetDateTime value) { this.faelligkeitsdatum = value; }
-
+    private OffsetDateTime faelligkeitsdatum;
     /**
      * Die Summe aus Netto- und Steuerbetrag
      */
-    public Betrag getGesamtbrutto() { return gesamtbrutto; }
-    public void setGesamtbrutto(Betrag value) { this.gesamtbrutto = value; }
-
+    private Betrag gesamtbrutto;
     /**
      * Die Summe der Nettobeträge der Rechnungsteile
      */
-    public Betrag getGesamtnetto() { return gesamtnetto; }
-    public void setGesamtnetto(Betrag value) { this.gesamtnetto = value; }
-
+    private Betrag gesamtnetto;
     /**
      * Die Summe der Steuerbeträge der Rechnungsteile
      */
-    public Betrag getGesamtsteuer() { return gesamtsteuer; }
-    public void setGesamtsteuer(Betrag value) { this.gesamtsteuer = value; }
-
+    private Betrag gesamtsteuer;
     /**
      * Kennzeichen, ob es sich um ein Original (true) oder eine Kopie handelt (false)
      */
-    public Boolean getIstOriginal() { return istOriginal; }
-    public void setIstOriginal(Boolean value) { this.istOriginal = value; }
-
+    private Boolean istOriginal;
     /**
      * Kennzeichen, ob es sich um eine simulierte Rechnung, z.B. zur Rechnungsprüfung handelt
      */
-    public Boolean getIstSimuliert() { return istSimuliert; }
-    public void setIstSimuliert(Boolean value) { this.istSimuliert = value; }
-
+    private Boolean istSimuliert;
     /**
      * Eine im Verwendungskontext eindeutige Nummer für die Rechnung
      */
-    public Boolean getIstStorno() { return istStorno; }
-    public void setIstStorno(Boolean value) { this.istStorno = value; }
-
+    private Boolean istStorno;
     /**
      * Marktlokation, auf die sich die Rechnung bezieht
      */
-    public Marktlokation getMarktlokation() { return marktlokation; }
-    public void setMarktlokation(Marktlokation value) { this.marktlokation = value; }
-
+    private Marktlokation marktlokation;
     /**
      * Messlokation, auf die sich die Rechnung bezieht
      */
-    public Messlokation getMesslokation() { return messlokation; }
-    public void setMesslokation(Messlokation value) { this.messlokation = value; }
-
+    private Messlokation messlokation;
     /**
      * Aus der INVOIC entnommen, befüllt wenn es sich um eine Netznutzungsrechnung handelt
      */
-    public NetznutzungRechnungsart getNetznutzungrechnungsart() { return netznutzungrechnungsart; }
-    public void setNetznutzungrechnungsart(NetznutzungRechnungsart value) { this.netznutzungrechnungsart = value; }
-
+    private NetznutzungRechnungsart netznutzungrechnungsart;
     /**
      * Aus der INVOIC entnommen, befüllt wenn es sich um eine Netznutzungsrechnung handelt
      */
-    public NetznutzungRechnungstyp getNetznutzungrechnungstyp() { return netznutzungrechnungstyp; }
-    public void setNetznutzungrechnungstyp(NetznutzungRechnungstyp value) { this.netznutzungrechnungstyp = value; }
-
+    private NetznutzungRechnungstyp netznutzungrechnungstyp;
     /**
      * Im Falle einer Stornorechnung (storno = true) steht hier die Rechnungsnummer der
      * stornierten Rechnung
      */
-    public String getOriginalRechnungsnummer() { return originalRechnungsnummer; }
-    public void setOriginalRechnungsnummer(String value) { this.originalRechnungsnummer = value; }
-
+    private String originalRechnungsnummer;
     /**
      * Gesamtrabatt auf den Bruttobetrag
      */
-    public Betrag getRabattBrutto() { return rabattBrutto; }
-    public void setRabattBrutto(Betrag value) { this.rabattBrutto = value; }
-
+    private Betrag rabattBrutto;
     /**
      * Ausstellungsdatum der Rechnung
      */
-    public OffsetDateTime getRechnungsdatum() { return rechnungsdatum; }
-    public void setRechnungsdatum(OffsetDateTime value) { this.rechnungsdatum = value; }
-
+    private OffsetDateTime rechnungsdatum;
     /**
      * Der Aussteller der Rechnung, die Rollencodenummer kennt man über den im Geschäftspartner
      * verlinkten Marktteilnehmer
      */
-    public Geschaeftspartner getRechnungsempfaenger() { return rechnungsempfaenger; }
-    public void setRechnungsempfaenger(Geschaeftspartner value) { this.rechnungsempfaenger = value; }
-
+    private Geschaeftspartner rechnungsempfaenger;
     /**
      * Der Aussteller der Rechnung, die Rollencodenummer kennt man über den im Geschäftspartner
      * verlinkten Marktteilnehmer
      */
-    public Geschaeftspartner getRechnungsersteller() { return rechnungsersteller; }
-    public void setRechnungsersteller(Geschaeftspartner value) { this.rechnungsersteller = value; }
-
+    private Geschaeftspartner rechnungsersteller;
     /**
      * Eine im Verwendungskontext eindeutige Nummer für die Rechnung
      */
-    public String getRechnungsnummer() { return rechnungsnummer; }
-    public void setRechnungsnummer(String value) { this.rechnungsnummer = value; }
-
+    private String rechnungsnummer;
     /**
      * Der Zeitraum der zugrunde liegenden Lieferung zur Rechnung
      */
-    public Zeitraum getRechnungsperiode() { return rechnungsperiode; }
-    public void setRechnungsperiode(Zeitraum value) { this.rechnungsperiode = value; }
-
+    private Zeitraum rechnungsperiode;
     /**
      * Die Rechnungspositionen
      */
-    public Rechnungsposition[] getRechnungspositionen() { return rechnungspositionen; }
-    public void setRechnungspositionen(Rechnungsposition[] value) { this.rechnungspositionen = value; }
-
+    private List<Rechnungsposition> rechnungspositionen;
     /**
      * Status der Rechnung zur Kennzeichnung des Bearbeitungsstandes
      */
-    public Rechnungsstatus getRechnungsstatus() { return rechnungsstatus; }
-    public void setRechnungsstatus(Rechnungsstatus value) { this.rechnungsstatus = value; }
-
+    private Rechnungsstatus rechnungsstatus;
     /**
      * Bezeichnung für die vorliegende Rechnung
      */
-    public String getRechnungstitel() { return rechnungstitel; }
-    public void setRechnungstitel(String value) { this.rechnungstitel = value; }
-
+    private String rechnungstitel;
     /**
      * Ein kontextbezogender Rechnungstyp, z.B. Netznutzungsrechnung
      */
-    public Rechnungstyp getRechnungstyp() { return rechnungstyp; }
-    public void setRechnungstyp(Rechnungstyp value) { this.rechnungstyp = value; }
-
+    private Rechnungstyp rechnungstyp;
     /**
      * Sparte (Strom, Gas ...) für die die Rechnung ausgestellt ist
      */
-    public Sparte getSparte() { return sparte; }
-    public void setSparte(Sparte value) { this.sparte = value; }
-
+    private Sparte sparte;
     /**
      * Sparte (Strom, Gas ...) für die die Rechnung ausgestellt ist
      */
-    public Steuerbetrag[] getSteuerbetraege() { return steuerbetraege; }
-    public void setSteuerbetraege(Steuerbetrag[] value) { this.steuerbetraege = value; }
-
+    private List<Steuerbetrag> steuerbetraege;
     /**
      * Die Summe evtl. vorausgezahlter Beträge, z.B. Abschläge. Angabe als Bruttowert
      */
-    public Betrag getVorausgezahlt() { return vorausgezahlt; }
-    public void setVorausgezahlt(Betrag value) { this.vorausgezahlt = value; }
-
+    private Betrag vorausgezahlt;
     /**
      * Der zu zahlende Betrag, der sich aus (gesamtbrutto - vorausbezahlt - rabattBrutto) ergibt
      */
-    public Betrag getZuZahlen() { return zuZahlen; }
-    public void setZuZahlen(Betrag value) { this.zuZahlen = value; }
+    private Betrag zuZahlen;
+
+    public OffsetDateTime getFaelligkeitsdatum() {
+        return Faelligkeitsdatum;
+    }
+    public void setFaelligkeitsdatum(OffsetDateTime faelligkeitsdatum) {
+        this.faelligkeitsdatum = faelligkeitsdatum;
+    }
+
+    public Betrag getGesamtbrutto() {
+        return Gesamtbrutto;
+    }
+    public void setGesamtbrutto(Betrag gesamtbrutto) {
+        this.gesamtbrutto = gesamtbrutto;
+    }
+
+    public Betrag getGesamtnetto() {
+        return Gesamtnetto;
+    }
+    public void setGesamtnetto(Betrag gesamtnetto) {
+        this.gesamtnetto = gesamtnetto;
+    }
+
+    public Betrag getGesamtsteuer() {
+        return Gesamtsteuer;
+    }
+    public void setGesamtsteuer(Betrag gesamtsteuer) {
+        this.gesamtsteuer = gesamtsteuer;
+    }
+
+    public Boolean getIstOriginal() {
+        return IstOriginal;
+    }
+    public void setIstOriginal(Boolean istOriginal) {
+        this.istOriginal = istOriginal;
+    }
+
+    public Boolean getIstSimuliert() {
+        return IstSimuliert;
+    }
+    public void setIstSimuliert(Boolean istSimuliert) {
+        this.istSimuliert = istSimuliert;
+    }
+
+    public Boolean getIstStorno() {
+        return IstStorno;
+    }
+    public void setIstStorno(Boolean istStorno) {
+        this.istStorno = istStorno;
+    }
+
+    public Marktlokation getMarktlokation() {
+        return Marktlokation;
+    }
+    public void setMarktlokation(Marktlokation marktlokation) {
+        this.marktlokation = marktlokation;
+    }
+
+    public Messlokation getMesslokation() {
+        return Messlokation;
+    }
+    public void setMesslokation(Messlokation messlokation) {
+        this.messlokation = messlokation;
+    }
+
+    public NetznutzungRechnungsart getNetznutzungrechnungsart() {
+        return Netznutzungrechnungsart;
+    }
+    public void setNetznutzungrechnungsart(NetznutzungRechnungsart netznutzungrechnungsart) {
+        this.netznutzungrechnungsart = netznutzungrechnungsart;
+    }
+
+    public NetznutzungRechnungstyp getNetznutzungrechnungstyp() {
+        return Netznutzungrechnungstyp;
+    }
+    public void setNetznutzungrechnungstyp(NetznutzungRechnungstyp netznutzungrechnungstyp) {
+        this.netznutzungrechnungstyp = netznutzungrechnungstyp;
+    }
+
+    public String getOriginalRechnungsnummer() {
+        return OriginalRechnungsnummer;
+    }
+    public void setOriginalRechnungsnummer(String originalRechnungsnummer) {
+        this.originalRechnungsnummer = originalRechnungsnummer;
+    }
+
+    public Betrag getRabattBrutto() {
+        return RabattBrutto;
+    }
+    public void setRabattBrutto(Betrag rabattBrutto) {
+        this.rabattBrutto = rabattBrutto;
+    }
+
+    public OffsetDateTime getRechnungsdatum() {
+        return Rechnungsdatum;
+    }
+    public void setRechnungsdatum(OffsetDateTime rechnungsdatum) {
+        this.rechnungsdatum = rechnungsdatum;
+    }
+
+    public Geschaeftspartner getRechnungsempfaenger() {
+        return Rechnungsempfaenger;
+    }
+    public void setRechnungsempfaenger(Geschaeftspartner rechnungsempfaenger) {
+        this.rechnungsempfaenger = rechnungsempfaenger;
+    }
+
+    public Geschaeftspartner getRechnungsersteller() {
+        return Rechnungsersteller;
+    }
+    public void setRechnungsersteller(Geschaeftspartner rechnungsersteller) {
+        this.rechnungsersteller = rechnungsersteller;
+    }
+
+    public String getRechnungsnummer() {
+        return Rechnungsnummer;
+    }
+    public void setRechnungsnummer(String rechnungsnummer) {
+        this.rechnungsnummer = rechnungsnummer;
+    }
+
+    public Zeitraum getRechnungsperiode() {
+        return Rechnungsperiode;
+    }
+    public void setRechnungsperiode(Zeitraum rechnungsperiode) {
+        this.rechnungsperiode = rechnungsperiode;
+    }
+
+    public List<Rechnungsposition> getRechnungspositionen() {
+        return Rechnungspositionen;
+    }
+    public void setRechnungspositionen(List<Rechnungsposition> rechnungspositionen) {
+        this.rechnungspositionen = rechnungspositionen;
+    }
+
+    public Rechnungsstatus getRechnungsstatus() {
+        return Rechnungsstatus;
+    }
+    public void setRechnungsstatus(Rechnungsstatus rechnungsstatus) {
+        this.rechnungsstatus = rechnungsstatus;
+    }
+
+    public String getRechnungstitel() {
+        return Rechnungstitel;
+    }
+    public void setRechnungstitel(String rechnungstitel) {
+        this.rechnungstitel = rechnungstitel;
+    }
+
+    public Rechnungstyp getRechnungstyp() {
+        return Rechnungstyp;
+    }
+    public void setRechnungstyp(Rechnungstyp rechnungstyp) {
+        this.rechnungstyp = rechnungstyp;
+    }
+
+    public Sparte getSparte() {
+        return Sparte;
+    }
+    public void setSparte(Sparte sparte) {
+        this.sparte = sparte;
+    }
+
+    public List<Steuerbetrag> getSteuerbetraege() {
+        return Steuerbetraege;
+    }
+    public void setSteuerbetraege(List<Steuerbetrag> steuerbetraege) {
+        this.steuerbetraege = steuerbetraege;
+    }
+
+    public Betrag getVorausgezahlt() {
+        return Vorausgezahlt;
+    }
+    public void setVorausgezahlt(Betrag vorausgezahlt) {
+        this.vorausgezahlt = vorausgezahlt;
+    }
+
+    public Betrag getZuZahlen() {
+        return ZuZahlen;
+    }
+    public void setZuZahlen(Betrag zuZahlen) {
+        this.zuZahlen = zuZahlen;
+    }
 }

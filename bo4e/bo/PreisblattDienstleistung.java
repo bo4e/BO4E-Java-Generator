@@ -4,9 +4,12 @@ import bo4e.enums.Typ;
 import bo4e.enums.Dienstleistungstyp;
 import bo4e.enums.Bilanzierungsmethode;
 import bo4e.com.Zeitraum;
+import bo4e.enums.Dienstleistungstyp;
 import bo4e.com.Preisposition;
 import bo4e.enums.Preisstatus;
 import bo4e.enums.Sparte;
+
+import java.util.List;
 
 /**
  * Variante des Preisblattmodells zur Abbildung der Preise für wahlfreie Dienstleistungen
@@ -21,88 +24,119 @@ import bo4e.enums.Sparte;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/bo/PreisblattDienstleistung.json>`_
  */
 public class PreisblattDienstleistung extends Geschaeftsobjekt {
-    private final Typ _typ = Typ.PREISBLATTDIENSTLEISTUNG;
-    private Dienstleistungstyp basisdienstleistung;
-    private String bezeichnung;
-    private Bilanzierungsmethode bilanzierungsmethode;
-    private Geraet geraetedetails;
-    private Zeitraum gueltigkeit;
-    private Marktteilnehmer herausgeber;
-    private Dienstleistungstyp[] inklusiveDienstleistungen;
-    private Preisposition[] preispositionen;
-    private Preisstatus preisstatus;
-    private Sparte sparte;
-
     /**
-     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+     * Typ des Geschaeftsobjekts
      */
-    /**
-     * Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
-     */
-    public Typ getTyp() { return _typ; }
-
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
+    private Typ typ = Typ.PREISBLATTDIENSTLEISTUNG;
     /**
      * Dienstleistung, für die der Preis abgebildet wird, z.B. Sperrung/Entsperrung
      */
-    public Dienstleistungstyp getBasisdienstleistung() { return basisdienstleistung; }
-    public void setBasisdienstleistung(Dienstleistungstyp value) { this.basisdienstleistung = value; }
-
+    private Dienstleistungstyp basisdienstleistung;
     /**
      * Eine Bezeichnung für das Preisblatt
      */
-    public String getBezeichnung() { return bezeichnung; }
-    public void setBezeichnung(String value) { this.bezeichnung = value; }
-
+    private String bezeichnung;
     /**
      * Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
      */
-    public Bilanzierungsmethode getBilanzierungsmethode() { return bilanzierungsmethode; }
-    public void setBilanzierungsmethode(Bilanzierungsmethode value) { this.bilanzierungsmethode = value; }
-
+    private Bilanzierungsmethode bilanzierungsmethode;
     /**
      * Hier kann der Preis auf bestimmte Geräte eingegrenzt werden. Z.B. auf die Zählergröße
      */
-    public Geraet getGeraetedetails() { return geraetedetails; }
-    public void setGeraetedetails(Geraet value) { this.geraetedetails = value; }
-
+    private Geraet geraetedetails;
     /**
      * Der Zeitraum für den der Preis festgelegt ist
      */
-    public Zeitraum getGueltigkeit() { return gueltigkeit; }
-    public void setGueltigkeit(Zeitraum value) { this.gueltigkeit = value; }
-
+    private Zeitraum gueltigkeit;
     /**
      * Der Netzbetreiber, der die Preise veröffentlicht hat
      */
-    public Marktteilnehmer getHerausgeber() { return herausgeber; }
-    public void setHerausgeber(Marktteilnehmer value) { this.herausgeber = value; }
-
+    private Marktteilnehmer herausgeber;
     /**
      * Weitere Dienstleistungen, die im Preis enthalten sind
      */
-    public Dienstleistungstyp[] getInklusiveDienstleistungen() { return inklusiveDienstleistungen; }
-    public void setInklusiveDienstleistungen(Dienstleistungstyp[] value) { this.inklusiveDienstleistungen = value; }
-
+    private List<Dienstleistungstyp> inklusiveDienstleistungen;
     /**
      * Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B.
      * Arbeitspreis, Grundpreis etc
      */
-    public Preisposition[] getPreispositionen() { return preispositionen; }
-    public void setPreispositionen(Preisposition[] value) { this.preispositionen = value; }
-
+    private List<Preisposition> preispositionen;
     /**
      * Merkmal, das anzeigt, ob es sich um vorläufige oder endgültige Preise handelt
      */
-    public Preisstatus getPreisstatus() { return preisstatus; }
-    public void setPreisstatus(Preisstatus value) { this.preisstatus = value; }
-
+    private Preisstatus preisstatus;
     /**
      * Preisblatt gilt für angegebene Sparte
      */
-    public Sparte getSparte() { return sparte; }
-    public void setSparte(Sparte value) { this.sparte = value; }
+    private Sparte sparte;
 
+    public Dienstleistungstyp getBasisdienstleistung() {
+        return Basisdienstleistung;
+    }
+    public void setBasisdienstleistung(Dienstleistungstyp basisdienstleistung) {
+        this.basisdienstleistung = basisdienstleistung;
+    }
+
+    public String getBezeichnung() {
+        return Bezeichnung;
+    }
+    public void setBezeichnung(String bezeichnung) {
+        this.bezeichnung = bezeichnung;
+    }
+
+    public Bilanzierungsmethode getBilanzierungsmethode() {
+        return Bilanzierungsmethode;
+    }
+    public void setBilanzierungsmethode(Bilanzierungsmethode bilanzierungsmethode) {
+        this.bilanzierungsmethode = bilanzierungsmethode;
+    }
+
+    public Geraet getGeraetedetails() {
+        return Geraetedetails;
+    }
+    public void setGeraetedetails(Geraet geraetedetails) {
+        this.geraetedetails = geraetedetails;
+    }
+
+    public Zeitraum getGueltigkeit() {
+        return Gueltigkeit;
+    }
+    public void setGueltigkeit(Zeitraum gueltigkeit) {
+        this.gueltigkeit = gueltigkeit;
+    }
+
+    public Marktteilnehmer getHerausgeber() {
+        return Herausgeber;
+    }
+    public void setHerausgeber(Marktteilnehmer herausgeber) {
+        this.herausgeber = herausgeber;
+    }
+
+    public List<Dienstleistungstyp> getInklusiveDienstleistungen() {
+        return InklusiveDienstleistungen;
+    }
+    public void setInklusiveDienstleistungen(List<Dienstleistungstyp> inklusiveDienstleistungen) {
+        this.inklusiveDienstleistungen = inklusiveDienstleistungen;
+    }
+
+    public List<Preisposition> getPreispositionen() {
+        return Preispositionen;
+    }
+    public void setPreispositionen(List<Preisposition> preispositionen) {
+        this.preispositionen = preispositionen;
+    }
+
+    public Preisstatus getPreisstatus() {
+        return Preisstatus;
+    }
+    public void setPreisstatus(Preisstatus preisstatus) {
+        this.preisstatus = preisstatus;
+    }
+
+    public Sparte getSparte() {
+        return Sparte;
+    }
+    public void setSparte(Sparte sparte) {
+        this.sparte = sparte;
+    }
 }

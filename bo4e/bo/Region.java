@@ -2,6 +2,9 @@ package bo4e.bo;
 
 import bo4e.enums.Typ;
 import bo4e.com.Regionskriterium;
+import bo4e.com.Regionskriterium;
+
+import java.util.List;
 
 /**
  * Modellierung einer Region als Menge von Kriterien, die eine Region beschreiben
@@ -15,38 +18,41 @@ import bo4e.com.Regionskriterium;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/bo/Region.json>`_
  */
 public class Region extends Geschaeftsobjekt {
-    private final Typ _typ = Typ.REGION;
+    /**
+     * Typ des Geschaeftsobjekts
+     */
+    private Typ typ = Typ.REGION;
+    /**
+     * Bezeichnung der Region
+     */
     private String bezeichnung;
-    private Regionskriterium[] negativListe;
-    private Regionskriterium[] positivListe;
-
-    /**
-     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
-     */
-    /**
-     * Bezeichnung der Region
-     */
-    public Typ getTyp() { return _typ; }
-
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
-    /**
-     * Bezeichnung der Region
-     */
-    public String getBezeichnung() { return bezeichnung; }
-    public void setBezeichnung(String value) { this.bezeichnung = value; }
-
     /**
      * Negativliste der Kriterien zur Definition der Region
      */
-    public Regionskriterium[] getNegativListe() { return negativListe; }
-    public void setNegativListe(Regionskriterium[] value) { this.negativListe = value; }
-
+    private List<Regionskriterium> negativListe;
     /**
      * Positivliste der Kriterien zur Definition der Region
      */
-    public Regionskriterium[] getPositivListe() { return positivListe; }
-    public void setPositivListe(Regionskriterium[] value) { this.positivListe = value; }
+    private List<Regionskriterium> positivListe;
 
+    public String getBezeichnung() {
+        return Bezeichnung;
+    }
+    public void setBezeichnung(String bezeichnung) {
+        this.bezeichnung = bezeichnung;
+    }
+
+    public List<Regionskriterium> getNegativListe() {
+        return NegativListe;
+    }
+    public void setNegativListe(List<Regionskriterium> negativListe) {
+        this.negativListe = negativListe;
+    }
+
+    public List<Regionskriterium> getPositivListe() {
+        return PositivListe;
+    }
+    public void setPositivListe(List<Regionskriterium> positivListe) {
+        this.positivListe = positivListe;
+    }
 }

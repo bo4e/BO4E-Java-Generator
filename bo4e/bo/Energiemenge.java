@@ -4,6 +4,8 @@ import bo4e.enums.Typ;
 import bo4e.com.Verbrauch;
 import bo4e.enums.Lokationstyp;
 
+import java.util.List;
+
 /**
  * Abbildung von Mengen, die Lokationen zugeordnet sind
  *
@@ -16,38 +18,41 @@ import bo4e.enums.Lokationstyp;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/bo/Energiemenge.json>`_
  */
 public class Energiemenge extends Geschaeftsobjekt {
-    private final Typ _typ = Typ.ENERGIEMENGE;
-    private Verbrauch[] energieverbrauch;
-    private String lokationsId;
-    private Lokationstyp lokationstyp;
-
     /**
-     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+     * Typ des Geschaeftsobjekts
      */
-    /**
-     * Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört
-     */
-    public Typ getTyp() { return _typ; }
-
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
+    private Typ typ = Typ.ENERGIEMENGE;
     /**
      * Gibt den Verbrauch in einer Zeiteinheit an
      */
-    public Verbrauch[] getEnergieverbrauch() { return energieverbrauch; }
-    public void setEnergieverbrauch(Verbrauch[] value) { this.energieverbrauch = value; }
-
+    private List<Verbrauch> energieverbrauch;
     /**
      * Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört
      */
-    public String getLokationsId() { return lokationsId; }
-    public void setLokationsId(String value) { this.lokationsId = value; }
-
+    private String lokationsId;
     /**
      * Gibt an, ob es sich um eine Markt- oder Messlokation handelt
      */
-    public Lokationstyp getLokationstyp() { return lokationstyp; }
-    public void setLokationstyp(Lokationstyp value) { this.lokationstyp = value; }
+    private Lokationstyp lokationstyp;
 
+    public List<Verbrauch> getEnergieverbrauch() {
+        return Energieverbrauch;
+    }
+    public void setEnergieverbrauch(List<Verbrauch> energieverbrauch) {
+        this.energieverbrauch = energieverbrauch;
+    }
+
+    public String getLokationsId() {
+        return LokationsId;
+    }
+    public void setLokationsId(String lokationsId) {
+        this.lokationsId = lokationsId;
+    }
+
+    public Lokationstyp getLokationstyp() {
+        return Lokationstyp;
+    }
+    public void setLokationstyp(Lokationstyp lokationstyp) {
+        this.lokationstyp = lokationstyp;
+    }
 }

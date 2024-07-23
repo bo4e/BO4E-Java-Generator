@@ -2,6 +2,8 @@ package bo4e.com;
 
 import bo4e.enums.Waehrungscode;
 
+import java.util.List;
+
 /**
  * Die Komponente wird dazu verwendet, Summenbeträge (beispielsweise in Angeboten und
  * Rechnungen) als Geldbeträge
@@ -16,38 +18,26 @@ import bo4e.enums.Waehrungscode;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/com/Betrag.json>`_
  */
 public class Betrag extends COM {
+    /**
+     * Gibt den Betrag des Preises an.
+     */
     private Waehrungscode waehrung;
+    /**
+     * Gibt den Betrag des Preises an.
+     */
     private Double wert;
 
-    /**
-     * zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
-     *
-     * # pylint: disable=duplicate-code
-     * model_config = ConfigDict(
-     * alias_generator=camelize,
-     * populate_by_name=True,
-     * extra="allow",
-     * # json_encoders is deprecated, but there is no easy-to-use alternative. The best way
-     * would be to create
-     * # an annotated version of Decimal, but you would have to use it everywhere in the
-     * pydantic models.
-     * # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
-     * json_encoders={Decimal: str},
-     * )
-     */
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
-    /**
-     * Gibt den Betrag des Preises an.
-     */
-    public Waehrungscode getWaehrung() { return waehrung; }
-    public void setWaehrung(Waehrungscode value) { this.waehrung = value; }
+    public Waehrungscode getWaehrung() {
+        return Waehrung;
+    }
+    public void setWaehrung(Waehrungscode waehrung) {
+        this.waehrung = waehrung;
+    }
 
-    /**
-     * Gibt den Betrag des Preises an.
-     */
-    public Double getWert() { return wert; }
-    public void setWert(Double value) { this.wert = value; }
-
+    public Double getWert() {
+        return Wert;
+    }
+    public void setWert(Double wert) {
+        this.wert = wert;
+    }
 }

@@ -5,6 +5,8 @@ import bo4e.enums.Energierichtung;
 import bo4e.enums.Verbrauchsart;
 import bo4e.enums.Waermenutzung;
 
+import java.util.List;
+
 /**
  * Mit dieser Komponente werden Zählwerke modelliert.
  *
@@ -17,132 +19,184 @@ import bo4e.enums.Waermenutzung;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/com/Zaehlwerk.json>`_
  */
 public class Zaehlwerk extends COM {
-    private Long anzahlAblesungen;
-    private String bezeichnung;
-    private Mengeneinheit einheit;
-    private Boolean istAbrechnungsrelevant;
-    private Boolean istSchwachlastfaehig;
-    private Boolean istSteuerbefreit;
-    private Boolean istUnterbrechbar;
-    private Konzessionsabgabe konzessionsabgabe;
-    private Long nachkommastelle;
-    private String obisKennzahl;
-    private Energierichtung richtung;
-    private Verbrauchsart verbrauchsart;
-    private VerwendungszweckProMarktrolle[] verwendungszwecke;
-    private Long vorkommastelle;
-    private Waermenutzung waermenutzung;
-    private Double wandlerfaktor;
-    private String zaehlwerkId;
-    private Zaehlzeitregister zaehlzeitregister;
-
-    /**
-     * zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
-     *
-     * # pylint: disable=duplicate-code
-     * model_config = ConfigDict(
-     * alias_generator=camelize,
-     * populate_by_name=True,
-     * extra="allow",
-     * # json_encoders is deprecated, but there is no easy-to-use alternative. The best way
-     * would be to create
-     * # an annotated version of Decimal, but you would have to use it everywhere in the
-     * pydantic models.
-     * # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
-     * json_encoders={Decimal: str},
-     * )
-     */
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
     /**
      * Abrechnungsrelevant
      */
-    public Long getAnzahlAblesungen() { return anzahlAblesungen; }
-    public void setAnzahlAblesungen(Long value) { this.anzahlAblesungen = value; }
-
-    public String getBezeichnung() { return bezeichnung; }
-    public void setBezeichnung(String value) { this.bezeichnung = value; }
-
-    public Mengeneinheit getEinheit() { return einheit; }
-    public void setEinheit(Mengeneinheit value) { this.einheit = value; }
-
+    private Long anzahlAblesungen;
+    private String bezeichnung;
+    private Mengeneinheit einheit;
     /**
      * Anzahl der Nachkommastellen
      */
-    public Boolean getIstAbrechnungsrelevant() { return istAbrechnungsrelevant; }
-    public void setIstAbrechnungsrelevant(Boolean value) { this.istAbrechnungsrelevant = value; }
-
+    private Boolean istAbrechnungsrelevant;
     /**
      * Schwachlastfaehigkeit
      */
-    public Boolean getIstSchwachlastfaehig() { return istSchwachlastfaehig; }
-    public void setIstSchwachlastfaehig(Boolean value) { this.istSchwachlastfaehig = value; }
-
+    private Boolean istSchwachlastfaehig;
     /**
      * Konzessionsabgabe
      */
-    public Boolean getIstSteuerbefreit() { return istSteuerbefreit; }
-    public void setIstSteuerbefreit(Boolean value) { this.istSteuerbefreit = value; }
-
+    private Boolean istSteuerbefreit;
     /**
      * Stromverbrauchsart/Verbrauchsart Marktlokation
      */
-    public Boolean getIstUnterbrechbar() { return istUnterbrechbar; }
-    public void setIstUnterbrechbar(Boolean value) { this.istUnterbrechbar = value; }
-
+    private Boolean istUnterbrechbar;
     /**
      * Wärmenutzung Marktlokation
      */
-    public Konzessionsabgabe getKonzessionsabgabe() { return konzessionsabgabe; }
-    public void setKonzessionsabgabe(Konzessionsabgabe value) { this.konzessionsabgabe = value; }
-
+    private Konzessionsabgabe konzessionsabgabe;
     /**
      * Anzahl der Vorkommastellen
      */
-    public Long getNachkommastelle() { return nachkommastelle; }
-    public void setNachkommastelle(Long value) { this.nachkommastelle = value; }
-
-    public String getObisKennzahl() { return obisKennzahl; }
-    public void setObisKennzahl(String value) { this.obisKennzahl = value; }
-
-    public Energierichtung getRichtung() { return richtung; }
-    public void setRichtung(Energierichtung value) { this.richtung = value; }
-
+    private Long nachkommastelle;
+    private String obisKennzahl;
+    private Energierichtung richtung;
     /**
      * Stromverbrauchsart/Verbrauchsart Marktlokation
      */
-    public Verbrauchsart getVerbrauchsart() { return verbrauchsart; }
-    public void setVerbrauchsart(Verbrauchsart value) { this.verbrauchsart = value; }
-
+    private Verbrauchsart verbrauchsart;
     /**
      * Schwachlastfaehigkeit
      */
-    public VerwendungszweckProMarktrolle[] getVerwendungszwecke() { return verwendungszwecke; }
-    public void setVerwendungszwecke(VerwendungszweckProMarktrolle[] value) { this.verwendungszwecke = value; }
-
+    private List<VerwendungszweckProMarktrolle> verwendungszwecke;
     /**
      * Steuerbefreiung
      */
-    public Long getVorkommastelle() { return vorkommastelle; }
-    public void setVorkommastelle(Long value) { this.vorkommastelle = value; }
-
+    private Long vorkommastelle;
     /**
      * Unterbrechbarkeit Marktlokation
      */
-    public Waermenutzung getWaermenutzung() { return waermenutzung; }
-    public void setWaermenutzung(Waermenutzung value) { this.waermenutzung = value; }
-
-    public Double getWandlerfaktor() { return wandlerfaktor; }
-    public void setWandlerfaktor(Double value) { this.wandlerfaktor = value; }
-
-    public String getZaehlwerkId() { return zaehlwerkId; }
-    public void setZaehlwerkId(String value) { this.zaehlwerkId = value; }
-
+    private Waermenutzung waermenutzung;
+    private Double wandlerfaktor;
+    private String zaehlwerkId;
     /**
      * Anzahl Ablesungen pro Jahr
      */
-    public Zaehlzeitregister getZaehlzeitregister() { return zaehlzeitregister; }
-    public void setZaehlzeitregister(Zaehlzeitregister value) { this.zaehlzeitregister = value; }
+    private Zaehlzeitregister zaehlzeitregister;
 
+    public Long getAnzahlAblesungen() {
+        return AnzahlAblesungen;
+    }
+    public void setAnzahlAblesungen(Long anzahlAblesungen) {
+        this.anzahlAblesungen = anzahlAblesungen;
+    }
+
+    public String getBezeichnung() {
+        return Bezeichnung;
+    }
+    public void setBezeichnung(String bezeichnung) {
+        this.bezeichnung = bezeichnung;
+    }
+
+    public Mengeneinheit getEinheit() {
+        return Einheit;
+    }
+    public void setEinheit(Mengeneinheit einheit) {
+        this.einheit = einheit;
+    }
+
+    public Boolean getIstAbrechnungsrelevant() {
+        return IstAbrechnungsrelevant;
+    }
+    public void setIstAbrechnungsrelevant(Boolean istAbrechnungsrelevant) {
+        this.istAbrechnungsrelevant = istAbrechnungsrelevant;
+    }
+
+    public Boolean getIstSchwachlastfaehig() {
+        return IstSchwachlastfaehig;
+    }
+    public void setIstSchwachlastfaehig(Boolean istSchwachlastfaehig) {
+        this.istSchwachlastfaehig = istSchwachlastfaehig;
+    }
+
+    public Boolean getIstSteuerbefreit() {
+        return IstSteuerbefreit;
+    }
+    public void setIstSteuerbefreit(Boolean istSteuerbefreit) {
+        this.istSteuerbefreit = istSteuerbefreit;
+    }
+
+    public Boolean getIstUnterbrechbar() {
+        return IstUnterbrechbar;
+    }
+    public void setIstUnterbrechbar(Boolean istUnterbrechbar) {
+        this.istUnterbrechbar = istUnterbrechbar;
+    }
+
+    public Konzessionsabgabe getKonzessionsabgabe() {
+        return Konzessionsabgabe;
+    }
+    public void setKonzessionsabgabe(Konzessionsabgabe konzessionsabgabe) {
+        this.konzessionsabgabe = konzessionsabgabe;
+    }
+
+    public Long getNachkommastelle() {
+        return Nachkommastelle;
+    }
+    public void setNachkommastelle(Long nachkommastelle) {
+        this.nachkommastelle = nachkommastelle;
+    }
+
+    public String getObisKennzahl() {
+        return ObisKennzahl;
+    }
+    public void setObisKennzahl(String obisKennzahl) {
+        this.obisKennzahl = obisKennzahl;
+    }
+
+    public Energierichtung getRichtung() {
+        return Richtung;
+    }
+    public void setRichtung(Energierichtung richtung) {
+        this.richtung = richtung;
+    }
+
+    public Verbrauchsart getVerbrauchsart() {
+        return Verbrauchsart;
+    }
+    public void setVerbrauchsart(Verbrauchsart verbrauchsart) {
+        this.verbrauchsart = verbrauchsart;
+    }
+
+    public List<VerwendungszweckProMarktrolle> getVerwendungszwecke() {
+        return Verwendungszwecke;
+    }
+    public void setVerwendungszwecke(List<VerwendungszweckProMarktrolle> verwendungszwecke) {
+        this.verwendungszwecke = verwendungszwecke;
+    }
+
+    public Long getVorkommastelle() {
+        return Vorkommastelle;
+    }
+    public void setVorkommastelle(Long vorkommastelle) {
+        this.vorkommastelle = vorkommastelle;
+    }
+
+    public Waermenutzung getWaermenutzung() {
+        return Waermenutzung;
+    }
+    public void setWaermenutzung(Waermenutzung waermenutzung) {
+        this.waermenutzung = waermenutzung;
+    }
+
+    public Double getWandlerfaktor() {
+        return Wandlerfaktor;
+    }
+    public void setWandlerfaktor(Double wandlerfaktor) {
+        this.wandlerfaktor = wandlerfaktor;
+    }
+
+    public String getZaehlwerkId() {
+        return ZaehlwerkId;
+    }
+    public void setZaehlwerkId(String zaehlwerkId) {
+        this.zaehlwerkId = zaehlwerkId;
+    }
+
+    public Zaehlzeitregister getZaehlzeitregister() {
+        return Zaehlzeitregister;
+    }
+    public void setZaehlzeitregister(Zaehlzeitregister zaehlzeitregister) {
+        this.zaehlzeitregister = zaehlzeitregister;
+    }
 }

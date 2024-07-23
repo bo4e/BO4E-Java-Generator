@@ -1,7 +1,9 @@
 package bo4e.com;
 
 import bo4e.enums.Mengeneinheit;
+
 import java.time.OffsetDateTime;
+import java.util.List;
 
 /**
  * Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von
@@ -27,41 +29,45 @@ public class Zeitraum extends COM {
     private OffsetDateTime startdatum;
     private OffsetDateTime startzeitpunkt;
 
-    /**
-     * zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
-     *
-     * # pylint: disable=duplicate-code
-     * model_config = ConfigDict(
-     * alias_generator=camelize,
-     * populate_by_name=True,
-     * extra="allow",
-     * # json_encoders is deprecated, but there is no easy-to-use alternative. The best way
-     * would be to create
-     * # an annotated version of Decimal, but you would have to use it everywhere in the
-     * pydantic models.
-     * # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
-     * json_encoders={Decimal: str},
-     * )
-     */
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
-    public Double getDauer() { return dauer; }
-    public void setDauer(Double value) { this.dauer = value; }
+    public Double getDauer() {
+        return Dauer;
+    }
+    public void setDauer(Double dauer) {
+        this.dauer = dauer;
+    }
 
-    public Mengeneinheit getEinheit() { return einheit; }
-    public void setEinheit(Mengeneinheit value) { this.einheit = value; }
+    public Mengeneinheit getEinheit() {
+        return Einheit;
+    }
+    public void setEinheit(Mengeneinheit einheit) {
+        this.einheit = einheit;
+    }
 
-    public OffsetDateTime getEnddatum() { return enddatum; }
-    public void setEnddatum(OffsetDateTime value) { this.enddatum = value; }
+    public OffsetDateTime getEnddatum() {
+        return Enddatum;
+    }
+    public void setEnddatum(OffsetDateTime enddatum) {
+        this.enddatum = enddatum;
+    }
 
-    public OffsetDateTime getEndzeitpunkt() { return endzeitpunkt; }
-    public void setEndzeitpunkt(OffsetDateTime value) { this.endzeitpunkt = value; }
+    public OffsetDateTime getEndzeitpunkt() {
+        return Endzeitpunkt;
+    }
+    public void setEndzeitpunkt(OffsetDateTime endzeitpunkt) {
+        this.endzeitpunkt = endzeitpunkt;
+    }
 
-    public OffsetDateTime getStartdatum() { return startdatum; }
-    public void setStartdatum(OffsetDateTime value) { this.startdatum = value; }
+    public OffsetDateTime getStartdatum() {
+        return Startdatum;
+    }
+    public void setStartdatum(OffsetDateTime startdatum) {
+        this.startdatum = startdatum;
+    }
 
-    public OffsetDateTime getStartzeitpunkt() { return startzeitpunkt; }
-    public void setStartzeitpunkt(OffsetDateTime value) { this.startzeitpunkt = value; }
-
+    public OffsetDateTime getStartzeitpunkt() {
+        return Startzeitpunkt;
+    }
+    public void setStartzeitpunkt(OffsetDateTime startzeitpunkt) {
+        this.startzeitpunkt = startzeitpunkt;
+    }
 }

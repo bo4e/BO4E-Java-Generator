@@ -8,6 +8,8 @@ import bo4e.com.Kontaktweg;
 import bo4e.enums.Organisationstyp;
 import bo4e.enums.Titel;
 
+import java.util.List;
+
 /**
  * Mit diesem Objekt können Geschäftspartner übertragen werden.
  * Sowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein.
@@ -24,128 +26,183 @@ import bo4e.enums.Titel;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/bo/Geschaeftspartner.json>`_
  */
 public class Geschaeftspartner extends Geschaeftsobjekt {
-    private final Typ _typ = Typ.GESCHAEFTSPARTNER;
-    private Adresse adresse;
-    private String amtsgericht;
-    private Anrede anrede;
-    private Person[] ansprechpartner;
-    private Geschaeftspartnerrolle[] geschaeftspartnerrollen;
-    private String glaeubigerId;
-    private String handelsregisternummer;
-    private String individuelleAnrede;
-    private Kontaktweg[] kontaktwege;
-    private String nachname;
-    private String organisationsname;
-    private Organisationstyp organisationstyp;
-    private Titel titel;
-    private String umsatzsteuerId;
-    private String vorname;
-    private String website;
-
     /**
-     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+     * Typ des Geschaeftsobjekts
      */
-    /**
-     * Mögliche Anrede der Person
-     */
-    public Typ getTyp() { return _typ; }
-
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
+    private Typ typ = Typ.GESCHAEFTSPARTNER;
     /**
      * Adresse des Geschäftspartners
      */
-    public Adresse getAdresse() { return adresse; }
-    public void setAdresse(Adresse value) { this.adresse = value; }
-
+    private Adresse adresse;
     /**
      * Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat
      */
-    public String getAmtsgericht() { return amtsgericht; }
-    public void setAmtsgericht(String value) { this.amtsgericht = value; }
-
+    private String amtsgericht;
     /**
      * Mögliche Anrede der Person
      */
-    public Anrede getAnrede() { return anrede; }
-    public void setAnrede(Anrede value) { this.anrede = value; }
-
-    public Person[] getAnsprechpartner() { return ansprechpartner; }
-    public void setAnsprechpartner(Person[] value) { this.ansprechpartner = value; }
-
+    private Anrede anrede;
+    private List<Person> ansprechpartner;
     /**
      * Rollen, die die Geschäftspartner inne haben (z.B. Interessent, Kunde)
      */
-    public Geschaeftspartnerrolle[] getGeschaeftspartnerrollen() { return geschaeftspartnerrollen; }
-    public void setGeschaeftspartnerrollen(Geschaeftspartnerrolle[] value) { this.geschaeftspartnerrollen = value; }
-
+    private List<Geschaeftspartnerrolle> geschaeftspartnerrollen;
     /**
      * Die Gläubiger-ID welche im Zahlungsverkehr verwendet wird; Z.B. "DE 47116789"
      */
-    public String getGlaeubigerId() { return glaeubigerId; }
-    public void setGlaeubigerId(String value) { this.glaeubigerId = value; }
-
+    private String glaeubigerId;
     /**
      * Handelsregisternummer des Geschäftspartners
      */
-    public String getHandelsregisternummer() { return handelsregisternummer; }
-    public void setHandelsregisternummer(String value) { this.handelsregisternummer = value; }
-
+    private String handelsregisternummer;
     /**
      * Im Falle einer nicht standardisierten Anrede kann hier eine frei definierbare Anrede
      * vorgegeben werden.
      * Beispiel: "Vereinsgemeinschaft", "Pfarrer", "Hochwürdigster Herr Abt".
      */
-    public String getIndividuelleAnrede() { return individuelleAnrede; }
-    public void setIndividuelleAnrede(String value) { this.individuelleAnrede = value; }
-
+    private String individuelleAnrede;
     /**
      * Kontaktwege des Geschäftspartners
      */
-    public Kontaktweg[] getKontaktwege() { return kontaktwege; }
-    public void setKontaktwege(Kontaktweg[] value) { this.kontaktwege = value; }
-
+    private List<Kontaktweg> kontaktwege;
     /**
      * Nachname (Familienname) der Person
      */
-    public String getNachname() { return nachname; }
-    public void setNachname(String value) { this.nachname = value; }
-
+    private String nachname;
     /**
      * Kontaktwege des Geschäftspartners
      */
-    public String getOrganisationsname() { return organisationsname; }
-    public void setOrganisationsname(String value) { this.organisationsname = value; }
-
+    private String organisationsname;
     /**
      * organisationsname: Optional[str] = None
      */
-    public Organisationstyp getOrganisationstyp() { return organisationstyp; }
-    public void setOrganisationstyp(Organisationstyp value) { this.organisationstyp = value; }
-
+    private Organisationstyp organisationstyp;
     /**
      * Möglicher Titel der Person
      */
-    public Titel getTitel() { return titel; }
-    public void setTitel(Titel value) { this.titel = value; }
-
+    private Titel titel;
     /**
      * Die Steuer-ID des Geschäftspartners; Beispiel: "DE 813281825"
      */
-    public String getUmsatzsteuerId() { return umsatzsteuerId; }
-    public void setUmsatzsteuerId(String value) { this.umsatzsteuerId = value; }
-
+    private String umsatzsteuerId;
     /**
      * Vorname der Person
      */
-    public String getVorname() { return vorname; }
-    public void setVorname(String value) { this.vorname = value; }
-
+    private String vorname;
     /**
      * Internetseite des Marktpartners
      */
-    public String getWebsite() { return website; }
-    public void setWebsite(String value) { this.website = value; }
+    private String website;
 
+    public Adresse getAdresse() {
+        return Adresse;
+    }
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getAmtsgericht() {
+        return Amtsgericht;
+    }
+    public void setAmtsgericht(String amtsgericht) {
+        this.amtsgericht = amtsgericht;
+    }
+
+    public Anrede getAnrede() {
+        return Anrede;
+    }
+    public void setAnrede(Anrede anrede) {
+        this.anrede = anrede;
+    }
+
+    public List<Person> getAnsprechpartner() {
+        return Ansprechpartner;
+    }
+    public void setAnsprechpartner(List<Person> ansprechpartner) {
+        this.ansprechpartner = ansprechpartner;
+    }
+
+    public List<Geschaeftspartnerrolle> getGeschaeftspartnerrollen() {
+        return Geschaeftspartnerrollen;
+    }
+    public void setGeschaeftspartnerrollen(List<Geschaeftspartnerrolle> geschaeftspartnerrollen) {
+        this.geschaeftspartnerrollen = geschaeftspartnerrollen;
+    }
+
+    public String getGlaeubigerId() {
+        return GlaeubigerId;
+    }
+    public void setGlaeubigerId(String glaeubigerId) {
+        this.glaeubigerId = glaeubigerId;
+    }
+
+    public String getHandelsregisternummer() {
+        return Handelsregisternummer;
+    }
+    public void setHandelsregisternummer(String handelsregisternummer) {
+        this.handelsregisternummer = handelsregisternummer;
+    }
+
+    public String getIndividuelleAnrede() {
+        return IndividuelleAnrede;
+    }
+    public void setIndividuelleAnrede(String individuelleAnrede) {
+        this.individuelleAnrede = individuelleAnrede;
+    }
+
+    public List<Kontaktweg> getKontaktwege() {
+        return Kontaktwege;
+    }
+    public void setKontaktwege(List<Kontaktweg> kontaktwege) {
+        this.kontaktwege = kontaktwege;
+    }
+
+    public String getNachname() {
+        return Nachname;
+    }
+    public void setNachname(String nachname) {
+        this.nachname = nachname;
+    }
+
+    public String getOrganisationsname() {
+        return Organisationsname;
+    }
+    public void setOrganisationsname(String organisationsname) {
+        this.organisationsname = organisationsname;
+    }
+
+    public Organisationstyp getOrganisationstyp() {
+        return Organisationstyp;
+    }
+    public void setOrganisationstyp(Organisationstyp organisationstyp) {
+        this.organisationstyp = organisationstyp;
+    }
+
+    public Titel getTitel() {
+        return Titel;
+    }
+    public void setTitel(Titel titel) {
+        this.titel = titel;
+    }
+
+    public String getUmsatzsteuerId() {
+        return UmsatzsteuerId;
+    }
+    public void setUmsatzsteuerId(String umsatzsteuerId) {
+        this.umsatzsteuerId = umsatzsteuerId;
+    }
+
+    public String getVorname() {
+        return Vorname;
+    }
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+
+    public String getWebsite() {
+        return Website;
+    }
+    public void setWebsite(String website) {
+        this.website = website;
+    }
 }

@@ -5,6 +5,8 @@ import bo4e.enums.Preismodell;
 import bo4e.enums.Rechnungslegung;
 import bo4e.enums.Vertragsform;
 
+import java.util.List;
+
 /**
  * Eine Komponente zur Abbildung einzelner Lose einer Ausschreibung
  *
@@ -18,144 +20,192 @@ import bo4e.enums.Vertragsform;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/com/Ausschreibungslos.json>`_
  */
 public class Ausschreibungslos extends COM {
-    private Long anzahlLieferstellen;
-    private String bemerkung;
-    private String betreutDurch;
-    private String bezeichnung;
-    private Sparte energieart;
-    private Menge gesamtMenge;
-    private Ausschreibungsdetail[] lieferstellen;
-    private Zeitraum lieferzeitraum;
-    private String losnummer;
-    private Preismodell preismodell;
-    private Zeitraum wiederholungsintervall;
-    private Zeitraum wunschKuendingungsfrist;
-    private Menge wunschMaximalmenge;
-    private Menge wunschMindestmenge;
-    private Rechnungslegung wunschRechnungslegung;
-    private Vertragsform wunschVertragsform;
-    private Zeitraum wunschZahlungsziel;
-
-    /**
-     * zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
-     *
-     * # pylint: disable=duplicate-code
-     * model_config = ConfigDict(
-     * alias_generator=camelize,
-     * populate_by_name=True,
-     * extra="allow",
-     * # json_encoders is deprecated, but there is no easy-to-use alternative. The best way
-     * would be to create
-     * # an annotated version of Decimal, but you would have to use it everywhere in the
-     * pydantic models.
-     * # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
-     * json_encoders={Decimal: str},
-     * )
-     */
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
     /**
      * Anzahl der Lieferstellen in dieser Ausschreibung
      */
-    public Long getAnzahlLieferstellen() { return anzahlLieferstellen; }
-    public void setAnzahlLieferstellen(Long value) { this.anzahlLieferstellen = value; }
-
+    private Long anzahlLieferstellen;
     /**
      * Bemerkung des Kunden zum Los
      */
-    public String getBemerkung() { return bemerkung; }
-    public void setBemerkung(String value) { this.bemerkung = value; }
-
+    private String bemerkung;
     /**
      * Name des Lizenzpartners
      */
-    public String getBetreutDurch() { return betreutDurch; }
-    public void setBetreutDurch(String value) { this.betreutDurch = value; }
-
+    private String betreutDurch;
     /**
      * Bezeichnung der Ausschreibung
      */
-    public String getBezeichnung() { return bezeichnung; }
-    public void setBezeichnung(String value) { this.bezeichnung = value; }
-
+    private String bezeichnung;
     /**
      * Unterscheidungsmöglichkeiten für die Sparte
      */
-    public Sparte getEnergieart() { return energieart; }
-    public void setEnergieart(Sparte value) { this.energieart = value; }
-
+    private Sparte energieart;
     /**
      * Gibt den Gesamtjahresverbrauch (z.B. in kWh) aller in diesem Los enthaltenen
      * Lieferstellen an
      */
-    public Menge getGesamtMenge() { return gesamtMenge; }
-    public void setGesamtMenge(Menge value) { this.gesamtMenge = value; }
-
+    private Menge gesamtMenge;
     /**
      * Die ausgeschriebenen Lieferstellen
      */
-    public Ausschreibungsdetail[] getLieferstellen() { return lieferstellen; }
-    public void setLieferstellen(Ausschreibungsdetail[] value) { this.lieferstellen = value; }
-
+    private List<Ausschreibungsdetail> lieferstellen;
     /**
      * Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
      */
-    public Zeitraum getLieferzeitraum() { return lieferzeitraum; }
-    public void setLieferzeitraum(Zeitraum value) { this.lieferzeitraum = value; }
-
+    private Zeitraum lieferzeitraum;
     /**
      * Laufende Nummer des Loses
      */
-    public String getLosnummer() { return losnummer; }
-    public void setLosnummer(String value) { this.losnummer = value; }
-
+    private String losnummer;
     /**
      * Bezeichnung der Preismodelle in Ausschreibungen für die Energielieferung
      */
-    public Preismodell getPreismodell() { return preismodell; }
-    public void setPreismodell(Preismodell value) { this.preismodell = value; }
-
+    private Preismodell preismodell;
     /**
      * Kundenwunsch zur Kündigungsfrist in der Ausschreibung
      */
-    public Zeitraum getWiederholungsintervall() { return wiederholungsintervall; }
-    public void setWiederholungsintervall(Zeitraum value) { this.wiederholungsintervall = value; }
-
+    private Zeitraum wiederholungsintervall;
     /**
      * Kundenwunsch zur Kündigungsfrist in der Ausschreibung
      */
-    public Zeitraum getWunschKuendingungsfrist() { return wunschKuendingungsfrist; }
-    public void setWunschKuendingungsfrist(Zeitraum value) { this.wunschKuendingungsfrist = value; }
-
+    private Zeitraum wunschKuendingungsfrist;
     /**
      * Maximalmenge Toleranzband (kWh, %)
      */
-    public Menge getWunschMaximalmenge() { return wunschMaximalmenge; }
-    public void setWunschMaximalmenge(Menge value) { this.wunschMaximalmenge = value; }
-
+    private Menge wunschMaximalmenge;
     /**
      * Mindesmenge Toleranzband (kWh, %)
      */
-    public Menge getWunschMindestmenge() { return wunschMindestmenge; }
-    public void setWunschMindestmenge(Menge value) { this.wunschMindestmenge = value; }
-
+    private Menge wunschMindestmenge;
     /**
      * Aufzählung der Möglichkeiten zur Rechnungslegung in Ausschreibungen
      */
-    public Rechnungslegung getWunschRechnungslegung() { return wunschRechnungslegung; }
-    public void setWunschRechnungslegung(Rechnungslegung value) { this.wunschRechnungslegung = value; }
-
+    private Rechnungslegung wunschRechnungslegung;
     /**
      * Aufzählung der Möglichkeiten zu Vertragsformen in Ausschreibungen
      */
-    public Vertragsform getWunschVertragsform() { return wunschVertragsform; }
-    public void setWunschVertragsform(Vertragsform value) { this.wunschVertragsform = value; }
-
+    private Vertragsform wunschVertragsform;
     /**
      * Kundenwunsch zum Zahlungsziel in der Ausschreibung
      */
-    public Zeitraum getWunschZahlungsziel() { return wunschZahlungsziel; }
-    public void setWunschZahlungsziel(Zeitraum value) { this.wunschZahlungsziel = value; }
+    private Zeitraum wunschZahlungsziel;
 
+    public Long getAnzahlLieferstellen() {
+        return AnzahlLieferstellen;
+    }
+    public void setAnzahlLieferstellen(Long anzahlLieferstellen) {
+        this.anzahlLieferstellen = anzahlLieferstellen;
+    }
+
+    public String getBemerkung() {
+        return Bemerkung;
+    }
+    public void setBemerkung(String bemerkung) {
+        this.bemerkung = bemerkung;
+    }
+
+    public String getBetreutDurch() {
+        return BetreutDurch;
+    }
+    public void setBetreutDurch(String betreutDurch) {
+        this.betreutDurch = betreutDurch;
+    }
+
+    public String getBezeichnung() {
+        return Bezeichnung;
+    }
+    public void setBezeichnung(String bezeichnung) {
+        this.bezeichnung = bezeichnung;
+    }
+
+    public Sparte getEnergieart() {
+        return Energieart;
+    }
+    public void setEnergieart(Sparte energieart) {
+        this.energieart = energieart;
+    }
+
+    public Menge getGesamtMenge() {
+        return GesamtMenge;
+    }
+    public void setGesamtMenge(Menge gesamtMenge) {
+        this.gesamtMenge = gesamtMenge;
+    }
+
+    public List<Ausschreibungsdetail> getLieferstellen() {
+        return Lieferstellen;
+    }
+    public void setLieferstellen(List<Ausschreibungsdetail> lieferstellen) {
+        this.lieferstellen = lieferstellen;
+    }
+
+    public Zeitraum getLieferzeitraum() {
+        return Lieferzeitraum;
+    }
+    public void setLieferzeitraum(Zeitraum lieferzeitraum) {
+        this.lieferzeitraum = lieferzeitraum;
+    }
+
+    public String getLosnummer() {
+        return Losnummer;
+    }
+    public void setLosnummer(String losnummer) {
+        this.losnummer = losnummer;
+    }
+
+    public Preismodell getPreismodell() {
+        return Preismodell;
+    }
+    public void setPreismodell(Preismodell preismodell) {
+        this.preismodell = preismodell;
+    }
+
+    public Zeitraum getWiederholungsintervall() {
+        return Wiederholungsintervall;
+    }
+    public void setWiederholungsintervall(Zeitraum wiederholungsintervall) {
+        this.wiederholungsintervall = wiederholungsintervall;
+    }
+
+    public Zeitraum getWunschKuendingungsfrist() {
+        return WunschKuendingungsfrist;
+    }
+    public void setWunschKuendingungsfrist(Zeitraum wunschKuendingungsfrist) {
+        this.wunschKuendingungsfrist = wunschKuendingungsfrist;
+    }
+
+    public Menge getWunschMaximalmenge() {
+        return WunschMaximalmenge;
+    }
+    public void setWunschMaximalmenge(Menge wunschMaximalmenge) {
+        this.wunschMaximalmenge = wunschMaximalmenge;
+    }
+
+    public Menge getWunschMindestmenge() {
+        return WunschMindestmenge;
+    }
+    public void setWunschMindestmenge(Menge wunschMindestmenge) {
+        this.wunschMindestmenge = wunschMindestmenge;
+    }
+
+    public Rechnungslegung getWunschRechnungslegung() {
+        return WunschRechnungslegung;
+    }
+    public void setWunschRechnungslegung(Rechnungslegung wunschRechnungslegung) {
+        this.wunschRechnungslegung = wunschRechnungslegung;
+    }
+
+    public Vertragsform getWunschVertragsform() {
+        return WunschVertragsform;
+    }
+    public void setWunschVertragsform(Vertragsform wunschVertragsform) {
+        this.wunschVertragsform = wunschVertragsform;
+    }
+
+    public Zeitraum getWunschZahlungsziel() {
+        return WunschZahlungsziel;
+    }
+    public void setWunschZahlungsziel(Zeitraum wunschZahlungsziel) {
+        this.wunschZahlungsziel = wunschZahlungsziel;
+    }
 }

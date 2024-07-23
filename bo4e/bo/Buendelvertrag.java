@@ -3,10 +3,13 @@ package bo4e.bo;
 import bo4e.enums.Typ;
 import bo4e.enums.Sparte;
 import bo4e.com.Unterschrift;
+import bo4e.com.Unterschrift;
 import bo4e.enums.Vertragsart;
 import bo4e.com.Vertragskonditionen;
 import bo4e.enums.Vertragsstatus;
+
 import java.time.OffsetDateTime;
+import java.util.List;
 
 /**
  * Abbildung eines Bündelvertrags.
@@ -23,108 +26,151 @@ import java.time.OffsetDateTime;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/bo/Buendelvertrag.json>`_
  */
 public class Buendelvertrag extends Geschaeftsobjekt {
-    private final Typ _typ = Typ.BUENDELVERTRAG;
-    private String beschreibung;
-    private Vertrag[] einzelvertraege;
-    private Sparte sparte;
-    private Unterschrift[] unterzeichnervp1;
-    private Unterschrift[] unterzeichnervp2;
-    private Vertragsart vertragsart;
-    private OffsetDateTime vertragsbeginn;
-    private OffsetDateTime vertragsende;
-    private Vertragskonditionen[] vertragskonditionen;
-    private String vertragsnummer;
-    private Geschaeftspartner vertragspartner1;
-    private Geschaeftspartner vertragspartner2;
-    private Vertragsstatus vertragsstatus;
-
     /**
-     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+     * Typ des Geschaeftsobjekts
      */
-    /**
-     * Der Typ des Geschäftsobjektes
-     */
-    public Typ getTyp() { return _typ; }
-
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
+    private Typ typ = Typ.BUENDELVERTRAG;
     /**
      * Beschreibung zum Vertrag
      */
-    public String getBeschreibung() { return beschreibung; }
-    public void setBeschreibung(String value) { this.beschreibung = value; }
-
+    private String beschreibung;
     /**
      * Die Liste mit den Einzelverträgen zu den Abnahmestellen
      */
-    public Vertrag[] getEinzelvertraege() { return einzelvertraege; }
-    public void setEinzelvertraege(Vertrag[] value) { this.einzelvertraege = value; }
-
+    private List<Vertrag> einzelvertraege;
     /**
      * Unterscheidungsmöglichkeiten für die Sparte
      */
-    public Sparte getSparte() { return sparte; }
-    public void setSparte(Sparte value) { this.sparte = value; }
-
+    private Sparte sparte;
     /**
      * Unterzeichner des Vertragspartners1
      */
-    public Unterschrift[] getUnterzeichnervp1() { return unterzeichnervp1; }
-    public void setUnterzeichnervp1(Unterschrift[] value) { this.unterzeichnervp1 = value; }
-
+    private List<Unterschrift> unterzeichnervp1;
     /**
      * Unterzeichner des Vertragspartners2
      */
-    public Unterschrift[] getUnterzeichnervp2() { return unterzeichnervp2; }
-    public void setUnterzeichnervp2(Unterschrift[] value) { this.unterzeichnervp2 = value; }
-
+    private List<Unterschrift> unterzeichnervp2;
     /**
      * Hier ist festgelegt, um welche Art von Vertrag es sich handelt. Z.B. Netznutzungvertrag
      */
-    public Vertragsart getVertragsart() { return vertragsart; }
-    public void setVertragsart(Vertragsart value) { this.vertragsart = value; }
-
+    private Vertragsart vertragsart;
     /**
      * Gibt an, wann der Vertrag beginnt (inklusiv)
      */
-    public OffsetDateTime getVertragsbeginn() { return vertragsbeginn; }
-    public void setVertragsbeginn(OffsetDateTime value) { this.vertragsbeginn = value; }
-
+    private OffsetDateTime vertragsbeginn;
     /**
      * Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde (exklusiv)
      */
-    public OffsetDateTime getVertragsende() { return vertragsende; }
-    public void setVertragsende(OffsetDateTime value) { this.vertragsende = value; }
-
+    private OffsetDateTime vertragsende;
     /**
      * Festlegungen zu Laufzeiten und Kündigungsfristen
      */
-    public Vertragskonditionen[] getVertragskonditionen() { return vertragskonditionen; }
-    public void setVertragskonditionen(Vertragskonditionen[] value) { this.vertragskonditionen = value; }
-
+    private List<Vertragskonditionen> vertragskonditionen;
     /**
      * Eine im Verwendungskontext eindeutige Nummer für den Vertrag
      */
-    public String getVertragsnummer() { return vertragsnummer; }
-    public void setVertragsnummer(String value) { this.vertragsnummer = value; }
-
+    private String vertragsnummer;
     /**
      * Beispiel: "Vertrag zwischen Vertagspartner 1 ..."
      */
-    public Geschaeftspartner getVertragspartner1() { return vertragspartner1; }
-    public void setVertragspartner1(Geschaeftspartner value) { this.vertragspartner1 = value; }
-
+    private Geschaeftspartner vertragspartner1;
     /**
      * Beispiel "Vertrag zwischen Vertagspartner 1 und Vertragspartner 2"
      */
-    public Geschaeftspartner getVertragspartner2() { return vertragspartner2; }
-    public void setVertragspartner2(Geschaeftspartner value) { this.vertragspartner2 = value; }
-
+    private Geschaeftspartner vertragspartner2;
     /**
      * Gibt den Status des Vertrages an
      */
-    public Vertragsstatus getVertragsstatus() { return vertragsstatus; }
-    public void setVertragsstatus(Vertragsstatus value) { this.vertragsstatus = value; }
+    private Vertragsstatus vertragsstatus;
 
+    public String getBeschreibung() {
+        return Beschreibung;
+    }
+    public void setBeschreibung(String beschreibung) {
+        this.beschreibung = beschreibung;
+    }
+
+    public List<Vertrag> getEinzelvertraege() {
+        return Einzelvertraege;
+    }
+    public void setEinzelvertraege(List<Vertrag> einzelvertraege) {
+        this.einzelvertraege = einzelvertraege;
+    }
+
+    public Sparte getSparte() {
+        return Sparte;
+    }
+    public void setSparte(Sparte sparte) {
+        this.sparte = sparte;
+    }
+
+    public List<Unterschrift> getUnterzeichnervp1() {
+        return Unterzeichnervp1;
+    }
+    public void setUnterzeichnervp1(List<Unterschrift> unterzeichnervp1) {
+        this.unterzeichnervp1 = unterzeichnervp1;
+    }
+
+    public List<Unterschrift> getUnterzeichnervp2() {
+        return Unterzeichnervp2;
+    }
+    public void setUnterzeichnervp2(List<Unterschrift> unterzeichnervp2) {
+        this.unterzeichnervp2 = unterzeichnervp2;
+    }
+
+    public Vertragsart getVertragsart() {
+        return Vertragsart;
+    }
+    public void setVertragsart(Vertragsart vertragsart) {
+        this.vertragsart = vertragsart;
+    }
+
+    public OffsetDateTime getVertragsbeginn() {
+        return Vertragsbeginn;
+    }
+    public void setVertragsbeginn(OffsetDateTime vertragsbeginn) {
+        this.vertragsbeginn = vertragsbeginn;
+    }
+
+    public OffsetDateTime getVertragsende() {
+        return Vertragsende;
+    }
+    public void setVertragsende(OffsetDateTime vertragsende) {
+        this.vertragsende = vertragsende;
+    }
+
+    public List<Vertragskonditionen> getVertragskonditionen() {
+        return Vertragskonditionen;
+    }
+    public void setVertragskonditionen(List<Vertragskonditionen> vertragskonditionen) {
+        this.vertragskonditionen = vertragskonditionen;
+    }
+
+    public String getVertragsnummer() {
+        return Vertragsnummer;
+    }
+    public void setVertragsnummer(String vertragsnummer) {
+        this.vertragsnummer = vertragsnummer;
+    }
+
+    public Geschaeftspartner getVertragspartner1() {
+        return Vertragspartner1;
+    }
+    public void setVertragspartner1(Geschaeftspartner vertragspartner1) {
+        this.vertragspartner1 = vertragspartner1;
+    }
+
+    public Geschaeftspartner getVertragspartner2() {
+        return Vertragspartner2;
+    }
+    public void setVertragspartner2(Geschaeftspartner vertragspartner2) {
+        this.vertragspartner2 = vertragspartner2;
+    }
+
+    public Vertragsstatus getVertragsstatus() {
+        return Vertragsstatus;
+    }
+    public void setVertragsstatus(Vertragsstatus vertragsstatus) {
+        this.vertragsstatus = vertragsstatus;
+    }
 }

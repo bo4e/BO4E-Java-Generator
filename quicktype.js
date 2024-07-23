@@ -258,34 +258,6 @@ function generateAllKnowingSchema() {
 }
 
 /**
- * retrieves the correct property name based on the generated property
- * @param property {string} the property to search for
- * @param jsonFile {string} the file containing the schema
- * @param filePath {string} the path to the directory of the file
- * @returns {string} the correct name of the property
- */
-function getPropertyName(property, jsonFile, filePath) {
-    const content = fs.readFileSync(filePath + jsonFile, "utf-8").replaceAll(" ", "").split("\n");
-    const line = content.find(value => value.toLowerCase() === `\"${property.toLowerCase()}\":{`);
-    if (line) {
-        return line.substring(1, line.length - 3);
-    } else {
-        return property;
-    }
-}
-
-function findFile(fileName, searchDirectory, fileType = ".json") {
-    const searchFiles = fs.readdirSync(searchDirectory);
-    const file = searchFiles.find(value => {
-        return fs.statSync(searchDirectory + '/' + value).isFile() && value.replace(fileType, "").toLowerCase() === fileName.toLowerCase();
-    });
-    if (!file) {
-        console.warn("Cannot find " + fileName);
-    }
-    return file;
-}
-
-/**
  *
  * @param classBody{string[]}
  * @param fieldName {string}

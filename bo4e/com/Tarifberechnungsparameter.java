@@ -3,6 +3,8 @@ package bo4e.com;
 import bo4e.enums.Tarifkalkulationsmethode;
 import bo4e.enums.Messpreistyp;
 
+import java.util.List;
+
 /**
  * In dieser Komponente sind die Berechnungsparameter für die Ermittlung der Tarifkosten
  * zusammengefasst.
@@ -16,94 +18,115 @@ import bo4e.enums.Messpreistyp;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/com/Tarifberechnungsparameter.json>`_
  */
 public class Tarifberechnungsparameter extends COM {
-    private Tarifkalkulationsmethode berechnungsmethode;
-    private Preis hoechstpreisHT;
-    private Preis hoechstpreisNT;
-    private Boolean istMesspreisInGrundpreisEnthalten;
-    private Boolean istMesspreisZuBeruecksichtigen;
-    private Double kwInklusive;
-    private Double kwWeitereMengen;
-    private Messpreistyp messpreistyp;
-    private Preis mindestpreis;
-    private Tarifpreis[] zusatzpreise;
-
-    /**
-     * zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
-     *
-     * # pylint: disable=duplicate-code
-     * model_config = ConfigDict(
-     * alias_generator=camelize,
-     * populate_by_name=True,
-     * extra="allow",
-     * # json_encoders is deprecated, but there is no easy-to-use alternative. The best way
-     * would be to create
-     * # an annotated version of Decimal, but you would have to use it everywhere in the
-     * pydantic models.
-     * # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
-     * json_encoders={Decimal: str},
-     * )
-     */
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
     /**
      * Gibt an, wie die Einzelpreise des Tarifes zu verarbeiten sind
      */
-    public Tarifkalkulationsmethode getBerechnungsmethode() { return berechnungsmethode; }
-    public void setBerechnungsmethode(Tarifkalkulationsmethode value) { this.berechnungsmethode = value; }
-
+    private Tarifkalkulationsmethode berechnungsmethode;
     /**
      * Höchstpreis für den Durchschnitts-Arbeitspreis HT
      */
-    public Preis getHoechstpreisHT() { return hoechstpreisHT; }
-    public void setHoechstpreisHT(Preis value) { this.hoechstpreisHT = value; }
-
+    private Preis hoechstpreisHT;
     /**
      * Höchstpreis für den Durchschnitts-Arbeitspreis NT
      */
-    public Preis getHoechstpreisNT() { return hoechstpreisNT; }
-    public void setHoechstpreisNT(Preis value) { this.hoechstpreisNT = value; }
-
+    private Preis hoechstpreisNT;
     /**
      * True, falls der Messpreis im Grundpreis (GP) enthalten ist
      */
-    public Boolean getIstMesspreisInGrundpreisEnthalten() { return istMesspreisInGrundpreisEnthalten; }
-    public void setIstMesspreisInGrundpreisEnthalten(Boolean value) { this.istMesspreisInGrundpreisEnthalten = value; }
-
+    private Boolean istMesspreisInGrundpreisEnthalten;
     /**
      * Typ des Messpreises
      */
-    public Boolean getIstMesspreisZuBeruecksichtigen() { return istMesspreisZuBeruecksichtigen; }
-    public void setIstMesspreisZuBeruecksichtigen(Boolean value) { this.istMesspreisZuBeruecksichtigen = value; }
-
+    private Boolean istMesspreisZuBeruecksichtigen;
     /**
      * Im Preis bereits eingeschlossene Leistung (für Gas)
      */
-    public Double getKwInklusive() { return kwInklusive; }
-    public void setKwInklusive(Double value) { this.kwInklusive = value; }
-
+    private Double kwInklusive;
     /**
      * Intervall, indem die über "kwInklusive" hinaus abgenommene Leistung kostenpflichtig wird
      * (z.B. je 5 kW 20 EURO)
      */
-    public Double getKwWeitereMengen() { return kwWeitereMengen; }
-    public void setKwWeitereMengen(Double value) { this.kwWeitereMengen = value; }
-
+    private Double kwWeitereMengen;
     /**
      * Typ des Messpreises
      */
-    public Messpreistyp getMesspreistyp() { return messpreistyp; }
-    public void setMesspreistyp(Messpreistyp value) { this.messpreistyp = value; }
-
+    private Messpreistyp messpreistyp;
     /**
      * Mindestpreis für den Durchschnitts-Arbeitspreis
      */
-    public Preis getMindestpreis() { return mindestpreis; }
-    public void setMindestpreis(Preis value) { this.mindestpreis = value; }
-
+    private Preis mindestpreis;
     /**
      * Liste mit zusätzlichen Preisen, beispielsweise Messpreise und/oder Leistungspreise
      */
-    public Tarifpreis[] getZusatzpreise() { return zusatzpreise; }
-    public void setZusatzpreise(Tarifpreis[] value) { this.zusatzpreise = value; }
+    private List<Tarifpreis> zusatzpreise;
+
+    public Tarifkalkulationsmethode getBerechnungsmethode() {
+        return Berechnungsmethode;
+    }
+    public void setBerechnungsmethode(Tarifkalkulationsmethode berechnungsmethode) {
+        this.berechnungsmethode = berechnungsmethode;
+    }
+
+    public Preis getHoechstpreisHT() {
+        return HoechstpreisHT;
+    }
+    public void setHoechstpreisHT(Preis hoechstpreisHT) {
+        this.hoechstpreisHT = hoechstpreisHT;
+    }
+
+    public Preis getHoechstpreisNT() {
+        return HoechstpreisNT;
+    }
+    public void setHoechstpreisNT(Preis hoechstpreisNT) {
+        this.hoechstpreisNT = hoechstpreisNT;
+    }
+
+    public Boolean getIstMesspreisInGrundpreisEnthalten() {
+        return IstMesspreisInGrundpreisEnthalten;
+    }
+    public void setIstMesspreisInGrundpreisEnthalten(Boolean istMesspreisInGrundpreisEnthalten) {
+        this.istMesspreisInGrundpreisEnthalten = istMesspreisInGrundpreisEnthalten;
+    }
+
+    public Boolean getIstMesspreisZuBeruecksichtigen() {
+        return IstMesspreisZuBeruecksichtigen;
+    }
+    public void setIstMesspreisZuBeruecksichtigen(Boolean istMesspreisZuBeruecksichtigen) {
+        this.istMesspreisZuBeruecksichtigen = istMesspreisZuBeruecksichtigen;
+    }
+
+    public Double getKwInklusive() {
+        return KwInklusive;
+    }
+    public void setKwInklusive(Double kwInklusive) {
+        this.kwInklusive = kwInklusive;
+    }
+
+    public Double getKwWeitereMengen() {
+        return KwWeitereMengen;
+    }
+    public void setKwWeitereMengen(Double kwWeitereMengen) {
+        this.kwWeitereMengen = kwWeitereMengen;
+    }
+
+    public Messpreistyp getMesspreistyp() {
+        return Messpreistyp;
+    }
+    public void setMesspreistyp(Messpreistyp messpreistyp) {
+        this.messpreistyp = messpreistyp;
+    }
+
+    public Preis getMindestpreis() {
+        return Mindestpreis;
+    }
+    public void setMindestpreis(Preis mindestpreis) {
+        this.mindestpreis = mindestpreis;
+    }
+
+    public List<Tarifpreis> getZusatzpreise() {
+        return Zusatzpreise;
+    }
+    public void setZusatzpreise(List<Tarifpreis> zusatzpreise) {
+        this.zusatzpreise = zusatzpreise;
+    }
 }

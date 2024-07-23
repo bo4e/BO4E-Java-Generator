@@ -10,7 +10,9 @@ import bo4e.enums.Zaehlergroesse;
 import bo4e.enums.Zaehlertyp;
 import bo4e.enums.ZaehlertypSpezifikation;
 import bo4e.com.Zaehlwerk;
+
 import java.time.OffsetDateTime;
+import java.util.List;
 
 /**
  * Object containing information about a meter/"Zaehler".
@@ -24,129 +26,184 @@ import java.time.OffsetDateTime;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/bo/Zaehler.json>`_
  */
 public class Zaehler extends Geschaeftsobjekt {
-    private final Typ _typ = Typ.ZAEHLER;
-    private Befestigungsart befestigungsart;
-    private OffsetDateTime eichungBis;
-    private Geraet[] geraete;
-    private Boolean istFernschaltbar;
-    private OffsetDateTime letzteEichung;
-    private Messwerterfassung messwerterfassung;
-    private Registeranzahl registeranzahl;
-    private Sparte sparte;
-    private Zaehlerauspraegung zaehlerauspraegung;
-    private Zaehlergroesse zaehlergroesse;
-    private Geschaeftspartner zaehlerhersteller;
-    private Double zaehlerkonstante;
-    private String zaehlernummer;
-    private Zaehlertyp zaehlertyp;
-    private ZaehlertypSpezifikation zaehlertypSpezifikation;
-    private Zaehlwerk[] zaehlwerke;
-
     /**
-     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+     * Typ des Geschaeftsobjekts
      */
-    /**
-     * Typisierung des Zählers
-     */
-    public Typ getTyp() { return _typ; }
-
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
+    private Typ typ = Typ.ZAEHLER;
     /**
      * Besondere Spezifikation des Zählers
      */
-    public Befestigungsart getBefestigungsart() { return befestigungsart; }
-    public void setBefestigungsart(Befestigungsart value) { this.befestigungsart = value; }
-
+    private Befestigungsart befestigungsart;
     /**
      * Zählerkonstante auf dem Zähler
      */
-    public OffsetDateTime getEichungBis() { return eichungBis; }
-    public void setEichungBis(OffsetDateTime value) { this.eichungBis = value; }
-
+    private OffsetDateTime eichungBis;
     /**
      * Größe des Zählers
      */
-    public Geraet[] getGeraete() { return geraete; }
-    public void setGeraete(Geraet[] value) { this.geraete = value; }
-
+    private List<Geraet> geraete;
     /**
      * Der Hersteller des Zählers
      */
-    public Boolean getIstFernschaltbar() { return istFernschaltbar; }
-    public void setIstFernschaltbar(Boolean value) { this.istFernschaltbar = value; }
-
+    private Boolean istFernschaltbar;
     /**
      * Bis zu diesem Datum (exklusiv) ist der Zähler geeicht.
      */
-    public OffsetDateTime getLetzteEichung() { return letzteEichung; }
-    public void setLetzteEichung(OffsetDateTime value) { this.letzteEichung = value; }
-
+    private OffsetDateTime letzteEichung;
     /**
      * Fernschaltung
      */
-    public Messwerterfassung getMesswerterfassung() { return messwerterfassung; }
-    public void setMesswerterfassung(Messwerterfassung value) { this.messwerterfassung = value; }
-
+    private Messwerterfassung messwerterfassung;
     /**
      * Spezifikation bezüglich unterstützter Tarif
      */
-    public Registeranzahl getRegisteranzahl() { return registeranzahl; }
-    public void setRegisteranzahl(Registeranzahl value) { this.registeranzahl = value; }
-
+    private Registeranzahl registeranzahl;
     /**
      * Nummerierung des Zählers,vergeben durch den Messstellenbetreiber
      */
-    public Sparte getSparte() { return sparte; }
-    public void setSparte(Sparte value) { this.sparte = value; }
-
+    private Sparte sparte;
     /**
      * Strom oder Gas
      */
-    public Zaehlerauspraegung getZaehlerauspraegung() { return zaehlerauspraegung; }
-    public void setZaehlerauspraegung(Zaehlerauspraegung value) { this.zaehlerauspraegung = value; }
-
+    private Zaehlerauspraegung zaehlerauspraegung;
     /**
      * Befestigungsart
      */
-    public Zaehlergroesse getZaehlergroesse() { return zaehlergroesse; }
-    public void setZaehlergroesse(Zaehlergroesse value) { this.zaehlergroesse = value; }
-
+    private Zaehlergroesse zaehlergroesse;
     /**
      * Der Hersteller des Zählers
      */
-    public Geschaeftspartner getZaehlerhersteller() { return zaehlerhersteller; }
-    public void setZaehlerhersteller(Geschaeftspartner value) { this.zaehlerhersteller = value; }
-
+    private Geschaeftspartner zaehlerhersteller;
     /**
      * Spezifikation bezüglich unterstützter Tarif
      */
-    public Double getZaehlerkonstante() { return zaehlerkonstante; }
-    public void setZaehlerkonstante(Double value) { this.zaehlerkonstante = value; }
-
+    private Double zaehlerkonstante;
     /**
      * Nummerierung des Zählers,vergeben durch den Messstellenbetreiber
      */
-    public String getZaehlernummer() { return zaehlernummer; }
-    public void setZaehlernummer(String value) { this.zaehlernummer = value; }
-
+    private String zaehlernummer;
     /**
      * Spezifikation die Richtung des Zählers betreffend
      */
-    public Zaehlertyp getZaehlertyp() { return zaehlertyp; }
-    public void setZaehlertyp(Zaehlertyp value) { this.zaehlertyp = value; }
-
+    private Zaehlertyp zaehlertyp;
     /**
      * Messwerterfassung des Zählers
      */
-    public ZaehlertypSpezifikation getZaehlertypSpezifikation() { return zaehlertypSpezifikation; }
-    public void setZaehlertypSpezifikation(ZaehlertypSpezifikation value) { this.zaehlertypSpezifikation = value; }
-
+    private ZaehlertypSpezifikation zaehlertypSpezifikation;
     /**
      * Typisierung des Zählers
      */
-    public Zaehlwerk[] getZaehlwerke() { return zaehlwerke; }
-    public void setZaehlwerke(Zaehlwerk[] value) { this.zaehlwerke = value; }
+    private List<Zaehlwerk> zaehlwerke;
 
+    public Befestigungsart getBefestigungsart() {
+        return Befestigungsart;
+    }
+    public void setBefestigungsart(Befestigungsart befestigungsart) {
+        this.befestigungsart = befestigungsart;
+    }
+
+    public OffsetDateTime getEichungBis() {
+        return EichungBis;
+    }
+    public void setEichungBis(OffsetDateTime eichungBis) {
+        this.eichungBis = eichungBis;
+    }
+
+    public List<Geraet> getGeraete() {
+        return Geraete;
+    }
+    public void setGeraete(List<Geraet> geraete) {
+        this.geraete = geraete;
+    }
+
+    public Boolean getIstFernschaltbar() {
+        return IstFernschaltbar;
+    }
+    public void setIstFernschaltbar(Boolean istFernschaltbar) {
+        this.istFernschaltbar = istFernschaltbar;
+    }
+
+    public OffsetDateTime getLetzteEichung() {
+        return LetzteEichung;
+    }
+    public void setLetzteEichung(OffsetDateTime letzteEichung) {
+        this.letzteEichung = letzteEichung;
+    }
+
+    public Messwerterfassung getMesswerterfassung() {
+        return Messwerterfassung;
+    }
+    public void setMesswerterfassung(Messwerterfassung messwerterfassung) {
+        this.messwerterfassung = messwerterfassung;
+    }
+
+    public Registeranzahl getRegisteranzahl() {
+        return Registeranzahl;
+    }
+    public void setRegisteranzahl(Registeranzahl registeranzahl) {
+        this.registeranzahl = registeranzahl;
+    }
+
+    public Sparte getSparte() {
+        return Sparte;
+    }
+    public void setSparte(Sparte sparte) {
+        this.sparte = sparte;
+    }
+
+    public Zaehlerauspraegung getZaehlerauspraegung() {
+        return Zaehlerauspraegung;
+    }
+    public void setZaehlerauspraegung(Zaehlerauspraegung zaehlerauspraegung) {
+        this.zaehlerauspraegung = zaehlerauspraegung;
+    }
+
+    public Zaehlergroesse getZaehlergroesse() {
+        return Zaehlergroesse;
+    }
+    public void setZaehlergroesse(Zaehlergroesse zaehlergroesse) {
+        this.zaehlergroesse = zaehlergroesse;
+    }
+
+    public Geschaeftspartner getZaehlerhersteller() {
+        return Zaehlerhersteller;
+    }
+    public void setZaehlerhersteller(Geschaeftspartner zaehlerhersteller) {
+        this.zaehlerhersteller = zaehlerhersteller;
+    }
+
+    public Double getZaehlerkonstante() {
+        return Zaehlerkonstante;
+    }
+    public void setZaehlerkonstante(Double zaehlerkonstante) {
+        this.zaehlerkonstante = zaehlerkonstante;
+    }
+
+    public String getZaehlernummer() {
+        return Zaehlernummer;
+    }
+    public void setZaehlernummer(String zaehlernummer) {
+        this.zaehlernummer = zaehlernummer;
+    }
+
+    public Zaehlertyp getZaehlertyp() {
+        return Zaehlertyp;
+    }
+    public void setZaehlertyp(Zaehlertyp zaehlertyp) {
+        this.zaehlertyp = zaehlertyp;
+    }
+
+    public ZaehlertypSpezifikation getZaehlertypSpezifikation() {
+        return ZaehlertypSpezifikation;
+    }
+    public void setZaehlertypSpezifikation(ZaehlertypSpezifikation zaehlertypSpezifikation) {
+        this.zaehlertypSpezifikation = zaehlertypSpezifikation;
+    }
+
+    public List<Zaehlwerk> getZaehlwerke() {
+        return Zaehlwerke;
+    }
+    public void setZaehlwerke(List<Zaehlwerk> zaehlwerke) {
+        this.zaehlwerke = zaehlwerke;
+    }
 }

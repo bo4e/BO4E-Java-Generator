@@ -2,6 +2,8 @@ package bo4e.com;
 
 import bo4e.enums.AbgabeArt;
 
+import java.util.List;
+
 /**
  * Diese Komponente wird zur Übertagung der Details zu einer Konzessionsabgabe verwendet.
  *
@@ -15,45 +17,37 @@ import bo4e.enums.AbgabeArt;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/com/Konzessionsabgabe.json>`_
  */
 public class Konzessionsabgabe extends COM {
-    private String kategorie;
-    private Double kosten;
-    private AbgabeArt satz;
-
-    /**
-     * zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
-     *
-     * # pylint: disable=duplicate-code
-     * model_config = ConfigDict(
-     * alias_generator=camelize,
-     * populate_by_name=True,
-     * extra="allow",
-     * # json_encoders is deprecated, but there is no easy-to-use alternative. The best way
-     * would be to create
-     * # an annotated version of Decimal, but you would have to use it everywhere in the
-     * pydantic models.
-     * # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
-     * json_encoders={Decimal: str},
-     * )
-     */
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
     /**
      * Gebührenkategorie der Konzessionsabgabe
      */
-    public String getKategorie() { return kategorie; }
-    public void setKategorie(String value) { this.kategorie = value; }
-
+    private String kategorie;
     /**
      * Konzessionsabgabe in E/kWh
      */
-    public Double getKosten() { return kosten; }
-    public void setKosten(Double value) { this.kosten = value; }
-
+    private Double kosten;
     /**
      * Art der Abgabe
      */
-    public AbgabeArt getSatz() { return satz; }
-    public void setSatz(AbgabeArt value) { this.satz = value; }
+    private AbgabeArt satz;
 
+    public String getKategorie() {
+        return Kategorie;
+    }
+    public void setKategorie(String kategorie) {
+        this.kategorie = kategorie;
+    }
+
+    public Double getKosten() {
+        return Kosten;
+    }
+    public void setKosten(Double kosten) {
+        this.kosten = kosten;
+    }
+
+    public AbgabeArt getSatz() {
+        return Satz;
+    }
+    public void setSatz(AbgabeArt satz) {
+        this.satz = satz;
+    }
 }

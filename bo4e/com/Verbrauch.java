@@ -3,7 +3,9 @@ package bo4e.com;
 import bo4e.enums.Mengeneinheit;
 import bo4e.enums.Messwertstatus;
 import bo4e.enums.Wertermittlungsverfahren;
+
 import java.time.OffsetDateTime;
+import java.util.List;
 
 /**
  * Abbildung eines zeitlich abgegrenzten Verbrauchs
@@ -17,74 +19,82 @@ import java.time.OffsetDateTime;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/com/Verbrauch.json>`_
  */
 public class Verbrauch extends COM {
-    private Mengeneinheit einheit;
-    private OffsetDateTime enddatum;
-    private Messwertstatus messwertstatus;
-    private String obisKennzahl;
-    private OffsetDateTime startdatum;
-    private Double wert;
-    private Wertermittlungsverfahren wertermittlungsverfahren;
-
-    /**
-     * zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
-     *
-     * # pylint: disable=duplicate-code
-     * model_config = ConfigDict(
-     * alias_generator=camelize,
-     * populate_by_name=True,
-     * extra="allow",
-     * # json_encoders is deprecated, but there is no easy-to-use alternative. The best way
-     * would be to create
-     * # an annotated version of Decimal, but you would have to use it everywhere in the
-     * pydantic models.
-     * # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
-     * json_encoders={Decimal: str},
-     * )
-     */
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
     /**
      * Gibt die Einheit zum jeweiligen Wert an
      */
-    public Mengeneinheit getEinheit() { return einheit; }
-    public void setEinheit(Mengeneinheit value) { this.einheit = value; }
-
+    private Mengeneinheit einheit;
     /**
      * Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird
      */
-    public OffsetDateTime getEnddatum() { return enddatum; }
-    public void setEnddatum(OffsetDateTime value) { this.enddatum = value; }
-
+    private OffsetDateTime enddatum;
     /**
      * Messwertstatus includes the plausibility of the value
      */
-    public Messwertstatus getMesswertstatus() { return messwertstatus; }
-    public void setMesswertstatus(Messwertstatus value) { this.messwertstatus = value; }
-
+    private Messwertstatus messwertstatus;
     /**
      * Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird,
      * z.B. '1-0:
      */
-    public String getObisKennzahl() { return obisKennzahl; }
-    public void setObisKennzahl(String value) { this.obisKennzahl = value; }
-
+    private String obisKennzahl;
     /**
      * Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird
      */
-    public OffsetDateTime getStartdatum() { return startdatum; }
-    public void setStartdatum(OffsetDateTime value) { this.startdatum = value; }
-
+    private OffsetDateTime startdatum;
     /**
      * Gibt den absoluten Wert der Menge an
      */
-    public Double getWert() { return wert; }
-    public void setWert(Double value) { this.wert = value; }
-
+    private Double wert;
     /**
      * Gibt an, ob es sich um eine PROGNOSE oder eine MESSUNG handelt
      */
-    public Wertermittlungsverfahren getWertermittlungsverfahren() { return wertermittlungsverfahren; }
-    public void setWertermittlungsverfahren(Wertermittlungsverfahren value) { this.wertermittlungsverfahren = value; }
+    private Wertermittlungsverfahren wertermittlungsverfahren;
 
+    public Mengeneinheit getEinheit() {
+        return Einheit;
+    }
+    public void setEinheit(Mengeneinheit einheit) {
+        this.einheit = einheit;
+    }
+
+    public OffsetDateTime getEnddatum() {
+        return Enddatum;
+    }
+    public void setEnddatum(OffsetDateTime enddatum) {
+        this.enddatum = enddatum;
+    }
+
+    public Messwertstatus getMesswertstatus() {
+        return Messwertstatus;
+    }
+    public void setMesswertstatus(Messwertstatus messwertstatus) {
+        this.messwertstatus = messwertstatus;
+    }
+
+    public String getObisKennzahl() {
+        return ObisKennzahl;
+    }
+    public void setObisKennzahl(String obisKennzahl) {
+        this.obisKennzahl = obisKennzahl;
+    }
+
+    public OffsetDateTime getStartdatum() {
+        return Startdatum;
+    }
+    public void setStartdatum(OffsetDateTime startdatum) {
+        this.startdatum = startdatum;
+    }
+
+    public Double getWert() {
+        return Wert;
+    }
+    public void setWert(Double wert) {
+        this.wert = wert;
+    }
+
+    public Wertermittlungsverfahren getWertermittlungsverfahren() {
+        return Wertermittlungsverfahren;
+    }
+    public void setWertermittlungsverfahren(Wertermittlungsverfahren wertermittlungsverfahren) {
+        this.wertermittlungsverfahren = wertermittlungsverfahren;
+    }
 }

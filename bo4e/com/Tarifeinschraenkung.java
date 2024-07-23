@@ -3,6 +3,8 @@ package bo4e.com;
 import bo4e.bo.Geraet;
 import bo4e.enums.Voraussetzungen;
 
+import java.util.List;
+
 /**
  * Mit dieser Komponente werden Einschränkungen für die Anwendung von Tarifen modelliert.
  *
@@ -16,56 +18,53 @@ import bo4e.enums.Voraussetzungen;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/com/Tarifeinschraenkung.json>`_
  */
 public class Tarifeinschraenkung extends COM {
-    private Menge[] einschraenkungleistung;
-    private Geraet[] einschraenkungzaehler;
-    private Voraussetzungen[] voraussetzungen;
-    private String[] zusatzprodukte;
-
-    /**
-     * zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
-     *
-     * # pylint: disable=duplicate-code
-     * model_config = ConfigDict(
-     * alias_generator=camelize,
-     * populate_by_name=True,
-     * extra="allow",
-     * # json_encoders is deprecated, but there is no easy-to-use alternative. The best way
-     * would be to create
-     * # an annotated version of Decimal, but you would have to use it everywhere in the
-     * pydantic models.
-     * # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
-     * json_encoders={Decimal: str},
-     * )
-     */
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
     /**
      * Die vereinbarte Leistung, die (näherungsweise) abgenommen wird.
      * Insbesondere Gastarife können daran gebunden sein, dass die Leistung einer vereinbarten
      * Höhe entspricht.
      */
-    public Menge[] getEinschraenkungleistung() { return einschraenkungleistung; }
-    public void setEinschraenkungleistung(Menge[] value) { this.einschraenkungleistung = value; }
-
+    private List<Menge> einschraenkungleistung;
     /**
      * Liste der Zähler/Geräte, die erforderlich sind, damit dieser Tarif zur Anwendung gelangen
      * kann.
      * (Falls keine Zähler angegeben sind, ist der Tarif nicht an das Vorhandensein bestimmter
      * Zähler gebunden.)
      */
-    public Geraet[] getEinschraenkungzaehler() { return einschraenkungzaehler; }
-    public void setEinschraenkungzaehler(Geraet[] value) { this.einschraenkungzaehler = value; }
-
+    private List<Geraet> einschraenkungzaehler;
     /**
      * Voraussetzungen, die erfüllt sein müssen, damit dieser Tarif zur Anwendung kommen kann
      */
-    public Voraussetzungen[] getVoraussetzungen() { return voraussetzungen; }
-    public void setVoraussetzungen(Voraussetzungen[] value) { this.voraussetzungen = value; }
-
+    private List<Voraussetzungen> voraussetzungen;
     /**
      * Weitere Produkte, die gemeinsam mit diesem Tarif bestellt werden können
      */
-    public String[] getZusatzprodukte() { return zusatzprodukte; }
-    public void setZusatzprodukte(String[] value) { this.zusatzprodukte = value; }
+    private List<String> zusatzprodukte;
+
+    public List<Menge> getEinschraenkungleistung() {
+        return Einschraenkungleistung;
+    }
+    public void setEinschraenkungleistung(List<Menge> einschraenkungleistung) {
+        this.einschraenkungleistung = einschraenkungleistung;
+    }
+
+    public List<Geraet> getEinschraenkungzaehler() {
+        return Einschraenkungzaehler;
+    }
+    public void setEinschraenkungzaehler(List<Geraet> einschraenkungzaehler) {
+        this.einschraenkungzaehler = einschraenkungzaehler;
+    }
+
+    public List<Voraussetzungen> getVoraussetzungen() {
+        return Voraussetzungen;
+    }
+    public void setVoraussetzungen(List<Voraussetzungen> voraussetzungen) {
+        this.voraussetzungen = voraussetzungen;
+    }
+
+    public List<String> getZusatzprodukte() {
+        return Zusatzprodukte;
+    }
+    public void setZusatzprodukte(List<String> zusatzprodukte) {
+        this.zusatzprodukte = zusatzprodukte;
+    }
 }

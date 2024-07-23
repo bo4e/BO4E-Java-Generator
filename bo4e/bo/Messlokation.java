@@ -8,6 +8,8 @@ import bo4e.com.Dienstleistung;
 import bo4e.enums.Netzebene;
 import bo4e.enums.Sparte;
 
+import java.util.List;
+
 /**
  * Object containing information about a Messlokation
  *
@@ -20,104 +22,143 @@ import bo4e.enums.Sparte;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/bo/Messlokation.json>`_
  */
 public class Messlokation extends Geschaeftsobjekt {
-    private final Typ _typ = Typ.MESSLOKATION;
-    private Geokoordinaten geoadresse;
-    private Geraet[] geraete;
-    private String grundzustaendigerMsbCodenr;
-    private String grundzustaendigerMsbimCodenr;
-    private Katasteradresse katasterinformation;
-    private Adresse messadresse;
-    private Dienstleistung[] messdienstleistung;
-    private String messgebietnr;
-    private String messlokationsId;
-    private Zaehler[] messlokationszaehler;
-    private Netzebene netzebeneMessung;
-    private Sparte sparte;
-
     /**
-     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+     * Typ des Geschaeftsobjekts
      */
-    /**
-     * Die Messlokations-Identifikation; Das ist die frühere Zählpunktbezeichnung
-     */
-    public Typ getTyp() { return _typ; }
-
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
+    private Typ typ = Typ.MESSLOKATION;
     /**
      * katasterinformation: Optional["Katasteradresse"] = None
      */
-    public Geokoordinaten getGeoadresse() { return geoadresse; }
-    public void setGeoadresse(Geokoordinaten value) { this.geoadresse = value; }
-
+    private Geokoordinaten geoadresse;
     /**
      * Liste der Geräte, die zu dieser Messstelle gehört
      */
-    public Geraet[] getGeraete() { return geraete; }
-    public void setGeraete(Geraet[] value) { this.geraete = value; }
-
+    private List<Geraet> geraete;
     /**
      * grundzustaendiger_msbim_codenr: Optional[str] = None
      */
-    public String getGrundzustaendigerMsbCodenr() { return grundzustaendigerMsbCodenr; }
-    public void setGrundzustaendigerMsbCodenr(String value) { this.grundzustaendigerMsbCodenr = value; }
-
+    private String grundzustaendigerMsbCodenr;
     /**
      * # only one of the following three optional address attributes can be set
      * messadresse: Optional["Adresse"] = None
      */
-    public String getGrundzustaendigerMsbimCodenr() { return grundzustaendigerMsbimCodenr; }
-    public void setGrundzustaendigerMsbimCodenr(String value) { this.grundzustaendigerMsbimCodenr = value; }
-
+    private String grundzustaendigerMsbimCodenr;
     /**
      * Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe
      * mittels Gemarkung und
      * Flurstück erfolgen.
      */
-    public Katasteradresse getKatasterinformation() { return katasterinformation; }
-    public void setKatasterinformation(Katasteradresse value) { this.katasterinformation = value; }
-
+    private Katasteradresse katasterinformation;
     /**
      * geoadresse: Optional["Geokoordinaten"] = None
      */
-    public Adresse getMessadresse() { return messadresse; }
-    public void setMessadresse(Adresse value) { this.messadresse = value; }
-
+    private Adresse messadresse;
     /**
      * Liste der Messdienstleistungen, die zu dieser Messstelle gehört
      */
-    public Dienstleistung[] getMessdienstleistung() { return messdienstleistung; }
-    public void setMessdienstleistung(Dienstleistung[] value) { this.messdienstleistung = value; }
-
+    private List<Dienstleistung> messdienstleistung;
     /**
      * Die Nummer des Messgebietes in der ene't-Datenbank
      */
-    public String getMessgebietnr() { return messgebietnr; }
-    public void setMessgebietnr(String value) { this.messgebietnr = value; }
-
+    private String messgebietnr;
     /**
      * Die Messlokations-Identifikation; Das ist die frühere Zählpunktbezeichnung
      */
-    public String getMesslokationsId() { return messlokationsId; }
-    public void setMesslokationsId(String value) { this.messlokationsId = value; }
-
+    private String messlokationsId;
     /**
      * Zähler, die zu dieser Messlokation gehören
      */
-    public Zaehler[] getMesslokationszaehler() { return messlokationszaehler; }
-    public void setMesslokationszaehler(Zaehler[] value) { this.messlokationszaehler = value; }
-
+    private List<Zaehler> messlokationszaehler;
     /**
      * Spannungsebene der Messung
      */
-    public Netzebene getNetzebeneMessung() { return netzebeneMessung; }
-    public void setNetzebeneMessung(Netzebene value) { this.netzebeneMessung = value; }
-
+    private Netzebene netzebeneMessung;
     /**
      * Sparte der Messlokation, z.B. Gas oder Strom
      */
-    public Sparte getSparte() { return sparte; }
-    public void setSparte(Sparte value) { this.sparte = value; }
+    private Sparte sparte;
 
+    public Geokoordinaten getGeoadresse() {
+        return Geoadresse;
+    }
+    public void setGeoadresse(Geokoordinaten geoadresse) {
+        this.geoadresse = geoadresse;
+    }
+
+    public List<Geraet> getGeraete() {
+        return Geraete;
+    }
+    public void setGeraete(List<Geraet> geraete) {
+        this.geraete = geraete;
+    }
+
+    public String getGrundzustaendigerMsbCodenr() {
+        return GrundzustaendigerMsbCodenr;
+    }
+    public void setGrundzustaendigerMsbCodenr(String grundzustaendigerMsbCodenr) {
+        this.grundzustaendigerMsbCodenr = grundzustaendigerMsbCodenr;
+    }
+
+    public String getGrundzustaendigerMsbimCodenr() {
+        return GrundzustaendigerMsbimCodenr;
+    }
+    public void setGrundzustaendigerMsbimCodenr(String grundzustaendigerMsbimCodenr) {
+        this.grundzustaendigerMsbimCodenr = grundzustaendigerMsbimCodenr;
+    }
+
+    public Katasteradresse getKatasterinformation() {
+        return Katasterinformation;
+    }
+    public void setKatasterinformation(Katasteradresse katasterinformation) {
+        this.katasterinformation = katasterinformation;
+    }
+
+    public Adresse getMessadresse() {
+        return Messadresse;
+    }
+    public void setMessadresse(Adresse messadresse) {
+        this.messadresse = messadresse;
+    }
+
+    public List<Dienstleistung> getMessdienstleistung() {
+        return Messdienstleistung;
+    }
+    public void setMessdienstleistung(List<Dienstleistung> messdienstleistung) {
+        this.messdienstleistung = messdienstleistung;
+    }
+
+    public String getMessgebietnr() {
+        return Messgebietnr;
+    }
+    public void setMessgebietnr(String messgebietnr) {
+        this.messgebietnr = messgebietnr;
+    }
+
+    public String getMesslokationsId() {
+        return MesslokationsId;
+    }
+    public void setMesslokationsId(String messlokationsId) {
+        this.messlokationsId = messlokationsId;
+    }
+
+    public List<Zaehler> getMesslokationszaehler() {
+        return Messlokationszaehler;
+    }
+    public void setMesslokationszaehler(List<Zaehler> messlokationszaehler) {
+        this.messlokationszaehler = messlokationszaehler;
+    }
+
+    public Netzebene getNetzebeneMessung() {
+        return NetzebeneMessung;
+    }
+    public void setNetzebeneMessung(Netzebene netzebeneMessung) {
+        this.netzebeneMessung = netzebeneMessung;
+    }
+
+    public Sparte getSparte() {
+        return Sparte;
+    }
+    public void setSparte(Sparte sparte) {
+        this.sparte = sparte;
+    }
 }

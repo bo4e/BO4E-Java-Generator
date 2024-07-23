@@ -2,6 +2,8 @@ package bo4e.com;
 
 import bo4e.bo.Marktlokation;
 
+import java.util.List;
+
 /**
  * Mit dieser Komponente wird ein Teil einer Angebotsvariante abgebildet.
  * Hier werden alle Angebotspositionen aggregiert.
@@ -20,67 +22,71 @@ import bo4e.bo.Marktlokation;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/com/Angebotsteil.json>`_
  */
 public class Angebotsteil extends COM {
-    private String anfrageSubreferenz;
-    private Betrag gesamtkostenangebotsteil;
-    private Menge gesamtmengeangebotsteil;
-    private Marktlokation[] lieferstellenangebotsteil;
-    private Zeitraum lieferzeitraum;
-    private Angebotsposition[] positionen;
-
-    /**
-     * zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
-     *
-     * # pylint: disable=duplicate-code
-     * model_config = ConfigDict(
-     * alias_generator=camelize,
-     * populate_by_name=True,
-     * extra="allow",
-     * # json_encoders is deprecated, but there is no easy-to-use alternative. The best way
-     * would be to create
-     * # an annotated version of Decimal, but you would have to use it everywhere in the
-     * pydantic models.
-     * # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
-     * json_encoders={Decimal: str},
-     * )
-     */
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
     /**
      * Identifizierung eines Subkapitels einer Anfrage, beispielsweise das Los einer
      * Ausschreibung
      */
-    public String getAnfrageSubreferenz() { return anfrageSubreferenz; }
-    public void setAnfrageSubreferenz(String value) { this.anfrageSubreferenz = value; }
-
+    private String anfrageSubreferenz;
     /**
      * Summe der Jahresenergiekosten aller in diesem Angebotsteil enthaltenen Lieferstellen
      */
-    public Betrag getGesamtkostenangebotsteil() { return gesamtkostenangebotsteil; }
-    public void setGesamtkostenangebotsteil(Betrag value) { this.gesamtkostenangebotsteil = value; }
-
+    private Betrag gesamtkostenangebotsteil;
     /**
      * Summe der Verbräuche aller in diesem Angebotsteil eingeschlossenen Lieferstellen
      */
-    public Menge getGesamtmengeangebotsteil() { return gesamtmengeangebotsteil; }
-    public void setGesamtmengeangebotsteil(Menge value) { this.gesamtmengeangebotsteil = value; }
-
+    private Menge gesamtmengeangebotsteil;
     /**
      * Summe der Verbräuche aller in diesem Angebotsteil eingeschlossenen Lieferstellen
      */
-    public Marktlokation[] getLieferstellenangebotsteil() { return lieferstellenangebotsteil; }
-    public void setLieferstellenangebotsteil(Marktlokation[] value) { this.lieferstellenangebotsteil = value; }
-
+    private List<Marktlokation> lieferstellenangebotsteil;
     /**
      * Hier kann der Belieferungszeitraum angegeben werden, für den dieser Angebotsteil gilt
      */
-    public Zeitraum getLieferzeitraum() { return lieferzeitraum; }
-    public void setLieferzeitraum(Zeitraum value) { this.lieferzeitraum = value; }
-
+    private Zeitraum lieferzeitraum;
     /**
      * Einzelne Positionen, die zu diesem Angebotsteil gehören
      */
-    public Angebotsposition[] getPositionen() { return positionen; }
-    public void setPositionen(Angebotsposition[] value) { this.positionen = value; }
+    private List<Angebotsposition> positionen;
 
+    public String getAnfrageSubreferenz() {
+        return AnfrageSubreferenz;
+    }
+    public void setAnfrageSubreferenz(String anfrageSubreferenz) {
+        this.anfrageSubreferenz = anfrageSubreferenz;
+    }
+
+    public Betrag getGesamtkostenangebotsteil() {
+        return Gesamtkostenangebotsteil;
+    }
+    public void setGesamtkostenangebotsteil(Betrag gesamtkostenangebotsteil) {
+        this.gesamtkostenangebotsteil = gesamtkostenangebotsteil;
+    }
+
+    public Menge getGesamtmengeangebotsteil() {
+        return Gesamtmengeangebotsteil;
+    }
+    public void setGesamtmengeangebotsteil(Menge gesamtmengeangebotsteil) {
+        this.gesamtmengeangebotsteil = gesamtmengeangebotsteil;
+    }
+
+    public List<Marktlokation> getLieferstellenangebotsteil() {
+        return Lieferstellenangebotsteil;
+    }
+    public void setLieferstellenangebotsteil(List<Marktlokation> lieferstellenangebotsteil) {
+        this.lieferstellenangebotsteil = lieferstellenangebotsteil;
+    }
+
+    public Zeitraum getLieferzeitraum() {
+        return Lieferzeitraum;
+    }
+    public void setLieferzeitraum(Zeitraum lieferzeitraum) {
+        this.lieferzeitraum = lieferzeitraum;
+    }
+
+    public List<Angebotsposition> getPositionen() {
+        return Positionen;
+    }
+    public void setPositionen(List<Angebotsposition> positionen) {
+        this.positionen = positionen;
+    }
 }

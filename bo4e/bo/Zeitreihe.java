@@ -8,6 +8,8 @@ import bo4e.enums.Messgroesse;
 import bo4e.com.Zeitreihenwert;
 import bo4e.enums.Wertermittlungsverfahren;
 
+import java.util.List;
+
 /**
  * Abbildung einer allgemeinen Zeitreihe mit einem Wertvektor.
  * Die Werte können mit wahlfreier zeitlicher Distanz im Vektor abgelegt sein.
@@ -21,77 +23,107 @@ import bo4e.enums.Wertermittlungsverfahren;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/bo/Zeitreihe.json>`_
  */
 public class Zeitreihe extends Geschaeftsobjekt {
-    private final Typ _typ = Typ.ZEITREIHE;
-    private String beschreibung;
-    private String bezeichnung;
-    private Mengeneinheit einheit;
-    private Medium medium;
-    private Messart messart;
-    private Messgroesse messgroesse;
-    private String version;
-    private Zeitreihenwert[] werte;
-    private Wertermittlungsverfahren wertherkunft;
-
     /**
-     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+     * Typ des Geschaeftsobjekts
      */
-    /**
-     * Bezeichnung für die Zeitreihe
-     */
-    public Typ getTyp() { return _typ; }
-
+    private Typ typ = Typ.ZEITREIHE;
     /**
      * Beschreibt die Verwendung der Zeitreihe
      */
-    public String getBeschreibung() { return beschreibung; }
-    public void setBeschreibung(String value) { this.beschreibung = value; }
-
+    private String beschreibung;
     /**
      * Bezeichnung für die Zeitreihe
      */
-    public String getBezeichnung() { return bezeichnung; }
-    public void setBezeichnung(String value) { this.bezeichnung = value; }
-
+    private String bezeichnung;
     /**
      * Alle Werte in der Tabelle haben die Einheit, die hier angegeben ist
      */
-    public Mengeneinheit getEinheit() { return einheit; }
-    public void setEinheit(Mengeneinheit value) { this.einheit = value; }
-
+    private Mengeneinheit einheit;
     /**
      * Medium, das gemessen wurde (z.B. Wasser, Dampf, Strom, Gas)
      */
-    public Medium getMedium() { return medium; }
-    public void setMedium(Medium value) { this.medium = value; }
-
+    private Medium medium;
     /**
      * Beschreibt die Art der Messung (z.B. aktueller Wert, mittlerer Wert, maximaler Wert)
      */
-    public Messart getMessart() { return messart; }
-    public void setMessart(Messart value) { this.messart = value; }
-
+    private Messart messart;
     /**
      * Beschreibt, was gemessen wurde (z.B. Strom, Spannung, Wirkleistung, Scheinleistung)
      */
-    public Messgroesse getMessgroesse() { return messgroesse; }
-    public void setMessgroesse(Messgroesse value) { this.messgroesse = value; }
-
+    private Messgroesse messgroesse;
     /**
      * Version der Zeitreihe
      */
-    public String getVersion() { return version; }
-    public void setVersion(String value) { this.version = value; }
-
+    private String version;
     /**
      * Hier liegen jeweils die Werte
      */
-    public Zeitreihenwert[] getWerte() { return werte; }
-    public void setWerte(Zeitreihenwert[] value) { this.werte = value; }
-
+    private List<Zeitreihenwert> werte;
     /**
      * Kennzeichnung, wie die Werte entstanden sind, z.B. durch Messung
      */
-    public Wertermittlungsverfahren getWertherkunft() { return wertherkunft; }
-    public void setWertherkunft(Wertermittlungsverfahren value) { this.wertherkunft = value; }
+    private Wertermittlungsverfahren wertherkunft;
 
+    public String getBeschreibung() {
+        return Beschreibung;
+    }
+    public void setBeschreibung(String beschreibung) {
+        this.beschreibung = beschreibung;
+    }
+
+    public String getBezeichnung() {
+        return Bezeichnung;
+    }
+    public void setBezeichnung(String bezeichnung) {
+        this.bezeichnung = bezeichnung;
+    }
+
+    public Mengeneinheit getEinheit() {
+        return Einheit;
+    }
+    public void setEinheit(Mengeneinheit einheit) {
+        this.einheit = einheit;
+    }
+
+    public Medium getMedium() {
+        return Medium;
+    }
+    public void setMedium(Medium medium) {
+        this.medium = medium;
+    }
+
+    public Messart getMessart() {
+        return Messart;
+    }
+    public void setMessart(Messart messart) {
+        this.messart = messart;
+    }
+
+    public Messgroesse getMessgroesse() {
+        return Messgroesse;
+    }
+    public void setMessgroesse(Messgroesse messgroesse) {
+        this.messgroesse = messgroesse;
+    }
+
+    public String getVersion() {
+        return Version;
+    }
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public List<Zeitreihenwert> getWerte() {
+        return Werte;
+    }
+    public void setWerte(List<Zeitreihenwert> werte) {
+        this.werte = werte;
+    }
+
+    public Wertermittlungsverfahren getWertherkunft() {
+        return Wertherkunft;
+    }
+    public void setWertherkunft(Wertermittlungsverfahren wertherkunft) {
+        this.wertherkunft = wertherkunft;
+    }
 }

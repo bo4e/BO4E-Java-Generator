@@ -2,7 +2,9 @@ package bo4e.com;
 
 import bo4e.enums.BDEWArtikelnummer;
 import bo4e.enums.Mengeneinheit;
+
 import java.time.OffsetDateTime;
+import java.util.List;
 
 /**
  * Über Rechnungspositionen werden Rechnungen strukturiert.
@@ -18,101 +20,47 @@ import java.time.OffsetDateTime;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/com/Rechnungsposition.json>`_
  */
 public class Rechnungsposition extends COM {
-    private String artikelId;
-    private BDEWArtikelnummer artikelnummer;
-    private Preis einzelpreis;
-    private OffsetDateTime lieferungBis;
-    private OffsetDateTime lieferungVon;
-    private String lokationsId;
-    private Menge positionsMenge;
-    private Long positionsnummer;
-    private String positionstext;
-    private Betrag teilrabattNetto;
-    private Betrag teilsummeNetto;
-    private Steuerbetrag teilsummeSteuer;
-    private Menge zeitbezogeneMenge;
-    private Mengeneinheit zeiteinheit;
-
-    /**
-     * zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
-     *
-     * # pylint: disable=duplicate-code
-     * model_config = ConfigDict(
-     * alias_generator=camelize,
-     * populate_by_name=True,
-     * extra="allow",
-     * # json_encoders is deprecated, but there is no easy-to-use alternative. The best way
-     * would be to create
-     * # an annotated version of Decimal, but you would have to use it everywhere in the
-     * pydantic models.
-     * # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
-     * json_encoders={Decimal: str},
-     * )
-     */
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
     /**
      * Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die
      * BDEW-Artikelnummer ablöst
      */
-    public String getArtikelId() { return artikelId; }
-    public void setArtikelId(String value) { this.artikelId = value; }
-
+    private String artikelId;
     /**
      * Kennzeichnung der Rechnungsposition mit der Standard-Artikelnummer des BDEW
      */
-    public BDEWArtikelnummer getArtikelnummer() { return artikelnummer; }
-    public void setArtikelnummer(BDEWArtikelnummer value) { this.artikelnummer = value; }
-
+    private BDEWArtikelnummer artikelnummer;
     /**
      * Der Preis für eine Einheit der energetischen Menge
      */
-    public Preis getEinzelpreis() { return einzelpreis; }
-    public void setEinzelpreis(Preis value) { this.einzelpreis = value; }
-
+    private Preis einzelpreis;
     /**
      * Ende der Lieferung für die abgerechnete Leistung (exklusiv)
      */
-    public OffsetDateTime getLieferungBis() { return lieferungBis; }
-    public void setLieferungBis(OffsetDateTime value) { this.lieferungBis = value; }
-
+    private OffsetDateTime lieferungBis;
     /**
      * Start der Lieferung für die abgerechnete Leistung (inklusiv)
      */
-    public OffsetDateTime getLieferungVon() { return lieferungVon; }
-    public void setLieferungVon(OffsetDateTime value) { this.lieferungVon = value; }
-
+    private OffsetDateTime lieferungVon;
     /**
      * Marktlokation, die zu dieser Position gehört
      */
-    public String getLokationsId() { return lokationsId; }
-    public void setLokationsId(String value) { this.lokationsId = value; }
-
+    private String lokationsId;
     /**
      * Die abgerechnete Menge mit Einheit
      */
-    public Menge getPositionsMenge() { return positionsMenge; }
-    public void setPositionsMenge(Menge value) { this.positionsMenge = value; }
-
+    private Menge positionsMenge;
     /**
      * Fortlaufende Nummer für die Rechnungsposition
      */
-    public Long getPositionsnummer() { return positionsnummer; }
-    public void setPositionsnummer(Long value) { this.positionsnummer = value; }
-
+    private Long positionsnummer;
     /**
      * Bezeichung für die abgerechnete Position
      */
-    public String getPositionstext() { return positionstext; }
-    public void setPositionstext(String value) { this.positionstext = value; }
-
+    private String positionstext;
     /**
      * Nettobetrag für den Rabatt dieser Position
      */
-    public Betrag getTeilrabattNetto() { return teilrabattNetto; }
-    public void setTeilrabattNetto(Betrag value) { this.teilrabattNetto = value; }
-
+    private Betrag teilrabattNetto;
     /**
      * # the cross check in general doesn't work because Betrag and Preis use different enums to
      * describe the currency
@@ -131,25 +79,115 @@ public class Rechnungsposition extends COM {
      *
      * zeitbezogene_menge: Optional["Menge"] = None
      */
-    public Betrag getTeilsummeNetto() { return teilsummeNetto; }
-    public void setTeilsummeNetto(Betrag value) { this.teilsummeNetto = value; }
-
+    private Betrag teilsummeNetto;
     /**
      * Auf die Position entfallende Steuer, bestehend aus Steuersatz und Betrag
      */
-    public Steuerbetrag getTeilsummeSteuer() { return teilsummeSteuer; }
-    public void setTeilsummeSteuer(Steuerbetrag value) { this.teilsummeSteuer = value; }
-
+    private Steuerbetrag teilsummeSteuer;
     /**
      * Nettobetrag für den Rabatt dieser Position
      */
-    public Menge getZeitbezogeneMenge() { return zeitbezogeneMenge; }
-    public void setZeitbezogeneMenge(Menge value) { this.zeitbezogeneMenge = value; }
-
+    private Menge zeitbezogeneMenge;
     /**
      * Falls sich der Preis auf eine Zeit bezieht, steht hier die Einheit
      */
-    public Mengeneinheit getZeiteinheit() { return zeiteinheit; }
-    public void setZeiteinheit(Mengeneinheit value) { this.zeiteinheit = value; }
+    private Mengeneinheit zeiteinheit;
 
+    public String getArtikelId() {
+        return ArtikelId;
+    }
+    public void setArtikelId(String artikelId) {
+        this.artikelId = artikelId;
+    }
+
+    public BDEWArtikelnummer getArtikelnummer() {
+        return Artikelnummer;
+    }
+    public void setArtikelnummer(BDEWArtikelnummer artikelnummer) {
+        this.artikelnummer = artikelnummer;
+    }
+
+    public Preis getEinzelpreis() {
+        return Einzelpreis;
+    }
+    public void setEinzelpreis(Preis einzelpreis) {
+        this.einzelpreis = einzelpreis;
+    }
+
+    public OffsetDateTime getLieferungBis() {
+        return LieferungBis;
+    }
+    public void setLieferungBis(OffsetDateTime lieferungBis) {
+        this.lieferungBis = lieferungBis;
+    }
+
+    public OffsetDateTime getLieferungVon() {
+        return LieferungVon;
+    }
+    public void setLieferungVon(OffsetDateTime lieferungVon) {
+        this.lieferungVon = lieferungVon;
+    }
+
+    public String getLokationsId() {
+        return LokationsId;
+    }
+    public void setLokationsId(String lokationsId) {
+        this.lokationsId = lokationsId;
+    }
+
+    public Menge getPositionsMenge() {
+        return PositionsMenge;
+    }
+    public void setPositionsMenge(Menge positionsMenge) {
+        this.positionsMenge = positionsMenge;
+    }
+
+    public Long getPositionsnummer() {
+        return Positionsnummer;
+    }
+    public void setPositionsnummer(Long positionsnummer) {
+        this.positionsnummer = positionsnummer;
+    }
+
+    public String getPositionstext() {
+        return Positionstext;
+    }
+    public void setPositionstext(String positionstext) {
+        this.positionstext = positionstext;
+    }
+
+    public Betrag getTeilrabattNetto() {
+        return TeilrabattNetto;
+    }
+    public void setTeilrabattNetto(Betrag teilrabattNetto) {
+        this.teilrabattNetto = teilrabattNetto;
+    }
+
+    public Betrag getTeilsummeNetto() {
+        return TeilsummeNetto;
+    }
+    public void setTeilsummeNetto(Betrag teilsummeNetto) {
+        this.teilsummeNetto = teilsummeNetto;
+    }
+
+    public Steuerbetrag getTeilsummeSteuer() {
+        return TeilsummeSteuer;
+    }
+    public void setTeilsummeSteuer(Steuerbetrag teilsummeSteuer) {
+        this.teilsummeSteuer = teilsummeSteuer;
+    }
+
+    public Menge getZeitbezogeneMenge() {
+        return ZeitbezogeneMenge;
+    }
+    public void setZeitbezogeneMenge(Menge zeitbezogeneMenge) {
+        this.zeitbezogeneMenge = zeitbezogeneMenge;
+    }
+
+    public Mengeneinheit getZeiteinheit() {
+        return Zeiteinheit;
+    }
+    public void setZeiteinheit(Mengeneinheit zeiteinheit) {
+        this.zeiteinheit = zeiteinheit;
+    }
 }

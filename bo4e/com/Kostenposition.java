@@ -1,6 +1,7 @@
 package bo4e.com;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 
 /**
  * Diese Komponente wird zur Übertagung der Details zu einer Kostenposition verwendet.
@@ -15,90 +16,106 @@ import java.time.OffsetDateTime;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/com/Kostenposition.json>`_
  */
 public class Kostenposition extends COM {
-    private String artikelbezeichnung;
-    private String artikeldetail;
-    private Betrag betragKostenposition;
-    private OffsetDateTime bis;
-    private Preis einzelpreis;
-    private Menge menge;
-    private String positionstitel;
-    private OffsetDateTime von;
-    private Menge zeitmenge;
-
-    /**
-     * zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
-     *
-     * # pylint: disable=duplicate-code
-     * model_config = ConfigDict(
-     * alias_generator=camelize,
-     * populate_by_name=True,
-     * extra="allow",
-     * # json_encoders is deprecated, but there is no easy-to-use alternative. The best way
-     * would be to create
-     * # an annotated version of Decimal, but you would have to use it everywhere in the
-     * pydantic models.
-     * # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
-     * json_encoders={Decimal: str},
-     * )
-     */
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
     /**
      * Bezeichnung für den Artikel für den die Kosten ermittelt wurden. Beispiel: Arbeitspreis HT
      */
-    public String getArtikelbezeichnung() { return artikelbezeichnung; }
-    public void setArtikelbezeichnung(String value) { this.artikelbezeichnung = value; }
-
+    private String artikelbezeichnung;
     /**
      * Detaillierung des Artikels (optional). Beispiel: 'Drehstromzähler'
      */
-    public String getArtikeldetail() { return artikeldetail; }
-    public void setArtikeldetail(String value) { this.artikeldetail = value; }
-
+    private String artikeldetail;
     /**
      * Der errechnete Gesamtbetrag der Position als Ergebnis der Berechnung <Menge *
      * Einzelpreis> oder
      * <Einzelpreis / (Anzahl Tage Jahr) * zeitmenge>
      */
-    public Betrag getBetragKostenposition() { return betragKostenposition; }
-    public void setBetragKostenposition(Betrag value) { this.betragKostenposition = value; }
-
+    private Betrag betragKostenposition;
     /**
      * exklusiver bis-Zeitpunkt der Kostenzeitscheibe
      */
-    public OffsetDateTime getBis() { return bis; }
-    public void setBis(OffsetDateTime value) { this.bis = value; }
-
+    private OffsetDateTime bis;
     /**
      * Der Preis für eine Einheit. Beispiele: 5,8200 ct/kWh oder 55 €/Jahr.
      */
-    public Preis getEinzelpreis() { return einzelpreis; }
-    public void setEinzelpreis(Preis value) { this.einzelpreis = value; }
-
+    private Preis einzelpreis;
     /**
      * Die Menge, die in die Kostenberechnung eingeflossen ist. Beispiel: 3.660 kWh
      */
-    public Menge getMenge() { return menge; }
-    public void setMenge(Menge value) { this.menge = value; }
-
+    private Menge menge;
     /**
      * Ein Titel für die Zeile. Hier kann z.B. der Netzbetreiber eingetragen werden, wenn es
      * sich um Netzkosten handelt.
      */
-    public String getPositionstitel() { return positionstitel; }
-    public void setPositionstitel(String value) { this.positionstitel = value; }
-
+    private String positionstitel;
     /**
      * inklusiver von-Zeitpunkt der Kostenzeitscheibe
      */
-    public OffsetDateTime getVon() { return von; }
-    public void setVon(OffsetDateTime value) { this.von = value; }
-
+    private OffsetDateTime von;
     /**
      * Detaillierung des Artikels (optional). Beispiel: 'Drehstromzähler'
      */
-    public Menge getZeitmenge() { return zeitmenge; }
-    public void setZeitmenge(Menge value) { this.zeitmenge = value; }
+    private Menge zeitmenge;
 
+    public String getArtikelbezeichnung() {
+        return Artikelbezeichnung;
+    }
+    public void setArtikelbezeichnung(String artikelbezeichnung) {
+        this.artikelbezeichnung = artikelbezeichnung;
+    }
+
+    public String getArtikeldetail() {
+        return Artikeldetail;
+    }
+    public void setArtikeldetail(String artikeldetail) {
+        this.artikeldetail = artikeldetail;
+    }
+
+    public Betrag getBetragKostenposition() {
+        return BetragKostenposition;
+    }
+    public void setBetragKostenposition(Betrag betragKostenposition) {
+        this.betragKostenposition = betragKostenposition;
+    }
+
+    public OffsetDateTime getBis() {
+        return Bis;
+    }
+    public void setBis(OffsetDateTime bis) {
+        this.bis = bis;
+    }
+
+    public Preis getEinzelpreis() {
+        return Einzelpreis;
+    }
+    public void setEinzelpreis(Preis einzelpreis) {
+        this.einzelpreis = einzelpreis;
+    }
+
+    public Menge getMenge() {
+        return Menge;
+    }
+    public void setMenge(Menge menge) {
+        this.menge = menge;
+    }
+
+    public String getPositionstitel() {
+        return Positionstitel;
+    }
+    public void setPositionstitel(String positionstitel) {
+        this.positionstitel = positionstitel;
+    }
+
+    public OffsetDateTime getVon() {
+        return Von;
+    }
+    public void setVon(OffsetDateTime von) {
+        this.von = von;
+    }
+
+    public Menge getZeitmenge() {
+        return Zeitmenge;
+    }
+    public void setZeitmenge(Menge zeitmenge) {
+        this.zeitmenge = zeitmenge;
+    }
 }

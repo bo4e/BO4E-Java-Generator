@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import java.util.List;
+
 /**
  * Informationen zum Marktgebiet im Gas.
  *
@@ -13,38 +15,26 @@ package bo4e.com;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/com/MarktgebietInfo.json>`_
  */
 public class MarktgebietInfo extends COM {
+    /**
+     * Der Name des Marktgebietes
+     */
     private String marktgebiet;
+    /**
+     * Der Name des Marktgebietes
+     */
     private String marktgebietcode;
 
-    /**
-     * zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
-     *
-     * # pylint: disable=duplicate-code
-     * model_config = ConfigDict(
-     * alias_generator=camelize,
-     * populate_by_name=True,
-     * extra="allow",
-     * # json_encoders is deprecated, but there is no easy-to-use alternative. The best way
-     * would be to create
-     * # an annotated version of Decimal, but you would have to use it everywhere in the
-     * pydantic models.
-     * # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
-     * json_encoders={Decimal: str},
-     * )
-     */
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
-    /**
-     * Der Name des Marktgebietes
-     */
-    public String getMarktgebiet() { return marktgebiet; }
-    public void setMarktgebiet(String value) { this.marktgebiet = value; }
+    public String getMarktgebiet() {
+        return Marktgebiet;
+    }
+    public void setMarktgebiet(String marktgebiet) {
+        this.marktgebiet = marktgebiet;
+    }
 
-    /**
-     * Der Name des Marktgebietes
-     */
-    public String getMarktgebietcode() { return marktgebietcode; }
-    public void setMarktgebietcode(String value) { this.marktgebietcode = value; }
-
+    public String getMarktgebietcode() {
+        return Marktgebietcode;
+    }
+    public void setMarktgebietcode(String marktgebietcode) {
+        this.marktgebietcode = marktgebietcode;
+    }
 }

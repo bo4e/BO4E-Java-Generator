@@ -4,6 +4,8 @@ import bo4e.enums.Typ;
 import bo4e.com.StandorteigenschaftenGas;
 import bo4e.com.StandorteigenschaftenStrom;
 
+import java.util.List;
+
 /**
  * Modelliert die regionalen und spartenspezifischen Eigenschaften einer gegebenen Adresse.
  *
@@ -17,31 +19,30 @@ import bo4e.com.StandorteigenschaftenStrom;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/bo/Standorteigenschaften.json>`_
  */
 public class Standorteigenschaften extends Geschaeftsobjekt {
-    private final Typ _typ = Typ.STANDORTEIGENSCHAFTEN;
-    private StandorteigenschaftenGas eigenschaftenGas;
-    private StandorteigenschaftenStrom[] eigenschaftenStrom;
-
     /**
-     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+     * Typ des Geschaeftsobjekts
      */
-    /**
-     * Eigenschaften zur Sparte Strom
-     */
-    public Typ getTyp() { return _typ; }
-
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
+    private Typ typ = Typ.STANDORTEIGENSCHAFTEN;
     /**
      * Eigenschaften zur Sparte Gas
      */
-    public StandorteigenschaftenGas getEigenschaftenGas() { return eigenschaftenGas; }
-    public void setEigenschaftenGas(StandorteigenschaftenGas value) { this.eigenschaftenGas = value; }
-
+    private StandorteigenschaftenGas eigenschaftenGas;
     /**
      * Eigenschaften zur Sparte Strom
      */
-    public StandorteigenschaftenStrom[] getEigenschaftenStrom() { return eigenschaftenStrom; }
-    public void setEigenschaftenStrom(StandorteigenschaftenStrom[] value) { this.eigenschaftenStrom = value; }
+    private List<StandorteigenschaftenStrom> eigenschaftenStrom;
 
+    public StandorteigenschaftenGas getEigenschaftenGas() {
+        return EigenschaftenGas;
+    }
+    public void setEigenschaftenGas(StandorteigenschaftenGas eigenschaftenGas) {
+        this.eigenschaftenGas = eigenschaftenGas;
+    }
+
+    public List<StandorteigenschaftenStrom> getEigenschaftenStrom() {
+        return EigenschaftenStrom;
+    }
+    public void setEigenschaftenStrom(List<StandorteigenschaftenStrom> eigenschaftenStrom) {
+        this.eigenschaftenStrom = eigenschaftenStrom;
+    }
 }

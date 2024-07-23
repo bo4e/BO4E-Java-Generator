@@ -6,7 +6,9 @@ import bo4e.enums.Anrede;
 import bo4e.com.Kontaktweg;
 import bo4e.enums.Titel;
 import bo4e.com.Zustaendigkeit;
+
 import java.time.OffsetDateTime;
+import java.util.List;
 
 /**
  * Object containing information about a Person
@@ -20,88 +22,120 @@ import java.time.OffsetDateTime;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/bo/Person.json>`_
  */
 public class Person extends Geschaeftsobjekt {
-    private final Typ _typ = Typ.PERSON;
-    private Adresse adresse;
-    private Anrede anrede;
-    private OffsetDateTime geburtsdatum;
-    private String individuelleAnrede;
-    private String kommentar;
-    private Kontaktweg[] kontaktwege;
-    private String nachname;
-    private Titel titel;
-    private String vorname;
-    private Zustaendigkeit[] zustaendigkeiten;
-
     /**
-     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+     * Typ des Geschaeftsobjekts
      */
-    /**
-     * Mögliche Anrede der Person
-     */
-    public Typ getTyp() { return _typ; }
-
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
+    private Typ typ = Typ.PERSON;
     /**
      * Adresse der Person, falls diese von der Adresse des Geschäftspartners abweicht
      */
-    public Adresse getAdresse() { return adresse; }
-    public void setAdresse(Adresse value) { this.adresse = value; }
-
+    private Adresse adresse;
     /**
      * Mögliche Anrede der Person
      */
-    public Anrede getAnrede() { return anrede; }
-    public void setAnrede(Anrede value) { this.anrede = value; }
-
+    private Anrede anrede;
     /**
      * Geburtsdatum der Person
      */
-    public OffsetDateTime getGeburtsdatum() { return geburtsdatum; }
-    public void setGeburtsdatum(OffsetDateTime value) { this.geburtsdatum = value; }
-
+    private OffsetDateTime geburtsdatum;
     /**
      * Im Falle einer nicht standardisierten Anrede kann hier eine frei definierbare Anrede
      * vorgegeben werden.
      * Beispiel: "Vereinsgemeinschaft", "Pfarrer", "Hochwürdigster Herr Abt".
      */
-    public String getIndividuelleAnrede() { return individuelleAnrede; }
-    public void setIndividuelleAnrede(String value) { this.individuelleAnrede = value; }
-
+    private String individuelleAnrede;
     /**
      * Weitere Informationen zur Person
      */
-    public String getKommentar() { return kommentar; }
-    public void setKommentar(String value) { this.kommentar = value; }
-
+    private String kommentar;
     /**
      * Kontaktwege der Person
      */
-    public Kontaktweg[] getKontaktwege() { return kontaktwege; }
-    public void setKontaktwege(Kontaktweg[] value) { this.kontaktwege = value; }
-
+    private List<Kontaktweg> kontaktwege;
     /**
      * Nachname (Familienname) der Person
      */
-    public String getNachname() { return nachname; }
-    public void setNachname(String value) { this.nachname = value; }
-
+    private String nachname;
     /**
      * Möglicher Titel der Person
      */
-    public Titel getTitel() { return titel; }
-    public void setTitel(Titel value) { this.titel = value; }
-
+    private Titel titel;
     /**
      * Vorname der Person
      */
-    public String getVorname() { return vorname; }
-    public void setVorname(String value) { this.vorname = value; }
-
+    private String vorname;
     /**
      * Liste der Abteilungen und Zuständigkeiten der Person
      */
-    public Zustaendigkeit[] getZustaendigkeiten() { return zustaendigkeiten; }
-    public void setZustaendigkeiten(Zustaendigkeit[] value) { this.zustaendigkeiten = value; }
+    private List<Zustaendigkeit> zustaendigkeiten;
+
+    public Adresse getAdresse() {
+        return Adresse;
+    }
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
+
+    public Anrede getAnrede() {
+        return Anrede;
+    }
+    public void setAnrede(Anrede anrede) {
+        this.anrede = anrede;
+    }
+
+    public OffsetDateTime getGeburtsdatum() {
+        return Geburtsdatum;
+    }
+    public void setGeburtsdatum(OffsetDateTime geburtsdatum) {
+        this.geburtsdatum = geburtsdatum;
+    }
+
+    public String getIndividuelleAnrede() {
+        return IndividuelleAnrede;
+    }
+    public void setIndividuelleAnrede(String individuelleAnrede) {
+        this.individuelleAnrede = individuelleAnrede;
+    }
+
+    public String getKommentar() {
+        return Kommentar;
+    }
+    public void setKommentar(String kommentar) {
+        this.kommentar = kommentar;
+    }
+
+    public List<Kontaktweg> getKontaktwege() {
+        return Kontaktwege;
+    }
+    public void setKontaktwege(List<Kontaktweg> kontaktwege) {
+        this.kontaktwege = kontaktwege;
+    }
+
+    public String getNachname() {
+        return Nachname;
+    }
+    public void setNachname(String nachname) {
+        this.nachname = nachname;
+    }
+
+    public Titel getTitel() {
+        return Titel;
+    }
+    public void setTitel(Titel titel) {
+        this.titel = titel;
+    }
+
+    public String getVorname() {
+        return Vorname;
+    }
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+
+    public List<Zustaendigkeit> getZustaendigkeiten() {
+        return Zustaendigkeiten;
+    }
+    public void setZustaendigkeiten(List<Zustaendigkeit> zustaendigkeiten) {
+        this.zustaendigkeiten = zustaendigkeiten;
+    }
 }

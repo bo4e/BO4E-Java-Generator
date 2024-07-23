@@ -4,6 +4,8 @@ import bo4e.enums.Sparte;
 import bo4e.enums.Oekolabel;
 import bo4e.enums.Oekozertifikat;
 
+import java.util.List;
+
 /**
  * Zusammensetzung der gelieferten Energie aus den verschiedenen Primärenergieformen.
  *
@@ -16,108 +18,136 @@ import bo4e.enums.Oekozertifikat;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/com/Energiemix.json>`_
  */
 public class Energiemix extends COM {
-    private Energieherkunft[] anteil;
-    private Double atommuell;
-    private String bemerkung;
-    private String bezeichnung;
-    private Double co2Emission;
-    private Sparte energieart;
-    private Long energiemixnummer;
-    private Long gueltigkeitsjahr;
-    private Boolean istInOekoTopTen;
-    private Oekolabel[] oekolabel;
-    private Oekozertifikat[] oekozertifikate;
-    private String website;
-
-    /**
-     * zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
-     *
-     * # pylint: disable=duplicate-code
-     * model_config = ConfigDict(
-     * alias_generator=camelize,
-     * populate_by_name=True,
-     * extra="allow",
-     * # json_encoders is deprecated, but there is no easy-to-use alternative. The best way
-     * would be to create
-     * # an annotated version of Decimal, but you would have to use it everywhere in the
-     * pydantic models.
-     * # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
-     * json_encoders={Decimal: str},
-     * )
-     */
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
     /**
      * Anteile der jeweiligen Erzeugungsart
      */
-    public Energieherkunft[] getAnteil() { return anteil; }
-    public void setAnteil(Energieherkunft[] value) { this.anteil = value; }
-
+    private List<Energieherkunft> anteil;
     /**
      * Höhe des erzeugten Atommülls in g/kWh
      */
-    public Double getAtommuell() { return atommuell; }
-    public void setAtommuell(Double value) { this.atommuell = value; }
-
+    private Double atommuell;
     /**
      * Bemerkung zum Energiemix
      */
-    public String getBemerkung() { return bemerkung; }
-    public void setBemerkung(String value) { this.bemerkung = value; }
-
+    private String bemerkung;
     /**
      * Bezeichnung des Energiemix
      */
-    public String getBezeichnung() { return bezeichnung; }
-    public void setBezeichnung(String value) { this.bezeichnung = value; }
-
+    private String bezeichnung;
     /**
      * Höhe des erzeugten CO2-Ausstosses in g/kWh
      */
-    public Double getCo2Emission() { return co2Emission; }
-    public void setCo2Emission(Double value) { this.co2Emission = value; }
-
+    private Double co2Emission;
     /**
      * Strom oder Gas etc.
      */
-    public Sparte getEnergieart() { return energieart; }
-    public void setEnergieart(Sparte value) { this.energieart = value; }
-
+    private Sparte energieart;
     /**
      * Eindeutige Nummer zur Identifizierung des Energiemixes
      */
-    public Long getEnergiemixnummer() { return energiemixnummer; }
-    public void setEnergiemixnummer(Long value) { this.energiemixnummer = value; }
-
+    private Long energiemixnummer;
     /**
      * Jahr, für das der Energiemix gilt
      */
-    public Long getGueltigkeitsjahr() { return gueltigkeitsjahr; }
-    public void setGueltigkeitsjahr(Long value) { this.gueltigkeitsjahr = value; }
-
+    private Long gueltigkeitsjahr;
     /**
      * Kennzeichen, ob der Versorger zu den Öko Top Ten gehört
      */
-    public Boolean getIstInOekoTopTen() { return istInOekoTopTen; }
-    public void setIstInOekoTopTen(Boolean value) { this.istInOekoTopTen = value; }
-
+    private Boolean istInOekoTopTen;
     /**
      * Ökolabel für den Energiemix
      */
-    public Oekolabel[] getOekolabel() { return oekolabel; }
-    public void setOekolabel(Oekolabel[] value) { this.oekolabel = value; }
-
+    private List<Oekolabel> oekolabel;
     /**
      * Zertifikate für den Energiemix
      */
-    public Oekozertifikat[] getOekozertifikate() { return oekozertifikate; }
-    public void setOekozertifikate(Oekozertifikat[] value) { this.oekozertifikate = value; }
-
+    private List<Oekozertifikat> oekozertifikate;
     /**
      * Internetseite, auf der die Strommixdaten veröffentlicht sind
      */
-    public String getWebsite() { return website; }
-    public void setWebsite(String value) { this.website = value; }
+    private String website;
 
+    public List<Energieherkunft> getAnteil() {
+        return Anteil;
+    }
+    public void setAnteil(List<Energieherkunft> anteil) {
+        this.anteil = anteil;
+    }
+
+    public Double getAtommuell() {
+        return Atommuell;
+    }
+    public void setAtommuell(Double atommuell) {
+        this.atommuell = atommuell;
+    }
+
+    public String getBemerkung() {
+        return Bemerkung;
+    }
+    public void setBemerkung(String bemerkung) {
+        this.bemerkung = bemerkung;
+    }
+
+    public String getBezeichnung() {
+        return Bezeichnung;
+    }
+    public void setBezeichnung(String bezeichnung) {
+        this.bezeichnung = bezeichnung;
+    }
+
+    public Double getCo2Emission() {
+        return Co2Emission;
+    }
+    public void setCo2Emission(Double co2Emission) {
+        this.co2Emission = co2Emission;
+    }
+
+    public Sparte getEnergieart() {
+        return Energieart;
+    }
+    public void setEnergieart(Sparte energieart) {
+        this.energieart = energieart;
+    }
+
+    public Long getEnergiemixnummer() {
+        return Energiemixnummer;
+    }
+    public void setEnergiemixnummer(Long energiemixnummer) {
+        this.energiemixnummer = energiemixnummer;
+    }
+
+    public Long getGueltigkeitsjahr() {
+        return Gueltigkeitsjahr;
+    }
+    public void setGueltigkeitsjahr(Long gueltigkeitsjahr) {
+        this.gueltigkeitsjahr = gueltigkeitsjahr;
+    }
+
+    public Boolean getIstInOekoTopTen() {
+        return IstInOekoTopTen;
+    }
+    public void setIstInOekoTopTen(Boolean istInOekoTopTen) {
+        this.istInOekoTopTen = istInOekoTopTen;
+    }
+
+    public List<Oekolabel> getOekolabel() {
+        return Oekolabel;
+    }
+    public void setOekolabel(List<Oekolabel> oekolabel) {
+        this.oekolabel = oekolabel;
+    }
+
+    public List<Oekozertifikat> getOekozertifikate() {
+        return Oekozertifikate;
+    }
+    public void setOekozertifikate(List<Oekozertifikat> oekozertifikate) {
+        this.oekozertifikate = oekozertifikate;
+    }
+
+    public String getWebsite() {
+        return Website;
+    }
+    public void setWebsite(String website) {
+        this.website = website;
+    }
 }

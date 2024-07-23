@@ -5,6 +5,8 @@ import bo4e.com.Zeitraum;
 import bo4e.com.Fremdkostenblock;
 import bo4e.com.Betrag;
 
+import java.util.List;
+
 /**
  * Mit diesem BO werden die Fremdkosten, beispielsweise für eine Angebotserstellung oder
  * eine Rechnungsprüfung,
@@ -21,39 +23,42 @@ import bo4e.com.Betrag;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/bo/Fremdkosten.json>`_
  */
 public class Fremdkosten extends Geschaeftsobjekt {
-    private final Typ _typ = Typ.FREMDKOSTEN;
+    /**
+     * Typ des Geschaeftsobjekts
+     */
+    private Typ typ = Typ.FREMDKOSTEN;
+    /**
+     * Für diesen Zeitraum wurden die Kosten ermittelt
+     */
     private Zeitraum gueltigkeit;
-    private Fremdkostenblock[] kostenbloecke;
-    private Betrag summeKosten;
-
-    /**
-     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
-     */
-    /**
-     * Für diesen Zeitraum wurden die Kosten ermittelt
-     */
-    public Typ getTyp() { return _typ; }
-
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
-    /**
-     * Für diesen Zeitraum wurden die Kosten ermittelt
-     */
-    public Zeitraum getGueltigkeit() { return gueltigkeit; }
-    public void setGueltigkeit(Zeitraum value) { this.gueltigkeit = value; }
-
     /**
      * In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen,
      * Steuern etc
      */
-    public Fremdkostenblock[] getKostenbloecke() { return kostenbloecke; }
-    public void setKostenbloecke(Fremdkostenblock[] value) { this.kostenbloecke = value; }
-
+    private List<Fremdkostenblock> kostenbloecke;
     /**
      * Die Gesamtsumme über alle Kostenblöcke und -positionen
      */
-    public Betrag getSummeKosten() { return summeKosten; }
-    public void setSummeKosten(Betrag value) { this.summeKosten = value; }
+    private Betrag summeKosten;
 
+    public Zeitraum getGueltigkeit() {
+        return Gueltigkeit;
+    }
+    public void setGueltigkeit(Zeitraum gueltigkeit) {
+        this.gueltigkeit = gueltigkeit;
+    }
+
+    public List<Fremdkostenblock> getKostenbloecke() {
+        return Kostenbloecke;
+    }
+    public void setKostenbloecke(List<Fremdkostenblock> kostenbloecke) {
+        this.kostenbloecke = kostenbloecke;
+    }
+
+    public Betrag getSummeKosten() {
+        return SummeKosten;
+    }
+    public void setSummeKosten(Betrag summeKosten) {
+        this.summeKosten = summeKosten;
+    }
 }

@@ -4,6 +4,8 @@ import bo4e.enums.Typ;
 import bo4e.enums.Geraeteklasse;
 import bo4e.enums.Geraetetyp;
 
+import java.util.List;
+
 /**
  * Mit diesem BO werden alle Geräte modelliert, die keine Zähler sind.
  *
@@ -16,45 +18,52 @@ import bo4e.enums.Geraetetyp;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/bo/Geraet.json>`_
  */
 public class Geraet extends Geschaeftsobjekt {
-    private final Typ _typ = Typ.GERAET;
-    private String bezeichnung;
-    private Geraeteklasse geraeteklasse;
-    private String geraetenummer;
-    private Geraetetyp geraetetyp;
-
     /**
-     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+     * Typ des Geschaeftsobjekts
      */
-    /**
-     * Die auf dem Gerät aufgedruckte Nummer, die vom MSB vergeben wird.
-     */
-    public Typ getTyp() { return _typ; }
-
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
+    private Typ typ = Typ.GERAET;
     /**
      * Bezeichnung des Geräts
      */
-    public String getBezeichnung() { return bezeichnung; }
-    public void setBezeichnung(String value) { this.bezeichnung = value; }
-
+    private String bezeichnung;
     /**
      * Die übergreifende Klasse eines Geräts, beispielsweise Wandler
      */
-    public Geraeteklasse getGeraeteklasse() { return geraeteklasse; }
-    public void setGeraeteklasse(Geraeteklasse value) { this.geraeteklasse = value; }
-
+    private Geraeteklasse geraeteklasse;
     /**
      * Die auf dem Gerät aufgedruckte Nummer, die vom MSB vergeben wird.
      */
-    public String getGeraetenummer() { return geraetenummer; }
-    public void setGeraetenummer(String value) { this.geraetenummer = value; }
-
+    private String geraetenummer;
     /**
      * Der speziellere Typ eines Gerätes, beispielsweise Stromwandler
      */
-    public Geraetetyp getGeraetetyp() { return geraetetyp; }
-    public void setGeraetetyp(Geraetetyp value) { this.geraetetyp = value; }
+    private Geraetetyp geraetetyp;
 
+    public String getBezeichnung() {
+        return Bezeichnung;
+    }
+    public void setBezeichnung(String bezeichnung) {
+        this.bezeichnung = bezeichnung;
+    }
+
+    public Geraeteklasse getGeraeteklasse() {
+        return Geraeteklasse;
+    }
+    public void setGeraeteklasse(Geraeteklasse geraeteklasse) {
+        this.geraeteklasse = geraeteklasse;
+    }
+
+    public String getGeraetenummer() {
+        return Geraetenummer;
+    }
+    public void setGeraetenummer(String geraetenummer) {
+        this.geraetenummer = geraetenummer;
+    }
+
+    public Geraetetyp getGeraetetyp() {
+        return Geraetetyp;
+    }
+    public void setGeraetetyp(Geraetetyp geraetetyp) {
+        this.geraetetyp = geraetetyp;
+    }
 }

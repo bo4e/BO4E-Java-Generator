@@ -14,7 +14,10 @@ import bo4e.enums.Sparte;
 import bo4e.enums.Verbrauchsart;
 import bo4e.com.Verbrauch;
 import bo4e.com.Zaehlwerk;
+import bo4e.com.Zaehlwerk;
 import bo4e.com.Messlokationszuordnung;
+
+import java.util.List;
 
 /**
  * Object containing information about a Marktlokation
@@ -29,182 +32,268 @@ import bo4e.com.Messlokationszuordnung;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/bo/Marktlokation.json>`_
  */
 public class Marktlokation extends Geschaeftsobjekt {
-    private final Typ _typ = Typ.MARKTLOKATION;
-    private String bilanzierungsgebiet;
-    private Bilanzierungsmethode bilanzierungsmethode;
-    private Geschaeftspartner endkunde;
-    private Energierichtung energierichtung;
-    private Gasqualitaet gasqualitaet;
-    private Gebiettyp gebietstyp;
-    private Geokoordinaten geoadresse;
-    private String grundversorgercodenr;
-    private Boolean istUnterbrechbar;
-    private Katasteradresse katasterinformation;
-    private Kundentyp[] kundengruppen;
-    private Adresse lokationsadresse;
-    private String marktgebiet;
-    private String marktlokationsId;
-    private String netzbetreibercodenr;
-    private Netzebene netzebene;
-    private String netzgebietsnr;
-    private String regelzone;
-    private Sparte sparte;
-    private Verbrauchsart verbrauchsart;
-    private Verbrauch[] verbrauchsmengen;
-    private Zaehlwerk[] zaehlwerke;
-    private Zaehlwerk[] zaehlwerkeDerBeteiligtenMarktrolle;
-    private Messlokationszuordnung zugehoerigeMesslokation;
-
     /**
-     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+     * Typ des Geschaeftsobjekts
      */
-    /**
-     * Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder
-     * erzeugt wird.
-     */
-    public Typ getTyp() { return _typ; }
-
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
+    private Typ typ = Typ.MARKTLOKATION;
     /**
      * Bilanzierungsgebiet, dem das Netzgebiet zugeordnet ist - im Falle eines Strom Netzes
      */
-    public String getBilanzierungsgebiet() { return bilanzierungsgebiet; }
-    public void setBilanzierungsgebiet(String value) { this.bilanzierungsgebiet = value; }
-
+    private String bilanzierungsgebiet;
     /**
      * Die Bilanzierungsmethode, RLM oder SLP
      */
-    public Bilanzierungsmethode getBilanzierungsmethode() { return bilanzierungsmethode; }
-    public void setBilanzierungsmethode(Bilanzierungsmethode value) { this.bilanzierungsmethode = value; }
-
+    private Bilanzierungsmethode bilanzierungsmethode;
     /**
      * Geschäftspartner, dem diese Marktlokation gehört
      */
-    public Geschaeftspartner getEndkunde() { return endkunde; }
-    public void setEndkunde(Geschaeftspartner value) { this.endkunde = value; }
-
+    private Geschaeftspartner endkunde;
     /**
      * Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird
      */
-    public Energierichtung getEnergierichtung() { return energierichtung; }
-    public void setEnergierichtung(Energierichtung value) { this.energierichtung = value; }
-
+    private Energierichtung energierichtung;
     /**
      * Die Gasqualität in diesem Netzgebiet. H-Gas oder L-Gas. Im Falle eines Gas-Netzes
      */
-    public Gasqualitaet getGasqualitaet() { return gasqualitaet; }
-    public void setGasqualitaet(Gasqualitaet value) { this.gasqualitaet = value; }
-
+    private Gasqualitaet gasqualitaet;
     /**
      * Typ des Netzgebietes, z.B. Verteilnetz
      */
-    public Gebiettyp getGebietstyp() { return gebietstyp; }
-    public void setGebietstyp(Gebiettyp value) { this.gebietstyp = value; }
-
+    private Gebiettyp gebietstyp;
     /**
      * katasterinformation: Optional["Katasteradresse"] = None
      */
-    public Geokoordinaten getGeoadresse() { return geoadresse; }
-    public void setGeoadresse(Geokoordinaten value) { this.geoadresse = value; }
-
+    private Geokoordinaten geoadresse;
     /**
      * Codenummer des Grundversorgers, der für diese Marktlokation zuständig ist
      */
-    public String getGrundversorgercodenr() { return grundversorgercodenr; }
-    public void setGrundversorgercodenr(String value) { this.grundversorgercodenr = value; }
-
+    private String grundversorgercodenr;
     /**
      * Gibt an, ob es sich um eine unterbrechbare Belieferung handelt
      */
-    public Boolean getIstUnterbrechbar() { return istUnterbrechbar; }
-    public void setIstUnterbrechbar(Boolean value) { this.istUnterbrechbar = value; }
-
+    private Boolean istUnterbrechbar;
     /**
      * Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe
      * mittels Gemarkung und
      * Flurstück erfolgen.
      */
-    public Katasteradresse getKatasterinformation() { return katasterinformation; }
-    public void setKatasterinformation(Katasteradresse value) { this.katasterinformation = value; }
-
+    private Katasteradresse katasterinformation;
     /**
      * Kundengruppen der Marktlokation
      */
-    public Kundentyp[] getKundengruppen() { return kundengruppen; }
-    public void setKundengruppen(Kundentyp[] value) { this.kundengruppen = value; }
-
+    private List<Kundentyp> kundengruppen;
     /**
      * Die Adresse, an der die Energie-Lieferung oder -Einspeisung erfolgt
      */
-    public Adresse getLokationsadresse() { return lokationsadresse; }
-    public void setLokationsadresse(Adresse value) { this.lokationsadresse = value; }
-
+    private Adresse lokationsadresse;
     /**
      * für Gas. Code vom EIC, https://www.entsog.eu/data/data-portal/codes-list
      */
-    public String getMarktgebiet() { return marktgebiet; }
-    public void setMarktgebiet(String value) { this.marktgebiet = value; }
-
+    private String marktgebiet;
     /**
      * Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder
      * erzeugt wird.
      */
-    public String getMarktlokationsId() { return marktlokationsId; }
-    public void setMarktlokationsId(String value) { this.marktlokationsId = value; }
-
+    private String marktlokationsId;
     /**
      * Codenummer des Netzbetreibers, an dessen Netz diese Marktlokation angeschlossen ist.
      */
-    public String getNetzbetreibercodenr() { return netzbetreibercodenr; }
-    public void setNetzbetreibercodenr(String value) { this.netzbetreibercodenr = value; }
-
+    private String netzbetreibercodenr;
     /**
      * Netzebene, in der der Bezug der Energie erfolgt.
      * Bei Strom Spannungsebene der Lieferung, bei Gas Druckstufe.
      * Beispiel Strom: Niederspannung Beispiel Gas: Niederdruck.
      */
-    public Netzebene getNetzebene() { return netzebene; }
-    public void setNetzebene(Netzebene value) { this.netzebene = value; }
-
+    private Netzebene netzebene;
     /**
      * Die ID des Gebietes in der ene't-Datenbank
      */
-    public String getNetzgebietsnr() { return netzgebietsnr; }
-    public void setNetzgebietsnr(String value) { this.netzgebietsnr = value; }
-
+    private String netzgebietsnr;
     /**
      * Kundengruppen der Marktlokation
      */
-    public String getRegelzone() { return regelzone; }
-    public void setRegelzone(String value) { this.regelzone = value; }
-
+    private String regelzone;
     /**
      * Sparte der Marktlokation, z.B. Gas oder Strom
      */
-    public Sparte getSparte() { return sparte; }
-    public void setSparte(Sparte value) { this.sparte = value; }
-
+    private Sparte sparte;
     /**
      * Verbrauchsart der Marktlokation.
      */
-    public Verbrauchsart getVerbrauchsart() { return verbrauchsart; }
-    public void setVerbrauchsart(Verbrauchsart value) { this.verbrauchsart = value; }
-
-    public Verbrauch[] getVerbrauchsmengen() { return verbrauchsmengen; }
-    public void setVerbrauchsmengen(Verbrauch[] value) { this.verbrauchsmengen = value; }
-
+    private Verbrauchsart verbrauchsart;
+    private List<Verbrauch> verbrauchsmengen;
     /**
      * für Gas. Code vom EIC, https://www.entsog.eu/data/data-portal/codes-list
      */
-    public Zaehlwerk[] getZaehlwerke() { return zaehlwerke; }
-    public void setZaehlwerke(Zaehlwerk[] value) { this.zaehlwerke = value; }
+    private List<Zaehlwerk> zaehlwerke;
+    private List<Zaehlwerk> zaehlwerkeDerBeteiligtenMarktrolle;
+    private Messlokationszuordnung zugehoerigeMesslokation;
 
-    public Zaehlwerk[] getZaehlwerkeDerBeteiligtenMarktrolle() { return zaehlwerkeDerBeteiligtenMarktrolle; }
-    public void setZaehlwerkeDerBeteiligtenMarktrolle(Zaehlwerk[] value) { this.zaehlwerkeDerBeteiligtenMarktrolle = value; }
+    public String getBilanzierungsgebiet() {
+        return Bilanzierungsgebiet;
+    }
+    public void setBilanzierungsgebiet(String bilanzierungsgebiet) {
+        this.bilanzierungsgebiet = bilanzierungsgebiet;
+    }
 
-    public Messlokationszuordnung getZugehoerigeMesslokation() { return zugehoerigeMesslokation; }
-    public void setZugehoerigeMesslokation(Messlokationszuordnung value) { this.zugehoerigeMesslokation = value; }
+    public Bilanzierungsmethode getBilanzierungsmethode() {
+        return Bilanzierungsmethode;
+    }
+    public void setBilanzierungsmethode(Bilanzierungsmethode bilanzierungsmethode) {
+        this.bilanzierungsmethode = bilanzierungsmethode;
+    }
 
+    public Geschaeftspartner getEndkunde() {
+        return Endkunde;
+    }
+    public void setEndkunde(Geschaeftspartner endkunde) {
+        this.endkunde = endkunde;
+    }
+
+    public Energierichtung getEnergierichtung() {
+        return Energierichtung;
+    }
+    public void setEnergierichtung(Energierichtung energierichtung) {
+        this.energierichtung = energierichtung;
+    }
+
+    public Gasqualitaet getGasqualitaet() {
+        return Gasqualitaet;
+    }
+    public void setGasqualitaet(Gasqualitaet gasqualitaet) {
+        this.gasqualitaet = gasqualitaet;
+    }
+
+    public Gebiettyp getGebietstyp() {
+        return Gebietstyp;
+    }
+    public void setGebietstyp(Gebiettyp gebietstyp) {
+        this.gebietstyp = gebietstyp;
+    }
+
+    public Geokoordinaten getGeoadresse() {
+        return Geoadresse;
+    }
+    public void setGeoadresse(Geokoordinaten geoadresse) {
+        this.geoadresse = geoadresse;
+    }
+
+    public String getGrundversorgercodenr() {
+        return Grundversorgercodenr;
+    }
+    public void setGrundversorgercodenr(String grundversorgercodenr) {
+        this.grundversorgercodenr = grundversorgercodenr;
+    }
+
+    public Boolean getIstUnterbrechbar() {
+        return IstUnterbrechbar;
+    }
+    public void setIstUnterbrechbar(Boolean istUnterbrechbar) {
+        this.istUnterbrechbar = istUnterbrechbar;
+    }
+
+    public Katasteradresse getKatasterinformation() {
+        return Katasterinformation;
+    }
+    public void setKatasterinformation(Katasteradresse katasterinformation) {
+        this.katasterinformation = katasterinformation;
+    }
+
+    public List<Kundentyp> getKundengruppen() {
+        return Kundengruppen;
+    }
+    public void setKundengruppen(List<Kundentyp> kundengruppen) {
+        this.kundengruppen = kundengruppen;
+    }
+
+    public Adresse getLokationsadresse() {
+        return Lokationsadresse;
+    }
+    public void setLokationsadresse(Adresse lokationsadresse) {
+        this.lokationsadresse = lokationsadresse;
+    }
+
+    public String getMarktgebiet() {
+        return Marktgebiet;
+    }
+    public void setMarktgebiet(String marktgebiet) {
+        this.marktgebiet = marktgebiet;
+    }
+
+    public String getMarktlokationsId() {
+        return MarktlokationsId;
+    }
+    public void setMarktlokationsId(String marktlokationsId) {
+        this.marktlokationsId = marktlokationsId;
+    }
+
+    public String getNetzbetreibercodenr() {
+        return Netzbetreibercodenr;
+    }
+    public void setNetzbetreibercodenr(String netzbetreibercodenr) {
+        this.netzbetreibercodenr = netzbetreibercodenr;
+    }
+
+    public Netzebene getNetzebene() {
+        return Netzebene;
+    }
+    public void setNetzebene(Netzebene netzebene) {
+        this.netzebene = netzebene;
+    }
+
+    public String getNetzgebietsnr() {
+        return Netzgebietsnr;
+    }
+    public void setNetzgebietsnr(String netzgebietsnr) {
+        this.netzgebietsnr = netzgebietsnr;
+    }
+
+    public String getRegelzone() {
+        return Regelzone;
+    }
+    public void setRegelzone(String regelzone) {
+        this.regelzone = regelzone;
+    }
+
+    public Sparte getSparte() {
+        return Sparte;
+    }
+    public void setSparte(Sparte sparte) {
+        this.sparte = sparte;
+    }
+
+    public Verbrauchsart getVerbrauchsart() {
+        return Verbrauchsart;
+    }
+    public void setVerbrauchsart(Verbrauchsart verbrauchsart) {
+        this.verbrauchsart = verbrauchsart;
+    }
+
+    public List<Verbrauch> getVerbrauchsmengen() {
+        return Verbrauchsmengen;
+    }
+    public void setVerbrauchsmengen(List<Verbrauch> verbrauchsmengen) {
+        this.verbrauchsmengen = verbrauchsmengen;
+    }
+
+    public List<Zaehlwerk> getZaehlwerke() {
+        return Zaehlwerke;
+    }
+    public void setZaehlwerke(List<Zaehlwerk> zaehlwerke) {
+        this.zaehlwerke = zaehlwerke;
+    }
+
+    public List<Zaehlwerk> getZaehlwerkeDerBeteiligtenMarktrolle() {
+        return ZaehlwerkeDerBeteiligtenMarktrolle;
+    }
+    public void setZaehlwerkeDerBeteiligtenMarktrolle(List<Zaehlwerk> zaehlwerkeDerBeteiligtenMarktrolle) {
+        this.zaehlwerkeDerBeteiligtenMarktrolle = zaehlwerkeDerBeteiligtenMarktrolle;
+    }
+
+    public Messlokationszuordnung getZugehoerigeMesslokation() {
+        return ZugehoerigeMesslokation;
+    }
+    public void setZugehoerigeMesslokation(Messlokationszuordnung zugehoerigeMesslokation) {
+        this.zugehoerigeMesslokation = zugehoerigeMesslokation;
+    }
 }

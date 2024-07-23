@@ -6,6 +6,8 @@ import bo4e.enums.Sparte;
 import bo4e.com.Zeitreihenwert;
 import bo4e.com.Menge;
 
+import java.util.List;
+
 /**
  * Modell zur Abbildung eines Lastganges;
  * In diesem Modell werden die Messwerte mit einem vollständigen Zeitintervall
@@ -21,68 +23,94 @@ import bo4e.com.Menge;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/v202401.2.1/src/bo4e_schemas/bo/Lastgang.json>`_
  */
 public class Lastgang extends Geschaeftsobjekt {
-    private final Typ _typ = Typ.LASTGANG;
-    private Marktlokation marktlokation;
-    private Mengeneinheit messgroesse;
-    private Messlokation messlokation;
-    private String obisKennzahl;
-    private Sparte sparte;
-    private String version;
-    private Zeitreihenwert[] werte;
-    private Menge zeitIntervallLaenge;
-
     /**
-     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+     * Typ des Geschaeftsobjekts
      */
-    /**
-     * Angabe, ob es sich um einen Gas- oder Stromlastgang handelt
-     */
-    public Typ getTyp() { return _typ; }
-
+    private Typ typ = Typ.LASTGANG;
     /**
      * Marktlokation, zu der der Lastgang gehört
      */
-    public Marktlokation getMarktlokation() { return marktlokation; }
-    public void setMarktlokation(Marktlokation value) { this.marktlokation = value; }
-
+    private Marktlokation marktlokation;
     /**
      * Definition der gemessenen Größe anhand ihrer Einheit
      */
-    public Mengeneinheit getMessgroesse() { return messgroesse; }
-    public void setMessgroesse(Mengeneinheit value) { this.messgroesse = value; }
-
+    private Mengeneinheit messgroesse;
     /**
      * Marktlokation, zu der der Lastgang gehört
      */
-    public Messlokation getMesslokation() { return messlokation; }
-    public void setMesslokation(Messlokation value) { this.messlokation = value; }
-
+    private Messlokation messlokation;
     /**
      * Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird,
      * z.B. '1-0:1.8.1'
      */
-    public String getObisKennzahl() { return obisKennzahl; }
-    public void setObisKennzahl(String value) { this.obisKennzahl = value; }
-
+    private String obisKennzahl;
     /**
      * Angabe, ob es sich um einen Gas- oder Stromlastgang handelt
      */
-    public Sparte getSparte() { return sparte; }
-    public void setSparte(Sparte value) { this.sparte = value; }
-
+    private Sparte sparte;
     /**
      * Versionsnummer des Lastgangs
      */
-    public String getVersion() { return version; }
-    public void setVersion(String value) { this.version = value; }
-
+    private String version;
     /**
      * Die im Lastgang enthaltenen Messwerte
      */
-    public Zeitreihenwert[] getWerte() { return werte; }
-    public void setWerte(Zeitreihenwert[] value) { this.werte = value; }
+    private List<Zeitreihenwert> werte;
+    private Menge zeitIntervallLaenge;
 
-    public Menge getZeitIntervallLaenge() { return zeitIntervallLaenge; }
-    public void setZeitIntervallLaenge(Menge value) { this.zeitIntervallLaenge = value; }
+    public Marktlokation getMarktlokation() {
+        return Marktlokation;
+    }
+    public void setMarktlokation(Marktlokation marktlokation) {
+        this.marktlokation = marktlokation;
+    }
 
+    public Mengeneinheit getMessgroesse() {
+        return Messgroesse;
+    }
+    public void setMessgroesse(Mengeneinheit messgroesse) {
+        this.messgroesse = messgroesse;
+    }
+
+    public Messlokation getMesslokation() {
+        return Messlokation;
+    }
+    public void setMesslokation(Messlokation messlokation) {
+        this.messlokation = messlokation;
+    }
+
+    public String getObisKennzahl() {
+        return ObisKennzahl;
+    }
+    public void setObisKennzahl(String obisKennzahl) {
+        this.obisKennzahl = obisKennzahl;
+    }
+
+    public Sparte getSparte() {
+        return Sparte;
+    }
+    public void setSparte(Sparte sparte) {
+        this.sparte = sparte;
+    }
+
+    public String getVersion() {
+        return Version;
+    }
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public List<Zeitreihenwert> getWerte() {
+        return Werte;
+    }
+    public void setWerte(List<Zeitreihenwert> werte) {
+        this.werte = werte;
+    }
+
+    public Menge getZeitIntervallLaenge() {
+        return ZeitIntervallLaenge;
+    }
+    public void setZeitIntervallLaenge(Menge zeitIntervallLaenge) {
+        this.zeitIntervallLaenge = zeitIntervallLaenge;
+    }
 }

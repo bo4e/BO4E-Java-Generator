@@ -32,6 +32,10 @@ public class Standorteigenschaften extends Geschaeftsobjekt {
      */
     private List<StandorteigenschaftenStrom> eigenschaftenStrom;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public StandorteigenschaftenGas getEigenschaftenGas() {
         return eigenschaftenGas;
     }

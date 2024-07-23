@@ -74,6 +74,10 @@ public class PreisblattHardware extends Geschaeftsobjekt {
      */
     private Sparte sparte;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public Geraet getBasisgeraet() {
         return basisgeraet;
     }

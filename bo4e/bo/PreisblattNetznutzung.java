@@ -63,6 +63,10 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
      */
     private Sparte sparte;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public String getBezeichnung() {
         return bezeichnung;
     }

@@ -44,6 +44,10 @@ public class Kosten extends Geschaeftsobjekt {
      */
     private List<Betrag> summeKosten;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public Zeitraum getGueltigkeit() {
         return gueltigkeit;
     }

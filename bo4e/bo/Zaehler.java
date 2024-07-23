@@ -95,6 +95,10 @@ public class Zaehler extends Geschaeftsobjekt {
      */
     private List<Zaehlwerk> zaehlwerke;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public Befestigungsart getBefestigungsart() {
         return befestigungsart;
     }

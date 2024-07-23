@@ -35,6 +35,10 @@ public class Energiemenge extends Geschaeftsobjekt {
      */
     private Lokationstyp lokationstyp;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public List<Verbrauch> getEnergieverbrauch() {
         return energieverbrauch;
     }

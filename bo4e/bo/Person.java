@@ -69,6 +69,10 @@ public class Person extends Geschaeftsobjekt {
      */
     private List<Zustaendigkeit> zustaendigkeiten;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public Adresse getAdresse() {
         return adresse;
     }

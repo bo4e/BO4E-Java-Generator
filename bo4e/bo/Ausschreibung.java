@@ -74,6 +74,10 @@ public class Ausschreibung extends Geschaeftsobjekt {
      */
     private String webseite;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public Zeitraum getAbgabefrist() {
         return abgabefrist;
     }

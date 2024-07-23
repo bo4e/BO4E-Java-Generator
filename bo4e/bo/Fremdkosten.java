@@ -41,6 +41,10 @@ public class Fremdkosten extends Geschaeftsobjekt {
      */
     private Betrag summeKosten;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public Zeitraum getGueltigkeit() {
         return gueltigkeit;
     }

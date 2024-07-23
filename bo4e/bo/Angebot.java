@@ -71,6 +71,10 @@ public class Angebot extends Geschaeftsobjekt {
      */
     private List<Angebotsvariante> varianten;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public String getAnfragereferenz() {
         return anfragereferenz;
     }

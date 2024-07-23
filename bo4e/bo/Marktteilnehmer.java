@@ -50,6 +50,10 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
      */
     private Sparte sparte;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public Geschaeftspartner getGeschaeftspartner() {
         return geschaeftspartner;
     }

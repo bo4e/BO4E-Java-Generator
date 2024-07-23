@@ -144,6 +144,10 @@ public class Rechnung extends Geschaeftsobjekt {
      */
     private Betrag zuZahlen;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public OffsetDateTime getFaelligkeitsdatum() {
         return faelligkeitsdatum;
     }

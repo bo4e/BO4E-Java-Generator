@@ -39,6 +39,10 @@ public class Geraet extends Geschaeftsobjekt {
      */
     private Geraetetyp geraetetyp;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public String getBezeichnung() {
         return bezeichnung;
     }

@@ -129,6 +129,10 @@ public class Marktlokation extends Geschaeftsobjekt {
     private List<Zaehlwerk> zaehlwerkeDerBeteiligtenMarktrolle;
     private Messlokationszuordnung zugehoerigeMesslokation;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public String getBilanzierungsgebiet() {
         return bilanzierungsgebiet;
     }

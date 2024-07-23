@@ -94,6 +94,10 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
      */
     private String website;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public Adresse getAdresse() {
         return adresse;
     }

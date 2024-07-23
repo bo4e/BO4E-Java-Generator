@@ -58,6 +58,10 @@ public class Lastgang extends Geschaeftsobjekt {
     private List<Zeitreihenwert> werte;
     private Menge zeitIntervallLaenge;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public Marktlokation getMarktlokation() {
         return marktlokation;
     }

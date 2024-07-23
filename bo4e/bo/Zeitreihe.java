@@ -64,6 +64,10 @@ public class Zeitreihe extends Geschaeftsobjekt {
      */
     private Wertermittlungsverfahren wertherkunft;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public String getBeschreibung() {
         return beschreibung;
     }

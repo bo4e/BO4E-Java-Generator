@@ -85,6 +85,10 @@ public class Vertrag extends Geschaeftsobjekt {
      */
     private List<Vertragsteil> vertragsteile;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public String getBeschreibung() {
         return beschreibung;
     }

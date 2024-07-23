@@ -93,6 +93,10 @@ public class Tarifkosten extends Geschaeftsobjekt {
      */
     private Zeitraum zeitlicheGueltigkeit;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public Marktteilnehmer getAnbieter() {
         return anbieter;
     }

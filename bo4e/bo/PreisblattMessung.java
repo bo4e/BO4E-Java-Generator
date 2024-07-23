@@ -75,6 +75,10 @@ public class PreisblattMessung extends Geschaeftsobjekt {
      */
     private Zaehler zaehler;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public String getBezeichnung() {
         return bezeichnung;
     }

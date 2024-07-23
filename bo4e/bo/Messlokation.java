@@ -78,6 +78,10 @@ public class Messlokation extends Geschaeftsobjekt {
      */
     private Sparte sparte;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public Geokoordinaten getGeoadresse() {
         return geoadresse;
     }

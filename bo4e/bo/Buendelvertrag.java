@@ -83,6 +83,10 @@ public class Buendelvertrag extends Geschaeftsobjekt {
      */
     private Vertragsstatus vertragsstatus;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public String getBeschreibung() {
         return beschreibung;
     }

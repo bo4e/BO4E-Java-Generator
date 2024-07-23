@@ -338,16 +338,19 @@ function addParentToClass(classHead, classDirPath) {
 /**
  *
  * @param field {{name: string, type: string, description: string}}
+ * @param addSetter {boolean}
  */
-function getJavaMethod(field) {
+function getJavaMethod(field, addSetter = false) {
     const fieldName = field.name.charAt(0).toUpperCase() + field.name.slice(1);
     const lines = []
     lines.push(`    public ${field.type} get${fieldName}() {`);
     lines.push(`        return ${field.name};`);
     lines.push(`    }`);
-    lines.push(`    public void set${fieldName}(${field.type} ${field.name}) {`);
-    lines.push(`        this.${field.name} = ${field.name};`);
-    lines.push(`    }`);
+    if (addSetter) {
+        lines.push(`    public void set${fieldName}(${field.type} ${field.name}) {`);
+        lines.push(`        this.${field.name} = ${field.name};`);
+        lines.push(`    }`);
+    }
     return lines.join("\n");
 }
 
@@ -359,7 +362,7 @@ function getJavaMethods(fieldList) {
     const methodList = [];
     for (const field of fieldList) {
         methodList.push("")
-        methodList.push(getJavaMethod(field))
+        methodList.push(getJavaMethod(field, true))
     }
     return methodList;
 }
@@ -393,9 +396,10 @@ function getImports(fieldList, fileData, fileMap) {
 /**
  *
  * @param fieldList {{name: string, type: string, description: string}[]}
+ * @param javaMethodList {string[]}
  * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}}
  */
-function addTypeToFields(fieldList, fileData) {
+function addTypeToFieldsAndMethods(fieldList, javaMethodList, fileData) {
     const file = fs.readFileSync(fileData.jsonFilePath + "/" + fileData.jsonFileName + ".json", "utf-8").replaceAll(" ", "").split("\n");
     let type = fileData.jsonFileName.toUpperCase();
     const hasExpectedType = file.findIndex(value => value.startsWith(`"default":"${type}"`)) !== -1;
@@ -412,6 +416,7 @@ function addTypeToFields(fieldList, fileData) {
         type: "Typ",
         description: "    /**\n     * Typ des Geschaeftsobjekts\n     */"
     }
+    javaMethodList.unshift("", getJavaMethod({name: "typ", type: "Typ"}));
     fieldList.unshift(field);
 }
 
@@ -439,7 +444,7 @@ function completeJavaFile(contentList, fileData, fileMap) {
     }
     const javaMethodList = getJavaMethods(fieldList);
     if (fileData.javaFilePath.endsWith("/bo")) {
-        addTypeToFields(fieldList, fileData);
+        addTypeToFieldsAndMethods(fieldList, javaMethodList, fileData);
     }
     const javaFieldList = turnFieldListToJava(fieldList);
     const importList = getImports(fieldList, fileData, fileMap);

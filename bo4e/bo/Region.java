@@ -35,6 +35,10 @@ public class Region extends Geschaeftsobjekt {
      */
     private List<Regionskriterium> positivListe;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public String getBezeichnung() {
         return bezeichnung;
     }

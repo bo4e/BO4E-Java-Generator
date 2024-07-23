@@ -70,6 +70,10 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
      */
     private Sparte sparte;
 
+    public Typ getTyp() {
+        return typ;
+    }
+
     public Dienstleistungstyp getBasisdienstleistung() {
         return basisdienstleistung;
     }

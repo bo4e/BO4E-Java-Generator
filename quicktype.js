@@ -1,18 +1,29 @@
-const {InputData, JSONSchemaInput, FetchingJSONSchemaStore, quicktypeMultiFile,
-    JavaTargetLanguage,
-    getOptionValues,
-    JavaRenderer
+const {
+    InputData, JSONSchemaInput, FetchingJSONSchemaStore, quicktypeMultiFile,
+    JavaTargetLanguage, getOptionValues, JavaRenderer
 } = require("quicktype-core");
 const fs = require("node:fs");
 const {BooleanOption, StringOption, EnumOption} = require("quicktype-core/dist/RendererOptions");
 const {acronymOption, AcronymStyleOptions} = require("quicktype-core/dist/support/Acronyms");
 const {JacksonRenderer} = require("quicktype-core/dist/language/Java");
+const {SerializedRenderResult} = require("quicktype-core/dist/Source");
 
 let currentVersion = "";
 let packageName = "";
 let targetDirName = "bo4e";
 let sourceDirName = "bo4e_schemas";
 let urlTemplate = "";
+
+/**
+ * array containing potentially missing parent classes and their path
+ * @type {{fileName: string, pathToFile: string}[]}
+ */
+const missingParentClasses = [
+    {fileName: "Geschaeftsobjekt", pathToFile: "bo/"},
+    {fileName: "COM", pathToFile: "com/"}
+];
+
+const parentFields = ["id", "typ", "version", "zusatzAttribute"];
 
 const newJavaOptions = {
     useList: new EnumOption(
@@ -39,41 +50,6 @@ const newJavaOptions = {
     lombok: new BooleanOption("lombok", "Use lombok", false, "primary"),
     lombokCopyAnnotations: new BooleanOption("lombok-copy-annotations", "Copy accessor annotations", false, "secondary")
 };
-
-function processCommandLineArguments() {
-    const flags = (process.argv[2] && process.argv[2].length > 1) ? process.argv[2].substring(1).split("") : [];
-    for (let i = 0; i < flags.length; i++) {
-        if (process.argv[3 + i]) {
-            switch (flags[i]) {
-                case 'p': {
-                    packageName = process.argv[3 + i]
-                    console.log("Using Package: " + packageName);
-                    packageName += '.';
-                    break;
-                }
-                case 't': {
-                    targetDirName = process.argv[3 + i]
-                    console.log("Using target directory: " + targetDirName);
-                    break;
-                }
-                case 's': {
-                    sourceDirName = process.argv[3 + i]
-                    console.log("Using source directory: " + sourceDirName);
-                    break;
-                }
-            }
-        }
-    }
-}
-
-/**
- * array containing the name of the parent class and its directory
- * @type {{dir: string, className: string}[]}
- */
-const baseclassForDir = [
-    {className: "Geschaeftsobjekt", dir: "bo"},
-    {className: "COM", dir: "com"}
-]
 
 /**
  * the language used for generation, uses custom options
@@ -104,6 +80,32 @@ class NewJavaTargetLanguage extends JavaTargetLanguage {
     }
 }
 
+function processCommandLineArguments() {
+    const flags = (process.argv[2] && process.argv[2].length > 1) ? process.argv[2].substring(1).split("") : [];
+    for (let i = 0; i < flags.length; i++) {
+        if (process.argv[3 + i]) {
+            switch (flags[i]) {
+                case 'p': {
+                    packageName = process.argv[3 + i]
+                    console.log("Using Package: " + packageName);
+                    packageName += '.';
+                    break;
+                }
+                case 't': {
+                    targetDirName = process.argv[3 + i]
+                    console.log("Using target directory: " + targetDirName);
+                    break;
+                }
+                case 's': {
+                    sourceDirName = process.argv[3 + i]
+                    console.log("Using source directory: " + sourceDirName);
+                    break;
+                }
+            }
+        }
+    }
+}
+
 /**
  * turns a file into a schema-property and adds it to the given array
  * @param allKnowingSchema {string[]} the array to add the property to
@@ -128,14 +130,14 @@ function addProperty(allKnowingSchema, file, path) {
     } else {
         url = urlTemplate + path;
     }
-    const propertyName = file.replace(".json","");
+    const propertyName = file.replace(".json", "");
     const newProperty = createProperty(propertyName.toLowerCase(), url);
     allKnowingSchema.push(newProperty);
     console.log("Property " + propertyName + " added");
 }
 
 function createProperty(propertyName, propertyUrl) {
-    return "        },\n"+
+    return "        },\n" +
         "        \"" + propertyName + "\": {\n" +
         "            \"anyOf\": [\n" +
         "                {\n" +
@@ -199,18 +201,26 @@ function getVersion(url) {
  * iterates through the given directory and all subdirectories and adds all files as schema-property-elements to the given array
  * @param allKnowingSchema {string[]} the schema to add the files to
  * @param source {string} the path to the source directory
- * @param fileMap {Map<string,string>} a map to add the files with the path to their directory to, creates one if none is given
- * @returns {Map<string, string>} A map of all added files with the path to their directory
+ * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} a map to add the files with the path to their directory to, creates one if none is given
+ * @returns {Map<string, {jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} A map of all added files with the path to their directory
  */
-function addToSchema(allKnowingSchema, source, fileMap = new Map) {
+function addToSchema(allKnowingSchema, source = sourceDirName, fileMap = new Map) {
     const files = fs.readdirSync(source);
     for (const file of files) {
         const path = source + '/' + file;
+        const targetPath = path.replace(sourceDirName, targetDirName).replace("enum", "enums");
         if (fs.statSync(path).isFile()) {
             addProperty(allKnowingSchema, file, path);
-            const dirLocation = source.replace(sourceDirName, targetDirName);
-            fileMap.set(file.replace(".json", "").toLowerCase(), dirLocation.replace("enum", "enums") + "/");
+            const fileName = file.replace(".json", "");
+            const fileData = {
+                jsonFileName: fileName,
+                jsonFilePath: source,
+                javaFileName: fileName,
+                javaFilePath: targetPath.replace("/" + file, "")
+            }
+            fileMap.set(file.replace(".json", "").toLowerCase(), fileData);
         } else {
+            fs.mkdirSync(targetPath);
             fileMap = addToSchema(allKnowingSchema, path, fileMap);
         }
     }
@@ -223,23 +233,23 @@ function addToSchema(allKnowingSchema, source, fileMap = new Map) {
  */
 function generateAllKnowingSchema() {
     return ["{\n" +
-        "  \"additionalProperties\": true,\n" +
-        "  \"description\": \"Alles auf einen Blick\",\n" +
-        "  \"properties\": {\n" +
-        "    \"stringOderNummer\": {\n" +
-        "      \"anyOf\": [\n" +
-        "        {\n" +
-        "          \"type\": \"number\"\n" +
-        "        },\n" +
-        "        {\n" +
-        "          \"type\": \"string\"\n" +
-        "        },\n" +
-        "        {\n" +
-        "          \"type\": \"null\"\n" +
-        "        }\n" +
-        "      ],\n" +
-        "      \"default\": null,\n" +
-        "      \"title\": \"StringOderNummer\"\n",
+    "  \"additionalProperties\": true,\n" +
+    "  \"description\": \"Alles auf einen Blick\",\n" +
+    "  \"properties\": {\n" +
+    "    \"stringOderNummer\": {\n" +
+    "      \"anyOf\": [\n" +
+    "        {\n" +
+    "          \"type\": \"number\"\n" +
+    "        },\n" +
+    "        {\n" +
+    "          \"type\": \"string\"\n" +
+    "        },\n" +
+    "        {\n" +
+    "          \"type\": \"null\"\n" +
+    "        }\n" +
+    "      ],\n" +
+    "      \"default\": null,\n" +
+    "      \"title\": \"StringOderNummer\"\n",
         "    }\n" +
         "  },\n" +
         "  \"title\": \"AllKnowing\",\n" +
@@ -264,211 +274,282 @@ function getPropertyName(property, jsonFile, filePath) {
     }
 }
 
-function findFile(fileName, searchDirectory) {
+function findFile(fileName, searchDirectory, fileType = ".json") {
     const searchFiles = fs.readdirSync(searchDirectory);
-    const javaFile = searchFiles.find(value => {
-        return value.replace(".json", "").toLowerCase() === fileName.toLowerCase();
+    const file = searchFiles.find(value => {
+        return fs.statSync(searchDirectory + '/' + value).isFile() && value.replace(fileType, "").toLowerCase() === fileName.toLowerCase();
     });
-    if (!javaFile) {
-        throw Error("Cannot find: " + fileName);
+    if (!file) {
+        console.warn("Cannot find " + fileName);
     }
-    return javaFile;
-}
-
-function restoreFileStructure() {
-
+    return file;
 }
 
 /**
- * iterates through all files in the given directory and all subdirectories and restores original data structure,
- * adds parent classes, import statements and default values, removes duplicated properties
- * @param source {string} path to the directory containing schema files
- * @param target {string} path to the directory to move the generated classes to
- * @param fileMap {Map<string, string>} map of the fileNames with the path to their corresponding directory
- * @param root {string} path to the directory currently containing the generated classes
- * @param dirname {string} name of the current directory
+ *
+ * @param classBody{string[]}
+ * @param fieldName {string}
+ * @returns {string|undefined}
  */
-function cleanUp(source, target, fileMap, root = target, dirname = source) {
-    const files = fs.readdirSync(source);
-    for (const file of files) {
-        const sourcePath = source + '/' + file;
-        if (fs.statSync(sourcePath).isFile()) {
-            let javaFile = file.replace(".json", ".java");
-            if (!fs.existsSync(root + '/' + javaFile)) {
-                javaFile = findFile(file.replace(".json", ""), root);
-            }
-            const fileName = javaFile.replace(".java", "");
-            // restore directory structure
-            fs.renameSync(root + '/' + javaFile, target + '/' + javaFile);
-            let newFile = fs.readFileSync(target + '/' + javaFile, "utf-8");
-            // change package to fit directory structure
-            newFile = newFile.replace("package placeholder",`package ${packageName}${target.replaceAll("/", ".")}`);
-            const lines = newFile.split("\n");
-            const importLines = [];
-            lines.forEach((line, index) => {
-                const classAndDir = baseclassForDir.find(value => value.dir === dirname);
-                if (classAndDir !== undefined && fileName !== classAndDir.className) {
-                    // add parent to child and remove overwritten properties
-                    if (line.startsWith("public class")) {
-                        const ownVersionProperty = lines.slice(index, index + 4).findIndex(value => value.includes("private String version")) === -1;
-                        if (fileMap.has(classAndDir.className.toLowerCase())) {
-                            const parent = classAndDir.className;
-                            if (!ownVersionProperty) {
-                                lines[lines.findIndex(value => value.includes("private String version"))] = "#";
-                                const lineIndex = lines.findIndex(value => value.includes("getVersion"));
-                                lines.splice(lineIndex, 2, "#", "#");
-                                if (lines[lineIndex + 2] === "") {
-                                    lines[lineIndex + 2] = "#";
-                                }
-                            }
-                            lines[index] = line.substring(0, line.length - 1) + "extends " + parent + " {";
-                        } else {
-                            if (!ownVersionProperty) {
-                                let i = lines.findIndex(value => value.includes("private String version"));
-                                lines[i] = lines[i].replace("private String version", "private final String _version = \"" + currentVersion + "\"");
-                                i = lines.findIndex(value => value.includes("getVersion"));
-                                lines[i] = lines[i].replace("return version","return _version")
-                                i = lines.findIndex(value => value.includes("setVersion"));
-                                lines[i] = "#";
-                            }
-                        }
-                    } else if (!fileMap.has(classAndDir.className.toLowerCase())) {
-                        lines[index] = lines[index]
-                            .replace(" id", " _id")
-                            .replace(" typ", " _typ")
-                            .replace("this.id", "this._id")
-                            .replace("this.typ", "this._typ")
-                            .replace("getid", "getId")
-                            .replace("setid", "setId");
-                    } else if (line.includes("getid") || line.includes("getZusatzAttribute")) {
-                        lines.splice(index, 2, "#", "#");
-                        if (lines[index + 2] === "") {
-                            lines[index + 2] = "#";
-                        }
-                    } else if (line.includes("private ZusatzAttribut")
-                        || line.includes("private String id")) {
-                        lines.splice(index, 1, "#");
-                    }
-                } else if (classAndDir !== undefined && fileName === classAndDir.className) {
-                    // change parent properties and values to fit schema
-                    if (line.includes("setVersion")) {
-                        lines.splice(index, 1, "#");
-                    } else {
-                        lines[index] = lines[index]
-                            .replace(" version", " _version")
-                            .replace("private String _version;", "private final String _version = \"" + currentVersion + "\";")
-                            .replace(" id", " _id")
-                            .replace("this.id", "this._id")
-                            .replace("public class", "public abstract class")
-                            .replace("getVersion", "getSchemaVersion")
-                            .replace("getid", "getId")
-                            .replace("setid", "setId");
-                    }
-                }
-                if (line.includes("StringOderNummer")) {
-                    lines[index] = lines[index].replace("StringOderNummer", "String");
-                }
-                if (line.includes("setTyp")) {
-                    lines.splice(index, 1, "#");
-                }
-                if (line.includes("getTyp")) {
-                    lines[index] = lines[index].replace("return typ", "return _typ");
-                }
-                if (line.includes("private ")) {
-                    const words = line.trim().split(" ").filter(value => value !== "");
-                    const type = words[1].replace("[]", "");
-                    const property = words[2].replace(";", "");
-                    if (lines[index] !== "#" && property !== "id" && property !== "version") {
-                        // change property names to fit schema
-                        const propertyName = getPropertyName(property, file, fileMap.get(fileName.toLowerCase()).replace(targetDirName, sourceDirName));
-                        lines[index] = lines[index].replace(` ${property};`, ` ${propertyName};`);
-                        const getterIndex = lines.findIndex(value => value.toLowerCase().includes(`get${property.toLowerCase()}`));
-                        lines[getterIndex] = lines[getterIndex].replace(`return ${property};`, `return ${propertyName};`);
-                        lines[getterIndex + 1] = lines[getterIndex + 1].replace(`this.${property} = value;`, `this.${propertyName} = value;`);
-                    }
-                    if (type !== "ZusatzAttribut" || (classAndDir !== undefined && fileName === classAndDir.className)) {
-                        if (type === "Typ") {
-                            // add default value to property Typ
-                            const fileContent = fs
-                                .readFileSync(sourcePath, "utf-8")
-                                .replaceAll(" ", "")
-                                .split("\n");
-                            const fileTyp = fileContent
-                                .slice(fileContent.findIndex(value => value.includes("_typ")))
-                                .find(value => value.includes("default"))
-                                .replaceAll("\"", "")
-                                .replace(",", "")
-                                .replace("default:", "");
-                            lines[index] = lines[index]
-                                .replace("private Typ typ", "private final Typ _typ")
-                                .replace(";", " = Typ." + fileTyp + ";")
-                        }
-                        // add import statements
-                        const typeFile = type + ".json";
-                        if (type !== "StringOderNummer" && !files.includes(typeFile)) {
-                            if (fileMap.has(type.toLowerCase())) {
-                                const importLine = `import ${packageName}${fileMap.get(type.toLowerCase()).replaceAll("/", ".")}${type};`;
-                                if (!importLines.includes(importLine)) {
-                                    importLines.push(importLine);
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-            const newLines = lines.filter(value => value !== "#");
-            if (importLines.length > 0) {
-                if (!lines[2].startsWith("import ")) {
-                    newLines.splice(2, 0, importLines.join("\n"), "");
-                } else {
-                    newLines.splice(2, 0, importLines.join("\n"));
-                }
-            }
-            fs.writeFileSync(target + '/' + javaFile, newLines.join("\n"));
-        } else {
-            dirname = file;
-            if (file === "enum") {
-                dirname += 's';
-            }
-            let targetPath =  target + '/' + dirname;
-            if (!fs.existsSync(targetPath)) {
-                fs.mkdirSync(targetPath);
-            }
-            cleanUp(sourcePath, targetPath, fileMap, root, dirname);
+function getFieldDescription(classBody, fieldName) {
+    const methodIndex = classBody.findIndex(value => value.trim().toLowerCase().includes(`get${fieldName.toLowerCase()}()`));
+    if (classBody[methodIndex - 1].trim().startsWith("*/")) {
+        let j = 2;
+        while (!classBody[methodIndex - j].trim().startsWith("/*")) {
+            j++;
         }
+        return classBody.slice(methodIndex - j, methodIndex).join("\n");
     }
-
+    return undefined;
 }
 
-function main(source = sourceDirName, target = targetDirName) {
-    console.log("Preparing generation");
-    processCommandLineArguments();
-    const allKnowingSchema = generateAllKnowingSchema();
-    console.log("Creating generation_schema");
-    const fileMap = addToSchema(allKnowingSchema, source);
-    const readFiles = fileMap.size;
-    for (const classAndDir of baseclassForDir) {
-        if (!fileMap.has(classAndDir.className.toLowerCase())) {
-            if (!fs.existsSync(target)) {
-                fs.mkdirSync(target, {recursive: true});
-            }
-            fs.writeFileSync(`${source}/${classAndDir.dir}/${classAndDir.className}.json`, "default:" + classAndDir.className.toUpperCase());
-            fs.copyFileSync(`resource_schemas/${classAndDir.className}.java`, `${target}/${classAndDir.className}.java`);
-            fileMap.set(classAndDir.className.toLowerCase(), `${targetDirName}/${classAndDir.dir}/`);
+/**
+ *
+ * @param classBody{string[]}
+ * @returns {{name: string, type: string, description: string}[]}
+ */
+function getClassFields(classBody) {
+    const fieldList = [];
+    for (let i = 0; i < classBody.length; i++) {
+        const line = classBody[i];
+        const trimmed_line = line.trim();
+        if (trimmed_line.startsWith("private")) {
+            const fieldElements = trimmed_line.split(" ");
+            const fieldName = fieldElements[2].replace(";", "");
+            const field = {
+                name: fieldName,
+                type: fieldElements[1],
+                description: getFieldDescription(classBody, fieldName)
+            };
+            fieldList.push(field);
         }
     }
-    fileMap.set("stringodernummer", "");
+    return fieldList
+}
+
+/**
+ *
+ * @param fieldList {{name: string, type: string, description: string}[]}
+ */
+function removeParentClassFields(fieldList) {
+    const hasOwnVersionProperty = fieldList.slice(0, parentFields.length).findIndex(value => value.name === "version") < 0;
+    let fieldFilter = parentFields;
+    if (hasOwnVersionProperty) {
+        fieldFilter = parentFields.filter(value => value !== "version")
+    }
+    return fieldList.filter(value => !fieldFilter.includes(value.name));
+}
+
+/**
+ *
+ * @param fieldList {{name: string, type: string, description: string}[]}
+ */
+function turnFieldListToJava(fieldList) {
+    const javaList = []
+    for (const field of fieldList) {
+        if (field.description !== undefined) {
+            javaList.push(field.description);
+        }
+        javaList.push(`    private ${field.type} ${field.name};`);
+    }
+    return javaList;
+}
+
+function addParentToClass(classHead, classDirPath) {
+    const obj = missingParentClasses.find(value => (classDirPath + "/").endsWith(value.pathToFile));
+    if (obj !== undefined && !classHead.includes(obj.fileName)) {
+        classHead = classHead.replace(" {", ` extends ${obj.fileName} {`);
+    }
+    return classHead;
+}
+
+/**
+ *
+ * @param field {{name: string, type: string, description: string}}
+ */
+function getJavaMethod(field) {
+    const fieldName = field.name.charAt(0).toUpperCase() + field.name.slice(1);
+    const lines = []
+    lines.push(`    public ${field.type} get${fieldName}() {`);
+    lines.push(`        return ${fieldName};`);
+    lines.push(`    }`);
+    lines.push(`    public void set${fieldName}(${field.type} ${field.name}) {`);
+    lines.push(`        this.${field.name} = ${field.name};`);
+    lines.push(`    }`);
+    return lines.join("\n");
+}
+
+/**
+ *
+ * @param fieldList {{name: string, type: string, description: string}[]}
+ */
+function getJavaMethods(fieldList) {
+    const methodList = [];
+    for (const field of fieldList) {
+        methodList.push("")
+        methodList.push(getJavaMethod(field))
+    }
+    return methodList;
+}
+
+/**
+ *
+ * @param fieldList {{name: string, type: string, description: string}[]}
+ * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}}
+ * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} maps lowercase fileName to fileData
+ */
+function getImports(fieldList, fileData, fileMap) {
+    const classPath = fileData.javaFilePath;
+    const importList = [];
+    for (const field of fieldList) {
+        let fieldType = field.type;
+        if (fieldType.startsWith("List<") && fieldType.endsWith(">")) {
+            fieldType = fieldType.substring("List<".length, fieldType.length - 1);
+        }
+        const importData = fileMap.get(fieldType.toLowerCase());
+        if (importData !== undefined && importData.javaFilePath !== classPath) {
+            const importPackage = packageName + importData.javaFilePath.replaceAll("/", ".");
+            importList.push(`import ${importPackage}.${importData.javaFileName};`);
+        }
+    }
+    if (importList.length > 0) {
+        importList.unshift("");
+    }
+    return importList;
+}
+
+/**
+ *
+ * @param fieldList {{name: string, type: string, description: string}[]}
+ * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}}
+ */
+function addTypeToFields(fieldList, fileData) {
+    const file = fs.readFileSync(fileData.jsonFilePath + "/" + fileData.jsonFileName + ".json", "utf-8").replaceAll(" ", "").split("\n");
+    let type = fileData.jsonFileName.toUpperCase();
+    const hasExpectedType = file.findIndex(value => value.startsWith(`"default":"${type}"`)) !== -1;
+    if (!hasExpectedType) {
+        console.log("Unexpected type in: " + fileData.jsonFileName);
+        const typeIndex = file.findIndex(value => value.startsWith("\"_typ\":"));
+        const typeDefault = file.find((value, index) => index > typeIndex && value.startsWith("\"default\":"));
+        if (typeDefault !== undefined) {
+            type = typeDefault.split(":").at(1).replaceAll("\"", "").replace(",", "")
+        }
+    }
+    const field = {
+        name: `typ = Typ.${type}`,
+        type: "Typ",
+        description: "    /**\n     * Typ des Geschaeftsobjekts\n     */"
+    }
+    fieldList.unshift(field);
+}
+
+/**
+ *
+ * @param contentList {string[]}
+ * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}}
+ * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} maps lowercase fileName to fileData
+ * @return {string}
+ */
+function completeJavaFile(contentList, fileData, fileMap) {
+    const classFoot = "}";
+    const newPackageName = packageName + fileData.javaFilePath.replaceAll("/", ".");
+    const newPackage = contentList[0].replace("placeholder", newPackageName);
+    const classIndex = contentList.findIndex(value => value.startsWith("public class"));
+    if (classIndex < 0) {
+        return [newPackage].concat(contentList.slice(1, contentList.length)).join("\n");
+    }
+    const header = contentList.slice(1, classIndex);
+    const classHead = addParentToClass(contentList[classIndex], fileData.javaFilePath);
+    const classBody = contentList.slice(classIndex + 1, contentList.length - 1);
+    let fieldList = getClassFields(classBody);
+    if (fieldList.length > parentFields.length) {
+        fieldList = removeParentClassFields(fieldList);
+    }
+    const javaMethodList = getJavaMethods(fieldList);
+    if (fileData.javaFilePath.endsWith("/bo")) {
+        addTypeToFields(fieldList, fileData);
+    }
+    const javaFieldList = turnFieldListToJava(fieldList);
+    const importList = getImports(fieldList, fileData, fileMap);
+    const newClass = [newPackage].concat(importList, header, classHead, javaFieldList, javaMethodList, classFoot);
+    return newClass.join("\n");
+}
+
+/**
+ *
+ * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} maps lowercase fileName to fileData
+ */
+function restoreMissingFiles(fileMap) {
+    const zaImport = packageName + fileMap.get("zusatzattribut").javaFilePath.replaceAll("/", ".");
+    const typImport = packageName + fileMap.get("typ").javaFilePath.replaceAll("/", ".");
+    missingParentClasses.forEach(({fileName, pathToFile}) => {
+        if (!fileMap.has(fileName.toLowerCase())) {
+            const javaFileName = fileName + ".java";
+            const classPackage = packageName + targetDirName + "." + pathToFile.substring(0, pathToFile.length - 1).replace("/", ".");
+            const fileContent = fs.readFileSync("resource_schemas/" + javaFileName, "utf-8")
+                .replace("packagePlaceholder",classPackage)
+                .replace("zaImportPlaceholder", zaImport)
+                .replace("typImportPlaceholder", typImport)
+                .replace("versionPlaceholder", currentVersion);
+            fs.writeFileSync(targetDirName + "/" + pathToFile + javaFileName, fileContent);
+        }
+    });
+}
+
+function setUp() {
+    if (fs.existsSync(targetDirName)) {
+        fs.rmSync(targetDirName, { recursive: true });
+    }
+    fs.mkdirSync(targetDirName);
+    const allKnowingSchema = generateAllKnowingSchema();
+    const fileMap = addToSchema(allKnowingSchema);
+    restoreMissingFiles(fileMap);
     let schema = allKnowingSchema[0];
     for (let i = 2; i < allKnowingSchema.length; i++) {
         schema += allKnowingSchema[i];
     }
     schema += allKnowingSchema[1];
-    console.log("Generation_schema complete");
     const inputData = new InputData();
     const schemaInput = new JSONSchemaInput(new FetchingJSONSchemaStore());
-    schemaInput.addSourceSync({name: "StringOderNummer", schema: fs.readFileSync("resource_schemas/StringOderNummerTyp.json", "utf-8")});
+    schemaInput.addSourceSync({
+        name: "StringOderNummer",
+        schema: fs.readFileSync("resource_schemas/StringOderNummerTyp.json", "utf-8")
+    });
     schemaInput.addSourceSync({name: "AllKnowing", schema: schema});
     inputData.addInput(schemaInput);
+    return {inputData, fileMap}
+}
+
+/**
+ *
+ * @param javaClasses {ReadonlyMap<string, SerializedRenderResult>}
+ * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} maps lowercase fileName to fileData
+ * @return {number}
+ */
+function breakDown(javaClasses, fileMap) {
+    let writtenFilesAmount = 0;
+    console.log("Starting output");
+    javaClasses.forEach((javaClass, className) => {
+        const searchName = className.replace(".java", "").toLowerCase();
+        const fileData = fileMap.get(searchName);
+        if (fileData) {
+            fileData.javaFileName = className.replace(".java", "");
+            const content = completeJavaFile(javaClass.lines, fileData, fileMap);
+            fs.writeFileSync(fileData.javaFilePath + "/" + className, content);
+            writtenFilesAmount++;
+        }
+    });
+    console.log("Output complete");
+    return writtenFilesAmount;
+}
+
+function main() {
+    console.log("Preparing generation");
+    processCommandLineArguments();
+    console.log("Creating generation_schema");
+    const {inputData, fileMap} = setUp();
+    const readFilesAmount = fileMap.size;
+    console.log("Generation_schema complete");
     console.log("Starting generation");
     quicktypeMultiFile({
         inputData,
@@ -476,25 +557,8 @@ function main(source = sourceDirName, target = targetDirName) {
         allPropertiesOptional: false
     }).then(javaClasses => {
         console.log("Generation complete");
-        const writtenFiles = javaClasses.size - 3;
-        if (javaClasses.size <= 5) {
-            console.log("Not enough files: " + javaClasses.size)
-        } else {
-            console.log("Starting output");
-            javaClasses.forEach((javaClass, className) => {
-                if (className !== "AllKnowing.java" && className !== "StringOderNummerTyp.java" && className !== "StringOderNummer.java") {
-                    if (!fs.existsSync(target)) {
-                        fs.mkdirSync(target, {recursive: true});
-                    }
-                    fs.writeFileSync(target + "/" + className, javaClass.lines.join("\n"));
-                }
-            });
-            console.log("Output complete");
-            console.log("Starting cleanup");
-            // cleanUp(source, target, fileMap);
-            console.log("Cleanup complete");
-        }
-        console.log(`Finished: ${writtenFiles}/${readFiles}`)
+        const writtenFilesAmount = breakDown(javaClasses, fileMap);
+        console.log(`Finished: ${writtenFilesAmount}/${readFilesAmount}`)
     });
 }
 

@@ -1,4 +1,9 @@
-package placeholder;
+package packagePlaceholder;
+
+import typImportPlaceholder.Typ;
+import zaImportPlaceholder.ZusatzAttribut;
+
+import java.util.List;
 
 /**
  * Das BO Geschäftsobjekt ist der Master für alle Geschäftsobjekte.
@@ -13,21 +18,40 @@ package placeholder;
  * `Geschaeftsobjekt JSON Schema
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/bo/Geschaeftsobjekt.json>`_
  */
-public class Geschaeftsobjekt {
+public abstract class Geschaeftsobjekt {
+    /**
+     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+     */
     private String id;
-    private Typ typ;
-    private String version;
-    private ZusatzAttribut[] zusatzAttribute;
+    /**
+     * Typ des Geschaeftsobjekts
+     */
+    private final Typ typ = Typ.GESCHAEFTSOBJEKT;
+    /**
+     * Version der BO-Struktur aka "fachliche Versionierung"
+     */
+    private final String boVersion = versionPlaceholder;
+    private List<ZusatzAttribut> zusatzAttribute;
 
-    public String getid() { return id; }
-    public void setid(String value) { this.id = value; }
+    public String getId() {
+        return id;
+    }
+    public void setId(String value) {
+        this.id = value;
+    }
 
-    public Typ getTyp() { return typ; }
-    public void setTyp(Typ value) { this.typ = value; }
+    public Typ getTyp() {
+        return typ;
+    }
 
-    public String getVersion() { return version; }
-    public void setVersion(String value) { this.version = value; }
+    public String getBoVersion() {
+        return boVersion;
+    }
 
-    public ZusatzAttribut[] getZusatzAttribute() { return zusatzAttribute; }
-    public void setZusatzAttribute(ZusatzAttribut[] value) { this.zusatzAttribute = value; }
+    public List<ZusatzAttribut> getZusatzAttribute() {
+        return zusatzAttribute;
+    }
+    public void setZusatzAttribute(List<ZusatzAttribut> value) {
+        this.zusatzAttribute = value;
+    }
 }

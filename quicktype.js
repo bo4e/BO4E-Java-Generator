@@ -425,6 +425,7 @@ function getImports(fieldList, fileData, fileMap, hasParent) {
         }
     }
     if (importList.length > 0) {
+        importList.sort();
         importList.unshift("");
     }
     return importList;

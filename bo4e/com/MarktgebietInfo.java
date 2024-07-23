@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.util.List;
 
 /**
@@ -74,6 +76,16 @@ public class MarktgebietInfo extends COM {
     
         public MarktgebietInfoBuilder setMarktgebietcode(String marktgebietcode) {
             this.marktgebietcode = marktgebietcode;
+            return this;
+        }
+    
+        public MarktgebietInfoBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public MarktgebietInfoBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

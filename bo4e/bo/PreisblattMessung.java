@@ -8,6 +8,7 @@ import bo4e.enums.Netzebene;
 import bo4e.com.Preisposition;
 import bo4e.enums.Preisstatus;
 import bo4e.enums.Sparte;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -328,6 +329,16 @@ public class PreisblattMessung extends Geschaeftsobjekt {
     
         public PreisblattMessungBuilder setZaehler(Zaehler zaehler) {
             this.zaehler = zaehler;
+            return this;
+        }
+    
+        public PreisblattMessungBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public PreisblattMessungBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

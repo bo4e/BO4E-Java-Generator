@@ -7,6 +7,7 @@ import bo4e.enums.Leistungstyp;
 import bo4e.enums.Waehrungseinheit;
 import bo4e.enums.Tarifzeit;
 import bo4e.enums.Bemessungsgroesse;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -374,6 +375,16 @@ public class Preisposition extends COM {
     
         public PreispositionBuilder setZonungsgroesse(Bemessungsgroesse zonungsgroesse) {
             this.zonungsgroesse = zonungsgroesse;
+            return this;
+        }
+    
+        public PreispositionBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public PreispositionBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

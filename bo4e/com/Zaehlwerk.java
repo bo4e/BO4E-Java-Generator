@@ -4,6 +4,7 @@ import bo4e.enums.Mengeneinheit;
 import bo4e.enums.Energierichtung;
 import bo4e.enums.Verbrauchsart;
 import bo4e.enums.Waermenutzung;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -458,6 +459,16 @@ public class Zaehlwerk extends COM {
     
         public ZaehlwerkBuilder setZaehlzeitregister(Zaehlzeitregister zaehlzeitregister) {
             this.zaehlzeitregister = zaehlzeitregister;
+            return this;
+        }
+    
+        public ZaehlwerkBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public ZaehlwerkBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

@@ -7,6 +7,7 @@ import bo4e.com.Zeitraum;
 import bo4e.com.Preisposition;
 import bo4e.enums.Preisstatus;
 import bo4e.enums.Sparte;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -300,6 +301,16 @@ public class PreisblattDienstleistung extends Geschaeftsobjekt {
     
         public PreisblattDienstleistungBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
+            return this;
+        }
+    
+        public PreisblattDienstleistungBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public PreisblattDienstleistungBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

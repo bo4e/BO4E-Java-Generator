@@ -3,6 +3,7 @@ package bo4e.bo;
 import bo4e.enums.Typ;
 import bo4e.enums.Sparte;
 import bo4e.com.Angebotsvariante;
+import bo4e.ZusatzAttribut;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -302,6 +303,16 @@ public class Angebot extends Geschaeftsobjekt {
     
         public AngebotBuilder setVarianten(List<Angebotsvariante> varianten) {
             this.varianten = varianten;
+            return this;
+        }
+    
+        public AngebotBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public AngebotBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

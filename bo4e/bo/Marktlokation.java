@@ -15,6 +15,7 @@ import bo4e.enums.Verbrauchsart;
 import bo4e.com.Verbrauch;
 import bo4e.com.Zaehlwerk;
 import bo4e.com.Messlokationszuordnung;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -662,6 +663,16 @@ public class Marktlokation extends Geschaeftsobjekt {
     
         public MarktlokationBuilder setZugehoerigeMesslokation(Messlokationszuordnung zugehoerigeMesslokation) {
             this.zugehoerigeMesslokation = zugehoerigeMesslokation;
+            return this;
+        }
+    
+        public MarktlokationBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public MarktlokationBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

@@ -5,6 +5,7 @@ import bo4e.enums.Mengeneinheit;
 import bo4e.enums.Sparte;
 import bo4e.com.Zeitreihenwert;
 import bo4e.com.Menge;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -242,6 +243,16 @@ public class Lastgang extends Geschaeftsobjekt {
     
         public LastgangBuilder setZeitIntervallLaenge(Menge zeitIntervallLaenge) {
             this.zeitIntervallLaenge = zeitIntervallLaenge;
+            return this;
+        }
+    
+        public LastgangBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public LastgangBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

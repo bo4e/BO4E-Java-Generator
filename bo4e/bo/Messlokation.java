@@ -7,6 +7,7 @@ import bo4e.com.Adresse;
 import bo4e.com.Dienstleistung;
 import bo4e.enums.Netzebene;
 import bo4e.enums.Sparte;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -355,6 +356,16 @@ public class Messlokation extends Geschaeftsobjekt {
     
         public MesslokationBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
+            return this;
+        }
+    
+        public MesslokationBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public MesslokationBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

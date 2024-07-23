@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.util.List;
 
 /**
@@ -120,6 +122,16 @@ public class TarifpreispositionProOrt extends COM {
     
         public TarifpreispositionProOrtBuilder setPreisstaffeln(List<TarifpreisstaffelProOrt> preisstaffeln) {
             this.preisstaffeln = preisstaffeln;
+            return this;
+        }
+    
+        public TarifpreispositionProOrtBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public TarifpreispositionProOrtBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

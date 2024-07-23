@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.util.List;
 
 /**
@@ -74,6 +76,16 @@ public class StandorteigenschaftenGas extends COM {
     
         public StandorteigenschaftenGasBuilder setNetzkontonummern(List<String> netzkontonummern) {
             this.netzkontonummern = netzkontonummern;
+            return this;
+        }
+    
+        public StandorteigenschaftenGasBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public StandorteigenschaftenGasBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

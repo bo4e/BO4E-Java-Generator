@@ -1,6 +1,7 @@
 package bo4e.com;
 
 import bo4e.enums.Zaehlertyp;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -420,6 +421,16 @@ public class Ausschreibungsdetail extends COM {
     
         public AusschreibungsdetailBuilder setZaehlertechnik(Zaehlertyp zaehlertechnik) {
             this.zaehlertechnik = zaehlertechnik;
+            return this;
+        }
+    
+        public AusschreibungsdetailBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public AusschreibungsdetailBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

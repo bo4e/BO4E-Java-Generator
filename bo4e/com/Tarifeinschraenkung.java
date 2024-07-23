@@ -2,6 +2,7 @@ package bo4e.com;
 
 import bo4e.bo.Geraet;
 import bo4e.enums.Voraussetzungen;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -139,6 +140,16 @@ public class Tarifeinschraenkung extends COM {
     
         public TarifeinschraenkungBuilder setZusatzprodukte(List<String> zusatzprodukte) {
             this.zusatzprodukte = zusatzprodukte;
+            return this;
+        }
+    
+        public TarifeinschraenkungBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public TarifeinschraenkungBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

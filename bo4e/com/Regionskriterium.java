@@ -2,6 +2,7 @@ package bo4e.com;
 
 import bo4e.enums.Gueltigkeitstyp;
 import bo4e.enums.Regionskriteriumtyp;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -107,6 +108,16 @@ public class Regionskriterium extends COM {
     
         public RegionskriteriumBuilder setWert(String wert) {
             this.wert = wert;
+            return this;
+        }
+    
+        public RegionskriteriumBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public RegionskriteriumBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

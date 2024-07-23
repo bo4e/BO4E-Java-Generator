@@ -7,6 +7,7 @@ import bo4e.enums.Geschaeftspartnerrolle;
 import bo4e.com.Kontaktweg;
 import bo4e.enums.Organisationstyp;
 import bo4e.enums.Titel;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -455,6 +456,16 @@ public class Geschaeftspartner extends Geschaeftsobjekt {
     
         public GeschaeftspartnerBuilder setWebsite(String website) {
             this.website = website;
+            return this;
+        }
+    
+        public GeschaeftspartnerBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public GeschaeftspartnerBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

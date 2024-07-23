@@ -5,6 +5,7 @@ import bo4e.com.Zeitraum;
 import bo4e.com.Kostenblock;
 import bo4e.enums.Kostenklasse;
 import bo4e.com.Betrag;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -143,6 +144,16 @@ public class Kosten extends Geschaeftsobjekt {
     
         public KostenBuilder setSummeKosten(List<Betrag> summeKosten) {
             this.summeKosten = summeKosten;
+            return this;
+        }
+    
+        public KostenBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public KostenBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

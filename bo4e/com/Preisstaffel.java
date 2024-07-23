@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.util.List;
 
 /**
@@ -128,6 +130,16 @@ public class Preisstaffel extends COM {
     
         public PreisstaffelBuilder setStaffelgrenzeVon(Double staffelgrenzeVon) {
             this.staffelgrenzeVon = staffelgrenzeVon;
+            return this;
+        }
+    
+        public PreisstaffelBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public PreisstaffelBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

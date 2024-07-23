@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -371,6 +373,16 @@ public class Fremdkostenposition extends COM {
     
         public FremdkostenpositionBuilder setZeitmenge(Menge zeitmenge) {
             this.zeitmenge = zeitmenge;
+            return this;
+        }
+    
+        public FremdkostenpositionBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public FremdkostenpositionBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

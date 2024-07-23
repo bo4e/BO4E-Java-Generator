@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.util.List;
 
 /**
@@ -100,6 +102,16 @@ public class StandorteigenschaftenStrom extends COM {
     
         public StandorteigenschaftenStromBuilder setRegelzoneEic(String regelzoneEic) {
             this.regelzoneEic = regelzoneEic;
+            return this;
+        }
+    
+        public StandorteigenschaftenStromBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public StandorteigenschaftenStromBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

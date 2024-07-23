@@ -1,6 +1,7 @@
 package bo4e.com;
 
 import bo4e.enums.Erzeugungsart;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -76,6 +77,16 @@ public class Energieherkunft extends COM {
     
         public EnergieherkunftBuilder setErzeugungsart(Erzeugungsart erzeugungsart) {
             this.erzeugungsart = erzeugungsart;
+            return this;
+        }
+    
+        public EnergieherkunftBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public EnergieherkunftBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

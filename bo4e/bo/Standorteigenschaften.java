@@ -3,6 +3,7 @@ package bo4e.bo;
 import bo4e.enums.Typ;
 import bo4e.com.StandorteigenschaftenGas;
 import bo4e.com.StandorteigenschaftenStrom;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -86,6 +87,16 @@ public class Standorteigenschaften extends Geschaeftsobjekt {
     
         public StandorteigenschaftenBuilder setEigenschaftenStrom(List<StandorteigenschaftenStrom> eigenschaftenStrom) {
             this.eigenschaftenStrom = eigenschaftenStrom;
+            return this;
+        }
+    
+        public StandorteigenschaftenBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public StandorteigenschaftenBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

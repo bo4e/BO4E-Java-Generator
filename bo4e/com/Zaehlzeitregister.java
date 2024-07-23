@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.util.List;
 
 /**
@@ -102,6 +104,16 @@ public class Zaehlzeitregister extends COM {
     
         public ZaehlzeitregisterBuilder setZaehlzeitRegister(String zaehlzeitRegister) {
             this.zaehlzeitRegister = zaehlzeitRegister;
+            return this;
+        }
+    
+        public ZaehlzeitregisterBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public ZaehlzeitregisterBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

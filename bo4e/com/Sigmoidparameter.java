@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.util.List;
 
 /**
@@ -127,6 +129,16 @@ public class Sigmoidparameter extends COM {
     
         public SigmoidparameterBuilder setD(Double d) {
             this.d = d;
+            return this;
+        }
+    
+        public SigmoidparameterBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public SigmoidparameterBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

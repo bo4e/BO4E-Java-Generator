@@ -3,6 +3,7 @@ package bo4e.com;
 import bo4e.enums.Sparte;
 import bo4e.enums.Oekolabel;
 import bo4e.enums.Oekozertifikat;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -337,6 +338,16 @@ public class Energiemix extends COM {
     
         public EnergiemixBuilder setWebsite(String website) {
             this.website = website;
+            return this;
+        }
+    
+        public EnergiemixBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public EnergiemixBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

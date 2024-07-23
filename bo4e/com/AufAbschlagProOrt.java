@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.util.List;
 
 /**
@@ -127,6 +129,16 @@ public class AufAbschlagProOrt extends COM {
     
         public AufAbschlagProOrtBuilder setStaffeln(List<AufAbschlagstaffelProOrt> staffeln) {
             this.staffeln = staffeln;
+            return this;
+        }
+    
+        public AufAbschlagProOrtBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public AufAbschlagProOrtBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

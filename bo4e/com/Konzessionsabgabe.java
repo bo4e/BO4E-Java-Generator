@@ -1,6 +1,7 @@
 package bo4e.com;
 
 import bo4e.enums.AbgabeArt;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -102,6 +103,16 @@ public class Konzessionsabgabe extends COM {
     
         public KonzessionsabgabeBuilder setSatz(AbgabeArt satz) {
             this.satz = satz;
+            return this;
+        }
+    
+        public KonzessionsabgabeBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public KonzessionsabgabeBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

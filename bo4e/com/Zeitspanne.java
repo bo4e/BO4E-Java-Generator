@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -78,6 +80,16 @@ public class Zeitspanne extends COM {
     
         public ZeitspanneBuilder setStart(OffsetDateTime start) {
             this.start = start;
+            return this;
+        }
+    
+        public ZeitspanneBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public ZeitspanneBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.util.List;
 
 /**
@@ -62,6 +64,16 @@ public class Geokoordinaten extends COM {
     
         public GeokoordinatenBuilder setLaengengrad(Double laengengrad) {
             this.laengengrad = laengengrad;
+            return this;
+        }
+    
+        public GeokoordinatenBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public GeokoordinatenBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

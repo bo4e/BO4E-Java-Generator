@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.util.List;
 
 /**
@@ -104,6 +106,16 @@ public class Fremdkostenblock extends COM {
     
         public FremdkostenblockBuilder setSummeKostenblock(Betrag summeKostenblock) {
             this.summeKostenblock = summeKostenblock;
+            return this;
+        }
+    
+        public FremdkostenblockBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public FremdkostenblockBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

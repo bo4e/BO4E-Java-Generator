@@ -2,6 +2,7 @@ package bo4e.com;
 
 import bo4e.enums.Marktrolle;
 import bo4e.enums.Verwendungszweck;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -78,6 +79,16 @@ public class VerwendungszweckProMarktrolle extends COM {
     
         public VerwendungszweckProMarktrolleBuilder setZwecke(List<Verwendungszweck> zwecke) {
             this.zwecke = zwecke;
+            return this;
+        }
+    
+        public VerwendungszweckProMarktrolleBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public VerwendungszweckProMarktrolleBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

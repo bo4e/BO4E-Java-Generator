@@ -7,6 +7,7 @@ import bo4e.enums.Messart;
 import bo4e.enums.Messgroesse;
 import bo4e.com.Zeitreihenwert;
 import bo4e.enums.Wertermittlungsverfahren;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -272,6 +273,16 @@ public class Zeitreihe extends Geschaeftsobjekt {
     
         public ZeitreiheBuilder setWertherkunft(Wertermittlungsverfahren wertherkunft) {
             this.wertherkunft = wertherkunft;
+            return this;
+        }
+    
+        public ZeitreiheBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public ZeitreiheBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

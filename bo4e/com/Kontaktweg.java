@@ -1,6 +1,7 @@
 package bo4e.com;
 
 import bo4e.enums.Kontaktart;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -128,6 +129,16 @@ public class Kontaktweg extends COM {
     
         public KontaktwegBuilder setKontaktwert(String kontaktwert) {
             this.kontaktwert = kontaktwert;
+            return this;
+        }
+    
+        public KontaktwegBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public KontaktwegBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

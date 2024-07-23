@@ -1,6 +1,7 @@
 package bo4e.com;
 
 import bo4e.enums.Themengebiet;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -103,6 +104,16 @@ public class Zustaendigkeit extends COM {
     
         public ZustaendigkeitBuilder setThemengebiet(Themengebiet themengebiet) {
             this.themengebiet = themengebiet;
+            return this;
+        }
+    
+        public ZustaendigkeitBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public ZustaendigkeitBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

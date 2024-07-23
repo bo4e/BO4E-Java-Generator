@@ -2,6 +2,7 @@ package bo4e.com;
 
 import bo4e.enums.AufAbschlagstyp;
 import bo4e.enums.Waehrungseinheit;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -159,6 +160,16 @@ public class PositionsAufAbschlag extends COM {
     
         public PositionsAufAbschlagBuilder setBezeichnung(String bezeichnung) {
             this.bezeichnung = bezeichnung;
+            return this;
+        }
+    
+        public PositionsAufAbschlagBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public PositionsAufAbschlagBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

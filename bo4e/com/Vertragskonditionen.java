@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.util.List;
 
 /**
@@ -183,6 +185,16 @@ public class Vertragskonditionen extends COM {
     
         public VertragskonditionenBuilder setVertragsverlaengerung(Zeitraum vertragsverlaengerung) {
             this.vertragsverlaengerung = vertragsverlaengerung;
+            return this;
+        }
+    
+        public VertragskonditionenBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public VertragskonditionenBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

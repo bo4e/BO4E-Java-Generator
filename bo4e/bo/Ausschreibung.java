@@ -6,6 +6,7 @@ import bo4e.enums.Ausschreibungsportal;
 import bo4e.enums.Ausschreibungsstatus;
 import bo4e.enums.Ausschreibungstyp;
 import bo4e.com.Ausschreibungslos;
+import bo4e.ZusatzAttribut;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -325,6 +326,16 @@ public class Ausschreibung extends Geschaeftsobjekt {
     
         public AusschreibungBuilder setWebseite(String webseite) {
             this.webseite = webseite;
+            return this;
+        }
+    
+        public AusschreibungBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public AusschreibungBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

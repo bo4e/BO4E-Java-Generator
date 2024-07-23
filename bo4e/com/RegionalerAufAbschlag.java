@@ -3,6 +3,7 @@ package bo4e.com;
 import bo4e.enums.AufAbschlagstyp;
 import bo4e.enums.AufAbschlagsziel;
 import bo4e.enums.Waehrungseinheit;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -429,6 +430,16 @@ public class RegionalerAufAbschlag extends COM {
     
         public RegionalerAufAbschlagBuilder setZusatzprodukte(List<String> zusatzprodukte) {
             this.zusatzprodukte = zusatzprodukte;
+            return this;
+        }
+    
+        public RegionalerAufAbschlagBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public RegionalerAufAbschlagBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

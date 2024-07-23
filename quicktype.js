@@ -370,7 +370,7 @@ function overwriteParentSetter(field, builderName) {
     const fieldName = field.name.charAt(0).toUpperCase() + field.name.slice(1);
     const lines = []
     lines.push(`    public ${builderName} set${fieldName}(${field.type} ${field.name}) {`);
-    lines.push(`        super.set${fieldName};`);
+    lines.push(`        super.set${fieldName}(${field.name});`);
     lines.push(`        return this;`);
     lines.push(`    }`);
     return lines.join("\n");

@@ -2,6 +2,7 @@ package bo4e.com;
 
 import bo4e.enums.BDEWArtikelnummer;
 import bo4e.enums.Mengeneinheit;
+import bo4e.ZusatzAttribut;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -423,6 +424,16 @@ public class Rechnungsposition extends COM {
     
         public RechnungspositionBuilder setZeiteinheit(Mengeneinheit zeiteinheit) {
             this.zeiteinheit = zeiteinheit;
+            return this;
+        }
+    
+        public RechnungspositionBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public RechnungspositionBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

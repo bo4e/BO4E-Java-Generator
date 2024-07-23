@@ -6,6 +6,7 @@ import bo4e.enums.KundengruppeKA;
 import bo4e.com.Preisposition;
 import bo4e.enums.Preisstatus;
 import bo4e.enums.Sparte;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -221,6 +222,16 @@ public class PreisblattKonzessionsabgabe extends Geschaeftsobjekt {
     
         public PreisblattKonzessionsabgabeBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
+            return this;
+        }
+    
+        public PreisblattKonzessionsabgabeBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public PreisblattKonzessionsabgabeBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

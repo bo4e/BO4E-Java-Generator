@@ -1,6 +1,7 @@
 package bo4e.com;
 
 import bo4e.enums.Mengeneinheit;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -75,6 +76,16 @@ public class Menge extends COM {
     
         public MengeBuilder setWert(Double wert) {
             this.wert = wert;
+            return this;
+        }
+    
+        public MengeBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public MengeBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

@@ -10,6 +10,7 @@ import bo4e.enums.Rechnungsstatus;
 import bo4e.enums.Rechnungstyp;
 import bo4e.enums.Sparte;
 import bo4e.com.Steuerbetrag;
+import bo4e.ZusatzAttribut;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -724,6 +725,16 @@ public class Rechnung extends Geschaeftsobjekt {
     
         public RechnungBuilder setZuZahlen(Betrag zuZahlen) {
             this.zuZahlen = zuZahlen;
+            return this;
+        }
+    
+        public RechnungBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public RechnungBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

@@ -2,6 +2,7 @@ package bo4e.bo;
 
 import bo4e.enums.Typ;
 import bo4e.com.Regionskriterium;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -110,6 +111,16 @@ public class Region extends Geschaeftsobjekt {
     
         public RegionBuilder setPositivListe(List<Regionskriterium> positivListe) {
             this.positivListe = positivListe;
+            return this;
+        }
+    
+        public RegionBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public RegionBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

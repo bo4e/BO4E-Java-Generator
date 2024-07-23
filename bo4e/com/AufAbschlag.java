@@ -3,6 +3,7 @@ package bo4e.com;
 import bo4e.enums.AufAbschlagstyp;
 import bo4e.enums.AufAbschlagsziel;
 import bo4e.enums.Waehrungseinheit;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -237,6 +238,16 @@ public class AufAbschlag extends COM {
     
         public AufAbschlagBuilder setWebsite(String website) {
             this.website = website;
+            return this;
+        }
+    
+        public AufAbschlagBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public AufAbschlagBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

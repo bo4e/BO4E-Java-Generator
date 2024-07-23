@@ -3,6 +3,7 @@ package bo4e.com;
 import bo4e.enums.Mengeneinheit;
 import bo4e.enums.Waehrungseinheit;
 import bo4e.enums.Preistyp;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -158,6 +159,16 @@ public class Tarifpreisposition extends COM {
     
         public TarifpreispositionBuilder setPreistyp(Preistyp preistyp) {
             this.preistyp = preistyp;
+            return this;
+        }
+    
+        public TarifpreispositionBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public TarifpreispositionBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

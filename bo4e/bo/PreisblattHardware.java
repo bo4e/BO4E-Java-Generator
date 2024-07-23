@@ -8,6 +8,7 @@ import bo4e.enums.Netzebene;
 import bo4e.com.Preisposition;
 import bo4e.enums.Preisstatus;
 import bo4e.enums.Sparte;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -327,6 +328,16 @@ public class PreisblattHardware extends Geschaeftsobjekt {
     
         public PreisblattHardwareBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
+            return this;
+        }
+    
+        public PreisblattHardwareBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public PreisblattHardwareBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

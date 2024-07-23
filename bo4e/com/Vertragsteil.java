@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -181,6 +183,16 @@ public class Vertragsteil extends COM {
     
         public VertragsteilBuilder setVertragsteilende(OffsetDateTime vertragsteilende) {
             this.vertragsteilende = vertragsteilende;
+            return this;
+        }
+    
+        public VertragsteilBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public VertragsteilBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

@@ -7,6 +7,7 @@ import bo4e.enums.Vertragsart;
 import bo4e.com.Vertragskonditionen;
 import bo4e.enums.Vertragsstatus;
 import bo4e.com.Vertragsteil;
+import bo4e.ZusatzAttribut;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -382,6 +383,16 @@ public class Vertrag extends Geschaeftsobjekt {
     
         public VertragBuilder setVertragsteile(List<Vertragsteil> vertragsteile) {
             this.vertragsteile = vertragsteile;
+            return this;
+        }
+    
+        public VertragBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public VertragBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

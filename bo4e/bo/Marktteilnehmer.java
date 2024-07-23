@@ -4,6 +4,7 @@ import bo4e.enums.Typ;
 import bo4e.enums.Marktrolle;
 import bo4e.enums.Rollencodetyp;
 import bo4e.enums.Sparte;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -193,6 +194,16 @@ public class Marktteilnehmer extends Geschaeftsobjekt {
     
         public MarktteilnehmerBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
+            return this;
+        }
+    
+        public MarktteilnehmerBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public MarktteilnehmerBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

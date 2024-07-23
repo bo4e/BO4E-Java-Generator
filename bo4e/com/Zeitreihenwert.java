@@ -2,6 +2,7 @@ package bo4e.com;
 
 import bo4e.enums.Messwertstatus;
 import bo4e.enums.Messwertstatuszusatz;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -129,6 +130,16 @@ public class Zeitreihenwert extends COM {
     
         public ZeitreihenwertBuilder setZeitspanne(Zeitspanne zeitspanne) {
             this.zeitspanne = zeitspanne;
+            return this;
+        }
+    
+        public ZeitreihenwertBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public ZeitreihenwertBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

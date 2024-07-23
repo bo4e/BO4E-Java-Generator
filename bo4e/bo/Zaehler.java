@@ -10,6 +10,7 @@ import bo4e.enums.Zaehlergroesse;
 import bo4e.enums.Zaehlertyp;
 import bo4e.enums.ZaehlertypSpezifikation;
 import bo4e.com.Zaehlwerk;
+import bo4e.ZusatzAttribut;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -457,6 +458,16 @@ public class Zaehler extends Geschaeftsobjekt {
     
         public ZaehlerBuilder setZaehlwerke(List<Zaehlwerk> zaehlwerke) {
             this.zaehlwerke = zaehlwerke;
+            return this;
+        }
+    
+        public ZaehlerBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public ZaehlerBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

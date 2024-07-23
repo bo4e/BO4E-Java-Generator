@@ -2,6 +2,7 @@ package bo4e.com;
 
 import bo4e.enums.Steuerkennzeichen;
 import bo4e.enums.Waehrungscode;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -129,6 +130,16 @@ public class Steuerbetrag extends COM {
     
         public SteuerbetragBuilder setWaehrung(Waehrungscode waehrung) {
             this.waehrung = waehrung;
+            return this;
+        }
+    
+        public SteuerbetragBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public SteuerbetragBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

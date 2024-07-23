@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.util.List;
 
 /**
@@ -103,6 +105,16 @@ public class Kostenblock extends COM {
     
         public KostenblockBuilder setSummeKostenblock(Betrag summeKostenblock) {
             this.summeKostenblock = summeKostenblock;
+            return this;
+        }
+    
+        public KostenblockBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public KostenblockBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

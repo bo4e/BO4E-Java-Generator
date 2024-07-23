@@ -4,6 +4,7 @@ import bo4e.enums.Mengeneinheit;
 import bo4e.enums.Waehrungseinheit;
 import bo4e.enums.Preistyp;
 import bo4e.enums.Preisstatus;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -184,6 +185,16 @@ public class Tarifpreis extends COM {
     
         public TarifpreisBuilder setWert(Double wert) {
             this.wert = wert;
+            return this;
+        }
+    
+        public TarifpreisBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public TarifpreisBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

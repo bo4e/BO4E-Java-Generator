@@ -4,6 +4,7 @@ import bo4e.enums.Sparte;
 import bo4e.enums.Preismodell;
 import bo4e.enums.Rechnungslegung;
 import bo4e.enums.Vertragsform;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -471,6 +472,16 @@ public class Ausschreibungslos extends COM {
     
         public AusschreibungslosBuilder setWunschZahlungsziel(Zeitraum wunschZahlungsziel) {
             this.wunschZahlungsziel = wunschZahlungsziel;
+            return this;
+        }
+    
+        public AusschreibungslosBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public AusschreibungslosBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

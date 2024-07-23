@@ -1,6 +1,7 @@
 package bo4e.com;
 
 import bo4e.enums.Mengeneinheit;
+import bo4e.ZusatzAttribut;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -149,6 +150,16 @@ public class Zeitraum extends COM {
     
         public ZeitraumBuilder setStartzeitpunkt(OffsetDateTime startzeitpunkt) {
             this.startzeitpunkt = startzeitpunkt;
+            return this;
+        }
+    
+        public ZeitraumBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public ZeitraumBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

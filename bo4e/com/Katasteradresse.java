@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.util.List;
 
 /**
@@ -62,6 +64,16 @@ public class Katasteradresse extends COM {
     
         public KatasteradresseBuilder setGemarkungFlur(String gemarkungFlur) {
             this.gemarkungFlur = gemarkungFlur;
+            return this;
+        }
+    
+        public KatasteradresseBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public KatasteradresseBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

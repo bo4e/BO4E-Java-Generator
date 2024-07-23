@@ -1,6 +1,7 @@
 package bo4e.com;
 
 import bo4e.enums.Angebotsstatus;
+import bo4e.ZusatzAttribut;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -181,6 +182,16 @@ public class Angebotsvariante extends COM {
     
         public AngebotsvarianteBuilder setTeile(List<Angebotsteil> teile) {
             this.teile = teile;
+            return this;
+        }
+    
+        public AngebotsvarianteBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public AngebotsvarianteBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

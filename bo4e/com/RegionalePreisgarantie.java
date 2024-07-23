@@ -1,6 +1,7 @@
 package bo4e.com;
 
 import bo4e.enums.Preisgarantietyp;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -128,6 +129,16 @@ public class RegionalePreisgarantie extends COM {
     
         public RegionalePreisgarantieBuilder setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
             this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
+            return this;
+        }
+    
+        public RegionalePreisgarantieBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public RegionalePreisgarantieBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

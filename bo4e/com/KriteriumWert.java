@@ -1,6 +1,7 @@
 package bo4e.com;
 
 import bo4e.enums.Tarifregionskriterium;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -76,6 +77,16 @@ public class KriteriumWert extends COM {
     
         public KriteriumWertBuilder setWert(String wert) {
             this.wert = wert;
+            return this;
+        }
+    
+        public KriteriumWertBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public KriteriumWertBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

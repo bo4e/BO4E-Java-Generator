@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -101,6 +103,16 @@ public class Unterschrift extends COM {
     
         public UnterschriftBuilder setOrt(String ort) {
             this.ort = ort;
+            return this;
+        }
+    
+        public UnterschriftBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public UnterschriftBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

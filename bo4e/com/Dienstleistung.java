@@ -1,6 +1,7 @@
 package bo4e.com;
 
 import bo4e.enums.Dienstleistungstyp;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -76,6 +77,16 @@ public class Dienstleistung extends COM {
     
         public DienstleistungBuilder setDienstleistungstyp(Dienstleistungstyp dienstleistungstyp) {
             this.dienstleistungstyp = dienstleistungstyp;
+            return this;
+        }
+    
+        public DienstleistungBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public DienstleistungBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

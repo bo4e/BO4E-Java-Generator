@@ -3,6 +3,7 @@ package bo4e.bo;
 import bo4e.enums.Typ;
 import bo4e.enums.Geraeteklasse;
 import bo4e.enums.Geraetetyp;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -137,6 +138,16 @@ public class Geraet extends Geschaeftsobjekt {
     
         public GeraetBuilder setGeraetetyp(Geraetetyp geraetetyp) {
             this.geraetetyp = geraetetyp;
+            return this;
+        }
+    
+        public GeraetBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public GeraetBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

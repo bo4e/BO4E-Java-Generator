@@ -14,6 +14,7 @@ import bo4e.com.Tarifpreisposition;
 import bo4e.enums.Tariftyp;
 import bo4e.com.Vertragskonditionen;
 import bo4e.com.Zeitraum;
+import bo4e.ZusatzAttribut;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -570,6 +571,16 @@ public class Tarifpreisblatt extends Geschaeftsobjekt {
     
         public TarifpreisblattBuilder setZeitlicheGueltigkeit(Zeitraum zeitlicheGueltigkeit) {
             this.zeitlicheGueltigkeit = zeitlicheGueltigkeit;
+            return this;
+        }
+    
+        public TarifpreisblattBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public TarifpreisblattBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

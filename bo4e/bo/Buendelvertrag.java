@@ -6,6 +6,7 @@ import bo4e.com.Unterschrift;
 import bo4e.enums.Vertragsart;
 import bo4e.com.Vertragskonditionen;
 import bo4e.enums.Vertragsstatus;
+import bo4e.ZusatzAttribut;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -378,6 +379,16 @@ public class Buendelvertrag extends Geschaeftsobjekt {
     
         public BuendelvertragBuilder setVertragsstatus(Vertragsstatus vertragsstatus) {
             this.vertragsstatus = vertragsstatus;
+            return this;
+        }
+    
+        public BuendelvertragBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public BuendelvertragBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

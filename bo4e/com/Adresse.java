@@ -1,6 +1,7 @@
 package bo4e.com;
 
 import bo4e.enums.Landescode;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -261,6 +262,16 @@ public class Adresse extends COM {
     
         public AdresseBuilder setStrasse(String strasse) {
             this.strasse = strasse;
+            return this;
+        }
+    
+        public AdresseBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public AdresseBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

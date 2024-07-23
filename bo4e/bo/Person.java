@@ -6,6 +6,7 @@ import bo4e.enums.Anrede;
 import bo4e.com.Kontaktweg;
 import bo4e.enums.Titel;
 import bo4e.com.Zustaendigkeit;
+import bo4e.ZusatzAttribut;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -301,6 +302,16 @@ public class Person extends Geschaeftsobjekt {
     
         public PersonBuilder setZustaendigkeiten(List<Zustaendigkeit> zustaendigkeiten) {
             this.zustaendigkeiten = zustaendigkeiten;
+            return this;
+        }
+    
+        public PersonBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public PersonBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

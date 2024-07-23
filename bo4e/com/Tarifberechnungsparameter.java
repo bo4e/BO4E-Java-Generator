@@ -2,6 +2,7 @@ package bo4e.com;
 
 import bo4e.enums.Tarifkalkulationsmethode;
 import bo4e.enums.Messpreistyp;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -287,6 +288,16 @@ public class Tarifberechnungsparameter extends COM {
     
         public TarifberechnungsparameterBuilder setZusatzpreise(List<Tarifpreis> zusatzpreise) {
             this.zusatzpreise = zusatzpreise;
+            return this;
+        }
+    
+        public TarifberechnungsparameterBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public TarifberechnungsparameterBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

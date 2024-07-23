@@ -3,6 +3,7 @@ package bo4e.com;
 import bo4e.enums.Mengeneinheit;
 import bo4e.enums.Messwertstatus;
 import bo4e.enums.Wertermittlungsverfahren;
+import bo4e.ZusatzAttribut;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -210,6 +211,16 @@ public class Verbrauch extends COM {
     
         public VerbrauchBuilder setWertermittlungsverfahren(Wertermittlungsverfahren wertermittlungsverfahren) {
             this.wertermittlungsverfahren = wertermittlungsverfahren;
+            return this;
+        }
+    
+        public VerbrauchBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public VerbrauchBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

@@ -1,6 +1,7 @@
 package bo4e.com;
 
 import bo4e.enums.Waehrungscode;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -77,6 +78,16 @@ public class Betrag extends COM {
     
         public BetragBuilder setWert(Double wert) {
             this.wert = wert;
+            return this;
+        }
+    
+        public BetragBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public BetragBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

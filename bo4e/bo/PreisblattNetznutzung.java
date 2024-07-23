@@ -8,6 +8,7 @@ import bo4e.enums.Netzebene;
 import bo4e.com.Preisposition;
 import bo4e.enums.Preisstatus;
 import bo4e.enums.Sparte;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -269,6 +270,16 @@ public class PreisblattNetznutzung extends Geschaeftsobjekt {
     
         public PreisblattNetznutzungBuilder setSparte(Sparte sparte) {
             this.sparte = sparte;
+            return this;
+        }
+    
+        public PreisblattNetznutzungBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public PreisblattNetznutzungBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

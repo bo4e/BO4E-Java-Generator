@@ -3,6 +3,7 @@ package bo4e.bo;
 import bo4e.enums.Typ;
 import bo4e.com.Verbrauch;
 import bo4e.enums.Lokationstyp;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -111,6 +112,16 @@ public class Energiemenge extends Geschaeftsobjekt {
     
         public EnergiemengeBuilder setLokationstyp(Lokationstyp lokationstyp) {
             this.lokationstyp = lokationstyp;
+            return this;
+        }
+    
+        public EnergiemengeBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public EnergiemengeBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

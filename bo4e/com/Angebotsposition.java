@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.util.List;
 
 /**
@@ -130,6 +132,16 @@ public class Angebotsposition extends COM {
     
         public AngebotspositionBuilder setPositionspreis(Preis positionspreis) {
             this.positionspreis = positionspreis;
+            return this;
+        }
+    
+        public AngebotspositionBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public AngebotspositionBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

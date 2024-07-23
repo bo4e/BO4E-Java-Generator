@@ -4,6 +4,7 @@ import bo4e.enums.Typ;
 import bo4e.com.Zeitraum;
 import bo4e.com.Fremdkostenblock;
 import bo4e.com.Betrag;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -118,6 +119,16 @@ public class Fremdkosten extends Geschaeftsobjekt {
     
         public FremdkostenBuilder setSummeKosten(Betrag summeKosten) {
             this.summeKosten = summeKosten;
+            return this;
+        }
+    
+        public FremdkostenBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public FremdkostenBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

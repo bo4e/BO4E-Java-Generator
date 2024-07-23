@@ -1,5 +1,7 @@
 package bo4e.com;
 
+import bo4e.ZusatzAttribut;
+
 import java.util.List;
 
 /**
@@ -152,6 +154,16 @@ public class TarifpreisstaffelProOrt extends COM {
     
         public TarifpreisstaffelProOrtBuilder setStaffelgrenzeVon(Double staffelgrenzeVon) {
             this.staffelgrenzeVon = staffelgrenzeVon;
+            return this;
+        }
+    
+        public TarifpreisstaffelProOrtBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public TarifpreisstaffelProOrtBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

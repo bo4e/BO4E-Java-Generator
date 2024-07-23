@@ -1,6 +1,7 @@
 package bo4e.com;
 
 import bo4e.enums.Gueltigkeitstyp;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -77,6 +78,16 @@ public class RegionaleGueltigkeit extends COM {
     
         public RegionaleGueltigkeitBuilder setKriteriumsWerte(List<KriteriumWert> kriteriumsWerte) {
             this.kriteriumsWerte = kriteriumsWerte;
+            return this;
+        }
+    
+        public RegionaleGueltigkeitBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public RegionaleGueltigkeitBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

@@ -1,6 +1,7 @@
 package bo4e.com;
 
 import bo4e.bo.Marktlokation;
+import bo4e.ZusatzAttribut;
 
 import java.util.List;
 
@@ -187,6 +188,16 @@ public class Angebotsteil extends COM {
     
         public AngebotsteilBuilder setPositionen(List<Angebotsposition> positionen) {
             this.positionen = positionen;
+            return this;
+        }
+    
+        public AngebotsteilBuilder setId(String id) {
+            super.setId(id);
+            return this;
+        }
+    
+        public AngebotsteilBuilder setZusatzAttribute(List<ZusatzAttribut> zusatzAttribute) {
+            super.setZusatzAttribute(zusatzAttribute);
             return this;
         }
     

@@ -8,24 +8,29 @@ const {acronymOption, AcronymStyleOptions} = require("quicktype-core/dist/suppor
 const {JacksonRenderer} = require("quicktype-core/dist/language/Java");
 const {SerializedRenderResult} = require("quicktype-core/dist/Source");
 
-let currentVersion = "";
-let packageName = "";
-let targetDirName = "bo4e";
-let sourceDirName = "bo4e_schemas";
-let urlTemplate = "";
+let CURRENT_VERSION = "";
+let PACKAGE_NAME = "";
+let TARGET_DIR_NAME = "bo4e";
+let SOURCE_DIR_NAME = "bo4e_schemas";
+let URL_TEMPLATE = "";
 
 /**
  * array containing potentially missing parent classes and their path
  * @type {{fileName: string, pathToFile: string}[]}
  */
-const missingParentClasses = [
+const MISSING_PARENT_CLASSES = [
     {fileName: "Geschaeftsobjekt", pathToFile: "bo/"},
     {fileName: "COM", pathToFile: "com/"}
 ];
 
-const parentFields = [{name: "id", type: "String"}, {name: "typ", type: "Typ"}, {name: "version", type: "String"}, {name: "zusatzAttribute", type: "List<ZusatzAttribut>"}];
+const PARENT_FIELDS = [
+    {name: "id", type: "String"},
+    {name: "typ", type: "Typ"},
+    {name: "version", type: "String"},
+    {name: "zusatzAttribute", type: "List<ZusatzAttribut>"}
+];
 
-const newJavaOptions = {
+const CUSTOM_JAVA_OPTIONS = {
     useList: new EnumOption(
         "array-type",
         "Use T[] or List<T>",
@@ -61,18 +66,18 @@ class NewJavaTargetLanguage extends JavaTargetLanguage {
 
     getOptions() {
         return [
-            newJavaOptions.useList,
-            newJavaOptions.justTypes,
-            newJavaOptions.dateTimeProvider,
-            newJavaOptions.acronymStyle,
-            newJavaOptions.packageName,
-            newJavaOptions.lombok,
-            newJavaOptions.lombokCopyAnnotations
+            CUSTOM_JAVA_OPTIONS.useList,
+            CUSTOM_JAVA_OPTIONS.justTypes,
+            CUSTOM_JAVA_OPTIONS.dateTimeProvider,
+            CUSTOM_JAVA_OPTIONS.acronymStyle,
+            CUSTOM_JAVA_OPTIONS.packageName,
+            CUSTOM_JAVA_OPTIONS.lombok,
+            CUSTOM_JAVA_OPTIONS.lombokCopyAnnotations
         ];
     }
 
     makeRenderer(renderContext, untypedOptionValues) {
-        const options = getOptionValues(newJavaOptions, untypedOptionValues);
+        const options = getOptionValues(CUSTOM_JAVA_OPTIONS, untypedOptionValues);
         if (options.justTypes) {
             return new JavaRenderer(this, renderContext, options);
         }
@@ -80,25 +85,28 @@ class NewJavaTargetLanguage extends JavaTargetLanguage {
     }
 }
 
+/**
+ * adjusts global variables based on the command line arguments
+ */
 function processCommandLineArguments() {
     const flags = (process.argv[2] && process.argv[2].length > 1) ? process.argv[2].substring(1).split("") : [];
     for (let i = 0; i < flags.length; i++) {
         if (process.argv[3 + i]) {
             switch (flags[i]) {
                 case 'p': {
-                    packageName = process.argv[3 + i]
-                    console.log("Using Package: " + packageName);
-                    packageName += '.';
+                    PACKAGE_NAME = process.argv[3 + i]
+                    console.log("Using Package: " + PACKAGE_NAME);
+                    PACKAGE_NAME += '.';
                     break;
                 }
                 case 't': {
-                    targetDirName = process.argv[3 + i]
-                    console.log("Using target directory: " + targetDirName);
+                    TARGET_DIR_NAME = process.argv[3 + i]
+                    console.log("Using target directory: " + TARGET_DIR_NAME);
                     break;
                 }
                 case 's': {
-                    sourceDirName = process.argv[3 + i]
-                    console.log("Using source directory: " + sourceDirName);
+                    SOURCE_DIR_NAME = process.argv[3 + i]
+                    console.log("Using source directory: " + SOURCE_DIR_NAME);
                     break;
                 }
             }
@@ -107,28 +115,28 @@ function processCommandLineArguments() {
 }
 
 /**
- * turns a file into a schema-property and adds it to the given array
- * @param allKnowingSchema {string[]} the array to add the property to
- * @param file {string} the file to add
+ * turns a file into a schema-property and adds it to the allKnowingSchema
+ * @param allKnowingSchema {string[]} the list containing references to the json-schemas
+ * @param file {string} the file containing the json-schema
  * @param path {string} the path to the file
  */
 function addProperty(allKnowingSchema, file, path) {
-    let url = retrieveSchemaUrl(path);
+    let url = getSchemaUrl(path);
     if (url) {
-        if (currentVersion === "") {
-            currentVersion = getVersion(url);
-            console.log("Using version: " + currentVersion);
+        if (CURRENT_VERSION === "") {
+            CURRENT_VERSION = getVersion(url);
+            console.log("Using version: " + CURRENT_VERSION);
         }
-        if (urlTemplate === "") {
-            urlTemplate = getUrlTemplate(url);
-            console.log("Using template: " + urlTemplate);
+        if (URL_TEMPLATE === "") {
+            URL_TEMPLATE = getUrlTemplate(url);
+            console.log("Using template: " + URL_TEMPLATE);
         }
     }
-    if (urlTemplate === "") {
+    if (URL_TEMPLATE === "") {
         console.log("Could not find template, using default")
         url = "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/" + path;
     } else {
-        url = urlTemplate + path;
+        url = URL_TEMPLATE + path;
     }
     const propertyName = file.replace(".json", "");
     const newProperty = createProperty(propertyName.toLowerCase(), url);
@@ -136,6 +144,12 @@ function addProperty(allKnowingSchema, file, path) {
     console.log("Property " + propertyName + " added");
 }
 
+/**
+ * creates a property for the allKnowingSchema containing a reference to a json-schema
+ * @param propertyName {string} the name of the json-schema
+ * @param propertyUrl {string} the url of the json-schema
+ * @return {string} the property to add to the allKnowingSchema
+ */
 function createProperty(propertyName, propertyUrl) {
     return "        },\n" +
         "        \"" + propertyName + "\": {\n" +
@@ -151,11 +165,11 @@ function createProperty(propertyName, propertyUrl) {
 }
 
 /**
- *
- * @param path {string}
- * @returns {undefined|string}
+ * retrieves the url of the json-schema located at the given path
+ * @param path {string} path to the file containing the json-schema
+ * @return {undefined|string} the url of the json-schema
  */
-function retrieveSchemaUrl(path) {
+function getSchemaUrl(path) {
     const line = fs.readFileSync(path, "utf-8")
         .split("\n")
         .find(line => line.trim().startsWith("\"description\":") && line.includes("https://raw.githubusercontent"));
@@ -167,20 +181,20 @@ function retrieveSchemaUrl(path) {
 }
 
 /**
- *
- * @param url {string}
- * @returns {string}
+ * creates a template for json-schema urls based on an actual json-schema url
+ * @param url {string} the url of a json-schema
+ * @return {string} the template for json-schema urls
  */
 function getUrlTemplate(url) {
     const beginning = url.substring(0, url.indexOf("BO4E-Schemas/")) + "BO4E-Schemas/v"
     const end = url.substring(url.indexOf("/src/"), url.indexOf("bo4e_schemas/"));
-    return beginning + currentVersion + end
+    return beginning + CURRENT_VERSION + end
 }
 
 /**
- *
- * @param url {string}
- * @returns {string}
+ * retrieves the version of the json-schema from the given url
+ * @param url {string} the url of a json-schema
+ * @return {string} the version of the json-schema
  */
 function getVersion(url) {
     try {
@@ -201,14 +215,14 @@ function getVersion(url) {
  * iterates through the given directory and all subdirectories and adds all files as schema-property-elements to the given array
  * @param allKnowingSchema {string[]} the schema to add the files to
  * @param source {string} the path to the source directory
- * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} a map to add the files with the path to their directory to, creates one if none is given
- * @returns {Map<string, {jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} A map of all added files with the path to their directory
+ * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} maps lowercase fileName to fileData
+ * @return {Map<string, {jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} A map of all added files with their fileData
  */
-function addToSchema(allKnowingSchema, source = sourceDirName, fileMap = new Map) {
+function addToSchema(allKnowingSchema, source = SOURCE_DIR_NAME, fileMap = new Map) {
     const files = fs.readdirSync(source);
     for (const file of files) {
         const path = source + '/' + file;
-        const targetPath = path.replace(sourceDirName, targetDirName).replace("enum", "enums");
+        const targetPath = path.replace(SOURCE_DIR_NAME, TARGET_DIR_NAME).replace("enum", "enums");
         if (fs.statSync(path).isFile()) {
             addProperty(allKnowingSchema, file, path);
             const fileName = file.replace(".json", "");
@@ -229,7 +243,7 @@ function addToSchema(allKnowingSchema, source = sourceDirName, fileMap = new Map
 
 /**
  * creates the basic skeleton of a schema that can be used to generate all classes at once
- * @returns {string[]} an array containing the beginning and the end of the schema, leaving space to add properties
+ * @return {string[]} an array containing the beginning and the end of the schema, leaving space to add properties
  */
 function generateAllKnowingSchema() {
     return ["{\n" +
@@ -258,10 +272,10 @@ function generateAllKnowingSchema() {
 }
 
 /**
- *
- * @param classBody{string[]}
- * @param fieldName {string}
- * @returns {string|undefined}
+ * retrieves the description of the given field, if it exists
+ * @param classBody{string[]} a list containing the lines of the body of the java class
+ * @param fieldName {string} the name of the field
+ * @return {string|undefined} the description of the given field, if it exists
  */
 function getFieldDescription(classBody, fieldName) {
     const methodIndex = classBody.findIndex(value => value.trim().toLowerCase().includes(`get${fieldName.toLowerCase()}()`));
@@ -276,9 +290,9 @@ function getFieldDescription(classBody, fieldName) {
 }
 
 /**
- *
- * @param classBody{string[]}
- * @returns {{name: string, type: string, description: string}[]}
+ * creates a list containing the fields of the java class
+ * @param classBody{string[]} a list containing the lines of the body of the java class
+ * @return {{name: string, type: string, description: string}[]} a list containing the fields of the java class
  */
 function getClassFields(classBody) {
     const fieldList = [];
@@ -300,12 +314,13 @@ function getClassFields(classBody) {
 }
 
 /**
- *
- * @param fieldList {{name: string, type: string, description: string}[]}
+ * removes the fields belonging to the parent class from the given list of fields
+ * @param fieldList {{name: string, type: string, description: string}[]} contains the fields of the java class
+ * @return the fieldList without the fields belonging to the parent class
  */
 function removeParentClassFields(fieldList) {
-    const hasOwnVersionProperty = fieldList.slice(0, parentFields.length).findIndex(value => value.name === "version") < 0;
-    let fieldFilter = parentFields.map(value => value.name);
+    const hasOwnVersionProperty = fieldList.slice(0, PARENT_FIELDS.length).findIndex(value => value.name === "version") < 0;
+    let fieldFilter = PARENT_FIELDS.map(value => value.name);
     if (hasOwnVersionProperty) {
         fieldFilter = fieldFilter.filter(value => value !== "version")
     }
@@ -313,8 +328,9 @@ function removeParentClassFields(fieldList) {
 }
 
 /**
- *
- * @param fieldList {{name: string, type: string, description: string}[]}
+ * creates java statements for the given fields
+ * @param fieldList {{name: string, type: string, description: string}[]} contains the fields of the java class
+ * @return {string[]} a list containing the fields as java statements
  */
 function turnFieldListToJava(fieldList) {
     const javaList = []
@@ -331,8 +347,14 @@ function turnFieldListToJava(fieldList) {
     return javaList;
 }
 
+/**
+ * applies inheritance to the head of the java class
+ * @param classHead {string} contains the head of the java class: (public class ...)
+ * @param classDirPath {string} path to the directory containing the java class
+ * @return {string} the head of the java class with inheritance
+ */
 function addParentToClass(classHead, classDirPath) {
-    const obj = missingParentClasses.find(value => (classDirPath + "/").endsWith(value.pathToFile));
+    const obj = MISSING_PARENT_CLASSES.find(value => (classDirPath + "/").endsWith(value.pathToFile));
     if (obj !== undefined && !classHead.includes(obj.fileName)) {
         classHead = classHead.replace(" {", ` extends ${obj.fileName} {`);
     }
@@ -340,10 +362,11 @@ function addParentToClass(classHead, classDirPath) {
 }
 
 /**
- *
- * @param field {{name: string, type: string, description: string}}
- * @param addSetter {boolean}
- * @param builderName {string|undefined}
+ * creates a getter and optionally a setter for a given field
+ * @param field {{name: string, type: string, description: string}} the field that the method(s) belong to
+ * @param addSetter {boolean} whether a setter method should be included
+ * @param builderName {string|undefined} if set, creates the methods for the given builder class
+ * @return a string containing the method(s)
  */
 function getJavaMethod(field, addSetter = false, builderName = undefined) {
     const fieldName = field.name.charAt(0).toUpperCase() + field.name.slice(1);
@@ -366,6 +389,12 @@ function getJavaMethod(field, addSetter = false, builderName = undefined) {
     return lines.join("\n");
 }
 
+/**
+ * creates a method for the builder class that overwrites the setter method of the parent builder class
+ * @param field {{name: string, type: string}} the field that the setter belongs to
+ * @param builderName {string} name of the builder class
+ * @return {string} the setter method overwriting the parent setter
+ */
 function overwriteParentSetter(field, builderName) {
     const fieldName = field.name.charAt(0).toUpperCase() + field.name.slice(1);
     const lines = []
@@ -377,9 +406,10 @@ function overwriteParentSetter(field, builderName) {
 }
 
 /**
- *
- * @param fieldList {{name: string, type: string, description: string}[]}
- * @param builderName {string|undefined}
+ * creates java methods for the given fields
+ * @param fieldList {{name: string, type: string, description: string}[]} contains the fields of the java class
+ * @param builderName {string|undefined} name of the builder class
+ * @return {string[]} a list of java methods
  */
 function getJavaMethods(fieldList, builderName = undefined) {
     const methodList = [];
@@ -390,13 +420,20 @@ function getJavaMethods(fieldList, builderName = undefined) {
     return methodList;
 }
 
-function addImports(fieldType, fileMap, importList, classPath) {
+/**
+ * adds an import statement of the given fieldType to the importList if necessary
+ * @param fieldType {string} the type to import
+ * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} maps lowercase fileName to fileData
+ * @param importList {string[]} list of import statements
+ * @param classDirPath {string} path to the directory containing the java class
+ */
+function addImports(fieldType, fileMap, importList, classDirPath) {
     if (fieldType.startsWith("List<") && fieldType.endsWith(">")) {
         fieldType = fieldType.substring("List<".length, fieldType.length - 1);
     }
     const importData = fileMap.get(fieldType.toLowerCase());
-    if (importData !== undefined && importData.javaFilePath !== classPath) {
-        const importPackage = packageName + importData.javaFilePath.replaceAll("/", ".");
+    if (importData !== undefined && importData.javaFilePath !== classDirPath) {
+        const importPackage = PACKAGE_NAME + importData.javaFilePath.replaceAll("/", ".");
         const importString = `import ${importPackage}.${importData.javaFileName};`;
         if (!importList.includes(importString)) {
             importList.push(importString);
@@ -405,11 +442,12 @@ function addImports(fieldType, fileMap, importList, classPath) {
 }
 
 /**
- *
- * @param fieldList {{name: string, type: string, description: string}[]}
- * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}}
+ * creates a list of import statements for the java class
+ * @param fieldList {{name: string, type: string, description: string}[]} contains the fields of the java class
+ * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}} information about the file containing the java class
  * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} maps lowercase fileName to fileData
- * @param hasParent {boolean}
+ * @param hasParent {boolean} whether the java class has a parent class
+ * @return {string[]} a sorted list of import statements
  */
 function getImports(fieldList, fileData, fileMap, hasParent) {
     const classPath = fileData.javaFilePath;
@@ -418,7 +456,7 @@ function getImports(fieldList, fileData, fileMap, hasParent) {
         addImports(field.type, fileMap, importList, classPath);
     }
     if (hasParent) {
-        for (const parentField of parentFields) {
+        for (const parentField of PARENT_FIELDS) {
             if (parentField.name !== "typ" && parentField.name !== "version") {
                 addImports(parentField.type, fileMap, importList, classPath);
             }
@@ -432,10 +470,10 @@ function getImports(fieldList, fileData, fileMap, hasParent) {
 }
 
 /**
- *
- * @param fieldList {{name: string, type: string, description: string}[]}
- * @param javaMethodList {string[]}
- * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}}
+ *  adds the field "typ" and corresponding methods to the fieldList and javaMethodList
+ * @param fieldList {{name: string, type: string, description: string}[]} contains the fields of the java class
+ * @param javaMethodList {string[]} contains the methods of the java class
+ * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}} information about the file containing the java class
  */
 function addTypeToFieldsAndMethods(fieldList, javaMethodList, fileData) {
     const file = fs.readFileSync(fileData.jsonFilePath + "/" + fileData.jsonFileName + ".json", "utf-8").replaceAll(" ", "").split("\n");
@@ -459,23 +497,24 @@ function addTypeToFieldsAndMethods(fieldList, javaMethodList, fileData) {
 }
 
 /**
- *
- * @param classHead {string}
- * @param fieldList {{name: string, type: string, description: string}[]}
- * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}}
- * @param hasParent {boolean}
+ * creates an inner builder class for the java class
+ * @param classHead {string} contains the head of the java class: (public class ...)
+ * @param fieldList {{name: string, type: string, description: string}[]} contains the fields of the java class
+ * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}} information about the file containing the java class
+ * @param hasParent {boolean} whether the java class has a parent class
+ * @return {string} a string containing the java classes inner builder class
  */
 function getBuilderClass(classHead, fieldList, fileData, hasParent) {
     const builderName = fileData.javaFileName + "Builder";
     let builderHead = classHead.replace("public", "public static")
         .replace(fileData.javaFileName, builderName)
-    for (const {fileName} of missingParentClasses) {
+    for (const {fileName} of MISSING_PARENT_CLASSES) {
         builderHead = builderHead.replace(`${fileName} {`, `${fileName}Builder {`);
     }
     const builderFieldList = turnFieldListToJava(fieldList);
     const builderMethods = getJavaMethods(fieldList, builderName);
     if (hasParent) {
-        for (const parentField of parentFields) {
+        for (const parentField of PARENT_FIELDS) {
             if (parentField.name !== "typ" && parentField.name !== "version") {
                 builderMethods.push("");
                 builderMethods.push(overwriteParentSetter(parentField, builderName));
@@ -490,10 +529,11 @@ function getBuilderClass(classHead, fieldList, fileData, hasParent) {
 }
 
 /**
- *
- * @param fieldList {{name: string, type: string, description: string}[]}
- * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}}
- * @param hasParent {boolean}
+ * creates one or multiple constructors for the java class
+ * @param fieldList {{name: string, type: string, description: string}[]} contains the fields of the java class
+ * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}} information about the file containing the java class
+ * @param hasParent {boolean} whether the java class has a parent class
+ * @return {string} a string containing the constructor(s)
  */
 function getJavaConstructor(fieldList, fileData, hasParent) {
     const constructor = [""]
@@ -511,15 +551,15 @@ function getJavaConstructor(fieldList, fileData, hasParent) {
 }
 
 /**
- *
- * @param contentList {string[]}
- * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}}
+ * adjusts and improves the generated java class
+ * @param contentList {string[]} content of the java class
+ * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}} information about the file containing the java class
  * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} maps lowercase fileName to fileData
- * @return {string}
+ * @return {string} the improved content of the java class as a single string
  */
 function completeJavaFile(contentList, fileData, fileMap) {
     const classFoot = "}";
-    const newPackageName = packageName + fileData.javaFilePath.replaceAll("/", ".");
+    const newPackageName = PACKAGE_NAME + fileData.javaFilePath.replaceAll("/", ".");
     const newPackage = contentList[0].replace("placeholder", newPackageName);
     const classIndex = contentList.findIndex(value => value.startsWith("public class"));
     if (classIndex < 0) {
@@ -530,7 +570,7 @@ function completeJavaFile(contentList, fileData, fileMap) {
     const hasParent = classHead.includes("extends");
     const classBody = contentList.slice(classIndex + 1, contentList.length - 1);
     let fieldList = getClassFields(classBody);
-    if (fieldList.length > parentFields.length) {
+    if (fieldList.length > PARENT_FIELDS.length) {
         fieldList = removeParentClassFields(fieldList);
     }
     const javaMethodList = getJavaMethods(fieldList);
@@ -546,31 +586,35 @@ function completeJavaFile(contentList, fileData, fileMap) {
 }
 
 /**
- *
+ * restores the parent classes that are missing in the newer bo4e-schemas
  * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} maps lowercase fileName to fileData
  */
 function restoreMissingFiles(fileMap) {
-    const zaImport = packageName + fileMap.get("zusatzattribut").javaFilePath.replaceAll("/", ".");
-    const typImport = packageName + fileMap.get("typ").javaFilePath.replaceAll("/", ".");
-    missingParentClasses.forEach(({fileName, pathToFile}) => {
+    const zaImport = PACKAGE_NAME + fileMap.get("zusatzattribut").javaFilePath.replaceAll("/", ".");
+    const typImport = PACKAGE_NAME + fileMap.get("typ").javaFilePath.replaceAll("/", ".");
+    MISSING_PARENT_CLASSES.forEach(({fileName, pathToFile}) => {
         if (!fileMap.has(fileName.toLowerCase())) {
             const javaFileName = fileName + ".java";
-            const classPackage = packageName + targetDirName + "." + pathToFile.substring(0, pathToFile.length - 1).replace("/", ".");
+            const classPackage = PACKAGE_NAME + TARGET_DIR_NAME + "." + pathToFile.substring(0, pathToFile.length - 1).replace("/", ".");
             const fileContent = fs.readFileSync("resource_schemas/" + javaFileName, "utf-8")
-                .replace("packagePlaceholder",classPackage)
+                .replace("packagePlaceholder", classPackage)
                 .replace("zaImportPlaceholder", zaImport)
                 .replace("typImportPlaceholder", typImport)
-                .replace("versionPlaceholder", `"${currentVersion}"`);
-            fs.writeFileSync(targetDirName + "/" + pathToFile + javaFileName, fileContent);
+                .replace("versionPlaceholder", `"${CURRENT_VERSION}"`);
+            fs.writeFileSync(TARGET_DIR_NAME + "/" + pathToFile + javaFileName, fileContent);
         }
     });
 }
 
+/**
+ * provides the data required for generation and output
+ * @return {{inputData: InputData, fileMap: Map<string, {jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>}} the data used for generation and output
+ */
 function setUp() {
-    if (fs.existsSync(targetDirName)) {
-        fs.rmSync(targetDirName, { recursive: true });
+    if (fs.existsSync(TARGET_DIR_NAME)) {
+        fs.rmSync(TARGET_DIR_NAME, {recursive: true});
     }
-    fs.mkdirSync(targetDirName);
+    fs.mkdirSync(TARGET_DIR_NAME);
     const allKnowingSchema = generateAllKnowingSchema();
     const fileMap = addToSchema(allKnowingSchema);
     restoreMissingFiles(fileMap);
@@ -591,14 +635,13 @@ function setUp() {
 }
 
 /**
- *
- * @param javaClasses {ReadonlyMap<string, SerializedRenderResult>}
- * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} maps lowercase fileName to fileData
- * @return {number}
+ * Outputs the generated classes
+ * @param javaClasses {ReadonlyMap<string, SerializedRenderResult>} Map containing the generated java classes
+ * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} Maps lowercase fileName to fileData
+ * @return {number} Amount of written files
  */
-function breakDown(javaClasses, fileMap) {
+function output(javaClasses, fileMap) {
     let writtenFilesAmount = 0;
-    console.log("Starting output");
     javaClasses.forEach((javaClass, className) => {
         const searchName = className.replace(".java", "").toLowerCase();
         const fileData = fileMap.get(searchName);
@@ -609,25 +652,22 @@ function breakDown(javaClasses, fileMap) {
             writtenFilesAmount++;
         }
     });
-    console.log("Output complete");
     return writtenFilesAmount;
 }
 
 function main() {
     console.log("Preparing generation");
     processCommandLineArguments();
-    console.log("Creating generation_schema");
     const {inputData, fileMap} = setUp();
     const readFilesAmount = fileMap.size;
-    console.log("Generation_schema complete");
     console.log("Starting generation");
     quicktypeMultiFile({
         inputData,
         lang: new NewJavaTargetLanguage(),
         allPropertiesOptional: false
     }).then(javaClasses => {
-        console.log("Generation complete");
-        const writtenFilesAmount = breakDown(javaClasses, fileMap);
+        console.log("Starting output");
+        const writtenFilesAmount = output(javaClasses, fileMap);
         console.log(`Finished: ${writtenFilesAmount}/${readFilesAmount}`)
     });
 }

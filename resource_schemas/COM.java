@@ -16,13 +16,7 @@ import java.util.List;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/com/COM.json>`_
  */
 public abstract class COM {
-    /**
-     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
-     */
     private String id;
-    /**
-     * Version der BO-Struktur aka "fachliche Versionierung"
-     */
     private final String boVersion = versionPlaceholder;
     private List<ZusatzAttribut> zusatzAttribute;
 
@@ -34,14 +28,23 @@ public abstract class COM {
         this.zusatzAttribute = builder.zusatzAttribute;
     }
 
+    /**
+     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+     */
     public void setId(String value) {
         this.id = value;
     }
 
+    /**
+     * Version der BO-Struktur aka "fachliche Versionierung"
+     */
     public String getBoVersion() {
         return boVersion;
     }
@@ -55,16 +58,19 @@ public abstract class COM {
     }
 
     public abstract static class COMBuilder {
-        /**
-         * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
-         */
         private String id;
         private List<ZusatzAttribut> zusatzAttribute;
 
+        /**
+         * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+         */
         public String getId() {
             return id;
         }
 
+        /**
+         * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+         */
         public COMBuilder setId(String value) {
             this.id = value;
             return this;

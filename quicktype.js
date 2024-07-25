@@ -335,9 +335,6 @@ function removeParentClassFields(fieldList) {
 function turnFieldListToJava(fieldList) {
     const javaList = []
     for (const field of fieldList) {
-        if (field.description !== undefined) {
-            javaList.push(field.description);
-        }
         if (field.type === "Typ") {
             javaList.push(`    private final ${field.type} ${field.name};`);
         } else {
@@ -371,11 +368,17 @@ function addParentToClass(classHead, classDirPath) {
 function getJavaMethod(field, addSetter = false, builderName = undefined) {
     const fieldName = field.name.charAt(0).toUpperCase() + field.name.slice(1);
     const lines = []
+    if (field.description !== undefined) {
+        lines.push(field.description);
+    }
     lines.push(`    public ${field.type} get${fieldName}() {`);
     lines.push(`        return ${field.name};`);
     lines.push(`    }`);
     if (addSetter) {
         lines.push("");
+        if (field.description !== undefined) {
+            lines.push(field.description);
+        }
         if (builderName !== undefined) {
             lines.push(`    public ${builderName} set${fieldName}(${field.type} ${field.name}) {`);
             lines.push(`        this.${field.name} = ${field.name};`);
@@ -513,6 +516,9 @@ function getBuilderClass(classHead, fieldList, fileData, hasParent) {
     }
     const builderFieldList = turnFieldListToJava(fieldList);
     const builderMethods = getJavaMethods(fieldList, builderName);
+    const builderConstructor = [""]
+    builderConstructor.push(`    private ${builderName}() {`);
+    builderConstructor.push("    }");
     if (hasParent) {
         for (const parentField of PARENT_FIELDS) {
             if (parentField.name !== "typ" && parentField.name !== "version") {
@@ -525,7 +531,9 @@ function getBuilderClass(classHead, fieldList, fileData, hasParent) {
     builderMethods.push(`    public ${fileData.javaFileName} build() {`);
     builderMethods.push(`        return new ${fileData.javaFileName}(this);`);
     builderMethods.push("    }");
-    return ["\n" + builderHead].concat(builderFieldList, builderMethods, "}").join("\n").replaceAll("\n", "\n    ");
+    return ["\n" + builderHead].concat(builderFieldList, builderConstructor, builderMethods, "}")
+        .join("\n").replaceAll("\n", "\n    ").split("\n")
+        .map(value => value.trimEnd()).join("\n");
 }
 
 /**
@@ -574,6 +582,10 @@ function completeJavaFile(contentList, fileData, fileMap) {
         fieldList = removeParentClassFields(fieldList);
     }
     const javaMethodList = getJavaMethods(fieldList);
+    javaMethodList.push("");
+    const javaStaticBuilderMethod = getJavaMethod({name: "builder", type: `static ${fileData.javaFileName}Builder`})
+        .replace("builder", `new ${fileData.javaFileName}Builder()`)
+        .replace("getBuilder", "builder");
     const javaConstructor = getJavaConstructor(fieldList, fileData, hasParent);
     const builderClass = getBuilderClass(classHead, fieldList, fileData, hasParent);
     if (fileData.javaFilePath.endsWith("/bo")) {
@@ -581,7 +593,7 @@ function completeJavaFile(contentList, fileData, fileMap) {
     }
     const javaFieldList = turnFieldListToJava(fieldList);
     const importList = getImports(fieldList, fileData, fileMap, hasParent);
-    const newClass = [newPackage].concat(importList, header, classHead, javaFieldList, javaConstructor, javaMethodList, builderClass, classFoot);
+    const newClass = [newPackage].concat(importList, header, classHead, javaFieldList, javaConstructor, javaMethodList, javaStaticBuilderMethod, builderClass, classFoot);
     return newClass.join("\n");
 }
 

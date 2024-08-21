@@ -78,12 +78,6 @@ jobs:
           user-email: timo.molls@enet.eu
           target-branch: master
           commit-message: "Update JAVA-Classes - BO4E ${{ steps.schemas.outputs.TAGNAME }}"
-      - name: Create Release
-        if: ${{ steps.schemas.outputs.TAGNAME != 'invalid' }}
-        env:
-          TOKEN: ${{ secrets.CREATE_RELEASE_TOKEN }}
-          VERSION: ${{ steps.schemas.outputs.TAGNAME }}
-        run: node ./create_release.js "$TOKEN" "$VERSION"
       - name: Generate with dependecies
         if: ${{ steps.schemas.outputs.TAGNAME != 'invalid' }}
         run: |
@@ -101,3 +95,9 @@ jobs:
           user-email: timo.molls@enet.eu
           target-branch: withDependencies
           commit-message: "Update JAVA-Classes - BO4E ${{ steps.schemas.outputs.TAGNAME }}-wd"
+      - name: Create Release
+        if: ${{ steps.schemas.outputs.TAGNAME != 'invalid' }}
+        env:
+          TOKEN: ${{ secrets.CREATE_RELEASE_TOKEN }}
+          VERSION: ${{ steps.schemas.outputs.TAGNAME }}
+        run: node ./create_release.js "$TOKEN" "$VERSION"

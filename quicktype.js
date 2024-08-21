@@ -13,6 +13,7 @@ let PACKAGE_NAME = "";
 let TARGET_DIR_NAME = "bo4e";
 let SOURCE_DIR_NAME = "bo4e_schemas";
 let URL_TEMPLATE = "";
+let USES_MAVEN = false;
 
 /**
  * array containing potentially missing parent classes and their path
@@ -89,23 +90,30 @@ class NewJavaTargetLanguage extends JavaTargetLanguage {
  * adjusts global variables based on the command line arguments
  */
 function processCommandLineArguments() {
-    const flags = (process.argv[2] && process.argv[2].length > 1) ? process.argv[2].substring(1).split("") : [];
+    let flags = (process.argv[2] && process.argv[2].length > 1) ? process.argv[2].substring(1).split("") : [];
+    if (flags.includes('m')) {
+        USES_MAVEN = true;
+        console.log("Using Maven");
+        flags = flags.filter(value => value !== "m");
+    }
     for (let i = 0; i < flags.length; i++) {
         if (process.argv[3 + i]) {
+            const value =  process.argv[3 + i].trim();
+            if (!value) continue;
             switch (flags[i]) {
                 case 'p': {
-                    PACKAGE_NAME = process.argv[3 + i]
+                    PACKAGE_NAME = value;
                     console.log("Using Package: " + PACKAGE_NAME);
                     PACKAGE_NAME += '.';
                     break;
                 }
                 case 't': {
-                    TARGET_DIR_NAME = process.argv[3 + i]
+                    TARGET_DIR_NAME = value;
                     console.log("Using target directory: " + TARGET_DIR_NAME);
                     break;
                 }
                 case 's': {
-                    SOURCE_DIR_NAME = process.argv[3 + i]
+                    SOURCE_DIR_NAME = value;
                     console.log("Using source directory: " + SOURCE_DIR_NAME);
                     break;
                 }
@@ -455,6 +463,9 @@ function addImports(fieldType, fileMap, importList, classDirPath) {
 function getImports(fieldList, fileData, fileMap, hasParent) {
     const classPath = fileData.javaFilePath;
     const importList = [];
+    if (USES_MAVEN) {
+        importList.push("import com.fasterxml.jackson.annotation.JsonInclude;");
+    }
     for (const field of fieldList) {
         addImports(field.type, fileMap, importList, classPath);
     }
@@ -574,7 +585,11 @@ function completeJavaFile(contentList, fileData, fileMap) {
         return [newPackage].concat(contentList.slice(1, contentList.length)).join("\n");
     }
     const header = contentList.slice(1, classIndex);
-    const classHead = addParentToClass(contentList[classIndex], fileData.javaFilePath);
+    let classHead = "";
+    if (USES_MAVEN) {
+        classHead += "@JsonInclude(JsonInclude.Include.NON_NULL)\n";
+    }
+    classHead += addParentToClass(contentList[classIndex], fileData.javaFilePath);
     const hasParent = classHead.includes("extends");
     const classBody = contentList.slice(classIndex + 1, contentList.length - 1);
     let fieldList = getClassFields(classBody);
@@ -608,7 +623,13 @@ function restoreMissingFiles(fileMap) {
         if (!fileMap.has(fileName.toLowerCase())) {
             const javaFileName = fileName + ".java";
             const classPackage = PACKAGE_NAME + TARGET_DIR_NAME + "." + pathToFile.substring(0, pathToFile.length - 1).replace("/", ".");
-            const fileContent = fs.readFileSync("resource_schemas/" + javaFileName, "utf-8")
+            let fileContent = fs.readFileSync("resource_schemas/" + javaFileName, "utf-8");
+            if (USES_MAVEN) {
+                fileContent = fileContent
+                    .replace("public abstract class", "@JsonInclude(JsonInclude.Include.NON_NULL)\npublic abstract class")
+                    .replace("import typImportPlaceholder", "import com.fasterxml.jackson.annotation.JsonInclude;\nimport typImportPlaceholder");
+            }
+            fileContent = fileContent
                 .replace("packagePlaceholder", classPackage)
                 .replace("zaImportPlaceholder", zaImport)
                 .replace("typImportPlaceholder", typImport)

@@ -84,3 +84,20 @@ jobs:
           TOKEN: ${{ secrets.CREATE_RELEASE_TOKEN }}
           VERSION: ${{ steps.schemas.outputs.TAGNAME }}
         run: node ./create_release.js "$TOKEN" "$VERSION"
+      - name: Generate with dependecies
+        if: ${{ steps.schemas.outputs.TAGNAME != 'invalid' }}
+        run: |
+          [[ -d bo4e_schemas ]] && node ./quicktype.js -m
+      - name: Push changes with dependencies
+        if: ${{ steps.schemas.outputs.TAGNAME != 'invalid' }}
+        uses: cpina/github-action-push-to-another-repository@v1.7.2
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN_JAVA_API }}
+        with:
+          source-directory: "bo4e"
+          target-directory: "bo4e"
+          destination-github-username: "TimoMolls"
+          destination-repository-name: "BO4E-Java"
+          user-email: timo.molls@enet.eu
+          target-branch: withDependencies
+          commit-message: "Update JAVA-Classes - BO4E ${{ steps.schemas.outputs.TAGNAME }}-wd"

@@ -51,8 +51,8 @@ async function get_latest_release_tag() {
 async function create_release(version, release_infos, is_prerelease, is_latest, addon) {
     let target = 'master';
     if (addon != null) {
-        version += "-wd"
-        target = 'withDependencies';
+        target = addon;
+        version += "-" + addon.at(0) + addon.match(RegExp("[A-Z][a-z]*", "g")).map(value => value.toLowerCase().at(0)).join("");
     }
     const response = await auth_octokit.request('POST /repos/{owner}/{repo}/releases', {
         owner: 'TimoMolls',

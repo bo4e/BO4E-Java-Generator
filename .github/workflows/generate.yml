@@ -100,4 +100,6 @@ jobs:
         env:
           TOKEN: ${{ secrets.CREATE_RELEASE_TOKEN }}
           VERSION: ${{ steps.schemas.outputs.TAGNAME }}
-        run: node ./create_release.js "$TOKEN" "$VERSION"
+        run: |
+          node ./create_release.js "$TOKEN" "$VERSION"
+          node ./create_release.js "$TOKEN" "$VERSION" "withDependencies"

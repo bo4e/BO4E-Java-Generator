@@ -1,66 +1,70 @@
 const {
     InputData, JSONSchemaInput, FetchingJSONSchemaStore, quicktypeMultiFile,
     JavaTargetLanguage, getOptionValues, JavaRenderer
-} = require("quicktype-core");
-const fs = require("node:fs");
-const {BooleanOption, StringOption, EnumOption} = require("quicktype-core/dist/RendererOptions");
-const {acronymOption, AcronymStyleOptions} = require("quicktype-core/dist/support/Acronyms");
-const {JacksonRenderer} = require("quicktype-core/dist/language/Java");
-const {SerializedRenderResult} = require("quicktype-core/dist/Source");
+} = require('quicktype-core');
+const fs = require('node:fs');
+const {BooleanOption, StringOption, EnumOption} = require('quicktype-core/dist/RendererOptions');
+const {acronymOption, AcronymStyleOptions} = require('quicktype-core/dist/support/Acronyms');
+const {JacksonRenderer} = require('quicktype-core/dist/language/Java');
+const {SerializedRenderResult} = require('quicktype-core/dist/Source');
+const commandLineArgs = require('command-line-args');
+const commandLineUsage = require('command-line-usage');
 
-let CURRENT_VERSION = "";
-let PACKAGE_NAME = "";
-let TARGET_DIR_NAME = "bo4e";
-let SOURCE_DIR_NAME = "bo4e_schemas";
-let URL_TEMPLATE = "";
-let USES_MAVEN = false;
+let CURRENT_VERSION = '';
+let PACKAGE_NAME = '';
+let TARGET_DIR_NAME = 'bo4e';
+let SOURCE_DIR_NAME = 'bo4e_schemas';
+let URL_TEMPLATE = '';
+let USE_ANNOTATIONS = false;
+let VERBOSE = false;
+let QUIET = false;
 
 /**
  * array containing potentially missing parent classes and their path
  * @type {{fileName: string, pathToFile: string}[]}
  */
 const MISSING_PARENT_CLASSES = [
-    {fileName: "Geschaeftsobjekt", pathToFile: "bo/"},
-    {fileName: "COM", pathToFile: "com/"}
+    {fileName: 'Geschaeftsobjekt', pathToFile: 'bo/'},
+    {fileName: 'COM', pathToFile: 'com/'}
 ];
 
 const PARENT_FIELDS = [
-    {name: "id", type: "String"},
-    {name: "typ", type: "Typ"},
-    {name: "version", type: "String"},
-    {name: "zusatzAttribute", type: "List<ZusatzAttribut>"}
+    {name: 'id', type: 'String'},
+    {name: 'typ', type: 'Typ'},
+    {name: 'version', type: 'String'},
+    {name: 'zusatzAttribute', type: 'List<ZusatzAttribut>'}
 ];
 
 const CUSTOM_JAVA_OPTIONS = {
     useList: new EnumOption(
-        "array-type",
-        "Use T[] or List<T>",
+        'array-type',
+        'Use T[] or List<T>',
         [
-            ["array", false],
-            ["list", true]
+            ['array', false],
+            ['list', true]
         ],
-        "list"
+        'list'
     ),
-    justTypes: new BooleanOption("just-types", "Plain types only", true),
+    justTypes: new BooleanOption('just-types', 'Plain types only', true),
     dateTimeProvider: new EnumOption(
-        "datetime-provider",
-        "Date time provider type",
+        'datetime-provider',
+        'Date time provider type',
         [
-            ["java8", "java8"],
-            ["legacy", "legacy"]
+            ['java8', 'java8'],
+            ['legacy', 'legacy']
         ],
-        "java8"
+        'java8'
     ),
     acronymStyle: acronymOption(AcronymStyleOptions.Original),
-    packageName: new StringOption("package", "Generated package name", "NAME", "placeholder"),
-    lombok: new BooleanOption("lombok", "Use lombok", false, "primary"),
-    lombokCopyAnnotations: new BooleanOption("lombok-copy-annotations", "Copy accessor annotations", false, "secondary")
+    packageName: new StringOption('package', 'Generated package name', 'NAME', 'placeholder'),
+    lombok: new BooleanOption('lombok', 'Use lombok', false, 'primary'),
+    lombokCopyAnnotations: new BooleanOption('lombok-copy-annotations', 'Copy accessor annotations', false, 'secondary')
 };
 
 /**
  * the language used for generation, uses custom options
  */
-class NewJavaTargetLanguage extends JavaTargetLanguage {
+class BO4EJavaTargetLanguage extends JavaTargetLanguage {
     constructor() {
         super();
     }
@@ -86,40 +90,127 @@ class NewJavaTargetLanguage extends JavaTargetLanguage {
     }
 }
 
+const optionDefinitions = [
+    {
+        name: 'input',
+        description: 'The input directory that holds the json-schemas and defines the file structure.',
+        alias: 'i',
+        type: String,
+        defaultOption: true,
+        typeLabel: '{underline directory}'
+    },
+    {
+        name: 'output',
+        description: 'The output directory (is created if it does not exist; will be included in package signature).',
+        alias: 'o',
+        type: String,
+        typeLabel: '{underline directory}'
+    },
+    {
+        name: 'package',
+        description: 'Additional packages to add to the classes package signature.',
+        alias: 'p',
+        type: String,
+        multiple: true,
+        typeLabel: '{underline package} ...'
+    },
+    {
+        name: 'annotate',
+        description: 'Use JsonInclude Annotations.',
+        alias: 'a',
+        type: Boolean
+    },
+    {
+      name: 'verbose',
+        description: 'Turn on debugging output.',
+      alias: 'v',
+      type: Boolean
+    },
+    {
+        name: 'quiet',
+        description: 'Silence output.',
+        alias: 'q',
+        type: Boolean
+    },
+    {
+        name: 'help',
+        description: 'Display this usage guide.',
+        alias: 'h',
+        type: Boolean
+    },
+];
+
+const sections = [
+    {
+        header: 'BO4E Java Generator',
+        content: 'Generates java classes implementing the {bold BO4E-Standard}'
+    },
+    {
+        header: 'Synopsis',
+        content: [
+            'node quicktype.js [{underline options}] {bold --output} {underline dir} {bold --input} {underline dir}',
+            'node quicktype.js {bold --help}'
+        ]
+    },
+    {
+        header: 'Options',
+        optionList: optionDefinitions
+    },
+    {
+        header: 'Examples',
+        content: [
+            {
+                desc: '1. Inputs from bo4e_schemas, outputs to bo4e',
+                example: 'node quicktype.js -o bo4e bo4e_schemas'
+            },
+            {
+                desc: '2. Outputs to "api", package will be "de.bo4e.api"',
+                example: 'node quicktype.js -o api bo4e_schemas -p de bo4e'
+            },
+            {
+                desc: '3. Use annotations and enable debug output',
+                example: 'node quicktype.js -avo bo4e bo4e_schemas'
+            }
+        ]
+    },
+    {
+        content: 'Project home: {underline https://github.com/TimoMolls/BO4E-Java-Generator}'
+    }
+];
+
+function log(msg) {
+    if (!QUIET) {
+        console.log(msg);
+    }
+}
+
+function debug(msg) {
+    if (VERBOSE && !QUIET) {
+        console.log(msg);
+    }
+}
+
 /**
  * adjusts global variables based on the command line arguments
  */
 function processCommandLineArguments() {
-    let flags = (process.argv[2] && process.argv[2].length > 1) ? process.argv[2].substring(1).split("") : [];
-    if (flags.includes('m')) {
-        USES_MAVEN = true;
-        console.log("Using Maven");
-        flags = flags.filter(value => value !== "m");
+    const options = commandLineArgs(optionDefinitions);
+    if (options['help']) {
+        console.log(commandLineUsage(sections));
+        process.exit();
     }
-    for (let i = 0; i < flags.length; i++) {
-        if (process.argv[3 + i]) {
-            const value =  process.argv[3 + i].trim();
-            if (!value) continue;
-            switch (flags[i]) {
-                case 'p': {
-                    PACKAGE_NAME = value;
-                    console.log("Using Package: " + PACKAGE_NAME);
-                    PACKAGE_NAME += '.';
-                    break;
-                }
-                case 't': {
-                    TARGET_DIR_NAME = value;
-                    console.log("Using target directory: " + TARGET_DIR_NAME);
-                    break;
-                }
-                case 's': {
-                    SOURCE_DIR_NAME = value;
-                    console.log("Using source directory: " + SOURCE_DIR_NAME);
-                    break;
-                }
-            }
-        }
+    if (!options['input']) {
+        throw new Error('No input directory provided.');
     }
+    if (!options['output']) {
+        throw new Error('No output directory provided.');
+    }
+    SOURCE_DIR_NAME = options['input'];
+    TARGET_DIR_NAME = options['output'];
+    PACKAGE_NAME = options['package'] && options['package'].length > 0 ? options['package'].join('.') + '.' : '';
+    USE_ANNOTATIONS = !!options['annotate'];
+    VERBOSE = !!options['verbose'];
+    QUIET = !!options['quiet'];
 }
 
 /**
@@ -131,25 +222,26 @@ function processCommandLineArguments() {
 function addProperty(allKnowingSchema, file, path) {
     let url = getSchemaUrl(path);
     if (url) {
-        if (CURRENT_VERSION === "") {
+        if (CURRENT_VERSION === '') {
             CURRENT_VERSION = getVersion(url);
-            console.log("Using version: " + CURRENT_VERSION);
+            log('Using version: ' + CURRENT_VERSION);
         }
-        if (URL_TEMPLATE === "") {
+        if (URL_TEMPLATE === '') {
             URL_TEMPLATE = getUrlTemplate(url);
-            console.log("Using template: " + URL_TEMPLATE);
+            log('Using template: ' + URL_TEMPLATE);
         }
     }
-    if (URL_TEMPLATE === "") {
-        console.log("Could not find template, using default")
-        url = "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/" + path;
-    } else {
+    if (URL_TEMPLATE === '') {
+        log('Could not find template, using default');
+        url = 'https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/' + path;
+    }
+    else {
         url = URL_TEMPLATE + path;
     }
-    const propertyName = file.replace(".json", "");
+    const propertyName = file.replace('.json', '');
     const newProperty = createProperty(propertyName.toLowerCase(), url);
     allKnowingSchema.push(newProperty);
-    console.log("Property " + propertyName + " added");
+    debug('Property ' + propertyName + ' added');
 }
 
 /**
@@ -159,17 +251,17 @@ function addProperty(allKnowingSchema, file, path) {
  * @return {string} the property to add to the allKnowingSchema
  */
 function createProperty(propertyName, propertyUrl) {
-    return "        },\n" +
-        "        \"" + propertyName + "\": {\n" +
-        "            \"anyOf\": [\n" +
-        "                {\n" +
-        "                    \"$ref\": \"" + propertyUrl + "\"\n" +
-        "                },\n" +
-        "                {\n" +
-        "                    \"type\": \"null\"\n" +
-        "                }\n" +
-        "            ],\n" +
-        "            \"default\": null\n";
+    return '        },\n' +
+        '        "' + propertyName + '": {\n' +
+        '            "anyOf": [\n' +
+        '                {\n' +
+        '                    "$ref": "' + propertyUrl + '"\n' +
+        '                },\n' +
+        '                {\n' +
+        '                    "type": "null"\n' +
+        '                }\n' +
+        '            ],\n' +
+        '            "default": null\n';
 }
 
 /**
@@ -178,14 +270,13 @@ function createProperty(propertyName, propertyUrl) {
  * @return {undefined|string} the url of the json-schema
  */
 function getSchemaUrl(path) {
-    const line = fs.readFileSync(path, "utf-8")
-        .split("\n")
-        .find(line => line.trim().startsWith("\"description\":") && line.includes("https://raw.githubusercontent"));
+    const line = fs.readFileSync(path, 'utf-8')
+        .split('\n')
+        .find(line => line.trim().startsWith('"description":') && line.includes('https://raw.githubusercontent'));
     if (line) {
-        return line.match(RegExp("https://raw\.githubusercontent.*\.json"))["0"];
-    } else {
-        return undefined;
+        return line.match(RegExp('https://raw\.githubusercontent.*\.json'))['0'];
     }
+    return undefined;
 }
 
 /**
@@ -194,9 +285,9 @@ function getSchemaUrl(path) {
  * @return {string} the template for json-schema urls
  */
 function getUrlTemplate(url) {
-    const beginning = url.substring(0, url.indexOf("BO4E-Schemas/")) + "BO4E-Schemas/v"
-    const end = url.substring(url.indexOf("/src/"), url.indexOf("bo4e_schemas/"));
-    return beginning + CURRENT_VERSION + end
+    const beginning = url.substring(0, url.indexOf('BO4E-Schemas/')) + 'BO4E-Schemas/v';
+    const end = url.substring(url.indexOf('/src/'), url.indexOf('bo4e_schemas/'));
+    return beginning + CURRENT_VERSION + end;
 }
 
 /**
@@ -206,16 +297,18 @@ function getUrlTemplate(url) {
  */
 function getVersion(url) {
     try {
-        const tmp = url.match(RegExp("/v[0-9]*\.[0-9]*\.[0-9]*.*/src"))["0"]
-            .replace("/v", "")
-            .replace("/src", "");
-        if (tmp.endsWith("-")) {
+        const tmp = url.match(RegExp('/v[0-9]*\.[0-9]*\.[0-9]*.*/src'))['0']
+            .replace('/v', '')
+            .replace('/src', '');
+        if (tmp.endsWith('-')) {
             return tmp.substring(0, tmp.length - 1);
-        } else {
+        }
+        else {
             return tmp;
         }
-    } catch (err) {
-        return "";
+    }
+    catch (err) {
+        return '';
     }
 }
 
@@ -230,18 +323,19 @@ function addToSchema(allKnowingSchema, source = SOURCE_DIR_NAME, fileMap = new M
     const files = fs.readdirSync(source);
     for (const file of files) {
         const path = source + '/' + file;
-        const targetPath = path.replace(SOURCE_DIR_NAME, TARGET_DIR_NAME).replace("enum", "enums");
+        const targetPath = path.replace(SOURCE_DIR_NAME, TARGET_DIR_NAME).replace('enum', 'enums');
         if (fs.statSync(path).isFile()) {
             addProperty(allKnowingSchema, file, path);
-            const fileName = file.replace(".json", "");
+            const fileName = file.replace('.json', '');
             const fileData = {
                 jsonFileName: fileName,
                 jsonFilePath: source,
                 javaFileName: fileName,
-                javaFilePath: targetPath.replace("/" + file, "")
-            }
-            fileMap.set(file.replace(".json", "").toLowerCase(), fileData);
-        } else {
+                javaFilePath: targetPath.replace('/' + file, '')
+            };
+            fileMap.set(file.replace('.json', '').toLowerCase(), fileData);
+        }
+        else {
             fs.mkdirSync(targetPath);
             fileMap = addToSchema(allKnowingSchema, path, fileMap);
         }
@@ -254,29 +348,29 @@ function addToSchema(allKnowingSchema, source = SOURCE_DIR_NAME, fileMap = new M
  * @return {string[]} an array containing the beginning and the end of the schema, leaving space to add properties
  */
 function generateAllKnowingSchema() {
-    return ["{\n" +
-    "  \"additionalProperties\": true,\n" +
-    "  \"description\": \"Alles auf einen Blick\",\n" +
-    "  \"properties\": {\n" +
-    "    \"stringOderNummer\": {\n" +
-    "      \"anyOf\": [\n" +
-    "        {\n" +
-    "          \"type\": \"number\"\n" +
-    "        },\n" +
-    "        {\n" +
-    "          \"type\": \"string\"\n" +
-    "        },\n" +
-    "        {\n" +
-    "          \"type\": \"null\"\n" +
-    "        }\n" +
-    "      ],\n" +
-    "      \"default\": null,\n" +
-    "      \"title\": \"StringOderNummer\"\n",
-        "    }\n" +
-        "  },\n" +
-        "  \"title\": \"AllKnowing\",\n" +
-        "  \"type\": \"object\"\n" +
-        "}"]
+    return ['{\n' +
+    '  "additionalProperties": true,\n' +
+    '  "description": "Alles auf einen Blick",\n' +
+    '  "properties": {\n' +
+    '    "stringOderNummer": {\n' +
+    '      "anyOf": [\n' +
+    '        {\n' +
+    '          "type": "number"\n' +
+    '        },\n' +
+    '        {\n' +
+    '          "type": "string"\n' +
+    '        },\n' +
+    '        {\n' +
+    '          "type": "null"\n' +
+    '        }\n' +
+    '      ],\n' +
+    '      "default": null,\n' +
+    '      "title": "StringOderNummer"\n',
+        '    }\n' +
+        '  },\n' +
+        '  "title": "AllKnowing",\n' +
+        '  "type": "object"\n' +
+        '}'];
 }
 
 /**
@@ -287,12 +381,12 @@ function generateAllKnowingSchema() {
  */
 function getFieldDescription(classBody, fieldName) {
     const methodIndex = classBody.findIndex(value => value.trim().toLowerCase().includes(`get${fieldName.toLowerCase()}()`));
-    if (classBody[methodIndex - 1].trim().startsWith("*/")) {
+    if (classBody[methodIndex - 1].trim().startsWith('*/')) {
         let j = 2;
-        while (!classBody[methodIndex - j].trim().startsWith("/*")) {
+        while (!classBody[methodIndex - j].trim().startsWith('/*')) {
             j++;
         }
-        return classBody.slice(methodIndex - j, methodIndex).join("\n");
+        return classBody.slice(methodIndex - j, methodIndex).join('\n');
     }
     return undefined;
 }
@@ -307,9 +401,9 @@ function getClassFields(classBody) {
     for (let i = 0; i < classBody.length; i++) {
         const line = classBody[i];
         const trimmed_line = line.trim();
-        if (trimmed_line.startsWith("private")) {
-            const fieldElements = trimmed_line.split(" ");
-            const fieldName = fieldElements[2].replace(";", "");
+        if (trimmed_line.startsWith('private')) {
+            const fieldElements = trimmed_line.split(' ');
+            const fieldName = fieldElements[2].replace(';', '');
             const field = {
                 name: fieldName,
                 type: fieldElements[1],
@@ -318,7 +412,7 @@ function getClassFields(classBody) {
             fieldList.push(field);
         }
     }
-    return fieldList
+    return fieldList;
 }
 
 /**
@@ -327,10 +421,10 @@ function getClassFields(classBody) {
  * @return the fieldList without the fields belonging to the parent class
  */
 function removeParentClassFields(fieldList) {
-    const hasOwnVersionProperty = fieldList.slice(0, PARENT_FIELDS.length).findIndex(value => value.name === "version") < 0;
+    const hasOwnVersionProperty = fieldList.slice(0, PARENT_FIELDS.length).findIndex(value => value.name === 'version') < 0;
     let fieldFilter = PARENT_FIELDS.map(value => value.name);
     if (hasOwnVersionProperty) {
-        fieldFilter = fieldFilter.filter(value => value !== "version")
+        fieldFilter = fieldFilter.filter(value => value !== 'version');
     }
     return fieldList.filter(value => !fieldFilter.includes(value.name));
 }
@@ -341,12 +435,13 @@ function removeParentClassFields(fieldList) {
  * @return {string[]} a list containing the fields as java statements
  */
 function turnFieldListToJava(fieldList) {
-    const javaList = []
+    const javaList = [];
     for (const field of fieldList) {
-        if (field.type === "Typ") {
-            javaList.push(`    private final ${field.type} ${field.name};`);
-        } else {
-            javaList.push(`    private ${field.type} ${field.name};`);
+        if (field.type === 'Typ') {
+            javaList.push(`private final ${field.type} ${field.name};`);
+        }
+        else {
+            javaList.push(`private ${field.type} ${field.name};`);
         }
     }
     return javaList;
@@ -359,9 +454,9 @@ function turnFieldListToJava(fieldList) {
  * @return {string} the head of the java class with inheritance
  */
 function addParentToClass(classHead, classDirPath) {
-    const obj = MISSING_PARENT_CLASSES.find(value => (classDirPath + "/").endsWith(value.pathToFile));
+    const obj = MISSING_PARENT_CLASSES.find(value => (classDirPath + '/').endsWith(value.pathToFile));
     if (obj !== undefined && !classHead.includes(obj.fileName)) {
-        classHead = classHead.replace(" {", ` extends ${obj.fileName} {`);
+        classHead = classHead.replace(' {', ` extends ${obj.fileName} {`);
     }
     return classHead;
 }
@@ -375,29 +470,34 @@ function addParentToClass(classHead, classDirPath) {
  */
 function getJavaMethod(field, addSetter = false, builderName = undefined) {
     const fieldName = field.name.charAt(0).toUpperCase() + field.name.slice(1);
-    const lines = []
-    if (field.description !== undefined) {
-        lines.push(field.description);
-    }
-    lines.push(`    public ${field.type} get${fieldName}() {`);
-    lines.push(`        return ${field.name};`);
-    lines.push(`    }`);
-    if (addSetter) {
-        lines.push("");
+    const lines = [];
+    if (builderName !== undefined) {
         if (field.description !== undefined) {
             lines.push(field.description);
         }
-        if (builderName !== undefined) {
-            lines.push(`    public ${builderName} set${fieldName}(${field.type} ${field.name}) {`);
-            lines.push(`        this.${field.name} = ${field.name};`);
-            lines.push(`        return this;`);
-        } else {
-            lines.push(`    public void set${fieldName}(${field.type} ${field.name}) {`);
-            lines.push(`        this.${field.name} = ${field.name};`);
-        }
-        lines.push(`    }`);
+        lines.push(`public ${builderName} set${fieldName}(${field.type} ${field.name}) {`);
+        lines.push(`this.${field.name} = ${field.name};`);
+        lines.push(`return this;`);
+        lines.push(`}`);
     }
-    return lines.join("\n");
+    else {
+        if (field.description !== undefined) {
+            lines.push(field.description);
+        }
+        lines.push(`public ${field.type} get${fieldName}() {`);
+        lines.push(`return ${field.name};`);
+        lines.push(`}`);
+        if (addSetter) {
+            lines.push('');
+            if (field.description !== undefined) {
+                lines.push(field.description);
+            }
+            lines.push(`public void set${fieldName}(${field.type} ${field.name}) {`);
+            lines.push(`this.${field.name} = ${field.name};`);
+            lines.push(`}`);
+        }
+    }
+    return lines.join('\n');
 }
 
 /**
@@ -408,12 +508,12 @@ function getJavaMethod(field, addSetter = false, builderName = undefined) {
  */
 function overwriteParentSetter(field, builderName) {
     const fieldName = field.name.charAt(0).toUpperCase() + field.name.slice(1);
-    const lines = []
-    lines.push(`    public ${builderName} set${fieldName}(${field.type} ${field.name}) {`);
-    lines.push(`        super.set${fieldName}(${field.name});`);
-    lines.push(`        return this;`);
-    lines.push(`    }`);
-    return lines.join("\n");
+    const lines = [];
+    lines.push(`public ${builderName} set${fieldName}(${field.type} ${field.name}) {`);
+    lines.push(`super.set${fieldName}(${field.name});`);
+    lines.push(`return this;`);
+    lines.push(`}`);
+    return lines.join('\n');
 }
 
 /**
@@ -425,8 +525,8 @@ function overwriteParentSetter(field, builderName) {
 function getJavaMethods(fieldList, builderName = undefined) {
     const methodList = [];
     for (const field of fieldList) {
-        methodList.push("")
-        methodList.push(getJavaMethod(field, true, builderName))
+        methodList.push('');
+        methodList.push(getJavaMethod(field, true, builderName));
     }
     return methodList;
 }
@@ -439,12 +539,12 @@ function getJavaMethods(fieldList, builderName = undefined) {
  * @param classDirPath {string} path to the directory containing the java class
  */
 function addImports(fieldType, fileMap, importList, classDirPath) {
-    if (fieldType.startsWith("List<") && fieldType.endsWith(">")) {
-        fieldType = fieldType.substring("List<".length, fieldType.length - 1);
+    if (fieldType.startsWith('List<') && fieldType.endsWith('>')) {
+        fieldType = fieldType.substring('List<'.length, fieldType.length - 1);
     }
     const importData = fileMap.get(fieldType.toLowerCase());
     if (importData !== undefined && importData.javaFilePath !== classDirPath) {
-        const importPackage = PACKAGE_NAME + importData.javaFilePath.replaceAll("/", ".");
+        const importPackage = PACKAGE_NAME + importData.javaFilePath.replaceAll('/', '.');
         const importString = `import ${importPackage}.${importData.javaFileName};`;
         if (!importList.includes(importString)) {
             importList.push(importString);
@@ -463,22 +563,22 @@ function addImports(fieldType, fileMap, importList, classDirPath) {
 function getImports(fieldList, fileData, fileMap, hasParent) {
     const classPath = fileData.javaFilePath;
     const importList = [];
-    if (USES_MAVEN) {
-        importList.push("import com.fasterxml.jackson.annotation.JsonInclude;");
+    if (USE_ANNOTATIONS) {
+        importList.push('import com.fasterxml.jackson.annotation.JsonInclude;');
     }
     for (const field of fieldList) {
         addImports(field.type, fileMap, importList, classPath);
     }
     if (hasParent) {
         for (const parentField of PARENT_FIELDS) {
-            if (parentField.name !== "typ" && parentField.name !== "version") {
+            if (parentField.name !== 'typ' && parentField.name !== 'version') {
                 addImports(parentField.type, fileMap, importList, classPath);
             }
         }
     }
     if (importList.length > 0) {
         importList.sort();
-        importList.unshift("");
+        importList.unshift('');
     }
     return importList;
 }
@@ -490,23 +590,23 @@ function getImports(fieldList, fileData, fileMap, hasParent) {
  * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}} information about the file containing the java class
  */
 function addTypeToFieldsAndMethods(fieldList, javaMethodList, fileData) {
-    const file = fs.readFileSync(fileData.jsonFilePath + "/" + fileData.jsonFileName + ".json", "utf-8").replaceAll(" ", "").split("\n");
+    const file = fs.readFileSync(fileData.jsonFilePath + '/' + fileData.jsonFileName + '.json', 'utf-8').replaceAll(' ', '').split('\n');
     let type = fileData.jsonFileName.toUpperCase();
     const hasExpectedType = file.findIndex(value => value.startsWith(`"default":"${type}"`)) !== -1;
     if (!hasExpectedType) {
-        console.log("Unexpected type in: " + fileData.jsonFileName);
-        const typeIndex = file.findIndex(value => value.startsWith("\"_typ\":"));
-        const typeDefault = file.find((value, index) => index > typeIndex && value.startsWith("\"default\":"));
+        debug('Unexpected type in: ' + fileData.jsonFileName);
+        const typeIndex = file.findIndex(value => value.startsWith('"_typ":'));
+        const typeDefault = file.find((value, index) => index > typeIndex && value.startsWith('"default":'));
         if (typeDefault !== undefined) {
-            type = typeDefault.split(":").at(1).replaceAll("\"", "").replace(",", "")
+            type = typeDefault.split(':').at(1).replaceAll('"', '').replace(',', '');
         }
     }
     const field = {
         name: `typ = Typ.${type}`,
-        type: "Typ",
-        description: "    /**\n     * Typ des Geschaeftsobjekts\n     */"
-    }
-    javaMethodList.unshift("", getJavaMethod({name: "typ", type: "Typ"}));
+        type: 'Typ',
+        description: '/**\n* Typ des Geschaeftsobjekts\n*/'
+    };
+    javaMethodList.unshift('', getJavaMethod({name: 'typ', type: 'Typ'}));
     fieldList.unshift(field);
 }
 
@@ -519,32 +619,32 @@ function addTypeToFieldsAndMethods(fieldList, javaMethodList, fileData) {
  * @return {string} a string containing the java classes inner builder class
  */
 function getBuilderClass(classHead, fieldList, fileData, hasParent) {
-    const builderName = fileData.javaFileName + "Builder";
-    let builderHead = classHead.replace("public", "public static")
-        .replace(fileData.javaFileName, builderName)
+    const builderName = fileData.javaFileName + 'Builder';
+    let builderHead = classHead.replace('public', 'public static')
+        .replace(fileData.javaFileName, builderName);
     for (const {fileName} of MISSING_PARENT_CLASSES) {
         builderHead = builderHead.replace(`${fileName} {`, `${fileName}Builder {`);
     }
     const builderFieldList = turnFieldListToJava(fieldList);
     const builderMethods = getJavaMethods(fieldList, builderName);
-    const builderConstructor = [""]
-    builderConstructor.push(`    private ${builderName}() {`);
-    builderConstructor.push("    }");
+    const builderConstructor = [''];
+    builderConstructor.push(`private ${builderName}() {`);
+    builderConstructor.push('}');
     if (hasParent) {
         for (const parentField of PARENT_FIELDS) {
-            if (parentField.name !== "typ" && parentField.name !== "version") {
-                builderMethods.push("");
+            if (parentField.name !== 'typ' && parentField.name !== 'version') {
+                builderMethods.push('');
                 builderMethods.push(overwriteParentSetter(parentField, builderName));
             }
         }
     }
-    builderMethods.push("");
-    builderMethods.push(`    public ${fileData.javaFileName} build() {`);
-    builderMethods.push(`        return new ${fileData.javaFileName}(this);`);
-    builderMethods.push("    }");
-    return ["\n" + builderHead].concat(builderFieldList, builderConstructor, builderMethods, "}")
-        .join("\n").replaceAll("\n", "\n    ").split("\n")
-        .map(value => value.trimEnd()).join("\n");
+    builderMethods.push('');
+    builderMethods.push(`public ${fileData.javaFileName} build() {`);
+    builderMethods.push(`return new ${fileData.javaFileName}(this);`);
+    builderMethods.push('}');
+    return ['\n' + builderHead].concat(builderFieldList, builderConstructor, builderMethods, '}')
+        .join('\n').split('\n')
+        .map(value => value.trimEnd()).join('\n');
 }
 
 /**
@@ -555,18 +655,41 @@ function getBuilderClass(classHead, fieldList, fileData, hasParent) {
  * @return {string} a string containing the constructor(s)
  */
 function getJavaConstructor(fieldList, fileData, hasParent) {
-    const constructor = [""]
+    const constructor = [''];
     constructor.push(`public ${fileData.javaFileName}() {`);
-    constructor.push("}\n");
+    constructor.push('}\n');
     constructor.push(`private ${fileData.javaFileName}(${fileData.javaFileName}Builder builder) {`);
     if (hasParent) {
-        constructor.push("    super(builder);");
+        constructor.push('super(builder);');
     }
     for (const field of fieldList) {
-        constructor.push(`    this.${field.name} = builder.${field.name};`);
+        constructor.push(`this.${field.name} = builder.${field.name};`);
     }
-    constructor.push("}")
-    return constructor.join("\n    ");
+    constructor.push('}');
+    return constructor.join('\n');
+}
+
+/**
+ * adds indentation to the java class
+ * @param classString {string} the java class as a single string
+ * @return {string} the input classString, now with indentation
+ */
+function addIndentation(classString) {
+    const classLines = classString.split('\n');
+    let counter = 0;
+    for (let i = 0; i < classLines.length; i++) {
+        if (classLines[i].trim() === '') {
+            continue;
+        }
+        if (counter > 0 && classLines[i].includes('}')) {
+            counter--;
+        }
+        classLines[i] = '    '.repeat(counter) + classLines[i].trim();
+        if (classLines[i].includes('{')) {
+            counter++;
+        }
+    }
+    return classLines.join('\n');
 }
 
 /**
@@ -577,39 +700,39 @@ function getJavaConstructor(fieldList, fileData, hasParent) {
  * @return {string} the improved content of the java class as a single string
  */
 function completeJavaFile(contentList, fileData, fileMap) {
-    const classFoot = "}";
-    const newPackageName = PACKAGE_NAME + fileData.javaFilePath.replaceAll("/", ".");
-    const newPackage = contentList[0].replace("placeholder", newPackageName);
-    const classIndex = contentList.findIndex(value => value.startsWith("public class"));
+    const classFoot = '}';
+    const newPackageName = PACKAGE_NAME + fileData.javaFilePath.replaceAll('/', '.');
+    const newPackage = contentList[0].replace('placeholder', newPackageName);
+    const classIndex = contentList.findIndex(value => value.startsWith('public class'));
     if (classIndex < 0) {
-        return [newPackage].concat(contentList.slice(1, contentList.length)).join("\n");
+        return [newPackage].concat(contentList.slice(1, contentList.length)).join('\n');
     }
     const header = contentList.slice(1, classIndex);
-    let classHead = "";
-    if (USES_MAVEN) {
-        classHead += "@JsonInclude(JsonInclude.Include.NON_NULL)\n";
+    let classHead = '';
+    if (USE_ANNOTATIONS) {
+        classHead += '@JsonInclude(JsonInclude.Include.NON_NULL)\n';
     }
     classHead += addParentToClass(contentList[classIndex], fileData.javaFilePath);
-    const hasParent = classHead.includes("extends");
+    const hasParent = classHead.includes('extends');
     const classBody = contentList.slice(classIndex + 1, contentList.length - 1);
     let fieldList = getClassFields(classBody);
     if (fieldList.length > PARENT_FIELDS.length) {
         fieldList = removeParentClassFields(fieldList);
     }
     const javaMethodList = getJavaMethods(fieldList);
-    javaMethodList.push("");
-    const javaStaticBuilderMethod = getJavaMethod({name: "builder", type: `static ${fileData.javaFileName}Builder`})
-        .replace("builder", `new ${fileData.javaFileName}Builder()`)
-        .replace("getBuilder", "builder");
+    javaMethodList.push('');
+    const javaStaticBuilderMethod = getJavaMethod({name: 'builder', type: `static ${fileData.javaFileName}Builder`})
+        .replace('builder', `new ${fileData.javaFileName}Builder()`)
+        .replace('getBuilder', 'builder');
     const javaConstructor = getJavaConstructor(fieldList, fileData, hasParent);
     const builderClass = getBuilderClass(classHead, fieldList, fileData, hasParent);
-    if (fileData.javaFilePath.endsWith("/bo")) {
+    if (fileData.javaFilePath.endsWith('/bo')) {
         addTypeToFieldsAndMethods(fieldList, javaMethodList, fileData);
     }
     const javaFieldList = turnFieldListToJava(fieldList);
     const importList = getImports(fieldList, fileData, fileMap, hasParent);
     const newClass = [newPackage].concat(importList, header, classHead, javaFieldList, javaConstructor, javaMethodList, javaStaticBuilderMethod, builderClass, classFoot);
-    return newClass.join("\n");
+    return addIndentation(newClass.join('\n'));
 }
 
 /**
@@ -617,24 +740,24 @@ function completeJavaFile(contentList, fileData, fileMap) {
  * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} maps lowercase fileName to fileData
  */
 function restoreMissingFiles(fileMap) {
-    const zaImport = PACKAGE_NAME + fileMap.get("zusatzattribut").javaFilePath.replaceAll("/", ".");
-    const typImport = PACKAGE_NAME + fileMap.get("typ").javaFilePath.replaceAll("/", ".");
+    const zaImport = PACKAGE_NAME + fileMap.get('zusatzattribut').javaFilePath.replaceAll('/', '.');
+    const typImport = PACKAGE_NAME + fileMap.get('typ').javaFilePath.replaceAll('/', '.');
     MISSING_PARENT_CLASSES.forEach(({fileName, pathToFile}) => {
         if (!fileMap.has(fileName.toLowerCase())) {
-            const javaFileName = fileName + ".java";
-            const classPackage = PACKAGE_NAME + TARGET_DIR_NAME + "." + pathToFile.substring(0, pathToFile.length - 1).replace("/", ".");
-            let fileContent = fs.readFileSync("resource_schemas/" + javaFileName, "utf-8");
-            if (USES_MAVEN) {
+            const javaFileName = fileName + '.java';
+            const classPackage = PACKAGE_NAME + TARGET_DIR_NAME + '.' + pathToFile.substring(0, pathToFile.length - 1).replace('/', '.');
+            let fileContent = fs.readFileSync('resource_schemas/' + javaFileName, 'utf-8');
+            if (USE_ANNOTATIONS) {
                 fileContent = fileContent
-                    .replace("public abstract class", "@JsonInclude(JsonInclude.Include.NON_NULL)\npublic abstract class")
-                    .replace("import typImportPlaceholder", "import com.fasterxml.jackson.annotation.JsonInclude;\nimport typImportPlaceholder");
+                    .replace('public abstract class', '@JsonInclude(JsonInclude.Include.NON_NULL)\npublic abstract class')
+                    .replace('import typImportPlaceholder', 'import com.fasterxml.jackson.annotation.JsonInclude;\nimport typImportPlaceholder');
             }
             fileContent = fileContent
-                .replace("packagePlaceholder", classPackage)
-                .replace("zaImportPlaceholder", zaImport)
-                .replace("typImportPlaceholder", typImport)
-                .replace("versionPlaceholder", `"${CURRENT_VERSION}"`);
-            fs.writeFileSync(TARGET_DIR_NAME + "/" + pathToFile + javaFileName, fileContent);
+                .replace('packagePlaceholder', classPackage)
+                .replace('zaImportPlaceholder', zaImport)
+                .replace('typImportPlaceholder', typImport)
+                .replace('versionPlaceholder', `"${CURRENT_VERSION}"`);
+            fs.writeFileSync(TARGET_DIR_NAME + '/' + pathToFile + javaFileName, fileContent);
         }
     });
 }
@@ -643,7 +766,7 @@ function restoreMissingFiles(fileMap) {
  * provides the data required for generation and output
  * @return {{inputData: InputData, fileMap: Map<string, {jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>}} the data used for generation and output
  */
-function setUp() {
+function readInputData() {
     if (fs.existsSync(TARGET_DIR_NAME)) {
         fs.rmSync(TARGET_DIR_NAME, {recursive: true});
     }
@@ -659,12 +782,12 @@ function setUp() {
     const inputData = new InputData();
     const schemaInput = new JSONSchemaInput(new FetchingJSONSchemaStore());
     schemaInput.addSourceSync({
-        name: "StringOderNummer",
-        schema: fs.readFileSync("resource_schemas/StringOderNummerTyp.json", "utf-8")
+        name: 'StringOderNummer',
+        schema: fs.readFileSync('resource_schemas/StringOderNummerTyp.json', 'utf-8')
     });
-    schemaInput.addSourceSync({name: "AllKnowing", schema: schema});
+    schemaInput.addSourceSync({name: 'AllKnowing', schema: schema});
     inputData.addInput(schemaInput);
-    return {inputData, fileMap}
+    return {inputData, fileMap};
 }
 
 /**
@@ -673,15 +796,15 @@ function setUp() {
  * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} Maps lowercase fileName to fileData
  * @return {number} Amount of written files
  */
-function output(javaClasses, fileMap) {
+function writeOutputData(javaClasses, fileMap) {
     let writtenFilesAmount = 0;
     javaClasses.forEach((javaClass, className) => {
-        const searchName = className.replace(".java", "").toLowerCase();
+        const searchName = className.replace('.java', '').toLowerCase();
         const fileData = fileMap.get(searchName);
         if (fileData) {
-            fileData.javaFileName = className.replace(".java", "");
+            fileData.javaFileName = className.replace('.java', '');
             const content = completeJavaFile(javaClass.lines, fileData, fileMap);
-            fs.writeFileSync(fileData.javaFilePath + "/" + className, content);
+            fs.writeFileSync(fileData.javaFilePath + '/' + className, content);
             writtenFilesAmount++;
         }
     });
@@ -689,19 +812,23 @@ function output(javaClasses, fileMap) {
 }
 
 function main() {
-    console.log("Preparing generation");
     processCommandLineArguments();
-    const {inputData, fileMap} = setUp();
+    log('Reading...');
+    log(`Using source directory: ${SOURCE_DIR_NAME}`);
+    log(`Using target directory: ${TARGET_DIR_NAME}`);
+    log(`Using package: ${PACKAGE_NAME ? PACKAGE_NAME + TARGET_DIR_NAME : TARGET_DIR_NAME}`);
+    log(`Using annotations: ${USE_ANNOTATIONS}`);
+    const {inputData, fileMap} = readInputData();
     const readFilesAmount = fileMap.size;
-    console.log("Starting generation");
+    log('Generating...');
     quicktypeMultiFile({
         inputData,
-        lang: new NewJavaTargetLanguage(),
+        lang: new BO4EJavaTargetLanguage(),
         allPropertiesOptional: false
     }).then(javaClasses => {
-        console.log("Starting output");
-        const writtenFilesAmount = output(javaClasses, fileMap);
-        console.log(`Finished: ${writtenFilesAmount}/${readFilesAmount}`)
+        log('Writing...');
+        const writtenFilesAmount = writeOutputData(javaClasses, fileMap);
+        log(`Finished: ${writtenFilesAmount}/${readFilesAmount}`);
     });
 }
 

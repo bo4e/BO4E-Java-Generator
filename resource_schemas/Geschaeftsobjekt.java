@@ -24,9 +24,6 @@ public abstract class Geschaeftsobjekt {
     private final String boVersion = versionPlaceholder;
     private List<ZusatzAttribut> zusatzAttribute;
 
-    public Geschaeftsobjekt() {
-    }
-
     protected Geschaeftsobjekt(GeschaeftsobjektBuilder builder) {
         this.id = builder.id;
         this.zusatzAttribute = builder.zusatzAttribute;
@@ -75,20 +72,9 @@ public abstract class Geschaeftsobjekt {
         /**
          * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
          */
-        public String getId() {
-            return id;
-        }
-
-        /**
-         * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
-         */
         public GeschaeftsobjektBuilder setId(String value) {
             this.id = value;
             return this;
-        }
-
-        public List<ZusatzAttribut> getZusatzAttribute() {
-            return zusatzAttribute;
         }
 
         public GeschaeftsobjektBuilder setZusatzAttribute(List<ZusatzAttribut> value) {

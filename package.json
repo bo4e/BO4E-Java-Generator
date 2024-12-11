@@ -2,6 +2,8 @@
   "name": "api-generator-test",
   "version": "1.0.0",
   "dependencies": {
+    "command-line-args": "^6.0.1",
+    "command-line-usage": "^7.0.3",
     "octokit": "^3.1.2",
     "quicktype-core": "^23.0.81"
   }

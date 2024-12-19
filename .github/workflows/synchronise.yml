@@ -24,7 +24,7 @@ jobs:
         env:
           TOKEN: ${{ secrets.CREATE_RELEASE_TOKEN }}
         run: |
-          TAG=`node sync_releases.js -o "TimoMolls" -r "BO4E-Java" -a $TOKEN --input-owner "bo4e" --input-repo "BO4E-Schemas" | tr -d "v"`
+          TAG=`node sync_releases.js -o "TimoMolls" -r "BO4E-Java" -a $TOKEN --input-owner "bo4e" --input-repo "BO4E-Schemas"`
           echo $TAG
           echo "TAGNAME=$TAG" >> "$GITHUB_OUTPUT"
   call_workflow:
@@ -32,7 +32,7 @@ jobs:
     if: ${{ needs.synchronisation.outputs.tagname != '' && needs.synchronisation.outputs.tagname != 'none' }}
     uses: ./.github/workflows/generate.yml
     with:
-      version: ${{ needs.synchronisation.outputs.tagname }}
+      tag: ${{ needs.synchronisation.outputs.tagname }}
     secrets:
       ACCESS_TOKEN_JAVA_API: ${{ secrets.ACCESS_TOKEN_JAVA_API }}
       CREATE_RELEASE_TOKEN: ${{ secrets.CREATE_RELEASE_TOKEN }}

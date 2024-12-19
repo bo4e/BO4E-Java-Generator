@@ -29,7 +29,7 @@ jobs:
           echo "TAGNAME=$TAG" >> "$GITHUB_OUTPUT"
   call_workflow:
     needs: synchronisation
-    if: ${{ needs.synchronisation.outputs.tagname != 'none' }}
+    if: ${{ needs.synchronisation.outputs.tagname != '' && needs.synchronisation.outputs.tagname != 'none' }}
     uses: ./.github/workflows/generate.yml
     with:
       version: ${{ needs.synchronisation.outputs.tagname }}

@@ -24,7 +24,7 @@ jobs:
         env:
           TOKEN: ${{ secrets.CREATE_RELEASE_TOKEN }}
         run: |
-          TAG=`node ./sync_releases.js $TOKEN | tr -d "v"`
+          TAG=`node sync_releases.js -o "TimoMolls" -r "BO4E-Java" -a $TOKEN --input-owner "bo4e" --input-repo "BO4E-Schemas" | tr -d "v"`
           echo $TAG
           echo "TAGNAME=$TAG" >> "$GITHUB_OUTPUT"
   call_workflow:

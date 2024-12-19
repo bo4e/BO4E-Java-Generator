@@ -9,15 +9,26 @@ const {JacksonRenderer} = require('quicktype-core/dist/language/Java');
 const {SerializedRenderResult} = require('quicktype-core/dist/Source');
 const commandLineArgs = require('command-line-args');
 const commandLineUsage = require('command-line-usage');
+const {Octokit} = require('octokit');
+const decompress = require('decompress');
 
 let CURRENT_VERSION = '';
-let PACKAGE_NAME = '';
-let TARGET_DIR_NAME = 'bo4e';
-let SOURCE_DIR_NAME = 'bo4e_schemas';
 let URL_TEMPLATE = '';
+
+let PACKAGE_NAME = '';
+let TARGET_DIR_PATH = '';
+let SOURCE_DIR_PATH = '';
 let USE_ANNOTATIONS = false;
 let VERBOSE = false;
 let QUIET = false;
+let REMOVE = false;
+let CREATE = false;
+let KEEP = false;
+
+const OCTOKIT = new Octokit();
+const ZIP_PATH = "temp.zip";
+const DIR_PATH = "temp";
+const SCHEMA_DIR = 'temp_schemas';
 
 /**
  * array containing potentially missing parent classes and their path
@@ -93,26 +104,44 @@ class BO4EJavaTargetLanguage extends JavaTargetLanguage {
 const optionDefinitions = [
     {
         name: 'input',
-        description: 'The input directory that holds the json-schemas and defines the file structure.',
+        description: 'Path to the input directory that holds the json-schemas and defines the file structure.',
         alias: 'i',
         type: String,
         defaultOption: true,
-        typeLabel: '{underline directory}'
+        typeLabel: '{underline path}'
     },
     {
         name: 'output',
-        description: 'The output directory (is created if it does not exist; will be included in package signature).',
+        description: 'Path to the output directory (will be included in package signature).',
         alias: 'o',
         type: String,
-        typeLabel: '{underline directory}'
+        typeLabel: '{underline path}'
     },
     {
         name: 'package',
-        description: 'Additional packages to add to the classes package signature.',
+        description: 'Additional packages to add to the package signature.',
         alias: 'p',
         type: String,
         multiple: true,
         typeLabel: '{underline package} ...'
+    },
+    {
+        name: 'keep',
+        description: 'Prevent overwriting of existing files',
+        alias: 'k',
+        type: Boolean
+    },
+    {
+        name: 'remove',
+        description: 'Delete all existing files in output directory.',
+        alias: 'r',
+        type: Boolean
+    },
+    {
+        name: 'create',
+        description: 'Create output directory if it does not exist.',
+        alias: 'c',
+        type: Boolean
     },
     {
         name: 'annotate',
@@ -121,10 +150,10 @@ const optionDefinitions = [
         type: Boolean
     },
     {
-      name: 'verbose',
+        name: 'verbose',
         description: 'Turn on debugging output.',
-      alias: 'v',
-      type: Boolean
+        alias: 'v',
+        type: Boolean
     },
     {
         name: 'quiet',
@@ -137,7 +166,7 @@ const optionDefinitions = [
         description: 'Display this usage guide.',
         alias: 'h',
         type: Boolean
-    },
+    }
 ];
 
 const sections = [
@@ -148,7 +177,7 @@ const sections = [
     {
         header: 'Synopsis',
         content: [
-            'node quicktype.js [{underline options}] {bold --output} {underline dir} {bold --input} {underline dir}',
+            'node quicktype.js [{underline options}] {bold --output} {underline path} {bold --input} {underline path}',
             'node quicktype.js {bold --help}'
         ]
     },
@@ -160,12 +189,12 @@ const sections = [
         header: 'Examples',
         content: [
             {
-                desc: '1. Inputs from bo4e_schemas, outputs to bo4e',
-                example: 'node quicktype.js -o bo4e bo4e_schemas'
+                desc: '1. Inputs from data/bo4e_schemas, outputs to bo4e/api',
+                example: 'node quicktype.js -o bo4e/api data/bo4e_schemas'
             },
             {
-                desc: '2. Outputs to "api", package will be "de.bo4e.api"',
-                example: 'node quicktype.js -o api bo4e_schemas -p de bo4e'
+                desc: '2. Outputs to "bo4e/api", package will be "example.test.bo4e.api"',
+                example: 'node quicktype.js -o bo4e/api bo4e_schemas -p example test'
             },
             {
                 desc: '3. Use annotations and enable debug output',
@@ -193,24 +222,41 @@ function debug(msg) {
 /**
  * adjusts global variables based on the command line arguments
  */
-function processCommandLineArguments() {
+async function processCommandLineArguments() {
     const options = commandLineArgs(optionDefinitions);
     if (options['help']) {
         console.log(commandLineUsage(sections));
         process.exit();
     }
     if (!options['input']) {
-        throw new Error('No input directory provided.');
+        console.error('No input directory provided.');
+        process.exit(1);
     }
     if (!options['output']) {
-        throw new Error('No output directory provided.');
+        console.error('No output directory provided.');
+        process.exit(1);
     }
-    SOURCE_DIR_NAME = options['input'];
-    TARGET_DIR_NAME = options['output'];
+    else {
+        TARGET_DIR_PATH = options['output'];
+    }
+    SOURCE_DIR_PATH = options['input'];
     PACKAGE_NAME = options['package'] && options['package'].length > 0 ? options['package'].join('.') + '.' : '';
     USE_ANNOTATIONS = !!options['annotate'];
     VERBOSE = !!options['verbose'];
     QUIET = !!options['quiet'];
+    KEEP = !!options['keep'];
+    REMOVE = !!options['remove'];
+    CREATE = !!options['create'];
+}
+
+function logSettings() {
+    log(`Using source directory: ${SOURCE_DIR_PATH}`);
+    log(`Using target directory: ${TARGET_DIR_PATH}`);
+    log(`Using package: ${(PACKAGE_NAME ? PACKAGE_NAME + TARGET_DIR_PATH : TARGET_DIR_PATH).replaceAll('/', '.')}`);
+    log(`Prevent overwriting existing files: ${KEEP}`);
+    log(`Delete files in output: ${REMOVE}`);
+    log(`Create output directory: ${CREATE}`);
+    log(`Using annotations: ${USE_ANNOTATIONS}`);
 }
 
 /**
@@ -221,6 +267,7 @@ function processCommandLineArguments() {
  */
 function addProperty(allKnowingSchema, file, path) {
     let url = getSchemaUrl(path);
+    const urlPath = path.replace(SOURCE_DIR_PATH, '');
     if (url) {
         if (CURRENT_VERSION === '') {
             CURRENT_VERSION = getVersion(url);
@@ -233,10 +280,10 @@ function addProperty(allKnowingSchema, file, path) {
     }
     if (URL_TEMPLATE === '') {
         log('Could not find template, using default');
-        url = 'https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/' + path;
+        url = 'https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/' + urlPath;
     }
     else {
-        url = URL_TEMPLATE + path;
+        url = URL_TEMPLATE + urlPath;
     }
     const propertyName = file.replace('.json', '');
     const newProperty = createProperty(propertyName.toLowerCase(), url);
@@ -286,7 +333,7 @@ function getSchemaUrl(path) {
  */
 function getUrlTemplate(url) {
     const beginning = url.substring(0, url.indexOf('BO4E-Schemas/')) + 'BO4E-Schemas/v';
-    const end = url.substring(url.indexOf('/src/'), url.indexOf('bo4e_schemas/'));
+    const end = url.substring(url.indexOf('/src/'), url.indexOf('bo4e_schemas/')) + 'bo4e_schemas/';
     return beginning + CURRENT_VERSION + end;
 }
 
@@ -319,11 +366,11 @@ function getVersion(url) {
  * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} maps lowercase fileName to fileData
  * @return {Map<string, {jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} A map of all added files with their fileData
  */
-function addToSchema(allKnowingSchema, source = SOURCE_DIR_NAME, fileMap = new Map) {
+function addToSchema(allKnowingSchema, source = SOURCE_DIR_PATH, fileMap = new Map) {
     const files = fs.readdirSync(source);
     for (const file of files) {
         const path = source + '/' + file;
-        const targetPath = path.replace(SOURCE_DIR_NAME, TARGET_DIR_NAME).replace('enum', 'enums');
+        const targetPath = path.replace(SOURCE_DIR_PATH, TARGET_DIR_PATH).replace('enum', 'enums');
         if (fs.statSync(path).isFile()) {
             addProperty(allKnowingSchema, file, path);
             const fileName = file.replace('.json', '');
@@ -336,7 +383,9 @@ function addToSchema(allKnowingSchema, source = SOURCE_DIR_NAME, fileMap = new M
             fileMap.set(file.replace('.json', '').toLowerCase(), fileData);
         }
         else {
-            fs.mkdirSync(targetPath);
+            if (!fs.existsSync(targetPath)) {
+                fs.mkdirSync(targetPath);
+            }
             fileMap = addToSchema(allKnowingSchema, path, fileMap);
         }
     }
@@ -745,7 +794,7 @@ function restoreMissingFiles(fileMap) {
     MISSING_PARENT_CLASSES.forEach(({fileName, pathToFile}) => {
         if (!fileMap.has(fileName.toLowerCase())) {
             const javaFileName = fileName + '.java';
-            const classPackage = PACKAGE_NAME + TARGET_DIR_NAME + '.' + pathToFile.substring(0, pathToFile.length - 1).replace('/', '.');
+            const classPackage = PACKAGE_NAME + TARGET_DIR_PATH + '.' + pathToFile.substring(0, pathToFile.length - 1).replace('/', '.');
             let fileContent = fs.readFileSync('resource_schemas/' + javaFileName, 'utf-8');
             if (USE_ANNOTATIONS) {
                 fileContent = fileContent
@@ -757,9 +806,32 @@ function restoreMissingFiles(fileMap) {
                 .replace('zaImportPlaceholder', zaImport)
                 .replace('typImportPlaceholder', typImport)
                 .replace('versionPlaceholder', `"${CURRENT_VERSION}"`);
-            fs.writeFileSync(TARGET_DIR_NAME + '/' + pathToFile + javaFileName, fileContent);
+            fs.writeFileSync(TARGET_DIR_PATH + '/' + pathToFile + javaFileName, fileContent);
         }
     });
+}
+
+/**
+ *
+ */
+function prepareDirectory() {
+    if (!fs.existsSync(SOURCE_DIR_PATH)) {
+        console.error(`Could not find input directory ${SOURCE_DIR_PATH}`);
+        process.exit(1);
+    }
+    if (!fs.existsSync(TARGET_DIR_PATH)) {
+        if (CREATE) {
+            fs.mkdirSync(TARGET_DIR_PATH, {recursive: true});
+        }
+        else {
+            console.error(`Could not find output directory ${TARGET_DIR_PATH}`);
+            process.exit(1);
+        }
+    }
+    else if (REMOVE) {
+        fs.rmSync(TARGET_DIR_PATH, {recursive: true});
+        fs.mkdirSync(TARGET_DIR_PATH, {recursive: true});
+    }
 }
 
 /**
@@ -767,10 +839,7 @@ function restoreMissingFiles(fileMap) {
  * @return {{inputData: InputData, fileMap: Map<string, {jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>}} the data used for generation and output
  */
 function readInputData() {
-    if (fs.existsSync(TARGET_DIR_NAME)) {
-        fs.rmSync(TARGET_DIR_NAME, {recursive: true});
-    }
-    fs.mkdirSync(TARGET_DIR_NAME);
+    prepareDirectory();
     const allKnowingSchema = generateAllKnowingSchema();
     const fileMap = addToSchema(allKnowingSchema);
     restoreMissingFiles(fileMap);
@@ -794,32 +863,39 @@ function readInputData() {
  * Outputs the generated classes
  * @param javaClasses {ReadonlyMap<string, SerializedRenderResult>} Map containing the generated java classes
  * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} Maps lowercase fileName to fileData
- * @return {number} Amount of written files
+ * @return {number, number} Amount of written and skipped files
  */
 function writeOutputData(javaClasses, fileMap) {
     let writtenFilesAmount = 0;
+    let skippedFilesAmount = 0;
     javaClasses.forEach((javaClass, className) => {
         const searchName = className.replace('.java', '').toLowerCase();
         const fileData = fileMap.get(searchName);
+        debug(`Looking for ${className}`);
         if (fileData) {
+            debug(`Found ${className} in ${fileData.jsonFilePath}`);
+            debug(`Writing ${className} to ${fileData.javaFilePath}`);
             fileData.javaFileName = className.replace('.java', '');
             const content = completeJavaFile(javaClass.lines, fileData, fileMap);
-            fs.writeFileSync(fileData.javaFilePath + '/' + className, content);
-            writtenFilesAmount++;
+            if (!KEEP || !fs.existsSync(fileData.javaFilePath + '/' + className)) {
+                fs.writeFileSync(fileData.javaFilePath + '/' + className, content);
+                writtenFilesAmount++;
+            }
+            else {
+                skippedFilesAmount++;
+            }
         }
     });
-    return writtenFilesAmount;
+    return {writtenFilesAmount, skippedFilesAmount};
 }
 
-function main() {
-    processCommandLineArguments();
+async function main() {
+    await processCommandLineArguments();
     log('Reading...');
-    log(`Using source directory: ${SOURCE_DIR_NAME}`);
-    log(`Using target directory: ${TARGET_DIR_NAME}`);
-    log(`Using package: ${PACKAGE_NAME ? PACKAGE_NAME + TARGET_DIR_NAME : TARGET_DIR_NAME}`);
-    log(`Using annotations: ${USE_ANNOTATIONS}`);
+    logSettings();
     const {inputData, fileMap} = readInputData();
     const readFilesAmount = fileMap.size;
+    debug(`Read ${readFilesAmount} files`);
     log('Generating...');
     quicktypeMultiFile({
         inputData,
@@ -827,9 +903,12 @@ function main() {
         allPropertiesOptional: false
     }).then(javaClasses => {
         log('Writing...');
-        const writtenFilesAmount = writeOutputData(javaClasses, fileMap);
-        log(`Finished: ${writtenFilesAmount}/${readFilesAmount}`);
+        const {writtenFilesAmount, skippedFilesAmount} = writeOutputData(javaClasses, fileMap);
+        log(`Finished: ${writtenFilesAmount}/${readFilesAmount} (Skipped: ${skippedFilesAmount})`);
+        if (readFilesAmount - writtenFilesAmount - skippedFilesAmount !== 0) {
+            log(`Missing: ${readFilesAmount - writtenFilesAmount - skippedFilesAmount}`);
+        }
     });
 }
 
-main();
+main().then();

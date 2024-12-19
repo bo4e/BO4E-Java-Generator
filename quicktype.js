@@ -9,8 +9,6 @@ const {JacksonRenderer} = require('quicktype-core/dist/language/Java');
 const {SerializedRenderResult} = require('quicktype-core/dist/Source');
 const commandLineArgs = require('command-line-args');
 const commandLineUsage = require('command-line-usage');
-const {Octokit} = require('octokit');
-const decompress = require('decompress');
 
 let CURRENT_VERSION = '';
 let URL_TEMPLATE = '';
@@ -24,11 +22,6 @@ let QUIET = false;
 let REMOVE = false;
 let CREATE = false;
 let KEEP = false;
-
-const OCTOKIT = new Octokit();
-const ZIP_PATH = "temp.zip";
-const DIR_PATH = "temp";
-const SCHEMA_DIR = 'temp_schemas';
 
 /**
  * array containing potentially missing parent classes and their path

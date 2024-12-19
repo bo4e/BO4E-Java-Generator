@@ -105,8 +105,8 @@ async function main() {
     if (options['auth']) {
         octokit = new Octokit({auth: options['auth']});
     }
-    const input_owner = options['input_owner'];
-    const input_repo = options['input_repo'];
+    const input_owner = options['input-owner'];
+    const input_repo = options['input-repo'];
     if (options['input-auth']) {
         input_octokit = new Octokit({auth: options['input-auth']});
     }

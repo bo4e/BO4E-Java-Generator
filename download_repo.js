@@ -38,6 +38,12 @@ const optionDefinitions = [
         typeLabel: '{underline token}'
     },
     {
+        name: 'output-tag',
+        description: 'Log the downloaded tag to the console.',
+        alias: 'T',
+        type: Boolean
+    },
+    {
         name: 'help',
         description: 'Display this usage guide.',
         alias: 'h',
@@ -132,6 +138,17 @@ async function downloadFromRepo(owner, repo, tag = 'latest') {
     fs.rmSync(dirPath, {recursive: true});
 }
 
+async function getLatestTag(owner, repo) {
+    const response = await octokit.request('GET /repos/{owner}/{repo}/releases/latest', {
+        owner: owner,
+        repo: repo
+    });
+    if (response.status !== 200) {
+        throw new Error('Request failed: got ' + response.status);
+    }
+    return response.data['tag_name'];
+}
+
 async function main() {
     const options = commandLineArgs(optionDefinitions);
     if (options['help']) {
@@ -143,12 +160,22 @@ async function main() {
     }
     const owner = options['owner'];
     const repo = options['repo'];
-    const tag = options['tag'] ? options['tag'] : 'latest';
+    let tag = options['tag'] || 'latest';
+    if (tag.toLowerCase() === 'latest') {
+        tag = await getLatestTag(owner, repo);
+    }
     if (!owner || !repo) {
-        console.error('No repository provided.');
+        if (!options['output-tag']) {
+            console.error('No repository provided.');
+        } else {
+            console.log('invalid');
+        }
         process.exit(1);
     }
     await downloadFromRepo(owner, repo, tag);
+    if (!!options['output-tag']) {
+        console.log(tag);
+    }
 }
 
 main().then();

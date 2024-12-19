@@ -2,16 +2,15 @@ name: 'Generate Java Classes'
 on:
   workflow_dispatch:
     inputs:
-      version:
-        type: string
-        default: latest
-        required: true
-  workflow_call:
-    inputs:
-      version:
+      tag:
         type: string
         default: latest
         required: false
+  workflow_call:
+    inputs:
+      tag:
+        type: string
+        required: true
     secrets:
       ACCESS_TOKEN_JAVA_API:
         required: true
@@ -33,9 +32,10 @@ jobs:
       - name: Get Schemas
         id: schemas
         env:
-          VERSION: ${{ inputs.version }}
+          TAG: ${{ inputs.tag }}
         run: |
-          RELEASETAG=`node download_repo.js -T -o "bo4e" -r "BO4E-Schemas" -t "$VERSION"`
+          RELEASETAG=`node download_repo.js -T -o "bo4e" -r "BO4E-Schemas" -t "$TAG"`
+          echo $RELEASETAG
           echo "TAGNAME=$RELEASETAG" >> "$GITHUB_OUTPUT"
       - name: Generate
         if: ${{ steps.schemas.outputs.TAGNAME != 'invalid' }}

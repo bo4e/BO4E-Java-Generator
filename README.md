@@ -15,8 +15,8 @@ to [BO4E-Java](https://github.com/TimoMolls/BO4E-Java).
 | name     | alias | type      | description                                                                     |
 |----------|-------|-----------|---------------------------------------------------------------------------------|
 | input    | i     | string    | The input directory that holds the json-schemas and defines the file structure. |   
-| output   | o     | string    | The output directory (will be included in package signature).                   |    
-| package  | p     | string... | Additional packages to add to the classes package signature.                    |                                        
+| output   | o     | string    | The output directory.                                                           |    
+| package  | p     | string... | The package to put in the classes package signature (default: same as output).  |                                        
 | keep     | k     | boolean   | Prevent overwriting of existing files.                                          |
 | remove   | r     | boolean   | Delete all existing files in output directory.                                  |
 | create   | c     | boolean   | Create output directory if it does not exist.                                   |
@@ -34,5 +34,5 @@ to [BO4E-Java](https://github.com/TimoMolls/BO4E-Java).
 - all classes in *com* extend **COM**
 - **Geschaeftsobjekt** and **COM** are added, even if not included in the *schemas*
 - *version* was renamed to **boVersion** since there already is a version field in **Lastgang**
-- every class has a *no-args-constructor* and a **Builder** but currently no *all-args-constructor*
+- every class has a *no-args-constructor* and a **Builder** but no *all-args-constructor*
 - Comments are copied from the schemas, their correctness is not validated

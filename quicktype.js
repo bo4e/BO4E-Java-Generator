@@ -105,18 +105,17 @@ const optionDefinitions = [
     },
     {
         name: 'output',
-        description: 'Path to the output directory (will be included in package signature).',
+        description: 'Path to the output directory.',
         alias: 'o',
         type: String,
         typeLabel: '{underline path}'
     },
     {
         name: 'package',
-        description: 'Additional packages to add to the package signature.',
+        description: 'The package to put in the classes package signature (default: same as output).',
         alias: 'p',
         type: String,
-        multiple: true,
-        typeLabel: '{underline package} ...'
+        typeLabel: '{underline package}'
     },
     {
         name: 'keep',
@@ -186,8 +185,8 @@ const sections = [
                 example: 'node quicktype.js -o bo4e/api data/bo4e_schemas'
             },
             {
-                desc: '2. Outputs to "bo4e/api", package will be "example.test.bo4e.api"',
-                example: 'node quicktype.js -o bo4e/api bo4e_schemas -p example test'
+                desc: '2. Outputs to "bo4e/api", package will be "bo4e.example.api"',
+                example: 'node quicktype.js -o bo4e/api bo4e_schemas -p bo4e.example.api'
             },
             {
                 desc: '3. Use annotations and enable debug output',
@@ -233,7 +232,7 @@ async function processCommandLineArguments() {
         TARGET_DIR_PATH = options['output'];
     }
     SOURCE_DIR_PATH = options['input'];
-    PACKAGE_NAME = options['package'] && options['package'].length > 0 ? options['package'].join('.') + '.' : '';
+    PACKAGE_NAME = (options['package'] && options['package'].length > 0) ? options['package'].join('.') : TARGET_DIR_PATH.replaceAll('/', '.');
     USE_ANNOTATIONS = !!options['annotate'];
     VERBOSE = !!options['verbose'];
     QUIET = !!options['quiet'];
@@ -245,7 +244,7 @@ async function processCommandLineArguments() {
 function logSettings() {
     log(`Using source directory: ${SOURCE_DIR_PATH}`);
     log(`Using target directory: ${TARGET_DIR_PATH}`);
-    log(`Using package: ${(PACKAGE_NAME ? PACKAGE_NAME + TARGET_DIR_PATH : TARGET_DIR_PATH).replaceAll('/', '.')}`);
+    log(`Using package: ${PACKAGE_NAME}`);
     log(`Prevent overwriting existing files: ${KEEP}`);
     log(`Delete files in output: ${REMOVE}`);
     log(`Create output directory: ${CREATE}`);
@@ -586,7 +585,7 @@ function addImports(fieldType, fileMap, importList, classDirPath) {
     }
     const importData = fileMap.get(fieldType.toLowerCase());
     if (importData !== undefined && importData.javaFilePath !== classDirPath) {
-        const importPackage = PACKAGE_NAME + importData.javaFilePath.replaceAll('/', '.');
+        const importPackage = importData.javaFilePath.replace(TARGET_DIR_PATH, PACKAGE_NAME).replaceAll('/', '.');
         const importString = `import ${importPackage}.${importData.javaFileName};`;
         if (!importList.includes(importString)) {
             importList.push(importString);
@@ -743,7 +742,7 @@ function addIndentation(classString) {
  */
 function completeJavaFile(contentList, fileData, fileMap) {
     const classFoot = '}';
-    const newPackageName = PACKAGE_NAME + fileData.javaFilePath.replaceAll('/', '.');
+    const newPackageName = fileData.javaFilePath.replace(TARGET_DIR_PATH, PACKAGE_NAME).replaceAll('/', '.');
     const newPackage = contentList[0].replace('placeholder', newPackageName);
     const classIndex = contentList.findIndex(value => value.startsWith('public class'));
     if (classIndex < 0) {
@@ -782,12 +781,12 @@ function completeJavaFile(contentList, fileData, fileMap) {
  * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} maps lowercase fileName to fileData
  */
 function restoreMissingFiles(fileMap) {
-    const zaImport = PACKAGE_NAME + fileMap.get('zusatzattribut').javaFilePath.replaceAll('/', '.');
-    const typImport = PACKAGE_NAME + fileMap.get('typ').javaFilePath.replaceAll('/', '.');
+    const zaImport = fileMap.get('zusatzattribut').javaFilePath.replace(TARGET_DIR_PATH, PACKAGE_NAME).replaceAll('/', '.');
+    const typImport = fileMap.get('typ').javaFilePath.replace(TARGET_DIR_PATH, PACKAGE_NAME).replaceAll('/', '.');
     MISSING_PARENT_CLASSES.forEach(({fileName, pathToFile}) => {
         if (!fileMap.has(fileName.toLowerCase())) {
             const javaFileName = fileName + '.java';
-            const classPackage = PACKAGE_NAME + TARGET_DIR_PATH + '.' + pathToFile.substring(0, pathToFile.length - 1).replace('/', '.');
+            const classPackage = PACKAGE_NAME + '.' + pathToFile.substring(0, pathToFile.length - 1).replace('/', '.');
             let fileContent = fs.readFileSync('resource_schemas/' + javaFileName, 'utf-8');
             if (USE_ANNOTATIONS) {
                 fileContent = fileContent

@@ -19,42 +19,42 @@ import java.util.List;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/bo/Geschaeftsobjekt.json>`_
  */
 public abstract class Geschaeftsobjekt {
-    private String id;
-    private final Typ typ = Typ.GESCHAEFTSOBJEKT;
-    private final String boVersion = versionPlaceholder;
+    private String _id;
+    private final Typ _typ = Typ.GESCHAEFTSOBJEKT;
+    private final String _version = versionPlaceholder;
     private List<ZusatzAttribut> zusatzAttribute;
 
     protected Geschaeftsobjekt(GeschaeftsobjektBuilder builder) {
-        this.id = builder.id;
+        this._id = builder._id;
         this.zusatzAttribute = builder.zusatzAttribute;
     }
 
     /**
      * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
      */
-    public String getId() {
-        return id;
+    public String get_id() {
+        return _id;
     }
 
     /**
      * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
      */
-    public void setId(String value) {
-        this.id = value;
+    public void set_id(String value) {
+        this._id = value;
     }
 
     /**
      * Typ des Geschaeftsobjekts
      */
-    public Typ getTyp() {
-        return typ;
+    public Typ get_typ() {
+        return _typ;
     }
 
     /**
      * Version der BO-Struktur aka "fachliche Versionierung"
      */
-    public String getBoVersion() {
-        return boVersion;
+    public String get_version() {
+        return _version;
     }
 
     public List<ZusatzAttribut> getZusatzAttribute() {
@@ -66,14 +66,14 @@ public abstract class Geschaeftsobjekt {
     }
 
     public abstract static class GeschaeftsobjektBuilder {
-        private String id;
+        private String _id;
         private List<ZusatzAttribut> zusatzAttribute;
 
         /**
          * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
          */
-        public GeschaeftsobjektBuilder setId(String value) {
-            this.id = value;
+        public GeschaeftsobjektBuilder set_id(String value) {
+            this._id = value;
             return this;
         }
 

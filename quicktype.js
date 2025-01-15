@@ -232,7 +232,7 @@ async function processCommandLineArguments() {
         TARGET_DIR_PATH = options['output'];
     }
     SOURCE_DIR_PATH = options['input'];
-    PACKAGE_NAME = (options['package'] && options['package'].length > 0) ? options['package'].join('.') : TARGET_DIR_PATH.replaceAll('/', '.');
+    PACKAGE_NAME = (options['package'] && options['package'].length > 0) ? options['package'] : TARGET_DIR_PATH.replaceAll('/', '.');
     USE_ANNOTATIONS = !!options['annotate'];
     VERBOSE = !!options['verbose'];
     QUIET = !!options['quiet'];
@@ -643,11 +643,11 @@ function addTypeToFieldsAndMethods(fieldList, javaMethodList, fileData) {
         }
     }
     const field = {
-        name: `typ = Typ.${type}`,
+        name: `_typ = Typ.${type}`,
         type: 'Typ',
         description: '/**\n* Typ des Geschaeftsobjekts\n*/'
     };
-    javaMethodList.unshift('', getJavaMethod({name: 'typ', type: 'Typ'}));
+    javaMethodList.unshift('', getJavaMethod({name: '_typ', type: 'Typ'}));
     fieldList.unshift(field);
 }
 

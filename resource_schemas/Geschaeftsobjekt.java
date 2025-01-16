@@ -29,6 +29,9 @@ public abstract class Geschaeftsobjekt {
         this.zusatzAttribute = builder.zusatzAttribute;
     }
 
+    protected Geschaeftsobjekt() {
+    }
+
     /**
      * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
      */
@@ -81,5 +84,7 @@ public abstract class Geschaeftsobjekt {
             this.zusatzAttribute = value;
             return this;
         }
+
+        public abstract Geschaeftsobjekt build();
     }
 }

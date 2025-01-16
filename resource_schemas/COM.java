@@ -25,6 +25,9 @@ public abstract class COM {
         this.zusatzAttribute = builder.zusatzAttribute;
     }
 
+    protected COM() {
+    }
+
     /**
      * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
      */
@@ -58,9 +61,6 @@ public abstract class COM {
         private String _id;
         private List<ZusatzAttribut> zusatzAttribute;
 
-        private COMBuilder() {
-        }
-
         /**
          * Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
          */
@@ -73,5 +73,7 @@ public abstract class COM {
             this.zusatzAttribute = value;
             return this;
         }
+
+        public abstract COM build();
     }
 }

@@ -33,10 +33,10 @@ const MISSING_PARENT_CLASSES = [
 ];
 
 const PARENT_FIELDS = [
-    {name: 'id', type: 'String'},
-    {name: 'typ', type: 'Typ'},
-    {name: 'version', type: 'String'},
-    {name: 'zusatzAttribute', type: 'List<ZusatzAttribut>'}
+    {name: '_id', type: 'String', final: false},
+    {name: '_typ', type: 'Typ', final: true},
+    {name: '_version', type: 'String', final: true},
+    {name: 'zusatzAttribute', type: 'List<ZusatzAttribut>', final: false}
 ];
 
 const CUSTOM_JAVA_OPTIONS = {
@@ -463,7 +463,7 @@ function getClassFields(classBody) {
  */
 function removeParentClassFields(fieldList) {
     const hasOwnVersionProperty = fieldList.slice(0, PARENT_FIELDS.length).findIndex(value => value.name === 'version') < 0;
-    let fieldFilter = PARENT_FIELDS.map(value => value.name);
+    let fieldFilter = PARENT_FIELDS.map(value => value.name.replace('_', ''));
     if (hasOwnVersionProperty) {
         fieldFilter = fieldFilter.filter(value => value !== 'version');
     }
@@ -612,7 +612,7 @@ function getImports(fieldList, fileData, fileMap, hasParent) {
     }
     if (hasParent) {
         for (const parentField of PARENT_FIELDS) {
-            if (parentField.name !== 'typ' && parentField.name !== 'version') {
+            if (!parentField.final) {
                 addImports(parentField.type, fileMap, importList, classPath);
             }
         }
@@ -673,7 +673,7 @@ function getBuilderClass(classHead, fieldList, fileData, hasParent) {
     builderConstructor.push('}');
     if (hasParent) {
         for (const parentField of PARENT_FIELDS) {
-            if (parentField.name !== 'typ' && parentField.name !== 'version') {
+            if (!parentField.final) {
                 builderMethods.push('');
                 builderMethods.push(overwriteParentSetter(parentField, builderName));
             }

@@ -275,12 +275,16 @@ function addProperty(allKnowingSchema, file, path) {
         url = 'https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1/src/' + urlPath;
     }
     else {
-        url = URL_TEMPLATE + urlPath;
+        if (URL_TEMPLATE.endsWith('/') && urlPath.startsWith('/')) {
+            url = URL_TEMPLATE + urlPath.substring(1);
+        } else {
+            url = URL_TEMPLATE + urlPath;
+        }
     }
     const propertyName = file.replace('.json', '');
     const newProperty = createProperty(propertyName.toLowerCase(), url);
     allKnowingSchema.push(newProperty);
-    debug('Property ' + propertyName + ' added');
+    debug('Property ' + propertyName + ' added: ' + url);
 }
 
 /**
@@ -478,7 +482,7 @@ function removeParentClassFields(fieldList) {
 function turnFieldListToJava(fieldList) {
     const javaList = [];
     for (const field of fieldList) {
-        if (field.type === 'Typ') {
+        if (field.type === 'Typ' || field.type === 'BoTyp' || field.type === 'ComTyp') {
             javaList.push(`private final ${field.type} ${field.name};`);
         }
         else {
@@ -629,8 +633,9 @@ function getImports(fieldList, fileData, fileMap, hasParent) {
  * @param fieldList {{name: string, type: string, description: string}[]} contains the fields of the java class
  * @param javaMethodList {string[]} contains the methods of the java class
  * @param fileData {{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}} information about the file containing the java class
+ * @param comTypIncluded {boolean}: whether ComTyp is included
  */
-function addTypeToFieldsAndMethods(fieldList, javaMethodList, fileData) {
+function addTypeToFieldsAndMethods(fieldList, javaMethodList, fileData, comTypIncluded) {
     const file = fs.readFileSync(fileData.jsonFilePath + '/' + fileData.jsonFileName + '.json', 'utf-8').replaceAll(' ', '').split('\n');
     let type = fileData.jsonFileName.toUpperCase();
     const hasExpectedType = file.findIndex(value => value.startsWith(`"default":"${type}"`)) !== -1;
@@ -642,12 +647,22 @@ function addTypeToFieldsAndMethods(fieldList, javaMethodList, fileData) {
             type = typeDefault.split(':').at(1).replaceAll('"', '').replace(',', '');
         }
     }
+    let typ = 'Typ';
+    let desc = 'Typ des Geschaeftsobjekts';
+    if (comTypIncluded) {
+        if (fileData.javaFilePath.endsWith("/bo")) {
+            typ = 'BoTyp';
+        } else {
+            typ = 'ComTyp';
+            desc = 'Typ des COMs';
+        }
+    }
     const field = {
-        name: `_typ = Typ.${type}`,
-        type: 'Typ',
-        description: '/**\n* Typ des Geschaeftsobjekts\n*/'
+        name: `_typ = ${typ}.${type}`,
+        type: typ,
+        description: `/**\n* ${desc}\n*/`
     };
-    javaMethodList.unshift('', getJavaMethod({name: '_typ', type: 'Typ'}));
+    javaMethodList.unshift('', getJavaMethod({name: '_typ', type: typ}));
     fieldList.unshift(field);
 }
 
@@ -767,8 +782,8 @@ function completeJavaFile(contentList, fileData, fileMap) {
         .replace('getBuilder', 'builder');
     const javaConstructor = getJavaConstructor(fieldList, fileData, hasParent);
     const builderClass = getBuilderClass(classHead, fieldList, fileData, hasParent);
-    if (fileData.javaFilePath.endsWith('/bo')) {
-        addTypeToFieldsAndMethods(fieldList, javaMethodList, fileData);
+    if (fileData.javaFilePath.endsWith('/bo') || (fileMap.has('comtyp') && fileData.javaFilePath.endsWith('/com'))) {
+        addTypeToFieldsAndMethods(fieldList, javaMethodList, fileData, fileMap.has('comtyp'));
     }
     const javaFieldList = turnFieldListToJava(fieldList);
     const importList = getImports(fieldList, fileData, fileMap, hasParent);
@@ -781,8 +796,48 @@ function completeJavaFile(contentList, fileData, fileMap) {
  * @param fileMap {Map<string,{jsonFileName: string, jsonFilePath: string, javaFileName: string, javaFilePath: string}>} maps lowercase fileName to fileData
  */
 function restoreMissingFiles(fileMap) {
-    const zaImport = fileMap.get('zusatzattribut').javaFilePath.replace(TARGET_DIR_PATH, PACKAGE_NAME).replaceAll('/', '.');
-    const typImport = fileMap.get('typ').javaFilePath.replace(TARGET_DIR_PATH, PACKAGE_NAME).replaceAll('/', '.');
+    const zaImportPath = fileMap.get('zusatzattribut').javaFilePath.replace(TARGET_DIR_PATH, PACKAGE_NAME).replaceAll('/', '.');
+    const zaImport = `import ${zaImportPath.length > 0 && !zaImportPath.endsWith('.') ? zaImportPath + '.' : zaImportPath}ZusatzAttribut;`;
+    let boTyp = {javaFilePath: '', javaFileName: ''};
+    let boTypGetter = '';
+    let boTypField = '';
+    let comTyp = {javaFilePath: '', javaFileName: ''};
+    let comTypGetter = '';
+    let comTypField = '';
+    if (fileMap.has('typ')) {
+        boTyp = fileMap.get('typ');
+        boTypField = '    private final Typ _typ = Typ.GESCHAEFTSOBJEKT;'
+        boTypGetter = '    /**\n' +
+            '     * Typ des Geschaeftsobjekts\n' +
+            '     */\n' +
+            '    public Typ get_typ() {\n' +
+            '        return _typ;\n' +
+            '    }';
+    } else if (fileMap.has('botyp')) {
+        boTyp = fileMap.get('botyp');
+        boTypField = '    private final BoTyp _typ = BoTyp.GESCHAEFTSOBJEKT;'
+        boTypGetter = '    /**\n' +
+            '     * Typ des Geschaeftsobjekts\n' +
+            '     */\n' +
+            '    public BoTyp get_typ() {\n' +
+            '        return _typ;\n' +
+            '    }';
+    }
+    if (fileMap.has('comtyp')) {
+        comTyp = fileMap.get('comtyp');
+        comTypGetter = '\n\n    /**\n' +
+            '     * Typ der Komponente\n' +
+            '     */\n' +
+            '    public ComTyp get_typ() {\n' +
+            '        return _typ;\n' +
+            '    }';
+        comTypField = '\n    private final ComTyp _typ = null;';
+    }
+    const boTypImportPath = boTyp.javaFilePath.replace(TARGET_DIR_PATH, PACKAGE_NAME).replaceAll('/', '.');
+    const boTypImport = `import ${boTypImportPath.length > 0 && !boTypImportPath.endsWith('.') ? boTypImportPath + '.' : boTypImportPath}${boTyp.javaFileName};`;
+    const comTypImportPath = comTyp.javaFilePath.replace(TARGET_DIR_PATH, PACKAGE_NAME).replaceAll('/', '.');
+    const comTypImport = comTypImportPath ? `\nimport ${comTypImportPath.length > 0 && !comTypImportPath.endsWith('.') ? comTypImportPath + '.' : comTypImportPath}${comTyp.javaFileName};` : '';
+
     MISSING_PARENT_CLASSES.forEach(({fileName, pathToFile}) => {
         if (!fileMap.has(fileName.toLowerCase())) {
             const javaFileName = fileName + '.java';
@@ -791,12 +846,18 @@ function restoreMissingFiles(fileMap) {
             if (USE_ANNOTATIONS) {
                 fileContent = fileContent
                     .replace('public abstract class', '@JsonInclude(JsonInclude.Include.NON_NULL)\npublic abstract class')
-                    .replace('import typImportPlaceholder', 'import com.fasterxml.jackson.annotation.JsonInclude;\nimport typImportPlaceholder');
+                    .replace('boTypImportPlaceholder', 'import com.fasterxml.jackson.annotation.JsonInclude;\nboTypImportPlaceholder')
+                    .replace('comTypImportPlaceholder', 'import com.fasterxml.jackson.annotation.JsonInclude;\ncomTypImportPlaceholder');
             }
             fileContent = fileContent
                 .replace('packagePlaceholder', classPackage)
                 .replace('zaImportPlaceholder', zaImport)
-                .replace('typImportPlaceholder', typImport)
+                .replace('boTypImportPlaceholder', boTypImport)
+                .replace('comTypImportPlaceholder', comTypImport)
+                .replace('boTypFieldPlaceholder', boTypField)
+                .replace('comTypFieldPlaceholder', comTypField)
+                .replace('boTypGetterPlaceholder', boTypGetter)
+                .replace('comTypGetterPlaceholder', comTypGetter)
                 .replace('versionPlaceholder', `"${CURRENT_VERSION}"`);
             fs.writeFileSync(TARGET_DIR_PATH + '/' + pathToFile + javaFileName, fileContent);
         }
@@ -861,16 +922,24 @@ function writeOutputData(javaClasses, fileMap) {
     let writtenFilesAmount = 0;
     let skippedFilesAmount = 0;
     javaClasses.forEach((javaClass, className) => {
-        const searchName = className.replace('.java', '').toLowerCase();
-        const fileData = fileMap.get(searchName);
+        let searchName = className.replace('.java', '');
+        const fileData = fileMap.get(searchName.toLowerCase());
         debug(`Looking for ${className}`);
         if (fileData) {
-            debug(`Found ${className} in ${fileData.jsonFilePath}`);
-            debug(`Writing ${className} to ${fileData.javaFilePath}`);
-            fileData.javaFileName = className.replace('.java', '');
-            const content = completeJavaFile(javaClass.lines, fileData, fileMap);
-            if (!KEEP || !fs.existsSync(fileData.javaFilePath + '/' + className)) {
-                fs.writeFileSync(fileData.javaFilePath + '/' + className, content);
+            if (searchName === 'COMTyp') {
+                searchName = 'ComTyp';
+                javaClass.lines = javaClass.lines.map(line => line.replace('COMTyp', 'ComTyp'));
+            }
+            if (searchName !== fileData.jsonFileName) {
+                debug(`Name ${searchName} does not match ${fileData.jsonFileName}: Skipping`);
+                return skippedFilesAmount++;
+            }
+            fileData.javaFileName = searchName;
+            debug(`Found ${fileData.jsonFileName} in ${fileData.jsonFilePath}`);
+            debug(`Writing ${fileData.javaFileName} to ${fileData.javaFilePath}`);
+            let content = completeJavaFile(javaClass.lines, fileData, fileMap);
+            if (!KEEP || !fs.existsSync(fileData.javaFilePath + '/' + fileData.javaFileName + '.java')) {
+                fs.writeFileSync(fileData.javaFilePath + '/' + fileData.javaFileName + '.java', content);
                 writtenFilesAmount++;
             }
             else {
@@ -892,13 +961,18 @@ async function main() {
     quicktypeMultiFile({
         inputData,
         lang: new BO4EJavaTargetLanguage(),
-        allPropertiesOptional: false
+        allPropertiesOptional: false,
+        alphabetizeProperties: false,
+        checkProvenance: true
     }).then(javaClasses => {
         log('Writing...');
         const {writtenFilesAmount, skippedFilesAmount} = writeOutputData(javaClasses, fileMap);
         log(`Finished: ${writtenFilesAmount}/${readFilesAmount} (Skipped: ${skippedFilesAmount})`);
-        if (readFilesAmount - writtenFilesAmount - skippedFilesAmount !== 0) {
-            log(`Missing: ${readFilesAmount - writtenFilesAmount - skippedFilesAmount}`);
+        const missing = readFilesAmount - writtenFilesAmount - skippedFilesAmount;
+        if (missing > 0) {
+            log(`Missing: ${missing}`);
+        } else if (missing < 0) {
+            log(`Overflow: ${-missing}`);
         }
     });
 }

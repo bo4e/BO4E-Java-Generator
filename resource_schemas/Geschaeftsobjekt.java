@@ -1,7 +1,7 @@
 package packagePlaceholder;
 
-import typImportPlaceholder.Typ;
-import zaImportPlaceholder.ZusatzAttribut;
+boTypImportPlaceholder
+zaImportPlaceholder
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ import java.util.List;
  */
 public abstract class Geschaeftsobjekt {
     private String _id;
-    private final Typ _typ = Typ.GESCHAEFTSOBJEKT;
+boTypFieldPlaceholder
     private final String _version = versionPlaceholder;
     private List<ZusatzAttribut> zusatzAttribute;
 
@@ -46,12 +46,7 @@ public abstract class Geschaeftsobjekt {
         this._id = value;
     }
 
-    /**
-     * Typ des Geschaeftsobjekts
-     */
-    public Typ get_typ() {
-        return _typ;
-    }
+boTypGetterPlaceholder
 
     /**
      * Version der BO-Struktur aka "fachliche Versionierung"

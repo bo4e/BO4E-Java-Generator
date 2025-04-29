@@ -1,6 +1,6 @@
 package packagePlaceholder;
-
-import zaImportPlaceholder.ZusatzAttribut;
+comTypImportPlaceholder
+zaImportPlaceholder
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import java.util.List;
  * <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/v202401.0.1-/src/bo4e_schemas/com/COM.json>`_
  */
 public abstract class COM {
-    private String _id;
+    private String _id;comTypFieldPlaceholder
     private final String _version = versionPlaceholder;
     private List<ZusatzAttribut> zusatzAttribute;
 
@@ -40,7 +40,7 @@ public abstract class COM {
      */
     public void set_id(String value) {
         this._id = value;
-    }
+    }comTypGetterPlaceholder
 
     /**
      * Version der BO-Struktur aka "fachliche Versionierung"

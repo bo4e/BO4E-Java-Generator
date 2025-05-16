@@ -49,9 +49,9 @@ jobs:
         with:
           source-directory: "bo4e"
           target-directory: "bo4e"
-          destination-github-username: "TimoMolls"
+          destination-github-username: "bo4e"
           destination-repository-name: "BO4E-Java"
-          user-email: timo.molls@enet.eu
+          user-email: bo4e-schemas@hochfrequenz.de
           target-branch: main
           commit-message: "Update JAVA-Classes - BO4E ${{ steps.schemas.outputs.TAGNAME }}"
       - name: Generate with dependecies
@@ -62,20 +62,20 @@ jobs:
         if: ${{ steps.schemas.outputs.TAGNAME != 'invalid' }}
         uses: cpina/github-action-push-to-another-repository@v1.7.2
         env:
-          API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN_JAVA_API }}
+          API_TOKEN_GITHUB: ${{ secrets.BO4E_JAVA_GENERATOR_TOKEN }}
         with:
           source-directory: "bo4e"
           target-directory: "bo4e"
-          destination-github-username: "TimoMolls"
+          destination-github-username: "bo4e"
           destination-repository-name: "BO4E-Java"
-          user-email: timo.molls@enet.eu
+          user-email: bo4e-schemas@hochfrequenz.de
           target-branch: withDependencies
           commit-message: "Update JAVA-Classes - BO4E ${{ steps.schemas.outputs.TAGNAME }}-wd"
       - name: Create Release
         if: ${{ steps.schemas.outputs.TAGNAME != 'invalid' }}
         env:
-          TOKEN: ${{ secrets.CREATE_RELEASE_TOKEN }}
+          TOKEN: ${{ secrets.BO4E_JAVA_GENERATOR_TOKEN }}
           VERSION: ${{ steps.schemas.outputs.TAGNAME }}
         run: |
-          node create_release.js -o "TimoMolls" -r "BO4E-Java" -a "$TOKEN" -t "$VERSION" --input-owner "bo4e" --input-repo "BO4E-Schemas"
-          node create_release.js -o "TimoMolls" -r "BO4E-Java" -a "$TOKEN" -t "$VERSION" -b "withDependencies" --input-owner "bo4e" --input-repo "BO4E-Schemas"
+          node create_release.js -o "bo4e" -r "BO4E-Java" -a "$TOKEN" -t "$VERSION" --input-owner "bo4e" --input-repo "BO4E-Schemas"
+          node create_release.js -o "bo4e" -r "BO4E-Java" -a "$TOKEN" -t "$VERSION" -b "withDependencies" --input-owner "bo4e" --input-repo "BO4E-Schemas"

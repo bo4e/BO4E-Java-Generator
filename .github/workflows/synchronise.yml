@@ -34,6 +34,5 @@ jobs:
     with:
       tag: ${{ needs.synchronisation.outputs.tagname }}
     secrets:
-      ACCESS_TOKEN_JAVA_API: ${{ secrets.ACCESS_TOKEN_JAVA_API }}
-      CREATE_RELEASE_TOKEN: ${{ secrets.CREATE_RELEASE_TOKEN }}
+      BO4E_JAVA_GENERATOR_TOKEN: ${{ secrets.BO4E_JAVA_GENERATOR_TOKEN }}
           

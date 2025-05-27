@@ -22,7 +22,7 @@ jobs:
       - name: Sync
         id: release
         env:
-          TOKEN: ${{ secrets.CREATE_RELEASE_TOKEN }}
+          TOKEN: ${{ secrets.BO4E_JAVA_GENERATOR_TOKEN }}
         run: |
           TAG=`node sync_releases.js -o "bo4e" -r "BO4E-Java" -a $TOKEN --input-owner "bo4e" --input-repo "BO4E-Schemas"`
           echo $TAG

@@ -12,9 +12,7 @@ on:
         type: string
         required: true
     secrets:
-      ACCESS_TOKEN_JAVA_API:
-        required: true
-      CREATE_RELEASE_TOKEN:
+      BO4E_JAVA_GENERATOR_TOKEN:
         required: true
 jobs:
   generation:
@@ -45,7 +43,7 @@ jobs:
         if: ${{ steps.schemas.outputs.TAGNAME != 'invalid' }}
         uses: cpina/github-action-push-to-another-repository@v1.7.2
         env:
-          API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN_JAVA_API }}
+          API_TOKEN_GITHUB: ${{ secrets.BO4E_JAVA_GENERATOR_TOKEN }}
         with:
           source-directory: "bo4e"
           target-directory: "bo4e"
